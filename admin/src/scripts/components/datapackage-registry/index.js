@@ -34,7 +34,7 @@ function getRegistry() {
    * Return the DataPackage Registry as an array of objects
    */
 
-    return getCSVEndpoint(config.backend, config.objectwise);
+  return getCSVEndpoint(config.backend, config.objectwise);
 
 }
 
