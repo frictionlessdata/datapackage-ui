@@ -1,6 +1,19 @@
-# Data Package Admin
+# Data Packagist
 
 A web app for creating, editing and validating Data Packages.
+
+Data Packagist allows you to:
+
+* Work with any Data Package Profile that has an entry in the [Data Package Registry](https://github.com/dataprotocols/registry)
+    * Create a new Data Package
+    * Edit an existing Data Package
+    * Download your work as a `datapackage.json` descriptor for use elsewhere
+* Add additional custom fields to both the top-level descriptor, and each Data Package Resource
+* For each Resource in your Data Package, validate that it is well formed, and conforms to a schema
+
+Use it at:
+
+http://datapackagist.okfnlabs.org/
 
 ## Get Started
 
