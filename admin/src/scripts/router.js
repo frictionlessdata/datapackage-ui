@@ -8,5 +8,6 @@ module.exports = backbone.Router.extend({
 
   index: function() {
     console.log('Router works!');
+    window.APP.layout.navbar.toggleBadge(true);
   }
 });
