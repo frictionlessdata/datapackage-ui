@@ -40,7 +40,7 @@ describe('Data Package Registry', function(){
       if (err) done(err);
 
       require('superagent-mock')(request, [_.extend(requestConfig, {
-        fixtures: function(){ return ''; }
+        fixtures: function(){ return ' '; }
       })]);
 
       registry.get().then(function(data) {
