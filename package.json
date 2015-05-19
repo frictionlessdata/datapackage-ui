@@ -4,6 +4,8 @@
   "description": "",
   "main": "admin/scripts/app.js",
   "dependencies": {
+    "backbone": "^1.2.0",
+    "backbone-base": "^0.0.2",
     "bootstrap": "^3.3.4",
     "csv": "^0.4.1",
     "glob": "^5.0.6",
@@ -11,7 +13,8 @@
     "lodash": "^3.1.0",
     "resolve": "^1.1.6",
     "superagent": "^1.2.0",
-    "vinyl-buffer": "^1.0.0"
+    "vinyl-buffer": "^1.0.0",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "browser-sync": "^2.7.1",
