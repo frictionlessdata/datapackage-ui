@@ -1,4 +1,5 @@
 var backbone = require('backbone');
+var registry = require('./components/datapackage-registry');
 
 
 module.exports = backbone.Router.extend({
@@ -7,7 +8,10 @@ module.exports = backbone.Router.extend({
   },
 
   index: function() {
-    console.log('Router works!');
     window.APP.layout.navbar.toggleBadge(true);
+
+    window.APP.layout.registryList
+      .reset(new backbone.Collection([{id: 1}]))
+      .activate();
   }
 });
