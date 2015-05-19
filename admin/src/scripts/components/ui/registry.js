@@ -5,7 +5,11 @@ module.exports = {
   ListView: backbone.BaseListView.extend({
     ItemView: backbone.BaseView.extend({
       render: function() {
-        this.$el.html(this.model.id);
+        // WARN Apply template here
+        this.$el.html(
+          '<a href="' + this.model.get('specification') + '">' + this.model.get('title') + '</a>'
+        );
+
         return this;
       }
     })

@@ -23,8 +23,11 @@ module.exports = backbone.Router.extend({
     this.deactivateAll();
     window.APP.layout.navbar.toggleBadge(true);
 
-    window.APP.layout.registryList
-      .reset(new backbone.Collection([{id: 1}]))
-      .activate();
+    // WARN Process registry errors here
+    registry.get().then(function(D) {
+      window.APP.layout.registryList
+        .reset(new backbone.Collection(D))
+        .activate();
+    });
   }
 });
