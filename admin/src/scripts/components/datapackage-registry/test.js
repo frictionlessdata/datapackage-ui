@@ -3,16 +3,25 @@ var registry = require('../datapackage-registry');
 
 
 describe('Data Package Registry', function(){
-
   describe('get()', function(){
-    it('return an array with length of 2', function(done){
-
-      // just for example. Not a good test.
-      assert.typeOf('example', 'string');
-      if (err) throw err;
+    it('return Promise object', function(done){
+      assert.equal(false, true);
       done();
+    });
 
+    it('resolve into non-empty array of objects when registry is not empty', function(done){
+      assert.equal(false, true);
+      done();
+    });
+
+    it('resolve into empty array when registry is empty', function(done){
+      assert.equal(false, true);
+      done();
+    });
+
+    it('reject with a message when connection failed', function(done){
+      assert.equal(false, true);
+      done();
     });
   });
-
 });
