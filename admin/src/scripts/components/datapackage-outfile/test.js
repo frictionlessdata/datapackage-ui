@@ -42,12 +42,34 @@ describe('Data Package Output File', function() {
   });
 
   it('return proper mime-type', function(done, err) {
-    (new RegExp(/^data:application\/json,/)).exec(outfile(VALID_DESCRIPTOR)).should.be.not.empty;
+    (new RegExp(/^data:application\/json:/)).exec(outfile(VALID_DESCRIPTOR)).should.be.not.empty;
     done();
   });
 
   it('return proper mime-type if old IE flag passed in params', function(done, err) {
-    (new RegExp(/^data:text\/plain,/)).exec(outfile(VALID_DESCRIPTOR, {IE9: true})).should.be.not.empty;
+    (new RegExp(/^data:text\/plain:/)).exec(
+      outfile(VALID_DESCRIPTOR, {IE9: true})
+    ).should.be.not.empty;
+
+    done();
+  });
+
+  it('return charset passed in options', function(done, err) {
+    var charset = 'CHRSET';
+
+
+    (new RegExp('^data:application\/json:' + charset + ',')).exec(
+      outfile(VALID_DESCRIPTOR, {charset: charset})
+    ).should.be.not.empty;
+
+    done();
+  });
+
+  it('return utf-8 as default charset if none passed in options', function(done, err) {
+    (new RegExp('^data:application\/json:utf-8,')).exec(
+      outfile(VALID_DESCRIPTOR)
+    ).should.be.not.empty;
+
     done();
   });
 
