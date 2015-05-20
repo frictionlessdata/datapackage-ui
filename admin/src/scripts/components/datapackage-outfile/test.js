@@ -4,6 +4,7 @@ var outfile = require('../datapackage-outfile');
 var should = require('chai').should();
 var VALID_DESCRIPTOR = {title: ''};
 
+
 describe('Data Package Output File', function() {
   it('throw error if empty descriptor passed', function(done, err) {
     if (err) done(err);
@@ -59,5 +60,4 @@ describe('Data Package Output File', function() {
     assert.equal(false, true);
     done();
   });
-
 });
