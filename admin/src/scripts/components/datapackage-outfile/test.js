@@ -51,11 +51,6 @@ describe('Data Package Output File', function() {
     done();
   });
 
-  it('return correct file size', function() {
-    assert.equal(false, true);
-    done();
-  });
-
   it('return a string that evaluates into original descriptor', function() {
     assert.equal(false, true);
     done();
