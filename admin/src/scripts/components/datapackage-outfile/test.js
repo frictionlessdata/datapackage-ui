@@ -2,7 +2,7 @@ var _ = require('underscore');
 var assert = require('chai').assert;
 var outfile = require('../datapackage-outfile');
 var should = require('chai').should();
-var VALID_DESCRIPTOR = {title: ''};
+var VALID_DESCRIPTOR = {title: '', name: ''};
 
 
 describe('Data Package Output File', function() {
@@ -73,8 +73,11 @@ describe('Data Package Output File', function() {
     done();
   });
 
-  it('return a string that evaluates into original descriptor', function() {
-    assert.equal(false, true);
+  it('return a string that evaluates into original descriptor', function(done, err) {
+    JSON.parse('{' + outfile(VALID_DESCRIPTOR).split(',{')[1]).should.deep.equal(VALID_DESCRIPTOR);
+    JSON.parse('{' + outfile(VALID_DESCRIPTOR, {IE9: true}).split(',{')[1]).should.deep.equal(VALID_DESCRIPTOR);
+    JSON.parse('{' + outfile(VALID_DESCRIPTOR, {charset: 'CHRST'}).split(',{')[1]).should.deep.equal(VALID_DESCRIPTOR);
+    JSON.parse('{' + outfile(VALID_DESCRIPTOR, {IE9: true, charset: 'CHRST'}).split(',{')[1]).should.deep.equal(VALID_DESCRIPTOR);
     done();
   });
 });

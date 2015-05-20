@@ -13,5 +13,5 @@ module.exports = function(descriptor, options) {
   	'data',
   	_.result(options, 'IE9') ? 'text/plain' : 'application/json',
   	_.result(options, 'charset') || 'utf-8'
-  ].join(':') + ',';
+  ].join(':') + ',' + JSON.stringify(descriptor);
 };
