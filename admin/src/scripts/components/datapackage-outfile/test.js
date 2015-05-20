@@ -2,6 +2,7 @@ var _ = require('underscore');
 var assert = require('chai').assert;
 var outfile = require('../datapackage-outfile');
 var should = require('chai').should();
+var VALID_DESCRIPTOR = {title: ''};
 
 describe('Data Package Output File', function() {
   it('throw error if empty descriptor passed', function(done, err) {
@@ -39,13 +40,13 @@ describe('Data Package Output File', function() {
     done();
   });
 
-  it('return proper mime-type', function() {
-    assert.equal(false, true);
+  it('return proper mime-type', function(done, err) {
+    (new RegExp(/^data:application\/json,/)).exec(outfile(VALID_DESCRIPTOR)).should.be.not.empty;
     done();
   });
 
-  it('return proper mime-type if old IE flag passed in params', function() {
-    assert.equal(false, true);
+  it('return proper mime-type if old IE flag passed in params', function(done, err) {
+    (new RegExp(/^data:text\/plain,/)).exec(outfile(VALID_DESCRIPTOR, {IE9: true})).should.be.not.empty;
     done();
   });
 
