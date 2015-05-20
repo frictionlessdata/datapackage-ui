@@ -39,7 +39,12 @@ describe('Data Package Output File', function() {
     done();
   });
 
-  it('return all required headers', function() {
+  it('return proper mime-type', function() {
+    assert.equal(false, true);
+    done();
+  });
+
+  it('return proper mime-type if old IE flag passed in params', function() {
     assert.equal(false, true);
     done();
   });
