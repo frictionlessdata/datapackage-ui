@@ -1,8 +1,6 @@
 var backbone = require('backbone');
 var BigbangView = require('./components/ui/bigbang');
-var registry = require('./components/datapackage-registry');
 var Router = require('./router');
-var dataPackageProfiles = registry.get();
 
 
 window.APP = new BigbangView({el: '#application'});

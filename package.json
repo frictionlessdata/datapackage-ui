@@ -11,6 +11,7 @@
     "glob": "^5.0.6",
     "jquery": "^2.1.4",
     "lodash": "^3.1.0",
+    "promise-polyfill": "^2.0.2",
     "resolve": "^1.1.6",
     "superagent": "^1.2.0",
     "vinyl-buffer": "^1.0.0",
@@ -29,6 +30,7 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
     "mocha": "^2.2.5",
+    "superagent-mock": "^1.1.0",
     "uglify-js": "^2.4.21",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.1"

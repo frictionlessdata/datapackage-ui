@@ -1,3 +1,4 @@
+var Promise = require('promise-polyfill');
 var request = require('superagent');
 var csv = require('csv');
 
@@ -13,18 +14,26 @@ function getCSVEndpoint(endpoint, objectwise) {
    * Return data from an endpoint that is parsable as CSV
    */
 
-  request
-    .get(endpoint)
-    .end(function(error, response) {
+  return new Promise(function(resolve, reject) {
 
-      csv.parse(response.text, {columns: objectwise}, function(error, output) {
+    request
+      .get(endpoint)
+      .end(function(error, response) {
 
-        // Just here for example. Can remove when ready.
-        console.log('Got data from the Data Package Registry endpoint: ');
-        console.log(output);
+        if (error)
+          reject('Failed to download registry file: ' + error);
 
+        csv.parse(response.text, {columns: objectwise}, function(error, output) {
+
+          if (error)
+            reject('Failed to parse registry file: ' + error);
+
+          resolve(output);
+
+        });
       });
-    });
+
+  });
 }
 
 
