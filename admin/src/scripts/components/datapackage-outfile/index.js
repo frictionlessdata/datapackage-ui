@@ -9,5 +9,9 @@ module.exports = function(descriptor, options) {
   if (_.isEmpty(descriptor) || !_.isObject(descriptor))
     throw new Error('Non-empty descriptor object should be passed');
 
-  return (options || {}).IE9 ? 'data:text/plain,' : 'data:application/json,';
+  return [
+  	'data',
+  	_.result(options, 'IE9') ? 'text/plain' : 'application/json',
+  	_.result(options, 'charset') || 'utf-8'
+  ].join(':') + ',';
 };
