@@ -36,17 +36,23 @@ describe('Data Package Output File', function() {
     done('Exception not thrown');
   });
 
-  it('throw error if required properties are missed in a descriptor', function() {
+  it('throw error if required properties are missed in a descriptor', function(done, err) {
+    if (err) done(err);
+    
     assert.equal(false, true);
     done();
   });
 
   it('return proper mime-type', function(done, err) {
+    if (err) done(err);
+    
     (new RegExp(/^data:application\/json:/)).exec(outfile(VALID_DESCRIPTOR)).should.be.not.empty;
     done();
   });
 
   it('return proper mime-type if old IE flag passed in params', function(done, err) {
+    if (err) done(err);
+    
     (new RegExp(/^data:text\/plain:/)).exec(
       outfile(VALID_DESCRIPTOR, {IE9: true})
     ).should.be.not.empty;
@@ -56,8 +62,10 @@ describe('Data Package Output File', function() {
 
   it('return charset passed in options', function(done, err) {
     var charset = 'CHRSET';
+    
 
-
+    if (err) done(err);
+    
     (new RegExp('^data:application\/json:' + charset + ',')).exec(
       outfile(VALID_DESCRIPTOR, {charset: charset})
     ).should.be.not.empty;
@@ -66,6 +74,8 @@ describe('Data Package Output File', function() {
   });
 
   it('return utf-8 as default charset if none passed in options', function(done, err) {
+    if (err) done(err);
+    
     (new RegExp('^data:application\/json:utf-8,')).exec(
       outfile(VALID_DESCRIPTOR)
     ).should.be.not.empty;
@@ -74,6 +84,8 @@ describe('Data Package Output File', function() {
   });
 
   it('return a string that evaluates into original descriptor', function(done, err) {
+    if (err) done(err);
+
     JSON.parse('{' + outfile(VALID_DESCRIPTOR).split(',{')[1]).should.deep.equal(VALID_DESCRIPTOR);
     JSON.parse('{' + outfile(VALID_DESCRIPTOR, {IE9: true}).split(',{')[1]).should.deep.equal(VALID_DESCRIPTOR);
     JSON.parse('{' + outfile(VALID_DESCRIPTOR, {charset: 'CHRST'}).split(',{')[1]).should.deep.equal(VALID_DESCRIPTOR);
