@@ -23,7 +23,7 @@ var VALID_DESCRIPTOR = {
 // Application state changed here
 module.exports = backbone.Router.extend({
   routes: {
-    '(/)': 'descriptorEdit'
+    '(/)': 'index'
   },
 
   /**
@@ -37,16 +37,14 @@ module.exports = backbone.Router.extend({
     return this;
   },
 
-  descriptorEdit: function() {
+  index: function() {
+    this.deactivateAll();
+    window.APP.layout.navbar.toggleBadge(true);
+
     window.APP.layout.descriptorEdit
       .reset('https://raw.githubusercontent.com/dataprotocols/schemas/master/data-package.json')
       .render()
       .activate();
-  },
-
-  index: function() {
-    this.deactivateAll();
-    window.APP.layout.navbar.toggleBadge(true);
 
     // WARN Process registry errors here
     registry.get().then(function(D) {
