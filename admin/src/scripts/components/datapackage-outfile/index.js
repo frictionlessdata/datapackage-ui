@@ -3,7 +3,7 @@ var validator = require('datapackage-validate');
 
 
 /**
- * Get datapackage descriptor and return object that will be used to describe 
+ * Get datapackage descriptor and return string that will be used to describe 
  * json file for download.
  */
 module.exports = function(descriptor, options) {
