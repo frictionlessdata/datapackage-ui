@@ -12,7 +12,7 @@ module.exports = backbone.Router.extend({
   },
 
   descriptorEdit: function() {
-    window.APP.layout.descriptorEditView
+    window.APP.layout.descriptorEdit
                         .reset('https://raw.githubusercontent.com/dataprotocols/schemas/master/data-package.json')
                         .render()
                         .activate();

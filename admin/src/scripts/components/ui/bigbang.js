@@ -7,7 +7,7 @@ var descriptorEdit = require('./descriptoredit');
 module.exports = backbone.BaseView.extend({
   render: function() {
     this.layout.navbar = new NavbarView({el: window.APP.$('#navbar')});
-    (this.layout.descriptorEditView = new descriptorEdit.DescriptorEditView({el: window.APP.$('#form-editor')})).render();
+    (this.layout.descriptorEdit = new descriptorEdit.DescriptorEditView({el: window.APP.$('#form-editor')})).render();
     return this;
   }
 });
