@@ -9,6 +9,7 @@
     "bootstrap": "^3.3.4",
     "csv": "^0.4.1",
     "glob": "^5.0.6",
+    "json-editor": "^0.7.18",
     "jquery": "^2.1.4",
     "lodash": "^3.1.0",
     "promise-polyfill": "^2.0.2",
