@@ -26,6 +26,5 @@ module.exports = {
       this.schema = {$ref: url};
       return this;
     }
-
   })
 };
