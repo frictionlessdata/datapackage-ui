@@ -6,6 +6,13 @@ var registry = require('./registry');
 
 
 module.exports = backbone.BaseView.extend({
+  initialize: function(options) {
+    backbone.BaseView.prototype.initialize.call(this, options);
+
+    // Detect browser just once, during init
+    this.browser = require('detect-browser');
+  },
+
   render: function() {
     this.layout.download = new DownloadView({el: window.APP.$('#download-data-package')});
     this.layout.navbar = new NavbarView({el: window.APP.$('#navbar')});
