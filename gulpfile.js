@@ -82,7 +82,7 @@ gulp.task('vendor-scripts', function () {
    * Provide frontend dependencies as a single bundle.
    */
 
-  var bundler = browserify({transform: ['brfs']});
+  var bundler = browserify({});
 
   frontendDependencies.forEach(function (id) {
     bundler.require(resolve.sync(id), {expose: id});
@@ -104,7 +104,7 @@ gulp.task('app-scripts', function() {
             scriptsDir + '/app.js',
             // glob(scriptsDir + '/components/*.js')
         ],
-        transform: ['brfs'],
+        // transform: [],
         debug: true,
         cache: {},
         packageCache: {},
