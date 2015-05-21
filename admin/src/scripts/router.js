@@ -3,6 +3,7 @@ var backbone = require('backbone');
 var registry = require('./components/datapackage-registry');
 
 
+// Application state changed here
 module.exports = backbone.Router.extend({
   routes: {
     '(/)': 'index'
