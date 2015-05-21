@@ -5,7 +5,7 @@ var registry = require('./components/datapackage-registry');
 
 module.exports = backbone.Router.extend({
   routes: {
-    '(/)': 'index'
+    '(/)': 'descriptorEdit'
   },
 
   /**
@@ -17,6 +17,13 @@ module.exports = backbone.Router.extend({
       .invoke('deactivate');
 
     return this;
+  },
+
+  descriptorEdit: function() {
+    window.APP.layout.descriptorEdit
+      .reset('https://raw.githubusercontent.com/dataprotocols/schemas/master/data-package.json')
+      .render()
+      .activate();
   },
 
   index: function() {
