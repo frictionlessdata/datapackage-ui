@@ -7,6 +7,7 @@
     "backbone": "^1.2.0",
     "backbone-base": "^0.0.2",
     "bootstrap": "^3.3.4",
+    "brfs": "^1.4.0",
     "csv": "^0.4.1",
     "datapackage-validate": "^0.2.3",
     "glob": "^5.0.6",
