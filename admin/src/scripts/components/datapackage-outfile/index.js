@@ -10,8 +10,8 @@ module.exports = function(descriptor, options) {
     throw new Error('Non-empty descriptor object should be passed');
 
   return [
-  	'data',
-  	_.result(options, 'IE9') ? 'text/plain' : 'application/json',
-  	_.result(options, 'charset') || 'utf-8'
+    'data',
+    _.result(options, 'IE9') ? 'text/plain' : 'application/json',
+    _.result(options, 'charset') || 'utf-8'
   ].join(':') + ',' + JSON.stringify(descriptor);
 };
