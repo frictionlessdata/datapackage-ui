@@ -3,7 +3,7 @@ var jsonEditor = require('json-editor');
 
 
 module.exports = {
-  JSONForm: backbone.BaseView.extend({
+  DescriptorEditView: backbone.BaseView.extend({
     render: function() {
 
       // JSON editor can not be created without json schema

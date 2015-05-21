@@ -3,7 +3,7 @@ var backbone = require('backbone');
 module.exports = backbone.Router.extend({
   routes: {
     '(/)': 'index',
-    'json-form(/)': 'jsonForm'
+    'descriptor-edit(/)': 'descriptorEdit'
   },
 
   index: function() {
@@ -11,8 +11,8 @@ module.exports = backbone.Router.extend({
     window.APP.layout.navbar.toggleBadge(true);
   },
 
-  jsonForm: function() {
-    window.APP.layout.jsonForm
+  descriptorEdit: function() {
+    window.APP.layout.descriptorEditView
                         .reset('https://raw.githubusercontent.com/dataprotocols/schemas/master/data-package.json')
                         .render()
                         .activate();
