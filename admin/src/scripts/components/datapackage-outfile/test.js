@@ -2,7 +2,22 @@ var _ = require('underscore');
 var assert = require('chai').assert;
 var outfile = require('../datapackage-outfile');
 var should = require('chai').should();
-var VALID_DESCRIPTOR = {title: '', name: ''};
+
+var VALID_DESCRIPTOR = {
+  'name': 'my-dataset',
+  
+  'resources': [{
+    'path': 'data.csv',
+
+    'schema': {
+      'fields': [
+        {'name': 'var1', 'type': 'string'},
+        {'name': 'var2', 'type': 'integer'},
+        {'name': 'var3', 'type': 'number'}
+      ]
+    }
+  }]
+};
 
 
 describe('Data Package Output File', function() {
@@ -21,7 +36,7 @@ describe('Data Package Output File', function() {
     done('Exception not thrown');
   });
 
-  it('throw error if non-object passed as a descriptor', function(done, err) {
+  it('throw error if descriptor is invalid', function(done, err) {
     if (err) done(err);
 
     try {
@@ -34,13 +49,6 @@ describe('Data Package Output File', function() {
     }
 
     done('Exception not thrown');
-  });
-
-  it('throw error if required properties are missed in a descriptor', function(done, err) {
-    if (err) done(err);
-    
-    assert.equal(false, true);
-    done();
   });
 
   it('return proper mime-type', function(done, err) {
@@ -86,10 +94,10 @@ describe('Data Package Output File', function() {
   it('return a string that evaluates into original descriptor', function(done, err) {
     if (err) done(err);
 
-    JSON.parse('{' + outfile(VALID_DESCRIPTOR).split(',{')[1]).should.deep.equal(VALID_DESCRIPTOR);
-    JSON.parse('{' + outfile(VALID_DESCRIPTOR, {IE9: true}).split(',{')[1]).should.deep.equal(VALID_DESCRIPTOR);
-    JSON.parse('{' + outfile(VALID_DESCRIPTOR, {charset: 'CHRST'}).split(',{')[1]).should.deep.equal(VALID_DESCRIPTOR);
-    JSON.parse('{' + outfile(VALID_DESCRIPTOR, {IE9: true, charset: 'CHRST'}).split(',{')[1]).should.deep.equal(VALID_DESCRIPTOR);
+    JSON.parse(outfile(VALID_DESCRIPTOR).replace(/^[^{]+,/, '')).should.deep.equal(VALID_DESCRIPTOR);
+    JSON.parse(outfile(VALID_DESCRIPTOR, {IE9: true}).replace(/^[^{]+,/, '')).should.deep.equal(VALID_DESCRIPTOR);
+    JSON.parse(outfile(VALID_DESCRIPTOR, {charset: 'CHRST'}).replace(/^[^{]+,/, '')).should.deep.equal(VALID_DESCRIPTOR);
+    JSON.parse(outfile(VALID_DESCRIPTOR, {IE9: true, charset: 'CHRST'}).replace(/^[^{]+,/, '')).should.deep.equal(VALID_DESCRIPTOR);
     done();
   });
 });
