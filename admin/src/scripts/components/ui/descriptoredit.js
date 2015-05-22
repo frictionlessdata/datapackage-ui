@@ -12,6 +12,10 @@ module.exports = {
       return this;
     },
 
+    // WARN Need implementation
+    // Return true if form has any input
+    hasChanges: function() { return true; },
+
     render: function() {
       this.layout.upload = new UploadView({el: window.APP.$('#upload-data-package'), parent: this});
 
