@@ -42,7 +42,6 @@ module.exports = backbone.Router.extend({
     window.APP.layout.navbar.toggleBadge(true);
 
     window.APP.layout.descriptorEdit
-      .render()
       .activate();
 
     // WARN Process registry errors here
