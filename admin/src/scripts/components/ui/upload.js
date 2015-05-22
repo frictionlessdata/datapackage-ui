@@ -14,7 +14,7 @@ module.exports = backbone.BaseView.extend({
         if(EV.type === 'load') {
           try {
             // Throw uploaded data into the wild
-            this.trigger('upload', JSON.parse(EV.result)); 
+            this.parent.layout.form.setValue(JSON.parse(EV.result));
           } catch(exception) {
             this.setError(exception.message);
           }
