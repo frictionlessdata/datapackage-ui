@@ -1,8 +1,8 @@
 var backbone = require('backbone');
 var backboneBase = require('backbone-base');
-var NavbarView = require('./navbar');
-var DownloadView = require('./download');
 var descriptorEdit = require('./descriptoredit');
+var DownloadView = require('./download');
+var NavbarView = require('./navbar');
 var registry = require('./registry');
 
 
