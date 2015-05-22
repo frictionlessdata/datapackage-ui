@@ -3,13 +3,19 @@ var backbone = require('backbone');
 
 module.exports = {
   ListView: backbone.BaseListView.extend({
+    events: {
+      'change': function(event) { this.trigger('change', event); }
+    },
+    getSelected: function(){
+      if(this.$el.val())
+        return this.collection.get( this.$el.val() );
+    },
     ItemView: backbone.BaseView.extend({
+      tagName: 'option',
       render: function() {
-        // WARN Apply template here
-        this.$el.html(
-          '<a href="' + this.model.get('specification') + '">' + this.model.get('title') + '</a>'
-        );
-
+        this.$el
+          .attr('value', this.model.cid)
+          .html(this.model.get('title'));
         return this;
       }
     })

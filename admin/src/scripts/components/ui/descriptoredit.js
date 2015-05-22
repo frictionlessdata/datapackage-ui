@@ -22,9 +22,21 @@ module.exports = {
       return this;
     },
 
-    reset: function(url) {
-      this.schema = {$ref: url};
+    delegateEvents: function() {
+      if(window.APP.layout.registryList) window.APP.layout.registryList.on('change', function(event) {
+        var
+          selected = window.APP.layout.registryList.getSelected();
+
+        this.schema = {$ref: selected.get('schema')};
+        this.render();
+      }, this);
+
+      backbone.BaseView.prototype.delegateEvents.apply(this, arguments);
       return this;
+    },
+
+    undelegateEvents: function() {
+      if(window.APP.layout.registryList) window.APP.layout.registryList.off(null, null, this);
     }
   })
 };

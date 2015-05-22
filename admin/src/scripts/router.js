@@ -41,15 +41,14 @@ module.exports = backbone.Router.extend({
     this.deactivateAll();
     window.APP.layout.navbar.toggleBadge(true);
 
-    window.APP.layout.descriptorEdit
-      .reset('https://raw.githubusercontent.com/dataprotocols/schemas/master/data-package.json')
-      .render()
-      .activate();
-
     // WARN Process registry errors here
     registry.get().then(function(D) {
       window.APP.layout.registryList
         .reset(new backbone.Collection(D))
+        .activate();
+
+      window.APP.layout.descriptorEdit
+        .render()
         .activate();
     });
 
