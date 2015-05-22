@@ -36,21 +36,6 @@ describe('Data Package Output File', function() {
     done('Exception not thrown');
   });
 
-  it('throw error if descriptor is invalid', function(done, err) {
-    if (err) done(err);
-
-    try {
-      outfile(123);
-    } catch(exception) {
-      exception.message.should.be.not.empty;
-      exception.message.should.be.a('string');
-      done();
-      return;
-    }
-
-    done('Exception not thrown');
-  });
-
   it('return proper mime-type', function(done, err) {
     if (err) done(err);
     
