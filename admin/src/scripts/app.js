@@ -8,6 +8,3 @@ window.ROUTER = new Router();
 
 window.APP.render();
 backbone.history.start({pushState: true});
-
-// A simple example of the datapackages-registry lib
-// is given in the registry.get() method (see console).
