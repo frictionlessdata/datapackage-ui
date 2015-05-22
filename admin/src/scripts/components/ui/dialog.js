@@ -13,6 +13,8 @@ module.exports = {
 
     events: {
       'click [data-id=yes]': function() {
+        this.deactivate();
+
         // Error should be thrown if no callback defined — there is no default action
         return this.callbacks.yes();
       },
