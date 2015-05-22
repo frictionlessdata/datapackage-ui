@@ -1,4 +1,5 @@
 var backbone = require('backbone');
+var backboneBase = require('backbone-base');
 var jsonEditor = require('json-editor');
 
 
