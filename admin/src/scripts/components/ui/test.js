@@ -1,3 +1,4 @@
+// WARN Need jsdom for simulating browser environment, but it only works with io.js
 window = {};
 
 var _ = require('underscore');
