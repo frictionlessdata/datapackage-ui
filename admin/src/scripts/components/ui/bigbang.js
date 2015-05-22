@@ -4,6 +4,7 @@ var NavbarView = require('./navbar');
 var DownloadView = require('./download');
 var descriptorEdit = require('./descriptoredit');
 var registry = require('./registry');
+var UploadView = require('./upload');
 
 
 module.exports = backbone.BaseView.extend({
@@ -19,6 +20,7 @@ module.exports = backbone.BaseView.extend({
     this.layout.download = new DownloadView({el: window.APP.$('#download-data-package')});
     this.layout.navbar = new NavbarView({el: window.APP.$('#navbar')});
     this.layout.registryList = new registry.ListView({el: window.APP.$('#registry-list')});
+    this.layout.upload = new UploadView({el: window.APP.$('#upload-data-package')});
     return this;
   }
 });
