@@ -10,5 +10,7 @@ module.exports = {
       backbone.BaseView.prototype.activate.call(this, state);
       return this;
     },
+
+    setMessage: function(text) { this.$('[data-id=message]').html(text || ''); return this; }
   })
 };
