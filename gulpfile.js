@@ -39,7 +39,7 @@ function scriptPipeline(bundle, outfile) {
   return bundle
            .pipe(source(outfile))
            .pipe(buffer())
-           .pipe(uglify())
+//           .pipe(uglify())
            .pipe(gulp.dest(distDir));
 
 }
@@ -57,6 +57,7 @@ gulp.task('deploy', function() {
 
 });
 
+console.log(process.argv[4]);
 
 gulp.task('serve', function() {
 
@@ -67,7 +68,8 @@ gulp.task('serve', function() {
   browserSync({
     open: false,
     server: {
-        baseDir: distDir
+        baseDir: distDir,
+		proxy: process.argv.length > 3 ? process.argv[4] : undefined
         // use this for apps with client side routing
         // middleware: [historyApiFallback]
     }
