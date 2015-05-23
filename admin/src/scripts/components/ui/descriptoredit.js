@@ -12,41 +12,46 @@ module.exports = {
       return this;
     },
 
+    // Utility method to remove empty values from object recursive
+    compactObject: function(data) {
+      _.each(data, function(v, k) {
+        if(_.isEmpty(v)) {
+          delete data[k];
+        } else if(_.isArray(v) || _.isObject(v)) {
+          v = this.compactObject(v);
+
+          if(_.isArray(v))
+            v = _.compact(v);
+
+          if(_.isEmpty(v))
+            delete data[k];
+          else data[k] = v;
+        }
+      }, this);
+      return data;
+    },
+
+    hasChanges: function() { return Boolean(this.changed); },
+
+    getFilledValues: function() {
+      return this.compactObject(this.layout.form.getValue());
+    },
+
     reset: function(schema) {
       var
-        formData,
-
-        compactObject = function(data) {
-          _.each(data, function(v, k) {
-            if(_.isEmpty(v)) {
-              delete data[k];
-            } else if(_.isArray(v) || _.isObject(v)) {
-              v = compactObject(v);
-
-              if(_.isArray(v))
-                v = _.compact(v);
-
-              if(_.isEmpty(v))
-                delete data[k];
-              else data[k] = v;
-            }
-          });
-          return data;
-        };
-
+        formData;
 
       if(this.layout.form) {
-        formData = compactObject(this.layout.form.getValue());
+        formData = this.getFilledValues();
         this.layout.form = this.layout.form.destroy();
       }
 
       // JSON editor can not be created without json schema
-      if(schema && schema.$ref) {
+      if(schema) {
         if(this.layout.form)
           this.layout.form.init(this.layout.form.options);
         else
           this.layout.form = new JSONEditor(this.el, {
-            ajax: true,
             schema: schema,
             theme: 'bootstrap3',
             no_additional_properties: true
@@ -57,7 +62,7 @@ module.exports = {
           this.changed = false;
 
           // After `ready` event fired, editor fire `change` event regarding to the initial changes
-          this.layout.form.on('change', _.after(2, (function() {debugger; this.changed = true;}).bind(this)));
+          this.layout.form.on('change', _.after(2, (function() { this.changed = true;}).bind(this)));
 
           // If on the previous form was entered values try to apply it to new form
           if(formData) {
