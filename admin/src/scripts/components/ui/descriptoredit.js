@@ -1,9 +1,12 @@
 var backbone = require('backbone');
 var backboneBase = require('backbone-base');
 var jsonEditor = require('json-editor');
+var highlight = require('highlight-redux');
+var jsonMarkup = require('json-markup');
 var UploadView = require('./upload');
 var registry = require('./registry');
 var _ = require('underscore');
+var $ = require('jquery');
 
 
 module.exports = {
@@ -12,6 +15,11 @@ module.exports = {
       backbone.BaseView.prototype.activate.call(this, state);
       this.layout.upload.activate(state);
       return this;
+    },
+
+    initialize: function() {
+      highlight.configure({useBR: true});
+      return backbone.BaseView.prototype.initialize.apply(this, arguments);
     },
 
     render: function() {
@@ -69,7 +77,10 @@ module.exports = {
         this.changed = false;
 
         // After `ready` event fired, editor fire `change` event regarding to the initial changes
-        this.layout.form.on('change', _.after(2, (function() { this.changed = true; }).bind(this)));
+        this.layout.form.on('change', _.after(2, (function() {
+          this.changed = true;
+          this.showResult();
+        }).bind(this)));
 
         // If on the previous form was entered values try to apply it to new form
         if(formData) {
@@ -77,6 +88,11 @@ module.exports = {
         }
 
       }).bind(this));
+    },
+
+    showResult: function() {
+      $('#json-code').html( highlight.fixMarkup(highlight.highlight('json', JSON.stringify(this.layout.form.getValue(), undefined, 2)).value) );
     }
+
   })
 };

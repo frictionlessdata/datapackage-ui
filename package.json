@@ -12,6 +12,8 @@
     "deep-diff": "^0.3.2",
     "fileapi": "^2.0.10",
     "glob": "^5.0.6",
+    "highlight.js": "git+https://github.com/isagalaev/highlight.js.git",
+    "highlight-redux": "*",
     "json-editor": "^0.7.18",
     "jquery": "^2.1.4",
     "lodash": "^3.1.0",
