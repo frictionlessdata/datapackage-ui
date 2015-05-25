@@ -23,13 +23,22 @@ module.exports = {
 
               .setCallbacks({
                 yes: (function() {
+                  this.selectedValue = this.$el.val();
                   this.parent.reset(schemaData);
+                  window.APP.layout.confirmationDialog.deactivate();
+                  return false;
+                }).bind(this),
+
+                no: (function() {
+                  this.$el.val(this.selectedValue);
                   window.APP.layout.confirmationDialog.deactivate();
                   return false;
                 }).bind(this)
               })
 
               .activate();
+
+          else this.selectedValue = this.$el.val();
 
           this.parent.reset(schemaData);
 
@@ -38,7 +47,9 @@ module.exports = {
     },
 
     getSelectedSchema: function() {
-      return this.collection.get( this.$el.val() ).get('schema');
+      return this.collection
+        .get( this.$el.val() )
+        .get('schema');
     },
 
     ItemView: backbone.BaseView.extend({
@@ -55,6 +66,7 @@ module.exports = {
 
     reset: function() {
       backbone.BaseListView.prototype.reset.apply(this, arguments);
+      this.selectedValue = this.$el.val();
 
       $.getJSON(this.getSelectedSchema(), (function(schemaData) {
         this.parent.reset(schemaData);
