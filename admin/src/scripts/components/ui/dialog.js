@@ -2,6 +2,7 @@ var _ = require('underscore');
 var backbone = require('backbone');
 var backboneBase = require('backbone-base');
 
+
 module.exports = {
   ConfirmationView: backbone.BaseView.extend({
     // Activate overlay along with dialog box
