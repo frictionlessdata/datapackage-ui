@@ -9,37 +9,47 @@ module.exports = {
     events: {
       'change': function() {
         var
-          schema = this.$el.val() && this.collection.get( this.$el.val() ).get('schema');
+          schema = this.getSelectedSchema();
 
         $.getJSON(schema, (function(schemaData) {
-          if(this.parent.layout.form)
-          {
-            var
-              // Keys of entered fields
-              keys = _.keys(this.parent.getFilledValues());
+          var
+            // Keys of entered fields
+            keys = _.keys(this.parent.getFilledValues());
 
-            // If data can be lost - show confirmation message
-            if(deep.diff(_.pick(schemaData.properties, keys), _.pick(this.parent.layout.form.schema.properties, keys)))
-              return window.APP.layout.confirmationDialog
-                .setMessage('Some data you have entered will be lost. Are you sure you want to change the Data Package Profile?')
+          // If data can be lost - show confirmation message
+          if(deep.diff(_.pick(schemaData.properties, keys), _.pick(this.parent.layout.form.schema.properties, keys)))
+            return window.APP.layout.confirmationDialog
+              .setMessage('Some data you have entered will be lost. Are you sure you want to change the Data Package Profile?')
 
-                .setCallbacks({
-                  yes: (function() {
-                    this.parent.reset(schemaData);
-                    window.APP.layout.confirmationDialog.deactivate();
-                    return false;
-                  }).bind(this)
-                })
+              .setCallbacks({
+                yes: (function() {
+                  this.selectedValue = this.$el.val();
+                  this.parent.reset(schemaData);
+                  window.APP.layout.confirmationDialog.deactivate();
+                  return false;
+                }).bind(this),
 
-                .activate();
-          }
+                no: (function() {
+                  this.$el.val(this.selectedValue);
+                  window.APP.layout.confirmationDialog.deactivate();
+                  return false;
+                }).bind(this)
+              })
+
+              .activate();
+
+          else this.selectedValue = this.$el.val();
 
           this.parent.reset(schemaData);
 
         }).bind(this));
-
-        this.parent.activate(Boolean(schema));
       }
+    },
+
+    getSelectedSchema: function() {
+      return this.collection
+        .get( this.$el.val() )
+        .get('schema');
     },
 
     ItemView: backbone.BaseView.extend({
@@ -53,6 +63,17 @@ module.exports = {
 
       tagName: 'option'
     }),
+
+    reset: function() {
+      backbone.BaseListView.prototype.reset.apply(this, arguments);
+      this.selectedValue = this.$el.val();
+
+      $.getJSON(this.getSelectedSchema(), (function(schemaData) {
+        this.parent.reset(schemaData);
+      }).bind(this));
+
+      return this;
+    },
 
     tagName: 'select'
   })

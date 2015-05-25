@@ -69,9 +69,7 @@
 
       <div class="row">
         <div class="container">
-          <select id="registry-list">
-            <option value="">-- Select --</option>
-          </select>
+          <select id="registry-list"></select>
         </div>
         <a id="download-data-package" href="" download="data-package.json" target="_blank">Download data package</a>
 
@@ -124,12 +122,18 @@
         </div>
       </footer>
       <!-- end footer -->
+      
+      <div id="overlay" class="overlay" hidden>&nbsp;</div>
 
+      <div id="confirmation-dialog" class="dialog">
+        <p data-id="message"></p>
+        <a data-id="yes" href="">Yes</a>
+        <a data-id="no" href="">No</a>
+      </div>
     </section>
 
     <script src="vendor.min.js"></script>
     <script src="app.min.js"></script>
-
   </body>
 
 </html>

@@ -1,14 +1,22 @@
 var backbone = require('backbone');
+var backboneBase = require('backbone-base');
 var jsonEditor = require('json-editor');
+var UploadView = require('./upload');
 var registry = require('./registry');
 var _ = require('underscore');
 
 
 module.exports = {
   DescriptorEditView: backbone.BaseView.extend({
-    render: function() {
-      this.layout.registryList = new registry.ListView({el: window.APP.$('#registry-list'), parent: this});
+    activate: function(state) {
+      backbone.BaseView.prototype.activate.call(this, state);
+      this.layout.upload.activate(state);
+      return this;
+    },
 
+    render: function() {
+      this.layout.upload = new UploadView({el: window.APP.$('#upload-data-package'), parent: this});
+      this.layout.registryList = new registry.ListView({el: window.APP.$('#registry-list'), parent: this});
       return this;
     },
 
@@ -47,34 +55,28 @@ module.exports = {
 
       if(this.layout.form) {
         formData = this.getFilledValues();
-        this.layout.form = this.layout.form.destroy();
+        this.layout.form.destroy();
       }
 
-      // JSON editor can not be created without json schema
-      if(schema) {
-        if(this.layout.form)
-          this.layout.form.init(this.layout.form.options);
-        else
-          this.layout.form = new JSONEditor(this.el, {
-            schema: schema,
-            theme: 'bootstrap3',
-            no_additional_properties: true
-          });
+      this.layout.form = new JSONEditor(this.el, {
+        schema: schema,
+        theme: 'bootstrap3',
+        no_additional_properties: true
+      });
 
-        this.layout.form.on('ready', (function() {
-          // Detecting changes
-          this.changed = false;
+      this.layout.form.on('ready', (function() {
+        // Detecting changes
+        this.changed = false;
 
-          // After `ready` event fired, editor fire `change` event regarding to the initial changes
-          this.layout.form.on('change', _.after(2, (function() { this.changed = true;}).bind(this)));
+        // After `ready` event fired, editor fire `change` event regarding to the initial changes
+        this.layout.form.on('change', _.after(2, (function() { this.changed = true; }).bind(this)));
 
-          // If on the previous form was entered values try to apply it to new form
-          if(formData) {
-            this.layout.form.setValue(_.extend({}, this.layout.form.getValue(formData), formData));
-          }
+        // If on the previous form was entered values try to apply it to new form
+        if(formData) {
+          this.layout.form.setValue(_.extend({}, this.layout.form.getValue(formData), formData));
+        }
 
-        }).bind(this));
-      }
+      }).bind(this));
     }
   })
 };
