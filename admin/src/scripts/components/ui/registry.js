@@ -1,7 +1,7 @@
 var backbone = require('backbone');
 var $ = require('jquery');
 var _ = require('underscore');
-
+var deep = require('deep-diff');
 
 
 module.exports = {
@@ -14,8 +14,12 @@ module.exports = {
         $.getJSON(schema, (function(schemaData) {
           if(this.parent.layout.form)
           {
+            var
+              // Keys of entered fields
+              keys = _.keys(this.parent.getFilledValues());
+
             // If data can be lost - show confirmation message
-            if(_.keys(_.extend({}, schemaData.properties, this.parent.getFilledValues())).length != _.keys(schemaData.properties).length)
+            if(deep.diff(_.pick(schemaData.properties, keys), _.pick(this.parent.layout.form.schema.properties, keys)))
               return window.APP.layout.confirmationDialog
                 .setMessage('Some data you have entered will be lost. Are you sure you want to change the Data Package Profile?')
 

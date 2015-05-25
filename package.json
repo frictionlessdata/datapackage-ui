@@ -9,6 +9,7 @@
     "bootstrap": "^3.3.4",
     "csv": "^0.4.1",
     "detect-browser": "^1.1.1",
+    "deep-diff": "^0.3.2",
     "fileapi": "^2.0.10",
     "glob": "^5.0.6",
     "json-editor": "^0.7.18",
