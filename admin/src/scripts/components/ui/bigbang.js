@@ -1,6 +1,7 @@
 var backbone = require('backbone');
 var backboneBase = require('backbone-base');
 var descriptorEdit = require('./descriptoredit');
+var dialog = require('./dialog');
 var DownloadView = require('./download');
 var NavbarView = require('./navbar');
 var registry = require('./registry');
@@ -16,6 +17,7 @@ module.exports = backbone.BaseView.extend({
   },
 
   render: function() {
+    this.layout.confirmationDialog = new dialog.ConfirmationView({el: window.APP.$('#confirmation-dialog')});
     (this.layout.descriptorEdit = new descriptorEdit.DescriptorEditView({el: window.APP.$('#form-editor')})).render();
     this.layout.download = new DownloadView({el: window.APP.$('#download-data-package')});
     this.layout.navbar = new NavbarView({el: window.APP.$('#navbar')});
