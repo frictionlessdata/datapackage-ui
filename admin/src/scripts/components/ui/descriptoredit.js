@@ -31,11 +31,15 @@ module.exports = {
       return data;
     },
 
-    hasChanges: function() { return Boolean(this.changed); },
-
     getFilledValues: function() {
       return this.compactObject(this.layout.form.getValue());
     },
+
+    getValue: function (){
+      return this.layout.form.getValue();
+    },
+
+    hasChanges: function() { return Boolean(this.changed); },
 
     reset: function(schema) {
       var
