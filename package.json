@@ -16,7 +16,6 @@
     "highlight.js": "git+https://github.com/isagalaev/highlight.js.git",
     "jquery": "^2.1.4",
     "json-editor": "^0.7.18",
-    "json-markup": "^0.1.6",
     "lodash": "^3.1.0",
     "promise-polyfill": "^2.0.2",
     "resolve": "^1.1.6",

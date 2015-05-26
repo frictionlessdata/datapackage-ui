@@ -2,7 +2,6 @@ var backbone = require('backbone');
 var backboneBase = require('backbone-base');
 var jsonEditor = require('json-editor');
 var highlight = require('highlight-redux');
-var jsonMarkup = require('json-markup');
 var UploadView = require('./upload');
 var registry = require('./registry');
 var _ = require('underscore');
