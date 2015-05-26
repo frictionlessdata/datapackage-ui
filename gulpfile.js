@@ -134,7 +134,7 @@ gulp.task('styles', function () {
    */
 
   gulp
-    .src(stylesDir + '/app.css')
+    .src([stylesDir + '/app.css', './node_modules/highlight.js/src/styles/default.css'])
     .pipe(minifyCss({compatibility: 'ie8'}))
     .pipe(rename('app.min.css'))
     .pipe(gulp.dest(distDir));

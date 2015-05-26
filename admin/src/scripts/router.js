@@ -42,13 +42,11 @@ module.exports = backbone.Router.extend({
     window.APP.layout.navbar.toggleBadge(true);
 
     window.APP.layout.descriptorEdit
-      .reset('https://raw.githubusercontent.com/dataprotocols/schemas/master/data-package.json')
-      .render()
       .activate();
 
     // WARN Process registry errors here
     registry.get().then(function(D) {
-      window.APP.layout.registryList
+      window.APP.layout.descriptorEdit.layout.registryList
         .reset(new backbone.Collection(D))
         .activate();
     });
