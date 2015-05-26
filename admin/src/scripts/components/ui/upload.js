@@ -25,7 +25,7 @@ module.exports = backbone.BaseView.extend({
           // If there are no changes in current form just apply uploaded
           // data and leave
           if(!this.parent.hasChanges()) {
-            this.updateEditForm(descriptor);
+            this.updateApp(descriptor);
             return false;
           }
 
@@ -34,7 +34,7 @@ module.exports = backbone.BaseView.extend({
             .setMessage('You have changes. Overwrite?')
 
             .setCallbacks({yes: (function() {
-              this.updateEditForm(descriptor);
+              this.updateApp(descriptor);
               return false;
             }).bind(this)})
 
@@ -50,5 +50,11 @@ module.exports = backbone.BaseView.extend({
 
   setError: function(message) { this.$('[data-id=error]').html(message || ''); return this; },
   setProgress: function(percents) { return this; },
-  updateEditForm: function(descriptor) { this.parent.layout.form.setValue(descriptor); return this; }
+
+  // Update edit form and download URL
+  updateApp: function(descriptor) {
+    this.parent.layout.form.setValue(descriptor);
+    window.APP.layout.download.reset(descriptor).activate();
+    return this;
+  }
 });
