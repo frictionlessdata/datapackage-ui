@@ -67,8 +67,7 @@ module.exports = {
 
       this.layout.form = new JSONEditor(this.el, {
         schema: schema,
-        theme: 'bootstrap3',
-        no_additional_properties: true
+        theme: 'bootstrap3'
       });
 
       this.layout.form.on('ready', (function() {
