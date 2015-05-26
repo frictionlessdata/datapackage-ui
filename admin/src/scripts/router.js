@@ -50,9 +50,5 @@ module.exports = backbone.Router.extend({
         .reset(new backbone.Collection(D))
         .activate();
     });
-
-    // WARN Use real descriptor here
-    // Update download link with current descriptor
-    window.APP.layout.download.reset(VALID_DESCRIPTOR).activate();
   }
 });

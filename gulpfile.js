@@ -13,6 +13,7 @@ var ghPages = require('gulp-gh-pages');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var minifyCss = require('gulp-minify-css');
+var streamqueue = require('streamqueue');
 
 var baseDir = './admin';
 var srcDir = baseDir + '/src';
@@ -128,17 +129,17 @@ gulp.task('app-scripts', function() {
 
 
 gulp.task('styles', function () {
-
   /**
    * Provide frontend styles as a single bundle.
    */
-
-  gulp
-    .src([stylesDir + '/app.css', './node_modules/highlight.js/src/styles/default.css'])
+  return streamqueue(
+    {objectMode: true},
+    gulp.src(stylesDir + '/app.css'),
+    gulp.src('./node_modules/highlight.js/src/styles/default.css')
+  )
+    .pipe(concat('app.min.css'))
     .pipe(minifyCss({compatibility: 'ie8'}))
-    .pipe(rename('app.min.css'))
     .pipe(gulp.dest(distDir));
-
 });
 
 

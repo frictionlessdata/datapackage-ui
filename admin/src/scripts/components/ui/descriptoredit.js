@@ -2,7 +2,6 @@ var backbone = require('backbone');
 var backboneBase = require('backbone-base');
 var jsonEditor = require('json-editor');
 var highlight = require('highlight-redux');
-var jsonMarkup = require('json-markup');
 var UploadView = require('./upload');
 var registry = require('./registry');
 var _ = require('underscore');
@@ -68,8 +67,7 @@ module.exports = {
 
       this.layout.form = new JSONEditor(this.el, {
         schema: schema,
-        theme: 'bootstrap3',
-        no_additional_properties: true
+        theme: 'bootstrap3'
       });
 
       this.layout.form.on('ready', (function() {
@@ -79,6 +77,7 @@ module.exports = {
         // After `ready` event fired, editor fire `change` event regarding to the initial changes
         this.layout.form.on('change', _.after(2, (function() {
           this.changed = true;
+          window.APP.layout.download.reset(this.layout.form.getValue()).activate();
           this.showResult();
         }).bind(this)));
 
