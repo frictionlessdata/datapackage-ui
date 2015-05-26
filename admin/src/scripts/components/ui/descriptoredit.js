@@ -46,19 +46,12 @@ module.exports = {
       return data;
     },
 
-    getFilledValues: function() {
-      return this.compactObject(this.layout.form.getValue());
-    },
-
-    getValue: function (){
-      return this.layout.form.getValue();
-    },
-
+    getFilledValues: function() { return this.compactObject(this.layout.form.getValue()); },
+    getValue: function () { return this.layout.form.getValue(); },
     hasChanges: function() { return Boolean(this.changed); },
 
     reset: function(schema) {
-      var
-        formData;
+      var formData;
 
       if(this.layout.form) {
         formData = this.getFilledValues();
@@ -82,16 +75,17 @@ module.exports = {
         }).bind(this)));
 
         // If on the previous form was entered values try to apply it to new form
-        if(formData) {
+        if(formData)
           this.layout.form.setValue(_.extend({}, this.layout.form.getValue(formData), formData));
-        }
-
       }).bind(this));
     },
 
     showResult: function() {
-      $('#json-code').html( highlight.fixMarkup(highlight.highlight('json', JSON.stringify(this.layout.form.getValue(), undefined, 2)).value) );
-    }
+      $('#json-code').html(highlight.fixMarkup(
+        highlight.highlight('json', JSON.stringify(this.layout.form.getValue(), undefined, 2)).value
+      ));
 
+      return this;
+    }
   })
 };
