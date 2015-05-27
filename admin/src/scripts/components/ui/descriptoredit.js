@@ -16,6 +16,12 @@ module.exports = {
       return this;
     },
 
+    events: {
+      'click [data-id=upload-data-file]': function() {
+        console.log('Upload file');
+      }
+    },
+
     initialize: function() {
       highlight.configure({useBR: true});
       return backbone.BaseView.prototype.initialize.apply(this, arguments);
@@ -64,6 +70,15 @@ module.exports = {
       });
 
       this.layout.form.on('ready', (function() {
+        // There is no any good way to bind events to custom button or even add cutsom button
+        $(this.layout.form.getEditor('root.resources').container)
+          .children('h3')
+            .append(
+              $(this.layout.form.theme.getHeaderButtonHolder()).html(
+                $(this.layout.form.theme.getButton('Upload data file', '', 'Upload data file')).attr('data-id', 'upload-data-file')
+              )
+            );
+
         // Detecting changes
         this.changed = false;
 
