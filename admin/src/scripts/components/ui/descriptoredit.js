@@ -11,17 +11,17 @@ var $ = require('jquery');
 // Upload data file and populate .resource array with item
 DataUploadView = backbone.BaseView.extend({
   events: {
-    'click [data-id=upload-data-file]': function() {
-      console.log('Upload file');
-      debugger;
-    }
+    'click [data-id=upload-data-file]': function() { this.$('[data-id=input]').trigger('click'); }
   },
 
   render: function() {
-    this.$el.html(
-      $(this.options.form.theme.getButton('Upload data file', '', 'Upload data file'))
-        .attr('data-id', 'upload-data-file')
-    );
+    this.$el
+      .append('<input data-id="input" type="file" style="display: none;">')
+
+      .append(
+        $(this.options.form.theme.getButton('Upload data file', '', 'Upload data file'))
+          .attr('data-id', 'upload-data-file')
+      );
 
     return this;
   }
