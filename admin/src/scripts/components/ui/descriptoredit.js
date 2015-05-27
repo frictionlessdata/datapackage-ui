@@ -8,18 +8,31 @@ var _ = require('underscore');
 var $ = require('jquery');
 
 
+// Upload data file and populate .resource array with item
+DataUploadView = backbone.BaseView.extend({
+  events: {
+    'click [data-id=upload-data-file]': function() {
+      console.log('Upload file');
+      debugger;
+    }
+  },
+
+  render: function() {
+    this.$el.html(
+      $(this.options.form.theme.getButton('Upload data file', '', 'Upload data file'))
+        .attr('data-id', 'upload-data-file')
+    );
+
+    return this;
+  }
+});
+
 module.exports = {
   DescriptorEditView: backbone.BaseView.extend({
     activate: function(state) {
       backbone.BaseView.prototype.activate.call(this, state);
       this.layout.upload.activate(state);
       return this;
-    },
-
-    events: {
-      'click [data-id=upload-data-file]': function() {
-        console.log('Upload file');
-      }
     },
 
     initialize: function() {
@@ -59,9 +72,11 @@ module.exports = {
     reset: function(schema) {
       var formData;
 
+      // Clean up previous state
       if(this.layout.form) {
         formData = this.getFilledValues();
         this.layout.form.destroy();
+        this.layout.uploadData.undelegateEvents().remove();
       }
 
       this.layout.form = new JSONEditor(this.el, {
@@ -69,15 +84,16 @@ module.exports = {
         theme: 'bootstrap3'
       });
 
+      this.layout.uploadData = (new DataUploadView({
+        el: this.layout.form.theme.getHeaderButtonHolder(),
+        form: this.layout.form,
+        parent: this
+      })).render();
+
       this.layout.form.on('ready', (function() {
         // There is no any good way to bind events to custom button or even add cutsom button
         $(this.layout.form.getEditor('root.resources').container)
-          .children('h3')
-            .append(
-              $(this.layout.form.theme.getHeaderButtonHolder()).html(
-                $(this.layout.form.theme.getButton('Upload data file', '', 'Upload data file')).attr('data-id', 'upload-data-file')
-              )
-            );
+          .children('h3').append(this.layout.uploadData.el);
 
         // Detecting changes
         this.changed = false;
