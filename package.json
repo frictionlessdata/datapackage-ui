@@ -29,6 +29,7 @@
     "browser-sync": "^2.7.1",
     "browserify": "^10.2.0",
     "chai": "^2.3.0",
+    "chai-spies": "^0.6.0",
     "connect-history-api-fallback": "^1.1.0",
     "gulp": "^3.8.11",
     "gulp-concat": "^2.5.2",
