@@ -62,6 +62,7 @@ module.exports = {
           else data[k] = v;
         }
       }, this);
+
       return data;
     },
 
