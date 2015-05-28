@@ -38,7 +38,7 @@ DataUploadView = backbone.BaseView.extend({
           this.setError('File upload failed');
         }
 
-        this.$('[data-id=input]').val('');
+        this.$(E.currentTarget).val('');
       }).bind(this));
     },
 
