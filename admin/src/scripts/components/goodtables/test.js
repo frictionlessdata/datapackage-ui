@@ -31,14 +31,14 @@ describe('Goodtables API wrapper', function() {
 
   it('respect passed param for request method', function(done, err) {
     var goodtables;
-    var spy;
+    var spyGet;
+    var spyPost;
 
 
     if(err) done(err);
 
     spyGet = chai.spy.on(request, 'get');
     spyPost = chai.spy.on(request, 'post');
-
     goodtables = new Goodtables({method: 'get'});
 
     goodtables.run('data').then(function() {
