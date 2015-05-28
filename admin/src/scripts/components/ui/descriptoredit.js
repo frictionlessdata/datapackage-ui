@@ -1,3 +1,5 @@
+require('fileapi');
+
 var backbone = require('backbone');
 var backboneBase = require('backbone-base');
 var jsonEditor = require('json-editor');
@@ -11,6 +13,23 @@ var $ = require('jquery');
 // Upload data file and populate .resource array with item
 DataUploadView = backbone.BaseView.extend({
   events: {
+    'change [data-id=input]': function(E) {
+      FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {
+        if(EV.type === 'load') {
+          this.options.form.getEditor('root.resources').addRow({
+            name: EV.target.name,
+            path: EV.target.name
+          });
+        } else if( EV.type ==='progress' ){
+          this.setProgress(EV.loaded/EV.total * 100);
+        } else {
+          this.setError('File upload failed');
+        }
+
+        this.$('[data-id=input]').val('');
+      }).bind(this));
+    },
+
     'click [data-id=upload-data-file]': function() { this.$('[data-id=input]').trigger('click'); }
   },
 
@@ -24,7 +43,10 @@ DataUploadView = backbone.BaseView.extend({
       );
 
     return this;
-  }
+  },
+
+  setError: function() { return this; },
+  setProgress: function() { return this; }
 });
 
 module.exports = {
