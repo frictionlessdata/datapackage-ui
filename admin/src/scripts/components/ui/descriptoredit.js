@@ -32,7 +32,7 @@ DataUploadView = backbone.BaseView.extend({
               });
             }).bind(this));
           }).bind(this));
-        } else if( EV.type ==='progress' ){
+        } else if( EV.type ==='progress' ) {
           this.setProgress(EV.loaded/EV.total * 100);
         } else {
           this.setError('File upload failed');
