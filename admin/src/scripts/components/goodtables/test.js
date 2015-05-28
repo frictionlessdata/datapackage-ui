@@ -14,6 +14,7 @@ describe('Goodtables API wrapper', function() {
     pattern: '.*'
   };
 
+
   it('throw error if data file is not passed in params', function(done, err) {
     if(err) done(err);
 
