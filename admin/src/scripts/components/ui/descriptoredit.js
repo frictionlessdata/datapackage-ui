@@ -2,7 +2,9 @@ require('fileapi');
 
 var backbone = require('backbone');
 var backboneBase = require('backbone-base');
+var getUri = require('get-uri');
 var jsonEditor = require('json-editor');
+var jtsInfer = require('jts-infer');
 var highlight = require('highlight-redux');
 var UploadView = require('./upload');
 var registry = require('./registry');
@@ -13,13 +15,23 @@ var $ = require('jquery');
 // Upload data file and populate .resource array with item
 DataUploadView = backbone.BaseView.extend({
   events: {
+    // Set up and append .resources row
     'change [data-id=input]': function(E) {
       FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {
         if(EV.type === 'load') {
-          this.options.form.getEditor('root.resources').addRow({
-            name: EV.target.name,
-            path: EV.target.name
-          });
+          getUri(['data', EV.target.type, 'utf-8'].join(':') + ',' + EV.result, (function (E, R) {
+            if(E) throw E;
+
+            jtsInfer(R, (function(E, S, SR) {
+              if(E) throw E;
+
+              this.options.form.getEditor('root.resources').addRow({
+                name: EV.target.name,
+                path: EV.target.name,
+                schema: S
+              });
+            }).bind(this));
+          }).bind(this));
         } else if( EV.type ==='progress' ){
           this.setProgress(EV.loaded/EV.total * 100);
         } else {
