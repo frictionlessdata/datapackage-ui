@@ -46,7 +46,6 @@ describe('Goodtables API wrapper', function() {
         done();
       });
     });
-
   });
 
   it('provide default values for all params', function(done, err) {
