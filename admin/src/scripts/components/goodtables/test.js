@@ -50,13 +50,7 @@ describe('Goodtables API wrapper', function() {
   });
 
   it('provide default values for all params', function(done, err) {
-    var goodtables;
-    var spyQuery;
-
-
     if(err) done(err);
-
-    goodtables = new Goodtables();
 
     require('superagent-mock')(request, [{
       callback: function (match, data) {
@@ -77,16 +71,11 @@ describe('Goodtables API wrapper', function() {
       pattern: '.*'
     }]);
 
-    goodtables.run('data');
+    (new Goodtables()).run('data');
   });
 
   it('return Promise object', function(done, err) {
-    var goodtables;
-
-
     if(err) done(err);
-
-    goodtables = new Goodtables();
 
     require('superagent-mock')(request, [{
       callback: function (match, data) { return {text: ''}; },
@@ -94,14 +83,11 @@ describe('Goodtables API wrapper', function() {
       pattern: '.*'
     }]);
 
-    goodtables.run('data').should.be.an.instanceOf(Promise);
+    (new Goodtables()).run('data').should.be.an.instanceOf(Promise);
     done();
   });
 
   it('reject with a message when connection failed', function(done, err) {
-    var goodtables;
-
-
     if(err) done(err);
 
     require('superagent-mock')(request, [{
