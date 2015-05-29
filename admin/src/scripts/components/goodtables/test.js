@@ -1,6 +1,7 @@
 var _ = require('underscore');
 var chai = require('chai');
 var Goodtables = require('./index');
+var Promise = require('promise-polyfill');
 var request = require('superagent');
 var should = require('chai').should();
 var spies = require('chai-spies');
@@ -80,8 +81,21 @@ describe('Goodtables API wrapper', function() {
   });
 
   it('return Promise object', function(done, err) {
+    var goodtables;
+
+
     if(err) done(err);
-    chai.assert(false);
+
+    goodtables = new Goodtables();
+
+    require('superagent-mock')(request, [{
+      callback: function (match, data) { return {text: ''}; },
+      fixtures: function (match, params) { return ''; },
+      pattern: '.*'
+    }]);
+
+    goodtables.run('data').should.be.an.instanceOf(Promise);
+    done();
   });
 
   it('reject with a message when connection failed', function(done, err){
