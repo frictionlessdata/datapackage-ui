@@ -7,6 +7,59 @@ var should = require('chai').should();
 var spies = require('chai-spies');
 var queryString = require('query-string');
 
+var VALID_RESPONSE = {
+  'report': {
+    'meta': {
+        'bad_column_count': 0,
+        'bad_row_count': 0,
+
+        'columns': [
+          {
+            'bad_type_percent': 0,
+            'index': 0,
+            'name': '123'
+          }
+        ],
+
+        'header_index': 0,
+        'headers': ['123'],
+        'name': 'Pipeline',
+        'row_count': 1
+    },
+
+    'results': []
+  },
+
+  'success': true
+};
+
+var INVALID_RESPONSE = {
+  'report': {
+    'meta': {
+        'bad_column_count': 1,
+        'bad_row_count': 0,
+
+        'columns': [
+          {
+            'bad_type_percent': 0,
+            'index': 0,
+            'name': '123'
+          }
+        ],
+
+        'header_index': 0,
+        'headers': ['123'],
+        'name': 'Pipeline',
+        'row_count': 1
+    },
+
+    'results': [{'result_level': 'error'}]
+  },
+
+  'success': true
+};
+
+
 
 chai.use(spies);
 
@@ -33,6 +86,12 @@ describe('Goodtables API wrapper', function() {
 
 
     if(err) done(err);
+
+    require('superagent-mock')(request, [{
+      callback: function (match, data) { return VALID_RESPONSE; },
+      fixtures: function (match, params) { return ''; },
+      pattern: '.*'
+    }]);
 
     spyGet = chai.spy.on(request, 'get');
     spyPost = chai.spy.on(request, 'post');
@@ -97,5 +156,29 @@ describe('Goodtables API wrapper', function() {
     }]);
 
     (new Goodtables()).run('data').catch(function(E) { E.should.be.a('string'); done(); });
+  });
+
+  it('validate correct data', function(done, err) {
+    if(err) done(err);
+
+    require('superagent-mock')(request, [{
+      callback: function (match, data) { return VALID_RESPONSE; },
+      fixtures: function (match, params) { return ''; },
+      pattern: '.*'
+    }]);
+
+    (new Goodtables()).run('data').then(function(VR) { VR.isValid().should.be.true; done(); });
+  });
+
+  it('invalidate incorrect data', function(done, err) {
+    if(err) done(err);
+
+    require('superagent-mock')(request, [{
+      callback: function (match, data) { return INVALID_RESPONSE; },
+      fixtures: function (match, params) { return ''; },
+      pattern: '.*'
+    }]);
+
+    (new Goodtables()).run('data').then(function(VR) { VR.isValid().should.be.false; done(); });
   });
 });

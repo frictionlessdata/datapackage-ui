@@ -4,6 +4,15 @@ var Promise = require('promise-polyfill');
 var request = require('superagent');
 
 
+function ValidationReport(report) {
+  var errors = _.where(report.results, {result_level: 'error'});
+
+
+  this.isValid = function() { return !Boolean(errors.length); }
+  this.getValidationErrors = function() { return errors; }
+  return this;
+}
+
 module.exports = function(options) {
   // Provide default values for most params
   this.options = _.extend({
@@ -33,7 +42,7 @@ module.exports = function(options) {
           if(E)
             RJ('API request failed: ' + E);
 
-          RS(true);
+          RS(ValidationReport(R.report));
         });
     }).bind(this));
   }).bind(this);
