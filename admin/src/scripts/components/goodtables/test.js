@@ -1,20 +1,15 @@
+var _ = require('underscore');
 var chai = require('chai');
 var Goodtables = require('./index');
 var request = require('superagent');
 var should = require('chai').should();
 var spies = require('chai-spies');
+var queryString = require('query-string');
 
 
 chai.use(spies);
 
 describe('Goodtables API wrapper', function() {
-  var requestConfig = {
-    callback: function (match, data) { return {text: data}; },
-    fixtures: function (match, params) { return ''; },
-    pattern: '.*'
-  };
-
-
   it('throw error if data file is not passed in params', function(done, err) {
     if(err) done(err);
 
@@ -55,8 +50,34 @@ describe('Goodtables API wrapper', function() {
   });
 
   it('provide default values for all params', function(done, err) {
+    var goodtables;
+    var spyQuery;
+
+
     if(err) done(err);
-    chai.assert(false);
+
+    goodtables = new Goodtables();
+
+    require('superagent-mock')(request, [{
+      callback: function (match, data) {
+        _.isEqual(queryString.parse(match[0].split('?')[1]), {
+          fail_fast        : 'true',
+          format           : 'csv',
+          ignore_empty_rows: 'false',
+          report_limit     : '1000',
+          row_limit        : '20000'
+        }).should.be.true;
+
+        done();
+
+        return {text: ''};
+      },
+
+      fixtures: function (match, params) { return ''; },
+      pattern: '.*'
+    }]);
+
+    goodtables.run('data');
   });
 
   it('return Promise object', function(done, err) {
