@@ -24,7 +24,13 @@ module.exports = function(options) {
     return new Promise((function(RS, RJ) {
       request[this.options.method](API_URL + 'run')
         [this.options.method == 'get' ? 'query' : 'send'](_.omit(this.options, 'method'))
-        .end(function(E, R) { RS(true); });
+
+        .end(function(E, R) {
+          if(E)
+            RJ('API request failed: ' + E);
+
+          RS(true);
+        });
     }).bind(this));
   }).bind(this);
 

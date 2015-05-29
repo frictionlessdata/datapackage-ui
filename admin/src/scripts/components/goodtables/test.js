@@ -98,8 +98,18 @@ describe('Goodtables API wrapper', function() {
     done();
   });
 
-  it('reject with a message when connection failed', function(done, err){
+  it('reject with a message when connection failed', function(done, err) {
+    var goodtables;
+
+
     if(err) done(err);
-    chai.assert(false);
+
+    require('superagent-mock')(request, [{
+      callback: function(){ throw new Error(500); },
+      fixtures: function (match, params) { return ''; },
+      pattern: '.*'
+    }]);
+
+    (new Goodtables()).run('data').catch(function(E) { E.should.be.a('string'); done(); });
   });
 });
