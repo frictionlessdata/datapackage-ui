@@ -23,7 +23,7 @@ module.exports = function(options) {
 
     return new Promise((function(RS, RJ) {
       request[this.options.method](API_URL + 'run')
-        .query(_.omit(this.options, 'method'))
+        [this.options.method == 'get' ? 'query' : 'send'](_.omit(this.options, 'method'))
         .end(function(E, R) { RS(true); });
     }).bind(this));
   }).bind(this);
