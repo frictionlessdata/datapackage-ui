@@ -53,7 +53,8 @@ gulp.task('deploy', function() {
 
   return gulp.src(distDir + '/*')
     .pipe(ghPages({
-      message: "Web App update. " + Date.now()
+      message: "Web App update. " + Date.now(),
+      remoteUrl: "https://github.com/okfn/datapackagist"
     }));
 
 });
