@@ -141,8 +141,18 @@ module.exports = {
         }).bind(this)));
 
         // If on the previous form was entered values try to apply it to new form
-        if(formData)
+        if(formData) {
           this.layout.form.setValue(_.extend({}, this.layout.form.getValue(formData), formData));
+
+          // Expand editors if it have value
+          _.each(this.$('[data-schemapath][data-schemapath!=root]:has(.json-editor-btn-collapse)'), function(E) {
+              if(_.isEmpty(this.layout.form.getEditor($(E).data('schemapath')).getValue()))
+                $(E).find('.json-editor-btn-collapse').click();
+          }, this);
+        } else
+          // Collapse all
+          this.$('.row .json-editor-btn-collapse').click();
+
       }).bind(this));
     },
 

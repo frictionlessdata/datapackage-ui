@@ -71,21 +71,35 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="container">
-          <select id="registry-list"></select>
-        </div>
-        <a id="download-data-package" href="" download="datapackage.json" target="_blank">Download data package</a>
-
-        <div id="upload-data-package">
-          <input data-id="input" type="file" accept="application/json">
-          <div data-id="error"></div>
-        </div>
-      </div>
-
       <div class="row" class="container">
+        <div class="col-md-8">
+          <div class=" form-group">
+            <label class=" control-label">Select Profile</label>
+            <select id="registry-list" class="form-control"></select>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div id="upload-data-package">
+            <button type="button" id="download-data-package" download="datapackage.json" target="_blank" class="btn btn-sm btn-info">Download data package</button>
+
+            <div class="upload-btn">
+              <button type="button" class="btn btn-sm btn-success upload-btn__txt">Upload</button>
+              <input type="file" data-id="input" accept="application/json" />
+            </div>
+
+            <div data-id="error"></div>
+          </div>
+        </div>
+
         <div id="form-editor" class="col-md-8"></div>
         <pre class="col-md-3"><code id="json-code" class="json"></code></pre>
+      </div>
+      <div class="row" class="container" id="validate-buttons">
+        <div class="col-md-8">
+          <button type="button" class="btn btn-sm btn-info">Validate Schema</button>
+          <button type="button" class="btn btn-sm btn-info">Validate Resources</button>
+        </div>
       </div>
 
       <!-- end main-->
