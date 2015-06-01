@@ -135,6 +135,8 @@ gulp.task('styles', function () {
   return streamqueue(
     {objectMode: true},
     gulp.src(stylesDir + '/app.css'),
+
+    // WARN replace hardcoded value
     gulp.src('./node_modules/highlight.js/src/styles/default.css')
   )
     .pipe(concat('app.min.css'))
