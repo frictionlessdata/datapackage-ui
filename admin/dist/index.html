@@ -21,9 +21,9 @@
 
 <body>
 
-<!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
+  <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
 
 <div class="fixed-ok-panel">
   <div id="ok-panel" class="closed">
@@ -71,38 +71,49 @@
     </div>
   </div>
 
-  <div class="row" class="container">
-    <div class="col-md-8">
-      <div class=" form-group">
-        <label class=" control-label">Select Profile</label>
-        <select id="registry-list" class="form-control"></select>
+  <div class="row">
+    <div class="container">
+
+      <div class="col-md-7">
+        <div class=" form-group">
+          <label class="control-label">Select Profile</label>
+          <select id="registry-list" class="form-control"></select>
+        </div>
       </div>
-    </div>
 
-    <div class="col-md-3">
-      <div id="upload-data-package">
-        <button type="button" id="download-data-package" download="datapackage.json" target="_blank" class="btn btn-sm btn-info">Download data package</button>
+      <div class="col-md-5">
+        <div id="upload-data-package">
+          <button type="button" id="download-data-package" download="datapackage.json" target="_blank" class="btn btn-sm btn-info">Download data package</button>
 
-        <div class="upload-btn">
-          <button type="button" class="btn btn-sm btn-success upload-btn__txt">Upload</button>
-          <input data-id="input" type="file" accept="application/json" />
+          <div class="upload-btn">
+            <button type="button" class="btn btn-sm btn-success upload-btn__txt">Upload</button>
+            <input data-id="input" type="file" accept="application/json" />
+            <div data-id="error"></div>
+          </div>
           <div data-id="error"></div>
         </div>
-
-        <div data-id="error"></div>
       </div>
+
+      <div class="col-md-7">
+        <div id="form-editor"></div>
+      </div>
+
+      <div class="col-md-5">
+        <pre><code id="json-code" class="json"></code></pre>
+      </div>
+
     </div>
 
-    <div id="form-editor" class="col-md-8"></div>
-    <pre class="col-md-3"><code id="json-code" class="json"></code></pre>
-  </div>
-  <div class="row" class="container" id="validate-buttons">
-    <div class="col-md-8">
-      <button type="button" class="btn btn-sm btn-info">Validate Schema</button>
-      <button type="button" class="btn btn-sm btn-info">Validate Resources</button>
-    </div>
-  </div>
+    <div class="container" id="validate-buttons">
 
+      <div class="col-md-7">
+        <button type="button" class="btn btn-sm btn-info">Validate Schema</button>
+        <button type="button" class="btn btn-sm btn-info">Validate Resources</button>
+      </div>
+
+    </div>
+
+  </div>
   <!-- end main-->
 
   <!-- start footer -->
