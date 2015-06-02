@@ -24,3 +24,28 @@
 	.dialog > a {
 		padding: 16px;
 	}
+
+/* ---------  */
+.upload-btn {
+    overflow: hidden;
+    position: relative;
+    display: inline;
+}
+
+.upload-btn__txt {
+    z-index: 1;
+    position: relative;
+}
+
+.upload-btn input {
+    top: -31px;
+    right: -160px;
+    z-index: 2;
+    position: relative;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    font-size: 50px;
+}
+
+#validate-buttons { padding-bottom: 1em; }
