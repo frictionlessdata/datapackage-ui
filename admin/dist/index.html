@@ -75,8 +75,8 @@
     <div class="container">
 
       <div class="col-md-7">
-        <div class=" form-group">
-          <label class="control-label">Select Profile</label>
+        <div class="form-group">
+          <label id="select-profile" class="control-label">Select Profile</label>
           <select id="registry-list" class="form-control"></select>
         </div>
       </div>
@@ -86,9 +86,8 @@
           <a id="download-data-package" href="" download="datapackage.json" target="_blank" class="btn btn-sm btn-info">Download data package</a>
 
           <div class="upload-btn">
-            <button type="button" class="btn btn-sm btn-success upload-btn__txt">Upload</button>
             <input data-id="input" type="file" accept="application/json" />
-            <div data-id="error"></div>
+            <button type="button" class="btn btn-sm btn-success upload-btn__txt">Upload</button>
           </div>
           <div data-id="error"></div>
         </div>

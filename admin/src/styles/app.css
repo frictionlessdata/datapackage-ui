@@ -25,11 +25,10 @@
 		padding: 16px;
 	}
 
-/* ---------  */
 .upload-btn {
     overflow: hidden;
     position: relative;
-    display: inline;
+    display: inline-block;
 }
 
 .upload-btn__txt {
@@ -38,14 +37,30 @@
 }
 
 .upload-btn input {
-    top: -31px;
-    right: -160px;
     z-index: 2;
-    position: relative;
+    position: absolute;
     cursor: pointer;
     opacity: 0;
     filter: alpha(opacity=0);
     font-size: 50px;
+    width:63px;
+    height:31px;
 }
 
 #validate-buttons { padding-bottom: 1em; }
+
+#select-profile {
+    display: inline-block;
+    margin-right: 32px;
+}
+
+#registry-list {
+    display: inline-block;
+    width: 75%;
+}
+
+[hidden] {
+    display:none !important;
+}
+
+#download-data-package { vertical-align: top; }
