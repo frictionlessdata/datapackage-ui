@@ -73,13 +73,18 @@ module.exports = {
       return this;
     },
 
+    clearResourceValidation: function() {
+      this.$('#resources-validation-messages [data-id=messages]').remove();
+      return this;
+    },
+
     events: {
       'click #validate-resources': function() {
         var
           goodTables = new Goodtables({method: 'post'});
 
         // Clear previous
-        this.$('#resources-validation-messages [data-id=messages]').remove();
+        this.clearResourceValidation();
 
         _.each(this.layout.form.getEditor('root.resources').rows, function(R) {
           goodTables.run(R.dataSource, JSON.stringify( {fields: _.map(R.schema.properties, function(V, K) {
@@ -134,6 +139,8 @@ module.exports = {
 
     reset: function(schema) {
       var formData;
+
+      this.clearResourceValidation();
 
       // Clean up previous state
       if(this.layout.form) {
