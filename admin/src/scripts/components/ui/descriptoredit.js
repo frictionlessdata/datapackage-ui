@@ -87,7 +87,7 @@ module.exports = {
         this.clearResourceValidation();
 
         _.each(this.layout.form.getEditor('root.resources').rows, function(R) {
-          goodTables.run(R.dataSource, JSON.stringify( {fields: _.map(R.schema.properties, function(V, K) {
+          goodTables.run(R.dataSource, JSON.stringify({fields: _.map(R.schema.properties, function(V, K) {
               return _.extend(V, {name: K}) })}
           )).then(
             function(M) {
