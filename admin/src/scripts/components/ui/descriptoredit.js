@@ -78,16 +78,21 @@ module.exports = {
 
       window.APP.$('#validate-resources').on('click', (function() {
         var
-          goodTables = new Goodtables();
+          goodTables = new Goodtables({method: 'post'});
 
         // Clear previous
         window.APP.$('#resources-validation-messages [data-id=messages]').remove();
 
         _.each(this.layout.form.getEditor('root.resources').rows, function(R) {
-          goodTables.run(R.dataSource, R.schema).then(
+          goodTables.run(R.dataSource, JSON.stringify( {fields: _.map(R.schema.properties, function(V, K) {
+            return _.extend(V, {name: K}) })}
+          )).then(
             function(M) {
               // Ok
-              window.APP.$('#resources-validation-messages').append(_.map(M.getMessages(), function(M) { return ['<li class="error-message" data-id="messages">', M, '</li>'].join(''); }));
+              window.APP.$('#resources-validation-messages').append(
+                _.map(M.isValid() ? ['Validation Success'] : M.getValidationErrors(), function(M) {
+                  return ['<li class="error-message" data-id="messages">', M.result_message, '</li>'].join('');
+                }));
             }
           );
         });
