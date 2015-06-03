@@ -93,8 +93,18 @@
         </div>
       </div>
 
-      <div class="col-md-7">
-        <div id="form-editor"></div>
+      <div class="col-md-7" id="form-editor">
+        <div data-id="form-container"></div>
+
+        <div class="container" id="validate-buttons">
+
+            <button type="button" class="btn btn-sm btn-info">Validate Schema</button>
+            <button type="button" id="validate-resources" class="btn btn-sm btn-info">Validate Resources</button>
+
+        </div>
+
+        <ul class="container" id="resources-validation-messages"></ul>
+
       </div>
 
       <div class="col-md-5">
@@ -102,17 +112,6 @@
       </div>
 
     </div>
-
-    <div class="container" id="validate-buttons">
-
-      <div class="col-md-7">
-        <button type="button" class="btn btn-sm btn-info">Validate Schema</button>
-        <button type="button" id="validate-resources" class="btn btn-sm btn-info">Validate Resources</button>
-      </div>
-
-    </div>
-
-    <ul class="container" id="resources-validation-messages"></ul>
 
   </div>
   <!-- end main-->

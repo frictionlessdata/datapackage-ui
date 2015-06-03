@@ -73,19 +73,17 @@ module.exports = {
       return this;
     },
 
-    delegateEvents: function() {
-      backbone.BaseView.prototype.delegateEvents.apply(this, arguments);
-
-      window.APP.$('#validate-resources').on('click', (function() {
+    events: {
+      'click #validate-resources': function() {
         var
           goodTables = new Goodtables({method: 'post'});
 
         // Clear previous
-        window.APP.$('#resources-validation-messages [data-id=messages]').remove();
+        this.$('#resources-validation-messages [data-id=messages]').remove();
 
         _.each(this.layout.form.getEditor('root.resources').rows, function(R) {
           goodTables.run(R.dataSource, JSON.stringify( {fields: _.map(R.schema.properties, function(V, K) {
-            return _.extend(V, {name: K}) })}
+              return _.extend(V, {name: K}) })}
           )).then(
             function(M) {
               // Ok
@@ -96,7 +94,7 @@ module.exports = {
             }
           );
         });
-      }).bind(this));
+      }
     },
 
     initialize: function(options) {
@@ -144,7 +142,7 @@ module.exports = {
         this.layout.uploadData.undelegateEvents().remove();
       }
 
-      this.layout.form = new JSONEditor(this.el, {
+      this.layout.form = new JSONEditor(this.$('[data-id=form-container]').get(0), {
         schema: schema,
         theme: 'bootstrap3'
       });
@@ -192,11 +190,6 @@ module.exports = {
       ));
 
       return this;
-    },
-
-    undelegateEvents: function() {
-      backbone.BaseView.prototype.undelegateEvents.apply(this, arguments);
-      window.APP.$('#validate-resources').off('click');
     }
   })
 };
