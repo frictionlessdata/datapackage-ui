@@ -42,7 +42,7 @@ module.exports = function(options) {
           if(E)
             RJ('API request failed: ' + E);
 
-          RS(ValidationReport(R.report));
+          RS(new ValidationReport(JSON.parse(R.text).report))
         });
     }).bind(this));
   }).bind(this);

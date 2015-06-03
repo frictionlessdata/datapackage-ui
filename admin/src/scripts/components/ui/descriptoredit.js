@@ -3,6 +3,7 @@ require('fileapi');
 var backbone = require('backbone');
 var backboneBase = require('backbone-base');
 var getUri = require('get-uri');
+var Goodtables = require('../goodtables');
 var jsonEditor = require('json-editor');
 var jtsInfer = require('jts-infer');
 var highlight = require('highlight-redux');
@@ -30,6 +31,9 @@ DataUploadView = backbone.BaseView.extend({
                 path: EV.target.name,
                 schema: S
               });
+
+              // Save data source
+              _.last(this.options.form.getEditor('root.resources').rows).dataSource = EV.result;
             }).bind(this));
           }).bind(this));
         } else if( EV.type ==='progress' ) {
@@ -67,6 +71,27 @@ module.exports = {
       backbone.BaseView.prototype.activate.call(this, state);
       this.layout.upload.activate(state);
       return this;
+    },
+
+    delegateEvents: function() {
+      backbone.BaseView.prototype.delegateEvents.apply(this, arguments);
+
+      window.APP.$('#validate-resources').on('click', (function() {
+        var
+          goodTables = new Goodtables();
+
+        // Clear previous
+        window.APP.$('#resources-validation-messages [data-id=messages]').remove();
+
+        _.each(this.layout.form.getEditor('root.resources').rows, function(R) {
+          goodTables.run(R.dataSource, R.schema).then(
+            function(M) {
+              // Ok
+              window.APP.$('#resources-validation-messages').append(_.map(M.getMessages(), function(M) { return ['<li class="error-message" data-id="messages">', M, '</li>'].join(''); }));
+            }
+          );
+        });
+      }).bind(this));
     },
 
     initialize: function() {
@@ -162,6 +187,11 @@ module.exports = {
       ));
 
       return this;
+    },
+
+    undelegateEvents: function() {
+      backbone.BaseView.prototype.undelegateEvents.apply(this, arguments);
+      window.APP.$('#validate-resources').off('click');
     }
   })
 };
