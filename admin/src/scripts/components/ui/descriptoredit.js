@@ -87,6 +87,8 @@ module.exports = {
         this.clearResourceValidation();
 
         _.each(this.layout.form.getEditor('root.resources').rows, function(R) {
+          // Goodtables schema format {fields: [{name:'colname'...},...]}
+          // Example https://raw.githubusercontent.com/okfn/goodtables/master/examples/test_schema.json
           goodTables.run(R.dataSource, JSON.stringify({fields: _.map(R.schema.properties, function(V, K) {
               return _.extend(V, {name: K}) })}
           )).then(
