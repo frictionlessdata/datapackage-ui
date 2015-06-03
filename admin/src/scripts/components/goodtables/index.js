@@ -36,13 +36,13 @@ module.exports = function(options) {
       request[this.options.method](API_URL + 'run')
 
         // Provide request data with .query() in case of GET, otherwise use .send()
-        [this.options.method == 'get' ? 'query' : 'send'](_.omit(this.options, 'method'))
+        [this.options.method == 'get' ? 'query' : 'send'](_.extend(_.omit(this.options, 'method'), {data: data, schema: schema}))
 
         .end(function(E, R) {
           if(E)
             RJ('API request failed: ' + E);
 
-          RS(ValidationReport(R.report));
+          RS(new ValidationReport(JSON.parse(R.text).report))
         });
     }).bind(this));
   }).bind(this);

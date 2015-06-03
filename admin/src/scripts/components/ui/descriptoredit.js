@@ -3,6 +3,7 @@ require('fileapi');
 var backbone = require('backbone');
 var backboneBase = require('backbone-base');
 var getUri = require('get-uri');
+var Goodtables = require('../goodtables');
 var jsonEditor = require('json-editor');
 var jtsInfer = require('jts-infer');
 var highlight = require('highlight-redux');
@@ -30,6 +31,9 @@ DataUploadView = backbone.BaseView.extend({
                 path: EV.target.name,
                 schema: S
               });
+
+              // Save data source
+              _.last(this.options.form.getEditor('root.resources').rows).dataSource = EV.result;
             }).bind(this));
           }).bind(this));
         } else if( EV.type ==='progress' ) {
@@ -69,9 +73,40 @@ module.exports = {
       return this;
     },
 
-    initialize: function() {
+    clearResourceValidation: function() {
+      this.$('#resources-validation-messages [data-id=messages]').remove();
+      return this;
+    },
+
+    events: {
+      'click #validate-resources': function() {
+        var
+          goodTables = new Goodtables({method: 'post'});
+
+        // Clear previous
+        this.clearResourceValidation();
+
+        _.each(this.layout.form.getEditor('root.resources').rows, function(R) {
+          // Goodtables schema format {fields: [{name:'colname'...},...]}
+          // Example https://raw.githubusercontent.com/okfn/goodtables/master/examples/test_schema.json
+          goodTables.run(R.dataSource, JSON.stringify({fields: _.map(R.schema.properties, function(V, K) {
+              return _.extend(V, {name: K}) })}
+          )).then(
+            function(M) {
+              // Ok
+              window.APP.$('#resources-validation-messages').append(
+                _.map(M.isValid() ? ['Validation Success'] : M.getValidationErrors(), function(M) {
+                  return ['<li class="error-message" data-id="messages">', M.result_message, '</li>'].join('');
+                }));
+            }
+          );
+        });
+      }
+    },
+
+    initialize: function(options) {
       highlight.configure({useBR: true});
-      return backbone.BaseView.prototype.initialize.apply(this, arguments);
+      return backbone.BaseView.prototype.initialize.call(this, options);
     },
 
     render: function() {
@@ -107,6 +142,8 @@ module.exports = {
     reset: function(schema) {
       var formData;
 
+      this.clearResourceValidation();
+
       // Clean up previous state
       if(this.layout.form) {
         formData = this.getFilledValues();
@@ -114,7 +151,7 @@ module.exports = {
         this.layout.uploadData.undelegateEvents().remove();
       }
 
-      this.layout.form = new JSONEditor(this.el, {
+      this.layout.form = new JSONEditor(this.$('[data-id=form-container]').get(0), {
         schema: schema,
         theme: 'bootstrap3'
       });
