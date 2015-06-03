@@ -64,3 +64,9 @@
 }
 
 #download-data-package { vertical-align: top; }
+
+/*Fix main.css*/
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
