@@ -99,9 +99,9 @@ module.exports = {
       }).bind(this));
     },
 
-    initialize: function() {
+    initialize: function(options) {
       highlight.configure({useBR: true});
-      return backbone.BaseView.prototype.initialize.apply(this, arguments);
+      return backbone.BaseView.prototype.initialize.apply(this, options);
     },
 
     render: function() {
