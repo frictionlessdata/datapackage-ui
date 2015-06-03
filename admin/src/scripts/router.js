@@ -40,6 +40,7 @@ module.exports = backbone.Router.extend({
   index: function() {
     this.deactivateAll();
     window.APP.layout.navbar.toggleBadge(true);
+    window.APP.layout.download.activate();
 
     window.APP.layout.descriptorEdit
       .activate();
