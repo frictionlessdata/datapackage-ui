@@ -17,7 +17,7 @@ module.exports = backbone.BaseView.extend({
 
   render: function() {
     this.layout.confirmationDialog = new dialog.ConfirmationView({el: window.APP.$('#confirmation-dialog')});
-    (this.layout.descriptorEdit = new descriptorEdit.DescriptorEditView({el: window.APP.$('#form-editor')})).render();
+    (this.layout.descriptorEdit = new descriptorEdit.DescriptorEditView({el: window.APP.$('#descriptor')})).render();
     this.layout.download = new DownloadView({el: window.APP.$('#download-data-package')});
     this.layout.navbar = new NavbarView({el: window.APP.$('#navbar')});
     this.layout.registryList = new registry.ListView({el: window.APP.$('#registry-list')});

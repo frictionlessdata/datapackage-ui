@@ -93,22 +93,22 @@
         </div>
       </div>
 
-      <div class="col-md-7" id="form-editor">
-        <div data-id="form-container"></div>
+      <div class="container" id="descriptor">
+        <div data-id="form-container" class="col-md-7"></div>
 
-        <div class="container" id="validate-buttons">
+        <div class="col-md-5">
+          <pre><code id="json-code" class="json"></code></pre>
+        </div>
+
+        <div class="col-md-7" id="validate-buttons">
 
             <button type="button" class="btn btn-sm btn-info">Validate Schema</button>
             <button type="button" id="validate-resources" class="btn btn-sm btn-info">Validate Resources</button>
 
         </div>
 
-        <ul class="container" id="resources-validation-messages"></ul>
+        <ul class="col-md-7" id="resources-validation-messages"></ul>
 
-      </div>
-
-      <div class="col-md-5">
-        <pre><code id="json-code" class="json"></code></pre>
       </div>
 
     </div>
