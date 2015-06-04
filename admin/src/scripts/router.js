@@ -23,7 +23,8 @@ var VALID_DESCRIPTOR = {
 // Application state changed here
 module.exports = backbone.Router.extend({
   routes: {
-    '(/)': 'index'
+    '(/)': 'index',
+    'validation-results(/)': 'validationResults'
   },
 
   /**
@@ -51,5 +52,13 @@ module.exports = backbone.Router.extend({
         .reset(new backbone.Collection(D))
         .activate();
     });
+  },
+
+  validationResults: function() {
+    this.deactivateAll();
+    window.APP.layout.navbar.toggleBadge(true);
+
+    window.APP.layout.validationResultList
+      .activate();
   }
 });

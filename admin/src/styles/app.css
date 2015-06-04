@@ -54,7 +54,7 @@
   margin-right: 32px;
 }
 
-#registry-list {
+#registry-list .list-container {
   display: inline-block;
   width: 75%;
 }
