@@ -78,6 +78,8 @@ module.exports = {
         var
           goodTables = new Goodtables({method: 'post'});
 
+        window.APP.layout.validationResultList.reset(new backbone.Collection());
+
         _.each(this.layout.form.getEditor('root.resources').rows, function(R) {
           // Goodtables schema format {fields: [{name:'colname'...},...]}
           // Example https://raw.githubusercontent.com/okfn/goodtables/master/examples/test_schema.json
@@ -85,9 +87,11 @@ module.exports = {
               return _.extend(V, {name: K}) })}
           )).then(
             function(M) {
-              // Ok
-              window.APP.layout.validationResultList
-                .reset(new backbone.Collection(M.isValid() ? ['Validation Success'] : M.getValidationErrors()));
+              // Validation completed
+              window.APP.layout.validationResultList.collection
+                .add(M.isValid() ? [{result_message: 'Validation Success'}] : M.getValidationErrors());
+
+              window.APP.layout.validationResultList.add(window.APP.layout.validationResultList.collection.last());
 
               window.ROUTER.navigate('/validation-results', {trigger: true});
             }

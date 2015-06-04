@@ -42,12 +42,8 @@ module.exports = backbone.Router.extend({
     this.deactivateAll();
     window.APP.layout.navbar.toggleBadge(true);
     window.APP.layout.download.activate();
-
-    window.APP.layout.descriptorEdit
-      .activate();
-
-    window.APP.layout.descriptorEdit.layout.registryList
-      .activate();
+    window.APP.layout.descriptorEdit.activate();
+    window.APP.layout.descriptorEdit.layout.registryList.activate();
 
     // WARN Process registry errors here
     if(!window.APP.layout.descriptorEdit.layout.registryList.collection) registry.get().then(function(D) {
@@ -59,8 +55,6 @@ module.exports = backbone.Router.extend({
   validationResults: function() {
     this.deactivateAll();
     window.APP.layout.navbar.toggleBadge(true);
-
-    window.APP.layout.validationResultList
-      .activate();
+    window.APP.layout.validationResultList.activate();
   }
 });
