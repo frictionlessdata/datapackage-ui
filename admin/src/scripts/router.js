@@ -23,7 +23,8 @@ var VALID_DESCRIPTOR = {
 // Application state changed here
 module.exports = backbone.Router.extend({
   routes: {
-    '(/)': 'index'
+    '(/)': 'index',
+    'validation-results(/)': 'validationResults'
   },
 
   /**
@@ -41,15 +42,19 @@ module.exports = backbone.Router.extend({
     this.deactivateAll();
     window.APP.layout.navbar.toggleBadge(true);
     window.APP.layout.download.activate();
-
-    window.APP.layout.descriptorEdit
-      .activate();
+    window.APP.layout.descriptorEdit.activate();
+    window.APP.layout.descriptorEdit.layout.registryList.activate();
 
     // WARN Process registry errors here
-    registry.get().then(function(D) {
+    if(!window.APP.layout.descriptorEdit.layout.registryList.collection) registry.get().then(function(D) {
       window.APP.layout.descriptorEdit.layout.registryList
-        .reset(new backbone.Collection(D))
-        .activate();
+        .reset(new backbone.Collection(D));
     });
+  },
+
+  validationResults: function() {
+    this.deactivateAll();
+    window.APP.layout.navbar.toggleBadge(true);
+    window.APP.layout.validationResultList.activate();
   }
 });

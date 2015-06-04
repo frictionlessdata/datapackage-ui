@@ -73,18 +73,12 @@ module.exports = {
       return this;
     },
 
-    clearResourceValidation: function() {
-      this.$('#resources-validation-messages [data-id=messages]').remove();
-      return this;
-    },
-
     events: {
       'click #validate-resources': function() {
         var
           goodTables = new Goodtables({method: 'post'});
 
-        // Clear previous
-        this.clearResourceValidation();
+        window.APP.layout.validationResultList.reset(new backbone.Collection());
 
         _.each(this.layout.form.getEditor('root.resources').rows, function(R) {
           // Goodtables schema format {fields: [{name:'colname'...},...]}
@@ -93,11 +87,13 @@ module.exports = {
               return _.extend(V, {name: K}) })}
           )).then(
             function(M) {
-              // Ok
-              window.APP.$('#resources-validation-messages').append(
-                _.map(M.isValid() ? ['Validation Success'] : M.getValidationErrors(), function(M) {
-                  return ['<li class="error-message" data-id="messages">', M.result_message, '</li>'].join('');
-                }));
+              // Validation completed
+              window.APP.layout.validationResultList.collection
+                .add(M.isValid() ? [{result_message: 'Validation Success'}] : M.getValidationErrors());
+
+              window.APP.layout.validationResultList.add(window.APP.layout.validationResultList.collection.last());
+
+              window.ROUTER.navigate('/validation-results', {trigger: true});
             }
           );
         });
@@ -111,7 +107,7 @@ module.exports = {
 
     render: function() {
       this.layout.upload = new UploadView({el: window.APP.$('#upload-data-package'), parent: this});
-      this.layout.registryList = new registry.ListView({el: window.APP.$('#registry-list'), parent: this});
+      this.layout.registryList = new registry.ListView({el: window.APP.$('#registry-list'), container: '[data-id=list-container]', parent: this});
       return this;
     },
 
@@ -141,8 +137,6 @@ module.exports = {
 
     reset: function(schema) {
       var formData;
-
-      this.clearResourceValidation();
 
       // Clean up previous state
       if(this.layout.form) {

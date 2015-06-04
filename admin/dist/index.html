@@ -74,10 +74,10 @@
   <div class="row">
     <div class="container">
 
-      <div class="col-md-7">
+      <div class="col-md-7" id="registry-list">
         <div class="form-group">
           <label id="select-profile" class="control-label">Select Profile</label>
-          <select id="registry-list" class="form-control"></select>
+          <select data-id="list-container" class="form-control list-container"></select>
         </div>
       </div>
 
@@ -106,15 +106,23 @@
             <button type="button" id="validate-resources" class="btn btn-sm btn-info">Validate Resources</button>
 
         </div>
-
-        <ul class="col-md-7" id="resources-validation-messages"></ul>
-
       </div>
 
     </div>
-
   </div>
   <!-- end main-->
+
+  <!-- validation results-->
+  <div class="row">
+    <div class="container">
+      <div class="col-md-10" id="validation-result">
+        <a href="" data-id="back">Back to the form</a>
+        <ul data-id="list-container"></ul>
+      </div>
+    </div>
+  </div>
+  <!-- end validation results-->
+
 
   <!-- start footer -->
   <footer class="site-footer">
