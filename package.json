@@ -45,7 +45,7 @@
     "watchify": "^3.2.1"
   },
   "scripts": {
-    "test": ""
+    "test": "mocha admin/src/scripts/components/datapackage-registry && mocha admin/src/scripts/components/datapackage-outfile && mocha admin/src/scripts/components/goodtables"
   },
   "author": "Open Knowledge",
   "license": "MIT"
