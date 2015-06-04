@@ -46,11 +46,13 @@ module.exports = backbone.Router.extend({
     window.APP.layout.descriptorEdit
       .activate();
 
+    window.APP.layout.descriptorEdit.layout.registryList
+      .activate();
+
     // WARN Process registry errors here
-    registry.get().then(function(D) {
+    if(!window.APP.layout.descriptorEdit.layout.registryList.collection) registry.get().then(function(D) {
       window.APP.layout.descriptorEdit.layout.registryList
-        .reset(new backbone.Collection(D))
-        .activate();
+        .reset(new backbone.Collection(D));
     });
   },
 
