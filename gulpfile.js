@@ -28,6 +28,7 @@ var frontendDependencies = [
   'csv'
 ];
 
+
 function scriptPipeline(bundle, outfile) {
 
   /**
