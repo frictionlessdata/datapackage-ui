@@ -28,7 +28,6 @@ var frontendDependencies = [
   'csv'
 ];
 
-
 function scriptPipeline(bundle, outfile) {
 
   /**
@@ -138,7 +137,7 @@ gulp.task('styles', function () {
     gulp.src(stylesDir + '/app.css'),
 
     // WARN replace hardcoded value
-    gulp.src('./node_modules/highlight.js/src/styles/default.css')
+    gulp.src('*/highlight.js/src/styles/default.css')
   )
     .pipe(concat('app.min.css'))
     .pipe(minifyCss({compatibility: 'ie8'}))
