@@ -88,8 +88,8 @@ describe('Goodtables API wrapper', function() {
     if(err) done(err);
 
     require('superagent-mock')(request, [{
-      callback: function (match, data) { return VALID_RESPONSE; },
-      fixtures: function (match, params) { return ''; },
+      callback: function (match, data) { return {text: data}; },
+      fixtures: function (match, params) { return JSON.stringify(VALID_RESPONSE); },
       pattern: '.*'
     }]);
 
@@ -114,6 +114,7 @@ describe('Goodtables API wrapper', function() {
     require('superagent-mock')(request, [{
       callback: function (match, data) {
         _.isEqual(queryString.parse(match[0].split('?')[1]), {
+          data             : 'data',
           fail_fast        : 'true',
           format           : 'csv',
           ignore_empty_rows: 'false',
@@ -123,10 +124,10 @@ describe('Goodtables API wrapper', function() {
 
         done();
 
-        return {text: ''};
+        return {text: data};
       },
 
-      fixtures: function (match, params) { return ''; },
+      fixtures: function (match, params) { return JSON.stringify(VALID_RESPONSE); },
       pattern: '.*'
     }]);
 
@@ -137,8 +138,8 @@ describe('Goodtables API wrapper', function() {
     if(err) done(err);
 
     require('superagent-mock')(request, [{
-      callback: function (match, data) { return {text: ''}; },
-      fixtures: function (match, params) { return ''; },
+      callback: function (match, data) { return {text: data}; },
+      fixtures: function (match, params) { return JSON.stringify(VALID_RESPONSE); },
       pattern: '.*'
     }]);
 
@@ -162,8 +163,8 @@ describe('Goodtables API wrapper', function() {
     if(err) done(err);
 
     require('superagent-mock')(request, [{
-      callback: function (match, data) { return VALID_RESPONSE; },
-      fixtures: function (match, params) { return ''; },
+      callback: function (match, data) { return {text: data}; },
+      fixtures: function (match, params) { return JSON.stringify(VALID_RESPONSE); },
       pattern: '.*'
     }]);
 
@@ -174,8 +175,8 @@ describe('Goodtables API wrapper', function() {
     if(err) done(err);
 
     require('superagent-mock')(request, [{
-      callback: function (match, data) { return INVALID_RESPONSE; },
-      fixtures: function (match, params) { return ''; },
+      callback: function (match, data) { return {text: data}; },
+      fixtures: function (match, params) { return JSON.stringify(INVALID_RESPONSE); },
       pattern: '.*'
     }]);
 
