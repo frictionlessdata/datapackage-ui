@@ -59,13 +59,3 @@ mocha
 
 * Work in your own fork of the code, create branches for your work (as logical), and make pull requests for acceptance of tasks/issues.
 * Prefer Git Flow conventions, so, for example: "feature/datapackage-form", and so on
-
-
-## Other
-
-Disable Web security in Chrome for local CORS:
-
-```
-# Mac OS X
-open /Applications/Google\ Chrome.app --args --disable-web-security
-```
