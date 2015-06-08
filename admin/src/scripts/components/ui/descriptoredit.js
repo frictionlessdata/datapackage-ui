@@ -3,7 +3,7 @@ require('fileapi');
 var backbone = require('backbone');
 var backboneBase = require('backbone-base');
 var getUri = require('get-uri');
-var Goodtables = require('../goodtables');
+var Goodtables = require('goodtables');
 var jsonEditor = require('json-editor');
 var jtsInfer = require('jts-infer');
 var highlight = require('highlight-redux');

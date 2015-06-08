@@ -1,6 +1,6 @@
 var _ = require('underscore');
 var backbone = require('backbone');
-var registry = require('./components/datapackage-registry');
+var registry = require('datapackage-registry');
 
 // WARN Used just for demo purposes
 var VALID_DESCRIPTOR = {
