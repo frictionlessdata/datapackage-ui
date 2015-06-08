@@ -19,6 +19,15 @@ module.exports = {
 
   // Used for navigation between resources validation results
   TabsView: backbone.BaseListView.extend({
+    add: function(model) {
+      backbone.BaseListView.prototype.add.call(this, model);
+
+      // Don't show single tab
+      this.$el.prop('hidden', this.layout.items.length === 1);
+
+      return this;
+    },
+
     ItemView: backbone.BaseView.extend({
       events: {
         'click': function(event) {
