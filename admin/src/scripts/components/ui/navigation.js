@@ -15,5 +15,8 @@ module.exports = {
       this.$('[data-id=badge]').toggleClass('collapsed', state);
       return this;
     }
-  })
+  }),
+
+  // Used for navigation between resources validation results
+  TabsView: backbone.BaseListView.extend({})
 };
