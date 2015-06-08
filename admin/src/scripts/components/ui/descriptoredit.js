@@ -92,8 +92,16 @@ module.exports = {
                 .add(M.isValid() ? [{result_message: 'Validation Success'}] : M.getValidationErrors());
 
               window.APP.layout.validationResultList.add(window.APP.layout.validationResultList.collection.last());
-              window.APP.layout.validationResultList.layout.tabs.add(new backbone.Model({title: R.getValue().path}));
-              window.ROUTER.navigate('/validation-results', {trigger: true});
+
+              // Navigate between resources in validation results
+              window.APP.layout.validationResultList.layout.tabs.add(new backbone.Model({
+                title: R.getValue().path,
+
+                // .key is a unique property among all resources rows
+                url: '/validation-results/' + R.key
+              }));
+
+              window.ROUTER.navigate('/validation-results/' + R.key, {trigger: true});
             }
           );
         });

@@ -30,7 +30,7 @@ module.exports = {
       render: function() {
         this.$el
           .html(this.model.get('title'))
-          .attr('href', '/');
+          .attr('href', this.model.get('url'));
 
         return this;
       },

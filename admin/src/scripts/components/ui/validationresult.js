@@ -21,6 +21,9 @@ module.exports = {
     render: function() {
       this.layout.tabs = new navigation.TabsView({el: this.$('[data-id=tabs]')});
       return this;
-    }
+    },
+
+    // Show certain resource validation errors
+    setActive: function(id) { return this; }
   })
 };

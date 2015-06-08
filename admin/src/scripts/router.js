@@ -24,7 +24,7 @@ var VALID_DESCRIPTOR = {
 module.exports = backbone.Router.extend({
   routes: {
     '(/)': 'index',
-    'validation-results(/)': 'validationResults'
+    'validation-results/:resource(/)': 'validationResults'
   },
 
   /**
@@ -52,9 +52,12 @@ module.exports = backbone.Router.extend({
     });
   },
 
-  validationResults: function() {
+  validationResults: function(resource) {
     this.deactivateAll();
     window.APP.layout.navbar.toggleBadge(true);
-    window.APP.layout.validationResultList.activate();
+
+    window.APP.layout.validationResultList
+      .activate()
+      .setActive(resource);
   }
 });
