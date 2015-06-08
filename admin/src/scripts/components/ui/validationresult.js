@@ -4,6 +4,12 @@ var navigation = require('./navigation');
 
 module.exports = {
   ListView: backbone.BaseListView.extend({
+    clear: function() {
+      backbone.BaseListView.prototype.clear.call(this);
+      this.layout.tabs.clear();
+      return this;
+    },
+
     events: {'click [data-id=back]': function() { window.ROUTER.navigate('/', {trigger: true}); return false; }},
 
     ItemView: backbone.BaseView.extend({

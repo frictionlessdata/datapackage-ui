@@ -18,5 +18,24 @@ module.exports = {
   }),
 
   // Used for navigation between resources validation results
-  TabsView: backbone.BaseListView.extend({})
+  TabsView: backbone.BaseListView.extend({
+    ItemView: backbone.BaseView.extend({
+      events: {
+        'click': function(event) {
+          window.ROUTER.navigate($(event.currentTarget).attr('href'), {trigger: true});
+          return false;
+        }
+      },
+
+      render: function() {
+        this.$el
+          .html(this.model.get('title'))
+          .attr('href', '/');
+
+        return this;
+      },
+
+      tagName: 'a'
+    })
+  })
 };

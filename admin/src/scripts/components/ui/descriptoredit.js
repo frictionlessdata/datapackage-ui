@@ -92,7 +92,7 @@ module.exports = {
                 .add(M.isValid() ? [{result_message: 'Validation Success'}] : M.getValidationErrors());
 
               window.APP.layout.validationResultList.add(window.APP.layout.validationResultList.collection.last());
-
+              window.APP.layout.validationResultList.layout.tabs.add(new backbone.Model({title: R.getValue().path}));
               window.ROUTER.navigate('/validation-results', {trigger: true});
             }
           );
