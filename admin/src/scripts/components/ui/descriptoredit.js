@@ -75,8 +75,8 @@ module.exports = {
 
     events: {
       'click #validate-resources': function() {
-        var
-          goodTables = new Goodtables({method: 'post'});
+        var goodTables = new Goodtables({method: 'post'});
+
 
         window.APP.layout.validationResultList.reset(new backbone.Collection());
 
