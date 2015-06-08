@@ -23,6 +23,12 @@ module.exports = {
       return this;
     },
 
+    reset: function(collection) {
+      backbone.BaseListView.prototype.reset.call(this, collection);
+      this.collection.on('add', this.add, this);
+      return this;
+    },
+
     // Show certain resource validation errors
     setActive: function(id) { return this; }
   })

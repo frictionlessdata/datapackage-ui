@@ -89,9 +89,11 @@ module.exports = {
             function(M) {
               // Validation completed
               window.APP.layout.validationResultList.collection
-                .add(M.isValid() ? [{result_message: 'Validation Success'}] : M.getValidationErrors());
-
-              window.APP.layout.validationResultList.add(window.APP.layout.validationResultList.collection.last());
+                .add(
+                  M.isValid()
+                    ? [{resource_id: R.key, result_message: 'Validation Success'}]
+                    : M.getValidationErrors().map(function(E) { return _.extend(E, {resource_id: R.key}) })
+                );
 
               // Navigate between resources in validation results
               window.APP.layout.validationResultList.layout.tabs.add(new backbone.Model({
