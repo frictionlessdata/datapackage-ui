@@ -77,6 +77,9 @@ module.exports = {
       'click #validate-resources': function() {
         var goodTables = new Goodtables({method: 'post'});
 
+        // Navigate to valifation results just once during series of API calls
+        var navigateToResults = _.once(function(id) { window.ROUTER.navigate('/validation-results/' + id, {trigger: true}); });
+
 
         window.APP.layout.validationResultList.reset(new backbone.Collection());
 
@@ -103,7 +106,7 @@ module.exports = {
                 url: '/validation-results/' + R.key
               }));
 
-              window.ROUTER.navigate('/validation-results/' + R.key, {trigger: true});
+              navigateToResults(R.key);
             }
           );
         });
