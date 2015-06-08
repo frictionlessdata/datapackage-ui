@@ -30,6 +30,9 @@ module.exports = {
     },
 
     // Show certain resource validation errors
-    setActive: function(id) { return this; }
+    setActive: function(id) {
+      this.layout.items.forEach(function(I) { I.activate(I.model.get('resource_id') === id); });
+      return this;
+    }
   })
 };
