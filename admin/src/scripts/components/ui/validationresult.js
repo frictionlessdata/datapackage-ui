@@ -1,5 +1,6 @@
 var backbone = require('backbone');
 var navigation = require('./navigation');
+var validationErrorRowTpl = require('./templates/validation-error-row.hbs');
 
 
 module.exports = {
@@ -15,7 +16,8 @@ module.exports = {
     ItemView: backbone.BaseView.extend({
       attributes: {class: 'error-message', 'data-id': 'messages'},
       render: function() { this.$el.html(this.model.get('result_message')); return this; },
-      tagName: 'li'
+      tagName: 'li',
+      template: validationErrorRowTpl
     }),
 
     render: function() {

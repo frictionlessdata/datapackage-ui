@@ -106,7 +106,7 @@ gulp.task('app-scripts', function() {
             scriptsDir + '/app.js',
             // glob(scriptsDir + '/components/*.js')
         ],
-        // transform: [],
+        transform: ['browserify-handlebars'],
         debug: true,
         cache: {},
         packageCache: {},
