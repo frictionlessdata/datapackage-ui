@@ -94,7 +94,7 @@ module.exports = {
               window.APP.layout.validationResultList.collection
 
                 // Grouped report has complicated structure
-                .add(M.getSortedByRows().map(function(SR) { return _.extend(_.values(SR)[0], {
+                .add(M.getGroupedByRows().map(function(SR) { return _.extend(_.values(SR)[0], {
                   headers: M.getHeaders(),
                   resource_id: R.key
                 }); }));
