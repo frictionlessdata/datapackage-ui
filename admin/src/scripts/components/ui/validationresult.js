@@ -14,9 +14,8 @@ module.exports = {
     events: {'click [data-id=back]': function() { window.ROUTER.navigate('/', {trigger: true}); return false; }},
 
     ItemView: backbone.BaseView.extend({
-      attributes: {class: 'error-message', 'data-id': 'messages'},
-      render: function() { this.$el.html(this.model.get('result_message')); return this; },
-      tagName: 'li',
+      attributes: {class: 'result panel panel-default'},
+      render: function() { this.$el.html(this.template(this.model.toJSON())); return this; },
       template: validationErrorRowTpl
     }),
 
