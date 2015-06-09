@@ -1,3 +1,4 @@
+var _ = require('underscore');
 var backbone = require('backbone');
 var navigation = require('./navigation');
 var validationErrorRowTpl = require('./templates/validation-error-row.hbs');
@@ -15,7 +16,15 @@ module.exports = {
 
     ItemView: backbone.BaseView.extend({
       attributes: {class: 'result panel panel-default'},
-      render: function() { this.$el.html(this.template(this.model.toJSON())); return this; },
+
+      render: function() {
+        this.$el.html(this.template(_.extend(this.model.toJSON(), {
+          isheader: this.model.get('row_index') === 0
+        })));
+
+        return this;
+      },
+
       template: validationErrorRowTpl
     }),
 

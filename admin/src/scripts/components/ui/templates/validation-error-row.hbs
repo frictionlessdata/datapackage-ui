@@ -10,32 +10,18 @@
 </div>
 
 <div class="panel-body">
-  <strong><span class="text-uppercase">Headers</span></strong>
+  {{#if isheader}}<strong><span class="text-uppercase">Headers</span></strong>{{/if}}
 
   <table class="table table-bordered table-condensed">
     <tbody>
-      <tr class="result-header-row"></tr>
+      {{#unless isheader}}<tr class="result-header-row">
+        <th class="text-uppercase">Row</th>
+        {{#each headers}}<th>{{ this }}</th>{{/each}}
+      </tr>{{/unless}}
       
       <tr class="result-row">
-        <td class="">Post Unique Reference</td>
-        <td class="">Name</td>
-        <td class="">Grade (or equivalent)</td>
-        <td class="">Job Title</td>
-        <td class="">Job/Team Function</td>
-        <td class="">Parent Department</td>
-        <td class="">Organisation</td>
-        <td class="">Unit</td>
-        <td class="">Contact Phone</td>
-        <td class="">Contact E-mail</td>
-        <td class="">Reports to Senior Post</td>
-        <td class="">Salary Cost of Reports (Ł)</td>
-        <td class="">FTE</td>
-        <td class="">Actual Pay Floor (Ł)</td>
-        <td class="">Actual Pay Ceiling (Ł)</td>
-        <td class="bg-danger"></td>
-        <td class="">Professional/Occupational Group</td>
-        <td class="">Notes</td>
-        <td class="">Valid?</td>
+        {{#unless isheader}}<td class="result-row-index">{{ row_index }}</td>{{/unless}}
+        {{#each result_context}}<td {{#unless this}}class="bg-danger"{{/unless}}class="">{{ this }}</td>{{/each}}
       </tr>
     </tbody>
   </table>

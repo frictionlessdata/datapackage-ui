@@ -94,7 +94,10 @@ module.exports = {
               window.APP.layout.validationResultList.collection
 
                 // Grouped report has complicated structure
-                .add(M.getSortedByRows().map(function(SR) { return _.extend(_.values(SR)[0], {resource_id: R.key}); }));
+                .add(M.getSortedByRows().map(function(SR) { return _.extend(_.values(SR)[0], {
+                  headers: M.getHeaders(),
+                  resource_id: R.key
+                }); }));
 
               // Navigate between resources in validation results
               window.APP.layout.validationResultList.layout.tabs.add(new backbone.Model({
