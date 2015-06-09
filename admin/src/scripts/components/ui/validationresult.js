@@ -6,6 +6,13 @@ var validationErrorRowTpl = require('./templates/validation-error-row.hbs');
 
 module.exports = {
   ListView: backbone.BaseListView.extend({
+    // Hide newly added results if they are for another tab
+    addItemView: function(view, container) {
+      view.activate(view.model.get('resource_id') === this.activeResource);
+      backbone.BaseListView.prototype.addItemView.call(this, view, container);
+      return this;
+    },
+
     clear: function() {
       backbone.BaseListView.prototype.clear.call(this);
       this.layout.tabs.clear();
@@ -41,6 +48,7 @@ module.exports = {
 
     // Show certain resource validation errors
     setActive: function(id) {
+      this.activeResource = id;
       this.layout.items.forEach(function(I) { I.activate(I.model.get('resource_id') === id); });
       return this;
     }
