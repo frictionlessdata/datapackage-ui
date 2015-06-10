@@ -1,0 +1,28 @@
+<div class="panel-heading">
+  <ol>{{#each results}}
+    <li>
+      <span class="text-uppercase label label-danger">{{ result_level }}</span>
+      <span class="label label-info">{{ processor }}</span>
+      <strong>{{ result_name }}</strong>:&nbsp;
+      {{ result_message }}
+    </li>
+  {{/each}}</ol>
+</div>
+
+<div class="panel-body">
+  {{#if isheader}}<strong><span class="text-uppercase">Headers</span></strong>{{/if}}
+
+  <table class="table table-bordered table-condensed">
+    <tbody>
+      {{#unless isheader}}<tr class="result-header-row">
+        <th class="text-uppercase">Row</th>
+        {{#each headers}}<th>{{ this }}</th>{{/each}}
+      </tr>{{/unless}}
+      
+      <tr class="result-row">
+        {{#unless isheader}}<td class="result-row-index">{{ row_index }}</td>{{/unless}}
+        {{#each result_context}}<td {{#unless this}}class="bg-danger"{{/unless}}class="">{{ this }}</td>{{/each}}
+      </tr>
+    </tbody>
+  </table>
+</div>

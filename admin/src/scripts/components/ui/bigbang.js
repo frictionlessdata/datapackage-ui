@@ -3,7 +3,7 @@ var backboneBase = require('backbone-base');
 var descriptorEdit = require('./descriptoredit');
 var dialog = require('./dialog');
 var DownloadView = require('./download');
-var NavbarView = require('./navbar');
+var navigation = require('./navigation');
 var registry = require('./registry');
 var validationResult = require('./validationresult');
 
@@ -20,9 +20,14 @@ module.exports = backbone.BaseView.extend({
     this.layout.confirmationDialog = new dialog.ConfirmationView({el: window.APP.$('#confirmation-dialog')});
     (this.layout.descriptorEdit = new descriptorEdit.DescriptorEditView({el: window.APP.$('#descriptor')})).render();
     this.layout.download = new DownloadView({el: window.APP.$('#download-data-package')});
-    this.layout.navbar = new NavbarView({el: window.APP.$('#navbar')});
+    this.layout.navbar = new navigation.NavbarView({el: window.APP.$('#navbar')});
     this.layout.registryList = new registry.ListView({el: window.APP.$('#registry-list'), container: '[data-id=list-container]'});
-    this.layout.validationResultList = new validationResult.ListView({el: window.APP.$('#validation-result'), container: '[data-id=list-container]'});
+
+    this.layout.validationResultList = (new validationResult.ListView({
+      el: window.APP.$('#validation-result'),
+      container: '[data-id=list-container]'
+    })).render();
+
     return this;
   }
 });

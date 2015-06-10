@@ -70,3 +70,8 @@
   margin-left: 0;
   margin-right: 0;
 }
+
+/*Tabs navigation*/
+.col-md-10.tabs > a {
+  margin-right: 16px;
+}
