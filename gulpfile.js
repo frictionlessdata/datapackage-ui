@@ -106,7 +106,7 @@ gulp.task('app-scripts', function() {
             scriptsDir + '/app.js',
             // glob(scriptsDir + '/components/*.js')
         ],
-        // transform: [],
+        transform: ['browserify-handlebars'],
         debug: true,
         cache: {},
         packageCache: {},
@@ -136,8 +136,7 @@ gulp.task('styles', function () {
   return streamqueue(
     {objectMode: true},
     gulp.src(stylesDir + '/app.css'),
-
-    // WARN replace hardcoded value
+    gulp.src(stylesDir + '/custom.css'),
     gulp.src('*/highlight.js/src/styles/default.css')
   )
     .pipe(concat('app.min.css'))

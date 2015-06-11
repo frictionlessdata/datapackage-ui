@@ -75,8 +75,11 @@ module.exports = {
 
     events: {
       'click #validate-resources': function() {
-        var
-          goodTables = new Goodtables({method: 'post'});
+        var goodTables = new Goodtables({method: 'post', report_type: 'grouped'});
+
+        // Navigate to valifation results just once during series of API calls
+        var navigateToResults = _.once(function(id) { window.ROUTER.navigate('/validation-results/' + id, {trigger: true}); });
+
 
         window.APP.layout.validationResultList.reset(new backbone.Collection());
 
@@ -89,11 +92,22 @@ module.exports = {
             function(M) {
               // Validation completed
               window.APP.layout.validationResultList.collection
-                .add(M.isValid() ? [{result_message: 'Validation Success'}] : M.getValidationErrors());
 
-              window.APP.layout.validationResultList.add(window.APP.layout.validationResultList.collection.last());
+                // Grouped report has complicated structure
+                .add(M.getGroupedByRows().map(function(SR) { return _.extend(_.values(SR)[0], {
+                  headers: M.getHeaders(),
+                  resource_id: R.key
+                }); }));
 
-              window.ROUTER.navigate('/validation-results', {trigger: true});
+              // Navigate between resources in validation results
+              window.APP.layout.validationResultList.layout.tabs.add(new backbone.Model({
+                title: R.getValue().path,
+
+                // .key is a unique property among all resources rows
+                url: '/validation-results/' + R.key
+              }));
+
+              navigateToResults(R.key);
             }
           );
         });
