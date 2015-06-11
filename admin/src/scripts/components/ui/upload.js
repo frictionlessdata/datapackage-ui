@@ -8,7 +8,7 @@ var validator = require('datapackage-validate');
 
 module.exports = backbone.BaseView.extend({
   events: {  
-    'change [data-id=input]': function(E) {      debugger;
+    'change [data-id=input]': function(E) {
       this.setError(null);
 
       FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {
