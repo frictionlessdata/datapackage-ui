@@ -4,11 +4,12 @@ var backbone = require('backbone');
 var backboneBase = require('backbone-base');
 var getUri = require('get-uri');
 var Goodtables = require('goodtables');
+var highlight = require('highlight-redux');
 var jsonEditor = require('json-editor');
 var jtsInfer = require('jts-infer');
-var highlight = require('highlight-redux');
-var UploadView = require('./upload');
 var registry = require('./registry');
+var UploadView = require('./upload');
+var validator = require('datapackage-validate');
 var _ = require('underscore');
 var $ = require('jquery');
 
@@ -160,6 +161,18 @@ module.exports = {
         // There is no any good way to bind events to custom button or even add cutsom button
         $(this.layout.form.getEditor('root.resources').container)
           .children('h3').append(this.layout.uploadData.el);
+
+        // Add validation to save JSON action
+        _.each(_.compact($(_.map(this.layout.form.editors, function(E) {if(E.editjson_save) return E;}))), function(E) {
+          E.saveJSON = _.wrap(E.saveJSON, function(saveJSON) {
+            validateResult = validator.validate(this.editjson_textarea.value);
+
+            if(!validateResult.valid)
+              window.APP.layout.errorList.reset(new backbone.Collection(validateResult.errors));
+            else
+              return saveJSON.call(this);
+          });
+        });
 
         // Detecting changes
         this.changed = false;
