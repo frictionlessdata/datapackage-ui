@@ -44,6 +44,7 @@ module.exports = backbone.Router.extend({
     window.APP.layout.download.activate();
     window.APP.layout.descriptorEdit.activate();
     window.APP.layout.descriptorEdit.layout.registryList.activate();
+    window.APP.layout.errorList.activate();
 
     // WARN Process registry errors here
     if(!window.APP.layout.descriptorEdit.layout.registryList.collection) registry.get().then(function(D) {
