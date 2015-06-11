@@ -33,7 +33,7 @@ DataUploadView = backbone.BaseView.extend({
               });
 
               // Save data source
-              _.last(this.options.form.getEditor('root.resources').rows).dataSource = EV.result;
+              _.last(this.options.form.getEditor('root.resources').rows).dataSource = {schema: S, data: EV.result};
             }).bind(this));
           }).bind(this));
         } else if( EV.type ==='progress' ) {
@@ -84,11 +84,7 @@ module.exports = {
         window.APP.layout.validationResultList.reset(new backbone.Collection());
 
         _.each(this.layout.form.getEditor('root.resources').rows, function(R) {
-          // Goodtables schema format {fields: [{name:'colname'...},...]}
-          // Example https://raw.githubusercontent.com/okfn/goodtables/master/examples/test_schema.json
-          goodTables.run(R.dataSource, JSON.stringify({fields: _.map(R.schema.properties, function(V, K) {
-              return _.extend(V, {name: K}) })}
-          )).then(
+          goodTables.run(R.dataSource.data, JSON.stringify(R.dataSource.schema)).then(
             function(M) {
               // Validation completed
               window.APP.layout.validationResultList.collection
