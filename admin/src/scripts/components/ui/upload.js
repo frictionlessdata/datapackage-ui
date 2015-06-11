@@ -3,6 +3,7 @@ require('fileapi');
 var _ = require('underscore');
 var backbone = require('backbone');
 var backboneBase = require('backbone-base');
+var validator = require('datapackage-validate');
 
 
 module.exports = backbone.BaseView.extend({
@@ -16,6 +17,12 @@ module.exports = backbone.BaseView.extend({
 
         if(EV.type === 'load') {
           try {
+            var
+              validateResult = validator.validate(EV.result);
+
+            if(!validateResult.valid)
+              throw new Error(_.pluck(validateResult.errors, 'message').join('<br />'));
+
             descriptor = JSON.parse(EV.result);
           } catch(exception) {
             this.setError(exception.message);
