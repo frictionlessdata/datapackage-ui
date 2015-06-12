@@ -163,7 +163,7 @@ module.exports = {
           .children('h3').append(this.layout.uploadData.el);
 
         // Add validation to save JSON action
-        _.each(_.compact($(_.map(this.layout.form.editors, function(E) {if(E.editjson_save) return E;}))), function(E) {
+        _.each(_.filter(this.layout.form.editors, function(E) { return E.editjson_save; }), function(E) {
           E.saveJSON = _.wrap(E.saveJSON, function(saveJSON) {
             validateResult = validator.validate(this.editjson_textarea.value);
 
