@@ -4,7 +4,7 @@ var descriptorEdit = require('./descriptoredit');
 var dialog = require('./dialog');
 var DownloadView = require('./download');
 var error = require('./error');
-var NavbarView = require('./navbar');
+var NavbarView = require('./navigation');
 var registry = require('./registry');
 var validationResult = require('./validationresult');
 

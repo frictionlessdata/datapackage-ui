@@ -1,6 +1,6 @@
 var backbone = require('backbone');
 var backboneBase = require('backbone-base');
-var outfile = require('../datapackage-outfile');
+var outfile = require('datapackage-outfile');
 var validator = require('datapackage-validate');
 
 
