@@ -1,8 +1,14 @@
 {
-  "name": "datapackage-admin",
-  "version": "0.1.0",
-  "description": "",
-  "main": "admin/scripts/app.js",
+  "name": "datapackagist",
+  "version": "1.0.0",
+  "description": "A web UI for creating, editing and validating Data Packages.",
+  "keywords": [
+    "data package",
+    "frictionless data",
+    "open data",
+    "open knowledge"
+  ],
+  "main": "datapackagist/scripts/app.js",
   "dependencies": {
     "backbone": "^1.2.0",
     "backbone-base": "^0.0.2",
@@ -50,8 +56,37 @@
     "watchify": "^3.2.1"
   },
   "scripts": {
-    "test": "mocha admin/src/scripts/components/datapackage-registry && mocha admin/src/scripts/components/datapackage-outfile && mocha admin/src/scripts/components/goodtables"
+    "test": "mocha datapackagist/src/scripts/components/ui",
+    "start": "gulp",
+    "deploy": "gulp deploy"
   },
-  "author": "Open Knowledge",
+  "author": {
+    "name": "Open Knowledge",
+    "email": "info@okfn.org",
+    "url": "https://okfn.org/"
+  },
+  "contributors": [
+    {
+      "name": "Paul Walsh",
+      "email": "paulywalsh@gmail.com",
+      "url": "http://pwalsh.me/"
+    },
+    {
+      "name": "Artem Rudenko",
+      "email": "gvidon@ottofeller.com",
+      "url": "http://ottofeller.com/"
+    },
+    {
+      "name": "Alexey Kislyakov",
+      "email": "alexey@creony.com",
+      "url": "http://ottofeller.com/"
+    }
+  ],
+  "homepage": "https://github.com/okfn/datapackagist",
+  "bugs": "https://github.com/okfn/datapackagist/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/okfn/datapackagist.git"
+  },
   "license": "MIT"
 }
