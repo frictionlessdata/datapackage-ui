@@ -7,9 +7,9 @@ var validator = require('datapackage-validate');
 
 
 module.exports = backbone.BaseView.extend({
-  events: {  
+  events: {
     'change [data-id=input]': function(E) {
-      this.setError(null);
+      window.APP.layout.errorList.clear();
 
       FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {
         var descriptor;
@@ -20,12 +20,14 @@ module.exports = backbone.BaseView.extend({
             var
               validateResult = validator.validate(EV.result);
 
-            if(!validateResult.valid)
-              throw new Error(_.pluck(validateResult.errors, 'message').join('<br />'));
+            if(!validateResult.valid) {
+              window.APP.layout.errorList.reset(new backbone.Collection(validateResult.errors));
+              return false;
+            }
 
             descriptor = JSON.parse(EV.result);
           } catch(exception) {
-            this.setError(exception.message);
+            window.APP.layout.errorList.reset(new backbone.Collection([exception]));
             return false;
           }
 
@@ -36,7 +38,7 @@ module.exports = backbone.BaseView.extend({
             return false;
           }
 
-          // Ask to overwrite chnages on current form
+          // Ask to overwrite changes on current form
           window.APP.layout.confirmationDialog
             .setMessage('You have changes. Overwrite?')
 
@@ -49,13 +51,12 @@ module.exports = backbone.BaseView.extend({
         } else if( EV.type ==='progress' ){
           this.setProgress(EV.loaded/EV.total * 100);
         } else {
-          this.setError('File upload failed');
+          window.APP.layout.errorList.reset(new backbone.Collection([{message: 'File upload failed'}]));
         }
-      }).bind(this))
+      }).bind(this));
     }
   },
 
-  setError: function(message) { this.$('[data-id=error]').html(message || ''); return this; },
   setProgress: function(percents) { return this; },
 
   // Update edit form and download URL
