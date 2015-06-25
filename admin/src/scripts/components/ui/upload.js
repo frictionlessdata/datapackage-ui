@@ -6,6 +6,7 @@ var backboneBase = require('backbone-base');
 var validator = require('datapackage-validate');
 
 
+// Upload datapackage
 module.exports = backbone.BaseView.extend({
   events: {
     'change [data-id=input]': function(E) {
@@ -16,38 +17,33 @@ module.exports = backbone.BaseView.extend({
 
 
         if(EV.type === 'load') {
-          try {
-            var
-              validateResult = validator.validate(EV.result);
-
-            if(!validateResult.valid) {
-              window.APP.layout.errorList.reset(new backbone.Collection(validateResult.errors));
+          // Validate datapackage and apply to the form
+          validator.validate(EV.result, window.APP.layout.descriptorEdit.layout.registryList.getSchema()).then((function(R) {
+            if(!R.valid) {
+              window.APP.layout.errorList.reset(new backbone.Collection(R.errors));
               return false;
             }
 
             descriptor = JSON.parse(EV.result);
-          } catch(exception) {
-            window.APP.layout.errorList.reset(new backbone.Collection([exception]));
-            return false;
-          }
 
-          // If there are no changes in current form just apply uploaded
-          // data and leave
-          if(!this.parent.hasChanges()) {
-            this.updateApp(descriptor);
-            return false;
-          }
-
-          // Ask to overwrite changes on current form
-          window.APP.layout.confirmationDialog
-            .setMessage('You have changes. Overwrite?')
-
-            .setCallbacks({yes: (function() {
+            // If there are no changes in current form just apply uploaded
+            // data and leave
+            if(!this.parent.hasChanges()) {
               this.updateApp(descriptor);
               return false;
-            }).bind(this)})
+            }
 
-            .activate();
+            // Ask to overwrite changes on current form
+            window.APP.layout.confirmationDialog
+              .setMessage('You have changes. Overwrite?')
+
+              .setCallbacks({yes: (function() {
+                this.updateApp(descriptor);
+                return false;
+              }).bind(this)})
+
+              .activate();
+          }).bind(this));
         } else if( EV.type ==='progress' ){
           this.setProgress(EV.loaded/EV.total * 100);
         } else {
@@ -62,7 +58,6 @@ module.exports = backbone.BaseView.extend({
   // Update edit form and download URL
   updateApp: function(descriptor) {
     this.parent.layout.form.setValue(descriptor);
-    window.APP.layout.download.reset(descriptor).activate();
     return this;
   }
 });

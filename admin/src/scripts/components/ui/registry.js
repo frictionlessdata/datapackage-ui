@@ -16,6 +16,8 @@ module.exports = {
             // Keys of entered fields
             keys = _.keys(this.parent.getFilledValues());
 
+          this.schemaData = schemaData;
+
           // If data can be lost - show confirmation message
           if(deep.diff(_.pick(schemaData.properties, keys), _.pick(this.parent.layout.form.schema.properties, keys)))
             return window.APP.layout.confirmationDialog
@@ -46,10 +48,10 @@ module.exports = {
       }
     },
 
+    getSchema: function() { return this.schemaData; },
+
     getSelectedSchema: function() {
-      return this.collection
-        .get( this.$(this.options.container).val() )
-        .get('schema');
+      return this.collection.get(this.$(this.options.container).val()).get('schema');
     },
 
     ItemView: backbone.BaseView.extend({
@@ -64,11 +66,12 @@ module.exports = {
       tagName: 'option'
     }),
 
-    reset: function() {
-      backbone.BaseListView.prototype.reset.apply(this, arguments);
+    reset: function(collection) {
+      backbone.BaseListView.prototype.reset.call(this, collection);
       this.selectedValue = this.$(this.options.container).val();
 
       $.getJSON(this.getSelectedSchema(), (function(schemaData) {
+        this.schemaData = schemaData;
         this.parent.reset(schemaData);
       }).bind(this));
 
