@@ -206,7 +206,6 @@ module.exports = {
         } else
           // Collapse all
           this.$('.row .json-editor-btn-collapse').click();
-
       }).bind(this));
     },
 
