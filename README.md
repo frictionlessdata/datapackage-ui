@@ -5,22 +5,74 @@ A web app for creating, editing and validating Data Packages.
 Data Packagist allows you to:
 
 * Work with any Data Package Profile that has an entry in the [Data Package Registry](https://github.com/dataprotocols/registry)
-    * Create a new Data Package
-    * Edit an existing Data Package
-    * Download your work as a `datapackage.json` descriptor for use elsewhere
+  * Create a new Data Package
+  * Edit an existing Data Package
+  * Download your work as a `datapackage.json` descriptor for use elsewhere
 * Add additional custom fields to both the top-level descriptor, and each Data Package Resource
 * For each Resource in your Data Package, validate that it is well formed, and conforms to a schema
 * Automatically infer a schema for each Resource added to the package
 * Manually edit the schema for each Resource
 * Add existing "remote" data to automatically create a Data Package. CKAN and DKAN currently supported
 
-Use it at:
-
-http://datapackagist.okfnlabs.org/
+Use it at: http://datapackagist.okfnlabs.org/
 
 ## Documentation
 
+### Using the web app
+
+#### Overview
+
+DataPackagist is a web app that allows you to create and edit Data Packages via a simple and intuitive web form. You can start from scratch, upload an existing `datapackage.json`, or even access DataPackagist via the CKAN and DKAN integration, to get started.
+
+To use the app, you don't need to know the technical details of what a `datapackage.json` file looks like, or why it looks like it does. You only need to know:
+
+1. How to add and edit data in a standard web form.
+2. How to upload files via standard web form buttons.
+3. How to download files via standard web form buttons.
+4. How to find any downloaded `datapackage.json` files, and take them for further use. For example, to add them to new or existing resources on CKAN or DKAN.
+
+#### Scenarios
+
+##### Starting from scratch
+
+In this scenario, you may have some files of data on your local computer that you know you want to use as a Data Package.
+
+The steps are as follows:
+
+1. Use the form to fill out the information for your data package.
+2. Of particular note, in the **Resources** section of the form, upload the data files that are to be included in your new Data Package
+3. If the data files you add are found to have errors, you will be notified.
+4. When you are done, click "Download Data Package" to save your changes to your local machine.
+5. Take the newly saved `datapackage.json` file, and the resources that you added as part of the Data Package, and place them together in a single folder on your local computer. You've now got a Data Package!
+
+##### Edit an existing `datapackage.json`
+
+In this scenario, you may have an existing Data Package on your computer, but you need to make changes to it by editing the `datapackage.json` file.
+
+The steps are as follows:
+
+1. On the main page of the DataPackagist web app, click the "Upload" button.
+2. Locate the `datapackage.json` file that you wish to edit.
+3. Once the `datapackage.json` file is uploaded, the web form will automatically be updated with the current data.
+4. Make any required changes to the data in the web form.
+5. When you are done, click "Download Data Package" to save your changes to your local machine.
+6. Take the newly saved `datapackage.json` file and replace your previous one with it.
+
+##### Using DataPackagist via a link from CKAN or DKAN
+
+In this scenario, you may be viewing or managing datasets on CKAN or DKAN, and need to create or edit a Data Package from a dataset.
+
+The steps are as follows:
+
+1. On the web page of the dataset, you will see a link with a call to action like "Edit in DataPackagist"
+2. This link will take you to the DataPackagist web app, where the web form will be automatically populated with the data of the dataset.
+3. Make any required changes to the data in the web form.
+4. When you are done, click "Download Data Package" to save your changes to your local machine.
+5. Take the newly saved `datapackage.json` file and integrate it back with the CKAN or DKAN resource.
+
 ### Local development
+
+#### Getting started
 
 Getting setup for local development is easy. Ensure that you have a recent version of Node.js installed, and follow the following steps.
 
@@ -34,7 +86,7 @@ That's it. Other things you can do:
 * Run the test suite with `npm test`
 * Deploy your own instance with `npm run-script deploy` (WIP - currently only works for those with permissions on the main DataPackagist instance)
 
-### Contributing
+#### Contributing
 
 We welcome contributions. Please keep the style consistent. Refer to [Open Knowledge Coding Standards](https://github.com/okfn/coding-standards).
 
@@ -59,7 +111,7 @@ Also, notice the following conventions:
 
 If you are new to some of the tooling we use - don't worry, it is not difficult! Refer to [Node Modules](https://nodejs.org/api/modules.html), [Mocha](http://mochajs.org/), [Chai](http://chaijs.com/), [Browserify](http://browserify.org/), [Gulp](http://gulpjs.com/) and [BrowserSync](http://www.browsersync.io/) for further information. These are all key tools to organizing our code and workflow.
 
-### Integrations
+#### Integrations
 
 DataPackagist currently exposes a simple, URL-based API to pull remote data into the application and model it to a Data Package.
 
@@ -67,7 +119,7 @@ This functionality is provided by the [datapackage-from-remote](https://github.c
 
 Please see the docs of **datapackage-from-remote** for specific information on its API, including features such as adding custom remotes. Here, we'll discuss the API that DataPackagist exposes on top of this for use in the web app.
 
-#### API via query params
+##### API via query params
 
 DataPackagist supports remote integration via query params on the base URL of the application (e.g.: `http://datapackagist.okfnlabs.org/?{query_params}`).
 
@@ -80,11 +132,11 @@ The following parameters are supported:
 
 All data passed via params must be url encoded.
 
-#### Integration from 3rd party apps
+##### Integration from 3rd party apps
 
 With knowledge of the supported query params, integration as as simple as making a `GET` request to DataPackagist with the appropriate data.
 
-#### Examples
+##### Examples
 
 * Here is a dataset on a CKAN instance: `http://datahub.io/api/action/package_show?id=population-number-by-governorate-age-group-and-gender-2010-2014`
 * Here is the same dataset, modeled as a Data Package: `http://datapackagist.okfnlabs.org/?url=http%3A%2F%2Fdatahub.io%2Fapi%2Faction%2Fpackage_show%3Fid%3Dpopulation-number-by-governorate-age-group-and-gender-2010-2014`
