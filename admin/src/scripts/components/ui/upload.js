@@ -6,6 +6,7 @@ var backboneBase = require('backbone-base');
 var validator = require('datapackage-validate');
 
 
+// Upload datapackage
 module.exports = backbone.BaseView.extend({
   events: {
     'change [data-id=input]': function(E) {

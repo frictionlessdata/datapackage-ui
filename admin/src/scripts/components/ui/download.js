@@ -4,6 +4,7 @@ var outfile = require('datapackage-outfile');
 var validator = require('datapackage-validate');
 
 
+// Download validated datapackage
 module.exports = backbone.BaseView.extend({
   reset: function(descriptor) {
     this.$el.addClass('disabled');
