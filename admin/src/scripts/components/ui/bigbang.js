@@ -23,7 +23,6 @@ module.exports = backbone.BaseView.extend({
     this.layout.errorList = new error.ListView({el: window.APP.$('#error-list')});
     this.layout.download = new DownloadView({el: window.APP.$('#download-data-package')});
     this.layout.navbar = new navigation.NavbarView({el: window.APP.$('#navbar')});
-    this.layout.registryList = new registry.ListView({el: window.APP.$('#registry-list'), container: '[data-id=list-container]'});
 
     this.layout.validationResultList = (new validationResult.ListView({
       el: window.APP.$('#validation-result'),
