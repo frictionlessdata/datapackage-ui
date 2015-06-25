@@ -172,18 +172,6 @@ module.exports = {
         $(this.layout.form.getEditor('root.resources').container)
           .children('h3').append(this.layout.uploadData.el);
 
-        // Add validation to save JSON action
-        _.each(_.filter(this.layout.form.editors, function(E) { return E.editjson_save; }), function(E) {
-          E.saveJSON = _.wrap(E.saveJSON, function(saveJSON) {
-            validateResult = validator.validate(this.editjson_textarea.value);
-
-            if(!validateResult.valid)
-              window.APP.layout.errorList.reset(new backbone.Collection(validateResult.errors));
-            else
-              return saveJSON.call(this);
-          });
-        });
-
         // Detecting changes
         this.changed = false;
 
