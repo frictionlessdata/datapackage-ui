@@ -9,7 +9,6 @@ var jsonEditor = require('json-editor');
 var jtsInfer = require('jts-infer');
 var registry = require('./registry');
 var UploadView = require('./upload');
-var validator = require('datapackage-validate');
 var _ = require('underscore');
 var $ = require('jquery');
 
