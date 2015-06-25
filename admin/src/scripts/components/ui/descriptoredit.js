@@ -178,7 +178,7 @@ module.exports = {
         // After `ready` event fired, editor fire `change` event regarding to the initial changes
         this.layout.form.on('change', _.after(2, (function() {
           this.changed = true;
-          window.APP.layout.download.reset(this.layout.form.getValue()).activate();
+          window.APP.layout.download.reset(this.layout.form.getValue(), schema).activate();
           this.showResult();
         }).bind(this)));
 

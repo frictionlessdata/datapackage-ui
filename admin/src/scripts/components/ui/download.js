@@ -6,10 +6,10 @@ var validator = require('datapackage-validate');
 
 // Download validated datapackage
 module.exports = backbone.BaseView.extend({
-  reset: function(descriptor) {
+  reset: function(descriptor, schema) {
     this.$el.addClass('disabled');
 
-    validator.validate(window.APP.layout.descriptorEdit.layout.form.getValue()).then((function(R) {
+    validator.validate(window.APP.layout.descriptorEdit.layout.form.getValue(), schema).then((function(R) {
       if(R.valid)
         this.$el
           .removeClass('disabled')
