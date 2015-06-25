@@ -15,7 +15,7 @@ var uglify = require('gulp-uglify');
 var minifyCss = require('gulp-minify-css');
 var streamqueue = require('streamqueue');
 
-var baseDir = './admin';
+var baseDir = './datapackagist';
 var srcDir = baseDir + '/src';
 var distDir = baseDir + '/dist';
 var stylesDir = srcDir + '/styles';
