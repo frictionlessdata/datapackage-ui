@@ -47,10 +47,10 @@ module.exports = backbone.Router.extend({
     window.APP.layout.errorList.activate();
 
     // WARN Process registry errors here
-    if(!window.APP.layout.descriptorEdit.layout.registryList.collection) registry.get().then(function(D) {
-      window.APP.layout.descriptorEdit.layout.registryList
-        .reset(new backbone.Collection(D));
-    });
+    if(!window.APP.layout.descriptorEdit.layout.registryList.collection)
+      registry.get().then(function(D) {
+        window.APP.layout.descriptorEdit.layout.registryList.reset(new backbone.Collection(D));
+      });
   },
 
   validationResults: function(resource) {
