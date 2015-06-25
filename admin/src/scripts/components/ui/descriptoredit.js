@@ -2,11 +2,12 @@ require('fileapi');
 
 var backbone = require('backbone');
 var backboneBase = require('backbone-base');
+var csv = require('csv');
 var getUri = require('get-uri');
 var Goodtables = require('goodtables');
 var highlight = require('highlight-redux');
 var jsonEditor = require('json-editor');
-var jtsInfer = require('jts-infer');
+var jtsInfer = require('json-table-schema').infer;
 var registry = require('./registry');
 var UploadView = require('./upload');
 var validator = require('datapackage-validate');
@@ -21,21 +22,23 @@ DataUploadView = backbone.BaseView.extend({
     'change [data-id=input]': function(E) {
       FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {
         if(EV.type === 'load') {
-          getUri(['data', EV.target.type, 'utf-8'].join(':') + ',' + EV.result, (function (E, R) {
-            if(E) throw E;
+          csv.parse(EV.result, (function(E, D) {
+            var schema;
 
-            jtsInfer(R, (function(E, S, SR) {
-              if(E) throw E;
 
-              this.options.form.getEditor('root.resources').addRow({
-                name: EV.target.name,
-                path: EV.target.name,
-                schema: S
-              });
+            if(E)
+              throw E;
 
-              // Save data source
-              _.last(this.options.form.getEditor('root.resources').rows).dataSource = {schema: S, data: EV.result};
-            }).bind(this));
+            schema = jtsInfer(D[0], _.rest(D));
+
+            this.options.form.getEditor('root.resources').addRow({
+              name: EV.target.name,
+              path: EV.target.name,
+              schema: schema
+            });
+
+            // Save data source
+            _.last(this.options.form.getEditor('root.resources').rows).dataSource = {schema: schema, data: EV.result};
           }).bind(this));
         } else if( EV.type ==='progress' ) {
           this.setProgress(EV.loaded/EV.total * 100);
