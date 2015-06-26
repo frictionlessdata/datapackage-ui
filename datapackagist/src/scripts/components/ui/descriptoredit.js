@@ -179,19 +179,30 @@ module.exports = {
 
         // After `ready` event fired, editor fire `change` event regarding to the initial changes
         this.layout.form.on('change', _.after(2, (function() {
+          var resources = this.layout.form.getEditor('root.resources');
+          var resourcesLength = _.result(resources.rows, 'length');
+
+
           this.changed = true;
           window.APP.layout.download.reset(this.layout.form.getValue(), schema).activate();
           this.showResult();
+
+          // Expand resources section if there are any resources, collapse if row is empty
+          if(resourcesLength && resources.collapsed || !resourcesLength && !resources.collapsed)
+            $(resources.toggle_button).trigger('click');
         }).bind(this)));
 
         // If on the previous form was entered values try to apply it to new form
         if(formData) {
           this.layout.form.setValue(_.extend({}, this.layout.form.getValue(formData), formData));
 
-          // Expand editors if it have value
+          // Collapse editor if no value
           _.each(this.$('[data-schemapath][data-schemapath!=root]:has(.json-editor-btn-collapse)'), function(E) {
-              if(_.isEmpty(this.layout.form.getEditor($(E).data('schemapath')).getValue()))
-                $(E).find('.json-editor-btn-collapse').click();
+              var editor = this.layout.form.getEditor($(E).data('schemapath'));
+
+
+              if(_.isEmpty(editor.getValue()) && !editor.collapsed)
+                $(editor.toggle_button).trigger('click');
           }, this);
         } else
           // Collapse all
