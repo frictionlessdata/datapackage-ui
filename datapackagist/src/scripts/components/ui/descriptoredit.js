@@ -36,7 +36,7 @@ DataUploadView = backbone.BaseView.extend({
               schema: schema
             });
 
-            // Save data source
+            // Save data source in the form
             _.last(this.options.form.getEditor('root.resources').rows).dataSource = {schema: schema, data: EV.result};
           }).bind(this));
         } else if( EV.type ==='progress' ) {
