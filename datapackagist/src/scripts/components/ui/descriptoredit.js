@@ -180,14 +180,15 @@ module.exports = {
         // After `ready` event fired, editor fire `change` event regarding to the initial changes
         this.layout.form.on('change', _.after(2, (function() {
           var resources = this.layout.form.getEditor('root.resources');
+          var resourcesLength = _.result(resources.rows, 'length');
 
 
           this.changed = true;
           window.APP.layout.download.reset(this.layout.form.getValue(), schema).activate();
           this.showResult();
 
-          // Expand resources section if there are any resource
-          if(_.result(resources.rows, 'length') && resources.collapsed)
+          // Expand resources section if there are any resources, collapse if row is empty
+          if(resourcesLength && resources.collapsed || !resourcesLength && !resources.collapsed)
             $(resources.toggle_button).trigger('click');
         }).bind(this)));
 
