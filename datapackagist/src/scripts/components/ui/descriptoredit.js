@@ -195,10 +195,13 @@ module.exports = {
         if(formData) {
           this.layout.form.setValue(_.extend({}, this.layout.form.getValue(formData), formData));
 
-          // Expand editors if it have value
+          // Collapse editor if no value
           _.each(this.$('[data-schemapath][data-schemapath!=root]:has(.json-editor-btn-collapse)'), function(E) {
-              if(_.isEmpty(this.layout.form.getEditor($(E).data('schemapath')).getValue()))
-                $(E).find('.json-editor-btn-collapse').click();
+              var editor = this.layout.form.getEditor($(E).data('schemapath'));
+
+
+              if(_.isEmpty(editor.getValue()) && !editor.collapsed)
+                $(editor.toggle_button).trigger('click');
           }, this);
         } else
           // Collapse all
