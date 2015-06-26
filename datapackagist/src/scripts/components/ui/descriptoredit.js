@@ -31,7 +31,7 @@ DataUploadView = backbone.BaseView.extend({
             schema = jtsInfer(D[0], _.rest(D));
 
             this.options.form.getEditor('root.resources').addRow({
-              name: EV.target.name,
+              name: _.last(EV.target.name.split('/')).toLowerCase().replace(/\.[^.]+$|[^a-z^\-^\d^_^\.]+/g, ''),
               path: EV.target.name,
               schema: schema
             });
