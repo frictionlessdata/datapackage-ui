@@ -14,6 +14,15 @@ var _ = require('underscore');
 var $ = require('jquery');
 
 
+// Convert name into title
+function titleize(name) {
+  return name
+    .replace(/[\-\._]+/g, ' ')
+    .replace(/([a-z]{1})([A-Z]{1})/g, '$1 $2')
+    .replace(/\s+/g, ' ')
+    .toLowerCase();
+}
+
 // Upload data file and populate .resource array with item
 DataUploadView = backbone.BaseView.extend({
   events: {
@@ -77,6 +86,24 @@ module.exports = {
     },
 
     events: {
+      // Populate title field if it was not edited by user
+      'keyup input[name="root[name]"]': function(event) {
+        var $title = $('input[name="root[title]"]');
+
+
+        // Do not populate user changed field
+        if($title[0].edited)
+          return true;
+
+        $title.val(titleize($(event.currentTarget).val()));
+      },
+
+      // Do not populate title field with name field data if title was edited
+      // by user. Consider it is not edited once user empties it.
+      'keyup input[name="root[title]"]': function(event) {
+        event.currentTarget.edited = Boolean($(event.currentTarget).val());
+      },
+
       'click #validate-resources': function() {
         var goodTables = new Goodtables({method: 'post', report_type: 'grouped'});
 
@@ -162,6 +189,9 @@ module.exports = {
         schema: schema,
         theme: 'bootstrap3'
       });
+
+      // Bind local event to form nodes after form is renedered
+      this.delegateEvents();
 
       this.layout.uploadData = (new DataUploadView({
         el: this.layout.form.theme.getHeaderButtonHolder(),
