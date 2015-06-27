@@ -101,7 +101,14 @@ module.exports = {
       // Do not populate title field with name field data if title was edited
       // by user. Consider it is not edited once user empties it.
       'keyup input[name="root[title]"], [data-schemapath^="root.resources."].container-title input': function(event) {
-        event.currentTarget.edited = Boolean($(event.currentTarget).val());
+        var $input = $(event.currentTarget);
+
+
+        event.currentTarget.edited = Boolean($input.val());
+
+        // If user empties the title field then populate it with name field value
+        if(!event.currentTarget.edited)
+          $input.closest('[data-schematype=object]').find('.row .container-name input').trigger('keyup');
       },
 
       'click #validate-resources': function() {
