@@ -86,21 +86,21 @@ module.exports = {
     },
 
     events: {
-      // Populate title field if it was not edited by user
-      'keyup input[name="root[name]"]': function(event) {
-        var $title = $('input[name="root[title]"]');
-
+      // Populate main title and resource title fields
+      'keyup input[name="root[name]"], [data-schemapath^="root.resources."].container-name input': function(event) {
+        var $input = $(event.currentTarget);
+        var $title = $input.closest('[data-schematype=object]').find('.row .container-title input').eq(0);
 
         // Do not populate user changed field
         if($title[0].edited)
           return true;
 
-        $title.val(titleize($(event.currentTarget).val()));
+        $title.val(titleize($input.val()));
       },
 
       // Do not populate title field with name field data if title was edited
       // by user. Consider it is not edited once user empties it.
-      'keyup input[name="root[title]"]': function(event) {
+      'keyup input[name="root[title]"], [data-schemapath^="root.resources."].container-title input': function(event) {
         event.currentTarget.edited = Boolean($(event.currentTarget).val());
       },
 
