@@ -14,6 +14,15 @@ var _ = require('underscore');
 var $ = require('jquery');
 
 
+// Convert name into title
+function titleize(name) {
+  return name
+    .replace(/[\-\._]+/g, ' ')
+    .replace(/([a-z]{1})([A-Z]{1})/g, '$1 $2')
+    .replace(/\s+/g, ' ')
+    .toLowerCase();
+}
+
 // Upload data file and populate .resource array with item
 DataUploadView = backbone.BaseView.extend({
   events: {
@@ -77,6 +86,31 @@ module.exports = {
     },
 
     events: {
+      // Populate main title and resource title fields
+      'keyup input[name="root[name]"], [data-schemapath^="root.resources."].container-name input': function(event) {
+        var $input = $(event.currentTarget);
+        var $title = $input.closest('[data-schematype=object]').find('.row .container-title input').eq(0);
+
+        // Do not populate user changed field
+        if($title[0].edited)
+          return true;
+
+        $title.val(titleize($input.val()));
+      },
+
+      // Do not populate title field with name field data if title was edited
+      // by user. Consider it is not edited once user empties it.
+      'keyup input[name="root[title]"], [data-schemapath^="root.resources."].container-title input': function(event) {
+        var $input = $(event.currentTarget);
+
+
+        event.currentTarget.edited = Boolean($input.val());
+
+        // If user empties the title field then populate it with name field value
+        if(!event.currentTarget.edited)
+          $input.closest('[data-schematype=object]').find('.row .container-name input').trigger('keyup');
+      },
+
       'click #validate-resources': function() {
         var goodTables = new Goodtables({method: 'post', report_type: 'grouped'});
 
@@ -162,6 +196,9 @@ module.exports = {
         schema: schema,
         theme: 'bootstrap3'
       });
+
+      // Bind local event to form nodes after form is renedered
+      this.delegateEvents();
 
       this.layout.uploadData = (new DataUploadView({
         el: this.layout.form.theme.getHeaderButtonHolder(),
