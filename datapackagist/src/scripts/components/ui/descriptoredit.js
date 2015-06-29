@@ -152,8 +152,10 @@ module.exports = {
 
       // Customize theme
       JSONEditor.defaults.iconlibs.fontawesome4 = JSONEditor.defaults.iconlibs.fontawesome4.extend({
-        expand: 'plus',
-        collapse: 'minus'
+        mapping: {
+          expand: 'plus',
+          collapse: 'minus'
+        }
       });
 
       return backbone.BaseView.prototype.initialize.call(this, options);
