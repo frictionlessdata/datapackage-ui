@@ -32,6 +32,8 @@ module.exports = {
 
     reset: function(collection) {
       backbone.BaseListView.prototype.reset.call(this, collection);
+
+      // Used to restore previous value when user selects No in confirmation dialog
       this.selectedValue = this.$(this.options.container).val();
 
       $.getJSON(this.getSelectedSchema(), (function(schemaData) {
