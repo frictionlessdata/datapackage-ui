@@ -20,7 +20,7 @@
     "datapackage-from-remote": "0.0.2",
     "datapackage-outfile": "^0.1.0",
     "datapackage-registry": "^0.1.0",
-    "datapackage-validate": "git://github.com/okfn/datapackage-validate.git#feature/datapackage-registry",
+    "datapackage-validate": "git+https://github.com/okfn/datapackage-validate.git",
     "deep-diff": "^0.3.2",
     "detect-browser": "^1.1.1",
     "fileapi": "^2.0.10",
