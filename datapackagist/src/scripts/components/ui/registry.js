@@ -7,11 +7,47 @@ var deep = require('deep-diff');
 module.exports = {
   ListView: backbone.BaseListView.extend({
     events: {
-      'change': function() {
-        var
-          schema = this.getSelectedSchema();
+      'change': function(event) { this.setSelectedSchema(this.$(this.options.container).val()); }
+    },
 
-        $.getJSON(schema, (function(schemaData) {
+    // Returns schema object
+    getSchema: function() { return this.schemaData; },
+
+    // Returns schema URL
+    getSelectedSchema: function() {
+      return this.collection.get(this.$(this.options.container).val()).get('schema');
+    },
+
+    ItemView: backbone.BaseView.extend({
+      render: function() {
+        this.$el
+          .attr('value', this.model.id)
+          .html(this.model.get('title'));
+
+        return this;
+      },
+
+      tagName: 'option'
+    }),
+
+    reset: function(collection) {
+      backbone.BaseListView.prototype.reset.call(this, collection);
+      this.selectedValue = this.$(this.options.container).val();
+
+      $.getJSON(this.getSelectedSchema(), (function(schemaData) {
+        this.schemaData = schemaData;
+        this.parent.reset(schemaData);
+      }).bind(this));
+
+      return this;
+    },
+
+    // Update selectbox and trigger change event
+    setSelectedSchema: function(id) {
+      this.$el.val(id);
+
+      return new Promise((function(RS, RJ) {
+        $.getJSON(this.collection.get(id).get('schema'), (function(schemaData) {
           var
             // Keys of entered fields
             keys = _.keys(this.parent.getFilledValues());
@@ -28,51 +64,24 @@ module.exports = {
                   this.selectedValue = this.$(this.options.container).val();
                   this.parent.reset(schemaData);
                   window.APP.layout.confirmationDialog.deactivate();
-                  return false;
+                  RS(schemaData);
                 }).bind(this),
 
                 no: (function() {
                   this.$(this.options.container).val(this.selectedValue);
                   window.APP.layout.confirmationDialog.deactivate();
-                  return false;
+                  RS(schemaData);
                 }).bind(this)
               })
 
               .activate();
 
-          else this.selectedValue = this.$(this.options.container).val();
+          else
+            this.selectedValue = this.$(this.options.container).val();
 
           this.parent.reset(schemaData);
-
+          RS(schemaData);
         }).bind(this));
-      }
-    },
-
-    getSchema: function() { return this.schemaData; },
-
-    getSelectedSchema: function() {
-      return this.collection.get(this.$(this.options.container).val()).get('schema');
-    },
-
-    ItemView: backbone.BaseView.extend({
-      render: function() {
-        this.$el
-          .attr('value', this.model.cid)
-          .html(this.model.get('title'));
-
-        return this;
-      },
-
-      tagName: 'option'
-    }),
-
-    reset: function(collection) {
-      backbone.BaseListView.prototype.reset.call(this, collection);
-      this.selectedValue = this.$(this.options.container).val();
-
-      $.getJSON(this.getSelectedSchema(), (function(schemaData) {
-        this.schemaData = schemaData;
-        this.parent.reset(schemaData);
       }).bind(this));
 
       return this;
