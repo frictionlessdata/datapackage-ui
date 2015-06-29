@@ -149,6 +149,13 @@ module.exports = {
 
     initialize: function(options) {
       highlight.configure({useBR: true});
+
+      // Customize theme
+      JSONEditor.defaults.iconlibs.fontawesome4 = JSONEditor.defaults.iconlibs.fontawesome4.extend({
+        expand: 'plus',
+        collapse: 'minus'
+      });
+
       return backbone.BaseView.prototype.initialize.call(this, options);
     },
 
@@ -194,7 +201,10 @@ module.exports = {
 
       this.layout.form = new JSONEditor(this.$('[data-id=form-container]').get(0), {
         schema: schema,
-        theme: 'bootstrap3'
+        theme: 'bootstrap3',
+        disable_edit_json: true,
+        disable_properties: true,
+        iconlib: 'fontawesome4'
       });
 
       // Bind local event to form nodes after form is renedered
