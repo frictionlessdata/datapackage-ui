@@ -46,7 +46,7 @@ module.exports = {
 
     // Update selectbox and trigger change event
     setSelectedSchema: function(id) {
-      this.$el.val(id);
+      this.$(this.options.container).val(id);
 
       return new Promise((function(RS, RJ) {
         $.getJSON(this.collection.get(id).get('schema'), (function(schemaData) {
