@@ -1,6 +1,8 @@
 var _ = require('underscore');
 var backbone = require('backbone');
+var dpFromRemote = require('datapackage-from-remote');
 var registry = require('datapackage-registry');
+var Promise = require('bluebird');
 
 // WARN Used just for demo purposes
 var VALID_DESCRIPTOR = {
@@ -24,6 +26,7 @@ var VALID_DESCRIPTOR = {
 module.exports = backbone.Router.extend({
   routes: {
     '(/)': 'index',
+    'from-remote/:datapackage(/)': 'fromRemote',
     'validation-results/:resource(/)': 'validationResults'
   },
 
@@ -38,6 +41,29 @@ module.exports = backbone.Router.extend({
     return this;
   },
 
+  fromRemote: function(datapackage) {
+    var descriptorEdit = window.APP.layout.descriptorEdit;
+    var options = _.object(window.location.search.replace('?', '').split('&').map(function(P) { return P.split('='); }));
+
+    // If .index() have not yet downloaded registry it will return Promise. Otherwise
+    // registry is loaded and .index() returns undefined.
+    (this.index() || new Promise(function(RS, RJ) { RS(true); })).then(function() {
+      try {
+        dpFromRemote(unescape(options.url), _.extend(options, {datapackage: datapackage}))
+          .then(function(D) {
+            // Update registry and descriptor schema list and then set descriptor form value
+            descriptorEdit.layout.registryList.setSelected(datapackage).then(function() {
+              descriptorEdit.layout.form.setValue(D);
+            });
+          })
+
+          .catch(function(E) { console.log('Error while processing data: ' + E); });
+      } catch(E) {
+        console.log('Error while loading data from remote: ' + E);
+      }
+    });
+  },
+
   index: function() {
     this.deactivateAll();
     window.APP.layout.navbar.toggleBadge(true);
@@ -48,7 +74,8 @@ module.exports = backbone.Router.extend({
 
     // WARN Process registry errors here
     if(!window.APP.layout.descriptorEdit.layout.registryList.collection)
-      registry.get().then(function(D) {
+      // fromRemote route need to wait for registry before getting datapackage from remote source
+      return registry.get().then(function(D) {
         window.APP.layout.descriptorEdit.layout.registryList.reset(new backbone.Collection(D));
       });
   },

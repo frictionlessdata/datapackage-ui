@@ -7,11 +7,11 @@ var deep = require('deep-diff');
 module.exports = {
   ListView: backbone.BaseListView.extend({
     events: {
-      'change': function() {
-        var
-          schema = this.getSelectedSchema();
+      'change': function(event) {
+        var id = this.$(this.options.container).val();
 
-        $.getJSON(schema, (function(schemaData) {
+
+        $.getJSON(this.collection.get(id).get('schema'), (function(schemaData) {
           var
             // Keys of entered fields
             keys = _.keys(this.parent.getFilledValues());
@@ -25,7 +25,7 @@ module.exports = {
 
               .setCallbacks({
                 yes: (function() {
-                  this.selectedValue = this.$(this.options.container).val();
+                  this.selectedValue = id;
                   this.parent.reset(schemaData);
                   window.APP.layout.confirmationDialog.deactivate();
                   return false;
@@ -39,17 +39,18 @@ module.exports = {
               })
 
               .activate();
-
-          else this.selectedValue = this.$(this.options.container).val();
+          else
+            this.selectedValue = id;
 
           this.parent.reset(schemaData);
-
         }).bind(this));
       }
     },
 
+    // Returns schema object
     getSchema: function() { return this.schemaData; },
 
+    // Returns schema URL
     getSelectedSchema: function() {
       return this.collection.get(this.$(this.options.container).val()).get('schema');
     },
@@ -57,7 +58,7 @@ module.exports = {
     ItemView: backbone.BaseView.extend({
       render: function() {
         this.$el
-          .attr('value', this.model.cid)
+          .attr('value', this.model.id)
           .html(this.model.get('title'));
 
         return this;
@@ -68,14 +69,24 @@ module.exports = {
 
     reset: function(collection) {
       backbone.BaseListView.prototype.reset.call(this, collection);
-      this.selectedValue = this.$(this.options.container).val();
-
-      $.getJSON(this.getSelectedSchema(), (function(schemaData) {
-        this.schemaData = schemaData;
-        this.parent.reset(schemaData);
-      }).bind(this));
-
+      this.setSelected(this.collection.at(0).get('id'));
       return this;
+    },
+
+    // Update selectbox and trigger change event
+    setSelected: function(id) {
+      this.$(this.options.container).val(id);
+
+      // Used to restore previous value when user selects No in confirmation dialog
+      this.selectedValue = id;
+
+      return new Promise((function(RS, RJ) {
+        $.getJSON(this.collection.get(id).get('schema'), (function(schemaData) {
+          this.schemaData = schemaData;
+          this.parent.reset(schemaData);
+          RS(schemaData);
+        }).bind(this));
+      }).bind(this));
     },
 
     tagName: 'select'

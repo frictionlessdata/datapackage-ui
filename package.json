@@ -12,9 +12,12 @@
   "dependencies": {
     "backbone": "^1.2.0",
     "backbone-base": "^0.0.2",
+    "bluebird": "^2.9.30",
     "bootstrap": "^3.3.4",
     "browserify-handlebars": "^1.0.0",
+    "connect-history-api-fallback": "^1.1.0",
     "csv": "^0.4.5",
+    "datapackage-from-remote": "0.0.2",
     "datapackage-outfile": "^0.1.0",
     "datapackage-registry": "^0.1.0",
     "datapackage-validate": "git://github.com/okfn/datapackage-validate.git#feature/datapackage-registry",
