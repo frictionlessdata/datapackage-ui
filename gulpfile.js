@@ -69,9 +69,10 @@ gulp.task('serve', function() {
   browserSync({
     open: false,
     server: {
-        baseDir: distDir
+        baseDir: distDir,
+
         // use this for apps with client side routing
-        // middleware: [historyApiFallback]
+        middleware: [historyApiFallback()]
     }
   });
 
