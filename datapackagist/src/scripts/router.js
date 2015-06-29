@@ -42,6 +42,7 @@ module.exports = backbone.Router.extend({
   },
 
   fromRemote: function(datapackage) {
+    var descriptorEdit = window.APP.layout.descriptorEdit;
     var options = _.object(window.location.search.replace('?', '').split('&').map(function(P) { return P.split('='); }));
 
     // If .index() have not yet downloaded registry it will return Promise. Otherwise
@@ -49,8 +50,14 @@ module.exports = backbone.Router.extend({
     (this.index() || new Promise(function(RS, RJ) { RS(true); })).then(function() {
       try {
         dpFromRemote(unescape(options.url), _.extend(options, {datapackage: datapackage}))
-        .then(function(D) { console.log(D); })
-        .catch(function(E) { console.log('Error while processing data: ' + E); });
+          .then(function(D) {
+            // Update registry and descriptor schema list and then set descriptor form value
+            descriptorEdit.layout.registryList.setSelected(datapackage).then(function() {
+              descriptorEdit.layout.form.setValue(D);
+            });
+          })
+
+          .catch(function(E) { console.log('Error while processing data: ' + E); });
       } catch(E) {
         console.log('Error while loading data from remote: ' + E);
       }
