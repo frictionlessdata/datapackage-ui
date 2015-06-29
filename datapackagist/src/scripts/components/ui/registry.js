@@ -25,7 +25,6 @@ module.exports = {
 
               .setCallbacks({
                 yes: (function() {
-
                   this.selectedValue = id;
                   this.parent.reset(schemaData);
                   window.APP.layout.confirmationDialog.deactivate();
@@ -38,9 +37,7 @@ module.exports = {
               })
 
               .activate();
-
           else
-
             this.selectedValue = id;
 
           this.parent.reset(schemaData);
