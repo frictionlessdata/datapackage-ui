@@ -28,11 +28,13 @@ module.exports = {
                   this.selectedValue = id;
                   this.parent.reset(schemaData);
                   window.APP.layout.confirmationDialog.deactivate();
+                  return false;
                 }).bind(this),
 
                 no: (function() {
                   this.$(this.options.container).val(this.selectedValue);
                   window.APP.layout.confirmationDialog.deactivate();
+                  return false;
                 }).bind(this)
               })
 
