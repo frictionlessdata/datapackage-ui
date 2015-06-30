@@ -81,3 +81,14 @@
   height: 64px;
   overflow: hidden;
 }
+
+/*JSON code of a datapackage should be on the same vertical alignment as descriptor form*/
+.json-code-container {
+  margin-top: 140px;
+}
+
+.error-list {
+  position: absolute;
+  height: 128px;
+  overflow: scroll;
+}
