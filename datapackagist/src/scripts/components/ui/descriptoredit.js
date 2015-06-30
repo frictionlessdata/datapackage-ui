@@ -229,6 +229,9 @@ module.exports = {
             $(resources.toggle_button).trigger('click');
         }).bind(this)));
 
+        $('#json-code').prop('hidden', true);
+        window.APP.layout.errorList.$el.prop('hidden', true);
+
         // Collapse editor and add empty item if it has no value
         _.each(this.$('[data-schemapath^="root."]:has(.json-editor-btn-collapse)'), function(E) {
           var editor = this.layout.form.getEditor($(E).data('schemapath'));
@@ -239,15 +242,15 @@ module.exports = {
           if(_.contains(['resources', 'sources', 'licences'], E.dataset.schemapath.replace('root.', '')))
             $(editor.add_row_button).trigger('click');
 
-          // Do not ask why
-          setTimeout(function() {
-            $('#json-code').html('');
-            window.APP.layout.errorList.reset(new backbone.Collection([]));
-
-            if(isEmpty && !editor.collapsed)
-              $(editor.toggle_button).trigger('click');
-          }, 300);
+          if(isEmpty && !editor.collapsed)
+            $(editor.toggle_button).trigger('click');
         }, this);
+
+        // Looks like previous loop is somehow async
+        setTimeout(function() {
+          $('#json-code').html('').prop('hidden', false);
+          window.APP.layout.errorList.reset(new backbone.Collection([])).$el.prop('hidden', false);
+        }, 300);
 
         // If on the previous form was entered values try to apply it to new form
         if(formData)
