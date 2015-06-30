@@ -229,21 +229,28 @@ module.exports = {
             $(resources.toggle_button).trigger('click');
         }).bind(this)));
 
+        // Collapse editor and add empty item if it has no value
+        _.each(this.$('[data-schemapath^="root."]:has(.json-editor-btn-collapse)'), function(E) {
+          var editor = this.layout.form.getEditor($(E).data('schemapath'));
+          var isEmpty = _.isEmpty(editor.getValue());
+
+
+          // Empty array data should have one empty item
+          $(editor.add_row_button).trigger('click');
+
+          // Do not ask why
+          setTimeout(function() { 
+            $('#json-code').html('');
+            window.APP.layout.errorList.reset(new backbone.Collection([]));
+
+            if(isEmpty && !editor.collapsed)
+              $(editor.toggle_button).trigger('click');
+          }, 300);
+        }, this);
+
         // If on the previous form was entered values try to apply it to new form
-        if(formData) {
+        if(formData)
           this.layout.form.setValue(_.extend({}, this.layout.form.getValue(formData), formData));
-
-          // Collapse editor if no value
-          _.each(this.$('[data-schemapath][data-schemapath!=root]:has(.json-editor-btn-collapse)'), function(E) {
-              var editor = this.layout.form.getEditor($(E).data('schemapath'));
-
-
-              if(_.isEmpty(editor.getValue()) && !editor.collapsed)
-                $(editor.toggle_button).trigger('click');
-          }, this);
-        } else
-          // Collapse all
-          this.$('.row .json-editor-btn-collapse').click();
       }).bind(this));
     },
 
