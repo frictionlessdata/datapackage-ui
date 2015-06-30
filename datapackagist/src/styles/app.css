@@ -98,3 +98,8 @@
 [data-schematype="object"] > h3 {
   font-size: 15px;
 }
+
+/*Add missed padding of form header*/
+.registry-list-container .form-group {
+  padding-left: 20px;
+}
