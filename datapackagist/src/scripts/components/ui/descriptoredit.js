@@ -259,13 +259,22 @@ module.exports = {
           _.each(this.$('[data-schemapath][data-schemapath!=root]:has(.json-editor-btn-collapse)'), function(E) {
               var editor = this.layout.form.getEditor($(E).data('schemapath'));
 
-
               if(_.isEmpty(editor.getValue()) && !editor.collapsed)
                 $(editor.toggle_button).trigger('click');
           }, this);
-        } else
+        } else {
           // Collapse all
           this.$('.row .json-editor-btn-collapse').click();
+
+          // Remove collapse button on add new item in collection
+          _.each(this.$('[data-schemapath][data-schemapath!=root]:has(.json-editor-btn-add)'), function(E) {
+            var editor = this.layout.form.getEditor($(E).data('schemapath'));
+
+            $(editor.add_row_button).click((function() {
+              $(_.last(this.rows).toggle_button).remove();
+            }).bind(editor));
+          }, this);
+        }
       }).bind(this));
     },
 
