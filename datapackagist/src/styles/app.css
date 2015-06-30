@@ -75,3 +75,9 @@
 .col-md-10.tabs > a {
   margin-right: 16px;
 }
+
+/*Fixed height of descriptor form description*/
+[data-schemapath="root"] > p {
+  height: 64px;
+  overflow: hidden;
+}
