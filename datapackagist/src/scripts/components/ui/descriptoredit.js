@@ -240,7 +240,7 @@ module.exports = {
             $(editor.add_row_button).trigger('click');
 
           // Do not ask why
-          setTimeout(function() { 
+          setTimeout(function() {
             $('#json-code').html('');
             window.APP.layout.errorList.reset(new backbone.Collection([]));
 
