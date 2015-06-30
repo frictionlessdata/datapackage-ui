@@ -153,8 +153,15 @@ module.exports = {
       // Customize theme
       JSONEditor.defaults.iconlibs.fontawesome4 = JSONEditor.defaults.iconlibs.fontawesome4.extend({
         mapping: {
+          collapse: 'minus',
           expand: 'plus',
-          collapse: 'minus'
+          'delete': 'times',
+          edit: 'pencil',
+          add: 'plus',
+          cancel: 'ban',
+          save: 'save',
+          moveup: 'arrow-up',
+          movedown: 'arrow-down'
         }
       });
 
