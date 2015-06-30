@@ -209,6 +209,9 @@ module.exports = {
         iconlib: 'fontawesome4'
       });
 
+      // Remove Top-level collapse
+      $(this.layout.form.element).find('.json-editor-btn-collapse:first').remove();
+
       // Bind local event to form nodes after form is renedered
       this.delegateEvents();
 
