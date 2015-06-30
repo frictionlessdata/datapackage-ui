@@ -92,3 +92,9 @@
   height: 128px;
   overflow: scroll;
 }
+
+/*Array data titles same size as other titles*/
+[data-schematype="array"] > h3,
+[data-schematype="object"] > h3 {
+  font-size: 15px;
+}
