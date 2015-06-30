@@ -236,7 +236,8 @@ module.exports = {
 
 
           // Empty array data should have one empty item
-          $(editor.add_row_button).trigger('click');
+          if(_.contains(['resources', 'sources', 'licences'], E.dataset.schemapath.replace('root.', '')))
+            $(editor.add_row_button).trigger('click');
 
           // Do not ask why
           setTimeout(function() { 
