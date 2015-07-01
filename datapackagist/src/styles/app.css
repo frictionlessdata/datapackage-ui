@@ -103,3 +103,14 @@
 .registry-list-container .form-group {
   padding-left: 20px;
 }
+
+/*No merged buttons*/
+.btn-group>.btn:last-child:not(:first-child),
+.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle),
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 3px;
+}
+
+.btn-group > .btn:not(:first-child) {
+  margin-left: 10px;
+}

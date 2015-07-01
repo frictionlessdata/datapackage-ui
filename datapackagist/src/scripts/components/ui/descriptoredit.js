@@ -63,12 +63,12 @@ DataUploadView = backbone.BaseView.extend({
 
   render: function() {
     this.$el
-      .append('<input data-id="input" type="file" accept="text/csv" style="display: none;">')
-
       .append(
         $(this.options.form.theme.getButton('Upload data file', '', 'Upload data file'))
           .attr('data-id', 'upload-data-file')
-      );
+      )
+
+      .append('<input data-id="input" type="file" accept="text/csv" style="display: none;">');
 
     return this;
   },
