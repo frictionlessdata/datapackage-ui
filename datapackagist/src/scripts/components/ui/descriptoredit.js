@@ -192,6 +192,17 @@ module.exports = {
         this.layout.uploadData.undelegateEvents().remove();
       }
 
+      // Proper representation of all form buttons. Avoid changing each newly
+      // rendered button by rewriting the .getButton()
+      JSONEditor.defaults.themes.bootstrap3.prototype.getButton = function(text, icon, title) {
+        var el = document.createElement('button');
+
+        el.type = 'button';
+        el.className += 'btn btn-info btn-sm';
+        this.setButtonText(el,text,icon,title);
+        return el;
+      };
+
       this.layout.form = new JSONEditor(this.$('[data-id=form-container]').get(0), {
         schema: schema,
         theme: 'bootstrap3'
