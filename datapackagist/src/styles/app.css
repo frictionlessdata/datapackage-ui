@@ -81,6 +81,10 @@
   float: right;
 }
 
+.well-sm {
+  margin-top: 32px;
+}
+
 /*Fixed height of descriptor form description*/
 [data-schemapath="root"] > p {
   height: 64px;
