@@ -149,6 +149,22 @@ module.exports = {
 
     initialize: function(options) {
       highlight.configure({useBR: true});
+
+      // Customize theme
+      JSONEditor.defaults.iconlibs.fontawesome4 = JSONEditor.defaults.iconlibs.fontawesome4.extend({
+        mapping: {
+          collapse: 'minus',
+          expand: 'plus',
+          'delete': 'times',
+          edit: 'pencil',
+          add: 'plus',
+          cancel: 'ban',
+          save: 'save',
+          moveup: 'arrow-up',
+          movedown: 'arrow-down'
+        }
+      });
+
       return backbone.BaseView.prototype.initialize.call(this, options);
     },
 
@@ -205,8 +221,14 @@ module.exports = {
 
       this.layout.form = new JSONEditor(this.$('[data-id=form-container]').get(0), {
         schema: schema,
-        theme: 'bootstrap3'
+        theme: 'bootstrap3',
+        disable_edit_json: true,
+        disable_properties: true,
+        iconlib: 'fontawesome4'
       });
+
+      // Remove Top-level collapse button
+      this.layout.form.root.toggle_button.remove()
 
       // Bind local event to form nodes after form is renedered
       this.delegateEvents();
@@ -266,6 +288,16 @@ module.exports = {
         // If on the previous form was entered values try to apply it to new form
         if(formData)
           this.layout.form.setValue(_.extend({}, this.layout.form.getValue(formData), formData));
+
+        // Remove collapse button on add new item in collection
+        _.each(this.$('[data-schemapath][data-schemapath!=root]:has(.json-editor-btn-add)'), function(E) {
+          var
+            editor = this.layout.form.getEditor($(E).data('schemapath'));
+
+          $(editor.add_row_button).click((function() {
+            $(_.last(this.rows).toggle_button).remove();
+          }).bind(editor));
+        }, this);
       }).bind(this));
     },
 
