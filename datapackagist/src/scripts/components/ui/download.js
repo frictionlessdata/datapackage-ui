@@ -17,8 +17,6 @@ module.exports = backbone.BaseView.extend({
           .attr('href', outfile(descriptor, {
             IE9: window.APP.browser.name == 'ie' && parseInt(window.APP.browser.version.split('.')[0]) <= 9
           }));
-
-      window.APP.layout.errorList.reset(new backbone.Collection(R.errors));
     }).bind(this));
 
     return this;
