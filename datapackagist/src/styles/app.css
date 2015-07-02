@@ -76,7 +76,7 @@
   margin-right: 16px;
 }
 
-/*Entity form button group*/
+/*Entity form button group should be in right*/
 .col-md-12 .btn-group:first-of-type {
   float: right;
 }
