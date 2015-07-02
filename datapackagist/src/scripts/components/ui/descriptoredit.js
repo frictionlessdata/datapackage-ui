@@ -294,6 +294,8 @@ module.exports = {
           var
             editor = this.layout.form.getEditor($(E).data('schemapath'));
 
+          $(_.pluck(editor.rows, 'toggle_button')).remove();
+
           $(editor.add_row_button).click((function() {
             $(_.last(this.rows).toggle_button).remove();
           }).bind(editor));
