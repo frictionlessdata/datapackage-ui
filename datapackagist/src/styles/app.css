@@ -75,3 +75,8 @@
 .col-md-10.tabs > a {
   margin-right: 16px;
 }
+
+/*Entity form button group*/
+.col-md-12 .btn-group:first-of-type {
+    float: right;
+}
