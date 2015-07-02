@@ -280,10 +280,10 @@ module.exports = {
         }, this);
 
         // Looks like previous loop is somehow async
-        setTimeout(function() {
-          $('#json-code').html('').prop('hidden', false);
+        setTimeout((function() {
+          $('#json-code').prop('hidden', false);
           window.APP.layout.errorList.reset(new backbone.Collection([])).$el.prop('hidden', false);
-        }, 300);
+        }).bind(this), 300);
 
         // If on the previous form was entered values try to apply it to new form
         if(formData)
