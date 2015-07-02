@@ -80,3 +80,42 @@
 .col-md-12 .btn-group:first-of-type {
     float: right;
 }
+
+/*Fixed height of descriptor form description*/
+[data-schemapath="root"] > p {
+  height: 64px;
+  overflow: hidden;
+}
+
+/*JSON code of a datapackage should be on the same vertical alignment as descriptor form*/
+.json-code-container {
+  margin-top: 140px;
+}
+
+.error-list {
+  position: absolute;
+  height: 128px;
+  overflow: scroll;
+}
+
+/*Array data titles same size as other titles*/
+[data-schematype="array"] > h3,
+[data-schematype="object"] > h3 {
+  font-size: 15px;
+}
+
+/*Add missed padding of form header*/
+.registry-list-container .form-group {
+  padding-left: 20px;
+}
+
+/*No merged buttons*/
+.btn-group>.btn:last-child:not(:first-child),
+.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle),
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 3px;
+}
+
+.btn-group > .btn:not(:first-child) {
+  margin-left: 10px;
+}

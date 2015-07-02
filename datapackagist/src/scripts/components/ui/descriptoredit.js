@@ -63,12 +63,12 @@ DataUploadView = backbone.BaseView.extend({
 
   render: function() {
     this.$el
-      .append('<input data-id="input" type="file" accept="text/csv" style="display: none;">')
-
       .append(
         $(this.options.form.theme.getButton('Upload data file', '', 'Upload data file'))
           .attr('data-id', 'upload-data-file')
-      );
+      )
+
+      .append('<input data-id="input" type="file" accept="text/csv" style="display: none;">');
 
     return this;
   },
@@ -149,22 +149,6 @@ module.exports = {
 
     initialize: function(options) {
       highlight.configure({useBR: true});
-
-      // Customize theme
-      JSONEditor.defaults.iconlibs.fontawesome4 = JSONEditor.defaults.iconlibs.fontawesome4.extend({
-        mapping: {
-          collapse: 'minus',
-          expand: 'plus',
-          'delete': 'times',
-          edit: 'pencil',
-          add: 'plus',
-          cancel: 'ban',
-          save: 'save',
-          moveup: 'arrow-up',
-          movedown: 'arrow-down'
-        }
-      });
-
       return backbone.BaseView.prototype.initialize.call(this, options);
     },
 
@@ -208,16 +192,21 @@ module.exports = {
         this.layout.uploadData.undelegateEvents().remove();
       }
 
+      // Proper representation of all form buttons. Avoid changing each newly
+      // rendered button by rewriting the .getButton()
+      JSONEditor.defaults.themes.bootstrap3.prototype.getButton = function(text, icon, title) {
+        var el = document.createElement('button');
+
+        el.type = 'button';
+        el.className += 'btn btn-info btn-sm';
+        this.setButtonText(el,text,icon,title);
+        return el;
+      };
+
       this.layout.form = new JSONEditor(this.$('[data-id=form-container]').get(0), {
         schema: schema,
-        theme: 'bootstrap3',
-        disable_edit_json: true,
-        disable_properties: true,
-        iconlib: 'fontawesome4'
+        theme: 'bootstrap3'
       });
-
-      // Remove Top-level collapse button
-      this.layout.form.root.toggle_button.remove()
 
       // Bind local event to form nodes after form is renedered
       this.delegateEvents();
@@ -251,30 +240,32 @@ module.exports = {
             $(resources.toggle_button).trigger('click');
         }).bind(this)));
 
+        $('#json-code').prop('hidden', true);
+        window.APP.layout.errorList.$el.prop('hidden', true);
+
+        // Collapse editor and add empty item if it has no value
+        _.each(this.$('[data-schemapath^="root."]:has(.json-editor-btn-collapse)'), function(E) {
+          var editor = this.layout.form.getEditor($(E).data('schemapath'));
+          var isEmpty = _.isEmpty(editor.getValue());
+
+
+          // Empty array data should have one empty item
+          if(_.contains(['resources', 'sources', 'licences'], E.dataset.schemapath.replace('root.', '')))
+            $(editor.add_row_button).trigger('click');
+
+          if(isEmpty && !editor.collapsed)
+            $(editor.toggle_button).trigger('click');
+        }, this);
+
+        // Looks like previous loop is somehow async
+        setTimeout(function() {
+          $('#json-code').html('').prop('hidden', false);
+          window.APP.layout.errorList.reset(new backbone.Collection([])).$el.prop('hidden', false);
+        }, 300);
+
         // If on the previous form was entered values try to apply it to new form
-        if(formData) {
+        if(formData)
           this.layout.form.setValue(_.extend({}, this.layout.form.getValue(formData), formData));
-
-          // Collapse editor if no value
-          _.each(this.$('[data-schemapath][data-schemapath!=root]:has(.json-editor-btn-collapse)'), function(E) {
-              var editor = this.layout.form.getEditor($(E).data('schemapath'));
-
-              if(_.isEmpty(editor.getValue()) && !editor.collapsed)
-                $(editor.toggle_button).trigger('click');
-          }, this);
-        } else {
-          // Collapse all
-          this.$('.row .json-editor-btn-collapse').click();
-
-          // Remove collapse button on add new item in collection
-          _.each(this.$('[data-schemapath][data-schemapath!=root]:has(.json-editor-btn-add)'), function(E) {
-            var editor = this.layout.form.getEditor($(E).data('schemapath'));
-
-            $(editor.add_row_button).click((function() {
-              $(_.last(this.rows).toggle_button).remove();
-            }).bind(editor));
-          }, this);
-        }
       }).bind(this));
     },
 

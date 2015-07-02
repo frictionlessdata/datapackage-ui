@@ -75,7 +75,7 @@
   <div class="row">
     <div class="container">
 
-      <div class="col-md-7" id="registry-list">
+      <div class="col-md-7 registry-list-container" id="registry-list">
         <div class="form-group">
           <label id="select-profile" class="control-label">Select Profile</label>
           <select data-id="list-container" class="form-control list-container"></select>
@@ -90,14 +90,14 @@
             <input data-id="input" type="file" accept="application/json" />
             <button type="button" class="btn btn-sm btn-success upload-btn__txt">Upload</button>
           </div>
-          <div id="error-list"></div>
+          <div id="error-list" class="error-list"></div>
         </div>
       </div>
 
       <div class="container" id="descriptor">
         <div data-id="form-container" class="col-md-7"></div>
 
-        <div class="col-md-5">
+        <div class="json-code-container col-md-5">
           <pre><code id="json-code" class="json"></code></pre>
         </div>
 
