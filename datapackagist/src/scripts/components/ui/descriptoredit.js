@@ -260,6 +260,9 @@ module.exports = {
           // Expand resources section if there are any resources, collapse if row is empty
           if(resourcesLength && resources.collapsed || !resourcesLength && !resources.collapsed)
             $(resources.toggle_button).trigger('click');
+
+          // Do not allow changing schema field type — disable type selectbox
+          this.$('[data-schemapath]:not([data-schematype]) select.form-control').prop('hidden', true);
         }).bind(this)));
 
         $('#json-code').prop('hidden', true);
