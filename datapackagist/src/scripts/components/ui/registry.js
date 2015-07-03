@@ -2,7 +2,7 @@ var backbone = require('backbone');
 var $ = require('jquery');
 var _ = require('underscore');
 var deep = require('deep-diff');
-
+var Promise = require('bluebird');
 
 module.exports = {
   ListView: backbone.BaseListView.extend({
