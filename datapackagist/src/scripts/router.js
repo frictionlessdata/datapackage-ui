@@ -25,8 +25,9 @@ var VALID_DESCRIPTOR = {
 // Application state changed here
 module.exports = backbone.Router.extend({
   routes: {
-    '(/)': 'index',
-    'from-remote/:datapackage(/)': 'fromRemote',
+    '(/)'                            : 'index',
+    ':profile(/)'                    : 'profile',
+    ':profile/from(/)'               : 'fromRemote',
     'validation-results/:resource(/)': 'validationResults'
   },
 
@@ -41,18 +42,19 @@ module.exports = backbone.Router.extend({
     return this;
   },
 
-  fromRemote: function(datapackage) {
+  fromRemote: function(profile) {
     var descriptorEdit = window.APP.layout.descriptorEdit;
     var options = _.object(window.location.search.replace('?', '').split('&').map(function(P) { return P.split('='); }));
 
+
     // If .index() have not yet downloaded registry it will return Promise. Otherwise
     // registry is loaded and .index() returns undefined.
-    (this.index() || new Promise(function(RS, RJ) { RS(true); })).then(function() {
+    this.index().then(function() {
       try {
-        dpFromRemote(unescape(options.url), _.extend(options, {datapackage: datapackage}))
+        dpFromRemote(unescape(options.url), _.extend(options, {datapackage: profile}))
           .then(function(D) {
             // Update registry and descriptor schema list and then set descriptor form value
-            descriptorEdit.layout.registryList.setSelected(datapackage).then(function() {
+            descriptorEdit.layout.registryList.setSelected(profile).then(function() {
               descriptorEdit.layout.form.setValue(D);
             });
           })
@@ -64,20 +66,39 @@ module.exports = backbone.Router.extend({
     });
   },
 
-  index: function() {
+  index: function(profile) {
+    var registryList;
+
+
     this.deactivateAll();
     window.APP.layout.navbar.toggleBadge(true);
     window.APP.layout.download.activate();
     window.APP.layout.descriptorEdit.activate();
     window.APP.layout.descriptorEdit.layout.registryList.activate();
     window.APP.layout.errorList.activate();
+    registryList = window.APP.layout.descriptorEdit.layout.registryList;
 
     // WARN Process registry errors here
-    if(!window.APP.layout.descriptorEdit.layout.registryList.collection)
-      // fromRemote route need to wait for registry before getting datapackage from remote source
-      return registry.get().then(function(D) {
-        window.APP.layout.descriptorEdit.layout.registryList.reset(new backbone.Collection(D));
-      });
+    if(!registryList.collection)
+      // Other routes need to wait for registry to be able to define profile in registry select box
+      return registry.get().then((function(D) { registryList.reset(new backbone.Collection(D)); }).bind(this));
+
+    // Default value for more consistency
+    return new Promise(function(RS, RJ) { RS(true); });
+  },
+
+  // Activate form with registry profile defined from query string param
+  profile: function(profile) {
+    this.index().then((function() {
+      var registryList = window.APP.layout.descriptorEdit.layout.registryList;
+
+
+      // Apply default profile if ID is wrong
+      registryList.setSelected(profile || 'base').catch(function() { registryList.setSelected('base'); });
+    }).bind(this));
+  },
+
+  setRegistryProfile: function(profile) {
   },
 
   validationResults: function(resource) {
