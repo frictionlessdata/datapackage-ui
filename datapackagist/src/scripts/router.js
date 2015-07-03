@@ -26,7 +26,7 @@ var VALID_DESCRIPTOR = {
 module.exports = backbone.Router.extend({
   routes: {
     '(/)'                            : 'index',
-    ':profile(/)'                    : 'index',
+    ':profile(/)'                    : 'profile',
     ':profile/from(/)'               : 'fromRemote',
     'validation-results/:resource(/)': 'validationResults'
   },
@@ -49,7 +49,7 @@ module.exports = backbone.Router.extend({
 
     // If .index() have not yet downloaded registry it will return Promise. Otherwise
     // registry is loaded and .index() returns undefined.
-    (this.index() || new Promise(function(RS, RJ) { RS(true); })).then(function() {
+    this.index().then(function() {
       try {
         dpFromRemote(unescape(options.url), _.extend(options, {datapackage: profile}))
           .then(function(D) {
@@ -80,21 +80,25 @@ module.exports = backbone.Router.extend({
 
     // WARN Process registry errors here
     if(!registryList.collection)
-      // fromRemote route need to wait for registry before getting datapackage from remote source
-      return registry.get().then((function(D) {
-        registryList.reset(new backbone.Collection(D));
-        this.setRegistryProfile(profile);
-      }).bind(this));
+      // Other routes need to wait for registry to be able to define profile in registry select box
+      return registry.get().then((function(D) { registryList.reset(new backbone.Collection(D)); }).bind(this));
 
-    this.setRegistryProfile(profile);
+    // Default value for more consistency
+    return new Promise(function(RS, RJ) { RS(true); });
+  },
+
+  // Activate form with registry profile defined from query string param
+  profile: function(profile) {
+    this.index().then((function() {
+      var registryList = window.APP.layout.descriptorEdit.layout.registryList;
+
+
+      // Apply default profile if ID is wrong
+      registryList.setSelected(profile || 'base').catch(function() { registryList.setSelected('base'); });
+    }).bind(this));
   },
 
   setRegistryProfile: function(profile) {
-    var registryList = window.APP.layout.descriptorEdit.layout.registryList;
-
-
-    // Apply default profile if ID is wrong
-    registryList.setSelected(profile || 'base').catch(function() { registryList.setSelected('base'); });
   },
 
   validationResults: function(resource) {
