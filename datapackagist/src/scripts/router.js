@@ -25,8 +25,9 @@ var VALID_DESCRIPTOR = {
 // Application state changed here
 module.exports = backbone.Router.extend({
   routes: {
-    '(/)': 'index',
-    'from-remote/:profile(/)': 'fromRemote',
+    '(/)'                            : 'index',
+    ':profile(/)'                    : 'index',
+    'from-remote/:profile(/)'        : 'fromRemote',
     'validation-results/:resource(/)': 'validationResults'
   },
 
@@ -64,20 +65,27 @@ module.exports = backbone.Router.extend({
     });
   },
 
-  index: function() {
+  index: function(profile) {
+    var registryList;
+
+
     this.deactivateAll();
     window.APP.layout.navbar.toggleBadge(true);
     window.APP.layout.download.activate();
     window.APP.layout.descriptorEdit.activate();
     window.APP.layout.descriptorEdit.layout.registryList.activate();
     window.APP.layout.errorList.activate();
+    registryList = window.APP.layout.descriptorEdit.layout.registryList;
 
     // WARN Process registry errors here
-    if(!window.APP.layout.descriptorEdit.layout.registryList.collection)
+    if(!registryList.collection)
       // fromRemote route need to wait for registry before getting datapackage from remote source
       return registry.get().then(function(D) {
-        window.APP.layout.descriptorEdit.layout.registryList.reset(new backbone.Collection(D));
+        registryList.reset(new backbone.Collection(D));
+        registryList.setSelected(profile || 'base');
       });
+
+    registryList.setSelected(profile || 'base');
   },
 
   validationResults: function(resource) {
