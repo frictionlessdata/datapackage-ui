@@ -27,7 +27,7 @@ module.exports = backbone.Router.extend({
   routes: {
     '(/)'                            : 'index',
     ':profile(/)'                    : 'index',
-    'from-remote/:profile(/)'        : 'fromRemote',
+    ':profile/from(/)'               : 'fromRemote',
     'validation-results/:resource(/)': 'validationResults'
   },
 
