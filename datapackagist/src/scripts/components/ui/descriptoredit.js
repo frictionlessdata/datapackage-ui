@@ -43,7 +43,7 @@ DataUploadView = backbone.BaseView.extend({
               name: _.last(EV.target.name.split('/')).toLowerCase().replace(/\.[^.]+$|[^a-z^\-^\d^_^\.]+/g, ''),
               path: EV.target.name,
               schema: schema
-            });
+            }, true);
 
             // Save data source in the form
             _.last(this.options.form.getEditor('root.resources').rows).dataSource = {schema: schema, data: EV.result};
