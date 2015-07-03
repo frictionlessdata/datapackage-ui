@@ -81,7 +81,15 @@ module.exports = {
       this.selectedValue = id;
 
       return new Promise((function(RS, RJ) {
-        $.getJSON(this.collection.get(id).get('schema'), (function(schemaData) {
+        var profile = this.collection.get(id);
+
+
+        if(!profile) {
+          RJ('Unknown profile ID');
+          return false;
+        }
+
+        $.getJSON(profile.get('schema'), (function(schemaData) {
           this.schemaData = schemaData;
           this.parent.reset(schemaData);
           RS(schemaData);

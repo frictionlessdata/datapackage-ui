@@ -80,12 +80,20 @@ module.exports = backbone.Router.extend({
     // WARN Process registry errors here
     if(!registryList.collection)
       // fromRemote route need to wait for registry before getting datapackage from remote source
-      return registry.get().then(function(D) {
+      return registry.get().then((function(D) {
         registryList.reset(new backbone.Collection(D));
-        registryList.setSelected(profile || 'base');
-      });
+        this.setRegistryProfile(profile);
+      }).bind(this));
 
-    registryList.setSelected(profile || 'base');
+    this.setRegistryProfile(profile);
+  },
+
+  setRegistryProfile: function(profile) {
+    var registryList = window.APP.layout.descriptorEdit.layout.registryList;
+
+
+    // Apply default profile if ID is wrong
+    registryList.setSelected(profile || 'base').catch(function() { registryList.setSelected('base'); });
   },
 
   validationResults: function(resource) {
