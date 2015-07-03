@@ -46,6 +46,7 @@ module.exports = backbone.Router.extend({
     var descriptorEdit = window.APP.layout.descriptorEdit;
     var options = _.object(window.location.search.replace('?', '').split('&').map(function(P) { return P.split('='); }));
 
+
     // If .index() have not yet downloaded registry it will return Promise. Otherwise
     // registry is loaded and .index() returns undefined.
     (this.index() || new Promise(function(RS, RJ) { RS(true); })).then(function() {
