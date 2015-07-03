@@ -26,7 +26,7 @@ var VALID_DESCRIPTOR = {
 module.exports = backbone.Router.extend({
   routes: {
     '(/)': 'index',
-    'from-remote/:datapackage(/)': 'fromRemote',
+    'from-remote/:profile(/)': 'fromRemote',
     'validation-results/:resource(/)': 'validationResults'
   },
 
@@ -41,7 +41,7 @@ module.exports = backbone.Router.extend({
     return this;
   },
 
-  fromRemote: function(datapackage) {
+  fromRemote: function(profile) {
     var descriptorEdit = window.APP.layout.descriptorEdit;
     var options = _.object(window.location.search.replace('?', '').split('&').map(function(P) { return P.split('='); }));
 
@@ -49,10 +49,10 @@ module.exports = backbone.Router.extend({
     // registry is loaded and .index() returns undefined.
     (this.index() || new Promise(function(RS, RJ) { RS(true); })).then(function() {
       try {
-        dpFromRemote(unescape(options.url), _.extend(options, {datapackage: datapackage}))
+        dpFromRemote(unescape(options.url), _.extend(options, {datapackage: profile}))
           .then(function(D) {
             // Update registry and descriptor schema list and then set descriptor form value
-            descriptorEdit.layout.registryList.setSelected(datapackage).then(function() {
+            descriptorEdit.layout.registryList.setSelected(profile).then(function() {
               descriptorEdit.layout.form.setValue(D);
             });
           })
