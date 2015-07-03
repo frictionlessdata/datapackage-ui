@@ -153,15 +153,15 @@ module.exports = {
       // Customize theme
       JSONEditor.defaults.iconlibs.fontawesome4 = JSONEditor.defaults.iconlibs.fontawesome4.extend({
         mapping: {
-          collapse: 'minus',
-          expand: 'plus',
-          'delete': 'times',
-          edit: 'pencil',
-          add: 'plus',
-          cancel: 'ban',
-          save: 'save',
-          moveup: 'arrow-up',
-          movedown: 'arrow-down'
+          'collapse': 'minus',
+          'expand'  : 'plus',
+          'delete'  : 'times',
+          'edit'    : 'pencil',
+          'add'     : 'plus',
+          'cancel'  : 'ban',
+          'save'    : 'save',
+          'moveup'  : 'arrow-up',
+          'movedown': 'arrow-down'
         }
       });
 
@@ -260,6 +260,9 @@ module.exports = {
           // Expand resources section if there are any resources, collapse if row is empty
           if(resourcesLength && resources.collapsed || !resourcesLength && !resources.collapsed)
             $(resources.toggle_button).trigger('click');
+
+          // Do not allow changing schema field type — disable type selectbox
+          this.$('[data-schemapath]:not([data-schematype]) select.form-control').prop('hidden', true);
         }).bind(this)));
 
         $('#json-code').prop('hidden', true);
