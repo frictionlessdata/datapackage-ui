@@ -31,7 +31,9 @@ DataUploadView = backbone.BaseView.extend({
       FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {
         if(EV.type === 'load') {
           csv.parse(EV.result, (function(E, D) {
-            var schema;
+            var
+              schema,
+              editor = this.options.form.getEditor('root.resources');
 
 
             if(E)
@@ -39,14 +41,18 @@ DataUploadView = backbone.BaseView.extend({
 
             schema = jtsInfer(D[0], _.rest(D));
 
-            this.options.form.getEditor('root.resources').addRow({
+            // Delete last row if empty
+            if(_.chain(editor.getValue()).last().flatten().compact().isEmpty().value())
+              editor.delete_last_row_button.click();
+
+            editor.addRow({
               name: _.last(EV.target.name.split('/')).toLowerCase().replace(/\.[^.]+$|[^a-z^\-^\d^_^\.]+/g, ''),
               path: EV.target.name,
               schema: schema
             }, true);
 
             // Save data source in the form
-            _.last(this.options.form.getEditor('root.resources').rows).dataSource = {schema: schema, data: EV.result};
+            _.last(editor.rows).dataSource = {schema: schema, data: EV.result};
           }).bind(this));
         } else if( EV.type ==='progress' ) {
           this.setProgress(EV.loaded/EV.total * 100);
