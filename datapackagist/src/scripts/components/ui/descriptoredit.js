@@ -171,6 +171,18 @@ module.exports = {
         }
       });
 
+      // Mark required fields
+      JSONEditor.defaults.editors = _.mapObject(JSONEditor.defaults.editors, function(E, K) {
+        return E.extend({
+          updateHeaderText: function() {
+            if(this.parent && _.indexOf(this.parent.schema.required, this.key) >= 0)
+              $(this.label).html(this.getTitle() + ' <label class="required-field">*</label>');
+            else
+              JSONEditor.AbstractEditor.prototype.updateHeaderText.apply(this, arguments);
+          }
+        });
+      });
+
       return backbone.BaseView.prototype.initialize.call(this, options);
     },
 
