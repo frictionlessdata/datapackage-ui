@@ -111,6 +111,34 @@ Also, notice the following conventions:
 
 If you are new to some of the tooling we use - don't worry, it is not difficult! Refer to [Node Modules](https://nodejs.org/api/modules.html), [Mocha](http://mochajs.org/), [Chai](http://chaijs.com/), [Browserify](http://browserify.org/), [Gulp](http://gulpjs.com/) and [BrowserSync](http://www.browsersync.io/) for further information. These are all key tools to organizing our code and workflow.
 
+#### Default Data Package Profile
+
+By default, DataPackagist loads the form for the base Data Package specification. The user can select another Profile via a drop-down menu. 
+
+It is also possible to set another profile via the URL route: the first argument of the URL route should be the ID of a Data Package Profile in the [Data Package Registry](https://github.com/dataprotocols/registry).
+
+Examples:
+
+```
+http://datapackagist.okfnlabs.org/{PROFILE_ID}/
+
+http://datapackagist.okfnlabs.org/base/ (also default - the base Data Package specification)
+
+http://datapackagist.okfnlabs.org/tabular/ (The Tabular Data Package specification)
+```
+
+#### Adding custom Data Package Profiles
+
+The Data Package Registry currently features entries for the `base` and `tabular` Data Package Profiles. 
+
+Adding additional profiles to DataPackagist is as simple as adding new entries to the registry.
+
+Let's demonstrate by example. If you wanted a modified version of Tabular Data Package - say, one that required more fields. The steps would be:
+
+* Create a JSON Schema file for the new spec. [Existing spec schemas here](https://github.com/dataprotocols/schemas)
+* Add a new entry to the Registry via a pull request. [Instructions here](https://github.com/dataprotocols/registry)
+* When the pull request is accepted, it will immediately be available in DataPackagist. If we called our new profile "tabular-strict", we'd be able to create data packages for it at http://datapackagist.okfnlabs.org/tabular-strict/ 
+
 #### Integrations
 
 DataPackagist currently exposes a simple, URL-based API to pull remote data into the application and model it to a Data Package.
@@ -132,6 +160,10 @@ The following parameters are supported:
 
 All data passed via params must be url encoded.
 
+Note that this integration also works with the API for setting the displayed Data Package Profile on the form. 
+
+As stated above, this is the first URL route argument, which should be the ID of a Data Package Profile in the Data Package Registry.
+
 ##### Integration from 3rd party apps
 
 With knowledge of the supported query params, integration as as simple as making a `GET` request to DataPackagist with the appropriate data.
@@ -139,5 +171,5 @@ With knowledge of the supported query params, integration as as simple as making
 ##### Examples
 
 * Here is a dataset on a CKAN instance: `http://datahub.io/api/action/package_show?id=population-number-by-governorate-age-group-and-gender-2010-2014`
-* Here is the same dataset, modeled as a Data Package: `http://datapackagist.okfnlabs.org/?url=http%3A%2F%2Fdatahub.io%2Fapi%2Faction%2Fpackage_show%3Fid%3Dpopulation-number-by-governorate-age-group-and-gender-2010-2014`
-* An example integration, as a link: `<a href="http://datapackagist.okfnlabs.org/?url=http%3A%2F%2Fdatahub.io%2Fapi%2Faction%2Fpackage_show%3Fid%3Dpopulation-number-by-governorate-age-group-and-gender-2010-2014&datapackage=tabular">Convert to Tabular Data Package</a>`
+* Here is the same dataset, modeled as a Tabular Data Package: `http://datapackagist.okfnlabs.org/tabular/from/?url=http%3A%2F%2Fdatahub.io%2Fapi%2Faction%2Fpackage_show%3Fid%3Dpopulation-number-by-governorate-age-group-and-gender-2010-2014`
+* An example integration, as a link: `<a href="http://datapackagist.okfnlabs.org/tabular/from/?url=http%3A%2F%2Fdatahub.io%2Fapi%2Faction%2Fpackage_show%3Fid%3Dpopulation-number-by-governorate-age-group-and-gender-2010-2014&datapackage=tabular">Convert to Tabular Data Package</a>`
