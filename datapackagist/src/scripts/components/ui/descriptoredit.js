@@ -99,7 +99,7 @@ module.exports = {
 
 
         // Do not populate user changed field
-        if($title[0].edited)
+        if(_.result($title[0], 'edited'))
           return true;
 
         $title.val(titleize($input.val()));
