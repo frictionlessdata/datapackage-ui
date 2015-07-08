@@ -282,6 +282,14 @@ module.exports = {
 
           // Do not allow changing schema field type — disable type selectbox
           this.$('[data-schemapath]:not([data-schematype]) select.form-control').prop('hidden', true);
+
+          // Populate empty title fields with name field value. Rely on DOM events defined
+          // in DescriptorEditView.events
+          _.each($('[data-schemapath].container-title input', this.layout.form.getEditor('root').container), function(I) {
+            I.edited = Boolean($(I).val());
+          });
+
+          $('[data-schemapath].container-name input', this.layout.form.getEditor('root').container).trigger('keyup');
         }).bind(this)));
 
         $('#json-code').prop('hidden', true);
