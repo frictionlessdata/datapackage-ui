@@ -93,7 +93,7 @@ module.exports = {
 
     events: {
       // Populate main title and resource title fields
-      'keyup input[name="root[name]"], [data-schemapath^="root.resources."].container-name input': function(event) {
+      'keyup [data-schemapath].container-name input': function(event) {
         var $input = $(event.currentTarget);
         var $title = $input.closest('[data-schematype=object]').find('.row .container-title input').eq(0);
 
@@ -107,7 +107,7 @@ module.exports = {
 
       // Do not populate title field with name field data if title was edited
       // by user. Consider it is not edited once user empties it.
-      'keyup input[name="root[title]"], [data-schemapath^="root.resources."].container-title input': function(event) {
+      'keyup [data-schemapath].container-title input': function(event) {
         var $input = $(event.currentTarget);
 
 
