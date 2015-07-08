@@ -97,6 +97,7 @@ module.exports = {
         var $input = $(event.currentTarget);
         var $title = $input.closest('[data-schematype=object]').find('.row .container-title input').eq(0);
 
+
         // Do not populate user changed field
         if($title[0].edited)
           return true;
