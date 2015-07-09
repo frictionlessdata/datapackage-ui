@@ -148,7 +148,7 @@ module.exports = {
 
                     RS({data: RES.text, schema: jtsInfer(D[0], _.rest(D))});
                   });
-                })).then(function(CSV) { return goodTables.run(CSV.data, JSON.stringify(CSV.schema)); });
+                })).then(function(CSV) { R.dataSource = CSV; return goodTables.run(CSV.data, JSON.stringify(CSV.schema)); });
               });
 
             return new Promise(function(RS, RJ) { RS(false); });
