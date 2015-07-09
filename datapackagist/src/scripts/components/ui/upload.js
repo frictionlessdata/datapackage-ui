@@ -10,7 +10,6 @@ var validator = require('datapackage-validate');
 module.exports = backbone.BaseView.extend({
   events: {
     'change [data-id=input]': function(E) {
-      window.APP.layout.errorList.clear();
 
       FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {
         var descriptor;
@@ -19,10 +18,9 @@ module.exports = backbone.BaseView.extend({
         if(EV.type === 'load') {
           // Validate datapackage and apply to the form
           validator.validate(EV.result, window.APP.layout.descriptorEdit.layout.registryList.getSchema()).then((function(R) {
-            if(!R.valid) {
-              window.APP.layout.errorList.reset(new backbone.Collection(R.errors));
+            if(!R.valid)
               return false;
-            }
+
 
             descriptor = JSON.parse(EV.result);
 
@@ -44,11 +42,9 @@ module.exports = backbone.BaseView.extend({
 
               .activate();
           }).bind(this));
-        } else if( EV.type ==='progress' ){
+        } else if( EV.type ==='progress' )
           this.setProgress(EV.loaded/EV.total * 100);
-        } else {
-          window.APP.layout.errorList.reset(new backbone.Collection([{message: 'File upload failed'}]));
-        }
+
       }).bind(this));
     }
   },

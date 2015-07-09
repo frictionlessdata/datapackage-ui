@@ -293,7 +293,6 @@ module.exports = {
         }).bind(this)));
 
         $('#json-code').prop('hidden', true);
-        window.APP.layout.errorList.$el.prop('hidden', true);
 
         // Collapse editor and add empty item if it has no value
         _.each(this.$('[data-schemapath^="root."]:has(.json-editor-btn-collapse)'), function(E) {
@@ -312,7 +311,6 @@ module.exports = {
         // Looks like previous loop is somehow async
         setTimeout((function() {
           $('#json-code').prop('hidden', false);
-          window.APP.layout.errorList.reset(new backbone.Collection([])).$el.prop('hidden', false);
         }).bind(this), 300);
 
         // If on the previous form was entered values try to apply it to new form
