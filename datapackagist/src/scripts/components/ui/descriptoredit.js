@@ -9,9 +9,11 @@ var highlight = require('highlight-redux');
 var jsonEditor = require('json-editor');
 var jtsInfer = require('json-table-schema').infer;
 var registry = require('./registry');
+var request = require('superagent-bluebird-promise');
 var UploadView = require('./upload');
 var _ = require('underscore');
 var $ = require('jquery');
+var validator = require('validator');
 
 
 // Convert name into title
@@ -128,8 +130,34 @@ module.exports = {
         window.APP.layout.validationResultList.reset(new backbone.Collection());
 
         _.each(this.layout.form.getEditor('root.resources').rows, function(R) {
-          goodTables.run(R.dataSource.data, JSON.stringify(R.dataSource.schema)).then(
-            function(M) {
+          // Conditional promises
+          (function() {
+            if(R.dataSource)
+              return goodTables.run(R.dataSource.data, JSON.stringify(R.dataSource.schema));
+
+            // If data source stored as URL in a row then first grab it and then return goodtables promise
+            if(validator.isURL(R.value.url) && _.contains([R.mediatype, R.format], 'text/csv'))
+              return request.get(R.value.url).then(function(RES) {
+                // Need schema
+                return (new Promise(function(RS, RJ) {
+                  csv.parse(RES.text, function(E, D) {
+                    if(E) {
+                      RJ(E);
+                      return false;
+                    }
+
+                    RS({data: RES.text, schema: jtsInfer(D[0], _.rest(D))});
+                  });
+                })).then(function(CSV) { return goodTables.run(CSV.data, JSON.stringify(CSV.schema)); });
+              });
+
+            return new Promise(function(RS, RJ) { RS(false); });
+          })()
+
+            .then(function(M) {
+              if(!M)
+                return false;
+
               // Validation completed
               window.APP.layout.validationResultList.collection
 
@@ -148,8 +176,7 @@ module.exports = {
               }));
 
               navigateToResults(R.key);
-            }
-          );
+            });
         });
       }
     },
