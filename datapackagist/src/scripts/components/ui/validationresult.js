@@ -5,6 +5,7 @@ var validationErrorRowTpl = require('./templates/validation-error-row.hbs');
 
 
 module.exports = {
+  // Render reource data file validation error
   ListView: backbone.BaseListView.extend({
     // Hide newly added results if they are for another tab
     addItemView: function(view, container) {
