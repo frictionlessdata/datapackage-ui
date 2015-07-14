@@ -267,6 +267,7 @@ module.exports = {
 
       this.layout.form = new JSONEditor(this.$('[data-id=form-container]').get(0), {
         schema: schema,
+        show_errors: 'change',
         theme: 'bootstrap3',
         disable_edit_json: true,
         disable_properties: true,
@@ -274,7 +275,7 @@ module.exports = {
       });
 
       // Remove Top-level collapse button
-      this.layout.form.root.toggle_button.remove()
+      this.layout.form.root.toggle_button.remove();
 
       // Bind local event to form nodes after form is renedered
       this.delegateEvents();
