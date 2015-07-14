@@ -268,6 +268,7 @@ module.exports = {
       this.layout.form = new JSONEditor(this.$('[data-id=form-container]').get(0), {
         schema: schema,
         show_errors: 'change',
+        remove_empty_properties: true,
         theme: 'bootstrap3',
         disable_edit_json: true,
         disable_properties: true,
