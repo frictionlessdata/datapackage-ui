@@ -171,5 +171,5 @@ With knowledge of the supported query params, integration as as simple as making
 ##### Examples
 
 * Here is a dataset on a CKAN instance: `http://datahub.io/api/action/package_show?id=population-number-by-governorate-age-group-and-gender-2010-2014`
-* Here is the same dataset, modeled as a Tabular Data Package: `http://datapackagist.okfnlabs.org/#/from/?url=http%3A%2F%2Fdatahub.io%2Fapi%2Faction%2Fpackage_show%3Fid%3Dpopulation-number-by-governorate-age-group-and-gender-2010-2014`
-* An example integration, as a link: `<a href="http://datapackagist.okfnlabs.org/#/from/?url=http%3A%2F%2Fdatahub.io%2Fapi%2Faction%2Fpackage_show%3Fid%3Dpopulation-number-by-governorate-age-group-and-gender-2010-2014&datapackage=tabular">Convert to Tabular Data Package</a>`
+* Here is the same dataset, modeled as a Tabular Data Package: `http://datapackagist.okfnlabs.org/#/base/from/?url=http%3A%2F%2Fdatahub.io%2Fapi%2Faction%2Fpackage_show%3Fid%3Dpopulation-number-by-governorate-age-group-and-gender-2010-2014`
+* An example integration, as a link: `<a href="http://datapackagist.okfnlabs.org/#/base/from/?url=http%3A%2F%2Fdatahub.io%2Fapi%2Faction%2Fpackage_show%3Fid%3Dpopulation-number-by-governorate-age-group-and-gender-2010-2014">Convert to Data Package</a>`
