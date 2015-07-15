@@ -104,7 +104,10 @@ module.exports = {
         if(_.result($title[0], 'edited'))
           return true;
 
-        $title.val(titleize($input.val()));
+        if($title.length)
+          this.layout.form
+            .getEditor($title.closest('[data-schemapath]').data('schemapath'))
+            .setValue(titleize($input.val()));
       },
 
       // Do not populate title field with name field data if title was edited
@@ -309,16 +312,15 @@ module.exports = {
 
           // Do not allow changing schema field type — disable type selectbox
           this.$('[data-schemapath]:not([data-schematype]) select.form-control').prop('hidden', true);
-
-          // Populate empty title fields with name field value. Rely on DOM events defined
-          // in DescriptorEditView.events
-          _.each($('[data-schemapath].container-title input', this.layout.form.getEditor('root').container), function(I) {
-            I.edited = Boolean($(I).val());
-          });
-
-          $('[data-schemapath].container-name input', this.layout.form.getEditor('root').container).trigger('keyup');
         }).bind(this)));
 
+        // Populate empty title fields with name field value. Rely on DOM events defined
+        // in DescriptorEditView.events
+        _.each($('[data-schemapath].container-title input', this.layout.form.getEditor('root').container), function(I) {
+          I.edited = Boolean($(I).val());
+        });
+
+        $('[data-schemapath].container-name input', this.layout.form.getEditor('root').container).trigger('keyup');
         $('#json-code').prop('hidden', true);
 
         // Collapse editor and add empty item if it has no value
