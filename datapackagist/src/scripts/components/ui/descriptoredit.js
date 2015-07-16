@@ -98,13 +98,22 @@ module.exports = {
       'keyup [data-schemapath].container-name input': function(event) {
         var $input = $(event.currentTarget);
         var $title = $input.closest('[data-schematype=object]').find('.row .container-title input').eq(0);
+        var nameEditor = this.layout.form.getEditor($input.closest('[data-schemapath]').data('schemapath'));
 
 
-        // Do not populate user changed field
-        if(_.result($title[0], 'edited'))
+        // Force name value change. Normally it will be changed after focues losed
+        // from input field.
+        nameEditor.setValue($input.val());
+        nameEditor.refreshValue();
+        nameEditor.onChange(true);
+
+        // Do not populate user changed field or name with no title in the same row
+        if(_.result($title[0], 'edited') || !$title.length)
           return true;
 
-        $title.val(titleize($input.val()));
+        this.layout.form
+          .getEditor($title.closest('[data-schemapath]').data('schemapath'))
+          .setValue(titleize($input.val()));
       },
 
       // Do not populate title field with name field data if title was edited
@@ -309,16 +318,15 @@ module.exports = {
 
           // Do not allow changing schema field type — disable type selectbox
           this.$('[data-schemapath]:not([data-schematype]) select.form-control').prop('hidden', true);
-
-          // Populate empty title fields with name field value. Rely on DOM events defined
-          // in DescriptorEditView.events
-          _.each($('[data-schemapath].container-title input', this.layout.form.getEditor('root').container), function(I) {
-            I.edited = Boolean($(I).val());
-          });
-
-          $('[data-schemapath].container-name input', this.layout.form.getEditor('root').container).trigger('keyup');
         }).bind(this)));
 
+        // Populate empty title fields with name field value. Rely on DOM events defined
+        // in DescriptorEditView.events
+        _.each($('[data-schemapath].container-title input', this.layout.form.getEditor('root').container), function(I) {
+          I.edited = Boolean($(I).val());
+        });
+
+        $('[data-schemapath].container-name input', this.layout.form.getEditor('root').container).trigger('keyup');
         $('#json-code').prop('hidden', true);
 
         // Collapse editor and add empty item if it has no value
