@@ -3,11 +3,13 @@ require('fileapi');
 var backbone = require('backbone');
 var backboneBase = require('backbone-base');
 var csv = require('csv');
+var deepEmpty = require('deep-empty');
 var getUri = require('get-uri');
 var Goodtables = require('goodtables');
 var highlight = require('highlight-redux');
 var jsonEditor = require('json-editor');
 var jtsInfer = require('json-table-schema').infer;
+var omitEmpty = require('omit-empty');
 var registry = require('./registry');
 var request = require('superagent-bluebird-promise');
 var UploadView = require('./upload');
@@ -229,28 +231,12 @@ module.exports = {
       return this;
     },
 
-    // Utility method to remove empty values from object recursive
-    compactObject: function(data) {
-      _.each(data, function(v, k) {
-        if(_.isEmpty(v)) {
-          delete data[k];
-        } else if(_.isArray(v) || _.isObject(v)) {
-          v = this.compactObject(v);
+    // Omit empty properties and "0" values of object properties put into array.
+    // Stick with that complex solution because "0" is the default value
+    getValue: function () { return deepEmpty(this.layout.form.getValue(), function(O) {
+      return !_.isEmpty(O) && !_.every(O, function(I) { return _.isEmpty(omitEmpty(I, true)); })
+    }); },
 
-          if(_.isArray(v))
-            v = _.compact(v);
-
-          if(_.isEmpty(v))
-            delete data[k];
-          else data[k] = v;
-        }
-      }, this);
-
-      return data;
-    },
-
-    getFilledValues: function() { return this.compactObject(this.layout.form.getValue()); },
-    getValue: function () { return this.layout.form.getValue(); },
     hasChanges: function() { return Boolean(this.changed); },
 
     reset: function(schema) {
@@ -258,7 +244,7 @@ module.exports = {
 
       // Clean up previous state
       if(this.layout.form) {
-        formData = this.getFilledValues();
+        formData = this.getValue();
         this.layout.form.destroy();
         this.layout.uploadData.undelegateEvents().remove();
       }
@@ -277,7 +263,6 @@ module.exports = {
       this.layout.form = new JSONEditor(this.$('[data-id=form-container]').get(0), {
         schema: schema,
         show_errors: 'change',
-        remove_empty_properties: true,
         theme: 'bootstrap3',
         disable_edit_json: true,
         disable_properties: true,
@@ -311,7 +296,7 @@ module.exports = {
 
 
           this.changed = true;
-          window.APP.layout.download.reset(this.layout.form.getValue(), schema).activate();
+          window.APP.layout.download.reset(this.getValue(), schema).activate();
           this.showResult();
 
           // Expand resources section if there are any resources, collapse if row is empty
@@ -335,7 +320,6 @@ module.exports = {
         _.each(this.$('[data-schemapath^="root."]:has(.json-editor-btn-collapse)'), function(E) {
           var editor = this.layout.form.getEditor($(E).data('schemapath'));
           var isEmpty = _.isEmpty(editor.getValue());
-
 
           // Empty array data should have one empty item
           if(_.contains(['resources'], E.dataset.schemapath.replace('root.', '')))
@@ -368,7 +352,7 @@ module.exports = {
 
     showResult: function() {
       $('#json-code').html(highlight.fixMarkup(
-        highlight.highlight('json', JSON.stringify(this.layout.form.getValue(), undefined, 2)).value
+        highlight.highlight('json', JSON.stringify(this.getValue(), undefined, 2)).value
       ));
 
       return this;

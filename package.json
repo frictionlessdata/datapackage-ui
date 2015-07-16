@@ -34,6 +34,7 @@
     "json-editor": "^0.7.18",
     "json-table-schema": "0.0.2-alpha",
     "jts-infer": "^0.0.0",
+    "omit-empty": "^0.3.1",
     "resolve": "^1.1.6",
     "superagent": "^1.2.0",
     "superagent-bluebird-promise": "^2.0.2",
