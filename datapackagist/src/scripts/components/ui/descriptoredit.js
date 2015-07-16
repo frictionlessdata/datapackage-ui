@@ -276,6 +276,8 @@ module.exports = {
 
       this.layout.form = new JSONEditor(this.$('[data-id=form-container]').get(0), {
         schema: schema,
+        show_errors: 'change',
+        remove_empty_properties: true,
         theme: 'bootstrap3',
         disable_edit_json: true,
         disable_properties: true,
@@ -283,7 +285,7 @@ module.exports = {
       });
 
       // Remove Top-level collapse button
-      this.layout.form.root.toggle_button.remove()
+      this.layout.form.root.toggle_button.remove();
 
       // Bind local event to form nodes after form is renedered
       this.delegateEvents();
@@ -336,7 +338,7 @@ module.exports = {
 
 
           // Empty array data should have one empty item
-          if(_.contains(['resources', 'sources', 'licences'], E.dataset.schemapath.replace('root.', '')))
+          if(_.contains(['resources'], E.dataset.schemapath.replace('root.', '')))
             $(editor.add_row_button).trigger('click');
 
           if(isEmpty && !editor.collapsed)
