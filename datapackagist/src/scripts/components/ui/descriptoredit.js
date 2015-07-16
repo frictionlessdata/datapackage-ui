@@ -346,9 +346,7 @@ module.exports = {
         }, this);
 
         // Looks like previous loop is somehow async
-        setTimeout((function() {
-          $('#json-code').prop('hidden', false);
-        }).bind(this), 300);
+        setTimeout((function() { $('#json-code').prop('hidden', false); }).bind(this), 300);
 
         // If on the previous form was entered values try to apply it to new form
         if(formData)
