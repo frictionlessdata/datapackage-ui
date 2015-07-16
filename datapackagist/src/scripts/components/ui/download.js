@@ -13,6 +13,7 @@ module.exports = backbone.BaseView.extend({
 
     this.$el.addClass('disabled');
 
+    // Drop errors of empty fields which are actually not required
     validator.validate(form.getValue(), schema).then((function(R) {
       var errors = _.filter(R.errors, function(E) {
         var editor = form.getEditor('root' + E.dataPath.replace(/\//g, '.'));
