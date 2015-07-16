@@ -22,6 +22,7 @@
     "datapackage-registry": "^0.1.0",
     "datapackage-validate": "git+https://github.com/okfn/datapackage-validate.git",
     "deep-diff": "^0.3.2",
+    "deep-empty": "^0.1.4",
     "detect-browser": "^1.1.1",
     "fileapi": "^2.0.10",
     "get-uri": "^0.1.3",

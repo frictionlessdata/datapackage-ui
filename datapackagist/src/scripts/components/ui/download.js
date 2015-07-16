@@ -1,6 +1,7 @@
 var _ = require('underscore');
 var backbone = require('backbone');
 var backboneBase = require('backbone-base');
+var deepEmpty = require('deep-empty');
 var outfile = require('datapackage-outfile');
 var validator = require('datapackage-validate');
 
@@ -18,9 +19,10 @@ module.exports = backbone.BaseView.extend({
       var errors = _.filter(R.errors, function(E) {
         var editor = form.getEditor('root' + E.dataPath.replace(/\//g, '.'));
         var isRequired = _.contains(editor.parent.schema.required, editor.key);
+        var value = editor.getValue();
 
 
-        return isRequired || !isRequired && editor.getValue();
+        return isRequired || !isRequired && editor.getValue() && !_.isEmpty(deepEmpty(editor.getValue()));
       });
 
       if(!errors.length)
