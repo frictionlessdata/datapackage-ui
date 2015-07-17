@@ -6,6 +6,9 @@ var outfile = require('datapackage-outfile');
 var validator = require('datapackage-validate');
 
 
+// Returns path for json-editor
+function convertPath(path) { return 'root' + path.replace(/\//g, '.'); }
+
 // Download validated datapackage
 module.exports = backbone.BaseView.extend({
   reset: function(descriptor, schema) {
@@ -17,12 +20,24 @@ module.exports = backbone.BaseView.extend({
     // Drop errors of empty fields which are actually not required
     validator.validate(descriptor, schema).then((function(R) {
       var errors = _.filter(R.errors, function(E) {
-        var editor = form.getEditor('root' + E.dataPath.replace(/\//g, '.'));
+        var editor = form.getEditor(convertPath(E.dataPath));
         var isRequired = editor.parent && _.contains(editor.parent.schema.required, editor.key);
         var value = editor.getValue();
 
 
         return isRequired || !isRequired && editor.getValue() && !_.isEmpty(deepEmpty(editor.getValue()));
+      });
+
+      // Place .anyOf validation errors on form
+      _.each(errors, function(E) {
+        if(parseInt(E.code) === 10)
+          form.getEditor(convertPath(E.dataPath)).showValidationErrors([{
+            message: 'Any of these fields should not be empty: ' + _.map(E.subErrors, function(E) {
+              return E.params.key;
+            }).join(', '),
+
+            path: convertPath(E.dataPath)
+          }]);
       });
 
       if(!errors.length)
