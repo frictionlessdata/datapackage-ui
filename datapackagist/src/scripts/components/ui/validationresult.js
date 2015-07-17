@@ -9,6 +9,7 @@ module.exports = {
   ListView: backbone.BaseListView.extend({
     // Hide newly added results if they are for another tab
     addItemView: function(view, container) {
+      this.$('#ok-message').prop('hidden', true);
       view.activate(view.model.get('resource_id') === this.activeResource);
       backbone.BaseListView.prototype.addItemView.call(this, view, container);
       return this;
@@ -16,6 +17,7 @@ module.exports = {
 
     clear: function() {
       backbone.BaseListView.prototype.clear.call(this);
+      this.$('#ok-message').prop('hidden', false);
       this.layout.tabs.clear();
       return this;
     },
