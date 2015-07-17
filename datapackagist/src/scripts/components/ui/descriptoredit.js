@@ -322,7 +322,7 @@ module.exports = {
           var isEmpty = _.isEmpty(editor.getValue());
 
           // Empty array data should have one empty item
-          if(_.contains(['resources'], E.dataset.schemapath.replace('root.', '')))
+          if(_.contains(['resources'], E.dataset.schemapath.replace('root.', '')) && !editor.rows.length)
             $(editor.add_row_button).trigger('click');
 
           if(isEmpty && !editor.collapsed)
