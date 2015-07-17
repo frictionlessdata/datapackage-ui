@@ -143,6 +143,7 @@ module.exports = {
         _.each(this.layout.form.getEditor('root.resources').rows, function(R) {
           // Conditional promises
           (function() {
+            // Resource was downloaded by user
             if(R.dataSource)
               return goodTables.run(R.dataSource.data, JSON.stringify(R.dataSource.schema));
 
@@ -162,6 +163,7 @@ module.exports = {
                 })).then(function(CSV) { R.dataSource = CSV; return goodTables.run(CSV.data, JSON.stringify(CSV.schema)); });
               });
 
+            // Default fall back
             return new Promise(function(RS, RJ) { RS(false); });
           })()
 
