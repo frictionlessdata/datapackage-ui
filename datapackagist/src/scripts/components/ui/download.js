@@ -18,7 +18,7 @@ module.exports = backbone.BaseView.extend({
     validator.validate(descriptor, schema).then((function(R) {
       var errors = _.filter(R.errors, function(E) {
         var editor = form.getEditor('root' + E.dataPath.replace(/\//g, '.'));
-        var isRequired = _.contains(editor.parent.schema.required, editor.key);
+        var isRequired = editor.parent && _.contains(editor.parent.schema.required, editor.key);
         var value = editor.getValue();
 
 
