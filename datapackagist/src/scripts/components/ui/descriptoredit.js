@@ -5,7 +5,6 @@ var backboneBase = require('backbone-base');
 var csv = require('csv');
 var deepEmpty = require('deep-empty');
 var getUri = require('get-uri');
-var Goodtables = require('goodtables');
 var highlight = require('highlight-redux');
 var jsonEditor = require('json-editor');
 var jtsInfer = require('json-table-schema').infer;
@@ -132,63 +131,7 @@ module.exports = {
       },
 
       'click #validate-resources': function() {
-        var goodTables = new Goodtables({method: 'post', report_type: 'grouped'});
-
-        // Navigate to valifation results just once during series of API calls
-        var navigateToResults = _.once(function(id) { window.ROUTER.navigate('/validation-results/' + id, {trigger: true}); });
-
-
-        window.APP.layout.validationResultList.reset(new backbone.Collection());
-
-        _.each(this.layout.form.getEditor('root.resources').rows, function(R) {
-          // Conditional promises
-          (function() {
-            if(R.dataSource)
-              return goodTables.run(R.dataSource.data, JSON.stringify(R.dataSource.schema));
-
-            // If data source stored as URL in a row then first grab it and then return goodtables promise
-            if(validator.isURL(R.value.url) && _.contains([R.mediatype, R.format], 'text/csv'))
-              return request.get(R.value.url).then(function(RES) {
-                // Need schema
-                return (new Promise(function(RS, RJ) {
-                  csv.parse(RES.text, function(E, D) {
-                    if(E) {
-                      RJ(E);
-                      return false;
-                    }
-
-                    RS({data: RES.text, schema: jtsInfer(D[0], _.rest(D))});
-                  });
-                })).then(function(CSV) { R.dataSource = CSV; return goodTables.run(CSV.data, JSON.stringify(CSV.schema)); });
-              });
-
-            return new Promise(function(RS, RJ) { RS(false); });
-          })()
-
-            .then(function(M) {
-              if(!M)
-                return false;
-
-              // Validation completed
-              window.APP.layout.validationResultList.collection
-
-                // Grouped report has complicated structure
-                .add(M.getGroupedByRows().map(function(SR) { return _.extend(_.values(SR)[0], {
-                  headers: M.getHeaders(),
-                  resource_id: R.key
-                }); }));
-
-              // Navigate between resources in validation results
-              window.APP.layout.validationResultList.layout.tabs.add(new backbone.Model({
-                title: R.getValue().path,
-
-                // .key is a unique property among all resources rows
-                url: '/validation-results/' + R.key
-              }));
-
-              navigateToResults(R.key);
-            });
-        });
+        window.APP.layout.validationResultList.validateResources(this.layout.form.getEditor('root.resources').rows);
       }
     },
 
