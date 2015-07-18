@@ -33,25 +33,24 @@ DataUploadView = backbone.BaseView.extend({
       FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {
         if(EV.type === 'load') {
           csv.parse(EV.result, (function(E, D) {
-            var
-              schema,
-              editor = window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
+            var editor = window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
+
+            var rowValue = {
+              name: _.last(EV.target.name.split('/')).toLowerCase().replace(/\.[^.]+$|[^a-z^\-^\d^_^\.]+/g, ''),
+              path: EV.target.name
+            };
 
 
             if(E)
               throw E;
 
-            schema = jtsInfer(D[0], _.rest(D));
+            rowValue.schema = jtsInfer(D[0], _.rest(D));
 
-            // Delete last row if empty
-            if(_.chain(editor.getValue()).last().flatten().compact().isEmpty().value())
-              editor.delete_last_row_button.click();
-
-            editor.addRow({
-              name: _.last(EV.target.name.split('/')).toLowerCase().replace(/\.[^.]+$|[^a-z^\-^\d^_^\.]+/g, ''),
-              path: EV.target.name,
-              schema: schema
-            }, true);
+            // If there is single empty row — apply 
+            if(_.isEmpty(window.APP.layout.descriptorEdit.getValue().resources) && !_.isEmpty(editor.rows))
+              editor.rows[0].setValue(rowValue, true);
+            else
+              editor.addRow(rowValue, true);
 
             // Save data source in the form
             _.last(editor.rows).dataSource = {schema: schema, data: EV.result};
