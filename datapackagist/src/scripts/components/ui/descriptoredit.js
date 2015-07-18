@@ -35,7 +35,7 @@ DataUploadView = backbone.BaseView.extend({
           csv.parse(EV.result, (function(E, D) {
             var
               schema,
-              editor = this.options.form.getEditor('root.resources');
+              editor = window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
 
 
             if(E)
@@ -72,7 +72,7 @@ DataUploadView = backbone.BaseView.extend({
   render: function() {
     this.$el
       .append(
-        $(this.options.form.theme.getButton('Upload data file', '', 'Upload data file'))
+        $(window.APP.layout.descriptorEdit.layout.form.theme.getButton('Upload data file', '', 'Upload data file'))
           .attr('data-id', 'upload-data-file')
       )
 
@@ -219,7 +219,6 @@ module.exports = {
 
       this.layout.uploadData = (new DataUploadView({
         el: this.layout.form.theme.getHeaderButtonHolder(),
-        form: this.layout.form,
         parent: this
       })).render();
 
