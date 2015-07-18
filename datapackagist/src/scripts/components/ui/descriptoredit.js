@@ -14,7 +14,6 @@ var request = require('superagent-bluebird-promise');
 var UploadView = require('./upload');
 var _ = require('underscore');
 var $ = require('jquery');
-var validator = require('validator');
 
 
 // Convert name into title

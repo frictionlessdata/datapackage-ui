@@ -4,6 +4,7 @@ var backboneBase = require('backbone-base');
 var Goodtables = require('goodtables');
 var navigation = require('./navigation');
 var validationErrorRowTpl = require('./templates/validation-error-row.hbs');
+var validator = require('validator');
 
 
 module.exports = {
