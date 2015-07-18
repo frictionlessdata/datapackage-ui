@@ -54,6 +54,8 @@ DataUploadView = backbone.BaseView.extend({
 
             // Save data source in the form
             _.last(editor.rows).dataSource = {schema: schema, data: EV.result};
+
+            window.APP.layout.descriptorEdit.populateTitlesFromNames();
           }).bind(this));
         } else if( EV.type ==='progress' ) {
           this.setProgress(EV.loaded/EV.total * 100);
@@ -180,6 +182,17 @@ module.exports = {
 
     hasChanges: function() { return Boolean(this.changed); },
 
+    // Populate empty title fields with name field value. Rely on DOM events defined
+    // in DescriptorEditView.events
+    populateTitlesFromNames: function() {
+      _.each(this.$('[data-schemapath].container-title input'), function(I) {
+        I.edited = Boolean($(I).val());
+      });
+
+      this.$('[data-schemapath].container-name input').trigger('keyup');
+      return this;
+    },
+
     reset: function(schema) {
       var formData;
 
@@ -247,13 +260,7 @@ module.exports = {
           this.$('[data-schemapath]:not([data-schematype]) select.form-control').prop('hidden', true);
         }).bind(this)));
 
-        // Populate empty title fields with name field value. Rely on DOM events defined
-        // in DescriptorEditView.events
-        _.each($('[data-schemapath].container-title input', this.layout.form.getEditor('root').container), function(I) {
-          I.edited = Boolean($(I).val());
-        });
-
-        $('[data-schemapath].container-name input', this.layout.form.getEditor('root').container).trigger('keyup');
+        this.populateTitlesFromNames();
         $('#json-code').prop('hidden', true);
 
         // Collapse editor and add empty item if it has no value
