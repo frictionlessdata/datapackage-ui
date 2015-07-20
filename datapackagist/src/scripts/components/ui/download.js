@@ -40,7 +40,7 @@ module.exports = backbone.BaseView.extend({
           }]);
       });
 
-      if(!errors.length)
+      if(!errors.length && !_.isEmpty(descriptor))
         this.$el
           .removeClass('disabled')
 

@@ -270,7 +270,7 @@ module.exports = {
 
           // Empty array data should have one empty item
           if(_.contains(['resources'], E.dataset.schemapath.replace('root.', '')) && !editor.rows.length)
-            $(editor.add_row_button).trigger('click');
+            editor.addRow();
 
           if(isEmpty && !editor.collapsed)
             $(editor.toggle_button).trigger('click');
