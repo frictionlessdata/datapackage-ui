@@ -96,9 +96,9 @@ module.exports = {
 
     events: {
       // Populate main title and resource title fields
-      'keyup [data-schemapath].container-name input': function(event) {
+      'keyup [data-schemapath$=".name"] input': function(event) {
         var $input = $(event.currentTarget);
-        var $title = $input.closest('[data-schematype=object]').find('.row .container-title input').eq(0);
+        var $title = $input.closest('[data-schematype=object]').find('[data-schemapath$=".title"] input').eq(0);
         var nameEditor = this.layout.form.getEditor($input.closest('[data-schemapath]').data('schemapath'));
 
 
@@ -119,7 +119,7 @@ module.exports = {
 
       // Do not populate title field with name field data if title was edited
       // by user. Consider it is not edited once user empties it.
-      'keyup [data-schemapath].container-title input': function(event) {
+      'keyup [data-schemapath$=".title"] input': function(event) {
         var $input = $(event.currentTarget);
 
 
@@ -127,7 +127,7 @@ module.exports = {
 
         // If user empties the title field then populate it with name field value
         if(!event.currentTarget.edited)
-          $input.closest('[data-schematype=object]').find('.row .container-name input').trigger('keyup');
+          $input.closest('[data-schematype=object]').find('[data-schemapath$=".name"] input').trigger('keyup');
       },
 
       'click #validate-resources': function() {
