@@ -127,7 +127,7 @@ module.exports = {
 
         // If user empties the title field then populate it with name field value
         if(!event.currentTarget.edited)
-          $input.closest('[data-schematype=object]').find('[data-schemapath$=".name"] input').trigger('keyup');
+          $input.val($input.closest('[data-schematype=object]').find('[data-schemapath$=".name"] input').val());
       },
 
       'click #validate-resources': function() {
