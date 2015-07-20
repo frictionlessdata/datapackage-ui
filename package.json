@@ -61,12 +61,17 @@
     "superagent-mock": "^1.1.0",
     "uglify-js": "^2.4.21",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.2.1"
+    "watchify": "^3.2.1",
+    "zombie": "^4.0.13"
+  },
+  "engines": {
+    "iojs": "v2.3.x",
+    "npm": "v2.13.x"
   },
   "scripts": {
-    "test": "mocha datapackagist/src/scripts/components/ui",
-    "start": "gulp",
-    "deploy": "gulp deploy"
+    "test": "mocha tests --recursive --reporter spec",
+    "start": "node datapackagist",
+    "deploy": "git push heroku master"
   },
   "author": {
     "name": "Open Knowledge",
