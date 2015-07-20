@@ -30,14 +30,22 @@ module.exports = backbone.BaseView.extend({
 
       // Place .anyOf validation errors on form
       _.each(errors, function(E) {
-        if(parseInt(E.code) === 10)
-          form.getEditor(convertPath(E.dataPath)).showValidationErrors([{
-            message: 'Any of these fields should not be empty: ' + _.map(E.subErrors, function(E) {
-              return E.params.key;
-            }).join(', '),
+        var editor = form.getEditor(convertPath(E.dataPath));
 
-            path: convertPath(E.dataPath)
-          }]);
+
+        if(parseInt(E.code) !== 10)
+          return false;
+
+        editor.showValidationErrors([{
+          message: 'Any of these fields should not be empty: ' + _.map(E.subErrors, function(E) {
+            return E.params.key;
+          }).join(', '),
+
+          path: convertPath(E.dataPath)
+        }]);
+
+        // Previous .showValidationErrors() strips nested editors errors — restore them
+        _.each(editor.editors, function(V, K) { V.showValidationErrors(V.jsoneditor.validation_results); });
       });
 
       if(!errors.length && !_.isEmpty(descriptor))
