@@ -123,6 +123,10 @@ module.exports = {
         var $input = $(event.currentTarget);
 
 
+        // Ignore tab key pressed
+        if(event.keyCode === 9)
+          return true;
+
         event.currentTarget.edited = Boolean($input.val());
 
         // If user empties the title field then populate it with name field value
