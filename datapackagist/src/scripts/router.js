@@ -44,7 +44,7 @@ module.exports = backbone.Router.extend({
 
   fromRemote: function(profile) {
     var descriptorEdit = window.APP.layout.descriptorEdit;
-    var options = _.object(window.location.hash.replace(/(.*)\?/g, '').split('&').map(function(P) { return P.split('='); }));
+    var options = _.object(window.location.href.replace(/(.*)\?/g, '').split('&').map(function(P) { return P.split('='); }));
 
 
     // If .index() have not yet downloaded registry it will return Promise. Otherwise
