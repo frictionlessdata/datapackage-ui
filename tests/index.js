@@ -10,7 +10,7 @@ Browser.localhost('datapackagist.io', 3000);
 
 describe('DataPackagist core', function() {
 
-  var browser = new Browser();
+  var browser = new Browser({maxWait: 30000});
 
   // ensure we have time for request to reoslve, etc.
   this.timeout(15000);
