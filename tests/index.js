@@ -4,7 +4,6 @@ var Browser = require('zombie');
 var app = require('../datapackagist/app');
 var assert = require('chai').assert;
 
-
 process.env.NODE_ENV = 'test';
 
 Browser.localhost('datapackagist.io', 3000);
@@ -14,7 +13,7 @@ describe('DataPackagist core', function() {
   var browser = new Browser();
 
   // ensure we have time for request to reoslve, etc.
-  this.timeout(5000);
+  this.timeout(15000);
 
   before(function(done) {
     // run the server
@@ -53,8 +52,6 @@ describe('DataPackagist core', function() {
     });
 
     it('constructs the form from the base profile by default', function(done) {
-      this.timeout(10*1000);
-
       // tests that the form is built to create a base profile datapackage.json
       browser.assert.element('#registry-list [data-id=list-container] option[value=base]:selected');
       assert.equal(browser.window.APP.layout.descriptorEdit.layout.form.schema.title, 'DataPackage');
@@ -63,8 +60,11 @@ describe('DataPackagist core', function() {
 
     it('loads other profiles by route', function(done) {
       // tests that if the correct route is given, then a form is built to create a tabular profile datapackage.json
-      assert.fail();
-      done();
+      browser.visit('/tabular', function() {
+        browser.assert.element('#registry-list [data-id=list-container] option[value=tabular]:selected');
+        assert.equal(browser.window.APP.layout.descriptorEdit.layout.form.schema.title, 'Tabular Data Package');
+        done();
+      });
     });
 
     it('populates on valid descriptor upload', function(done) {
