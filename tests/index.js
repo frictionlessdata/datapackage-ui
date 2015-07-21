@@ -1,11 +1,13 @@
+var $ = require('jquery');
 var _ = require('underscore');
 var Browser = require('zombie');
 var app = require('../datapackagist/app');
+var assert = require('chai').assert;
+
 
 process.env.NODE_ENV = 'test';
 
 Browser.localhost('datapackagist.io', 3000);
-
 
 describe('DataPackagist core', function() {
 
@@ -34,25 +36,28 @@ describe('DataPackagist core', function() {
 
     it('has a registry list', function(done) {
       // tests that the registry list exists
-      assert.fail();
-      done();
+      browser.assert.elements('#registry-list [data-id=list-container] option', {atLeast: 2});
+      done();  
     });
 
     it('has an upload button', function(done) {
       // tests that the upload button for datapackage.json files exists
-      assert.fail();
+      browser.assert.element('#upload-data-package input[type=file]');
       done();
     });
 
-    it('has a download button', function(done) {
+    it('has a download button which is disabled at startup', function(done) {
       // tests that the download button for datapackage.json files exists
-      assert.fail();
+      browser.assert.element('#download-data-package[download].disabled');
       done();
     });
 
     it('constructs the form from the base profile by default', function(done) {
+      this.timeout(10*1000);
+
       // tests that the form is built to create a base profile datapackage.json
-      assert.fail();
+      browser.assert.element('#registry-list [data-id=list-container] option[value=base]:selected');
+      assert.equal(browser.window.APP.layout.descriptorEdit.layout.form.schema.title, 'DataPackage');
       done();
     });
 

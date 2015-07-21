@@ -3,6 +3,7 @@ var $ = require('jquery');
 var _ = require('underscore');
 var deep = require('deep-diff');
 var Promise = require('bluebird');
+var request = require('superagent-bluebird-promise');
 
 module.exports = {
   ListView: backbone.BaseListView.extend({
@@ -89,11 +90,14 @@ module.exports = {
           return false;
         }
 
-        $.getJSON(profile.get('schema'), (function(schemaData) {
-          this.schemaData = schemaData;
-          this.parent.reset(schemaData);
-          RS(schemaData);
-        }).bind(this));
+        request
+          .get(profile.get('schema'))
+
+          .then((function(R) {
+            this.schemaData = JSON.parse(R.text);
+            this.parent.reset(this.schemaData);
+            RS(this.schemaData);
+          }).bind(this));
       }).bind(this));
     },
 
