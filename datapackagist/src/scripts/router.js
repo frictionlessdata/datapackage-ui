@@ -66,7 +66,7 @@ module.exports = backbone.Router.extend({
     });
   },
 
-  index: function(profile) {
+  index: function() {
     var registryList;
 
 
@@ -80,7 +80,9 @@ module.exports = backbone.Router.extend({
     // WARN Process registry errors here
     if(!registryList.collection)
       // Other routes need to wait for registry to be able to define profile in registry select box
-      return registry.get().then((function(D) { registryList.reset(new backbone.Collection(D)); }).bind(this));
+      return new Promise(function(RS, RJ) {
+        registry.get().then((function(D) { registryList.reset(new backbone.Collection(D)).then(RS); }).bind(this));
+      });
 
     // Default value for more consistency
     return new Promise(function(RS, RJ) { RS(true); });

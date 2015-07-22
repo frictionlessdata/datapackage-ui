@@ -12,39 +12,42 @@ module.exports = {
         var id = this.$(this.options.container).val();
 
 
-        $.getJSON(this.collection.get(id).get('schema'), (function(schemaData) {
-          var
-            // Keys of entered fields
-            keys = _.keys(this.parent.getValue());
+        request.get(this.collection.get(id).get('schema'))
+          .then((function(R) {
+            var
+              // Keys of entered fields
+              keys = _.keys(this.parent.getValue()),
 
-          this.schemaData = schemaData;
+              schemaData = JSON.parse(R.text);
 
-          // If data can be lost - show confirmation message
-          if(deep.diff(_.pick(schemaData.properties, keys), _.pick(this.parent.layout.form.schema.properties, keys)))
-            return window.APP.layout.confirmationDialog
-              .setMessage('Some data you have entered will be lost. Are you sure you want to change the Data Package Profile?')
+            this.schemaData = schemaData;
 
-              .setCallbacks({
-                yes: (function() {
-                  this.selectedValue = id;
-                  this.parent.reset(schemaData);
-                  window.APP.layout.confirmationDialog.deactivate();
-                  return false;
-                }).bind(this),
+            // If data can be lost - show confirmation message
+            if(deep.diff(_.pick(schemaData.properties, keys), _.pick(this.parent.layout.form.schema.properties, keys)))
+              return window.APP.layout.confirmationDialog
+                .setMessage('Some data you have entered will be lost. Are you sure you want to change the Data Package Profile?')
 
-                no: (function() {
-                  this.$(this.options.container).val(this.selectedValue);
-                  window.APP.layout.confirmationDialog.deactivate();
-                  return false;
-                }).bind(this)
-              })
+                .setCallbacks({
+                  yes: (function() {
+                    this.selectedValue = id;
+                    this.parent.reset(schemaData);
+                    window.APP.layout.confirmationDialog.deactivate();
+                    return false;
+                  }).bind(this),
 
-              .activate();
-          else
-            this.selectedValue = id;
+                  no: (function() {
+                    this.$(this.options.container).val(this.selectedValue);
+                    window.APP.layout.confirmationDialog.deactivate();
+                    return false;
+                  }).bind(this)
+                })
 
-          this.parent.reset(schemaData);
-        }).bind(this));
+                .activate();
+            else
+              this.selectedValue = id;
+
+            this.parent.reset(schemaData);
+          }).bind(this));
       }
     },
 
@@ -70,8 +73,7 @@ module.exports = {
 
     reset: function(collection) {
       backbone.BaseListView.prototype.reset.call(this, collection);
-      this.setSelected(this.collection.at(0).get('id'));
-      return this;
+      return this.setSelected(this.collection.at(0).get('id'));
     },
 
     // Update selectbox and trigger change event

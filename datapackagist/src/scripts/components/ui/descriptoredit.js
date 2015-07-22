@@ -196,6 +196,7 @@ module.exports = {
     reset: function(schema) {
       var formData;
 
+
       // Clean up previous state
       if(this.layout.form) {
         formData = this.getValue();
@@ -224,7 +225,7 @@ module.exports = {
       });
 
       // Remove Top-level collapse button
-      this.layout.form.root.toggle_button.remove();
+      $(this.layout.form.root.toggle_button).remove();
 
       // Bind local event to form nodes after form is renedered
       this.delegateEvents();
@@ -267,6 +268,9 @@ module.exports = {
         _.each(this.$('[data-schemapath^="root."]:has(.json-editor-btn-collapse)'), function(E) {
           var editor = this.layout.form.getEditor($(E).data('schemapath'));
           var isEmpty = _.isEmpty(editor.getValue());
+
+          if(!E.dataset)
+            return false;
 
           // Empty array data should have one empty item
           if(_.contains(['resources'], E.dataset.schemapath.replace('root.', '')) && !editor.rows.length)
