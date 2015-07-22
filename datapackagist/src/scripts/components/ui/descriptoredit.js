@@ -185,8 +185,7 @@ module.exports = {
       return this;
     },
 
-    reset: function(schema) {
-
+    reset: function(schema, resourceDataSources) {
       // Clean up previous state
       if(this.layout.form) {
         this.layout.form.destroy();
@@ -209,6 +208,10 @@ module.exports = {
         // There is no any good way to bind events to custom button or even add cutsom button
         $(this.layout.form.getEditor('root.resources').container)
           .children('h3').append(this.layout.uploadData.el);
+
+        // Copy metadata for resources data source
+        if(resourceDataSources)
+          _.each(this.layout.form.getEditor('root.resources').rows, function(R, I) { R.dataSource = resourceDataSources[I]; });
 
         // After `ready` event fired, editor fire `change` event regarding to the initial changes
         this.layout.form.on('change', _.after(2, (function() {
