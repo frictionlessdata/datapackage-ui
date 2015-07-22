@@ -160,8 +160,18 @@ describe('DataPackagist core', function() {
 
     it('populates a resource in the resources array when uploading a valid resource', function(done) {
       // ensure that a valid resource file upload results in a new resource object
-      assert.fail();
-      done();
+      browser.visit('/', function() {
+        // Don't know how to simulate file upload
+        browser.window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources').rows[0].setValue({
+          name: 'test',
+          path: 'test.csv',
+          schema: jtsInfer(['name', 'age'], [['John', '33']])
+        }, true);
+
+        assert.equal(browser.window.$('[name="root[resources][0][name]"]').val(), 'test');
+        assert.equal(browser.window.$('[name="root[resources][0][path]"]').val(), 'test.csv');
+        done();
+      });
     });
 
     it('errors when uploading an invalid resource', function(done) {
