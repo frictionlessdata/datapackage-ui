@@ -197,12 +197,12 @@ module.exports = {
       }
 
       this.layout.form = new jsonEditor.JSONEditorView(this.$('[data-id=form-container]').get(0), {
-        schema: schema,
-        show_errors: 'change',
-        theme: 'bootstrap3',
-        disable_edit_json: true,
+        schema            : schema,
+        show_errors       : 'change',
+        theme             : 'bootstrap3',
+        disable_edit_json : true,
         disable_properties: true,
-        iconlib: 'fontawesome4'
+        iconlib           : 'fontawesome4'
       });
 
       // Bind local event to form nodes after form is renedered
