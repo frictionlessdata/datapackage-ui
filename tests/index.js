@@ -133,8 +133,15 @@ describe('DataPackagist core', function() {
 
     it('does not allow download of an invalid tabular profile', function(done) {
       // try to download invalid tabular profile
-      assert.fail();
-      done();
+      // try to download invalid base profile
+      browser.visit('/tabular', function() {
+        browser.fill('[name="root[name]"]', 'Invalid name');
+
+        setTimeout(function() {
+          assert(browser.window.$('#download-data-package').hasClass('disabled'), 'Download button not disabled');
+          done();
+        }, 5000);
+      });
     });
 
   });
