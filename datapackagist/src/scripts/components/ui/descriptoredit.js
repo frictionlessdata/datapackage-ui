@@ -185,12 +185,13 @@ module.exports = {
       return this;
     },
 
-    reset: function(schema, resourceDataSources) {
-      var formData;
+    reset: function(schema) {
+      var formData, resourceDataSources;
 
       // Clean up previous state
       if(this.layout.form) {
         formData = this.layout.form.getCleanValue();
+        resourceDataSources = _.pluck(this.layout.form.getEditor('root.resources').rows, 'dataSource');
         this.layout.form.destroy();
         this.layout.uploadData.undelegateEvents().remove();
       }

@@ -26,7 +26,7 @@ module.exports = {
               .setCallbacks({
                 yes: (function() {
                   this.selectedValue = id;
-                  this.parent.reset(schemaData, _.pluck(this.parent.layout.form.getEditor('root.resources').rows, 'dataSource'));
+                  this.parent.reset(schemaData);
                   window.APP.layout.confirmationDialog.deactivate();
                   return false;
                 }).bind(this),
