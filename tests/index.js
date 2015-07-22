@@ -96,7 +96,7 @@ describe('DataPackagist core', function() {
         browser.wait({duration: '5s', element: '#download-data-package:not(.disabled)'}).then(function() {
           assert(!browser.window.$('#download-data-package').hasClass('disabled'), 'Download button not enabled');
           done();
-        })
+        });
       });
     });
 
