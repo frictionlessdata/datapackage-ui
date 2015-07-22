@@ -148,9 +148,13 @@ describe('DataPackagist core', function() {
 
   describe('Ensure essential resource file interactions', function() {
 
+    before(function(done) {
+      browser.visit('/', done);
+    });
+
     it('has a button to upload a resource file', function(done) {
       // ensure that the button to upload a resource file exists
-      assert.fail();
+      browser.assert.element('[data-id=upload-data-file]');
       done();
     });
 
