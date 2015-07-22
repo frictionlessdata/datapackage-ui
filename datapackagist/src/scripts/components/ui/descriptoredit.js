@@ -231,8 +231,6 @@ module.exports = {
 
       this.populateTitlesFromNames();
       $('#json-code').prop('hidden', true);
-
-
     },
 
     showResult: function() {
