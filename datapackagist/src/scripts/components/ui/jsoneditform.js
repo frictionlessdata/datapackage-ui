@@ -7,9 +7,6 @@ var omitEmpty = require('omit-empty');
 var JSONEditorView = JSONEditor;
 
 JSONEditorView.prototype.init = _.wrap(JSONEditorView.prototype.init, function(init) {
-  var formData;
-
-
   init.apply(this, _.rest(arguments));
 
   this.on('ready', (function() {
@@ -18,6 +15,10 @@ JSONEditorView.prototype.init = _.wrap(JSONEditorView.prototype.init, function(i
 
     // Detecting changes
     this.changed = false;
+
+    // If on the previous form was entered values try to apply it to new form
+    if(this.options.initialData)
+      this.setValue(_.extend({}, this.getValue(this.options.initialData), this.options.initialData));
 
     // After `ready` event fired, editor fire `change` event regarding to the initial changes
     this.on('change', _.after(2, (function() {
@@ -50,10 +51,6 @@ JSONEditorView.prototype.init = _.wrap(JSONEditorView.prototype.init, function(i
 
     // Looks like previous loop is somehow async
     setTimeout((function() { $('#json-code').prop('hidden', false); }).bind(this), 300);
-
-    // If on the previous form was entered values try to apply it to new form
-    if(formData)
-      this.layout.form.setValue(_.extend({}, this.layout.form.getValue(formData), formData));
 
     // Remove collapse button on add new item in collection
     _.each($('[data-schemapath][data-schemapath!=root]:has(.json-editor-btn-add)', this.element), function(E) {

@@ -186,8 +186,11 @@ module.exports = {
     },
 
     reset: function(schema, resourceDataSources) {
+      var formData;
+
       // Clean up previous state
       if(this.layout.form) {
+        formData = this.layout.form.getCleanValue();
         this.layout.form.destroy();
         this.layout.uploadData.undelegateEvents().remove();
       }
@@ -198,7 +201,8 @@ module.exports = {
         theme: 'bootstrap3',
         disable_edit_json: true,
         disable_properties: true,
-        iconlib: 'fontawesome4'
+        iconlib: 'fontawesome4',
+        initialData: formData
       });
 
       // Bind local event to form nodes after form is renedered
