@@ -176,8 +176,19 @@ describe('DataPackagist core', function() {
 
     it('errors when uploading an invalid resource', function(done) {
       // ensure that when a user attempts to upload an invalid resource, that she is shown an error
-      assert.fail();
-      done();
+      browser.visit('/', function() {
+        // Don't know how to simulate file upload
+        browser.window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources').rows[0].setValue({
+          name: 'test',
+          path: 'test.csv',
+          schema: jtsInfer(['name', 'age'], [['John', '33', '123']])
+        }, true);
+
+        // Object global error
+        browser.assert.element('[data-schemapath=root.resources.0.schema] > div > p');
+
+        done();
+      });
     });
 
     it('validates a valid resource on user action', function(done) {
