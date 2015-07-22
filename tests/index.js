@@ -75,8 +75,8 @@ describe('DataPackagist core', function() {
 
     it('populates on valid descriptor upload', function(done) {
       // can't trigger upload button, thus call the method directly
-      browser.window.APP.layout.descriptorEdit.layout.upload.updateApp({name: 'Name', title: 'Title'});
-      assert.equal(browser.window.$('input[name="root[name]"]').val(), 'Name');
+      browser.window.APP.layout.descriptorEdit.layout.upload.updateApp({name: 'name', title: 'Title'});
+      assert.equal(browser.window.$('input[name="root[name]"]').val(), 'name');
       assert.equal(browser.window.$('input[name="root[title]"]').val(), 'Title');
       done();
     });
@@ -89,9 +89,14 @@ describe('DataPackagist core', function() {
 
     it('allows download of valid base profile', function(done) {
       // try to download valid base profile
-      browser.window.$('input[name="root[name]"]').val('name');
-      assert(!browser.window.$('#download-data-package').hasClass('disabled'), 'Download button not enabled');
-      done();
+      browser.visit('/', function() {
+        browser.fill('[name="root[name]"]', 'name');
+
+        browser.wait({duration: '5s', element: '#download-data-package:not(.disabled)'}).then(function() {
+          assert(!browser.window.$('#download-data-package').hasClass('disabled'), 'Download button not enabled');
+          done();
+        })
+      });
     });
 
     it('does not allow download of an invalid base profile', function(done) {
