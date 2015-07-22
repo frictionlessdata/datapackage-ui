@@ -3,12 +3,10 @@ require('fileapi');
 var backbone = require('backbone');
 var backboneBase = require('backbone-base');
 var csv = require('csv');
-var deepEmpty = require('deep-empty');
 var getUri = require('get-uri');
 var highlight = require('highlight-redux');
-var jsonEditor = require('json-editor');
+var jsonEditor = require('./jsoneditform');
 var jtsInfer = require('json-table-schema').infer;
-var omitEmpty = require('omit-empty');
 var registry = require('./registry');
 var request = require('superagent-bluebird-promise');
 var UploadView = require('./upload');
@@ -47,7 +45,7 @@ DataUploadView = backbone.BaseView.extend({
             rowValue.schema = jtsInfer(D[0], _.rest(D));
 
             // If there is single empty row — apply 
-            if(_.isEmpty(window.APP.layout.descriptorEdit.getValue().resources) && !_.isEmpty(editor.rows))
+            if(_.isEmpty(window.APP.layout.descriptorEdit.layout.form.getCompactValue().resources) && !_.isEmpty(editor.rows))
               editor.rows[0].setValue(rowValue, true);
             else
               editor.addRow(rowValue, true);
@@ -174,13 +172,7 @@ module.exports = {
       return this;
     },
 
-    // Omit empty properties and "0" values of object properties put into array.
-    // Stick with that complex solution because "0" is the default value
-    getValue: function () { return deepEmpty(this.layout.form.getValue(), function(O) {
-      return !_.isEmpty(O) && !_.every(O, function(I) { return _.isEmpty(omitEmpty(I, true)); })
-    }); },
-
-    hasChanges: function() { return Boolean(this.changed); },
+    hasChanges: function() { return Boolean(this.layout.form.changed); },
 
     // Populate empty title fields with name field value. Rely on DOM events defined
     // in DescriptorEditView.events
@@ -194,27 +186,14 @@ module.exports = {
     },
 
     reset: function(schema) {
-      var formData;
 
       // Clean up previous state
       if(this.layout.form) {
-        formData = this.getValue();
         this.layout.form.destroy();
         this.layout.uploadData.undelegateEvents().remove();
       }
 
-      // Proper representation of all form buttons. Avoid changing each newly
-      // rendered button by rewriting the .getButton()
-      JSONEditor.defaults.themes.bootstrap3.prototype.getButton = function(text, icon, title) {
-        var el = document.createElement('button');
-
-        el.type = 'button';
-        el.className += 'btn btn-info btn-sm';
-        this.setButtonText(el,text,icon,title);
-        return el;
-      };
-
-      this.layout.form = new JSONEditor(this.$('[data-id=form-container]').get(0), {
+      this.layout.form = new jsonEditor.JSONEditorView(this.$('[data-id=form-container]').get(0), {
         schema: schema,
         show_errors: 'change',
         theme: 'bootstrap3',
@@ -223,83 +202,35 @@ module.exports = {
         iconlib: 'fontawesome4'
       });
 
-      // Remove Top-level collapse button
-      this.layout.form.root.toggle_button.remove();
-
       // Bind local event to form nodes after form is renedered
       this.delegateEvents();
-
-      this.layout.uploadData = (new DataUploadView({
-        el: this.layout.form.theme.getHeaderButtonHolder(),
-        parent: this
-      })).render();
 
       this.layout.form.on('ready', (function() {
         // There is no any good way to bind events to custom button or even add cutsom button
         $(this.layout.form.getEditor('root.resources').container)
           .children('h3').append(this.layout.uploadData.el);
 
-        // Detecting changes
-        this.changed = false;
-
         // After `ready` event fired, editor fire `change` event regarding to the initial changes
         this.layout.form.on('change', _.after(2, (function() {
-          var resources = this.layout.form.getEditor('root.resources');
-          var resourcesLength = _.result(resources.rows, 'length');
-
-
-          this.changed = true;
-          window.APP.layout.download.reset(this.getValue(), schema).activate();
+          window.APP.layout.download.reset(this.layout.form.getCompactValue(), schema).activate();
           this.showResult();
-
-          // Expand resources section if there are any resources, collapse if row is empty
-          if(resourcesLength && resources.collapsed || !resourcesLength && !resources.collapsed)
-            $(resources.toggle_button).trigger('click');
-
-          // Do not allow changing schema field type — disable type selectbox
-          this.$('[data-schemapath]:not([data-schematype]) select.form-control').prop('hidden', true);
         }).bind(this)));
-
-        this.populateTitlesFromNames();
-        $('#json-code').prop('hidden', true);
-
-        // Collapse editor and add empty item if it has no value
-        _.each(this.$('[data-schemapath^="root."]:has(.json-editor-btn-collapse)'), function(E) {
-          var editor = this.layout.form.getEditor($(E).data('schemapath'));
-          var isEmpty = _.isEmpty(editor.getValue());
-
-          // Empty array data should have one empty item
-          if(_.contains(['resources'], E.dataset.schemapath.replace('root.', '')) && !editor.rows.length)
-            $(editor.add_row_button).trigger('click');
-
-          if(isEmpty && !editor.collapsed)
-            $(editor.toggle_button).trigger('click');
-        }, this);
-
-        // Looks like previous loop is somehow async
-        setTimeout((function() { $('#json-code').prop('hidden', false); }).bind(this), 300);
-
-        // If on the previous form was entered values try to apply it to new form
-        if(formData)
-          this.layout.form.setValue(_.extend({}, this.layout.form.getValue(formData), formData));
-
-        // Remove collapse button on add new item in collection
-        _.each(this.$('[data-schemapath][data-schemapath!=root]:has(.json-editor-btn-add)'), function(E) {
-          var
-            editor = this.layout.form.getEditor($(E).data('schemapath'));
-
-          $(_.pluck(editor.rows, 'toggle_button')).remove();
-
-          $(editor.add_row_button).click((function() {
-            $(_.last(this.rows).toggle_button).remove();
-          }).bind(editor));
-        }, this);
       }).bind(this));
+
+      this.layout.uploadData = (new DataUploadView({
+        el: this.layout.form.theme.getHeaderButtonHolder(),
+        parent: this
+      })).render();
+
+      this.populateTitlesFromNames();
+      $('#json-code').prop('hidden', true);
+
+
     },
 
     showResult: function() {
       $('#json-code').html(highlight.fixMarkup(
-        highlight.highlight('json', JSON.stringify(this.getValue(), undefined, 2)).value
+        highlight.highlight('json', JSON.stringify(this.layout.form.getCompactValue(), undefined, 2)).value
       ));
 
       return this;
