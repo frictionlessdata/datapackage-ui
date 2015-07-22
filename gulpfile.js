@@ -40,7 +40,7 @@ function scriptPipeline(bundle, outfile) {
   return bundle
            .pipe(source(outfile))
            .pipe(buffer())
-           // .pipe(uglify())
+           .pipe(uglify())
            .pipe(gulp.dest(distDir));
 
 }
