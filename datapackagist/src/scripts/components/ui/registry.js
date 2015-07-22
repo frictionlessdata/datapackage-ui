@@ -14,11 +14,11 @@ module.exports = {
 
         request.get(this.collection.get(id).get('schema'))
           .then((function(R) {
-            var
-              // Keys of entered fields
-              keys = _.keys(this.parent.getValue()),
+            // Keys of entered fields
+            var keys = _.keys(this.parent.getValue());
 
-              schemaData = JSON.parse(R.text);
+            var schemaData = JSON.parse(R.text);
+
 
             this.schemaData = schemaData;
 
