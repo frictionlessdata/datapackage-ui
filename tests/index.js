@@ -89,13 +89,15 @@ describe('DataPackagist core', function() {
 
     it('allows download of valid base profile', function(done) {
       // try to download valid base profile
-      assert.fail();
+      browser.window.$('input[name="root[name]"]').val('name');
+      assert(!browser.window.$('#download-data-package').hasClass('disabled'), 'Download button not enabled');
       done();
     });
 
     it('does not allow download of an invalid base profile', function(done) {
       // try to download invalid base profile
-      assert.fail();
+      browser.window.$('input[name="root[name]"]').val('Invalid name');
+      assert(browser.window.$('#download-data-package').hasClass('disabled'), 'Download button enabled');
       done();
     });
 
