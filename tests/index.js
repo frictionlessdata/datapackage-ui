@@ -101,9 +101,14 @@ describe('DataPackagist core', function() {
 
     it('does not allow download of an invalid base profile', function(done) {
       // try to download invalid base profile
-      browser.window.$('input[name="root[name]"]').val('Invalid name');
-      assert(browser.window.$('#download-data-package').hasClass('disabled'), 'Download button enabled');
-      done();
+      browser.visit('/', function() {
+        browser.fill('[name="root[name]"]', 'Invalid name');
+
+        setTimeout(function() {
+          assert(browser.window.$('#download-data-package').hasClass('disabled'), 'Download button not disabled');
+          done();
+        }, 2000);
+      });
     });
 
     it('allows download of valid tabular profile', function(done) {
