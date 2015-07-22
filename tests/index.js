@@ -74,14 +74,16 @@ describe('DataPackagist core', function() {
     });
 
     it('populates on valid descriptor upload', function(done) {
-      // upload a valid datapackage.json via upload button
-      assert.fail();
+      // can't trigger upload button, thus call the method directly
+      browser.window.APP.layout.descriptorEdit.layout.upload.updateApp({name: 'Name', title: 'Title'});
+      assert.equal(browser.window.$('input[name="root[name]"]').val(), 'Name');
+      assert.equal(browser.window.$('input[name="root[title]"]').val(), 'Title');
       done();
     });
 
     it('errors on invalid descriptor upload', function(done) {
-      // upload an invalid datapackage.json via upload button
-      assert.fail();
+      browser.window.APP.layout.descriptorEdit.layout.upload.updateApp({name: 'A'});
+      browser.assert.element('[data-schemapath="root[name]"] .form-group.has-error');
       done();
     });
 
