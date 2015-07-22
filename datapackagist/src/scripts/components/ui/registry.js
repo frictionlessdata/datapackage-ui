@@ -14,7 +14,7 @@ module.exports = {
         $.getJSON(this.collection.get(id).get('schema'), (function(schemaData) {
           var
             // Keys of entered fields
-            keys = _.keys(this.parent.getValue());
+            keys = _.keys(this.parent.layout.form.getCleanValue());
 
           this.schemaData = schemaData;
 
