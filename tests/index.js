@@ -3,6 +3,7 @@ var _ = require('underscore');
 var Browser = require('zombie');
 var app = require('../datapackagist/app');
 var assert = require('chai').assert;
+var jtsInfer = require('json-table-schema').infer;
 
 process.env.NODE_ENV = 'test';
 
@@ -113,8 +114,21 @@ describe('DataPackagist core', function() {
 
     it('allows download of valid tabular profile', function(done) {
       // try to download valid tabular profile
-      assert.fail();
-      done();
+      browser.visit('/tabular', function() {
+        browser.fill('[name="root[name]"]', 'name');
+
+        // Don't know how to simulate file upload
+        browser.window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources').rows[0].setValue({
+          name: 'test',
+          path: 'test.csv',
+          schema: jtsInfer(['name', 'age'], [['John', '33']])
+        }, true);
+
+        browser.wait({duration: '5s', element: '#download-data-package:not(.disabled)'}).then(function() {
+          assert(!browser.window.$('#download-data-package').hasClass('disabled'), 'Download button not enabled');
+          done();
+        });
+      });
     });
 
     it('does not allow download of an invalid tabular profile', function(done) {

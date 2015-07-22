@@ -15,7 +15,7 @@ module.exports = {
         request.get(this.collection.get(id).get('schema'))
           .then((function(R) {
             // Keys of entered fields
-            var keys = _.keys(this.parent.getValue());
+            var keys = _.keys(this.parent.layout.form.getCleanValue());
 
             var schemaData = JSON.parse(R.text);
 
