@@ -14,7 +14,7 @@ module.exports = {
         $.getJSON(this.collection.get(id).get('schema'), (function(schemaData) {
           var
             // Keys of entered fields
-            keys = _.keys(this.parent.layout.form.getCompactValue());
+            keys = _.keys(this.parent.layout.form.getValue());
 
           this.schemaData = schemaData;
 
@@ -26,7 +26,7 @@ module.exports = {
               .setCallbacks({
                 yes: (function() {
                   this.selectedValue = id;
-                  this.parent.reset(schemaData, _.pluck(this.parent.layout.form.getEditor('root.resources').rows, 'dataSource'));
+                  this.parent.reset(schemaData);
                   window.APP.layout.confirmationDialog.deactivate();
                   return false;
                 }).bind(this),

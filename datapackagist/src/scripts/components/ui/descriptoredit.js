@@ -45,7 +45,7 @@ DataUploadView = backbone.BaseView.extend({
             rowValue.schema = jtsInfer(D[0], _.rest(D));
 
             // If there is single empty row — apply 
-            if(_.isEmpty(window.APP.layout.descriptorEdit.layout.form.getCompactValue().resources) && !_.isEmpty(editor.rows))
+            if(_.isEmpty(window.APP.layout.descriptorEdit.layout.form.getValue().resources) && !_.isEmpty(editor.rows))
               editor.rows[0].setValue(rowValue, true);
             else
               editor.addRow(rowValue, true);
@@ -215,7 +215,7 @@ module.exports = {
 
         // After `ready` event fired, editor fire `change` event regarding to the initial changes
         this.layout.form.on('change', _.after(2, (function() {
-          window.APP.layout.download.reset(this.layout.form.getCompactValue(), schema).activate();
+          window.APP.layout.download.reset(this.layout.form.getValue(), schema).activate();
           this.showResult();
         }).bind(this)));
       }).bind(this));
@@ -233,7 +233,7 @@ module.exports = {
 
     showResult: function() {
       $('#json-code').html(highlight.fixMarkup(
-        highlight.highlight('json', JSON.stringify(this.layout.form.getCompactValue(), undefined, 2)).value
+        highlight.highlight('json', JSON.stringify(this.layout.form.getValue(), undefined, 2)).value
       ));
 
       return this;
