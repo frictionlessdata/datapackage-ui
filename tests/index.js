@@ -65,7 +65,7 @@ describe('DataPackagist core', function() {
         done();
 
         // request. unpredictably sometimes hang on this URL https://rawgit.com/dataprotocols/schemas/master/tabular-data-package.json
-        // Commented out until sort it out
+        // Commented out for a while.
         // setTimeout(function() {
         //   assert.equal(browser.window.APP.layout.descriptorEdit.layout.form.schema.title, 'Tabular Data Package');
         //   done();
