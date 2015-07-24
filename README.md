@@ -74,7 +74,15 @@ The steps are as follows:
 
 #### Getting started
 
-Getting setup for local development is easy. Ensure that you have a recent version of Node.js installed, and follow the following steps.
+Getting setup for local development is easy. We use [io.js](https://iojs.org/), and [nvm](https://github.com/creationix/nvm) for managing multiple node versions locally.
+
+1. On Mac OS X, install nvm: `brew install nvm`. Note the setup requires some additions to your shell config.
+2. Install iojs with nvm: `nvm install iojs` (now that you have nvm, you can also install the latest Node version with it: `nvm install stable`).
+3. Use a node version with nvm's `use`. We want io.js, so: `nvm use iojs`
+4. Tip: you can always check the version you are running with `nvm current`
+5. Tip: If, after installing `nvm` and `iojs`, you experience issues with v8flags when running gulp, [see here](https://github.com/gulpjs/gulp/issues/873#issuecomment-75615249).
+
+Once we have our base environment setup to use io.js, then you can configure the actual app:
 
 1. Create your own fork of `https://github.com/okfn/datapackagist`
 2. Clone your fork locally with `https://github.com/{YOUR_USERNAME}/datapackagist.git`
@@ -113,7 +121,7 @@ If you are new to some of the tooling we use - don't worry, it is not difficult!
 
 #### Default Data Package Profile
 
-By default, DataPackagist loads the form for the base Data Package specification. The user can select another Profile via a drop-down menu. 
+By default, DataPackagist loads the form for the base Data Package specification. The user can select another Profile via a drop-down menu.
 
 It is also possible to set another profile via the URL route: the first argument of the URL route should be the ID of a Data Package Profile in the [Data Package Registry](https://github.com/dataprotocols/registry).
 
@@ -129,7 +137,7 @@ http://datapackagist.okfnlabs.org/#/tabular/ (The Tabular Data Package specifica
 
 #### Adding custom Data Package Profiles
 
-The Data Package Registry currently features entries for the `base` and `tabular` Data Package Profiles. 
+The Data Package Registry currently features entries for the `base` and `tabular` Data Package Profiles.
 
 Adding additional profiles to DataPackagist is as simple as adding new entries to the registry.
 
@@ -137,7 +145,7 @@ Let's demonstrate by example. If you wanted a modified version of Tabular Data P
 
 * Create a JSON Schema file for the new spec. [Existing spec schemas here](https://github.com/dataprotocols/schemas)
 * Add a new entry to the Registry via a pull request. [Instructions here](https://github.com/dataprotocols/registry)
-* When the pull request is accepted, it will immediately be available in DataPackagist. If we called our new profile "tabular-strict", we'd be able to create data packages for it at http://datapackagist.okfnlabs.org/tabular-strict/ 
+* When the pull request is accepted, it will immediately be available in DataPackagist. If we called our new profile "tabular-strict", we'd be able to create data packages for it at http://datapackagist.okfnlabs.org/tabular-strict/
 
 #### Integrations
 
@@ -160,7 +168,7 @@ The following parameters are supported:
 
 All data passed via params must be url encoded.
 
-Note that this integration also works with the API for setting the displayed Data Package Profile on the form. 
+Note that this integration also works with the API for setting the displayed Data Package Profile on the form.
 
 As stated above, this is the first URL route argument, which should be the ID of a Data Package Profile in the Data Package Registry.
 

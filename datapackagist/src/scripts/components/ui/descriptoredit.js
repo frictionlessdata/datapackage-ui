@@ -192,6 +192,7 @@ module.exports = {
     reset: function(schema) {
       var formData, resourceDataSources;
 
+
       // Clean up previous state
       if(this.layout.form) {
         formData = this.layout.form.getCleanValue();
