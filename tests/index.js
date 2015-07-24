@@ -177,7 +177,7 @@ describe('DataPackagist core', function() {
     it('errors when uploading an invalid resource', function(done) {
       // ensure that when a user attempts to upload an invalid resource, that she is shown an error
       browser.visit('/', function() {
-        // Don't know how to simulate file upload
+        // Use this for file upload https://github.com/assaf/zombie/blob/master/src/index.js#L875
         browser.window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources').rows[0].setValue({
           name: 'test',
           path: 'test.csv',
