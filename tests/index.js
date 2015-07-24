@@ -84,7 +84,7 @@ describe('DataPackagist core', function() {
 
     it('errors on invalid descriptor upload', function(done) {
       browser.window.APP.layout.descriptorEdit.layout.upload.updateApp({name: 'A'});
-      browser.assert.element('[data-schemapath="root[name]"] .form-group.has-error');
+      browser.assert.element('[data-schemapath="root.name"] .form-group.has-error');
       done();
     });
 
