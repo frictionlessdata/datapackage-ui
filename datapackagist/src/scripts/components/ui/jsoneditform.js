@@ -21,7 +21,7 @@ JSONEditorView.prototype.init = _.wrap(JSONEditorView.prototype.init, function(i
       this.setValue(_.extend({}, this.getValue(this.options.initialData), this.options.initialData));
 
     // After `ready` event fired, editor fire `change` event regarding to the initial changes
-    this.on('change', _.after(2, (function() {
+    this.on('change', _.after(3, (function() {
       var resources = this.getEditor('root.resources');
       var resourcesLength = _.result(resources.rows, 'length');
 

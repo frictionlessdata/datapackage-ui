@@ -15,39 +15,42 @@ module.exports = backbone.BaseView.extend({
 
 
         if(EV.type === 'load') {
-          // Validate datapackage and apply to the form
-          validator.validate(EV.result, window.APP.layout.descriptorEdit.layout.registryList.getSchema()).then((function(R) {
-            if(!R.valid)
-              return false;
-
-
+          try {
             descriptor = JSON.parse(EV.result);
+          }
+          catch(E) { }
 
-            // If descriptor have field not from schema - reject it
-            if(_.difference(_.keys(descriptor), _.keys(this.parent.layout.form.schema.properties)).length)
-              return false;
+          if(!_.isObject(descriptor)) {
+            window.APP.layout.notificationDialog
+              .setMessage('JSON is invalid')
+              .activate();
 
-            // If there are no changes in current form just apply uploaded
-            // data and leave
-            if(!this.parent.hasChanges()) {
+            return false;
+          }
+
+          // If descriptor have field not from schema - reject it
+          if(_.difference(_.keys(descriptor), _.keys(this.parent.layout.form.schema.properties)).length)
+            return false;
+
+          // If there are no changes in current form just apply uploaded
+          // data and leave
+          if(!this.parent.hasChanges()) {
+            this.updateApp(descriptor);
+            return false;
+          }
+
+          // Ask to overwrite changes on current form
+          window.APP.layout.confirmationDialog
+            .setMessage('You have changes. Overwrite?')
+
+            .setCallbacks({yes: (function() {
               this.updateApp(descriptor);
               return false;
-            }
+            }).bind(this)})
 
-            // Ask to overwrite changes on current form
-            window.APP.layout.confirmationDialog
-              .setMessage('You have changes. Overwrite?')
-
-              .setCallbacks({yes: (function() {
-                this.updateApp(descriptor);
-                return false;
-              }).bind(this)})
-
-              .activate();
-          }).bind(this));
+            .activate();
         } else if( EV.type ==='progress' )
           this.setProgress(EV.loaded/EV.total * 100);
-
       }).bind(this));
     }
   },
