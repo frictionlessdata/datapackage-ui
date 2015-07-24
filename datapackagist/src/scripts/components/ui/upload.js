@@ -23,6 +23,10 @@ module.exports = backbone.BaseView.extend({
 
             descriptor = JSON.parse(EV.result);
 
+            // If descriptor have field not from schema - reject it
+            if(_.difference(_.keys(descriptor), _.keys(this.parent.layout.form.schema.properties)).length)
+              return false;
+
             // If there are no changes in current form just apply uploaded
             // data and leave
             if(!this.parent.hasChanges()) {
@@ -52,7 +56,7 @@ module.exports = backbone.BaseView.extend({
 
   // Update edit form and download URL
   updateApp: function(descriptor) {
-    this.parent.layout.form.setValue(descriptor);
+    this.parent.layout.form.setValue(_.defaults(descriptor, this.parent.layout.form.getValue()));
     return this;
   }
 });
