@@ -65,6 +65,7 @@ module.exports = {
 
       this.layout.list.reset(new backbone.Collection());
 
+      // Validate each row, one by one, render errors after each row validated
       _.each(resourcesRows, function(R) {
         var that = this;
 
@@ -101,7 +102,7 @@ module.exports = {
             if(!M)
               return false;
 
-            // Validation completed
+            // Validation completed, render errors list
             that.layout.list.collection
 
               // Grouped report has complicated structure
