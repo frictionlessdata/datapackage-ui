@@ -3,6 +3,7 @@ var backbone = require('backbone');
 var backboneBase = require('backbone-base');
 var Goodtables = require('goodtables');
 var navigation = require('./navigation');
+var Promise = require('bluebird');
 var validationErrorRowTpl = require('./templates/validation-error-row.hbs');
 var validator = require('validator');
 
@@ -65,12 +66,13 @@ module.exports = {
 
       this.layout.list.reset(new backbone.Collection());
 
-      _.each(resourcesRows, function(R) {
+      // Validate each row, one by one, render errors after each row validated
+      Promise.each(resourcesRows, (function(R) {
         var that = this;
 
 
         // Conditional promises
-        (function() {
+        return (function() {
           // Resource was downloaded by user
           if(R.dataSource)
             return goodTables.run(R.dataSource.data, JSON.stringify(R.dataSource.schema));
@@ -101,7 +103,7 @@ module.exports = {
             if(!M)
               return false;
 
-            // Validation completed
+            // Validation completed, render errors list
             that.layout.list.collection
 
               // Grouped report has complicated structure
@@ -109,20 +111,26 @@ module.exports = {
                 headers: M.getHeaders(),
                 resource_id: R.key
               }); }));
-
+            
             // Navigate between resources in validation results
-            that.layout.tabs.add(new backbone.Model({
-              title: R.getValue().path,
+            if(!_.isEmpty(M.getGroupedByRows()))
+              that.layout.tabs.add(new backbone.Model({
+                title: R.getValue().path,
 
-              // .key is a unique property among all resources rows
-              url: '/validation-results/' + R.key
-            }));
-
-            navigateToResults(R.key);
+                // .key is a unique property among all resources rows
+                url: '/validation-results/' + R.key
+              }));
           })
 
           .catch(console.log);
-      }, this);
+      }).bind(this)).then((function() {
+        // After all resources validated navigate to first tab
+        navigateToResults(
+          this.layout.list.collection.length ? this.layout.list.collection.at(0).get('resource_id') : '0'
+        );
+      }).bind(this));
+
+      return this;
     },
 
     // Show certain resource validation errors

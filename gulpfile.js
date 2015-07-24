@@ -1,6 +1,4 @@
 var gulp = require('gulp');
-var browserSync = require('browser-sync');
-var reload = browserSync.reload;
 var historyApiFallback = require('connect-history-api-fallback');
 var browserify = require('browserify');
 var watchify = require('watchify');
@@ -28,8 +26,26 @@ var frontendDependencies = [
   'csv'
 ];
 
+/**
+ * Provide frontend app as a single bundle.
+ */
 
-function scriptPipeline(bundle, outfile) {
+var bundler = browserify({
+  entries: [
+      scriptsDir + '/app.js',
+      // glob(scriptsDir + '/components/*.js')
+  ],
+  transform: ['browserify-handlebars'],
+  debug: true,
+  cache: {},
+  packageCache: {},
+  fullPaths: true
+});
+
+// Don't include vendor dependencies in this bundle
+bundler.external(frontendDependencies);
+
+function scriptPipeline(bundle, outfile, options) {
 
   /**
    * Run and return the scripts pipeline on bundle
@@ -37,43 +53,13 @@ function scriptPipeline(bundle, outfile) {
 
   console.log('Bundling: ' + outfile);
 
-  return bundle
-           .pipe(source(outfile))
-           .pipe(buffer())
-           .pipe(uglify())
-           .pipe(gulp.dest(distDir));
+  var outBundle = bundle.pipe(source(outfile)).pipe(buffer());
 
+  if(options && options.uglify)
+    outBundle = outBundle.pipe(uglify());
+
+  return outBundle.pipe(gulp.dest(distDir));
 }
-
-gulp.task('deploy', function() {
-
-  /**
-   * Write the dist files to a gh-pages branch and push to remote
-   */
-
-  return gulp.src(distDir + '/*')
-    .pipe(ghPages({
-      message: "Web App update. " + Date.now(),
-      remoteUrl: "https://github.com/okfn/datapackagist"
-    }));
-
-});
-
-
-gulp.task('serve', function() {
-
-  /**
-   * Run a reloading server for local development.
-   */
-
-  browserSync({
-    open: false,
-    server: {
-        baseDir: distDir
-    }
-  });
-
-});
 
 
 gulp.task('vendor-scripts', function () {
@@ -88,42 +74,26 @@ gulp.task('vendor-scripts', function () {
     bundler.require(resolve.sync(id), {expose: id});
   });
 
-  return scriptPipeline(bundler.bundle(), 'vendor.min.js');
+  return scriptPipeline(bundler.bundle(), 'vendor.min.js', {uglify: true});
 
 });
 
 
 gulp.task('app-scripts', function() {
+  return scriptPipeline(bundler.bundle(), 'app.min.js', {uglify: true});
+});
 
-  /**
-   * Provide frontend app as a single bundle.
-   */
 
-  var bundler = browserify({
-        entries: [
-            scriptsDir + '/app.js',
-            // glob(scriptsDir + '/components/*.js')
-        ],
-        transform: ['browserify-handlebars'],
-        debug: true,
-        cache: {},
-        packageCache: {},
-        fullPaths: true
-  });
-
-  // Don't include vendor dependencies in this bundle
-  bundler.external(frontendDependencies);
-
+gulp.task('app-scripts-watched', function() {
   var watcher  = watchify(bundler);
+
 
   watcher
     .on('update', function() {
       scriptPipeline(watcher.bundle(), 'app.min.js');
     });
 
-  return scriptPipeline(watcher.bundle(), 'app.min.js')
-           .pipe(reload({stream: true}));
-
+  return scriptPipeline(watcher.bundle(), 'app.min.js');
 });
 
 
@@ -143,4 +113,5 @@ gulp.task('styles', function () {
 });
 
 
-gulp.task('default', ['vendor-scripts', 'app-scripts', 'styles', 'serve']);
+gulp.task('default', ['vendor-scripts', 'app-scripts', 'styles']);
+gulp.task('dev', ['vendor-scripts', 'app-scripts-watched', 'styles']);

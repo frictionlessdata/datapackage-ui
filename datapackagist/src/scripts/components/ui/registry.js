@@ -3,6 +3,7 @@ var $ = require('jquery');
 var _ = require('underscore');
 var deep = require('deep-diff');
 var Promise = require('bluebird');
+var request = require('superagent-bluebird-promise');
 
 module.exports = {
   ListView: backbone.BaseListView.extend({
@@ -11,39 +12,42 @@ module.exports = {
         var id = this.$(this.options.container).val();
 
 
-        $.getJSON(this.collection.get(id).get('schema'), (function(schemaData) {
-          var
+        request.get(this.collection.get(id).get('schema'))
+          .then((function(R) {
             // Keys of entered fields
-            keys = _.keys(this.parent.layout.form.getCleanValue());
+            var keys = _.keys(this.parent.layout.form.getCleanValue());
 
-          this.schemaData = schemaData;
+            var schemaData = JSON.parse(R.text);
 
-          // If data can be lost - show confirmation message
-          if(deep.diff(_.pick(schemaData.properties, keys), _.pick(this.parent.layout.form.schema.properties, keys)))
-            return window.APP.layout.confirmationDialog
-              .setMessage('Some data you have entered will be lost. Are you sure you want to change the Data Package Profile?')
 
-              .setCallbacks({
-                yes: (function() {
-                  this.selectedValue = id;
-                  this.parent.reset(schemaData);
-                  window.APP.layout.confirmationDialog.deactivate();
-                  return false;
-                }).bind(this),
+            this.schemaData = schemaData;
 
-                no: (function() {
-                  this.$(this.options.container).val(this.selectedValue);
-                  window.APP.layout.confirmationDialog.deactivate();
-                  return false;
-                }).bind(this)
-              })
+            // If data can be lost - show confirmation message
+            if(deep.diff(_.pick(schemaData.properties, keys), _.pick(this.parent.layout.form.schema.properties, keys)))
+              return window.APP.layout.confirmationDialog
+                .setMessage('Some data you have entered will be lost. Are you sure you want to change the Data Package Profile?')
 
-              .activate();
-          else
-            this.selectedValue = id;
+                .setCallbacks({
+                  yes: (function() {
+                    this.selectedValue = id;
+                    this.parent.reset(schemaData);
+                    window.APP.layout.confirmationDialog.deactivate();
+                    return false;
+                  }).bind(this),
 
-          this.parent.reset(schemaData);
-        }).bind(this));
+                  no: (function() {
+                    this.$(this.options.container).val(this.selectedValue);
+                    window.APP.layout.confirmationDialog.deactivate();
+                    return false;
+                  }).bind(this)
+                })
+
+                .activate();
+            else
+              this.selectedValue = id;
+
+            this.parent.reset(schemaData);
+          }).bind(this));
       }
     },
 
@@ -69,8 +73,7 @@ module.exports = {
 
     reset: function(collection) {
       backbone.BaseListView.prototype.reset.call(this, collection);
-      this.setSelected(this.collection.at(0).get('id'));
-      return this;
+      return this.setSelected(this.collection.at(0).get('id'));
     },
 
     // Update selectbox and trigger change event
@@ -89,11 +92,14 @@ module.exports = {
           return false;
         }
 
-        $.getJSON(profile.get('schema'), (function(schemaData) {
-          this.schemaData = schemaData;
-          this.parent.reset(schemaData);
-          RS(schemaData);
-        }).bind(this));
+        request
+          .get(profile.get('schema'))
+
+          .then((function(R) {
+            this.schemaData = JSON.parse(R.text);
+            this.parent.reset(this.schemaData);
+            RS(this.schemaData);
+          }).bind(this));
       }).bind(this));
     },
 

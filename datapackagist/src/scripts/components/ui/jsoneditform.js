@@ -11,7 +11,7 @@ JSONEditorView.prototype.init = _.wrap(JSONEditorView.prototype.init, function(i
 
   this.on('ready', (function() {
     // Remove Top-level collapse button
-    this.root.toggle_button.remove();
+    $(this.root.toggle_button).remove();
 
     // Detecting changes
     this.changed = false;
@@ -41,8 +41,9 @@ JSONEditorView.prototype.init = _.wrap(JSONEditorView.prototype.init, function(i
       var editor = this.getEditor($(E).data('schemapath'));
       var isEmpty = _.isEmpty(editor.getValue());
 
+
       // Empty array data should have one empty item
-      if(_.contains(['resources'], E.dataset.schemapath.replace('root.', '')) && !editor.rows.length)
+      if(_.contains(['resources'], $(E).data('schemapath').replace('root.', '')) && !editor.rows.length)
         editor.addRow();
 
       if(isEmpty && !editor.collapsed)
