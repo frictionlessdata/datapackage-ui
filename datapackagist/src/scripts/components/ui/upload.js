@@ -16,35 +16,38 @@ module.exports = backbone.BaseView.extend({
 
 
         if(EV.type === 'load') {
-          // Validate datapackage and apply to the form
-          validator.validate(EV.result, window.APP.layout.descriptorEdit.layout.registryList.getSchema()).then((function(R) {
-            if(!R.valid)
-              return false;
-
-
+          try {
             descriptor = JSON.parse(EV.result);
+          }
+          catch(E) { }
 
-            // If there are no changes in current form just apply uploaded
-            // data and leave
-            if(!this.parent.hasChanges()) {
+          if(!_.isObject(descriptor)) {
+            window.APP.layout.notificationDialog
+              .setMessage('JSON is invalid')
+              .activate();
+
+            return false;
+          }
+
+          // If there are no changes in current form just apply uploaded
+          // data and leave
+          if(!this.parent.hasChanges()) {
+            this.updateApp(descriptor);
+            return false;
+          }
+
+          // Ask to overwrite changes on current form
+          window.APP.layout.confirmationDialog
+            .setMessage('You have changes. Overwrite?')
+
+            .setCallbacks({yes: (function() {
               this.updateApp(descriptor);
               return false;
-            }
+            }).bind(this)})
 
-            // Ask to overwrite changes on current form
-            window.APP.layout.confirmationDialog
-              .setMessage('You have changes. Overwrite?')
-
-              .setCallbacks({yes: (function() {
-                this.updateApp(descriptor);
-                return false;
-              }).bind(this)})
-
-              .activate();
-          }).bind(this));
+            .activate();
         } else if( EV.type ==='progress' )
           this.setProgress(EV.loaded/EV.total * 100);
-
       }).bind(this));
     }
   },
@@ -53,7 +56,7 @@ module.exports = backbone.BaseView.extend({
 
   // Update edit form and download URL
   updateApp: function(descriptor) {
-    this.parent.layout.form.setValue(descriptor);
+    this.parent.layout.form.setValue(descriptor).validate(descriptor);
     return this;
   }
 });
