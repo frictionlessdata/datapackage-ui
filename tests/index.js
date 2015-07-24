@@ -194,8 +194,34 @@ describe('DataPackagist core', function() {
     it('validates a valid resource on user action', function(done) {
       // ensure that when a user validates one or many valid resources,
       // the resource validation view is shown with a success result
-      assert.fail();
-      done();
+      browser.visit('/', function() {
+        var editor = browser.window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
+        var schema = jtsInfer(['name', 'age'], [['John', '33']]);
+
+
+        // Don't know how to simulate file upload
+        editor.rows[0].setValue({
+          name: 'test',
+          path: 'test.csv',
+          schema: schema
+        }, true);
+
+        editor.rows[0].dataSource = {schema: schema, data: 'name,age\nJohn,33'};
+
+        editor.addRow({
+          name: 'test',
+          path: 'test.csv',
+          schema: schema
+        }, true);
+
+        editor.rows[1].dataSource = {schema: schema, data: 'name,age\nJane,55'};
+        browser.click('#validate-resources');
+
+        browser.wait({duration: '5s', element: '#validation-result:not([hidden])'}).then(function() {
+          assert(!browser.window.$('#ok-message').prop('hidden'));
+          done();
+        });
+      });
     });
 
     it('validates an invalid resource on user action', function(done) {
