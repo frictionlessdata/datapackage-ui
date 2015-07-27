@@ -2,9 +2,11 @@ var jsonEditor = require('json-editor');
 var _ = require('underscore');
 var backbone = require('backbone');
 var deepEmpty = require('deep-empty');
+var Goodtables = require('goodtables');
 var omitEmpty = require('omit-empty');
-
+var Promise = require('bluebird');
 var JSONEditorView = JSONEditor;
+var utils = require('../../utils.js');
 
 JSONEditorView.prototype.init = _.wrap(JSONEditorView.prototype.init, function(init) {
   init.apply(this, _.rest(arguments));
@@ -72,6 +74,32 @@ JSONEditorView.prototype.init = _.wrap(JSONEditorView.prototype.init, function(i
 JSONEditorView.prototype.getCleanValue = function () { return deepEmpty(this.getValue(), function(O) {
   return !_.isEmpty(O) && !_.every(O, function(I) { return _.isEmpty(omitEmpty(I, true)); })
 }); };
+
+// Validate resources and show errors message at header of Schema row
+JSONEditorView.prototype.validateResources = function () {
+  var rows = this.getEditor('root.resources').rows;
+
+
+  return Promise.each(rows, (function(R) {
+    if(_.isUndefined(R.resourceIsValid))
+      return (new Goodtables({method: 'post', report_type: 'grouped'}))
+        .run(R.dataSource.data, JSON.stringify(R.dataSource.schema))
+        .then(function(E) { R.resourceIsValid = !Boolean(E.errors.length); });
+    else
+      return new Promise(function(RS, RJ) { RS(true); })
+  }).bind(this)).then(function() {
+    // Show error in resource section if it is invalid
+    rows.forEach(function(R) {
+      if(R.resourceIsValid)
+        return true;
+
+      R.editors.schema.showValidationErrors([{
+        message: 'Resource is invalid',
+        path: R.editors.schema.path
+      }]);
+    })
+  });
+}
 
 // Proper representation of all form buttons. Avoid changing each newly
 // rendered button by rewriting the .getButton()

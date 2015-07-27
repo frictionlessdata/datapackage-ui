@@ -49,10 +49,11 @@ DataUploadView = backbone.BaseView.extend({
               editor.rows[0].setValue(rowValue, true);
             else
               editor.addRow(rowValue, true);
-
+            
             // Save data source in the form
             _.last(editor.rows).dataSource = {schema: schema, data: EV.result};
 
+            window.APP.layout.descriptorEdit.layout.form.validateResources();
             window.APP.layout.descriptorEdit.populateTitlesFromNames();
           }).bind(this));
         } else if( EV.type ==='progress' ) {

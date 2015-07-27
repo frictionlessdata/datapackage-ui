@@ -181,16 +181,25 @@ describe('DataPackagist core', function() {
       // ensure that when a user attempts to upload an invalid resource, that she is shown an error
       browser.visit('/', function() {
         // Use this for file upload https://github.com/assaf/zombie/blob/master/src/index.js#L875
-        browser.window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources').rows[0].setValue({
-          name: 'test',
-          path: 'test.csv',
-          schema: jtsInfer(['name', 'age'], [['John', '33', '123']])
-        }, true);
+        browser.wait({duration: '10s', element: '[name="root[resources][0][name]"]'}).then(function() {
+          var editor = browser.window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
+          var schema = jtsInfer(['name', 'age'], [['John', '33', '123asd']]);
 
-        // Object global error
-        browser.assert.element('[data-schemapath=root.resources.0.schema] > div > p');
 
-        done();
+          editor.rows[0].setValue({
+            name: 'test',
+            path: 'test.csv',
+            schema: schema
+          }, true);
+
+          editor.rows[0].dataSource = {schema: schema, data: 'name,age\nJohn,33,123asd'};
+          browser.window.APP.layout.descriptorEdit.layout.form.validateResources();
+
+          browser.wait({duration: '10s'}).then(function() {
+            browser.assert.element('[data-schemapath="root.resources.0.schema"] > div > p');
+            done();
+          });
+        });
       });
     });
 
