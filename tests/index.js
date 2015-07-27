@@ -84,8 +84,11 @@ describe('DataPackagist core', function() {
 
     it('errors on invalid descriptor upload', function(done) {
       browser.window.APP.layout.descriptorEdit.layout.upload.updateApp({name: 'A'});
-      browser.assert.element('[data-schemapath="root.name"] .form-group.has-error');
-      done();
+
+      browser.wait({duration: '5s', element: '[data-schemapath="root.name"] .form-group.has-error'}).then(function() {
+        browser.assert.element('[data-schemapath="root.name"] .form-group.has-error');
+        done();
+      });
     });
 
     it('allows download of valid base profile', function(done) {
