@@ -6,7 +6,7 @@ var Goodtables = require('goodtables');
 var omitEmpty = require('omit-empty');
 var Promise = require('bluebird');
 var JSONEditorView = JSONEditor;
-var utils = require('../../utils.js');
+
 
 JSONEditorView.prototype.init = _.wrap(JSONEditorView.prototype.init, function(init) {
   init.apply(this, _.rest(arguments));
