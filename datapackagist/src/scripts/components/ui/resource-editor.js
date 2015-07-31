@@ -3,10 +3,6 @@ var _ = require('underscore');
 
 
 jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.editors.array.extend({
-  getDataSource: function() {
-    return _.pluck(this.rows, 'dataSource');
-  },
-
   add: function(rowValue, dataSource) {
     // If there is single empty row — apply
     if(_.isEmpty(this.jsoneditor.getCleanValue().resources) && !_.isEmpty(this.rows))
@@ -16,6 +12,20 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
 
     // Save data source in the form
     _.last(this.rows).dataSource = dataSource;
+  },
+
+  getDataSource: function() {
+    return _.pluck(this.rows, 'dataSource');
+  },
+
+  init: function() {
+    JSONEditor.defaults.editors.array.prototype.init.apply(this, arguments);
+
+    this.jsoneditor.on('ready', (function() {
+      // Copy metadata for resources data source
+      if(this.jsoneditor.options.dataSources)
+        _.each(this.rows, function(R, I) { R.dataSource = this.dataSources[I]; }, this.jsoneditor.options);
+    }).bind(this))
   }
 });
 

@@ -189,7 +189,7 @@ module.exports = {
       // Clean up previous state
       if(this.layout.form) {
         formData = this.layout.form.getCleanValue();
-        resourceDataSources = _.pluck(this.layout.form.getEditor('root.resources').rows, 'dataSource');
+        resourceDataSources = this.layout.form.getEditor('root.resources').getDataSource();
         this.layout.form.destroy();
         this.layout.uploadData.undelegateEvents().remove();
       }
@@ -198,6 +198,7 @@ module.exports = {
         schema            : schema,
         show_errors       : 'change',
         theme             : 'bootstrap3',
+        dataSources       : resourceDataSources,
         disable_edit_json : true,
         disable_properties: true,
         iconlib           : 'fontawesome4',
@@ -211,10 +212,6 @@ module.exports = {
         // There is no any good way to bind events to custom button or even add cutsom button
         $(this.layout.form.getEditor('root.resources').container)
           .children('h3').append(this.layout.uploadData.el);
-
-        // Copy metadata for resources data source
-        if(resourceDataSources)
-          _.each(this.layout.form.getEditor('root.resources').rows, function(R, I) { R.dataSource = resourceDataSources[I]; });
 
         // After `ready` event fired, editor fire `change` event regarding to the initial changes
         this.layout.form.on('change', _.after(2, (function() {
