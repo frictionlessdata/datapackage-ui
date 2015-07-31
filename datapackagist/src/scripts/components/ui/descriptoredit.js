@@ -6,6 +6,7 @@ var csv = require('csv');
 var getUri = require('get-uri');
 var highlight = require('highlight-redux');
 var jsonEditor = require('./jsoneditform');
+var resourceEditor = require('./resource-editor');
 var jtsInfer = require('json-table-schema').infer;
 var registry = require('./registry');
 var request = require('superagent-bluebird-promise');
@@ -43,16 +44,7 @@ DataUploadView = backbone.BaseView.extend({
               throw E;
 
             rowValue.schema = jtsInfer(D[0], _.rest(D));
-
-            // If there is single empty row — apply 
-            if(_.isEmpty(window.APP.layout.descriptorEdit.layout.form.getCleanValue().resources) && !_.isEmpty(editor.rows))
-              editor.rows[0].setValue(rowValue, true);
-            else
-              editor.addRow(rowValue, true);
-            
-            // Save data source in the form
-            _.last(editor.rows).dataSource = {schema: schema, data: EV.result};
-
+            editor.add(rowValue, {schema: schema, data: EV.result});
             window.APP.layout.descriptorEdit.layout.form.validateResources();
             window.APP.layout.descriptorEdit.populateTitlesFromNames();
           }).bind(this));
