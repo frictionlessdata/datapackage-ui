@@ -14,9 +14,7 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
     _.last(this.rows).dataSource = dataSource;
   },
 
-  getDataSource: function() {
-    return _.pluck(this.rows, 'dataSource');
-  },
+  getDataSource: function() { return _.pluck(this.rows, 'dataSource'); },
 
   init: function() {
     JSONEditor.defaults.editors.array.prototype.init.apply(this, arguments);
@@ -32,10 +30,8 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
 // Add a resolver function to the beginning of the resolver list
 // This will make it run before any other ones
 jsonEditor.JSONEditorView.defaults.resolvers.unshift(function(schema) {
-
-  if(schema.type === 'array' && schema.title === 'Resources') {
+  if(schema.type === 'array' && schema.title === 'Resources')
     return 'resources';
-  }
 
   // If no valid editor is returned, the next resolver function will be used
 });
