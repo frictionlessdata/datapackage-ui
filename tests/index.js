@@ -36,8 +36,10 @@ describe('DataPackagist core', function() {
 
     it('has a registry list', function(done) {
       // tests that the registry list exists
-      browser.assert.elements('#registry-list [data-id=list-container] option', {atLeast: 2});
-      done();  
+      browser.wait({duration: '5s', element: '#registry-list [data-id=list-container] option[value=tabular]'}).then(function() {
+        browser.assert.elements('#registry-list [data-id=list-container] option', {atLeast: 2});
+        done();
+      });
     });
 
     it('has an upload button', function(done) {
@@ -54,9 +56,11 @@ describe('DataPackagist core', function() {
 
     it('constructs the form from the base profile by default', function(done) {
       // tests that the form is built to create a base profile datapackage.json
-      browser.assert.element('#registry-list [data-id=list-container] option[value=base]:selected');
-      assert.equal(browser.window.APP.layout.descriptorEdit.layout.form.schema.title, 'DataPackage');
-      done();
+      browser.wait({duration: '10s'}).then(function() {
+        browser.assert.element('#registry-list [data-id=list-container] option[value=base]:selected');
+        assert.equal(browser.window.APP.layout.descriptorEdit.layout.form.schema.title, 'DataPackage');
+        done();
+      });
     });
 
     it('loads other profiles by route', function(done) {
