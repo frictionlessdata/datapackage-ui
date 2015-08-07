@@ -1,5 +1,6 @@
 var jsonEditor = require('./jsoneditform');
 var _ = require('underscore');
+var Promise = require('bluebird');
 
 
 jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.editors.array.extend({
@@ -14,7 +15,27 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
     _.last(this.rows).dataSource = dataSource;
   },
 
-  getDataSource: function() { return _.pluck(this.rows, 'dataSource'); },
+  getDataSource: function(rowIndex) {
+    return new Promise((function(RS, RJ) {
+      var row = this.rows[rowIndex];
+      var url = row.editors.url.getValue();
+
+
+      if(row.dataSource) {
+        RS(row.dataSource);
+        return true;
+      }
+
+      if(row.editors.format.getValue() == 'csv' && url)
+        request
+          .get(url)
+          .then((function(R) {
+            row.dataSource = {schema: window.APP.layout.descriptorEdit.layout.registryList.schemaData, data: R.text};
+            RS(row.dataSource);
+          }).bind(this));
+    }).bind(this));
+
+  },
 
   init: function() {
     JSONEditor.defaults.editors.array.prototype.init.apply(this, arguments);
@@ -30,8 +51,10 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
 // Add a resolver function to the beginning of the resolver list
 // This will make it run before any other ones
 jsonEditor.JSONEditorView.defaults.resolvers.unshift(function(schema) {
-  if(schema.type === 'array' && schema.title === 'Resources')
+
+  if(schema.type === 'array' && schema.title === 'Resources') {
     return 'resources';
+  }
 
   // If no valid editor is returned, the next resolver function will be used
 });

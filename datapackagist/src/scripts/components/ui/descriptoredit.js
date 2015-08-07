@@ -13,6 +13,7 @@ var request = require('superagent-bluebird-promise');
 var UploadView = require('./upload');
 var _ = require('underscore');
 var $ = require('jquery');
+var Promise = require('bluebird');
 
 
 // Convert name into title
@@ -184,49 +185,56 @@ module.exports = {
 
     reset: function(schema) {
       var formData, resourceDataSources;
+      var init = (function() {
 
+        this.layout.form = new jsonEditor.JSONEditorView(this.$('[data-id=form-container]').get(0), {
+          schema            : schema,
+          show_errors       : 'change',
+          theme             : 'bootstrap3',
+          dataSources       : resourceDataSources,
+          disable_edit_json : true,
+          disable_properties: true,
+          iconlib           : 'fontawesome4',
+          initialData       : formData
+        });
+
+        // Bind local event to form nodes after form is renedered
+        this.delegateEvents();
+
+        this.layout.form.on('ready', (function() {
+          // There is no any good way to bind events to custom button or even add cutsom button
+          $(this.layout.form.getEditor('root.resources').container)
+            .children('h3').append(this.layout.uploadData.el);
+
+          // After `ready` event fired, editor fire `change` event regarding to the initial changes
+          this.layout.form.on('change', _.after(2, (function() {
+            window.APP.layout.download.reset(this.layout.form.getCleanValue(), schema).activate();
+            this.showResult();
+          }).bind(this)));
+        }).bind(this));
+
+        this.layout.uploadData = (new DataUploadView({
+          el: this.layout.form.theme.getHeaderButtonHolder(),
+          parent: this
+        })).render();
+
+        this.populateTitlesFromNames();
+        $('#json-code').prop('hidden', true);
+      }).bind(this);
 
       // Clean up previous state
       if(this.layout.form) {
         formData = this.layout.form.getCleanValue();
-        resourceDataSources = this.layout.form.getEditor('root.resources').getDataSource();
-        this.layout.form.destroy();
-        this.layout.uploadData.undelegateEvents().remove();
-      }
 
-      this.layout.form = new jsonEditor.JSONEditorView(this.$('[data-id=form-container]').get(0), {
-        schema            : schema,
-        show_errors       : 'change',
-        theme             : 'bootstrap3',
-        dataSources       : resourceDataSources,
-        disable_edit_json : true,
-        disable_properties: true,
-        iconlib           : 'fontawesome4',
-        initialData       : formData
-      });
-
-      // Bind local event to form nodes after form is renedered
-      this.delegateEvents();
-
-      this.layout.form.on('ready', (function() {
-        // There is no any good way to bind events to custom button or even add cutsom button
-        $(this.layout.form.getEditor('root.resources').container)
-          .children('h3').append(this.layout.uploadData.el);
-
-        // After `ready` event fired, editor fire `change` event regarding to the initial changes
-        this.layout.form.on('change', _.after(2, (function() {
-          window.APP.layout.download.reset(this.layout.form.getCleanValue(), schema).activate();
-          this.showResult();
-        }).bind(this)));
-      }).bind(this));
-
-      this.layout.uploadData = (new DataUploadView({
-        el: this.layout.form.theme.getHeaderButtonHolder(),
-        parent: this
-      })).render();
-
-      this.populateTitlesFromNames();
-      $('#json-code').prop('hidden', true);
+        resourceDataSources = Promise.map(
+          this.layout.form.getEditor('root.resources').rows,
+          (function(R, I) { return this.layout.form.getEditor('root.resources').getDataSource(I)}).bind(this)
+        ).then(function(R) {
+            this.layout.form.destroy();
+            this.layout.uploadData.undelegateEvents().remove();
+            init();
+          });
+      } else init();
     },
 
     showResult: function() {
