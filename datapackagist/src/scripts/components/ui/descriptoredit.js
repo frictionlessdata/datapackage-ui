@@ -229,11 +229,11 @@ module.exports = {
         resourceDataSources = Promise.map(
           this.layout.form.getEditor('root.resources').rows,
           (function(R, I) { return this.layout.form.getEditor('root.resources').getDataSource(I)}).bind(this)
-        ).then(function(R) {
+        ).then((function(R) {
             this.layout.form.destroy();
             this.layout.uploadData.undelegateEvents().remove();
             init();
-          });
+          }).bind(this));
       } else init();
     },
 

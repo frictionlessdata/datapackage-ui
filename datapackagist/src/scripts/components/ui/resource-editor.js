@@ -1,6 +1,7 @@
 var jsonEditor = require('./jsoneditform');
 var _ = require('underscore');
 var Promise = require('bluebird');
+var validator = require('validator');
 
 
 jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.editors.array.extend({
@@ -26,13 +27,23 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
         return true;
       }
 
-      if(row.editors.format.getValue() == 'csv' && url)
-        request
-          .get(url)
-          .then((function(R) {
-            row.dataSource = {schema: window.APP.layout.descriptorEdit.layout.registryList.schemaData, data: R.text};
-            RS(row.dataSource);
-          }).bind(this));
+      // If data source stored as URL in a row then first grab it
+      if(validator.isURL(url) && _.contains([row.editors.mediatype.getValue(), row.editors.format.getValue()], 'text/csv'))
+        return request.get(url).then(function(RES) {
+          // Need schema
+          return (new Promise(function(RS, RJ) {
+            csv.parse(RES.text, function(E, D) {
+              if(E) {
+                RJ(E);
+                return false;
+              }
+
+              RS({data: RES.text, schema: jtsInfer(D[0], _.rest(D))});
+            });
+          }))
+            .then((function(DS) { this.dataSource = DS; return DS; }).bind(this))
+            .catch(console.log);
+        });
     }).bind(this));
 
   },
