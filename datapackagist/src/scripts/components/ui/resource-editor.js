@@ -19,7 +19,7 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
   getDataSource: function(rowIndex) {
     return new Promise((function(RS, RJ) {
       var row = this.rows[rowIndex];
-      var url = row.editors.url.getValue();
+      var url = _.result(row.editors.url, 'getValue');
 
 
       if(row.dataSource) {
