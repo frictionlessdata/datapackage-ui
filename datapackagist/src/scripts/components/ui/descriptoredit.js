@@ -185,8 +185,8 @@ module.exports = {
 
     reset: function(schema) {
       var formData, resourceDataSources;
-      var init = (function(resourceDataSources) {
 
+      var init = (function(resourceDataSources) {
         this.layout.form = new jsonEditor.JSONEditorView(this.$('[data-id=form-container]').get(0), {
           schema            : schema,
           show_errors       : 'change',
@@ -234,7 +234,8 @@ module.exports = {
             this.layout.uploadData.undelegateEvents().remove();
             init(R);
           }).bind(this));
-      } else init();
+      } else
+        init();
     },
 
     showResult: function() {
