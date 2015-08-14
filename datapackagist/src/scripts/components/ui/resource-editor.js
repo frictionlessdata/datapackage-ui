@@ -45,7 +45,6 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
             .catch(console.log);
         });
     }).bind(this));
-
   },
 
   init: function() {

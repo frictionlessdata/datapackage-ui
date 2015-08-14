@@ -230,7 +230,8 @@ module.exports = {
             this.layout.uploadData.undelegateEvents().remove();
             init(this.layout.form.getCleanValue(), R);
           }).bind(this));
-      } else init();
+      } else
+        init();
     },
 
     showResult: function() {
