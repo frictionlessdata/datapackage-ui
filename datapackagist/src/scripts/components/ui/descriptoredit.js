@@ -184,9 +184,7 @@ module.exports = {
     },
 
     reset: function(schema) {
-      var formData, resourceDataSources;
-      var init = (function(resourceDataSources) {
-
+      var init = (function(formData, resourceDataSources) {
         this.layout.form = new jsonEditor.JSONEditorView(this.$('[data-id=form-container]').get(0), {
           schema            : schema,
           show_errors       : 'change',
@@ -224,15 +222,13 @@ module.exports = {
 
       // Clean up previous state
       if(this.layout.form) {
-        formData = this.layout.form.getCleanValue();
-
         Promise.map(
           this.layout.form.getEditor('root.resources').rows,
           (function(R, I) { return this.layout.form.getEditor('root.resources').getDataSource(I)}).bind(this)
         ).then((function(R) {
             this.layout.form.destroy();
             this.layout.uploadData.undelegateEvents().remove();
-            init(R);
+            init(this.layout.form.getCleanValue(), R);
           }).bind(this));
       } else init();
     },

@@ -67,9 +67,11 @@ module.exports = {
       this.layout.list.reset(new backbone.Collection());
 
       // Validate each row, one by one, render errors after each row validated
-      Promise.each(resourcesRows, (function(R) {
+      Promise.each(
+        resourcesRows,
+        (function(R, I) { return this.layout.form.getEditor('root.resources').getDataSource(I)}).bind(this)
+      ).then((function(R) {
         var that = this;
-
 
         // Conditional promises
         return (function() {
