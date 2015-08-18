@@ -12,6 +12,8 @@ Browser.localhost('127.0.0.1', 3000);
 describe('DataPackagist core', function() {
 
   var browser = new Browser({maxWait: 30000});
+  var registryListSelector = '#registry-list [data-id=list-container] option';
+
 
   // ensure we have time for request to reoslve, etc.
   this.timeout(25000);
@@ -36,8 +38,10 @@ describe('DataPackagist core', function() {
 
     it('has a registry list', function(done) {
       // tests that the registry list exists
-      browser.assert.elements('#registry-list [data-id=list-container] option', {atLeast: 2});
-      done();  
+      browser.wait({duration: '5s', element: registryListSelector}).then(function() {
+        browser.assert.elements(registryListSelector, {atLeast: 2});
+        done();
+      });
     });
 
     it('has an upload button', function(done) {
@@ -54,16 +58,20 @@ describe('DataPackagist core', function() {
 
     it('constructs the form from the base profile by default', function(done) {
       // tests that the form is built to create a base profile datapackage.json
-      browser.assert.element('#registry-list [data-id=list-container] option[value=base]:selected');
-      assert.equal(browser.window.APP.layout.descriptorEdit.layout.form.schema.title, 'DataPackage');
-      done();
+      browser.wait({duration: '5s', element: registryListSelector}).then(function() {
+        browser.assert.element('#registry-list [data-id=list-container] option[value=base]:selected');
+        assert.equal(browser.window.APP.layout.descriptorEdit.layout.form.schema.title, 'DataPackage');
+        done();
+      });
     });
 
     it('loads other profiles by route', function(done) {
       // tests that if the correct route is given, then a form is built to create a tabular profile datapackage.json
       browser.visit('/tabular', function() {
-        browser.assert.element('#registry-list [data-id=list-container] option[value=tabular]:selected');
-        done();
+        browser.wait({duration: '5s', element: registryListSelector}).then(function() {
+          browser.assert.element('#registry-list [data-id=list-container] option[value=tabular]:selected');
+          done();
+        });
 
         // request. unpredictably sometimes hang on this URL https://rawgit.com/dataprotocols/schemas/master/tabular-data-package.json
         // Commented out for a while.
@@ -108,10 +116,12 @@ describe('DataPackagist core', function() {
       browser.visit('/', function() {
         browser.fill('[name="root[name]"]', 'Invalid name');
 
+        // Download button is disabled by default, and it should be disabled
+        // after validation request done
         setTimeout(function() {
           assert(browser.window.$('#download-data-package').hasClass('disabled'), 'Download button not disabled');
           done();
-        }, 2000);
+        }, 5000);
       });
     });
 
