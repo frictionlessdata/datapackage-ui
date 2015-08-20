@@ -1,5 +1,8 @@
 # Data Packagist
 
+[![Travis Build Status](https://travis-ci.org/okfn/datapackagist.svg?branch=master)](https://travis-ci.org/okfn/datapackagist)
+[![Coveralls](http://img.shields.io/coveralls/okfn/datapackagist.svg?branch=master)](https://coveralls.io/r/okfn/datapackagist?branch=master)
+
 A web app for creating, editing and validating Data Packages.
 
 Data Packagist allows you to:
