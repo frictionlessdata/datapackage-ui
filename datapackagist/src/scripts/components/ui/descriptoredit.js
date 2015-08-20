@@ -226,9 +226,12 @@ module.exports = {
           this.layout.form.getEditor('root.resources').rows,
           (function(R, I) { return this.layout.form.getEditor('root.resources').getDataSource(I)}).bind(this)
         ).then((function(R) {
+            var formData = this.layout.form.getCleanValue();
+
+
             this.layout.form.destroy();
             this.layout.uploadData.undelegateEvents().remove();
-            init(this.layout.form.getCleanValue(), R);
+            init(formData, R);
           }).bind(this));
       } else
         init();
