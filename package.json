@@ -51,7 +51,8 @@
     "superagent-bluebird-promise": "^2.0.2",
     "underscore": "^1.8.3",
     "validator": "^3.41.2",
-    "vinyl-buffer": "^1.0.0"
+    "vinyl-buffer": "^1.0.0",
+    "watchify": "^3.2.1"
   },
   "devDependencies": {
     "chai": "^2.3.0",
@@ -63,7 +64,6 @@
     "superagent-mock": "^1.1.0",
     "uglify-js": "^2.4.21",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.2.1",
     "zombie": "^4.0.13"
   },
   "engines": {
