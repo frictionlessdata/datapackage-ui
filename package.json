@@ -52,6 +52,8 @@
     "underscore": "^1.8.3",
     "validator": "^3.41.2",
     "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "uglify-js": "^2.4.21",
     "watchify": "^3.2.1"
   },
   "devDependencies": {
@@ -60,10 +62,7 @@
     "connect-history-api-fallback": "^1.1.0",
     "mocha": "^2.2.5",
     "query-string": "^2.2.0",
-    "streamqueue": "^1.1.0",
     "superagent-mock": "^1.1.0",
-    "uglify-js": "^2.4.21",
-    "vinyl-source-stream": "^1.1.0",
     "zombie": "^4.0.13"
   },
   "engines": {
