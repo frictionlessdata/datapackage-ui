@@ -75,7 +75,8 @@
     "test": "mocha tests --recursive --reporter spec",
     "start": "node datapackagist",
     "start_dev": "gulp dev & node datapackagist",
-    "deploy": "git push heroku master"
+    "deploy": "git push heroku master",
+    "postinstall": "gulp"
   },
   "author": {
     "name": "Open Knowledge",
