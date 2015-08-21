@@ -2,6 +2,7 @@ var _ = require('underscore');
 var gulp = require('gulp');
 var historyApiFallback = require('connect-history-api-fallback');
 var browserify = require('browserify');
+var browserifyHandlebars = require('browserify-handlebars');
 var depcheck = require('depcheck');
 var watchify = require('watchify');
 var resolve = require('resolve');
