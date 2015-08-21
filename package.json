@@ -14,9 +14,6 @@
     "backbone-base": "^0.0.2",
     "bluebird": "^2.9.31",
     "bootstrap": "^3.3.4",
-    "browser-sync": "^2.7.1",
-    "browserify": "^10.2.0",
-    "browserify-handlebars": "^1.0.0",
     "connect-history-api-fallback": "^1.1.0",
     "csv": "^0.4.5",
     "datapackage-from-remote": "0.0.2",
@@ -39,7 +36,6 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
     "highlight-redux": "*",
-    "highlight.js": "git+https://github.com/isagalaev/highlight.js.git",
     "jquery": "^2.1.4",
     "json-editor": "^0.7.18",
     "json-table-schema": "0.0.2-alpha",
@@ -53,16 +49,19 @@
     "validator": "^3.41.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "uglify-js": "^2.4.21",
-    "watchify": "^3.2.1"
+    "uglify-js": "^2.4.21"
   },
   "devDependencies": {
+    "browser-sync": "^2.7.1",
+    "browserify": "^10.2.0",
+    "browserify-handlebars": "^1.0.0",
     "chai": "^2.3.0",
     "chai-spies": "^0.6.0",
     "connect-history-api-fallback": "^1.1.0",
     "mocha": "^2.2.5",
     "query-string": "^2.2.0",
     "superagent-mock": "^1.1.0",
+    "watchify": "^3.2.1",
     "zombie": "^4.0.13"
   },
   "engines": {

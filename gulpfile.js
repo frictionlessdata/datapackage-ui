@@ -1,3 +1,4 @@
+var _ = require('underscore');
 var gulp = require('gulp');
 var historyApiFallback = require('connect-history-api-fallback');
 var browserify = require('browserify');
@@ -18,13 +19,7 @@ var srcDir = baseDir + '/src';
 var distDir = baseDir + '/dist';
 var stylesDir = srcDir + '/styles';
 var scriptsDir = srcDir + '/scripts';
-
-var frontendDependencies = [
-  'jquery',
-  'bootstrap',
-  'superagent',
-  'csv'
-];
+var frontendDependencies = _.keys(require('./package.json').dependencies);
 
 /**
  * Provide frontend app as a single bundle.
