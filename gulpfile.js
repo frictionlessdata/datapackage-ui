@@ -2,6 +2,7 @@ var _ = require('underscore');
 var gulp = require('gulp');
 var historyApiFallback = require('connect-history-api-fallback');
 var browserify = require('browserify');
+var depcheck = require('depcheck');
 var watchify = require('watchify');
 var resolve = require('resolve');
 var glob = require('glob').sync;
@@ -12,6 +13,7 @@ var ghPages = require('gulp-gh-pages');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var minifyCss = require('gulp-minify-css');
+var path = require('path');
 var streamqueue = require('streamqueue');
 
 var baseDir = './datapackagist';
@@ -20,6 +22,7 @@ var distDir = baseDir + '/dist';
 var stylesDir = srcDir + '/styles';
 var scriptsDir = srcDir + '/scripts';
 var frontendDependencies = _.keys(require('./package.json').dependencies);
+
 
 /**
  * Provide frontend app as a single bundle.
@@ -89,6 +92,23 @@ gulp.task('app-scripts-watched', function() {
     });
 
   return scriptPipeline(watcher.bundle(), 'app.min.js');
+});
+
+
+gulp.task('check-deps', function () {
+  depcheck(path.resolve('./'), {
+    'withoutDev': false,
+    'ignoreDirs': ['dist', 'node_modules']
+  }, function(U) {
+    if(!_.isEmpty(U.dependencies))
+      console.error('Unused dependencies: ', U.dependencies.join(', '));
+
+    if(!_.isEmpty(U.devDependencies))
+      console.error('Unused dev dependencies: ', U.devDependencies.join(', '));
+
+    if(!_.isEmpty(U.invalidFiles))
+      console.error('JS files that couldn\'t be parsed: ', U.invalidFiles.join(', '));
+  });
 });
 
 
