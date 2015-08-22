@@ -3,4 +3,5 @@ node_js:
   - "iojs"
 
 script:
+  - gulp build
   - npm test
