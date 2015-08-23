@@ -3,4 +3,5 @@ node_js:
   - "iojs"
 
 script:
+  - npm run build
   - npm test
