@@ -70,45 +70,46 @@ module.exports = {
       Promise.each(
         resourcesRows,
         function(R, I) { return window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources').getDataSource(I) }
-      ).each((function(R) {
-        var that = this;
+      ).then((function(DS) {
+          var that = this;
 
 
-        // Conditional promises
-        return (function() {
-          // Resource was downloaded by user
-          if(R.dataSource)
-            return goodTables.run(R.dataSource.data, JSON.stringify(R.dataSource.schema));
+        _.each(DS, function(R) {
+          // Conditional promises
+          return (function() {
+            // Resource was downloaded by user
+            if(R.dataSource)
+              return goodTables.run(R.dataSource.data, JSON.stringify(R.dataSource.schema));
 
-          // Default fall back
-          return new Promise(function(RS, RJ) { RS(false); });
-        })()
+            // Default fall back
+            return new Promise(function(RS, RJ) { RS(false); });
+          })()
 
-          .then(function(M) {
-            if(!M)
-              return false;
+            .then(function(M) {
+              if(!M)
+                return false;
 
-            // Validation completed, render errors list
-            that.layout.list.collection
+              // Validation completed, render errors list
+              that.layout.list.collection
 
-              // Grouped report has complicated structure
-              .add(M.getGroupedByRows().map(function(SR) { return _.extend(_.values(SR)[0], {
-                headers: M.getHeaders(),
-                resource_id: R.key
-              }); }));
-            
-            // Navigate between resources in validation results
-            if(!_.isEmpty(M.getGroupedByRows()))
-              that.layout.tabs.add(new backbone.Model({
-                title: R.getValue().path,
+                // Grouped report has complicated structure
+                .add(M.getGroupedByRows().map(function(SR) { return _.extend(_.values(SR)[0], {
+                  headers: M.getHeaders(),
+                  resource_id: R.key
+                }); }));
 
-                // .key is a unique property among all resources rows
-                url: '/validation-results/' + R.key
-              }));
-          })
+              // Navigate between resources in validation results
+              if(!_.isEmpty(M.getGroupedByRows()))
+                that.layout.tabs.add(new backbone.Model({
+                  title: R.getValue().path,
 
-          .catch(console.log);
-      }).bind(this)).then((function() {
+                  // .key is a unique property among all resources rows
+                  url: '/validation-results/' + R.key
+                }));
+            })
+
+            .catch(console.log);
+      }, this) }).bind(this)).then((function() {
         // After all resources validated navigate to first tab
         navigateToResults(
           this.layout.list.collection.length ? this.layout.list.collection.at(0).get('resource_id') : '0'
