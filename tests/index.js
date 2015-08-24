@@ -12,6 +12,8 @@ Browser.localhost('127.0.0.1', 3000);
 describe('DataPackagist core', function() {
 
   var browser = new Browser({maxWait: 30000});
+  var registryListSelector = '#registry-list [data-id=list-container] option';
+
 
   // ensure we have time for request to reoslve, etc.
   this.timeout(25000);
@@ -36,8 +38,8 @@ describe('DataPackagist core', function() {
 
     it('has a registry list', function(done) {
       // tests that the registry list exists
-      browser.wait({duration: '5s', element: '#registry-list [data-id=list-container] option[value=tabular]'}).then(function() {
-        browser.assert.elements('#registry-list [data-id=list-container] option', {atLeast: 2});
+      browser.wait({duration: '5s', element: registryListSelector}).then(function() {
+        browser.assert.elements(registryListSelector, {atLeast: 2});
         done();
       });
     });
@@ -56,7 +58,7 @@ describe('DataPackagist core', function() {
 
     it('constructs the form from the base profile by default', function(done) {
       // tests that the form is built to create a base profile datapackage.json
-      browser.wait({duration: '10s'}).then(function() {
+      browser.wait({duration: '5s', element: registryListSelector}).then(function() {
         browser.assert.element('#registry-list [data-id=list-container] option[value=base]:selected');
         assert.equal(browser.window.APP.layout.descriptorEdit.layout.form.schema.title, 'DataPackage');
         done();
@@ -66,8 +68,10 @@ describe('DataPackagist core', function() {
     it('loads other profiles by route', function(done) {
       // tests that if the correct route is given, then a form is built to create a tabular profile datapackage.json
       browser.visit('/tabular', function() {
-        browser.assert.element('#registry-list [data-id=list-container] option[value=tabular]:selected');
-        done();
+        browser.wait({duration: '5s', element: registryListSelector}).then(function() {
+          browser.assert.element('#registry-list [data-id=list-container] option[value=tabular]:selected');
+          done();
+        });
 
         // request. unpredictably sometimes hang on this URL https://rawgit.com/dataprotocols/schemas/master/tabular-data-package.json
         // Commented out for a while.
@@ -112,10 +116,12 @@ describe('DataPackagist core', function() {
       browser.visit('/', function() {
         browser.fill('[name="root[name]"]', 'Invalid name');
 
+        // Download button is disabled by default, and it should be disabled
+        // after validation request done
         setTimeout(function() {
           assert(browser.window.$('#download-data-package').hasClass('disabled'), 'Download button not disabled');
           done();
-        }, 2000);
+        }, 5000);
       });
     });
 
@@ -279,7 +285,7 @@ describe('DataPackagist core', function() {
   describe('Ensure From Remote API', function() {
 
     it('a correct CKAN remote results in a data package', function(done) {
-      browser.visit('/tabular/from/?source=ckan&url=http%3A%2F%2Fdatahub.io%2Fapi%2Faction%2Fpackage_show%3Fid%3Dpopulation-number-by-governorate-age-group-and-gender-2010-2014&oq=asdf+http%3A%2F%2Fdatahub.io%2Fapi%2Faction%2Fpackage_show%3Fid%3Dpopulation-number-by-governorate-age-group-and-gender-2010-2014&format=json', function() {
+      browser.visit('/tabular/from/?source=ckan&url=http%3A%2F%2Fdatahub.io%2Fapi%2Faction%2Fpackage_show%3Fid%3Dpopulation-number-by-governorate-age-group-and-gender-2010-2014&format=json', function() {
         browser.wait({duration: '10s', element: '[data-schemapath="root.resources.0"]'}).then(function() {
           browser.assert.element('[data-schemapath="root.resources"] [data-schemapath="root.resources.0"]');
           done();
