@@ -1,1 +1,1 @@
-web: node_modules/.bin/gulp & npm start
+web: npm run build & npm start
