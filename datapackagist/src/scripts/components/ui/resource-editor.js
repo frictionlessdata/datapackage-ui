@@ -45,6 +45,8 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
             .then((function(DS) { this.dataSource = DS; return DS; }).bind(this))
             .catch(console.log);
         });
+      else
+        RJ(new Error('Resource URL is broken or resource has wrong file type (should be CSV): ' + url));
     }).bind(this));
   },
 
