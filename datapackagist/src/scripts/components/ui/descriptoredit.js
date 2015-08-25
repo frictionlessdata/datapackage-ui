@@ -45,7 +45,9 @@ DataUploadView = backbone.BaseView.extend({
 
 
             if(E)
-              throw E;
+              return window.APP.layout.notificationDialog
+                .setMessage('CSV is invalid')
+                .activate();
 
             rowValue.schema = jtsInfer(D[0], _.rest(D));
             editor.add(rowValue, {schema: schema, data: EV.result});
