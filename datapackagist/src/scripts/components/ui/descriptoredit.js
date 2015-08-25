@@ -227,15 +227,18 @@ module.exports = {
       if(this.layout.form) {
         Promise.map(
           this.layout.form.getEditor('root.resources').rows,
-          (function(R, I) { return this.layout.form.getEditor('root.resources').getDataSource(I)}).bind(this)
-        ).then((function(R) {
+          (function(R, I) { return this.layout.form.getEditor('root.resources').getDataSource(I) }).bind(this)
+        )
+          .then((function(R) {
             var formData = this.layout.form.getCleanValue();
 
 
             this.layout.form.destroy();
             this.layout.uploadData.undelegateEvents().remove();
             init(formData, R);
-          }).bind(this));
+          }).bind(this))
+
+          .catch(console.error.bind(console));
       } else
         init();
     },
