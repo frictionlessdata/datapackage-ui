@@ -4,6 +4,7 @@ var Promise = require('bluebird');
 var validator = require('validator');
 
 
+// Custom editor for managing resources rows
 jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.editors.array.extend({
   add: function(rowValue, dataSource) {
     // If there is single empty row — apply
