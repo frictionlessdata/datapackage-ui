@@ -26,7 +26,7 @@ module.exports = {
       BaseView.prototype.activate.call(this, state);
 
       // Scroll to the top, where notification is show
-      if(state)
+      if(this.isActive())
         $(document).scrollTop(0);
     },
 
