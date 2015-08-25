@@ -1,0 +1,1 @@
+{"name":"my-dataset","resources":[{"path":"data.csv","schema":{"fields":[{"name":"var1","type":"string"},{"name":"var2","type":"integer"},{"name":"var3","type":"number"}]}}]}

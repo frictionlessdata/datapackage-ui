@@ -67,63 +67,49 @@ module.exports = {
       this.layout.list.reset(new backbone.Collection());
 
       // Validate each row, one by one, render errors after each row validated
-      Promise.each(resourcesRows, (function(R) {
-        var that = this;
+      Promise.each(
+        resourcesRows,
+        function(R, I) { return window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources').getDataSource(I) }
+      ).then((function(DS) {
+          var that = this;
 
 
-        // Conditional promises
-        return (function() {
-          // Resource was downloaded by user
-          if(R.dataSource)
-            return goodTables.run(R.dataSource.data, JSON.stringify(R.dataSource.schema));
+        _.each(DS, function(R) {
+          // Conditional promises
+          return (function() {
+            // Resource was downloaded by user
+            if(R.dataSource)
+              return goodTables.run(R.dataSource.data, JSON.stringify(R.dataSource.schema));
 
-          // If data source stored as URL in a row then first grab it and then return goodtables promise
-          if(validator.isURL(R.value.url) && _.contains([R.mediatype, R.format], 'text/csv'))
-            return request.get(R.value.url).then(function(RES) {
-              // Need schema
-              return (new Promise(function(RS, RJ) {
-                csv.parse(RES.text, function(E, D) {
-                  if(E) {
-                    RJ(E);
-                    return false;
-                  }
+            // Default fall back
+            return new Promise(function(RS, RJ) { RS(false); });
+          })()
 
-                  RS({data: RES.text, schema: jtsInfer(D[0], _.rest(D))});
-                });
-              }))
-                .then(function(CSV) { R.dataSource = CSV; return goodTables.run(CSV.data, JSON.stringify(CSV.schema)); })
-                .catch(console.log);
-            });
+            .then(function(M) {
+              if(!M)
+                return false;
 
-          // Default fall back
-          return new Promise(function(RS, RJ) { RS(false); });
-        })()
+              // Validation completed, render errors list
+              that.layout.list.collection
 
-          .then(function(M) {
-            if(!M)
-              return false;
+                // Grouped report has complicated structure
+                .add(M.getGroupedByRows().map(function(SR) { return _.extend(_.values(SR)[0], {
+                  headers: M.getHeaders(),
+                  resource_id: R.key
+                }); }));
 
-            // Validation completed, render errors list
-            that.layout.list.collection
+              // Navigate between resources in validation results
+              if(!_.isEmpty(M.getGroupedByRows()))
+                that.layout.tabs.add(new backbone.Model({
+                  title: R.getValue().path,
 
-              // Grouped report has complicated structure
-              .add(M.getGroupedByRows().map(function(SR) { return _.extend(_.values(SR)[0], {
-                headers: M.getHeaders(),
-                resource_id: R.key
-              }); }));
-            
-            // Navigate between resources in validation results
-            if(!_.isEmpty(M.getGroupedByRows()))
-              that.layout.tabs.add(new backbone.Model({
-                title: R.getValue().path,
+                  // .key is a unique property among all resources rows
+                  url: '/validation-results/' + R.key
+                }));
+            })
 
-                // .key is a unique property among all resources rows
-                url: '/validation-results/' + R.key
-              }));
-          })
-
-          .catch(console.log);
-      }).bind(this)).then((function() {
+            .catch(console.log);
+      }, this) }).bind(this)).then((function() {
         // After all resources validated navigate to first tab
         navigateToResults(
           this.layout.list.collection.length ? this.layout.list.collection.at(0).get('resource_id') : '0'
