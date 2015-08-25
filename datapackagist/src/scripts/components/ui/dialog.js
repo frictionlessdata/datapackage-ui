@@ -22,6 +22,14 @@ var BaseView = backbone.BaseView.extend({
 
 module.exports = {
   NotificationView: BaseView.extend({
+    activate: function(state) {
+      BaseView.prototype.activate.call(this, state);
+
+      // Scroll to the top, where notification is show
+      if(state)
+        $(document).scrollTop(0);
+    },
+
     events: {
       'click [data-id=ok]': function () {
         // Just close dialog as default No-action
