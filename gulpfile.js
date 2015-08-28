@@ -18,11 +18,16 @@ var path = require('path');
 var streamqueue = require('streamqueue');
 
 var baseDir = './datapackagist';
+var backendDependencies = ['express']
 var srcDir = baseDir + '/src';
 var distDir = baseDir + '/dist';
 var stylesDir = srcDir + '/styles';
 var scriptsDir = srcDir + '/scripts';
-var frontendDependencies = _.keys(require('./package.json').dependencies);
+
+var frontendDependencies = _.chain(require('./package.json').dependencies)
+  .omit(backendDependencies)
+  .keys()
+  .value();
 
 
 /**
