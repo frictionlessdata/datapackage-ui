@@ -3,7 +3,10 @@ var _ = require('underscore');
 var Browser = require('zombie');
 var app = require('../datapackagist/app');
 var assert = require('chai').assert;
+var path = require('path');
+var dataDir = path.join('.', 'tests', 'data');
 var jtsInfer = require('json-table-schema').infer;
+var sinon = require('sinon');
 
 process.env.NODE_ENV = 'test';
 
@@ -275,6 +278,34 @@ describe('DataPackagist core', function() {
         browser.wait({duration: '5s', element: '#validation-result:not([hidden])'}).then(function() {
           assert(browser.window.$('#ok-message').prop('hidden'));
           browser.assert.elements('#validation-result [data-id=errors-list] .result', 1);
+          done();
+        });
+      });
+    });
+
+    it('shows modal error message when uploading malformed/broken csv as resource', function(done) {
+      browser.visit('/', function() {
+        var inputField = browser.window.$(
+          browser.window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources').container
+        ).find('[data-id=input]');
+
+
+        sinon.stub(browser.window.FileAPI, 'readAsText', function(file, callback) {
+          // Return bad CSV data
+          callback({type: 'load', target:  {
+            lastModified: 1428475571000,
+            lastModifiedDate: 'Wed Apr 08 2015 09:46:11 GMT+0300 (MSK)',
+            name: 'f.txt.csv',
+            size: 410,
+            type: 'text/csv',
+            webkitRelativePath: ''
+          }, result: '[[["ограничения","restraints","ogranicheniya",""]]…rue,false]],[[0,10]],"restraints"]],,,[["en"]],3]'});
+        });
+
+        browser.attach('[data-schemapath="root.resources"] input[type=file]', path.join(dataDir, 'invalid.csv'));
+
+        browser.wait({duration: '5s', element: '#notification-dialog:not([hidden])'}).then(function() {
+          assert(!browser.window.$('#notification-dialog').prop('hidden'));
           done();
         });
       });
