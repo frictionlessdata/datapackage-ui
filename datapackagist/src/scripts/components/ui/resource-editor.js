@@ -1,6 +1,7 @@
 var jsonEditor = require('./jsoneditform');
 var _ = require('underscore');
 var Promise = require('bluebird');
+var request = require('superagent-bluebird-promise');
 var validator = require('validator');
 
 
