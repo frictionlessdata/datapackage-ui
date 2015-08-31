@@ -3,6 +3,8 @@ var _ = require('underscore');
 var Browser = require('zombie');
 var app = require('../datapackagist/app');
 var assert = require('chai').assert;
+var path = require('path');
+var dataDir = path.join('.', 'tests', 'data');
 var jtsInfer = require('json-table-schema').infer;
 var sinon = require('sinon');
 
@@ -300,7 +302,7 @@ describe('DataPackagist core', function() {
           }, result: '[[["ограничения","restraints","ogranicheniya",""]]…rue,false]],[[0,10]],"restraints"]],,,[["en"]],3]'});
         });
 
-        browser.attach('[data-schemapath="root.resources"] input[type=file]', './tests/invalid.csv');
+        browser.attach('[data-schemapath="root.resources"] input[type=file]', path.join(dataDir, 'invalid.csv'));
 
         browser.wait({duration: '5s', element: '#notification-dialog:not([hidden])'}).then(function() {
           assert(!browser.window.$('#notification-dialog').prop('hidden'));
