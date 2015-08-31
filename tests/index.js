@@ -290,12 +290,14 @@ describe('DataPackagist core', function() {
 
         sinon.stub(browser.window.FileAPI, 'readAsText', function(file, callback) {
           // Return bad CSV data
-          callback({type: "load", target:  {lastModified: 1428475571000,
+          callback({type: 'load', target:  {
+            lastModified: 1428475571000,
             lastModifiedDate: 'Wed Apr 08 2015 09:46:11 GMT+0300 (MSK)',
-            name: "f.txt.csv",
+            name: 'f.txt.csv',
             size: 410,
-            type: "text/csv",
-            webkitRelativePath: ""}, result: '[[["ограничения","restraints","ogranicheniya",""]]…rue,false]],[[0,10]],"restraints"]],,,[["en"]],3]'})
+            type: 'text/csv',
+            webkitRelativePath: ''
+          }, result: '[[["ограничения","restraints","ogranicheniya",""]]…rue,false]],[[0,10]],"restraints"]],,,[["en"]],3]'});
         });
 
         browser.attach('[data-schemapath="root.resources"] input[type=file]', './tests/invalid.csv');
