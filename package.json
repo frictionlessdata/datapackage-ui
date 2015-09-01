@@ -30,7 +30,7 @@
     "jquery": "^2.1.4",
     "json-editor": "^0.7.18",
     "json-table-schema": "0.0.2-alpha",
-    "omit-empty": "^0.3.1",
+    "deep-compact": "^0.2.4",
     "resolve": "^1.1.6",
     "superagent-bluebird-promise": "^2.0.2",
     "underscore": "^1.8.3",
