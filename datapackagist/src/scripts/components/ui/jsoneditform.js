@@ -3,7 +3,7 @@ var _ = require('underscore');
 var backbone = require('backbone');
 var deepEmpty = require('deep-empty');
 var Goodtables = require('goodtables');
-var omitEmpty = require('omit-empty');
+var deepCompact = require('deep-compact');
 var Promise = require('bluebird');
 var JSONEditorView = JSONEditor;
 
@@ -72,7 +72,7 @@ JSONEditorView.prototype.init = _.wrap(JSONEditorView.prototype.init, function(i
   // Omit empty properties and "0" values of object properties put into array.
   // Stick with that complex solution because "0" is the default value
 JSONEditorView.prototype.getCleanValue = function () { return deepEmpty(this.getValue(), function(O) {
-  return !_.isEmpty(O) && !_.every(O, function(I) { return _.isEmpty(omitEmpty(I, true)); })
+  return !_.isEmpty(O) && !_.every(O, function(I) { return _.isEmpty(deepCompact(I, true)); })
 }); };
 
 // Validate resources and show errors message at header of Schema row
