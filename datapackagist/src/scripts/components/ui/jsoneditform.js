@@ -69,8 +69,8 @@ JSONEditorView.prototype.init = _.wrap(JSONEditorView.prototype.init, function(i
   }).bind(this));
 });
 
-  // Omit empty properties and "0" values of object properties put into array.
-  // Stick with that complex solution because "0" is the default value
+// Omit empty properties and "0" values of object properties put into array.
+// Stick with that complex solution because "0" is the default value.
 JSONEditorView.prototype.getCleanValue = function () { return deepEmpty(this.getValue(), function(O) {
   return !_.isEmpty(O) && !_.every(O, function(I) { return _.isEmpty(omitEmpty(I, true)); })
 }); };
