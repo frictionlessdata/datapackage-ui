@@ -311,6 +311,34 @@ describe('DataPackagist core', function() {
       });
     });
 
+    it('shows modal error message when uploading malformed but not broken json', function(done) {
+      browser.visit('/', function() {
+        var inputField = browser.window.$(
+          browser.window.APP.layout.descriptorEdit.layout.upload.el
+        ).find('[data-id=input]');
+
+
+        sinon.stub(browser.window.FileAPI, 'readAsText', function(file, callback) {
+          // Return bad CSV data
+          callback({type: 'load', target:  {
+            lastModified: 1428475571000,
+            lastModifiedDate: 'Wed Apr 08 2015 09:46:11 GMT+0300 (MSK)',
+            name: 'bad.json',
+            size: 193,
+            type: 'application/json',
+            webkitRelativePath: ''
+          }, result: '[{"description": "validation of date-time strings","schema": {"format": "date-time"},"tests": [{"description": "a valid date-time string","data": "1963-06-19T08:30:06.283185Z","valid": true}]}]'});
+        });
+
+        browser.attach('#upload-data-package [type=file]', path.join(dataDir, 'bad.json'));
+
+        browser.wait({duration: '5s', element: '#notification-dialog:not([hidden])'}).then(function() {
+          assert(!browser.window.$('#notification-dialog').prop('hidden'));
+          done();
+        });
+      });
+    });
+
   });
 
   describe('Ensure From Remote API', function() {
