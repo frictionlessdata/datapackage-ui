@@ -17,7 +17,7 @@ var UploadView = require('./upload');
 var _ = require('underscore');
 var $ = require('jquery');
 var Promise = require('bluebird');
-
+var titleize = require('i')().titleize;
 
 // Convert name into title
 function titleize(name) {
@@ -120,7 +120,7 @@ module.exports = {
 
         this.layout.form
           .getEditor($title.closest('[data-schemapath]').data('schemapath'))
-          .setValue(titleize($input.val()));
+          .setValue(titleize($input.val()).replace(/\s+/g, ' ').toLowerCase());
       },
 
       // Do not populate title field with name field data if title was edited
