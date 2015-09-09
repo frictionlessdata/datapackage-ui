@@ -20,17 +20,14 @@ module.exports = backbone.BaseView.extend({
           }
           catch(E) { }
 
-          if(!_.isObject(descriptor)) {
+          // If descriptor is broken or If descriptor have field not from schema - reject it
+          if(!_.isObject(descriptor) || _.difference(_.keys(descriptor), _.keys(this.parent.layout.form.schema.properties)).length) {
             window.APP.layout.notificationDialog
               .setMessage('JSON is invalid')
               .activate();
 
             return false;
           }
-
-          // If descriptor have field not from schema - reject it
-          if(_.difference(_.keys(descriptor), _.keys(this.parent.layout.form.schema.properties)).length)
-            return false;
 
           // If there are no changes in current form just apply uploaded
           // data and leave
