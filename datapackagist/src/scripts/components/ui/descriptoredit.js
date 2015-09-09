@@ -33,8 +33,14 @@ DataUploadView = backbone.BaseView.extend({
   events: {
     // Set up and append .resources row
     'change [data-id=input]': function(E) {
+      // Show loading splash
+      window.APP.layout.splashScreen.activate(true);
+
       FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {
         if(EV.type === 'load') {
+          // Hide loading splash
+          window.APP.layout.splashScreen.activate(false);
+
           csv.parse(EV.result, (function(E, D) {
             var editor = window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
 
@@ -57,6 +63,9 @@ DataUploadView = backbone.BaseView.extend({
         } else if( EV.type ==='progress' ) {
           this.setProgress(EV.loaded/EV.total * 100);
         } else {
+          // If error hide loading screen
+          window.APP.layout.splashScreen.activate(false);
+
           this.setError('File upload failed');
         }
 

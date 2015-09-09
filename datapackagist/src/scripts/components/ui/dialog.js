@@ -21,6 +21,11 @@ var BaseView = backbone.BaseView.extend({
 });
 
 module.exports = {
+  SplashView: backbone.BaseView.extend({
+    // Activate overlay and splash layout
+    activate: BaseView.prototype.activate
+  }),
+
   NotificationView: BaseView.extend({
     events: {
       'click [data-id=ok]': function () {

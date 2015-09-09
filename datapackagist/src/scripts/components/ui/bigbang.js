@@ -18,6 +18,7 @@ module.exports = backbone.BaseView.extend({
 
   render: function() {
     this.layout.confirmationDialog = new dialog.ConfirmationView({el: window.APP.$('#confirmation-dialog')});
+    this.layout.splashScreen = new dialog.SplashView({el: window.APP.$('#loading')});
     this.layout.notificationDialog = new dialog.NotificationView({el: window.APP.$('#notification-dialog')});
     (this.layout.descriptorEdit = new descriptorEdit.DescriptorEditView({el: window.APP.$('#descriptor')})).render();
     this.layout.download = new DownloadView({el: window.APP.$('#download-data-package')});
