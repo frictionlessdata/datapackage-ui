@@ -19,14 +19,6 @@ var $ = require('jquery');
 var Promise = require('bluebird');
 var titleize = require('i')().titleize;
 
-// Convert name into title
-function titleize(name) {
-  return name
-    .replace(/[\-\._]+/g, ' ')
-    .replace(/([a-z]{1})([A-Z]{1})/g, '$1 $2')
-    .replace(/\s+/g, ' ')
-    .toLowerCase();
-}
 
 // Upload data file and populate .resource array with item
 DataUploadView = backbone.BaseView.extend({
