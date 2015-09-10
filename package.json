@@ -27,6 +27,7 @@
     "glob": "^5.0.6",
     "goodtables": "^0.1.0",
     "highlight-redux": "*",
+    "i": "^0.3.3",
     "jquery": "^2.1.4",
     "json-editor": "^0.7.18",
     "json-table-schema": "0.0.2-alpha",

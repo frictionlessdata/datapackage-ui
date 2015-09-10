@@ -17,24 +17,22 @@ var UploadView = require('./upload');
 var _ = require('underscore');
 var $ = require('jquery');
 var Promise = require('bluebird');
+var titleize = require('i')().titleize;
 
-
-// Convert name into title
-function titleize(name) {
-  return name
-    .replace(/[\-\._]+/g, ' ')
-    .replace(/([a-z]{1})([A-Z]{1})/g, '$1 $2')
-    .replace(/\s+/g, ' ')
-    .toLowerCase();
-}
 
 // Upload data file and populate .resource array with item
 DataUploadView = backbone.BaseView.extend({
   events: {
     // Set up and append .resources row
     'change [data-id=input]': function(E) {
+      // Show loading splash
+      window.APP.layout.splashScreen.activate(true);
+
       FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {
         if(EV.type === 'load') {
+          // Hide loading splash
+          window.APP.layout.splashScreen.activate(false);
+
           csv.parse(EV.result, (function(E, D) {
             var editor = window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
 
@@ -57,6 +55,9 @@ DataUploadView = backbone.BaseView.extend({
         } else if( EV.type ==='progress' ) {
           this.setProgress(EV.loaded/EV.total * 100);
         } else {
+          // If error hide loading screen
+          window.APP.layout.splashScreen.activate(false);
+
           this.setError('File upload failed');
         }
 
@@ -111,7 +112,7 @@ module.exports = {
 
         this.layout.form
           .getEditor($title.closest('[data-schemapath]').data('schemapath'))
-          .setValue(titleize($input.val()));
+          .setValue(titleize($input.val()).replace(/\s+/g, ' ').toLowerCase());
       },
 
       // Do not populate title field with name field data if title was edited
