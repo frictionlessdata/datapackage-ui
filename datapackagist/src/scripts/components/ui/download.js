@@ -52,9 +52,9 @@ module.exports = backbone.BaseView.extend({
         this.$el
           .removeClass('disabled')
 
-          .attr('href', outfile(descriptor, {
+          .attr('href', encodeURI(outfile(descriptor, {
             IE9: window.APP.browser.name == 'ie' && parseInt(window.APP.browser.version.split('.')[0]) <= 9
-          }));
+          })));
     }).bind(this));
 
     return this;
