@@ -1,35 +1,72 @@
 var $ = require('jquery');
 var _ = require('underscore');
 var Browser = require('zombie');
+var datapackageProfileJSON;
 var app = require('../datapackagist/app');
 var assert = require('chai').assert;
+var fromRemoteJSON;
+var fs = require('fs');
+var nock = require('nock')
 var path = require('path');
+var registryListCSV;
+var tabularProfileJSON;
 var dataDir = path.join('.', 'tests', 'data');
 var jtsInfer = require('json-table-schema').infer;
 var sinon = require('sinon');
-
 process.env.NODE_ENV = 'test';
-
 Browser.localhost('127.0.0.1', 3000);
 
 describe('DataPackagist core', function() {
-
   var browser = new Browser({maxWait: 30000});
   var registryListSelector = '#registry-list [data-id=list-container] option';
-
 
   // ensure we have time for request to reoslve, etc.
   this.timeout(25000);
 
   before(function(done) {
-    // run the server
-    app.listen(3000, function() {
-      done();
+    fs.readFile(path.join(dataDir, 'registry-list.json'), function(error, data) {
+      registryListCSV = data.toString();
+
+      fs.readFile(path.join(dataDir, 'datapackage-profile.json'), function(error, profileData) {
+        datapackageProfileJSON = JSON.parse(profileData.toString());
+
+        fs.readFile(path.join(dataDir, 'tabular-profile.json'), function(error, data) {
+          tabularProfileJSON = data.toString();
+
+          fs.readFile(path.join(dataDir, 'tabular-profile.json'), function(error, data) {
+            fromRemoteJSON = data.toString();
+
+            nock('https://rawgit.com')
+              .persist()
+              .get('/dataprotocols/registry/master/registry.csv')
+              .reply(200, registryListCSV, {'access-control-allow-origin': '*'});
+
+            nock('https://rawgit.com')
+              .persist()
+              .get('/dataprotocols/schemas/master/data-package.json')
+              .reply(200, datapackageProfileJSON, {'access-control-allow-origin': '*'});
+
+            nock('https://rawgit.com')
+              .persist()
+              .get('/dataprotocols/schemas/master/tabular-data-package.json')
+              .reply(200, tabularProfileJSON, {'access-control-allow-origin': '*'});
+
+            nock('http://datahub.io')
+              .persist()
+              .get('/api/action/package_show?id=population-number-by-governorate-age-group-and-gender-2010-2014')
+              .reply(200, fromRemoteJSON, {'access-control-allow-origin': '*'});
+
+            // run the server
+            app.listen(3000, function() {
+              done();
+            });
+          });
+        });
+      });
     });
   });
 
   describe('Ensure essential form interactions', function() {
-
     before(function(done) {
       browser.visit('/', done);
     });
@@ -40,11 +77,8 @@ describe('DataPackagist core', function() {
     });
 
     it('has a registry list', function(done) {
-      // tests that the registry list exists
-      browser.wait({duration: '5s', element: registryListSelector}).then(function() {
-        browser.assert.elements(registryListSelector, {atLeast: 2});
-        done();
-      });
+      browser.assert.elements(registryListSelector, {atLeast: 2});
+      done();
     });
 
     it('has an upload button', function(done) {
@@ -71,17 +105,8 @@ describe('DataPackagist core', function() {
     it('loads other profiles by route', function(done) {
       // tests that if the correct route is given, then a form is built to create a tabular profile datapackage.json
       browser.visit('/tabular', function() {
-        browser.wait({duration: '5s', element: registryListSelector}).then(function() {
-          browser.assert.element('#registry-list [data-id=list-container] option[value=tabular]:selected');
-          done();
-        });
-
-        // request. unpredictably sometimes hang on this URL https://rawgit.com/dataprotocols/schemas/master/tabular-data-package.json
-        // Commented out for a while.
-        // setTimeout(function() {
-        //   assert.equal(browser.window.APP.layout.descriptorEdit.layout.form.schema.title, 'Tabular Data Package');
-        //   done();
-        // }, 5*1000);
+        browser.assert.element('#registry-list [data-id=list-container] option[value=tabular]:selected');
+        done();
       });
     });
 
@@ -121,10 +146,8 @@ describe('DataPackagist core', function() {
 
         // Download button is disabled by default, and it should be disabled
         // after validation request done
-        setTimeout(function() {
-          assert(browser.window.$('#download-data-package').hasClass('disabled'), 'Download button not disabled');
-          done();
-        }, 5000);
+        assert(browser.window.$('#download-data-package').hasClass('disabled'), 'Download button not disabled');
+        done();
       });
     });
 
@@ -152,18 +175,14 @@ describe('DataPackagist core', function() {
       // try to download invalid base profile
       browser.visit('/tabular', function() {
         browser.fill('[name="root[name]"]', 'Invalid name');
-
-        setTimeout(function() {
-          assert(browser.window.$('#download-data-package').hasClass('disabled'), 'Download button not disabled');
-          done();
-        }, 5000);
+        assert(browser.window.$('#download-data-package').hasClass('disabled'), 'Download button not disabled');
+        done();
       });
     });
 
   });
 
   describe('Ensure essential resource file interactions', function() {
-
     before(function(done) {
       browser.visit('/', done);
     });
@@ -289,7 +308,6 @@ describe('DataPackagist core', function() {
           browser.window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources').container
         ).find('[data-id=input]');
 
-
         sinon.stub(browser.window.FileAPI, 'readAsText', function(file, callback) {
           // Return bad CSV data
           callback({type: 'load', target:  {
@@ -317,7 +335,6 @@ describe('DataPackagist core', function() {
           browser.window.APP.layout.descriptorEdit.layout.upload.el
         ).find('[data-id=input]');
 
-
         sinon.stub(browser.window.FileAPI, 'readAsText', function(file, callback) {
           // Return bad CSV data
           callback({type: 'load', target:  {
@@ -338,11 +355,9 @@ describe('DataPackagist core', function() {
         });
       });
     });
-
   });
 
   describe('Ensure From Remote API', function() {
-
     it('a correct CKAN remote results in a data package', function(done) {
       browser.visit('/tabular/from/?source=ckan&url=http%3A%2F%2Fdatahub.io%2Fapi%2Faction%2Fpackage_show%3Fid%3Dpopulation-number-by-governorate-age-group-and-gender-2010-2014&format=json', function() {
         browser.wait({duration: '10s', element: '[data-schemapath="root.resources.0"]'}).then(function() {
@@ -351,7 +366,5 @@ describe('DataPackagist core', function() {
         });
       });
     });
-
   });
-
 });
