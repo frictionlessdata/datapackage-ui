@@ -7,16 +7,12 @@ var path = require('path');
 var dataDir = path.join('.', 'tests', 'data');
 var jtsInfer = require('json-table-schema').infer;
 var sinon = require('sinon');
-
 process.env.NODE_ENV = 'test';
-
 Browser.localhost('127.0.0.1', 3000);
 
 describe('DataPackagist core', function() {
-
   var browser = new Browser({maxWait: 30000});
   var registryListSelector = '#registry-list [data-id=list-container] option';
-
 
   // ensure we have time for request to reoslve, etc.
   this.timeout(25000);
@@ -29,7 +25,6 @@ describe('DataPackagist core', function() {
   });
 
   describe('Ensure essential form interactions', function() {
-
     before(function(done) {
       browser.visit('/', done);
     });
@@ -163,7 +158,6 @@ describe('DataPackagist core', function() {
   });
 
   describe('Ensure essential resource file interactions', function() {
-
     before(function(done) {
       browser.visit('/', done);
     });
@@ -289,7 +283,6 @@ describe('DataPackagist core', function() {
           browser.window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources').container
         ).find('[data-id=input]');
 
-
         sinon.stub(browser.window.FileAPI, 'readAsText', function(file, callback) {
           // Return bad CSV data
           callback({type: 'load', target:  {
@@ -317,7 +310,6 @@ describe('DataPackagist core', function() {
           browser.window.APP.layout.descriptorEdit.layout.upload.el
         ).find('[data-id=input]');
 
-
         sinon.stub(browser.window.FileAPI, 'readAsText', function(file, callback) {
           // Return bad CSV data
           callback({type: 'load', target:  {
@@ -338,11 +330,9 @@ describe('DataPackagist core', function() {
         });
       });
     });
-
   });
 
   describe('Ensure From Remote API', function() {
-
     it('a correct CKAN remote results in a data package', function(done) {
       browser.visit('/tabular/from/?source=ckan&url=http%3A%2F%2Fdatahub.io%2Fapi%2Faction%2Fpackage_show%3Fid%3Dpopulation-number-by-governorate-age-group-and-gender-2010-2014&format=json', function() {
         browser.wait({duration: '10s', element: '[data-schemapath="root.resources.0"]'}).then(function() {
@@ -351,7 +341,5 @@ describe('DataPackagist core', function() {
         });
       });
     });
-
   });
-
 });
