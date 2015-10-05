@@ -2,6 +2,7 @@ require('fileapi');
 
 var backbone = require('backbone');
 var backboneBase = require('backbone-base');
+var config = require('../../config');
 var csv = require('csv');
 var getUri = require('get-uri');
 var highlight = require('highlight-redux');
@@ -30,17 +31,16 @@ DataUploadView = backbone.BaseView.extend({
 
       FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {
         if(EV.type === 'load') {
-          // Hide loading splash
-          window.APP.layout.splashScreen.activate(false);
+          csv.parse(_.first(EV.result.split('\n'), config.maxCSVRows).join('\n'), (function(E, D) {
+            // Hide loading splash
+            window.APP.layout.splashScreen.activate(false);
 
-          csv.parse(EV.result, (function(E, D) {
             var editor = window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
 
             var rowValue = {
               name: _.last(EV.target.name.split('/')).toLowerCase().replace(/\.[^.]+$|[^a-z^\-^\d^_^\.]+/g, ''),
               path: EV.target.name
             };
-
 
             if(E)
               return window.APP.layout.notificationDialog
