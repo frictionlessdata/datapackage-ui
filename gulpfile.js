@@ -78,13 +78,13 @@ gulp.task('vendor-scripts', function () {
     bundler.require(resolve.sync(id), {expose: id});
   });
 
-  return scriptPipeline(bundler.bundle(), 'vendor.min.js', {uglify: true});
+  return scriptPipeline(bundler.bundle(), 'vendor.min.js', {uglify: false});
 
 });
 
 
 gulp.task('app-scripts', function() {
-  return scriptPipeline(bundler.bundle(), 'app.min.js', {uglify: true});
+  return scriptPipeline(bundler.bundle(), 'app.min.js', {uglify: false});
 });
 
 
