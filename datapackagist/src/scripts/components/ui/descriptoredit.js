@@ -14,7 +14,6 @@ var resourceEditor = require('./resource-editor');
 var jtsInfer = require('json-table-schema').infer;
 var registry = require('./registry');
 var request = require('superagent-bluebird-promise');
-var UploadView = require('./upload');
 var _ = require('underscore');
 var $ = require('jquery');
 var Promise = require('bluebird');
@@ -65,7 +64,9 @@ DataUploadView = backbone.BaseView.extend({
       }).bind(this));
     },
 
-    'click [data-id=upload-data-file]': function() { this.$('[data-id=input]').trigger('click'); }
+    'click [data-id=upload-data-file]': function() {
+      window.APP.layout.uploadDialog.activate();
+    }
   },
 
   render: function() {
@@ -86,12 +87,6 @@ DataUploadView = backbone.BaseView.extend({
 
 module.exports = {
   DescriptorEditView: backbone.BaseView.extend({
-    activate: function(state) {
-      backbone.BaseView.prototype.activate.call(this, state);
-      this.layout.upload.activate(state);
-      return this;
-    },
-
     events: {
       // Populate main title and resource title fields
       'keyup [data-schemapath$=".name"] input': function(event) {
@@ -171,7 +166,6 @@ module.exports = {
     },
 
     render: function() {
-      this.layout.upload = new UploadView({el: window.APP.$('#upload-data-package'), parent: this});
       this.layout.registryList = new registry.ListView({el: window.APP.$('#registry-list'), container: '[data-id=list-container]', parent: this});
       return this;
     },

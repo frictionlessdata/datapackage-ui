@@ -12,14 +12,42 @@
   z-index: 1;
 }
 
-.dialog {
+.dialog-container:not([hidden]) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
   position: fixed;
   z-index: 1;
-  top: 35%;
-  left: 40%;
+  top: 0;
+  left: 0;
+}
+
+.dialog {
+  z-index: 1;
   background-color: white;
   padding: 64px;
   font-size: 24px;
+}
+
+.dialog .vertical-gap {
+  display: block;
+  margin: 16px 0;
+  min-height: 1px;
+}
+
+.dialog-or {
+  font-size: 16px;
+}
+
+.dialog label {
+  font-size: 16px;
+}
+
+.dialog .upload-control input.form-control {
+  display: inline-block;
+  width: auto;
 }
 
 .splash {

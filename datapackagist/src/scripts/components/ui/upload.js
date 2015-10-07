@@ -3,12 +3,14 @@ require('fileapi');
 var _ = require('underscore');
 var backbone = require('backbone');
 var backboneBase = require('backbone-base');
+var dialogs = require('./dialog');
 var validator = require('datapackage-validate');
+var uploadTpl = require('./templates/upload-dialog.hbs');
 
 
 // Upload datapackage
-module.exports = backbone.BaseView.extend({
-  events: {
+module.exports = dialogs.BaseModalView.extend({
+  events: _.extend(_.clone(dialogs.BaseModalView.prototype.events), {
     'change [data-id=input]': function(E) {
       FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {
         var descriptor;
@@ -50,13 +52,9 @@ module.exports = backbone.BaseView.extend({
           this.setProgress(EV.loaded/EV.total * 100);
       }).bind(this));
     }
-  },
+  }),
 
+  render: function() { this.$el.html(this.template()); return this; },
   setProgress: function(percents) { return this; },
-
-  // Update edit form and download URL
-  updateApp: function(descriptor) {
-    this.parent.layout.form.setValue(_.defaults(descriptor, this.parent.layout.form.getValue()));
-    return this;
-  }
+  template: uploadTpl
 });
