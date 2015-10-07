@@ -55,6 +55,9 @@ DataUploadView = backbone.BaseView.extend({
           local: (function(name, data) {
             window.APP.layout.uploadDialog.deactivate();
 
+            // #overlay is hidden by upload dialog, activate it back
+            window.APP.layout.splashScreen.activate();
+
             csv.parse(_.first(data.split('\n'), config.maxCSVRows).join('\n'), (function(E, D) {
               // Hide loading splash
               window.APP.layout.splashScreen.activate(false);

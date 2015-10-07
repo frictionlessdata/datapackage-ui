@@ -20,6 +20,7 @@ module.exports = backbone.BaseView.extend({
             var descriptorEdit;
             
 
+            window.APP.layout.splashScreen.activate(false);
             window.APP.layout.uploadDialog.deactivate();
 
             try {
