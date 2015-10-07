@@ -28,21 +28,18 @@
   z-index: 1;
   background-color: white;
   padding: 64px;
-  font-size: 24px;
+  font-size: 16px;
+}
+
+.dialog .message {
+  margin-bottom: 48px;
+  width: 480px;
 }
 
 .dialog .vertical-gap {
   display: block;
   margin: 16px 0;
   min-height: 1px;
-}
-
-.dialog-or {
-  font-size: 16px;
-}
-
-.dialog label {
-  font-size: 16px;
 }
 
 .dialog .upload-control input.form-control {

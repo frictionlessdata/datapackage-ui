@@ -65,7 +65,10 @@ DataUploadView = backbone.BaseView.extend({
     },
 
     'click [data-id=upload-data-file]': function() {
-      window.APP.layout.uploadDialog.activate();
+      window.APP.layout.uploadDialog.setMessage(
+        'Select resource file (CSV) from your local drive or enter URL ' +
+        'to download from.'
+      ).activate();
     }
   },
 

@@ -12,7 +12,11 @@ var UploadView = require('./upload');
 module.exports = backbone.BaseView.extend({
   events: {
     'click #upload-data-package': function() {
-      this.layout.uploadDialog.activate();
+      this.layout.uploadDialog.setMessage(
+        'Select data package JSON file from your local drive or enter URL ' +
+        'to download from.'
+      ).activate();
+
       return false;
     }
   },

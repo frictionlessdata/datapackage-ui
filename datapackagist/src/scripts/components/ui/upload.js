@@ -55,6 +55,7 @@ module.exports = dialogs.BaseModalView.extend({
   }),
 
   render: function() { this.$el.html(this.template()); return this; },
+  setMessage: function(message) { this.$('[data-id=message]').html(message); return this; },
   setProgress: function(percents) { return this; },
   template: uploadTpl
 });
