@@ -6,21 +6,11 @@ var DownloadView = require('./download');
 var navigation = require('./navigation');
 var registry = require('./registry');
 var validationResult = require('./validationresult');
+var UploadDatapackageView = require('./upload-datapackage');
 var UploadView = require('./upload');
 
 
 module.exports = backbone.BaseView.extend({
-  events: {
-    'click #upload-data-package': function() {
-      this.layout.uploadDialog.setMessage(
-        'Select data package JSON file from your local drive or enter URL ' +
-        'to download from.'
-      ).activate();
-
-      return false;
-    }
-  },
-
   initialize: function(options) {
     backbone.BaseView.prototype.initialize.call(this, options);
 
@@ -39,6 +29,10 @@ module.exports = backbone.BaseView.extend({
     this.layout.validationResultList = (new validationResult.ValidationResultsView({
       el: window.APP.$('#validation-result')
     })).render();
+
+    this.layout.uploadDatapackage = (new UploadDatapackageView({
+      el: window.APP.$('#upload-data-package')
+    })).activate();
 
     this.layout.uploadDialog = (new UploadView({el: window.APP.$('#upload-dialog'), parent: this})).render();
     return this;
