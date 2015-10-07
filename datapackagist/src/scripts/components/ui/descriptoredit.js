@@ -30,27 +30,7 @@ DataUploadView = backbone.BaseView.extend({
 
       FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {
         if(EV.type === 'load') {
-          csv.parse(_.first(EV.result.split('\n'), config.maxCSVRows).join('\n'), (function(E, D) {
-            // Hide loading splash
-            window.APP.layout.splashScreen.activate(false);
-
-            var editor = window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
-
-            var rowValue = {
-              name: _.last(EV.target.name.split('/')).toLowerCase().replace(/\.[^.]+$|[^a-z^\-^\d^_^\.]+/g, ''),
-              path: EV.target.name
-            };
-
-            if(E)
-              return window.APP.layout.notificationDialog
-                .setMessage('CSV is invalid')
-                .activate();
-
-            rowValue.schema = jtsInfer(D[0], _.rest(D));
-            editor.add(rowValue, {schema: schema, data: EV.result});
-            window.APP.layout.descriptorEdit.layout.form.validateResources();
-            window.APP.layout.descriptorEdit.populateTitlesFromNames();
-          }).bind(this));
+          
         } else if( EV.type ==='progress' ) {
           this.setProgress(EV.loaded/EV.total * 100);
         } else {
@@ -65,10 +45,41 @@ DataUploadView = backbone.BaseView.extend({
     },
 
     'click [data-id=upload-data-file]': function() {
-      window.APP.layout.uploadDialog.setMessage(
-        'Select resource file (CSV) from your local drive or enter URL ' +
-        'to download from.'
-      ).activate();
+      window.APP.layout.uploadDialog
+        .setMessage(
+          'Select resource file (CSV) from your local drive or enter URL ' +
+          'to download from.'
+        )
+
+        .setCallbacks({
+          local: (function(name, data) {
+            window.APP.layout.uploadDialog.deactivate();
+
+            csv.parse(_.first(data.split('\n'), config.maxCSVRows).join('\n'), (function(E, D) {
+              // Hide loading splash
+              window.APP.layout.splashScreen.activate(false);
+
+              var editor = window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
+
+              var rowValue = {
+                name: _.last(name.split('/')).toLowerCase().replace(/\.[^.]+$|[^a-z^\-^\d^_^\.]+/g, ''),
+                path: name
+              };
+
+              if(E)
+                return window.APP.layout.notificationDialog
+                  .setMessage('CSV is invalid')
+                  .activate();
+
+              rowValue.schema = jtsInfer(D[0], _.rest(D));
+              editor.add(rowValue, {schema: schema, data: data});
+              window.APP.layout.descriptorEdit.layout.form.validateResources();
+              window.APP.layout.descriptorEdit.populateTitlesFromNames();
+            }).bind(this));
+          }).bind(this)
+        })
+
+        .activate();
     }
   },
 
