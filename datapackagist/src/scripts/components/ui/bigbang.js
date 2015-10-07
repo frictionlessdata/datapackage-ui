@@ -7,7 +7,7 @@ var navigation = require('./navigation');
 var registry = require('./registry');
 var validationResult = require('./validationresult');
 var UploadDatapackageView = require('./upload-datapackage');
-var UploadView = require('./upload');
+var UploadView = require('./upload-dialog');
 
 
 module.exports = backbone.BaseView.extend({
