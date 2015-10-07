@@ -14,6 +14,7 @@ module.exports = dialogs.BaseModalView.extend({
     'click [data-id="upload-local"]': function(E) { this.$('[data-id=file-input]').trigger('click'); },
 
     'change [data-id="file-input"]': function(E) {
+      window.APP.layout.uploadDialog.deactivate();
       window.APP.layout.splashScreen.activate();
 
       FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {

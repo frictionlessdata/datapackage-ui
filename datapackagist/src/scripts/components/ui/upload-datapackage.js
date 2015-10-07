@@ -21,7 +21,6 @@ module.exports = backbone.BaseView.extend({
             
 
             window.APP.layout.splashScreen.activate(false);
-            window.APP.layout.uploadDialog.deactivate();
 
             try {
               descriptor = JSON.parse(data);
