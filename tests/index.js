@@ -83,7 +83,7 @@ describe('DataPackagist core', function() {
 
     it('has an upload button', function(done) {
       // tests that the upload button for datapackage.json files exists
-      browser.assert.element('#upload-data-package input[type=file]');
+      browser.assert.element('#upload-data-package');
       done();
     });
 
