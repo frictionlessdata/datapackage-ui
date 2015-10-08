@@ -12,6 +12,7 @@ var uploadTpl = require('./templates/upload-dialog.hbs');
 module.exports = dialogs.BaseModalView.extend({
   events: _.extend(_.clone(dialogs.BaseModalView.prototype.events), {
     'click [data-id="upload-local"]': function(E) { this.$('[data-id=file-input]').trigger('click'); },
+    'click [data-id="upload-url"]': function(E) { this.$('[data-id=file-input]').trigger('click'); },
 
     'change [data-id="file-input"]': function(E) {
       window.APP.layout.uploadDialog.deactivate();

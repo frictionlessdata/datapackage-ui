@@ -23,27 +23,6 @@ var titleize = require('i')().titleize;
 // Upload data file and populate .resource array with item
 DataUploadView = backbone.BaseView.extend({
   events: {
-    // Set up and append .resources row
-    'change [data-id=input]': function(E) {
-      // Show loading splash
-      window.APP.layout.splashScreen.activate(true);
-
-      FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {
-        if(EV.type === 'load') {
-          
-        } else if( EV.type ==='progress' ) {
-          this.setProgress(EV.loaded/EV.total * 100);
-        } else {
-          // If error hide loading screen
-          window.APP.layout.splashScreen.activate(false);
-
-          this.setError('File upload failed');
-        }
-
-        this.$(E.currentTarget).val('');
-      }).bind(this));
-    },
-
     'click [data-id=upload-data-file]': function() {
       window.APP.layout.uploadDialog
         .setMessage(
