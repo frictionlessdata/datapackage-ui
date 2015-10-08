@@ -10,13 +10,15 @@
 
   <div class="vertical-gap dialog-or">Or</div>
 
-  <div class="form-group">
+  <div data-id="url-form-row" class="form-group">
     <label for="upload-URL" class="control-label">Upload from URL</label>
 
     <div class="upload-control">
       <input type="text" data-id="url-input" class="form-control">
       <button data-id="upload-url" type="button" class="btn btn-success btn-sm" title="Close dialog">Upload</button>
     </div>
+
+    <p data-id="url-error" class="help-block errormsg" hidden>This URL is invalid</p>
   </div>
 
   <div class="vertical-gap"></div>

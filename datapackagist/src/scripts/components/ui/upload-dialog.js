@@ -4,15 +4,41 @@ var _ = require('underscore');
 var backbone = require('backbone');
 var backboneBase = require('backbone-base');
 var dialogs = require('./dialog');
-var validator = require('datapackage-validate');
+var request = require('superagent-bluebird-promise');
+var validator = require('validator');
 var uploadTpl = require('./templates/upload-dialog.hbs');
 
 
 // Unified file/URL upload dialog
 module.exports = dialogs.BaseModalView.extend({
+  activate: function(state) {
+    dialogs.BaseModalView.prototype.activate.call(this, state);
+    this.activateError(false);
+    return this;
+  },
+
+  activateError: function(state) {
+    var hasError = _.isUndefined(state) || state;
+
+
+    this.$('[data-id="url-form-row"]').toggleClass('has-error', hasError);
+    this.$('[data-id="url-error"]').prop('hidden', !hasError);
+  },
+
   events: _.extend(_.clone(dialogs.BaseModalView.prototype.events), {
     'click [data-id="upload-local"]': function(E) { this.$('[data-id=file-input]').trigger('click'); },
-    'click [data-id="upload-url"]': function(E) { this.$('[data-id=file-input]').trigger('click'); },
+
+    'click [data-id="upload-url"]': function(E) {
+      var url = this.$('[data-id=url-input]').val();
+
+
+      this.activateError(false);
+
+      if(!validator.isURL(url)) {
+        this.activateError();
+        return this;
+      }
+    },
 
     'change [data-id="file-input"]': function(E) {
       window.APP.layout.uploadDialog.deactivate();
