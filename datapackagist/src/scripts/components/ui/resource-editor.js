@@ -47,6 +47,7 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
             .catch(console.log);
         });
 
+      // TODO return correct data when there is workaround for file paths
       else if(!url)
         RS({});
 
