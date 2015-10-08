@@ -15,7 +15,7 @@ module.exports = backbone.BaseView.extend({
         )
 
         .setCallbacks({
-          local: (function(name, data) {
+          data: (function(name, data) {
             var descriptor;
             var descriptorEdit;
             

@@ -46,7 +46,7 @@ module.exports = dialogs.BaseModalView.extend({
 
       FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {
         if(EV.type === 'load')
-          this.callbacks.local(EV.target.name, EV.result);
+          this.callbacks.data(EV.target.name, EV.result);
         else if(EV.type ==='progress')
           this.setProgress(EV.loaded/EV.total * 100);
       }).bind(this));
