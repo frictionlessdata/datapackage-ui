@@ -31,25 +31,11 @@ module.exports = dialogs.BaseModalView.extend({
 
   events: _.extend(_.clone(dialogs.BaseModalView.prototype.events), {
     'click [data-id="upload-local"]': function(E) { this.$('[data-id=file-input]').trigger('click'); },
+    'click [data-id="upload-url"]': 'uploadURL',
 
-    'click [data-id="upload-url"]': function(E) {
-      var url = this.$('[data-id=url-input]').val();
-
-
-      this.activateError(false);
-
-      if(!validator.isURL(url)) {
-        this.activateError();
-        return this;
-      }
-
-      window.APP.layout.uploadDialog.deactivate();
-      window.APP.layout.splashScreen.activate();
-
-      request.get(url).then((function(RES) {
-        window.APP.layout.splashScreen.deactivate();
-        this.callbacks.data(url, RES.text);
-      }).bind(this));
+    'keyup [data-id="url-input"]': function(E) {
+      if(E.keyCode === 13)
+        this.uploadURL();
     },
 
     'change [data-id="file-input"]': function(E) {
@@ -68,5 +54,25 @@ module.exports = dialogs.BaseModalView.extend({
   render: function() { this.$el.html(this.template()); return this; },
   setMessage: function(message) { this.$('[data-id=message]').html(message); return this; },
   setProgress: function(percents) { return this; },
-  template: uploadTpl
+  template: uploadTpl,
+
+  uploadURL: function() {
+    var url = this.$('[data-id=url-input]').val();
+
+
+    this.activateError(false);
+
+    if(!validator.isURL(url)) {
+      this.activateError();
+      return this;
+    }
+
+    window.APP.layout.uploadDialog.deactivate();
+    window.APP.layout.splashScreen.activate();
+
+    request.get(url).then((function(RES) {
+      window.APP.layout.splashScreen.deactivate();
+      this.callbacks.data(url, RES.text);
+    }).bind(this));
+  }
 });
