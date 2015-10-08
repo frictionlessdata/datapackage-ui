@@ -38,6 +38,14 @@ module.exports = dialogs.BaseModalView.extend({
         this.activateError();
         return this;
       }
+
+      window.APP.layout.uploadDialog.deactivate();
+      window.APP.layout.splashScreen.activate();
+
+      request.get(url).then((function(RES) {
+        window.APP.layout.splashScreen.deactivate();
+        this.callbacks.data(url, RES.text);
+      }).bind(this));
     },
 
     'change [data-id="file-input"]': function(E) {
