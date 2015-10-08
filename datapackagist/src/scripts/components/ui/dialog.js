@@ -12,6 +12,12 @@ var BaseView = backbone.BaseView.extend({
   },
 
   events: {
+    // Hide dialog when user clicks on overlay
+    'click': function(event) {
+      if(!$(event.target).closest('[data-id=dialog]').length)
+        this.deactivate();
+    },
+
     'click [data-id=close]': 'deactivate'
   },
 
