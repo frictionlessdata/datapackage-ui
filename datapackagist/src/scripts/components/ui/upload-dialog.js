@@ -14,6 +14,10 @@ module.exports = dialogs.BaseModalView.extend({
   activate: function(state) {
     dialogs.BaseModalView.prototype.activate.call(this, state);
     this.activateError(false);
+
+    if(state !== false)
+      this.$('[data-id=file-input], [data-id=url-input]').val('');
+
     return this;
   },
 
