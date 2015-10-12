@@ -11,6 +11,16 @@ var BaseView = backbone.BaseView.extend({
     return this;
   },
 
+  events: {
+    // Hide dialog when user clicks on overlay
+    'click': function(event) {
+      if(!$(event.target).closest('[data-id=dialog]').length)
+        this.deactivate();
+    },
+
+    'click [data-id=close]': 'deactivate'
+  },
+
   // Update internal object of callbacks called during Yes/No click
   setCallbacks: function(callbacks) {
     this.callbacks = _.extend(this.callbacks || {}, callbacks);
@@ -21,6 +31,8 @@ var BaseView = backbone.BaseView.extend({
 });
 
 module.exports = {
+  BaseModalView: BaseView,
+
   SplashView: backbone.BaseView.extend({
     // Activate overlay and splash layout
     activate: BaseView.prototype.activate

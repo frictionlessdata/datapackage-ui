@@ -6,6 +6,8 @@ var DownloadView = require('./download');
 var navigation = require('./navigation');
 var registry = require('./registry');
 var validationResult = require('./validationresult');
+var UploadDatapackageView = require('./upload-datapackage');
+var UploadView = require('./upload-dialog');
 
 
 module.exports = backbone.BaseView.extend({
@@ -28,6 +30,11 @@ module.exports = backbone.BaseView.extend({
       el: window.APP.$('#validation-result')
     })).render();
 
+    this.layout.uploadDatapackage = (new UploadDatapackageView({
+      el: window.APP.$('#upload-data-package')
+    })).activate();
+
+    this.layout.uploadDialog = (new UploadView({el: window.APP.$('#upload-dialog'), parent: this})).render();
     return this;
   }
 });
