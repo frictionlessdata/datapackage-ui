@@ -1,4 +1,6 @@
+var csv = require('csv');
 var jsonEditor = require('./jsoneditform');
+var jtsInfer = require('json-table-schema').infer;
 var _ = require('underscore');
 var Promise = require('bluebird');
 var request = require('superagent-bluebird-promise');
