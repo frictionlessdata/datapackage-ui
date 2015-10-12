@@ -30,7 +30,13 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
       }
 
       // If data source stored as URL in a row then first grab it
-      if(validator.isURL(url) && _.contains([row.editors.mediatype.getValue(), row.editors.format.getValue()], 'text/csv'))
+      if(validator.isURL(url) && (
+        _.contains(_.map(['format', 'mediatype'], function(E) {
+          return _.result(row.editors[E], 'getValue');
+        }), 'text/csv') ||
+
+        _.last(url.split('.')).toLowerCase() === 'csv'
+      ))
         return request.get(url).then(function(RES) {
           // Need schema
           return (new Promise(function(RS, RJ) {
@@ -43,8 +49,7 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
               RS({data: RES.text, schema: jtsInfer(D[0], _.rest(D))});
             });
           }))
-            .then((function(DS) { this.dataSource = DS; return DS; }).bind(this))
-            .catch(console.log);
+            .then((function(DS) { this.dataSource = DS; return DS; }).bind(this));
         });
 
       // TODO return correct data when there is workaround for file paths
