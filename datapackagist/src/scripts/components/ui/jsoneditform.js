@@ -82,9 +82,16 @@ JSONEditorView.prototype.validateResources = function () {
 
   return Promise.each(rows, (function(R) {
     if(_.isUndefined(R.resourceIsValid))
-      return (new Goodtables({method: 'post', report_type: 'grouped'}))
-        .run(R.dataSource.data, JSON.stringify(R.dataSource.schema))
-        .then(function(E) { R.resourceIsValid = !Boolean(E.errors.length); });
+      return this.getEditor('root.resources').getDataSource(parseInt(R.key)).then(function(DS) {
+        // Empty .dataSource means that resource specified as file path
+        // TODO replace this condition when there is workaround for file paths
+        if(_.isEmpty(DS))
+          return new Promise(function(RS, RJ) { RS(false); });
+
+        return (new Goodtables({method: 'post', report_type: 'grouped'}))
+          .run(DS.data, JSON.stringify(DS.schema))
+          .then(function(E) { R.resourceIsValid = !Boolean(E.errors.length); });
+      });
     else
       return new Promise(function(RS, RJ) { RS(true); })
   }).bind(this)).then(function() {

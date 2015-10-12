@@ -83,12 +83,11 @@
       </div>
 
       <div class="col-md-5">
-        <div id="upload-data-package" class="pull-right">
+        <div class="pull-right">
           <a id="download-data-package" href="" download="datapackage.json" target="_blank" class="disabled btn btn-info">Download</a>
 
           <div class="upload-btn">
-            <input data-id="input" type="file" accept="application/json" />
-            <button type="button" class="btn btn-success upload-btn__txt">Upload</button>
+            <button id="upload-data-package" type="button" class="btn btn-success upload-btn__txt">Upload</button>
           </div>
         </div>
       </div>
@@ -166,19 +165,24 @@
   <!-- end footer -->
 
   <div id="overlay" class="overlay" hidden>&nbsp;</div>
-
   <div id="loading" class="splash" hidden>Loading...</div>
 
-  <div id="confirmation-dialog" class="dialog" hidden>
-    <p data-id="message"></p>
-    <a data-id="yes" href="">Yes</a>
-    <a data-id="no" href="">No</a>
+  <div id="confirmation-dialog" class="dialog-container" hidden>
+    <div data-id="dialog" class="dialog">
+      <p data-id="message"></p>
+      <a data-id="yes" href="">Yes</a>
+      <a data-id="no" href="">No</a>
+    </div>
   </div>
 
-  <div id="notification-dialog" class="dialog" hidden>
-    <p data-id="message"></p>
-    <a data-id="ok" href="">Ok</a>
+  <div id="notification-dialog" class="dialog-container" hidden>
+    <div data-id="dialog" class="dialog">
+      <p data-id="message"></p>
+      <a data-id="ok" href="">Ok</a>
+    </div>
   </div>
+
+  <div id="upload-dialog" class="dialog-container" hidden></div>
 </section>
 
 <script src="http://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>

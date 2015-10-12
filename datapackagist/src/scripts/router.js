@@ -35,7 +35,7 @@ module.exports = backbone.Router.extend({
    * Turn off all UI views except navigation bar which is part of base layout
    */
   deactivateAll: function() {
-    _.chain(_.omit(window.APP.layout, ['navbar']))
+    _.chain(_.omit(window.APP.layout, ['navbar', 'uploadDatapackage']))
       .values()
       .invoke('deactivate');
 

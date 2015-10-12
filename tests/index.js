@@ -4,6 +4,7 @@ var Browser = require('zombie');
 var datapackageProfileJSON;
 var app = require('../datapackagist/app');
 var assert = require('chai').assert;
+var datapackage;
 var fromRemoteJSON;
 var fs = require('fs');
 var nock = require('nock')
@@ -56,9 +57,11 @@ describe('DataPackagist core', function() {
               .get('/api/action/package_show?id=population-number-by-governorate-age-group-and-gender-2010-2014')
               .reply(200, fromRemoteJSON, {'access-control-allow-origin': '*'});
 
-            // run the server
-            app.listen(3000, function() {
-              done();
+            fs.readFile(path.join(dataDir, 'datapackage.json'), function(error, data) {
+              datapackage = JSON.parse(data.toString());
+
+              // run the server
+              app.listen(3000, function() { done(); });
             });
           });
         });
@@ -83,7 +86,7 @@ describe('DataPackagist core', function() {
 
     it('has an upload button', function(done) {
       // tests that the upload button for datapackage.json files exists
-      browser.assert.element('#upload-data-package input[type=file]');
+      browser.assert.element('#upload-data-package');
       done();
     });
 
@@ -111,17 +114,24 @@ describe('DataPackagist core', function() {
     });
 
     it('populates on valid descriptor upload', function(done) {
-      // can't trigger upload button, thus call the method directly
-      browser.window.APP.layout.descriptorEdit.layout.upload.updateApp({name: 'name', title: 'Title'});
-      assert.equal(browser.window.$('input[name="root[name]"]').val(), 'name');
-      assert.equal(browser.window.$('input[name="root[title]"]').val(), 'Title');
+      var uploadDatapackage = browser.window.APP.layout.uploadDatapackage;
+
+
+      uploadDatapackage.events.click.call(uploadDatapackage);
+      browser.window.APP.layout.uploadDialog.callbacks.data('datapackage.json', JSON.stringify(datapackage));
+      assert.equal(browser.window.$('input[name="root[name]"]').val(), datapackage.name);
+      assert.equal(browser.window.$('input[name="root[title]"]').val(), datapackage.title);
       done();
     });
 
     it('errors on invalid descriptor upload', function(done) {
-      browser.window.APP.layout.descriptorEdit.layout.upload.updateApp({name: 'A'});
+      var uploadDatapackage = browser.window.APP.layout.uploadDatapackage;
 
-      browser.wait({duration: '5s', element: '[data-schemapath="root.name"] .form-group.has-error'}).then(function() {
+
+      uploadDatapackage.events.click.call(uploadDatapackage);
+      browser.window.APP.layout.uploadDialog.callbacks.data('datapackage.json', '{"name": "A"}');
+
+      browser.wait({duration: '3s', element: '[data-schemapath="root.name"] .form-group.has-error'}).then(function() {
         browser.assert.element('[data-schemapath="root.name"] .form-group.has-error');
         done();
       });
@@ -304,23 +314,11 @@ describe('DataPackagist core', function() {
 
     it('shows modal error message when uploading malformed/broken csv as resource', function(done) {
       browser.visit('/', function() {
-        var inputField = browser.window.$(
-          browser.window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources').container
-        ).find('[data-id=input]');
+        var descriptorEdit = browser.window.APP.layout.descriptorEdit;
 
-        sinon.stub(browser.window.FileAPI, 'readAsText', function(file, callback) {
-          // Return bad CSV data
-          callback({type: 'load', target:  {
-            lastModified: 1428475571000,
-            lastModifiedDate: 'Wed Apr 08 2015 09:46:11 GMT+0300 (MSK)',
-            name: 'f.txt.csv',
-            size: 410,
-            type: 'text/csv',
-            webkitRelativePath: ''
-          }, result: '[[["ограничения","restraints","ogranicheniya",""]]…rue,false]],[[0,10]],"restraints"]],,,[["en"]],3]'});
-        });
 
-        browser.attach('[data-schemapath="root.resources"] input[type=file]', path.join(dataDir, 'invalid.csv'));
+        descriptorEdit.layout.uploadData.events['click [data-id=upload-data-file]'].call(descriptorEdit);
+        browser.window.APP.layout.uploadDialog.callbacks.data('datapackage.json', '[[["ограничения","restraints","ogranicheniya",""]]…rue,false]],[[0,10]],"restraints"]],,,[["en"]],3]');
 
         browser.wait({duration: '5s', element: '#notification-dialog:not([hidden])'}).then(function() {
           assert(!browser.window.$('#notification-dialog').prop('hidden'));
@@ -331,23 +329,15 @@ describe('DataPackagist core', function() {
 
     it('shows modal error message when uploading malformed but not broken json', function(done) {
       browser.visit('/', function() {
-        var inputField = browser.window.$(
-          browser.window.APP.layout.descriptorEdit.layout.upload.el
-        ).find('[data-id=input]');
+        var uploadDatapackage = browser.window.APP.layout.uploadDatapackage;
 
-        sinon.stub(browser.window.FileAPI, 'readAsText', function(file, callback) {
-          // Return bad CSV data
-          callback({type: 'load', target:  {
-            lastModified: 1428475571000,
-            lastModifiedDate: 'Wed Apr 08 2015 09:46:11 GMT+0300 (MSK)',
-            name: 'bad.json',
-            size: 193,
-            type: 'application/json',
-            webkitRelativePath: ''
-          }, result: '[{"description": "validation of date-time strings","schema": {"format": "date-time"},"tests": [{"description": "a valid date-time string","data": "1963-06-19T08:30:06.283185Z","valid": true}]}]'});
-        });
 
-        browser.attach('#upload-data-package [type=file]', path.join(dataDir, 'bad.json'));
+        uploadDatapackage.events.click.call(uploadDatapackage);
+
+        browser.window.APP.layout.uploadDialog.callbacks.data(
+          'datapackage.json',
+          '[{"description": "validation of date-time strings","schema": {"format": "date-time"},"tests": [{"description": "a valid date-time string","data": "1963-06-19T08:30:06.283185Z","valid": true}]}]'
+        );
 
         browser.wait({duration: '5s', element: '#notification-dialog:not([hidden])'}).then(function() {
           assert(!browser.window.$('#notification-dialog').prop('hidden'));

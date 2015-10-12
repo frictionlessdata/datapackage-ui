@@ -14,7 +14,6 @@ var resourceEditor = require('./resource-editor');
 var jtsInfer = require('json-table-schema').infer;
 var registry = require('./registry');
 var request = require('superagent-bluebird-promise');
-var UploadView = require('./upload');
 var _ = require('underscore');
 var $ = require('jquery');
 var Promise = require('bluebird');
@@ -24,48 +23,41 @@ var titleize = require('i')().titleize;
 // Upload data file and populate .resource array with item
 DataUploadView = backbone.BaseView.extend({
   events: {
-    // Set up and append .resources row
-    'change [data-id=input]': function(E) {
-      // Show loading splash
-      window.APP.layout.splashScreen.activate(true);
+    'click [data-id=upload-data-file]': function() {
+      window.APP.layout.uploadDialog
+        .setMessage(
+          'Select resource file (CSV) from your local drive or enter URL ' +
+          'to download from.'
+        )
 
-      FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {
-        if(EV.type === 'load') {
-          csv.parse(_.first(EV.result.split('\n'), config.maxCSVRows).join('\n'), (function(E, D) {
-            // Hide loading splash
-            window.APP.layout.splashScreen.activate(false);
+        .setCallbacks({
+          data: (function(name, data) {
+            csv.parse(_.first(data.split('\n'), config.maxCSVRows).join('\n'), (function(E, D) {
+              // Hide loading splash
+              window.APP.layout.splashScreen.activate(false);
 
-            var editor = window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
+              var editor = window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
 
-            var rowValue = {
-              name: _.last(EV.target.name.split('/')).toLowerCase().replace(/\.[^.]+$|[^a-z^\-^\d^_^\.]+/g, ''),
-              path: EV.target.name
-            };
+              var rowValue = {
+                name: _.last(name.split('/')).toLowerCase().replace(/\.[^.]+$|[^a-z^\-^\d^_^\.]+/g, ''),
+                path: name
+              };
 
-            if(E)
-              return window.APP.layout.notificationDialog
-                .setMessage('CSV is invalid')
-                .activate();
+              if(E)
+                return window.APP.layout.notificationDialog
+                  .setMessage('CSV is invalid')
+                  .activate();
 
-            rowValue.schema = jtsInfer(D[0], _.rest(D));
-            editor.add(rowValue, {schema: schema, data: EV.result});
-            window.APP.layout.descriptorEdit.layout.form.validateResources();
-            window.APP.layout.descriptorEdit.populateTitlesFromNames();
-          }).bind(this));
-        } else if( EV.type ==='progress' ) {
-          this.setProgress(EV.loaded/EV.total * 100);
-        } else {
-          // If error hide loading screen
-          window.APP.layout.splashScreen.activate(false);
+              rowValue.schema = jtsInfer(D[0], _.rest(D));
+              editor.add(rowValue, {schema: schema, data: data});
+              window.APP.layout.descriptorEdit.layout.form.validateResources();
+              window.APP.layout.descriptorEdit.populateTitlesFromNames();
+            }).bind(this));
+          }).bind(this)
+        })
 
-          this.setError('File upload failed');
-        }
-
-        this.$(E.currentTarget).val('');
-      }).bind(this));
-    },
-
-    'click [data-id=upload-data-file]': function() { this.$('[data-id=input]').trigger('click'); }
+        .activate();
+    }
   },
 
   render: function() {
@@ -86,12 +78,6 @@ DataUploadView = backbone.BaseView.extend({
 
 module.exports = {
   DescriptorEditView: backbone.BaseView.extend({
-    activate: function(state) {
-      backbone.BaseView.prototype.activate.call(this, state);
-      this.layout.upload.activate(state);
-      return this;
-    },
-
     events: {
       // Populate main title and resource title fields
       'keyup [data-schemapath$=".name"] input': function(event) {
@@ -171,7 +157,6 @@ module.exports = {
     },
 
     render: function() {
-      this.layout.upload = new UploadView({el: window.APP.$('#upload-data-package'), parent: this});
       this.layout.registryList = new registry.ListView({el: window.APP.$('#registry-list'), container: '[data-id=list-container]', parent: this});
       return this;
     },
