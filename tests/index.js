@@ -4,6 +4,7 @@ var Browser = require('zombie');
 var datapackageProfileJSON;
 var app = require('../datapackagist/app');
 var assert = require('chai').assert;
+var config = require('../datapackagist/src/scripts/config');
 var datapackage;
 var fromRemoteJSON;
 var fs = require('fs');
@@ -14,6 +15,7 @@ var tabularProfileJSON;
 var dataDir = path.join('.', 'tests', 'data');
 var jtsInfer = require('json-table-schema').infer;
 var sinon = require('sinon');
+var url = require('url');
 process.env.NODE_ENV = 'test';
 Browser.localhost('127.0.0.1', 3000);
 
@@ -32,6 +34,8 @@ describe('DataPackagist core', function() {
         datapackageProfileJSON = JSON.parse(profileData.toString());
 
         fs.readFile(path.join(dataDir, 'tabular-profile.json'), function(error, data) {
+          var remoteURL = 'http://datahub.io/api/action/package_show?id=population-number-by-governorate-age-group-and-gender-2010-2014';
+          var corsProxyURL = url.parse(config.corsProxyURL(remoteURL));
           tabularProfileJSON = data.toString();
 
           fs.readFile(path.join(dataDir, 'tabular-profile.json'), function(error, data) {
@@ -52,9 +56,9 @@ describe('DataPackagist core', function() {
               .get('/dataprotocols/schemas/master/tabular-data-package.json')
               .reply(200, tabularProfileJSON, {'access-control-allow-origin': '*'});
 
-            nock('http://datahub.io')
+            nock([corsProxyURL.protocol, corsProxyURL.hostname].join('//'))
               .persist()
-              .get('/api/action/package_show?id=population-number-by-governorate-age-group-and-gender-2010-2014')
+              .get(corsProxyURL.path)
               .reply(200, fromRemoteJSON, {'access-control-allow-origin': '*'});
 
             fs.readFile(path.join(dataDir, 'datapackage.json'), function(error, data) {

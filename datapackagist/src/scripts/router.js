@@ -1,5 +1,6 @@
 var _ = require('underscore');
 var backbone = require('backbone');
+var config = require('./config');
 var dpFromRemote = require('datapackage-from-remote');
 var registry = require('datapackage-registry');
 var Promise = require('bluebird');
@@ -51,7 +52,10 @@ module.exports = backbone.Router.extend({
     // registry is loaded and .index() returns undefined.
     this.index().then(function() {
       try {
-        dpFromRemote(unescape(options.url), _.extend(options, {datapackage: profile}))
+        dpFromRemote(
+          config.corsProxyURL(unescape(options.url)),
+          _.extend(options, {datapackage: profile})
+        )
           .then(function(D) {
             // Update registry and descriptor schema list and then set descriptor form value
             descriptorEdit.layout.registryList.setSelected(profile).then(function() {
