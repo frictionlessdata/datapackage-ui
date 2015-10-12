@@ -9,3 +9,4 @@ __pycache__/
 bower_components/*
 node_modules/*
 .publish/
+datapackagist/src/scripts/config-local.js
