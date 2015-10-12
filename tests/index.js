@@ -46,6 +46,12 @@ describe('DataPackagist core', function() {
               .get('/dataprotocols/registry/master/registry.csv')
               .reply(200, registryListCSV, {'access-control-allow-origin': '*'});
 
+            // Use this csv as resource file in some test cases
+            nock(config.corsProxyURL(''))
+              .persist()
+              .get('/https://rawgit.com/dataprotocols/registry/master/registry.csv')
+              .reply(200, registryListCSV, {'access-control-allow-origin': '*'});
+
             nock('https://rawgit.com')
               .persist()
               .get('/dataprotocols/schemas/master/data-package.json')
