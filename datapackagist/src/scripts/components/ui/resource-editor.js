@@ -1,3 +1,4 @@
+var config = require('../../config');
 var csv = require('csv');
 var jsonEditor = require('./jsoneditform');
 var jtsInfer = require('json-table-schema').infer;
@@ -39,7 +40,7 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
 
         _.last(url.split('.')).toLowerCase() === 'csv'
       ))
-        return request.get(url).then(function(RES) {
+        return request.get(config.corsProxyURL(url)).then(function(RES) {
           // Need schema
           return (new Promise(function(RS, RJ) {
             csv.parse(RES.text, function(E, D) {

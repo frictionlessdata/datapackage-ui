@@ -268,11 +268,9 @@ describe('DataPackagist core', function() {
 
         editor.addRow({
           name: 'test',
-          path: 'test.csv',
-          schema: schema
+          url: 'https://rawgit.com/dataprotocols/registry/master/registry.csv'
         }, true);
 
-        editor.rows[1].dataSource = {schema: schema, data: 'name,age\nJane,55'};
         browser.click('#validate-resources');
 
         browser.wait({duration: '5s', element: '#validation-result:not([hidden])'}).then(function() {
