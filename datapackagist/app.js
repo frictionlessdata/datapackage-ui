@@ -12,8 +12,16 @@ app.get('/cors-proxy/*', function(request, response) {
     ? ('?' + _.chain(request.query).pairs().map(function(P) { return P.join('=') }).value().join('&'))
     : ''
   )).then(function(data) {
+    var contentType = data.header['content-type'];
+
+
     response
-      .set({'content-type': data.header['content-type']})
+      .set(_.extend({
+        'access-control-allow-origin': '*'
+      }, contentType && {
+        'content-type': contentType
+      }))
+
       .send(data.text);
   });
 });
