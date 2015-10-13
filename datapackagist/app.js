@@ -2,11 +2,20 @@ var _ = require('underscore');
 var express = require('express');
 var app = express();
 var superagent = require('superagent-bluebird-promise');
+var validator = require('validator');
 
 
 app.use(express.static(__dirname + '/dist'));
 
 app.get('/cors-proxy/*', function(request, response) {
+  var url = request.params[0];
+
+
+  if(!validator.isURL(url)) {
+    response.send('URL you passed is invalid');
+    return false;
+  }
+
   superagent.get(request.params[0] + (
     !_.isEmpty(request.query)
     ? ('?' + _.chain(request.query).pairs().map(function(P) { return P.join('=') }).value().join('&'))
