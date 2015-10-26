@@ -168,3 +168,12 @@
     color: red;
     content: '*';
 }
+
+.jumbotron {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+}
+
+.jumbotron p {
+    margin: 0.4em 0;
+}
