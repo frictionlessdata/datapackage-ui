@@ -91,12 +91,17 @@
 
 #select-profile {
   display: inline-block;
-  margin-right: 32px;
+  padding: 0;
+}
+
+#registry-list,
+#upload-existing-datapackage {
+  position: relative;
+  top: -2em;
 }
 
 #registry-list .list-container {
   display: inline-block;
-  width: 75%;
 }
 
 [hidden] {
@@ -146,11 +151,6 @@
 [data-schematype="array"] > h3,
 [data-schematype="object"] > h3 {
   font-size: 15px;
-}
-
-/*Add missed padding of form header*/
-.registry-list-container .form-group {
-  padding-left: 20px;
 }
 
 /*No merged buttons*/
