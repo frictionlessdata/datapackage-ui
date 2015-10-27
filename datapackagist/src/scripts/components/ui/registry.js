@@ -5,12 +5,24 @@ var deep = require('deep-diff');
 var Promise = require('bluebird');
 var request = require('superagent-bluebird-promise');
 
+var updatePackageInfo = function(collection) {
+  var block = $('#step2-profile-info');
+  if (collection) {
+    block.show();
+    block.find('#step2-profile-name').text(collection.get('title'));
+    block.find('#step2-specification').attr('href', collection.get('specification'));
+  } else {
+    block.hide();
+  }
+};
+
 module.exports = {
   ListView: backbone.BaseListView.extend({
     events: {
       'change': function(event) {
         var id = this.$(this.options.container).val();
 
+        updatePackageInfo(this.collection.get(id));
 
         request.get(this.collection.get(id).get('schema'))
           .then((function(R) {
@@ -79,6 +91,8 @@ module.exports = {
     // Update selectbox and trigger change event
     setSelected: function(id) {
       this.$(this.options.container).val(id);
+
+      updatePackageInfo(this.collection.get(id));
 
       // Used to restore previous value when user selects No in confirmation dialog
       this.selectedValue = id;

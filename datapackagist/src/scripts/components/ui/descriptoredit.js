@@ -120,6 +120,14 @@ module.exports = {
 
       'click #validate-resources': function() {
         window.APP.layout.validationResultList.validateResources(this.layout.form.getEditor('root.resources').rows);
+      },
+
+      'click #validate-form': function() {
+        window.APP.layout.download2.reset(this.layout.form.getCleanValue(),
+          this.layout.form.schema).activate();
+        window.APP.layout.download.reset(this.layout.form.getCleanValue(),
+          this.layout.form.schema).activate();
+        this.showResult();
       }
     },
 
@@ -197,6 +205,7 @@ module.exports = {
 
           // After `ready` event fired, editor fire `change` event regarding to the initial changes
           this.layout.form.on('change', _.after(2, (function() {
+            window.APP.layout.download2.reset(this.layout.form.getCleanValue(), schema).activate();
             window.APP.layout.download.reset(this.layout.form.getCleanValue(), schema).activate();
             this.showResult();
           }).bind(this)));
@@ -232,9 +241,17 @@ module.exports = {
     },
 
     showResult: function() {
+      var value = this.layout.form.getCleanValue();
       $('#json-code').html(highlight.fixMarkup(
-        highlight.highlight('json', JSON.stringify(this.layout.form.getCleanValue(), undefined, 2)).value
+        highlight.highlight('json', JSON.stringify(value, undefined, 2)).value
       ));
+
+      var heading = $('#step1-title');
+      if (_.keys(value).length > 0) {
+        heading.addClass('loaded');
+      } else {
+        heading.removeClass('loaded');
+      }
 
       return this;
     }
