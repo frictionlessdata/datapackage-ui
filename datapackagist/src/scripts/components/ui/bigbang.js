@@ -8,6 +8,7 @@ var registry = require('./registry');
 var validationResult = require('./validationresult');
 var UploadDatapackageView = require('./upload-datapackage');
 var UploadView = require('./upload-dialog');
+var HowItWorksView = require('./how-it-works-dialog');
 
 
 module.exports = backbone.BaseView.extend({
@@ -36,6 +37,9 @@ module.exports = backbone.BaseView.extend({
     })).activate();
 
     this.layout.uploadDialog = (new UploadView({el: window.APP.$('#upload-dialog'), parent: this})).render();
+
+    this.layout.howItWorksDialog = (new HowItWorksView({el: window.APP.$('#how-it-works-dialog'), parent: this})).render();
+
     return this;
   }
 });

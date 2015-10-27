@@ -17,7 +17,7 @@ var updateUI = function(fileNameOrUrl) {
   } else {
     noSelection.show();
     currentSelection.hide().find('span').empty();
-  } 
+  }
 };
 
 // Unified file/URL upload dialog

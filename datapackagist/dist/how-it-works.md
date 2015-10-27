@@ -1,0 +1,6 @@
+How it works
+============
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec lectus consequat, blandit ipsum vitae, efficitur lectus. Nam ut interdum lorem, quis porta orci. Phasellus varius sit amet metus vitae porta. Vestibulum a nunc quis magna aliquet sagittis sagittis ac sapien. Nullam convallis, mauris ut tempor fringilla, risus est dignissim lacus, in aliquet orci nulla ac nisi. Ut tincidunt sagittis finibus. In pharetra, lorem vitae aliquam dictum, elit ipsum efficitur ante, in finibus felis diam quis justo. Pellentesque tellus nisi, placerat vel nisl nec, porta posuere lectus. Aenean faucibus varius mauris in varius. Pellentesque vitae quam et nisi accumsan viverra in id ante. Ut non massa sem.
+
+Curabitur pretium nisl in urna consectetur placerat. Quisque vel est nibh. Sed molestie ultricies ante a imperdiet. Vivamus condimentum dui a commodo congue. Quisque vehicula orci quis velit aliquet scelerisque. Fusce luctus pellentesque ante, sed pharetra lorem gravida sed. Nulla elementum justo nec ligula efficitur dapibus. Phasellus vitae dolor in metus feugiat viverra vitae in nunc. Nullam congue ex tristique malesuada scelerisque. Nunc luctus mi in ipsum auctor iaculis. Quisque vitae vestibulum lacus, sit amet sollicitudin est. 
