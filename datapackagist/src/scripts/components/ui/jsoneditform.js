@@ -119,4 +119,16 @@ JSONEditor.defaults.themes.bootstrap3.prototype.getButton = function(text, icon,
   return el;
 };
 
+//JSONEditor.defaults.themes.bootstrap3.prototype.getHeader = function() {
+//  var result = document.createElement('span');
+//  result.style.display = 'none';
+//  return result;
+//};
+//
+//JSONEditor.defaults.themes.bootstrap3.prototype.getDescription = function() {
+//  var result = document.createElement('span');
+//  result.style.display = 'none';
+//  return result;
+//};
+
 module.exports.JSONEditorView = JSONEditorView;

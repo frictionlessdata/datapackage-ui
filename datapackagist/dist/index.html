@@ -76,14 +76,15 @@
   <div class="row">
     <div class="container">
       <div class="container">
-        <h1 class="col-xs-12">Get Started</h1>
+        <h1 class="col-xs-12" id="step1-title"><span class="unset">Get Started</span><span class="isset">Your Data Package</span></h1>
       </div>
 
       <div class="container">
         <h2 class="col-xs-12">1. Select an existing datapackage.json</h2>
         <div class="col-sm-9">
           <p>If you want to edit an existing Data package descriptor file, add it here.</p>
-          <p><i class="glyphicon glyphicon-remove text-danger"></i> No datapackage.json selected</p>
+          <p id="step1-no-file-selected"><i class="glyphicon glyphicon-remove text-danger margin-right-4"></i> No datapackage.json selected</p>
+          <p id="step1-selected-file"><i class="glyphicon glyphicon-ok text-success margin-right-4"></i><span></span></p>
         </div>
         <div class="col-sm-3" id="upload-existing-datapackage">
           <button type="button" id="upload-data-package" class="col-xs-12 btn btn-success btn-lg upload-btn__txt pull-right">Select</button>
@@ -93,8 +94,14 @@
       <div class="container">
         <h2 class="col-xs-12">2. Choose a Data Package Profile</h2>
         <div class="col-sm-9">
-          <p>A Data Package Profile describes specific constraints. If unsure, leave the profile on the &ldquo;base&rdquo; default.</p>
-          <p>The {profile_name} Profile is selected. <a href="javascript:void(0);">Read the specs</a>.</p>
+          <p>
+            A Data Package Profile describes specific constraints.
+            If unsure, leave the profile on the &ldquo;base&rdquo; default.
+          </p>
+          <p id="step2-profile-info">
+            The <span id="step2-profile-name"></span> Profile is selected.
+            <a id="step2-specification" target="_blank" href="javascript:void(0);">Read the specs</a>.
+          </p>
         </div>
         <div class="col-sm-3 registry-list-container" id="registry-list">
           <div class="form-group pull-right">
@@ -110,10 +117,11 @@
         <div class="col-xs-12">
           <p>
             Use the form below to edit your Data Package. You can also
-            <a href="javascript:void(0);">download</a> or
-            <a href="javascript:void(0);">validate</a> the Data Package,
-            <a href="javascript:void(0);">add resources</a> (data files), or
-            <a href="javascript:void(0);">check the validity of the current resources</a>
+            <a id="download-data-package2" href="" download="datapackage.json" target="_blank">download</a> or
+            <a onclick="$('#descriptor #validate-form').click()" href="javascript:void(0);">validate</a>
+            the Data Package,
+            <a onclick="$(APP.layout.descriptorEdit.layout.form.getEditor('root.resources').add_row_button).click()" href="javascript:void(0);">add resources</a> (data files), or
+            <a onclick="$('#descriptor #validate-resources').click()" href="javascript:void(0);">check the validity of the current resources</a>
             in the package.
           </p>
         </div>

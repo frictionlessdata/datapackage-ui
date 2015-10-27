@@ -8,6 +8,17 @@ var request = require('superagent-bluebird-promise');
 var validator = require('validator');
 var uploadTpl = require('./templates/upload-dialog.hbs');
 
+var updateUI = function(fileNameOrUrl) {
+  var noSelection = $('#step1-no-file-selected');
+  var currentSelection = $('#step1-selected-file');
+  if (fileNameOrUrl) {
+    noSelection.hide();
+    currentSelection.show().find('span').text(fileNameOrUrl);
+  } else {
+    noSelection.show();
+    currentSelection.hide().find('span').empty();
+  } 
+};
 
 // Unified file/URL upload dialog
 module.exports = dialogs.BaseModalView.extend({
@@ -43,8 +54,10 @@ module.exports = dialogs.BaseModalView.extend({
       window.APP.layout.splashScreen.activate();
 
       FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {
-        if(EV.type === 'load')
+        if(EV.type === 'load') {
+          updateUI(EV.target.name);
           this.callbacks.data(EV.target.name, EV.result);
+        }
         else if(EV.type ==='progress')
           this.setProgress(EV.loaded/EV.total * 100);
       }).bind(this));
@@ -71,6 +84,7 @@ module.exports = dialogs.BaseModalView.extend({
     window.APP.layout.splashScreen.activate();
 
     request.get(url).then((function(RES) {
+      updateUI(url);
       window.APP.layout.splashScreen.deactivate();
       this.callbacks.data(url, RES.text);
     }).bind(this));

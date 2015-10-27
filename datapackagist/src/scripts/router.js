@@ -77,6 +77,7 @@ module.exports = backbone.Router.extend({
     this.deactivateAll();
     window.APP.layout.navbar.toggleBadge(true);
     window.APP.layout.download.activate();
+    window.APP.layout.download2.activate();
     window.APP.layout.descriptorEdit.activate();
     window.APP.layout.descriptorEdit.layout.registryList.activate();
     registryList = window.APP.layout.descriptorEdit.layout.registryList;

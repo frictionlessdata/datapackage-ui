@@ -24,6 +24,7 @@ module.exports = backbone.BaseView.extend({
     this.layout.notificationDialog = new dialog.NotificationView({el: window.APP.$('#notification-dialog')});
     (this.layout.descriptorEdit = new descriptorEdit.DescriptorEditView({el: window.APP.$('#descriptor')})).render();
     this.layout.download = new DownloadView({el: window.APP.$('#download-data-package')});
+    this.layout.download2 = new DownloadView({el: window.APP.$('#download-data-package2')});
     this.layout.navbar = new navigation.NavbarView({el: window.APP.$('#navbar')});
 
     this.layout.validationResultList = (new validationResult.ValidationResultsView({

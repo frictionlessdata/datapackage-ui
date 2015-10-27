@@ -130,6 +130,14 @@
   margin-top: 32px;
 }
 
+#descriptor textarea {
+    resize: vertical;
+}
+
+#descriptor .help-block {
+    font-size: 11px;
+}
+
 /*Fixed height of descriptor form description*/
 [data-schemapath="root"] > p {
   height: 64px;
@@ -138,7 +146,7 @@
 
 /*JSON code of a datapackage should be on the same vertical alignment as descriptor form*/
 .json-code-container {
-  margin-top: 140px;
+  margin-top: 32px;
 }
 
 .error-list {
@@ -176,4 +184,25 @@
 
 .jumbotron p {
     margin: 0.4em 0;
+}
+
+.margin-right-4 {
+    margin-right: 4px;
+}
+
+#step2-profile-info,
+#step1-selected-file {
+    display: none;
+}
+
+#step1-title .isset {
+    display: none;
+}
+
+#step1-title.loaded .unset {
+    display: none;
+}
+
+#step1-title.loaded .isset {
+    display: inline;
 }
