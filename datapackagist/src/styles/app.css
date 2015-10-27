@@ -29,6 +29,7 @@
   background-color: white;
   padding: 64px;
   font-size: 16px;
+  max-width: 80%;
 }
 
 .dialog .message {
