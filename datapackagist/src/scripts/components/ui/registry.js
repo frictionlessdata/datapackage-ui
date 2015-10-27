@@ -5,12 +5,15 @@ var deep = require('deep-diff');
 var Promise = require('bluebird');
 var request = require('superagent-bluebird-promise');
 
-var updatePackageInfo = function(collection) {
+var updatePackageInfo = function(collection, schema) {
   var block = $('#step2-profile-info');
   if (collection) {
     block.show();
     block.find('#step2-profile-name').text(collection.get('title'));
-    block.find('#step2-specification').attr('href', collection.get('specification'));
+    block.find('#step2-specification').attr({
+      title: schema ? schema.description : '',
+      href: collection.get('specification')
+    });
   } else {
     block.hide();
   }
@@ -30,7 +33,7 @@ module.exports = {
             var keys = _.keys(this.parent.layout.form.getCleanValue());
 
             var schemaData = JSON.parse(R.text);
-
+            updatePackageInfo(this.collection.get(id), schemaData);
 
             this.schemaData = schemaData;
 
@@ -111,6 +114,7 @@ module.exports = {
 
           .then((function(R) {
             this.schemaData = JSON.parse(R.text);
+            updatePackageInfo(this.collection.get(id), this.schemaData);
             this.parent.reset(this.schemaData);
             RS(this.schemaData);
           }).bind(this));
