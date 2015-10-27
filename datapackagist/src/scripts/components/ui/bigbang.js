@@ -8,6 +8,7 @@ var registry = require('./registry');
 var validationResult = require('./validationresult');
 var UploadDatapackageView = require('./upload-datapackage');
 var UploadView = require('./upload-dialog');
+var HowItWorksView = require('./how-it-works-dialog');
 
 
 module.exports = backbone.BaseView.extend({
@@ -24,6 +25,7 @@ module.exports = backbone.BaseView.extend({
     this.layout.notificationDialog = new dialog.NotificationView({el: window.APP.$('#notification-dialog')});
     (this.layout.descriptorEdit = new descriptorEdit.DescriptorEditView({el: window.APP.$('#descriptor')})).render();
     this.layout.download = new DownloadView({el: window.APP.$('#download-data-package')});
+    this.layout.download2 = new DownloadView({el: window.APP.$('#download-data-package2')});
     this.layout.navbar = new navigation.NavbarView({el: window.APP.$('#navbar')});
 
     this.layout.validationResultList = (new validationResult.ValidationResultsView({
@@ -35,6 +37,9 @@ module.exports = backbone.BaseView.extend({
     })).activate();
 
     this.layout.uploadDialog = (new UploadView({el: window.APP.$('#upload-dialog'), parent: this})).render();
+
+    this.layout.howItWorksDialog = (new HowItWorksView({el: window.APP.$('#how-it-works-dialog'), parent: this})).render();
+
     return this;
   }
 });

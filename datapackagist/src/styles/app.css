@@ -29,6 +29,7 @@
   background-color: white;
   padding: 64px;
   font-size: 16px;
+  max-width: 80%;
 }
 
 .dialog .message {
@@ -91,12 +92,17 @@
 
 #select-profile {
   display: inline-block;
-  margin-right: 32px;
+  padding: 0;
+}
+
+#registry-list,
+#upload-existing-datapackage {
+  position: relative;
+  top: -2em;
 }
 
 #registry-list .list-container {
   display: inline-block;
-  width: 75%;
 }
 
 [hidden] {
@@ -125,6 +131,14 @@
   margin-top: 32px;
 }
 
+#descriptor textarea {
+    resize: vertical;
+}
+
+#descriptor .help-block {
+    font-size: 11px;
+}
+
 /*Fixed height of descriptor form description*/
 [data-schemapath="root"] > p {
   height: 64px;
@@ -133,7 +147,7 @@
 
 /*JSON code of a datapackage should be on the same vertical alignment as descriptor form*/
 .json-code-container {
-  margin-top: 140px;
+  margin-top: 32px;
 }
 
 .error-list {
@@ -146,11 +160,6 @@
 [data-schematype="array"] > h3,
 [data-schematype="object"] > h3 {
   font-size: 15px;
-}
-
-/*Add missed padding of form header*/
-.registry-list-container .form-group {
-  padding-left: 20px;
 }
 
 /*No merged buttons*/
@@ -167,4 +176,34 @@
 .required-field {
     color: red;
     content: '*';
+}
+
+.jumbotron {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+}
+
+.jumbotron p {
+    margin: 0.4em 0;
+}
+
+.margin-right-4 {
+    margin-right: 4px;
+}
+
+#step2-profile-info,
+#step1-selected-file {
+    display: none;
+}
+
+#step1-title .isset {
+    display: none;
+}
+
+#step1-title.loaded .unset {
+    display: none;
+}
+
+#step1-title.loaded .isset {
+    display: inline;
 }
