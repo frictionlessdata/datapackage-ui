@@ -139,10 +139,10 @@
     font-size: 11px;
 }
 
-/*Fixed height of descriptor form description*/
+/* Hide header for root editor */
+[data-schemapath="root"] > h3,
 [data-schemapath="root"] > p {
-  height: 64px;
-  overflow: hidden;
+  display: none;
 }
 
 /*JSON code of a datapackage should be on the same vertical alignment as descriptor form*/

@@ -7,7 +7,6 @@ var deepCompact = require('deep-compact');
 var Promise = require('bluebird');
 var JSONEditorView = JSONEditor;
 
-
 JSONEditorView.prototype.init = _.wrap(JSONEditorView.prototype.init, function(init) {
   init.apply(this, _.rest(arguments));
 
@@ -106,7 +105,7 @@ JSONEditorView.prototype.validateResources = function () {
       }]);
     })
   });
-}
+};
 
 // Proper representation of all form buttons. Avoid changing each newly
 // rendered button by rewriting the .getButton()
@@ -117,18 +116,6 @@ JSONEditor.defaults.themes.bootstrap3.prototype.getButton = function(text, icon,
   el.className += 'btn btn-info btn-sm';
   this.setButtonText(el,text,icon,title);
   return el;
-};
-
-JSONEditor.defaults.themes.bootstrap3.prototype.getHeader = function() {
-  var result = document.createElement('span');
-  result.style.display = 'none';
-  return result;
-};
-
-JSONEditor.defaults.themes.bootstrap3.prototype.getDescription = function() {
-  var result = document.createElement('span');
-  result.style.display = 'none';
-  return result;
 };
 
 module.exports.JSONEditorView = JSONEditorView;
