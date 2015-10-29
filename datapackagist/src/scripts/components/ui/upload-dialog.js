@@ -41,7 +41,6 @@ module.exports = dialogs.BaseModalView.extend({
   },
 
   events: _.extend(_.clone(dialogs.BaseModalView.prototype.events), {
-    'click [data-id="upload-local"]': function(E) { this.$('[data-id=file-input]').trigger('click'); },
     'click [data-id="upload-url"]': 'uploadURL',
 
     'keyup [data-id="url-input"]': function(E) {

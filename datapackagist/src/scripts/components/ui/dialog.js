@@ -2,6 +2,8 @@ var _ = require('underscore');
 var backbone = require('backbone');
 
 var BaseView = backbone.BaseView.extend({
+  events: {},
+
   // Activate overlay along with dialog box
   activate: function(state) {
     var isActivation = state || _.isUndefined(state);
@@ -19,20 +21,11 @@ var BaseView = backbone.BaseView.extend({
 
   setElement: function(element) {
     backbone.BaseView.prototype.setElement.apply(this, arguments);
+    var self = this;
     this.$el.modal({show: false}).on('hidden.bs.modal', function() {
-      this.undelegateEvents();
+      self.undelegateEvents();
     });
     return this;
-  },
-
-  events: {
-    // Hide dialog when user clicks on overlay
-    'click': function(event) {
-      if(!$(event.target).closest('[data-id=dialog]').length)
-        this.deactivate();
-    },
-
-    'click [data-id=close]': 'deactivate'
   },
 
   // Update internal object of callbacks called during Yes/No click
