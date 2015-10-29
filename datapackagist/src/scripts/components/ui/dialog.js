@@ -1,13 +1,27 @@
 var _ = require('underscore');
 var backbone = require('backbone');
-var backboneBase = require('backbone-base');
-
 
 var BaseView = backbone.BaseView.extend({
   // Activate overlay along with dialog box
   activate: function(state) {
-    window.APP.$('#overlay').prop('hidden', !(_.isUndefined(state) || state));
-    backbone.BaseView.prototype.activate.call(this, state);
+    var isActivation = state || _.isUndefined(state);
+
+    this.undelegateEvents();
+
+    if (isActivation) {
+      this.$el.modal('show');
+      this.delegateEvents(this.events);
+    } else {
+      this.$el.modal('hide');
+    }
+    return this;
+  },
+
+  setElement: function(element) {
+    backbone.BaseView.prototype.setElement.apply(this, arguments);
+    this.$el.modal({show: false}).on('hidden.bs.modal', function() {
+      this.undelegateEvents();
+    });
     return this;
   },
 

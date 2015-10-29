@@ -1,27 +1,40 @@
-<div data-id="dialog" class="dialog">
-  <div data-id="message" class="message"></div>
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="myModalLabel">Select an existing datapackage.json</h4>
+    </div>
+    <div class="modal-body">
+      <div class="row form-group">
+        <div data-id="message" class="message"></div>
+      </div>
 
-  <div>
-    <div class="upload-btn">
-      <button data-id="upload-local" type="button" class="btn btn-success upload-btn__txt">Upload local file</button>
-      <input type="file" data-id="file-input" hidden>
+      <div class="row form-group">
+        <div class="upload-btn">
+          <button data-id="upload-local" type="button" class="btn btn-success upload-btn__txt">Upload local file</button>
+          <input type="file" data-id="file-input" hidden>
+        </div>
+      </div>
+
+      <div class="row form-group">Or</div>
+
+      <div class="row form-group">
+        <div data-id="url-form-row">
+          <label for="upload-URL" class="control-label">Upload from URL</label>
+
+          <div class="input-group">
+            <input type="text" id="upload-URL" data-id="url-input" class="form-control">
+            <span class="input-group-btn">
+              <button data-id="upload-url" type="button" class="btn btn-success" title="Close dialog">Upload</button>
+            </span>
+          </div>
+
+          <p data-id="url-error" class="help-block errormsg" hidden>This URL is invalid</p>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal" title="Close dialog">Cancel</button>
     </div>
   </div>
-
-  <div class="vertical-gap dialog-or">Or</div>
-
-  <div data-id="url-form-row" class="form-group">
-    <label for="upload-URL" class="control-label">Upload from URL</label>
-
-    <div class="upload-control">
-      <input type="text" data-id="url-input" class="form-control">
-      <button data-id="upload-url" type="button" class="btn btn-success btn-sm" title="Close dialog">Upload</button>
-    </div>
-
-    <p data-id="url-error" class="help-block errormsg" hidden>This URL is invalid</p>
-  </div>
-
-  <div class="vertical-gap"></div>
-  <div class="vertical-gap"></div>
-  <button data-id="close" type="button" class="btn btn-info btn-sm" title="Close dialog">Cancel</button>
 </div>
