@@ -46,6 +46,10 @@ module.exports = {
   }),
 
   NotificationView: BaseView.extend({
+    setTitle: function(title) {
+      this.$('[data-id=title]').html(title);
+      return this;
+    },
     events: {
       'click [data-id=ok]': function () {
         // Just close dialog as default No-action
@@ -56,6 +60,10 @@ module.exports = {
   }),
 
   ConfirmationView: BaseView.extend({
+    setTitle: function(title) {
+      this.$('[data-id=title]').html(title);
+      return this;
+    },
     events: {
       'click [data-id=yes]': function() {
         this.deactivate();

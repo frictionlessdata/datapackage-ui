@@ -39,7 +39,9 @@ module.exports = backbone.BaseView.extend({
               ).length
             ) {
               window.APP.layout.notificationDialog
-                .setMessage('JSON is invalid')
+                .setTitle('Invalid File')
+                .setMessage('The file you added is not a valid ' +
+                  'datapackage.json file. Please check and try again.')
                 .activate();
 
               return false;

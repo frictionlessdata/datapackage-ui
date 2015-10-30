@@ -2,7 +2,6 @@ require('fileapi');
 
 var _ = require('underscore');
 var backbone = require('backbone');
-var backboneBase = require('backbone-base');
 var dialogs = require('./dialog');
 var request = require('superagent-bluebird-promise');
 var validator = require('validator');
@@ -63,9 +62,21 @@ module.exports = dialogs.BaseModalView.extend({
     }
   }),
 
-  render: function() { this.$el.html(this.template()); return this; },
-  setMessage: function(message) { this.$('[data-id=message]').html(message); return this; },
-  setProgress: function(percents) { return this; },
+  render: function() {
+    this.$el.html(this.template());
+    return this;
+  },
+  setTitle: function(title) {
+    this.$('[data-id=title]').html(title);
+    return this;
+  },
+  setMessage: function(message) {
+    this.$('[data-id=message]').html(message);
+    return this;
+  },
+  setProgress: function(percents) {
+    return this;
+  },
   template: uploadTpl,
 
   uploadURL: function() {

@@ -45,6 +45,7 @@ DataUploadView = backbone.BaseView.extend({
 
               if(E)
                 return window.APP.layout.notificationDialog
+                  .setTitle('Invalid File')
                   .setMessage('CSV is invalid')
                   .activate();
 
@@ -119,7 +120,16 @@ module.exports = {
       },
 
       'click #validate-resources': function() {
-        window.APP.layout.validationResultList.validateResources(this.layout.form.getEditor('root.resources').rows);
+        var rows = this.layout.form.getEditor('root.resources').rows;
+        if (rows.length > 0) {
+          window.APP.layout.validationResultList.validateResources(rows);
+        } else {
+          window.APP.layout.notificationDialog
+            .setTitle('No Resources to Validate')
+            .setMessage('The Data Package currently has no resources that ' +
+              'can be validated. Please add some and try again.')
+            .activate();
+        }
       },
 
       'click #validate-form': function() {
