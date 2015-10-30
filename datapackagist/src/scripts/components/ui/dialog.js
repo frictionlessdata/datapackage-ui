@@ -4,7 +4,6 @@ var backbone = require('backbone');
 var BaseView = backbone.BaseView.extend({
   events: {},
 
-  // Activate overlay along with dialog box
   activate: function(state) {
     var isActivation = state || _.isUndefined(state);
 

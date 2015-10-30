@@ -8,10 +8,9 @@ var Promise = require('bluebird');
 // Application state changed here
 module.exports = backbone.Router.extend({
   routes: {
-    '(/)'                            : 'index',
-    ':profile(/)'                    : 'profile',
-    ':profile/from(/)'               : 'fromRemote',
-    'validation-results/:resource(/)': 'validationResults'
+    '(/)': 'index',
+    ':profile(/)': 'profile',
+    ':profile/from(/)': 'fromRemote'
   },
 
   /**
@@ -86,14 +85,5 @@ module.exports = backbone.Router.extend({
   },
 
   setRegistryProfile: function(profile) {
-  },
-
-  validationResults: function(resource) {
-    this.deactivateAll();
-    window.APP.layout.navbar.toggleBadge(true);
-
-    window.APP.layout.validationResultList
-      .activate()
-      .setActive(resource);
   }
 });
