@@ -22,29 +22,38 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
   },
 
   getDataSource: function(rowIndex) {
+    window.alert('GET DATA SOURCE');
+
     return new Promise((function(RS, RJ) {
       var row = this.rows[rowIndex];
       var url = _.result(row.editors.url, 'getValue');
 
 
-      if(row.dataSource) {
+      if (row.dataSource) {
         RS(row.dataSource);
         return true;
       }
 
       // If data source stored as URL in a row then first grab it
-      if(validator.isURL(url) && (
-        _.contains(_.map(['format', 'mediatype'], function(E) {
-          return _.result(row.editors[E], 'getValue');
-        }), 'text/csv') ||
-
-        _.last(url.split('.')).toLowerCase() === 'csv'
-      ))
-        return request.get(config.corsProxyURL(url)).then(function(RES) {
+      if (
+          validator.isURL(url) &&
+          (
+            _.contains(
+              _.map(
+                ['format', 'mediatype'],
+                function (E) {
+                  return _.result(row.editors[E], 'getValue');
+                }
+              ),
+            'text/csv') ||
+            _.last(url.split('.')).toLowerCase() === 'csv'
+          )
+      ){
+        return request.get(config.corsProxyURL(url)).then(function (RES) {
           // Need schema
-          return (new Promise(function(RS, RJ) {
-            csv.parse(RES.text, function(E, D) {
-              if(E) {
+          return (new Promise(function (RS, RJ) {
+            csv.parse(RES.text, function (E, D) {
+              if (E) {
                 RJ(E);
                 return false;
               }
@@ -56,15 +65,20 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
               });
             });
           }))
-            .then((function(DS) { this.dataSource = DS; return DS; }).bind(this));
+              .then((function (DS) {
+                this.dataSource = DS;
+                return DS;
+              }).bind(this));
         });
 
       // TODO return correct data when there is workaround for file paths
-      else if(!url)
-        RS({});
-
-      else
-        RJ(new Error('Resource URL is broken or resource has wrong file type (should be CSV): ' + url));
+      } else {
+        if (!url) {
+          RS({});
+        } else {
+          RJ(new Error('Resource URL is broken or resource has wrong file type (should be CSV): ' + url));
+        }
+      }
     }).bind(this));
   },
 
