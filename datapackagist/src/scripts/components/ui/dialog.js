@@ -1,24 +1,30 @@
 var _ = require('underscore');
 var backbone = require('backbone');
-var backboneBase = require('backbone-base');
-
 
 var BaseView = backbone.BaseView.extend({
-  // Activate overlay along with dialog box
+  events: {},
+
   activate: function(state) {
-    window.APP.$('#overlay').prop('hidden', !(_.isUndefined(state) || state));
-    backbone.BaseView.prototype.activate.call(this, state);
+    var isActivation = state || _.isUndefined(state);
+
+    this.undelegateEvents();
+
+    if (isActivation) {
+      this.$el.modal('show');
+      this.delegateEvents(this.events);
+    } else {
+      this.$el.modal('hide');
+    }
     return this;
   },
 
-  events: {
-    // Hide dialog when user clicks on overlay
-    'click': function(event) {
-      if(!$(event.target).closest('[data-id=dialog]').length)
-        this.deactivate();
-    },
-
-    'click [data-id=close]': 'deactivate'
+  setElement: function(element) {
+    backbone.BaseView.prototype.setElement.apply(this, arguments);
+    var self = this;
+    this.$el.modal({show: false}).on('hidden.bs.modal', function() {
+      self.undelegateEvents();
+    });
+    return this;
   },
 
   // Update internal object of callbacks called during Yes/No click
@@ -39,16 +45,50 @@ module.exports = {
   }),
 
   NotificationView: BaseView.extend({
+    setTitle: function(title) {
+      this.$('[data-id=title]').html(title);
+      return this;
+    },
     events: {
       'click [data-id=ok]': function () {
         // Just close dialog as default No-action
         this.deactivate();
 
         return false;
-      }}
+      }
+    },
+    showValidationErrors: function(forceShow) {
+      forceShow = !!forceShow || _.isUndefined(forceShow);
+
+      var errors = window.APP.layout.descriptorEdit.collectValidationErrors();
+      if ((errors.length == 0) && !forceShow) {
+        return;
+      }
+
+      var messages = ['<p>The Data Package is currently invalid.</p>'];
+      if (errors.length > 0) {
+        messages.push('<p>The following errors have been reported.</p>');
+        messages.push('<p>Fix them and try again.</p>');
+
+        _.forEach(errors, function(error) {
+          messages.push('<p class="text-danger">' +
+          '<i class="glyphicon glyphicon-exclamation-sign"></i>&nbsp;' +
+          '&nbsp;<b>' + error.title + '</b>: ' + error.message + '</p>');
+        });
+      }
+
+      this
+        .setTitle('The Data Package Descriptor is invalid')
+        .setMessage(messages.join(''))
+        .activate();
+    }
   }),
 
   ConfirmationView: BaseView.extend({
+    setTitle: function(title) {
+      this.$('[data-id=title]').html(title);
+      return this;
+    },
     events: {
       'click [data-id=yes]': function() {
         this.deactivate();

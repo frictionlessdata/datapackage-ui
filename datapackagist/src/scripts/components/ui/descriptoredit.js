@@ -119,7 +119,16 @@ module.exports = {
       },
 
       'click #validate-resources': function() {
-        window.APP.layout.validationResultList.validateResources(this.layout.form.getEditor('root.resources').rows);
+        var rows = this.layout.form.getEditor('root.resources').rows;
+        if (rows.length > 0) {
+          window.APP.layout.validationResultList.validateResources(rows);
+        } else {
+          window.APP.layout.notificationDialog
+            .setTitle('No Resources to Validate')
+            .setMessage('The Data Package currently has no resources that ' +
+              'can be validated. Please add some and try again.')
+            .activate();
+        }
       },
 
       'click #validate-form': function() {
@@ -128,6 +137,7 @@ module.exports = {
         window.APP.layout.download.reset(this.layout.form.getCleanValue(),
           this.layout.form.schema).activate();
         this.showResult();
+        window.APP.layout.notificationDialog.showValidationErrors(false);
       }
     },
 
@@ -253,6 +263,28 @@ module.exports = {
       }
 
       return this;
+    },
+
+    collectValidationErrors: function() {
+      var results = [];
+      var form = this.layout.form;
+      var messages = form.validation_results;
+      if (_.isArray(messages)) {
+        _.forEach(messages, function(item) {
+          var editor = form.getEditor(item.path);
+          if (editor && editor.schema) {
+            results.push({
+              title: editor.schema.title,
+              description: editor.schema.description,
+              message: item.message,
+              path: item.path,
+              property: item.property,
+              schema: editor.schema
+            });
+          }
+        });
+      }
+      return results;
     }
   })
 };
