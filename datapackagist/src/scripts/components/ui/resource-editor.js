@@ -49,7 +49,11 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
                 return false;
               }
 
-              RS({data: RES.text, schema: jtsInfer(D[0], _.rest(D))});
+              var D1000 = D.slice(0, 1000);
+              RS({
+                data: RES.text,
+                schema: jtsInfer(D[0], _.rest(D1000))
+              });
             });
           }))
             .then((function(DS) { this.dataSource = DS; return DS; }).bind(this));
