@@ -10,6 +10,7 @@
   ],
   "main": "datapackagist/scripts/app.js",
   "dependencies": {
+    "papaparse": "git+https://github.com/mholt/PapaParse.git",
     "backbone": "^1.2.0",
     "backbone-base": "^0.0.2",
     "bluebird": "^2.9.31",
