@@ -13,51 +13,51 @@ var resourceEditor = require('./resource-editor');
 
 var jtsInfer = require('json-table-schema').infer;
 var registry = require('./registry');
-var request = require('superagent-bluebird-promise');
 var _ = require('underscore');
 var $ = require('jquery');
 var Promise = require('bluebird');
 var titleize = require('i')().titleize;
+var CSV = require('./csv-resource');
 
 
 // Upload data file and populate .resource array with item
 DataUploadView = backbone.BaseView.extend({
+
+  addResource: function (resourceInfo) {
+    var editor;
+    editor = window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
+    editor.add(resourceInfo.info, {schema: resourceInfo.info.schema, data: resourceInfo.data});
+  },
+
   events: {
     'click [data-id=upload-data-file]': function() {
-      window.APP.layout.uploadDialog
-        .setMessage(
+      window.APP.layout.uploadDialog.setMessage(
           'Select resource file (CSV) from your local drive or enter URL ' +
           'to download from.'
-        )
-
-        .setCallbacks({
-          data: (function(name, data) {
-            csv.parse(_.first(data.split('\n'), config.maxCSVRows).join('\n'), (function(E, D) {
-              // Hide loading splash
-              window.APP.layout.splashScreen.activate(false);
-
-              var editor = window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
-
-              var rowValue = {
-                name: _.last(name.split('/')).toLowerCase().replace(/\.[^.]+$|[^a-z^\-^\d^_^\.]+/g, ''),
-                path: name
-              };
-
-              if(E)
-                return window.APP.layout.notificationDialog
-                  .setTitle('Invalid File')
-                  .setMessage('CSV is invalid')
-                  .activate();
-
-              rowValue.schema = jtsInfer(D[0], _.rest(D));
-              editor.add(rowValue, {schema: schema, data: data});
-              window.APP.layout.descriptorEdit.layout.form.validateResources();
-              window.APP.layout.descriptorEdit.populateTitlesFromNames();
+      ).setCallbacks({
+        processLocalFile: (
+          function(file) {
+            return new Promise( (function(resolve, reject) {
+              CSV.getResourceFromFile(file, {preview: config.maxCSVRows}).then(
+                  (function (resourceInfo) {
+                    this.addResource(resourceInfo);
+                    resolve();
+                  }).bind(this));
             }).bind(this));
-          }).bind(this)
-        })
-
-        .activate();
+          }
+        ).bind(this),
+        processURL: (
+          function(url) {
+            return new Promise( (function(resolve, reject) {
+              CSV.getResourceFromUrl(url, {preview: config.maxCSVRows}).then(
+                  (function (resourceInfo) {
+                    this.addResource(resourceInfo);
+                    resolve();
+                  }).bind(this));
+            }).bind(this));
+          }
+        ).bind(this)
+      }).activate();
     }
   },
 
@@ -239,7 +239,6 @@ module.exports = {
         )
           .then((function(R) {
             var formData = this.layout.form.getCleanValue();
-
 
             this.layout.form.destroy();
             this.layout.uploadData.undelegateEvents().remove();

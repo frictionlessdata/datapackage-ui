@@ -60,6 +60,8 @@ module.exports = {
     },
 
     validateResources: function(resourcesRows) {
+      window.alert('validateResources: function(resourcesRows)');
+
       var goodTables = new Goodtables({method: 'post', report_type: 'grouped'});
 
       this.layout.list.reset(new backbone.Collection());
@@ -76,8 +78,11 @@ module.exports = {
           // Conditional promises
           return (function() {
             // Resource was downloaded by user
-            if(R.dataSource)
+            if(R.dataSource) {
+              console.log('==================================================================================');
+              console.log(R.dataSource);
               return goodTables.run(R.dataSource.data, JSON.stringify(R.dataSource.schema));
+            }
 
             // Default fall back
             return new Promise(function(RS, RJ) { RS(false); });

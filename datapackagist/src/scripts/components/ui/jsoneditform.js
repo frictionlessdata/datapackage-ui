@@ -76,6 +76,7 @@ JSONEditorView.prototype.getCleanValue = function () { return deepEmpty(this.get
 
 // Validate resources and show errors message at header of Schema row
 JSONEditorView.prototype.validateResources = function () {
+  window.alert('JSONEditorView.prototype.validateResources');
   var rows = this.getEditor('root.resources').rows;
 
 
