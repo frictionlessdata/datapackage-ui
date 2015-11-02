@@ -176,6 +176,8 @@
 .required-field {
     color: red;
     content: '*';
+    margin: 0px;
+    padding: 0px;
 }
 
 .jumbotron {
@@ -206,4 +208,22 @@
 
 #step1-title.loaded .isset {
     display: inline;
+}
+
+#descriptor .well {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#descriptor pre {
+    border: 1px solid #e3e3e3;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#descriptor .row-fluid {
+    margin-left: -10px;
+    margin-right: -10px;
 }

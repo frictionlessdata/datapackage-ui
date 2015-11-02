@@ -108,6 +108,21 @@ JSONEditorView.prototype.validateResources = function () {
   });
 };
 
+JSONEditorView.prototype.getEditorClass = _.wrap(
+  JSONEditorView.prototype.getEditorClass,
+  function(getEditorClass, schema) {
+    var result = getEditorClass.apply(this, _.rest(arguments));
+    result.prototype.postBuild = _.wrap(
+      result.prototype.postBuild,
+      function(postBuild) {
+        postBuild.apply(this, _.rest(arguments));
+        //console.log(this);
+      }
+    );
+    return result;
+  }
+);
+
 // Proper representation of all form buttons. Avoid changing each newly
 // rendered button by rewriting the .getButton()
 JSONEditor.defaults.themes.bootstrap3.prototype.getButton = function(text, icon, title) {
@@ -117,6 +132,27 @@ JSONEditor.defaults.themes.bootstrap3.prototype.getButton = function(text, icon,
   el.className += 'btn btn-info btn-sm';
   this.setButtonText(el,text,icon,title);
   return el;
+};
+
+JSONEditor.defaults.themes.bootstrap3.prototype.getGridRow = function() {
+  var result = $('<div>').addClass('col-md-12');
+  setTimeout(function() {
+    result.parent().addClass('row row-fluid');
+    var editor = result.find('> div');
+    var type = editor.attr('data-schematype');
+    editor.removeClass('col-md-12');
+    if (['array', 'object'].indexOf(type) < 0) {
+      if (result.find('textarea').length == 0) {
+        result.removeClass('col-md-12').addClass('col-md-6');
+      }
+    }
+  }, 10);
+  return result.get(0);
+};
+
+JSONEditor.defaults.themes.bootstrap3.prototype.getIndentedPanel = function() {
+  var result = $('<div>').addClass('well well-sm clearfix');
+  return result.get(0);
 };
 
 module.exports.JSONEditorView = JSONEditorView;
