@@ -6,6 +6,7 @@ var _ = require('underscore');
 var Promise = require('bluebird');
 var request = require('superagent-bluebird-promise');
 var validator = require('validator');
+var CSV = require('./csv-resource');
 
 
 // Custom editor for managing resources rows
@@ -22,8 +23,6 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
   },
 
   getDataSource: function(rowIndex) {
-    window.alert('GET DATA SOURCE');
-
     return new Promise((function(RS, RJ) {
       var row = this.rows[rowIndex];
       var url = _.result(row.editors.url, 'getValue');
@@ -35,20 +34,41 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
       }
 
       // If data source stored as URL in a row then first grab it
+      console.log('################################################');
+      console.log(row.editors);
+      console.log(url);
+      console.log('-------------------------------------------------');
+      console.log(row.editors.mediatype.getValue());
+      console.log('################################################');
       if (
           validator.isURL(url) &&
           (
-            _.contains(
-              _.map(
-                ['format', 'mediatype'],
-                function (E) {
-                  return _.result(row.editors[E], 'getValue');
-                }
-              ),
-            'text/csv') ||
+              (row.editors.format && row.editors.format.getValue() == 'text/csv') ||
+              (row.editors.mediatype && row.editors.mediatype.getValue() == 'text/csv') ||
             _.last(url.split('.')).toLowerCase() === 'csv'
           )
       ){
+
+        //return (new Promise(
+        //    (function(resolve, reject) {
+        //      CSV.getResourceFromUrl(config.corsProxyURL(url), {preview: config.maxCSVRows}).then(
+        //        (function (resourceInfo) {
+        //            resolve({
+        //              data: resourceInfo.data,
+        //              schema: resourceInfo.info.schema
+        //            });
+        //        })
+        //      ).catch(
+        //        function(){
+        //          reject();
+        //          return false;
+        //        });
+        //    })
+        //)).then((function (DS) {
+        //      this.dataSource = DS;
+        //      return DS;
+        //    }).bind(this));
+
         return request.get(config.corsProxyURL(url)).then(function (RES) {
           // Need schema
           return (new Promise(function (RS, RJ) {
