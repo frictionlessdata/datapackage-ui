@@ -5,31 +5,12 @@ var dpFromRemote = require('datapackage-from-remote');
 var registry = require('datapackage-registry');
 var Promise = require('bluebird');
 
-// WARN Used just for demo purposes
-var VALID_DESCRIPTOR = {
-  'name': 'my-dataset',
-  
-  'resources': [{
-    'path': 'data.csv',
-
-    'schema': {
-      'fields': [
-        {'name': 'var1', 'type': 'string'},
-        {'name': 'var2', 'type': 'integer'},
-        {'name': 'var3', 'type': 'number'}
-      ]
-    }
-  }]
-};
-
-
 // Application state changed here
 module.exports = backbone.Router.extend({
   routes: {
-    '(/)'                            : 'index',
-    ':profile(/)'                    : 'profile',
-    ':profile/from(/)'               : 'fromRemote',
-    'validation-results/:resource(/)': 'validationResults'
+    '(/)': 'index',
+    ':profile(/)': 'profile',
+    ':profile/from(/)': 'fromRemote'
   },
 
   /**
@@ -98,21 +79,11 @@ module.exports = backbone.Router.extend({
     this.index().then((function() {
       var registryList = window.APP.layout.descriptorEdit.layout.registryList;
 
-
       // Apply default profile if ID is wrong
       registryList.setSelected(profile || 'base').catch(function() { registryList.setSelected('base'); });
     }).bind(this));
   },
 
   setRegistryProfile: function(profile) {
-  },
-
-  validationResults: function(resource) {
-    this.deactivateAll();
-    window.APP.layout.navbar.toggleBadge(true);
-
-    window.APP.layout.validationResultList
-      .activate()
-      .setActive(resource);
   }
 });

@@ -1,6 +1,7 @@
 var backbone = require('backbone');
-var backboneBase = require('backbone-base');
+var _ = require('underscore');
 
+// https://raw.githubusercontent.com/rgrp/dataset-gla/master/data/all.csv
 
 module.exports = {
   NavbarView: backbone.BaseView.extend({
@@ -19,32 +20,43 @@ module.exports = {
 
   // Used for navigation between resources validation results
   TabsView: backbone.BaseListView.extend({
-    add: function(model) {
-      backbone.BaseListView.prototype.add.call(this, model);
-
-      // Don't show single tab
-      this.$el.prop('hidden', this.layout.items.length === 1);
-
+    addItemView: function(view) {
+      backbone.BaseListView.prototype.addItemView.call(this, view);
+      view.activate().setActive(
+        view.model.get('resource_id') == this.parent.activeResource);
       return this;
     },
 
     ItemView: backbone.BaseView.extend({
       events: {
-        'click': function(event) {
-          window.ROUTER.navigate($(event.currentTarget).attr('href'), {trigger: true});
+        'click': function() {
+          this.parent.parent.setActive(this.model.get('resource_id'));
           return false;
         }
       },
 
+      setActive: function(active) {
+        active = !!active || _.isUndefined(active);
+        if (active) {
+          _.forEach(this.parent.layout.items, function(item) {
+            item.setActive(false);
+          });
+          this.$el.addClass('active');
+        } else {
+          this.$el.removeClass('active');
+        }
+      },
+
       render: function() {
-        this.$el
-          .html(this.model.get('title'))
-          .attr('href', this.model.get('url'));
+        $('<a>')
+          .attr('href', 'javascript:void(0)')
+          .html(this.model.get('title') || '<i>(Untitled)</i>')
+          .appendTo(this.$el);
 
         return this;
       },
 
-      tagName: 'a'
+      tagName: 'li'
     })
   })
 };

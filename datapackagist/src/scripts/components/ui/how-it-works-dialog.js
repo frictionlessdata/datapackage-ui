@@ -12,6 +12,7 @@ module.exports = dialogs.BaseModalView.extend({
     request.get('/how-it-works.md').then(function(res) {
       var contents = marked(res.text);
       element.find('[data-id="dialog-content"]').html(contents);
+      element.modal('handleUpdate');
     });
 
     return this;
