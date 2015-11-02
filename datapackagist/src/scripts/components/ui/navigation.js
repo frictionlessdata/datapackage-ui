@@ -49,8 +49,11 @@ module.exports = {
 
       render: function() {
         $('<a>')
+          .append(
+            $('<i>').addClass('text-danger glyphicon glyphicon-remove')
+          )
           .attr('href', 'javascript:void(0)')
-          .html(this.model.get('title') || '<i>(Untitled)</i>')
+          .append(this.model.get('title') || '<i>(Untitled)</i>')
           .appendTo(this.$el);
 
         return this;

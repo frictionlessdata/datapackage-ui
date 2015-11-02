@@ -41,7 +41,11 @@ module.exports = {
 
   SplashView: backbone.BaseView.extend({
     // Activate overlay and splash layout
-    activate: BaseView.prototype.activate
+    activate: function(state) {
+      window.APP.$('#overlay').prop('hidden', !(_.isUndefined(state) || state));
+      backbone.BaseView.prototype.activate.call(this, state);
+      return this;
+    }
   }),
 
   NotificationView: BaseView.extend({
