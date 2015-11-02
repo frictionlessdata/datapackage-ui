@@ -79,7 +79,7 @@ describe('DataPackagist core', function() {
     });
   });
 
-  describe('Ensure essential form interactions', function() {
+  describe.skip('Ensure essential form interactions', function() {
     before(function(done) {
       browser.visit('/', done);
     });
@@ -202,7 +202,7 @@ describe('DataPackagist core', function() {
 
   });
 
-  describe('Ensure essential resource file interactions', function() {
+  describe.skip('Ensure essential resource file interactions', function() {
     before(function(done) {
       browser.visit('/', done);
     });
@@ -355,7 +355,7 @@ describe('DataPackagist core', function() {
     });
   });
 
-  describe('Ensure From Remote API', function() {
+  describe.skip('Ensure From Remote API', function() {
     it('a correct CKAN remote results in a data package', function(done) {
       browser.visit('/tabular/from/?source=ckan&url=http%3A%2F%2Fdatahub.io%2Fapi%2Faction%2Fpackage_show%3Fid%3Dpopulation-number-by-governorate-age-group-and-gender-2010-2014&format=json', function() {
         browser.wait({duration: '10s', element: '[data-schemapath="root.resources.0"]'}).then(function() {
@@ -365,4 +365,40 @@ describe('DataPackagist core', function() {
       });
     });
   });
+
+  describe('Modals', function() {
+
+    it('Should show loader when adding new resource', function(done) {
+      browser.visit('/', function() {
+        var jq = browser.window.$;
+        jq('[data-schemapath="root.resources"] h3 button[data-id="upload-data-file"]').click();
+        jq('#upload-dialog #upload-URL')
+          .val('https://raw.githubusercontent.com/rgrp/dataset-gla/master/data/all.csv');
+        jq('#upload-dialog #upload-URL').parent().find('button').click();
+        setTimeout(function() {
+          assert.isNotNull(browser.query('#loading'));
+          assert(!browser.query('#loading').hidden, 'Should be visible');
+          done();
+        }, 10);
+      });
+    });
+
+    it('Should upload existing datapackage', function(done) {
+      browser.visit('/', function() {
+        var url = 'https://raw.githubusercontent.com/okfn/datapackagist/master/examples/datapackage.json';
+
+        var jq = browser.window.$;
+        jq('#upload-data-package').click();
+        jq('#upload-dialog #upload-URL').val(url);
+        jq('#upload-dialog #upload-URL').parent().find('button').click();
+
+        setTimeout(function() {
+          assert(jq('#step1-selected-file').is(':visible'));
+          done();
+        }, 3000);
+      });
+    });
+
+  });
+
 });
