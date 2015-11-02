@@ -60,8 +60,6 @@ module.exports = {
     },
 
     validateResources: function(resourcesRows) {
-      window.alert('validateResources: function(resourcesRows)');
-
       var goodTables = new Goodtables({method: 'post', report_type: 'grouped'});
 
       this.layout.list.reset(new backbone.Collection());
