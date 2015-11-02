@@ -11,7 +11,6 @@ var jsonEditor = require('./jsoneditform');
 // This import is just for extending json editor with custom editor
 var resourceEditor = require('./resource-editor');
 
-var jtsInfer = require('json-table-schema').infer;
 var registry = require('./registry');
 var _ = require('underscore');
 var $ = require('jquery');
@@ -49,7 +48,7 @@ DataUploadView = backbone.BaseView.extend({
         processURL: (
           function(url) {
             return new Promise( (function(resolve, reject) {
-              CSV.getResourceFromUrl(url, {preview: config.maxCSVRows}).then(
+              CSV.getResourceFromUrl(config.corsProxyURL(url), {preview: config.maxCSVRows}).then(
                   (function (resourceInfo) {
                     this.addResource(resourceInfo);
                     resolve();

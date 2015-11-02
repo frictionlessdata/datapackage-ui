@@ -10,7 +10,6 @@
   ],
   "main": "datapackagist/scripts/app.js",
   "dependencies": {
-    "papaparse": "git+https://github.com/mholt/PapaParse.git",
     "backbone": "^1.2.0",
     "backbone-base": "^0.0.2",
     "bluebird": "^2.9.31",
@@ -36,6 +35,8 @@
     "json-editor": "^0.7.18",
     "json-table-schema": "0.0.2-alpha",
     "marked": "^0.3.5",
+    "papaparse": "git+https://github.com/mholt/PapaParse.git",
+    "request": "^2.65.0",
     "resolve": "^1.1.6",
     "superagent-bluebird-promise": "^2.0.2",
     "underscore": "^1.8.3",
