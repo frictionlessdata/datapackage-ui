@@ -1,16 +1,9 @@
 require('fileapi');
 
 var backbone = require('backbone');
-var backboneBase = require('backbone-base');
 var config = require('../../config');
-var csv = require('csv');
-var getUri = require('get-uri');
 var highlight = require('highlight-redux');
 var jsonEditor = require('./jsoneditform');
-
-// This import is just for extending json editor with custom editor
-var resourceEditor = require('./resource-editor');
-
 var registry = require('./registry');
 var _ = require('underscore');
 var $ = require('jquery');

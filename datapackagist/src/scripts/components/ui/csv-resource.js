@@ -50,7 +50,7 @@ function createCSVResourse() {
         getName: function (identifier) {
             identifier = _.last(identifier.split('/'));// http://example.com/sample.csv?bla-bla -> sample.csv?bla-bla
             identifier = (identifier.split('?'))[0]; //sample.csv?bla-bla -> sample.csv
-            identifier = (identifier.split('.')).pop();
+            identifier = (identifier.split('.'))[0];
             return identifier;
         },
 
@@ -90,7 +90,7 @@ function createCSVResourse() {
                         }).bind(this)
                     ).catch(
                         function(result){
-                            reject(null);
+                            reject(result);
                         }
                     )
                 }).bind(this)
