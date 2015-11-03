@@ -6,6 +6,7 @@ var validator = require('validator');
 var request_agent = require('request');
 
 app.use(express.static(__dirname + '/dist'));
+app.use('/examples', express.static(__dirname + '/../examples'));
 
 app.get('/cors-proxy/*', function(req, response) {
   var url = req.params[0];
@@ -31,5 +32,8 @@ app.get('*', function(request, response) {
 app.use(function(req, res) {
   res.status(404).send('This page cannot be found.');
 });
+
+var port = process.env.PORT || 3000;
+app.set('port', port);
 
 module.exports = app;
