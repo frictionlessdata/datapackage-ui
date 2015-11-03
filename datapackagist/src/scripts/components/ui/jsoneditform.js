@@ -115,7 +115,6 @@ JSONEditorView.prototype.getEditorClass = _.wrap(
       result.prototype.postBuild,
       function(postBuild) {
         postBuild.apply(this, _.rest(arguments));
-        //console.log(this);
       }
     );
     return result;

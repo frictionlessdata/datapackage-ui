@@ -87,7 +87,7 @@ module.exports = dialogs.BaseModalView.extend({
     this.activateError(false);
 
     var url = this.$('[data-id=url-input]').val();
-    if(!validator.isURL(url)) {
+    if(!validator.isURL(url.replace(/ /g, '%20'))) {
       this.activateError();
       return this;
     }

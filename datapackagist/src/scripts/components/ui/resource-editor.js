@@ -1,10 +1,8 @@
 var config = require('../../config');
-var csv = require('csv');
-var jsonEditor = require('./jsoneditform');
-var jtsInfer = require('json-table-schema').infer;
 var _ = require('underscore');
 var Promise = require('bluebird');
-var request = require('superagent-bluebird-promise');
+var csv = require('csv');
+var jsonEditor = require('./jsoneditform');
 var validator = require('validator');
 var CSV = require('./csv-resource');
 
@@ -27,70 +25,39 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
       var row = this.rows[rowIndex];
       var url = _.result(row.editors.url, 'getValue');
 
-
       if (row.dataSource) {
         RS(row.dataSource);
         return true;
       }
 
       // If data source stored as URL in a row then first grab it
-      console.log('################################################');
-      console.log(row.editors);
-      console.log(url);
-      console.log('-------------------------------------------------');
-      console.log(row.editors.mediatype.getValue());
-      console.log('################################################');
       if (
-          validator.isURL(url) &&
+          (validator.isURL(url.replace(/ /g, '%20'))) &&
           (
               (row.editors.format && row.editors.format.getValue() == 'text/csv') ||
               (row.editors.mediatype && row.editors.mediatype.getValue() == 'text/csv') ||
             _.last(url.split('.')).toLowerCase() === 'csv'
           )
       ){
-
-        //return (new Promise(
-        //    (function(resolve, reject) {
-        //      CSV.getResourceFromUrl(config.corsProxyURL(url), {preview: config.maxCSVRows}).then(
-        //        (function (resourceInfo) {
-        //            resolve({
-        //              data: resourceInfo.data,
-        //              schema: resourceInfo.info.schema
-        //            });
-        //        })
-        //      ).catch(
-        //        function(){
-        //          reject();
-        //          return false;
-        //        });
-        //    })
-        //)).then((function (DS) {
-        //      this.dataSource = DS;
-        //      return DS;
-        //    }).bind(this));
-
-        return request.get(config.corsProxyURL(url)).then(function (RES) {
-          // Need schema
-          return (new Promise(function (RS, RJ) {
-            csv.parse(RES.text, function (E, D) {
-              if (E) {
-                RJ(E);
-                return false;
-              }
-
-              var D1000 = D.slice(0, 1000);
-              RS({
-                data: RES.text,
-                schema: jtsInfer(D[0], _.rest(D1000))
-              });
-            });
-          }))
-              .then((function (DS) {
-                this.dataSource = DS;
-                return DS;
-              }).bind(this));
-        });
-
+        return (new Promise(
+            (function(resolve, reject) {
+              CSV.getResourceFromUrl(config.corsProxyURL(url), {preview: config.maxCSVRows}).then(
+                (function (resourceInfo) {
+                    resolve({
+                      data: resourceInfo.data,
+                      schema: resourceInfo.info.schema
+                    });
+                })
+              ).catch(
+                function(){
+                  reject();
+                  return false;
+                });
+            })
+        )).then((function (DS) {
+              row.dataSource = DS;
+              RS(DS);
+            }).bind(this));
       // TODO return correct data when there is workaround for file paths
       } else {
         if (!url) {

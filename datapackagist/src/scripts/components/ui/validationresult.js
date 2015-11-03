@@ -1,8 +1,8 @@
 var _ = require('underscore');
+var Promise = require('bluebird');
 var backbone = require('backbone');
 var Goodtables = require('goodtables');
 var navigation = require('./navigation');
-var Promise = require('bluebird');
 var validationErrorRowTpl = require('./templates/validation-error-row.hbs');
 var validator = require('validator');
 var dialogs = require('./dialog');
@@ -63,7 +63,6 @@ module.exports = {
       var goodTables = new Goodtables({method: 'post', report_type: 'grouped'});
 
       this.layout.list.reset(new backbone.Collection());
-      // Validate each row, one by one, render errors after each row validated
       Promise.each(
         resourcesRows,
         function(row, index) {
@@ -71,14 +70,11 @@ module.exports = {
         }
       ).then((function(DS) {
           var that = this;
-
         _.each(DS, function(R) {
           // Conditional promises
           return (function() {
             // Resource was downloaded by user
             if(R.dataSource) {
-              console.log('==================================================================================');
-              console.log(R.dataSource);
               return goodTables.run(R.dataSource.data, JSON.stringify(R.dataSource.schema));
             }
 

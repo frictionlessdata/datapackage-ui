@@ -2,8 +2,8 @@
  * Created by Ihor Borysyuk on 28.10.15.
  */
 var _ = require('underscore');
-var csvParser = require('papaparse');
 var Promise = require('bluebird');
+var csvParser = require('papaparse');
 var jtsInfer = require('json-table-schema').infer;
 
 

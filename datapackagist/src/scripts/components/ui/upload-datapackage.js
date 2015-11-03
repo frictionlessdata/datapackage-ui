@@ -68,13 +68,11 @@ module.exports = backbone.BaseView.extend({
             processLocalFile: (
                 function(file) {
                   return new Promise((function (resolve, reject) {
-                    console.log(file);
                     try {
                       FileAPI.readAsText(
                           file,
                           (function (fileInfo) {
                             if(fileInfo.type === 'load') {
-                              console.log(this);
                               this.processJSONData(fileInfo.result);
                               resolve();
                             }
@@ -91,7 +89,6 @@ module.exports = backbone.BaseView.extend({
                   return new Promise((function (resolve, reject) {
                       request.get(config.corsProxyURL(url)).then(
                           (function(res) {
-                            console.log(res);
                             this.processJSONData(res.text);
                           resolve();
                         }).bind(this)
