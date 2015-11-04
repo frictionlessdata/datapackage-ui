@@ -1,62 +1,55 @@
 require('fileapi');
 
 var backbone = require('backbone');
-var backboneBase = require('backbone-base');
 var config = require('../../config');
-var csv = require('csv');
-var getUri = require('get-uri');
 var highlight = require('highlight-redux');
 var jsonEditor = require('./jsoneditform');
-
-// This import is just for extending json editor with custom editor
-var resourceEditor = require('./resource-editor');
-
-var jtsInfer = require('json-table-schema').infer;
 var registry = require('./registry');
-var request = require('superagent-bluebird-promise');
 var _ = require('underscore');
 var $ = require('jquery');
 var Promise = require('bluebird');
 var titleize = require('i')().titleize;
+var CSV = require('./csv-resource');
 
 
 // Upload data file and populate .resource array with item
 DataUploadView = backbone.BaseView.extend({
+
+  addResource: function (resourceInfo) {
+    var editor;
+    editor = window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
+    editor.add(resourceInfo.info, {schema: resourceInfo.info.schema, data: resourceInfo.data});
+  },
+
   events: {
     'click [data-id=upload-data-file]': function() {
-      window.APP.layout.uploadDialog
-        .setMessage(
+      window.APP.layout.uploadDialog.setMessage(
           'Select resource file (CSV) from your local drive or enter URL ' +
           'to download from.'
-        )
-
-        .setCallbacks({
-          data: (function(name, data) {
-            csv.parse(_.first(data.split('\n'), config.maxCSVRows).join('\n'), (function(E, D) {
-              // Hide loading splash
-              window.APP.layout.splashScreen.activate(false);
-
-              var editor = window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
-
-              var rowValue = {
-                name: _.last(name.split('/')).toLowerCase().replace(/\.[^.]+$|[^a-z^\-^\d^_^\.]+/g, ''),
-                path: name
-              };
-
-              if(E)
-                return window.APP.layout.notificationDialog
-                  .setMessage('CSV is invalid')
-                  .activate();
-
-              rowValue.schema = jtsInfer(D[0], _.rest(D));
-              editor.add(rowValue, {schema: schema, data: data});
-              window.APP.layout.descriptorEdit.layout.form.validateResources();
-              window.APP.layout.descriptorEdit.populateTitlesFromNames();
+      ).setCallbacks({
+        processLocalFile: (
+          function(file) {
+            return new Promise( (function(resolve, reject) {
+              CSV.getResourceFromFile(file, {preview: config.maxCSVRows}).then(
+                  (function (resourceInfo) {
+                    this.addResource(resourceInfo);
+                    resolve();
+                  }).bind(this));
             }).bind(this));
-          }).bind(this)
-        })
-
-        .activate();
+          }
+        ).bind(this),
+        processURL: (
+          function(url) {
+            return new Promise( (function(resolve, reject) {
+              CSV.getResourceFromUrl(config.corsProxyURL(url), {preview: config.maxCSVRows}).then(
+                  (function (resourceInfo) {
+                    this.addResource(resourceInfo);
+                    resolve();
+                  }).bind(this));
+            }).bind(this));
+          }
+        ).bind(this)
+      }).activate();
     }
   },
 
@@ -119,7 +112,16 @@ module.exports = {
       },
 
       'click #validate-resources': function() {
-        window.APP.layout.validationResultList.validateResources(this.layout.form.getEditor('root.resources').rows);
+        var rows = this.layout.form.getEditor('root.resources').rows;
+        if (rows.length > 0) {
+          window.APP.layout.validationResultList.validateResources(rows);
+        } else {
+          window.APP.layout.notificationDialog
+            .setTitle('No Resources to Validate')
+            .setMessage('The Data Package currently has no resources that ' +
+              'can be validated. Please add some and try again.')
+            .activate();
+        }
       },
 
       'click #validate-form': function() {
@@ -128,6 +130,7 @@ module.exports = {
         window.APP.layout.download.reset(this.layout.form.getCleanValue(),
           this.layout.form.schema).activate();
         this.showResult();
+        window.APP.layout.notificationDialog.showValidationErrors(false);
       }
     },
 
@@ -229,7 +232,6 @@ module.exports = {
           .then((function(R) {
             var formData = this.layout.form.getCleanValue();
 
-
             this.layout.form.destroy();
             this.layout.uploadData.undelegateEvents().remove();
             init(formData, R);
@@ -254,6 +256,28 @@ module.exports = {
       }
 
       return this;
+    },
+
+    collectValidationErrors: function() {
+      var results = [];
+      var form = this.layout.form;
+      var messages = form.validation_results;
+      if (_.isArray(messages)) {
+        _.forEach(messages, function(item) {
+          var editor = form.getEditor(item.path);
+          if (editor && editor.schema) {
+            results.push({
+              title: editor.schema.title,
+              description: editor.schema.description,
+              message: item.message,
+              path: item.path,
+              property: item.property,
+              schema: editor.schema
+            });
+          }
+        });
+      }
+      return results;
     }
   })
 };

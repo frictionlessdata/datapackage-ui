@@ -2,11 +2,11 @@ require('fileapi');
 
 var _ = require('underscore');
 var backbone = require('backbone');
-var backboneBase = require('backbone-base');
 var dialogs = require('./dialog');
-var request = require('superagent-bluebird-promise');
 var validator = require('validator');
 var uploadTpl = require('./templates/upload-dialog.hbs');
+
+var CSV = require('./csv-resource');
 
 var updateUI = function(fileNameOrUrl) {
   var noSelection = $('#step1-no-file-selected');
@@ -41,7 +41,9 @@ module.exports = dialogs.BaseModalView.extend({
   },
 
   events: _.extend(_.clone(dialogs.BaseModalView.prototype.events), {
-    'click [data-id="upload-local"]': function(E) { this.$('[data-id=file-input]').trigger('click'); },
+    'click [data-id="upload-local"]': function(E) {
+      this.$('[data-id=file-input]').trigger('click');
+    },
     'click [data-id="upload-url"]': 'uploadURL',
 
     'keyup [data-id="url-input"]': function(E) {
@@ -53,40 +55,50 @@ module.exports = dialogs.BaseModalView.extend({
       window.APP.layout.uploadDialog.deactivate();
       window.APP.layout.splashScreen.activate();
 
-      FileAPI.readAsText(FileAPI.getFiles(E.currentTarget)[0], (function (EV) {
-        if(EV.type === 'load') {
-          updateUI(EV.target.name);
-          this.callbacks.data(EV.target.name, EV.result);
-        }
-        else if(EV.type ==='progress')
-          this.setProgress(EV.loaded/EV.total * 100);
-      }).bind(this));
+      this.callbacks.processLocalFile(
+          FileAPI.getFiles(E.currentTarget)[0]
+      ).finally(
+          function(){
+            updateUI(FileAPI.getFiles(E.currentTarget)[0]);
+            window.APP.layout.splashScreen.activate(false);
+          }
+      );
     }
   }),
 
-  render: function() { this.$el.html(this.template()); return this; },
-  setMessage: function(message) { this.$('[data-id=message]').html(message); return this; },
-  setProgress: function(percents) { return this; },
+  render: function() {
+    this.$el.html(this.template());
+    return this;
+  },
+  setTitle: function(title) {
+    this.$('[data-id=title]').html(title);
+    return this;
+  },
+  setMessage: function(message) {
+    this.$('[data-id=message]').html(message);
+    return this;
+  },
+  setProgress: function(percents) {
+    return this;
+  },
   template: uploadTpl,
 
   uploadURL: function() {
-    var url = this.$('[data-id=url-input]').val();
-
-
     this.activateError(false);
 
-    if(!validator.isURL(url)) {
+    var url = this.$('[data-id=url-input]').val();
+    if(!validator.isURL(url.replace(/ /g, '%20'))) {
       this.activateError();
       return this;
     }
-
     window.APP.layout.uploadDialog.deactivate();
     window.APP.layout.splashScreen.activate();
 
-    request.get(url).then((function(RES) {
-      updateUI(url);
-      window.APP.layout.splashScreen.deactivate();
-      this.callbacks.data(url, RES.text);
-    }).bind(this));
+    this.callbacks.processURL(url).finally(
+        function(){
+          updateUI(url);
+          window.APP.layout.splashScreen.activate(false);
+        }
+    );
   }
 });

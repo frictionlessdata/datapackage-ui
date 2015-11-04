@@ -227,3 +227,31 @@
     margin-left: -10px;
     margin-right: -10px;
 }
+
+#validation-result .nav .glyphicon {
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+#validation-result .panel.panel-default {
+    border-color: #ddd;
+    border-top: 0;
+    -moz-border-top-left-radius: 0;
+    -webkit-border-top-left-radius: 0;
+    border-top-left-radius: 0;
+    -moz-border-top-right-radius: 0;
+    -webkit-border-top-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#validation-result .panel {
+    margin: 0;
+}
+
+.modal {
+    z-index: 99999;
+}
+
+.modal .modal-dialog.modal-fluid {
+    width: 90%;
+}
