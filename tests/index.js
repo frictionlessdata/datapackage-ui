@@ -80,7 +80,7 @@ describe('DataPackagist core', function() {
     });
   });
 
-  describe.skip('Ensure essential form interactions', function() {
+  describe('Ensure essential form interactions', function() {
     before(function(done) {
       browser.visit('/', done);
     });
@@ -207,13 +207,13 @@ describe('DataPackagist core', function() {
       browser.visit('/', done);
     });
 
-    it.skip('has a button to upload a resource file', function(done) {
+    it('has a button to upload a resource file', function(done) {
       // ensure that the button to upload a resource file exists
       browser.assert.element('[data-id=upload-data-file]');
       done();
     });
 
-    it.skip('populates a resource in the resources array when uploading a valid resource', function(done) {
+    it('populates a resource in the resources array when uploading a valid resource', function(done) {
       // ensure that a valid resource file upload results in a new resource object
       browser.visit('/', function() {
         // Don't know how to simulate file upload
@@ -229,7 +229,7 @@ describe('DataPackagist core', function() {
       });
     });
 
-    it.skip('errors when uploading an invalid resource', function(done) {
+    it('errors when uploading an invalid resource', function(done) {
       // ensure that when a user attempts to upload an invalid resource, that she is shown an error
       browser.visit('/', function() {
         // Use this for file upload https://github.com/assaf/zombie/blob/master/src/index.js#L875
@@ -257,7 +257,7 @@ describe('DataPackagist core', function() {
       });
     });
 
-    it.skip('validates a valid resource on user action', function(done) {
+    it('validates a valid resource on user action', function(done) {
       // ensure that when a user validates one or many valid resources,
       // the resource validation view is shown with a success result
       browser.visit('/', function() {
@@ -321,7 +321,7 @@ describe('DataPackagist core', function() {
       });
     });
 
-    it.skip('shows modal error message when uploading malformed/broken csv as resource', function(done) {
+    it('shows modal error message when uploading malformed/broken csv as resource', function(done) {
       browser.visit('/', function() {
         var descriptorEdit = browser.window.APP.layout.descriptorEdit;
 
@@ -335,7 +335,7 @@ describe('DataPackagist core', function() {
       });
     });
 
-    it.skip('shows modal error message when uploading malformed but not broken json', function(done) {
+    it('shows modal error message when uploading malformed but not broken json', function(done) {
       browser.visit('/', function() {
         var uploadDatapackage = browser.window.APP.layout.uploadDatapackage;
 
@@ -367,9 +367,9 @@ describe('DataPackagist core', function() {
 
 
   describe('CSV-resourse library tests', function() {
-    it('Load resource from file/text', function(done) {
+    it('Load resource from file/text all records', function(done) {
 
-      CSV.parseFile('name,age\nJohn,33\nJohn,36', {preview: config.maxCSVRows}).then(function (result){
+      CSV.parseFile('name,age\nJohn,33\nJohn,36').then(function (result){
         var resource;
         resource = CSV.getResourceFromCSVResult({name: 'file1.csv'}, true, result);
 
@@ -388,9 +388,9 @@ describe('DataPackagist core', function() {
       });
     });
 
-    it('Load resource from URL', function(done) {
+    it('Load resource from URL all records', function(done) {
 
-      CSV.parseFile('name,age\nJohn,33\nJohn,36', {preview: config.maxCSVRows}).then(function (result){
+      CSV.parseFile('name,age\nJohn,33\nJohn,36').then(function (result){
         var resource;
         resource = CSV.getResourceFromCSVResult('https://rawgit.com/dataprotocols/registry/master/registry.csv', false, result);
 
@@ -408,7 +408,62 @@ describe('DataPackagist core', function() {
         done();
       });
     });
+    it('Load resource from file/text preview only', function(done) {
+
+      CSV.parseFile('name,age\nJohn,33\nJohn,36\nJohn3,336\nJohn4,365', {preview: 2}).then(function (result){
+        var resource;
+        resource = CSV.getResourceFromCSVResult({name: 'file1.csv'}, true, result);
+
+        assert.equal(resource.info.name, 'file1');
+        assert.equal(resource.info.title, 'file1');
+        assert.equal(resource.info.path, 'file1.csv');
+        assert.equal(resource.info.url, '');
+        assert.equal(resource.info.format, 'CSV');
+        assert.equal(resource.info.mediatype, 'text/csv');
+        assert.equal(resource.info.schema.fields.length, 2);
+        assert.equal(resource.info.schema.fields[0].name, 'name');
+        assert.equal(resource.info.schema.fields[1].name, 'age');
+        assert.equal(resource.data.length, 2);
+
+        done();
+      });
+    });
+
+    it('Load resource from URL preview only', function(done) {
+
+      CSV.parseFile('name,age\nJohn,33\nJohn,36\nJohn3,336\nJohn4,365', {preview: 2}).then(function (result){
+        var resource;
+        resource = CSV.getResourceFromCSVResult('https://rawgit.com/dataprotocols/registry/master/registry.csv', false, result);
+
+        assert.equal(resource.info.name, 'registry');
+        assert.equal(resource.info.title, 'registry');
+        assert.equal(resource.info.path, '');
+        assert.equal(resource.info.url, 'https://rawgit.com/dataprotocols/registry/master/registry.csv');
+        assert.equal(resource.info.format, 'CSV');
+        assert.equal(resource.info.mediatype, 'text/csv');
+        assert.equal(resource.info.schema.fields.length, 2);
+        assert.equal(resource.info.schema.fields[0].name, 'name');
+        assert.equal(resource.info.schema.fields[1].name, 'age');
+        assert.equal(resource.data.length, 2);
+
+        done();
+      });
+    });
   });
+
+  describe('Cors proxy', function() {
+    it('Should get equal results with proxy and directly', function (done) {
+      browser.visit('https://rawgit.com/dataprotocols/registry/master/registry.csv', function() {
+        var origin = browser.resources[0].response.body;
+        browser.visit('/cors-proxy/https://rawgit.com/dataprotocols/registry/master/registry.csv', function() {
+          var proxyRes = browser.resources[0].response.body;
+          assert.equal(origin, proxyRes);
+          done();
+        });
+      });
+    });
+  });
+
 
   describe('Modals', function() {
     it('Should show loader when adding new resource', function(done) {
