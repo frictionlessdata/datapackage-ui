@@ -11,6 +11,9 @@ var Promise = require('bluebird');
 var titleize = require('i')().titleize;
 var CSV = require('./csv-resource');
 
+// !!!!This import is just for extending json editor with custom editor
+// NEVER REMOVE IT!
+var resourceEditor = require('./resource-editor');
 
 // Upload data file and populate .resource array with item
 DataUploadView = backbone.BaseView.extend({
