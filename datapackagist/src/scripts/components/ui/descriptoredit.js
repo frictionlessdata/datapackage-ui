@@ -102,7 +102,6 @@ module.exports = {
       'keyup [data-schemapath$=".title"] input': function(event) {
         var $input = $(event.currentTarget);
 
-
         // Ignore tab key pressed
         if(event.keyCode === 9)
           return true;
@@ -133,7 +132,7 @@ module.exports = {
         window.APP.layout.download.reset(this.layout.form.getCleanValue(),
           this.layout.form.schema).activate();
         this.showResult();
-        window.APP.layout.notificationDialog.showValidationErrors(false);
+        window.APP.layout.notificationDialog.showValidationErrors();
       }
     },
 

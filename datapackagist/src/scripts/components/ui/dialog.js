@@ -61,16 +61,14 @@ module.exports = {
         return false;
       }
     },
-    showValidationErrors: function(forceShow) {
-      forceShow = !!forceShow || _.isUndefined(forceShow);
-
+    showValidationErrors: function() {
       var errors = window.APP.layout.descriptorEdit.collectValidationErrors();
-      if ((errors.length == 0) && !forceShow) {
-        return;
-      }
+      var messages = [];
+      var title;
 
-      var messages = ['<p>The Data Package is currently invalid.</p>'];
       if (errors.length > 0) {
+        title = 'The Data Package Descriptor is invalid';
+        messages = ['<p>The Data Package is currently invalid.</p>'];
         messages.push('<p>The following errors have been reported.</p>');
         messages.push('<p>Fix them and try again.</p>');
 
@@ -79,10 +77,12 @@ module.exports = {
           '<i class="glyphicon glyphicon-exclamation-sign"></i>&nbsp;' +
           '&nbsp;<b>' + error.title + '</b>: ' + error.message + '</p>');
         });
+      } else {
+        title = 'The Data Package is valid';
       }
 
       this
-        .setTitle('The Data Package Descriptor is invalid')
+        .setTitle(title)
         .setMessage(messages.join(''))
         .activate();
     }

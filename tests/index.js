@@ -125,26 +125,16 @@ describe('DataPackagist core', function() {
     });
 
     it('populates on valid descriptor upload', function(done) {
-      var uploadDatapackage = browser.window.APP.layout.uploadDatapackage;
-      uploadDatapackage.events.click.call(uploadDatapackage);
-      uploadDatapackage.processJSONData(JSON.stringify(datapackage));
+        var uploadDatapackage = browser.window.APP.layout.uploadDatapackage;
+        uploadDatapackage.events.click.call(uploadDatapackage);
 
-      assert.equal(browser.window.$('input[name="root[name]"]').val(), datapackage.name);
-      assert.equal(browser.window.$('input[name="root[title]"]').val(), datapackage.title);
-      done();
-    });
+        uploadDatapackage.processJSONData(JSON.stringify(datapackage)).then(function(res){return;});
 
-    it('errors on invalid descriptor upload', function(done) {
-      var uploadDatapackage = browser.window.APP.layout.uploadDatapackage;
-
-
-      uploadDatapackage.events.click.call(uploadDatapackage);
-      uploadDatapackage.processJSONData('{"name": "A"}');
-
-      browser.wait({duration: '3s', element: '[data-schemapath="root.name"] .form-group.has-error'}).then(function() {
-        browser.assert.element('[data-schemapath="root.name"] .form-group.has-error');
-        done();
-      });
+        browser.wait({duration: '20s'}).then(function(){
+          assert.equal(browser.window.$('input[name="root[name]"]').val(), datapackage.name);
+          assert.equal(browser.window.$('input[name="root[title]"]').val(), datapackage.title);
+          done();
+        });
     });
 
     it('allows download of valid base profile', function(done) {
@@ -313,7 +303,7 @@ describe('DataPackagist core', function() {
         editor.rows[1].dataSource = {schema: schema, data: 'name,age\nJane,55,invalid'};
         browser.click('#validate-resources');
 
-        browser.wait({duration: '5s', element: '#validation-result:not([hidden])'}).then(function() {
+        browser.wait({duration: '25s', element: '#validation-result:not([hidden])'}).then(function() {
           assert(browser.window.$('#ok-message').prop('hidden'));
           browser.assert.elements('#validation-result [data-id=errors-list] .result', 1);
           done();
