@@ -25,6 +25,8 @@ jsonEditor.JSONEditorView.defaults.editors.resources = JSONEditor.defaults.edito
       var row = this.rows[rowIndex];
       var url = _.result(row.editors.url, 'getValue');
 
+      url = url || '';
+
       if (row.dataSource) {
         RS(row.dataSource);
         return true;
