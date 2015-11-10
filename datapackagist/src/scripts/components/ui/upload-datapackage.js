@@ -8,13 +8,22 @@ var request = require('superagent-bluebird-promise');
 var Promise = require('bluebird');
 
 
+var updateUI = function (fileNameOrUrl) {
+  var noSelection = $('#step1-no-file-selected');
+  var currentSelection = $('#step1-selected-file');
+  if (fileNameOrUrl) {
+    noSelection.hide();
+    currentSelection.show().find('span').text(fileNameOrUrl);
+  }
+};
+
+
 // Upload datapackage
 module.exports = backbone.BaseView.extend({
 
   // Update edit form and download URL
   updateApp: function(descriptor) {
     var descriptorEdit = window.APP.layout.descriptorEdit;
-
     descriptorEdit.layout.form.setValue(
         _.defaults(descriptor, descriptorEdit.layout.form.getValue())
     );
@@ -22,41 +31,50 @@ module.exports = backbone.BaseView.extend({
   },
 
   processJSONData: function(data) {
-    var descriptor;
-    var descriptorEdit;
+    var that = this;
+    return (new Promise( (function (resolve, reject) {
+        var descriptor;
+        var descriptorEdit;
 
-    try {
-      descriptor = JSON.parse(data);
-    } catch(E) { }
-    descriptorEdit = window.APP.layout.descriptorEdit;
+        try {
+          descriptor = JSON.parse(data);
+        } catch(E) { }
+        descriptorEdit = window.APP.layout.descriptorEdit;
 
-    // If descriptor is broken or If descriptor have field not from schema - reject it
-    if(
-          !_.isObject(descriptor) ||
-          _.difference(_.keys(descriptor), _.keys(descriptorEdit.layout.form.schema.properties)).length
-    ) {
-      window.APP.layout.notificationDialog.setMessage('JSON is invalid').activate();
-      return false;
-    }
-
-    // If there are no changes in current form just apply uploaded
-    // data and leave
-    if(!descriptorEdit.hasChanges()) {
-      this.updateApp(descriptor);
-      return false;
-    }
-
-    // Ask to overwrite changes on current form
-    window.APP.layout.confirmationDialog
-      .setMessage('You have changes. Overwrite?')
-      .setCallbacks(
-        {
-          yes: (function() {
-            this.updateApp(descriptor);
-            return false;
-          }).bind(this)
+        // If descriptor is broken or If descriptor have field not from schema - reject it
+        if( !_.isObject(descriptor) ) {
+          window.APP.layout.notificationDialog.setMessage('JSON is invalid').activate();
+          resolve(false);
+          return;
         }
-    ).activate();
+
+        // If there are no changes in current form just apply uploaded
+        // data and leave
+        if(!descriptorEdit.hasChanges()) {
+          that.updateApp(descriptor);
+          resolve(true);
+          return true;
+        }
+
+        // Ask to overwrite changes on current form
+        window.APP.layout.confirmationDialog
+          .setMessage('You have changes. Overwrite?')
+          .setCallbacks(
+          {
+            yes: (function() {
+              that.updateApp(descriptor);
+              resolve(true);
+              return;
+            }).bind(this),
+            no: (function() {
+              resolve(false);
+              return;
+            }).bind(this)
+
+          }
+        ).activate();
+      }).bind(this))
+    );
   },
 
   events: {
@@ -73,8 +91,12 @@ module.exports = backbone.BaseView.extend({
                           file,
                           (function (fileInfo) {
                             if(fileInfo.type === 'load') {
-                              this.processJSONData(fileInfo.result);
-                              resolve();
+                              this.processJSONData(fileInfo.result).then(function(status){
+                                if (status){
+                                  updateUI(file.name);
+                                }
+                                resolve(status);
+                              });
                             }
                           }).bind(this)
                       );
@@ -89,8 +111,12 @@ module.exports = backbone.BaseView.extend({
                   return new Promise((function (resolve, reject) {
                       request.get(config.corsProxyURL(url)).then(
                           (function(res) {
-                            this.processJSONData(res.text);
-                          resolve();
+                            this.processJSONData(res.text).then(function(status){
+                              if (status){
+                                updateUI(url);
+                              }
+                              resolve(status);
+                            });
                         }).bind(this)
                       );
                   }).bind(this));

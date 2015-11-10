@@ -8,7 +8,6 @@ var registry = require('./registry');
 var _ = require('underscore');
 var $ = require('jquery');
 var Promise = require('bluebird');
-var titleize = require('i')().titleize;
 var CSV = require('./csv-resource');
 
 // !!!!This import is just for extending json editor with custom editor
@@ -81,7 +80,6 @@ module.exports = {
         var $title = $input.closest('[data-schematype=object]').find('[data-schemapath$=".title"] input').eq(0);
         var nameEditor = this.layout.form.getEditor($input.closest('[data-schemapath]').data('schemapath'));
 
-
         // Force name value change. Normally it will be changed after focues losed
         // from input field.
         nameEditor.setValue($input.val());
@@ -94,14 +92,13 @@ module.exports = {
 
         this.layout.form
           .getEditor($title.closest('[data-schemapath]').data('schemapath'))
-          .setValue(titleize($input.val()).replace(/\s+/g, ' ').toLowerCase());
+          .setValue(CSV.getTitle($input.val()));
       },
 
       // Do not populate title field with name field data if title was edited
       // by user. Consider it is not edited once user empties it.
       'keyup [data-schemapath$=".title"] input': function(event) {
         var $input = $(event.currentTarget);
-
 
         // Ignore tab key pressed
         if(event.keyCode === 9)
@@ -133,7 +130,7 @@ module.exports = {
         window.APP.layout.download.reset(this.layout.form.getCleanValue(),
           this.layout.form.schema).activate();
         this.showResult();
-        window.APP.layout.notificationDialog.showValidationErrors(false);
+        window.APP.layout.notificationDialog.showValidationErrors();
       }
     },
 

@@ -125,26 +125,16 @@ describe('DataPackagist core', function() {
     });
 
     it('populates on valid descriptor upload', function(done) {
-      var uploadDatapackage = browser.window.APP.layout.uploadDatapackage;
-      uploadDatapackage.events.click.call(uploadDatapackage);
-      uploadDatapackage.processJSONData(JSON.stringify(datapackage));
+        var uploadDatapackage = browser.window.APP.layout.uploadDatapackage;
+        uploadDatapackage.events.click.call(uploadDatapackage);
 
-      assert.equal(browser.window.$('input[name="root[name]"]').val(), datapackage.name);
-      assert.equal(browser.window.$('input[name="root[title]"]').val(), datapackage.title);
-      done();
-    });
+        uploadDatapackage.processJSONData(JSON.stringify(datapackage)).then(function(res){return;});
 
-    it('errors on invalid descriptor upload', function(done) {
-      var uploadDatapackage = browser.window.APP.layout.uploadDatapackage;
-
-
-      uploadDatapackage.events.click.call(uploadDatapackage);
-      uploadDatapackage.processJSONData('{"name": "A"}');
-
-      browser.wait({duration: '3s', element: '[data-schemapath="root.name"] .form-group.has-error'}).then(function() {
-        browser.assert.element('[data-schemapath="root.name"] .form-group.has-error');
-        done();
-      });
+        browser.wait({duration: '20s'}).then(function(){
+          assert.equal(browser.window.$('input[name="root[name]"]').val(), datapackage.name);
+          assert.equal(browser.window.$('input[name="root[title]"]').val(), datapackage.title);
+          done();
+        });
     });
 
     it('allows download of valid base profile', function(done) {
@@ -237,7 +227,6 @@ describe('DataPackagist core', function() {
           var editor = browser.window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
           var schema = jtsInfer(['name', 'age'], [['John', '33', '123asd']]);
 
-
           editor.rows[0].setValue({
             name: 'test',
             path: 'test.csv',
@@ -245,7 +234,6 @@ describe('DataPackagist core', function() {
           }, true);
 
           editor.rows[0].dataSource = {schema: schema, data: 'name,age\nJohn,33,123asd'};
-
 
           browser.window.APP.layout.validationResultList.validateResources(editor.rows);
 
@@ -263,7 +251,6 @@ describe('DataPackagist core', function() {
       browser.visit('/', function() {
         var editor = browser.window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
         var schema = jtsInfer(['name', 'age'], [['John', '33']]);
-
 
         // Don't know how to simulate file upload
         editor.rows[0].setValue({
@@ -313,7 +300,7 @@ describe('DataPackagist core', function() {
         editor.rows[1].dataSource = {schema: schema, data: 'name,age\nJane,55,invalid'};
         browser.click('#validate-resources');
 
-        browser.wait({duration: '5s', element: '#validation-result:not([hidden])'}).then(function() {
+        browser.wait({duration: '25s', element: '#validation-result:not([hidden])'}).then(function() {
           assert(browser.window.$('#ok-message').prop('hidden'));
           browser.assert.elements('#validation-result [data-id=errors-list] .result', 1);
           done();
@@ -374,7 +361,7 @@ describe('DataPackagist core', function() {
         resource = CSV.getResourceFromCSVResult({name: 'file1.csv'}, true, result);
 
         assert.equal(resource.info.name, 'file1');
-        assert.equal(resource.info.title, 'file1');
+        assert.equal(resource.info.title, 'File');
         assert.equal(resource.info.path, 'file1.csv');
         assert.equal(resource.info.url, '');
         assert.equal(resource.info.format, 'CSV');
@@ -395,7 +382,7 @@ describe('DataPackagist core', function() {
         resource = CSV.getResourceFromCSVResult('https://rawgit.com/dataprotocols/registry/master/registry.csv', false, result);
 
         assert.equal(resource.info.name, 'registry');
-        assert.equal(resource.info.title, 'registry');
+        assert.equal(resource.info.title, 'Registry');
         assert.equal(resource.info.path, '');
         assert.equal(resource.info.url, 'https://rawgit.com/dataprotocols/registry/master/registry.csv');
         assert.equal(resource.info.format, 'CSV');
@@ -415,7 +402,7 @@ describe('DataPackagist core', function() {
         resource = CSV.getResourceFromCSVResult({name: 'file1.csv'}, true, result);
 
         assert.equal(resource.info.name, 'file1');
-        assert.equal(resource.info.title, 'file1');
+        assert.equal(resource.info.title, 'File');
         assert.equal(resource.info.path, 'file1.csv');
         assert.equal(resource.info.url, '');
         assert.equal(resource.info.format, 'CSV');
@@ -436,7 +423,7 @@ describe('DataPackagist core', function() {
         resource = CSV.getResourceFromCSVResult('https://rawgit.com/dataprotocols/registry/master/registry.csv', false, result);
 
         assert.equal(resource.info.name, 'registry');
-        assert.equal(resource.info.title, 'registry');
+        assert.equal(resource.info.title, 'Registry');
         assert.equal(resource.info.path, '');
         assert.equal(resource.info.url, 'https://rawgit.com/dataprotocols/registry/master/registry.csv');
         assert.equal(resource.info.format, 'CSV');

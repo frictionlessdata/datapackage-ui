@@ -5,6 +5,7 @@ var _ = require('underscore');
 var Promise = require('bluebird');
 var csvParser = require('papaparse');
 var jtsInfer = require('json-table-schema').infer;
+var titleize = require('i')().titleize;
 
 
 function createCSVResourse() {
@@ -55,7 +56,7 @@ function createCSVResourse() {
         },
 
         getTitle: function (name) {
-            return name;
+            return titleize(name).replace(/\s+/g, ' ').trim();
         },
 
         getResourceFromCSVResult: function (source, isFile, result) {
