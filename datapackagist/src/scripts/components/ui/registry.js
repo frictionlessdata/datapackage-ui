@@ -111,7 +111,7 @@ module.exports = {
         }
 
         request
-          .get(config.corsProxyURL(profile.get('schema')))
+          .get(profile.get('schema'))
 
           .then((function(R) {
             this.schemaData = JSON.parse(R.text);
