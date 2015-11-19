@@ -22,7 +22,7 @@
 
 <body>
 
-<!--[if lt IE 8]>
+<!--[if lt IE 10]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
@@ -193,6 +193,12 @@
 
   <div id="overlay" class="overlay" hidden>&nbsp;</div>
   <div id="loading" class="splash" hidden>Loading...</div>
+  <div hidden>
+    <form id="downloadForm" action="/download/datapackage.json" method="post">
+      <input id="downloadJson" type="text" name="json" value="" />
+      <input type="submit" value="submit" />
+    </form>
+  </div>
 
   <!-- validation results-->
   <div id="validation-result" class="modal fade" tabindex="-1">
@@ -257,6 +263,7 @@
   <div id="how-it-works-dialog" class="modal fade" tabindex="-1"></div>
 </section>
 
+<script src="xhr-polyfill.js"></script>
 <script src="vendor.min.js"></script>
 <script type="text/javascript">$ = jQuery = require('jquery');</script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>

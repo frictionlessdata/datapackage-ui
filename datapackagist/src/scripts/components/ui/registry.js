@@ -1,3 +1,4 @@
+var config = require('../../config');
 var backbone = require('backbone');
 var $ = require('jquery');
 var _ = require('underscore');
@@ -110,7 +111,7 @@ module.exports = {
         }
 
         request
-          .get(profile.get('schema'))
+          .get(config.corsProxyURL(profile.get('schema')))
 
           .then((function(R) {
             this.schemaData = JSON.parse(R.text);

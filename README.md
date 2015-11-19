@@ -34,6 +34,10 @@ To use the app, you don't need to know the technical details of what a `datapack
 3. How to download files via standard web form buttons.
 4. How to find any downloaded `datapackage.json` files, and take them for further use. For example, to add them to new or existing resources on CKAN or DKAN.
 
+#### Supported Browsers:
+
+Chrome, Firefox, Safari 9.x and above, IE10 and above
+
 #### Scenarios
 
 ##### Starting from scratch
