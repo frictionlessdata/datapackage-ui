@@ -67,7 +67,13 @@ module.exports = backbone.Router.extend({
     if(!registryList.collection)
       // Other routes need to wait for registry to be able to define profile in registry select box
       return new Promise(function(RS, RJ) {
-        registry.get().then((function(D) { registryList.reset(new backbone.Collection(D)).then(RS); }).bind(this));
+        registry.get().then((
+          function(D) {
+            registryList.reset(new backbone.Collection(D)).then(RS);
+          }
+        ).bind(this)).catch(function(message){
+          console.log(message);
+        });
       });
 
     // Default value for more consistency

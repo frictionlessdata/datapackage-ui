@@ -15,11 +15,12 @@ module.exports = backbone.BaseView.extend({
       var href = this.$el.attr('href');
       if ((href == '') || this.$el.hasClass('is-empty')) {
         window.APP.layout.notificationDialog.showValidationErrors();
-
-        event.preventDefault();
-        event.returnValue = false;
-        return false;
+      } else {
+        window.APP.layout.downloadForm.download();
       }
+      event.preventDefault();
+      event.returnValue = false;
+      return false;
     }
   },
   reset: function(descriptor, schema) {
@@ -27,13 +28,14 @@ module.exports = backbone.BaseView.extend({
 
     this.$el.addClass('disabled is-empty').attr('href', '');
 
+      window.APP.layout.downloadForm.setJson({});
+
     // Drop errors of empty fields which are actually not required
     validator.validate(descriptor, schema).then((function(R) {
       var errors = _.filter(R.errors, function(E) {
         var editor = form.getEditor(convertPath(E.dataPath));
         var isRequired = editor.parent && _.contains(editor.parent.schema.required, editor.key);
         var value = editor.getValue();
-
 
         return isRequired || !isRequired && editor.getValue() && !_.isEmpty(deepEmpty(editor.getValue()));
       });
@@ -59,11 +61,11 @@ module.exports = backbone.BaseView.extend({
       });
 
       if(!errors.length && !_.isEmpty(descriptor)) {
+        window.APP.layout.downloadForm.setJson(descriptor);
+
         this.$el
           .removeClass('disabled is-empty')
-          .attr('href', encodeURI(outfile(descriptor, {
-            IE9: window.APP.browser.name == 'ie' && parseInt(window.APP.browser.version.split('.')[0]) <= 9
-          })));
+          .attr('href', '#');
       }
     }).bind(this));
 
