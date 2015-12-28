@@ -1,12 +1,11 @@
 var _ = require('underscore');
+var Promise = require('bluebird');
 var backbone = require('backbone');
-var backboneBase = require('backbone-base');
 var Goodtables = require('goodtables');
 var navigation = require('./navigation');
-var Promise = require('bluebird');
 var validationErrorRowTpl = require('./templates/validation-error-row.hbs');
 var validator = require('validator');
-
+var dialogs = require('./dialog');
 
 module.exports = {
   // Render reource data file validation error
@@ -16,19 +15,18 @@ module.exports = {
       this.$('#ok-message').prop('hidden', true);
       view.activate(view.model.get('resource_id') === this.parent.activeResource);
       backbone.BaseListView.prototype.addItemView.call(this, view);
+      this.parent.layout.tabs.activate();
       return this;
     },
 
     clear: function() {
       backbone.BaseListView.prototype.clear.call(this);
       this.$('#ok-message').prop('hidden', false);
-      this.parent.layout.tabs.clear();
+      this.parent.layout.tabs.clear().deactivate();
       return this;
     },
 
     ItemView: backbone.BaseView.extend({
-      attributes: {class: 'result panel panel-default'},
-
       render: function() {
         this.$el.html(this.template(_.extend(this.model.toJSON(), {
           isheader: this.model.get('row_index') === 0
@@ -48,43 +46,41 @@ module.exports = {
   }),
 
   // Errors list with tabs for navigating between errors groupped by resource
-  ValidationResultsView: backbone.BaseView.extend({
-    events: {'click [data-id=back]': function() { window.ROUTER.navigate('/', {trigger: true}); return false; }},
-
+  ValidationResultsView: dialogs.BaseModalView.extend({
     render: function() {
-      this.layout.tabs = new navigation.TabsView({el: this.$('[data-id=tabs]')});
-      this.layout.list = new module.exports.ListView({el: this.$('[data-id=errors-list]'), parent: this});
+      this.layout.tabs = new navigation.TabsView({
+        el: this.$('[data-id=tabs]'),
+        parent: this
+      });
+      this.layout.list = new module.exports.ListView({
+        el: this.$('[data-id=errors-list]'),
+        parent: this
+      });
       return this;
     },
 
     validateResources: function(resourcesRows) {
       var goodTables = new Goodtables({method: 'post', report_type: 'grouped'});
 
-      // Navigate to valifation results just once during series of API calls
-      var navigateToResults = _.once(function(id) { window.ROUTER.navigate('/validation-results/' + id, {trigger: true}); });
-
-
       this.layout.list.reset(new backbone.Collection());
-      // Validate each row, one by one, render errors after each row validated
       Promise.each(
         resourcesRows,
-        function(R, I) {
-          return window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources').getDataSource(I)
+        function(row, index) {
+          return window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources').getDataSource(index)
         }
       ).then((function(DS) {
           var that = this;
-
         _.each(DS, function(R) {
           // Conditional promises
           return (function() {
             // Resource was downloaded by user
-            if(R.dataSource)
+            if(R.dataSource) {
               return goodTables.run(R.dataSource.data, JSON.stringify(R.dataSource.schema));
+            }
 
             // Default fall back
             return new Promise(function(RS, RJ) { RS(false); });
           })()
-
             .then(function(M) {
               if(!M)
                 return false;
@@ -100,29 +96,38 @@ module.exports = {
 
               // Navigate between resources in validation results
               if(!_.isEmpty(M.getGroupedByRows()))
+                var value = R.getValue();
                 that.layout.tabs.add(new backbone.Model({
-                  title: R.getValue().path,
-
-                  // .key is a unique property among all resources rows
-                  url: '/validation-results/' + R.key
+                  title: value.title || value.name || value.path || value.url,
+                  resource_id: R.key
                 }));
             })
 
             .catch(console.log);
       }, this) }).bind(this)).then((function() {
         // After all resources validated navigate to first tab
-        navigateToResults(
-          this.layout.list.collection.length ? this.layout.list.collection.at(0).get('resource_id') : '0'
-        );
+        var key = this.layout.list.collection.length ?
+          this.layout.list.collection.at(0).get('resource_id') : '0';
+        window.APP.layout.validationResultList.activate().setActive(key);
       }).bind(this));
 
       return this;
     },
 
-    // Show certain resource validation errors
     setActive: function(id) {
       this.activeResource = id;
-      this.layout.list.layout.items.forEach(function(I) { I.activate(I.model.get('resource_id') === id); });
+      this.layout.list.layout.items.forEach(
+        function(item) {
+          item.activate(item.model.get('resource_id') == id);
+        }
+      );
+      this.layout.tabs.layout.items.forEach(
+        function(item) {
+          if (item.model.get('resource_id') == id) {
+            item.setActive(true);
+          }
+        }
+      );
       return this;
     }
   })

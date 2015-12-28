@@ -9,6 +9,7 @@ var validationResult = require('./validationresult');
 var UploadDatapackageView = require('./upload-datapackage');
 var UploadView = require('./upload-dialog');
 var HowItWorksView = require('./how-it-works-dialog');
+var downloadFormView = require('./downloadForm');
 
 
 module.exports = backbone.BaseView.extend({
@@ -27,6 +28,7 @@ module.exports = backbone.BaseView.extend({
     this.layout.download = new DownloadView({el: window.APP.$('#download-data-package')});
     this.layout.download2 = new DownloadView({el: window.APP.$('#download-data-package2')});
     this.layout.navbar = new navigation.NavbarView({el: window.APP.$('#navbar')});
+    this.layout.downloadForm = new downloadFormView({el: window.APP.$('#downloadForm')});
 
     this.layout.validationResultList = (new validationResult.ValidationResultsView({
       el: window.APP.$('#validation-result')

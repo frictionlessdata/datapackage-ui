@@ -1,3 +1,4 @@
+var config = require('../../config');
 var backbone = require('backbone');
 var $ = require('jquery');
 var _ = require('underscore');

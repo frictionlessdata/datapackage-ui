@@ -1,6 +1,5 @@
 var _ = require('underscore');
 var backbone = require('backbone');
-var backboneBase = require('backbone-base');
 var deepEmpty = require('deep-empty');
 var outfile = require('datapackage-outfile');
 var validator = require('datapackage-validate');
@@ -11,11 +10,25 @@ function convertPath(path) { return 'root' + path.replace(/\//g, '.'); }
 
 // Download validated datapackage
 module.exports = backbone.BaseView.extend({
+  events: {
+    'click': function(event) {
+      var href = this.$el.attr('href');
+      if ((href == '') || this.$el.hasClass('is-empty')) {
+        window.APP.layout.notificationDialog.showValidationErrors();
+      } else {
+        window.APP.layout.downloadForm.download();
+      }
+      event.preventDefault();
+      event.returnValue = false;
+      return false;
+    }
+  },
   reset: function(descriptor, schema) {
     var form = window.APP.layout.descriptorEdit.layout.form;
 
+    this.$el.addClass('disabled is-empty').attr('href', '');
 
-    this.$el.addClass('disabled');
+      window.APP.layout.downloadForm.setJson({});
 
     // Drop errors of empty fields which are actually not required
     validator.validate(descriptor, schema).then((function(R) {
@@ -23,7 +36,6 @@ module.exports = backbone.BaseView.extend({
         var editor = form.getEditor(convertPath(E.dataPath));
         var isRequired = editor.parent && _.contains(editor.parent.schema.required, editor.key);
         var value = editor.getValue();
-
 
         return isRequired || !isRequired && editor.getValue() && !_.isEmpty(deepEmpty(editor.getValue()));
       });
@@ -48,13 +60,13 @@ module.exports = backbone.BaseView.extend({
         _.each(editor.editors, function(V, K) { V.showValidationErrors(V.jsoneditor.validation_results); });
       });
 
-      if(!errors.length && !_.isEmpty(descriptor))
-        this.$el
-          .removeClass('disabled')
+      if(!errors.length && !_.isEmpty(descriptor)) {
+        window.APP.layout.downloadForm.setJson(descriptor);
 
-          .attr('href', encodeURI(outfile(descriptor, {
-            IE9: window.APP.browser.name == 'ie' && parseInt(window.APP.browser.version.split('.')[0]) <= 9
-          })));
+        this.$el
+          .removeClass('disabled is-empty')
+          .attr('href', '#');
+      }
     }).bind(this));
 
     return this;

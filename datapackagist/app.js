@@ -1,48 +1,53 @@
 var _ = require('underscore');
 var express = require('express');
 var app = express();
-var superagent = require('superagent-bluebird-promise');
 var validator = require('validator');
+var request_agent = require('request');
+var bodyParser = require('body-parser')
+
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
 
 app.use(express.static(__dirname + '/dist'));
+app.use('/examples', express.static(__dirname + '/../examples'));
 
-app.get('/cors-proxy/*', function(request, response) {
-  var url = request.params[0];
 
-  if(!validator.isURL(url)) {
+app.all('/download/*', function(req, res) {
+  var jsonString = req.body.json;
+  console.log('------------------------------------------------');
+  res.writeHead(200, { 'Content-Type': 'application/octet-stream', 'Content-Disposition': 'attachment; filename="datapackage.json"' });
+  res.write(jsonString);
+  res.end();
+});
+
+app.get('/cors-proxy/*', function(req, response) {
+  var url = req.params[0];
+
+  if(!validator.isURL(url.replace(/ /g, '%20'))) {
     response.send('URL you passed is invalid');
     return false;
   }
 
   var urlParams = '';
-  if (!_.isEmpty(request.query)) {
-    urlParams = '?' + _.chain(request.query).pairs().map(function(pair) {
+  if (!_.isEmpty(req.query)) {
+    urlParams = '?' + _.chain(req.query).pairs().map(function(pair) {
         return pair.join('=')
       }).value().join('&')
   }
-  superagent.get(request.params[0] + urlParams).then(function(data) {
-    var contentType = data.header['content-type'];
-
-    var headers = {
-      'access-control-allow-origin': '*'
-    };
-    if (contentType) {
-      headers = _.extend(headers, {
-        'content-type': contentType
-      });
-    }
-    response
-      .set(headers)
-      .send(data.text);
-  });
+  req.pipe(request_agent(req.params[0] + urlParams)).pipe(response);
 });
 
-app.get('/', function(request, response) {
+app.get('*', function(request, response) {
   response.sendFile(__dirname + '/dist/index.html');
 });
 
 app.use(function(req, res) {
   res.status(404).send('This page cannot be found.');
 });
+
+var port = process.env.PORT || 3000;
+app.set('port', port);
 
 module.exports = app;
