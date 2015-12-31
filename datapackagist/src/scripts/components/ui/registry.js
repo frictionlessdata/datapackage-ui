@@ -46,7 +46,7 @@ module.exports = {
                 .setCallbacks({
                   yes: (function() {
                     this.selectedValue = id;
-                    this.parent.reset(schemaData);
+                    this.parent.reset(schemaData, this.collection.get(id).get('schema'));
                     window.APP.layout.confirmationDialog.deactivate();
                     return false;
                   }).bind(this),
@@ -62,7 +62,7 @@ module.exports = {
             else
               this.selectedValue = id;
 
-            this.parent.reset(schemaData);
+            this.parent.reset(schemaData, this.collection.get(id).get('schema'));
           }).bind(this));
       }
     },
@@ -110,15 +110,12 @@ module.exports = {
           return false;
         }
 
-        request
-          .get(profile.get('schema'))
-
-          .then((function(R) {
+        request.get(profile.get('schema')).then((function(R) {
             this.schemaData = JSON.parse(R.text);
             updatePackageInfo(this.collection.get(id), this.schemaData);
-            this.parent.reset(this.schemaData);
+            this.parent.reset(this.schemaData, profile.get('schema'));
             RS(this.schemaData);
-          }).bind(this));
+        }).bind(this));
       }).bind(this));
     },
 

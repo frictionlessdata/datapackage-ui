@@ -7,19 +7,16 @@ var validator = require('datapackage-validate');
 var request = require('superagent-bluebird-promise');
 var Promise = require('bluebird');
 
-
-var updateUI = function (fileNameOrUrl) {
-  var noSelection = $('#step1-no-file-selected');
-  var currentSelection = $('#step1-selected-file');
-  if (fileNameOrUrl) {
-    noSelection.hide();
-    currentSelection.show().find('span').text(fileNameOrUrl);
-  }
-};
-
-
 // Upload datapackage
 module.exports = backbone.BaseView.extend({
+  updateUI: function (fileNameOrUrl) {
+    var noSelection = $('#step1-no-file-selected');
+    var currentSelection = $('#step1-selected-file');
+    if (fileNameOrUrl) {
+      noSelection.hide();
+      currentSelection.show().find('span').text(fileNameOrUrl);
+    }
+  },
 
   // Update edit form and download URL
   updateApp: function(descriptor) {
@@ -85,6 +82,8 @@ module.exports = backbone.BaseView.extend({
       ).setCallbacks({
             processLocalFile: (
                 function(file) {
+                  var that = this;
+
                   return new Promise((function (resolve, reject) {
                     try {
                       FileAPI.readAsText(
@@ -93,7 +92,7 @@ module.exports = backbone.BaseView.extend({
                             if(fileInfo.type === 'load') {
                               this.processJSONData(fileInfo.result).then(function(status){
                                 if (status){
-                                  updateUI(file.name);
+                                  that.updateUI(file.name);
                                 }
                                 resolve(status);
                               });
@@ -108,12 +107,13 @@ module.exports = backbone.BaseView.extend({
             ).bind(this),
             processURL: (
                 function(url) {
+                  var that = this;
                   return new Promise((function (resolve, reject) {
                       request.get(config.corsProxyURL(url)).then(
                           (function(res) {
                             this.processJSONData(res.text).then(function(status){
                               if (status){
-                                updateUI(url);
+                                that.updateUI(url);
                               }
                               resolve(status);
                             });

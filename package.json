@@ -18,7 +18,7 @@
     "datapackage-from-remote": "git+https://github.com/okfn/datapackage-from-remote-js.git",
     "datapackage-outfile": "^0.1.0",
     "datapackage-registry": "0.2.1",
-    "datapackage-validate": "0.2.4",
+    "datapackage-validate": "0.2.5",
     "deep-compact": "^0.2.4",
     "deep-diff": "^0.3.2",
     "deep-empty": "^0.1.4",
@@ -74,7 +74,7 @@
   },
   "scripts": {
     "build": "gulp",
-    "test": "mocha tests --recursive --reporter spec",
+    "test": "mocha tests --recursive --harmony --reporter spec",
     "start": "node datapackagist",
     "start_dev": "gulp dev & node datapackagist",
     "deploy": "git push heroku master"
