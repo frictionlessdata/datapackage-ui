@@ -6,6 +6,7 @@ var app = require('../datapackagist/app');
 var assert = require('chai').assert;
 var config = require('../datapackagist/src/scripts/config');
 var datapackage;
+var definitionsJSON;
 var fromRemoteJSON;
 var fs = require('fs');
 var nock = require('nock')
@@ -21,7 +22,9 @@ process.env.NODE_ENV = 'test';
 Browser.localhost('127.0.0.1', 3000);
 
 describe('DataPackagist core', function() {
-  var browser = new Browser({maxWait: 30000});
+  var browser = new Browser({maxWait: 50000});
+  //browser.debug();
+
   var registryListSelector = '#registry-list [data-id=list-container] option';
 
   // ensure we have time for request to reoslve, etc.
@@ -30,6 +33,9 @@ describe('DataPackagist core', function() {
   before(function(done) {
     fs.readFile(path.join(dataDir, 'registry-list.json'), function(error, data) {
       registryListCSV = data.toString();
+
+      fs.readFile(path.join(dataDir, 'definitions.json'), function(error, definitionsData) {
+        definitionsJSON = JSON.parse(definitionsData.toString());
 
       fs.readFile(path.join(dataDir, 'datapackage-profile.json'), function(error, profileData) {
         datapackageProfileJSON = JSON.parse(profileData.toString());
@@ -42,25 +48,37 @@ describe('DataPackagist core', function() {
           fs.readFile(path.join(dataDir, 'tabular-profile.json'), function(error, data) {
             fromRemoteJSON = data.toString();
 
-            nock('https://rawgit.com')
+            nock('http://schemas.datapackages.org')
               .persist()
-              .get('/dataprotocols/registry/master/registry.csv')
+              .get('/definitions.json')
+              .reply(200, definitionsJSON, {'access-control-allow-origin': '*'});
+
+            // Use this csv as resource file in some test cases
+            nock(config.corsProxyURL(''))
+              .persist()
+              .get('/http://schemas.datapackages.org/definitions.json')
+              .reply(200, definitionsJSON, {'access-control-allow-origin': '*'});
+
+
+            nock('http://schemas.datapackages.org')
+              .persist()
+              .get('/registry.csv')
               .reply(200, registryListCSV, {'access-control-allow-origin': '*'});
 
             // Use this csv as resource file in some test cases
             nock(config.corsProxyURL(''))
               .persist()
-              .get('/https://rawgit.com/dataprotocols/registry/master/registry.csv')
+              .get('/http://schemas.datapackages.org/registry.csv')
               .reply(200, registryListCSV, {'access-control-allow-origin': '*'});
 
-            nock('https://rawgit.com')
+            nock('http://schemas.datapackages.org')
               .persist()
-              .get('/dataprotocols/schemas/master/data-package.json')
+              .get('/data-package.json')
               .reply(200, datapackageProfileJSON, {'access-control-allow-origin': '*'});
 
-            nock('https://rawgit.com')
+            nock('http://schemas.datapackages.org')
               .persist()
-              .get('/dataprotocols/schemas/master/tabular-data-package.json')
+              .get('/tabular-data-package.json')
               .reply(200, tabularProfileJSON, {'access-control-allow-origin': '*'});
 
             nock([corsProxyURL.protocol, corsProxyURL.hostname].join('//'))
@@ -76,6 +94,7 @@ describe('DataPackagist core', function() {
             });
           });
         });
+      });
       });
     });
   });
@@ -109,9 +128,9 @@ describe('DataPackagist core', function() {
 
     it('constructs the form from the base profile by default', function(done) {
       // tests that the form is built to create a base profile datapackage.json
-      browser.wait({duration: '5s', element: registryListSelector}).then(function() {
+      browser.wait({duration: '30s', element: registryListSelector}, function() {
         browser.assert.element('#registry-list [data-id=list-container] option[value=base]:selected');
-        assert.equal(browser.window.APP.layout.descriptorEdit.layout.form.schema.title, 'DataPackage');
+        assert.equal(browser.window.APP.layout.descriptorEdit.layout.registryList.schemaData.title, 'Data Package');
         done();
       });
     });
@@ -124,28 +143,25 @@ describe('DataPackagist core', function() {
       });
     });
 
-    it('populates on valid descriptor upload', function(done) {
-        var uploadDatapackage = browser.window.APP.layout.uploadDatapackage;
-        uploadDatapackage.events.click.call(uploadDatapackage);
-
-        uploadDatapackage.processJSONData(JSON.stringify(datapackage)).then(function(res){return;});
-
-        browser.wait({duration: '20s'}).then(function(){
-          assert.equal(browser.window.$('input[name="root[name]"]').val(), datapackage.name);
-          assert.equal(browser.window.$('input[name="root[title]"]').val(), datapackage.title);
-          done();
-        });
-    });
-
-    it('allows download of valid base profile', function(done) {
+    it('allows download of valid base profile', function(done) {//fails
       // try to download valid base profile
       browser.visit('/', function() {
-        browser.fill('[name="root[name]"]', 'name');
+      browser.fill('[name="root[name]"]', 'name');
 
-        browser.wait({duration: '5s', element: '#download-data-package:not(.disabled)'}).then(function() {
-          assert(!browser.window.$('#download-data-package').hasClass('disabled'), 'Download button not enabled');
-          done();
-        });
+      browser.window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources').rows[0].setValue({
+        name: 'test',
+        path: 'test.csv',
+        schema: jtsInfer(['name', 'age'], [['John', '33']])
+      }, true);
+
+        setTimeout(function(){
+            browser.wait({duration: '20000', element: '#download-data-package:not(.disabled)'}, function() {
+              assert(!browser.window.$('#download-data-package').hasClass('disabled'), 'Download button not enabled');
+              done();
+            });
+          },
+          2000
+        );
       });
     });
 
@@ -153,6 +169,11 @@ describe('DataPackagist core', function() {
       // try to download invalid base profile
       browser.visit('/', function() {
         browser.fill('[name="root[name]"]', 'Invalid name');
+      browser.window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources').rows[0].setValue({
+        name: 'test',
+        path: 'test.csv',
+        schema: jtsInfer(['name', 'age'], [['John', '33']])
+      }, true);
 
         // Download button is disabled by default, and it should be disabled
         // after validation request done
@@ -205,7 +226,7 @@ describe('DataPackagist core', function() {
 
     it('populates a resource in the resources array when uploading a valid resource', function(done) {
       // ensure that a valid resource file upload results in a new resource object
-      browser.visit('/', function() {
+//      browser.visit('/', function() {
         // Don't know how to simulate file upload
         browser.window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources').rows[0].setValue({
           name: 'test',
@@ -216,7 +237,7 @@ describe('DataPackagist core', function() {
         assert.equal(browser.window.$('[name="root[resources][0][name]"]').val(), 'test');
         assert.equal(browser.window.$('[name="root[resources][0][path]"]').val(), 'test.csv');
         done();
-      });
+//      });
     });
 
     it('errors when uploading an invalid resource', function(done) {
@@ -263,7 +284,8 @@ describe('DataPackagist core', function() {
 
         editor.addRow({
           name: 'test',
-          url: 'https://rawgit.com/dataprotocols/registry/master/registry.csv'
+//          url: 'https://rawgit.com/dataprotocols/registry/master/registry.csv'
+          url: 'http://schemas.datapackages.org/registry.csv'
         }, true);
 
         browser.click('#validate-resources');
@@ -352,7 +374,6 @@ describe('DataPackagist core', function() {
     });
   });
 
-
   describe('CSV-resourse library tests', function() {
     it('Load resource from file/text all records', function(done) {
 
@@ -379,12 +400,15 @@ describe('DataPackagist core', function() {
 
       CSV.parseFile('name,age\nJohn,33\nJohn,36').then(function (result){
         var resource;
-        resource = CSV.getResourceFromCSVResult('https://rawgit.com/dataprotocols/registry/master/registry.csv', false, result);
+//        resource = CSV.getResourceFromCSVResult('https://rawgit.com/dataprotocols/registry/master/registry.csv', false, result);
+        resource = CSV.getResourceFromCSVResult('http://schemas.datapackages.org/registry.csv', false, result);
+
 
         assert.equal(resource.info.name, 'registry');
         assert.equal(resource.info.title, 'Registry');
         assert.equal(resource.info.path, '');
-        assert.equal(resource.info.url, 'https://rawgit.com/dataprotocols/registry/master/registry.csv');
+//        assert.equal(resource.info.url, 'https://rawgit.com/dataprotocols/registry/master/registry.csv');
+        assert.equal(resource.info.url, 'http://schemas.datapackages.org/registry.csv');
         assert.equal(resource.info.format, 'CSV');
         assert.equal(resource.info.mediatype, 'text/csv');
         assert.equal(resource.info.schema.fields.length, 2);
@@ -420,12 +444,14 @@ describe('DataPackagist core', function() {
 
       CSV.parseFile('name,age\nJohn,33\nJohn,36\nJohn3,336\nJohn4,365', {preview: 2}).then(function (result){
         var resource;
-        resource = CSV.getResourceFromCSVResult('https://rawgit.com/dataprotocols/registry/master/registry.csv', false, result);
+//        resource = CSV.getResourceFromCSVResult('https://rawgit.com/dataprotocols/registry/master/registry.csv', false, result);
+        resource = CSV.getResourceFromCSVResult('http://schemas.datapackages.org/registry.csv', false, result);
 
         assert.equal(resource.info.name, 'registry');
         assert.equal(resource.info.title, 'Registry');
         assert.equal(resource.info.path, '');
-        assert.equal(resource.info.url, 'https://rawgit.com/dataprotocols/registry/master/registry.csv');
+//        assert.equal(resource.info.url, 'https://rawgit.com/dataprotocols/registry/master/registry.csv');
+        assert.equal(resource.info.url, 'http://schemas.datapackages.org/registry.csv');
         assert.equal(resource.info.format, 'CSV');
         assert.equal(resource.info.mediatype, 'text/csv');
         assert.equal(resource.info.schema.fields.length, 2);
@@ -450,7 +476,6 @@ describe('DataPackagist core', function() {
       });
     });
   });
-
 
   describe('Modals', function() {
     it('Should show loader when adding new resource', function(done) {
@@ -485,5 +510,4 @@ describe('DataPackagist core', function() {
     });
 
   });
-
 });

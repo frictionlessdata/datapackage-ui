@@ -9,10 +9,25 @@ var _ = require('underscore');
 var $ = require('jquery');
 var Promise = require('bluebird');
 var CSV = require('./csv-resource');
+var request = require('superagent-bluebird-promise');
+var getRefsMapping = require('./definitions');
+var url = require("url");
 
 // !!!!This import is just for extending json editor with custom editor
 // NEVER REMOVE IT!
 var resourceEditor = require('./resource-editor');
+
+
+function getDefinitionUrl(schemaUrl) {
+  var urlComponents = url.parse(schemaUrl);
+  var tempArray = urlComponents.pathname.split('/');
+  tempArray.pop();
+  tempArray.push('definitions.json');
+  urlComponents.search = '';
+  urlComponents.pathname  = tempArray.join('/');
+  return url.format(urlComponents);
+}
+
 
 // Upload data file and populate .resource array with item
 DataUploadView = backbone.BaseView.extend({
@@ -185,9 +200,11 @@ module.exports = {
       return this;
     },
 
-    reset: function(schema) {
+    reset: function(schema, schemaURL) {
+      var refs = {};
       var init = (function(formData, resourceDataSources) {
         this.layout.form = new jsonEditor.JSONEditorView(this.$('[data-id=form-container]').get(0), {
+          refs              : refs,
           schema            : schema,
           show_errors       : 'change',
           theme             : 'bootstrap3',
@@ -223,23 +240,28 @@ module.exports = {
         $('#json-code').prop('hidden', true);
       }).bind(this);
 
+      request.get(getDefinitionUrl(schemaURL))
+        .then((function(definitions) {
+          refs = getRefsMapping(schema, JSON.parse(definitions.text) );
+          if(this.layout.form) {
+            Promise.map(
+              this.layout.form.getEditor('root.resources').rows,
+              (function(R, I) { return this.layout.form.getEditor('root.resources').getDataSource(I) }).bind(this)
+              )
+              .then((function(R) {
+                var formData = this.layout.form.getCleanValue();
+
+                this.layout.form.destroy();
+                this.layout.uploadData.undelegateEvents().remove();
+                init(formData, R);
+              }).bind(this))
+
+              .catch(console.error.bind(console));
+          } else {
+            init();
+          }
+        }).bind(this))
       // Clean up previous state
-      if(this.layout.form) {
-        Promise.map(
-          this.layout.form.getEditor('root.resources').rows,
-          (function(R, I) { return this.layout.form.getEditor('root.resources').getDataSource(I) }).bind(this)
-        )
-          .then((function(R) {
-            var formData = this.layout.form.getCleanValue();
-
-            this.layout.form.destroy();
-            this.layout.uploadData.undelegateEvents().remove();
-            init(formData, R);
-          }).bind(this))
-
-          .catch(console.error.bind(console));
-      } else
-        init();
     },
 
     showResult: function() {
