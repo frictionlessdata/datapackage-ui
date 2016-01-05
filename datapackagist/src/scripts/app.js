@@ -1,3 +1,4 @@
+require('isomorphic-fetch/fetch-npm-browserify');
 var backbone = require('backbone');
 var BigbangView = require('./components/ui/bigbang');
 var Router = require('./router');
