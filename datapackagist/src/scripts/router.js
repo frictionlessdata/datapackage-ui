@@ -34,9 +34,9 @@ module.exports = backbone.Router.extend({
     this.index().then(function() {
       try {
         dpFromRemote(
-          config.corsProxyURL(unescape(options.url)),
-          _.extend(options, {datapackage: profile})
-        )
+          unescape(options.url),
+          _.extend(options, {datapackage: profile}, config)
+          )
           .then(function(D) {
             // Update registry and descriptor schema list and then set descriptor form value
             descriptorEdit.layout.registryList.setSelected(profile).then(function() {
