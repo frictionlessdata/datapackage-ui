@@ -19,6 +19,7 @@ var resourceEditor = require('./resource-editor');
 
 
 function getDefinitionUrl(schemaUrl) {
+  return 'https://raw.githubusercontent.com/borysyuk/schemas/master/definitions.json';
   var urlComponents = url.parse(schemaUrl);
   var tempArray = urlComponents.pathname.split('/');
   tempArray.pop();
@@ -35,6 +36,7 @@ DataUploadView = backbone.BaseView.extend({
   addResource: function (resourceInfo) {
     var editor;
     editor = window.APP.layout.descriptorEdit.layout.form.getEditor('root.resources');
+
     editor.add(resourceInfo.info, {schema: resourceInfo.info.schema, data: resourceInfo.data});
   },
 
@@ -212,6 +214,7 @@ module.exports = {
           disable_edit_json : true,
           disable_properties: true,
           iconlib           : 'fontawesome4',
+          keep_oneof_values : false,
           initialData       : formData
         });
 

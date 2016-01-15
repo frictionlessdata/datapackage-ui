@@ -11,6 +11,7 @@ JSONEditorView.prototype.init = _.wrap(JSONEditorView.prototype.init, function(i
   init.apply(this, _.rest(arguments));
 
   this.on('ready', (function() {
+
     // Remove Top-level collapse button
     $(this.root.toggle_button).remove();
 
@@ -30,11 +31,9 @@ JSONEditorView.prototype.init = _.wrap(JSONEditorView.prototype.init, function(i
       this.changed = true;
 
       // Expand resources section if there are any resources, collapse if row is empty
-      if(resourcesLength && resources.collapsed || !resourcesLength && !resources.collapsed)
+      if(resourcesLength && resources.collapsed || !resourcesLength && !resources.collapsed) {
         $(resources.toggle_button).trigger('click');
-
-      // Do not allow changing schema field type — disable type selectbox
-      $('[data-schemapath]:not([data-schematype]) select.form-control', this.element).prop('hidden', true);
+      }
     }).bind(this)));
 
     // Collapse editor and add empty item if it has no value
