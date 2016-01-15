@@ -19,7 +19,6 @@ var resourceEditor = require('./resource-editor');
 
 
 function getDefinitionUrl(schemaUrl) {
-  return 'https://raw.githubusercontent.com/borysyuk/schemas/master/definitions.json';
   var urlComponents = url.parse(schemaUrl);
   var tempArray = urlComponents.pathname.split('/');
   tempArray.pop();
