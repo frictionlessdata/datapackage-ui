@@ -34,7 +34,7 @@
     "isomorphic-fetch": "^2.2.0",
     "jquery": "^2.1.4",
     "json-editor": "^0.7.18",
-    "json-table-schema": "0.0.2-alpha",
+    "json-table-schema": "0.1.0",
     "marked": "^0.3.5",
     "papaparse": "git+https://github.com/mholt/PapaParse.git",
     "request": "^2.65.0",
