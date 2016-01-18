@@ -18,9 +18,16 @@ JSONEditorView.prototype.init = _.wrap(JSONEditorView.prototype.init, function(i
     // Detecting changes
     this.changed = false;
 
+    //autocomplete has been disabled because JSON Editor doesn't work properly with it on Safari
+    $( document ).on( 'focus', ':input', function(){
+      $( this ).attr( 'autocomplete', 'off' );
+    });
+
     // If on the previous form was entered values try to apply it to new form
-    if(this.options.initialData)
-      this.setValue(_.extend({}, this.getValue(this.options.initialData), this.options.initialData));
+    if(this.options.initialData) {
+      var schema = this.getValue(this.options.initialData);
+      this.setValue(_.extend({}, schema, _.pick(this.options.initialData, _.keys(schema))));
+    }
 
     // After `ready` event fired, editor fire `change` event regarding to the initial changes
     this.on('change', _.after(3, (function() {
