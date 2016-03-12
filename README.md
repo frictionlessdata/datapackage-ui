@@ -1,5 +1,6 @@
 # Data Packagist
 
+[![Gitter](https://img.shields.io/gitter/room/frictionlessdata/chat.svg)](https://gitter.im/frictionlessdata/chat)
 [![Travis Build Status](https://travis-ci.org/okfn/datapackagist.svg?branch=master)](https://travis-ci.org/okfn/datapackagist)
 [![Coveralls](http://img.shields.io/coveralls/okfn/datapackagist.svg?branch=master)](https://coveralls.io/r/okfn/datapackagist?branch=master)
 
