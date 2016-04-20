@@ -1,8 +1,8 @@
 # Data Packagist
 
 [![Gitter](https://img.shields.io/gitter/room/frictionlessdata/chat.svg)](https://gitter.im/frictionlessdata/chat)
-[![Travis Build Status](https://travis-ci.org/okfn/datapackagist.svg?branch=master)](https://travis-ci.org/okfn/datapackagist)
-[![Coveralls](http://img.shields.io/coveralls/okfn/datapackagist.svg?branch=master)](https://coveralls.io/r/okfn/datapackagist?branch=master)
+[![Travis Build Status](https://travis-ci.org/frictionlessdata/datapackagist.svg?branch=master)](https://travis-ci.org/frictionlessdata/datapackagist)
+[![Coveralls](http://img.shields.io/coveralls/frictionlessdata/datapackagist.svg?branch=master)](https://coveralls.io/r/frictionlessdata/datapackagist?branch=master)
 
 A web app for creating, editing and validating Data Packages.
 
@@ -92,7 +92,7 @@ Getting setup for local development is easy. We use [io.js](https://iojs.org/), 
 
 Once we have our base environment setup to use io.js, then you can configure the actual app:
 
-1. Create your own fork of `https://github.com/okfn/datapackagist`
+1. Create your own fork of `https://github.com/frictionlessdata/datapackagist`
 2. Clone your fork locally with `https://github.com/{YOUR_USERNAME}/datapackagist.git`
 3. Install the dependencies with `npm install`
 4. Run the server with `npm start`, and visit the app at `http://localhost:3000`
@@ -123,7 +123,7 @@ Also, notice the following conventions:
 * We separate the browser scripts to two bundles:
   * `vendor.min.js` has our dependencies
   * `app.min.js` has our code
-* Dependencies should be managed in `npm`, and not `bower`. [Add dependencies to this list](https://github.com/okfn/datapackagist/blob/master/gulpfile.js#L24) to include them in `vendor.min.js`
+* Dependencies should be managed in `npm`, and not `bower`. [Add dependencies to this list](https://github.com/frictionlessdata/datapackagist/blob/master/gulpfile.js#L24) to include them in `vendor.min.js`
 
 If you are new to some of the tooling we use - don't worry, it is not difficult! Refer to [Node Modules](https://nodejs.org/api/modules.html), [Mocha](http://mochajs.org/), [Chai](http://chaijs.com/), [Browserify](http://browserify.org/), [Gulp](http://gulpjs.com/) and [BrowserSync](http://www.browsersync.io/) for further information. These are all key tools to organizing our code and workflow.
 
