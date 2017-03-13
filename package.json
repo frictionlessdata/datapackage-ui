@@ -32,6 +32,7 @@
     "highlight-redux": "*",
     "i": "^0.3.3",
     "isomorphic-fetch": "^2.2.0",
+    "jodid25519": "^1.0.2",
     "jquery": "2.1.4",
     "json-editor": "^0.7.18",
     "json-table-schema": "0.1.0",
