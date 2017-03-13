@@ -31,6 +31,7 @@ RUN apk add --no-cache --virtual build-dependencies \
     make \
  && update-ca-certificates \
  && make install \
+ && make frontend \
  && apk del build-dependencies
 
 EXPOSE 5000
