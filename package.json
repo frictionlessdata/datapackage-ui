@@ -24,6 +24,7 @@
     "deep-empty": "^0.1.4",
     "detect-browser": "^1.1.1",
     "es6-promise": "^3.0.2",
+    "ecc-jsbn": "^0.1.1",
     "express": "^4.13.1",
     "fileapi": "^2.0.10",
     "get-uri": "^0.1.3",
