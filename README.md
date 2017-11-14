@@ -10,7 +10,8 @@ UI for `datapackage` as an universal browser components ([DEMO](https://friction
 ## Features
 
 - `render` - universal component render
-- <Component> - component description
+- List of components:
+  - TBD
 
 ## Getting Started
 
@@ -128,14 +129,6 @@ To render one of the provided component `render` function should be used.
 - `component (Component)` - it could be one of provided by the library component
 - `props (Object)` - object containing props
 - `element (Element)` - DOM element to render into
-
-### Component1
-
-Component1 description.
-
-#### `<Component1 prop<1>/>`
-
-- `prop1 (Object)` - first prop
 
 ## Contributing
 
