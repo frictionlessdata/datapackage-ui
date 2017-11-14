@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>datapackage-ui</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="dist/datapackage-ui.css">
+  </head>
+  <body>
+    <div class="container">
+      <div id="form"></div>
+    </div>
+    <script src="//unpkg.com/goodtables@0.7.1/dist/goodtables.js"></script>
+    <script src="//unpkg.com/qs@6.5.0/dist/qs.js"></script>
+    <script src="dist/datapackage-ui.js"></script>
+    <script>
+      const client = new goodtables.ApiClient({
+        apiUrl: 'https://staging.goodtables.io/api',
+        apiToken: '4648C12FA72133E03E090787A61B6E4EE78607B0',
+        apiSourceId: '90c9b09e-8030-453d-a8de-9f07ae780452',
+      })
+      const validate = (source, options) => {
+        const queryData = Object.assign({source}, options)
+        return new Promise((resolve, reject) => {
+          client.addReport(source, options).then(apiJobId => {
+            queryData.apiJobId = apiJobId
+            return client.getReport(apiJobId)
+          }).then(report => {
+            const queryString = `${location.pathname}?${Qs.stringify(queryData)}`
+            history.pushState(null, null, queryString);
+            resolve(report)
+          }).catch(error => {
+            reject(error)
+          })
+        })
+      }
+      const options = Qs.parse(location.search.slice(1))
+      const source = options.source; delete options.source
+      const apiJobId = options.apiJobId; delete options.apiJobId
+      if ((options.checks || {})['blank-row']){
+        options.checks['blank-row'] = JSON.parse(options.checks['blank-row'])
+      }
+      if ((options.checks || {})['duplicate-row']){
+        options.checks['duplicate-row'] = JSON.parse(options.checks['duplicate-row'])
+      }
+      const element = document.getElementById('form')
+      const component = datapackageUI.Form
+      const props = {source, options, validate}
+      if (apiJobId) props.reportPromise = client.getReport(apiJobId)
+      datapackageUI.render(component, props, element)
+    </script>
+  </body>
+</html>

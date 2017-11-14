@@ -1,3 +1,0 @@
-id,title,schema,specification
-base,Data Package,http://schemas.datapackages.org/data-package.json,http://dataprotocols.org/data-packages
-tabular,Tabular Data Package,http://schemas.datapackages.org/tabular-data-package.json,http://dataprotocols.org/tabular-data-package/

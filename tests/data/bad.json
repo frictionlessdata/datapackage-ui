@@ -1,1 +1,0 @@
-[{"description": "validation of date-time strings","schema": {"format": "date-time"},"tests": [{"description": "a valid date-time string","data": "1963-06-19T08:30:06.283185Z","valid": true}]}]

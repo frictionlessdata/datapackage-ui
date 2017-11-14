@@ -1,7 +1,28 @@
-language: node_js
+sudo:
+  false
+
+addons:
+  sauce_connect: true
+
+language:
+  node_js
+
 node_js:
-  - "iojs"
+  - 8
 
 script:
   - npm run build
-  - npm test
+  - npm run test
+
+after_script:
+  - npm run coveralls
+
+deploy:
+  provider: npm
+  email: eskarev@gmail.com
+  skip_cleanup: true
+  on:
+    tags: true
+    branch: master
+  api_key:
+    secure: T60j41UwpBoTM0A6t7ig4Nsgws/sIr2SKCWSdqU01WMu/IBlz8zbrOGCF9mOZxUH5sAM69YwGDlHzsphH5OiwF1KY7gP+t3yWJZuP83C1hBJ6CFK+l/0vIW2QGoUyG6EWQfPRAZ004VUh7Zp5dCYX0cXpHLvLwiAPtkcoz3LrguEtgeucQQbp3w8W9ULmaPktq3rvbv+ZXkwci6pEdHl8yJL7U9q2cmJthWaqa/QZFbcwXpaOFsapQUNg2pn9o9wgAsCD3gQ3mQ54dk7vZNMM6RPhQ8iFc1/SGsaZ0vjSDmerM/PQEph92dN8Ls/QwZV+MXaJHtFw6Niwf6T4abB/ut2GjsRwa0MQS2QWiFng7e8kqEN1uQl6nbNsnfI3u6SDPkByDoUOlPZMv/0yzmIS9c8c/vaQG6y0Q87r0QLSLMswbpKT8cvLqA4oRG5RjGZmtj8ZXr204qF3RlpKxRFHczErk/GQtr0Dc+ccj8QowBQqPx1ZASWdjdg6x/6EiThPV/jiqUfAb5ImXTohMR1/83ZH7bdcgFrst9FO1zNeAyinN5uXtA6FcVAn0/mLPBMFU6dmBhKLg5S0+l1AqnURDXAHncfo9wHa91LCCp3oQEKIC4Z0glazO7JClhE5R3f4KHgTiPQq3XwGJDxGmPDG8BArIYd3H66Nos310y47ig=

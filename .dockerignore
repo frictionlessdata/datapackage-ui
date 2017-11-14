@@ -1,8 +1,0 @@
-*.db
-*.log
-
-./.git/
-./tmp/
-./log/
-./node_modules/
-

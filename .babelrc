@@ -1,0 +1,21 @@
+{
+  "presets": [
+    "es2015",
+    "es2016",
+    "es2017",
+    "stage-3",
+    "react"
+  ],
+  "env": {
+    "packaging": {
+      "plugins": [
+        ["transform-require-ignore", {"extensions": [".css"]}]
+      ]
+    },
+    "testing": {
+      "plugins": [
+        "istanbul"
+      ]
+    }
+  }
+}

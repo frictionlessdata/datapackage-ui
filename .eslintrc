@@ -1,0 +1,103 @@
+extends:
+  airbnb
+
+parser:
+  babel-eslint
+
+plugins:
+  - html
+
+env:
+  es6: true
+  node: true
+  mocha: true
+  browser: true
+
+parserOptions:
+  sourceType: module
+
+rules:
+  max-len:
+    - error
+    - 120
+  quotes:
+    - error
+    - single
+    - avoid-escape
+  semi:
+    - error
+    - never
+  no-empty:
+    - error
+    - allowEmptyCatch: true
+  no-use-before-define:
+    - error
+    - nofunc
+  one-var:
+    - off
+  eqeqeq:
+    - warn
+    - smart
+  no-unused-vars:
+    - warn
+  no-param-reassign:
+    - warn
+  no-cond-assign:
+    - error
+    - except-parens
+  arrow-parens:
+    - error
+    - as-needed
+  no-underscore-dangle:
+    - off
+  comma-dangle:
+    - off
+  class-methods-use-this:
+    - off
+  arrow-body-style:
+    - off
+  consistent-return:
+    - off
+  padded-blocks:
+    - off
+  global-require:
+    - off
+  no-restricted-syntax:
+    - error
+    - WithStatement
+  object-curly-spacing:
+    - off
+  no-else-return:
+    - off
+  import/no-extraneous-dependencies:
+    - off
+  import/prefer-default-export:
+    - off
+  import/newline-after-import:
+    - off
+  import/extensions:
+    - off
+  block-spacing:
+    - off
+  no-lonely-if:
+    - off
+  curly:
+    - off
+  react/prop-types:
+    - off
+  react/sort-comp:
+    - off
+  react/forbid-prop-types:
+    - off
+  react/prefer-stateless-function:
+    - off
+  jsx-a11y/no-static-element-interactions:
+    - off
+  jsx-a11y/href-no-hash:
+    - off
+  react/jsx-filename-extension:
+    - off
+  react/no-danger:
+    - off
+  react/jsx-no-bind:
+    - off
