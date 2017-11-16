@@ -46,12 +46,6 @@ const webpackConfig = {
       'datapackage-ui.css'
     ),
   ],
-  resolve: {
-    alias: {
-      'react': 'react-lite',
-      'react-dom': 'react-lite',
-    }
-  },
   devServer: {
     historyApiFallback: true,
     noInfo: true

@@ -5,13 +5,12 @@
 
 [![Saucelabs](https://saucelabs.com/browser-matrix/datapackageui.svg)](https://saucelabs.com/u/datapackageui)
 
-UI for `datapackage` as an universal browser components ([DEMO](https://frictionlessdata.github.io/datapackage-ui/)).
+UI for `datapackage` as a framework-agnostic browser components ([DEMO](https://frictionlessdata.github.io/datapackage-ui/)).
 
 ## Features
 
-- `render` - universal component render
-- List of components:
-  - TBD
+- `render` - framework-agnostic component render
+- List of components: TBD
 
 ## Getting Started
 
