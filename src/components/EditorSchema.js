@@ -1,11 +1,12 @@
 const React = require('react')
+const {EditorFields} = require('./EditorFields')
 
 
 // Module API
 
-function EditorSchema({descriptor}) {
+function EditorSchema({descriptor, columns}) {
   return (
-      <div>Schema</div>
+    <EditorFields descriptors={descriptor.fields} columns={columns} />
   )
 }
 
