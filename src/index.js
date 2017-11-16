@@ -1,10 +1,13 @@
-import './styles.css'
-import {render} from './render'
-import {Report} from './components/Report'
-import {Form} from './components/Form'
+require('./styles/base.css')
+const render = require('./render')
+const {EditorSchema} = require('./components/EditorSchema')
+const {EditorPackage} = require('./components/EditorPackage')
 
 
 // Module API
 
-export default {render, Report, Form}
-export {render, Report, Form}
+module.exports = {
+  render,
+  EditorSchema,
+  EditorPackage,
+}

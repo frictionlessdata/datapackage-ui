@@ -1,9 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+const React = require('react')
+const ReactDOM = require('react-dom')
 
 
 // Module API
 
-export function render(component, props, element) {
+function render(component, props, element) {
   ReactDOM.render(React.createElement(component, props, null), element)
+}
+
+
+// System
+
+module.exports = {
+  render,
 }
