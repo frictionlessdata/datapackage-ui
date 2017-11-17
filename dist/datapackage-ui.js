@@ -2423,9 +2423,9 @@ function EditorPackage(_ref) {
   return React.createElement(
     'div',
     { className: classNames('app', { 'code-view': isPreviewActive }) },
-    React.createElement(EditorMenu, null),
+    React.createElement(EditorMenu, { descriptor: descriptor }),
     React.createElement(EditorResources, { descriptors: descriptor.resources, columns: columns }),
-    React.createElement(EditorPreview, { togglePreview: togglePreview })
+    React.createElement(EditorPreview, { descriptor: descriptor, togglePreview: togglePreview })
   );
 }
 
@@ -2524,7 +2524,7 @@ function EditorField(_ref) {
       React.createElement(
         "h3",
         { className: "heading" },
-        descriptor.title
+        descriptor.name
       ),
       React.createElement(
         "button",
@@ -2569,19 +2569,19 @@ function EditorField(_ref) {
         { htmlFor: "description_3" },
         "Description"
       ),
-      React.createElement("textarea", { id: "description_3", defaultValue: '' }),
+      React.createElement("textarea", { id: "description_3", defaultValue: descriptor.description }),
       React.createElement(
         "label",
         { htmlFor: "type_3" },
         "Data Type"
       ),
-      React.createElement("input", { type: "text", id: "type_3" }),
+      React.createElement("input", { type: "text", id: "type_3", defaultValue: descriptor.type }),
       React.createElement(
         "label",
         { htmlFor: "format_3" },
-        "Format"
+        "Data Format"
       ),
-      React.createElement("input", { type: "text", id: "type_3" })
+      React.createElement("input", { type: "text", id: "type_3", defaultValue: descriptor.format })
     )
   );
 }
@@ -2721,7 +2721,7 @@ function EditorMenu(_ref) {
               { className: "panel-title" },
               React.createElement(
                 "a",
-                { role: "button", "data-toggle": "collapse", "data-parent": "#package-data", href: "#required-metadata", "aria-expanded": "true", "aria-controls": "required-metadata" },
+                { className: "collapsed", role: "button", "data-toggle": "collapse", "data-parent": "#package-data", href: "#required-metadata", "aria-expanded": "false", "aria-controls": "required-metadata" },
                 React.createElement(
                   "span",
                   { className: "text" },
@@ -2741,10 +2741,16 @@ function EditorMenu(_ref) {
           ),
           React.createElement(
             "div",
-            { id: "required-metadata", className: "panel-collapse collapse in", role: "tabpanel", "aria-labelledby": "required-metadata-heading" },
+            { id: "required-metadata", className: "panel-collapse collapse", role: "tabpanel", "aria-labelledby": "optional-metadata-heading" },
             React.createElement(
               "div",
               { className: "panel-body" },
+              React.createElement(
+                "label",
+                { className: "control-label" },
+                "Title"
+              ),
+              React.createElement("input", { className: "form-control", name: "root[title]", type: "text", defaultValue: descriptor.title }),
               React.createElement(
                 "label",
                 { className: "control-label" },
@@ -2760,21 +2766,15 @@ function EditorMenu(_ref) {
                 ),
                 React.createElement(
                   "option",
-                  { value: "tabular" },
+                  { selected: descriptor.profile === 'tabular-data-package', value: "tabular" },
                   "Tabular Data Package"
                 ),
                 React.createElement(
                   "option",
-                  { value: "fiscal" },
+                  { selected: descriptor.profile === 'fiscal-data-package', value: "fiscal" },
                   "Fiscal Data Package"
                 )
-              ),
-              React.createElement(
-                "label",
-                { className: "control-label" },
-                "Title"
-              ),
-              React.createElement("input", { className: "form-control", name: "root[title]", type: "text" })
+              )
             )
           )
         ),
@@ -2818,37 +2818,37 @@ function EditorMenu(_ref) {
                 { className: "control-label" },
                 "Name"
               ),
-              React.createElement("input", { className: "form-control", pattern: "^([a-z0-9._-])+$", name: "root[name]", type: "text" }),
+              React.createElement("input", { className: "form-control", pattern: "^([a-z0-9._-])+$", name: "root[name]", type: "text", defaultValue: descriptor.name }),
               React.createElement(
                 "label",
                 { className: "control-label" },
                 "Description"
               ),
-              React.createElement("textarea", { className: "form-control", "data-schemaformat": "textarea", name: "root[description]", defaultValue: "" }),
+              React.createElement("textarea", { className: "form-control", "data-schemaformat": "textarea", name: "root[description]", defaultValue: descriptor.description }),
               React.createElement(
                 "label",
                 { className: "control-label" },
                 "Home Page"
               ),
-              React.createElement("input", { className: "form-control", name: "root[homepage]", type: "text" }),
+              React.createElement("input", { className: "form-control", name: "root[homepage]", type: "text", defaultValue: descriptor.homepage }),
               React.createElement(
                 "label",
                 { className: "control-label" },
                 "Version"
               ),
-              React.createElement("input", { className: "form-control", name: "root[version]", type: "text" }),
+              React.createElement("input", { className: "form-control", name: "root[version]", type: "text", defaultValue: descriptor.version }),
               React.createElement(
                 "label",
                 { className: "control-label" },
                 "License"
               ),
-              React.createElement("input", { className: "form-control", name: "root[license]", type: "text" }),
+              React.createElement("input", { className: "form-control", name: "root[license]", type: "text", defaultValue: descriptor.license }),
               React.createElement(
                 "label",
                 { className: "control-label" },
                 "Author"
               ),
-              React.createElement("input", { className: "form-control", name: "root[author]", type: "text" })
+              React.createElement("input", { className: "form-control", name: "root[author]", type: "text", defaultValue: descriptor.author })
             )
           )
         ),
@@ -2887,6 +2887,9 @@ function EditorMenu(_ref) {
             React.createElement(
               "div",
               { className: "panel-body" },
+              descriptor.keywords.map(function (keyword) {
+                return React.createElement("input", { className: "form-control", type: "text", defaultValue: keyword });
+              }),
               React.createElement(
                 "button",
                 { type: "button", className: "btn btn-info btn-sm json-editor-btn-add ", title: "Add item" },
@@ -2945,21 +2948,6 @@ function EditorPreview(_ref) {
   var descriptor = _ref.descriptor,
       togglePreview = _ref.togglePreview;
 
-  // TODO: remove
-  descriptor = {
-    "name": "test",
-    "title": "Test",
-    "resources": [{
-      "name": "bom",
-      "title": "Bom",
-      "schema": {
-        "fields": [{ "name": "Naam bestuur", "type": "string", "format": "default" }, { "name": "KBO-nummer", "type": "integer", "format": "default" }, { "name": "Boekjaar", "type": "integer", "format": "default" }, { "name": "Niveau 1", "type": "string", "format": "default" }, { "name": "Niveau 2", "type": "string", "format": "default" }, { "name": "Niveau 3", "type": "string", "format": "default" }, { "name": "Niveau 4", "type": "string", "format": "default" }, { "name": "AR met omschrijving", "type": "string", "format": "default" }, { "name": "BV Niveau A", "type": "string", "format": "default" }, { "name": "BV Niveau B", "type": "string", "format": "default" }, { "name": "BV met omschrijving", "type": "string", "format": "default" }, { "name": "ESC Niveau A", "type": "string", "format": "default" }, { "name": "ESC Niveau B", "type": "string", "format": "default" }, { "name": "ESC met omschrijving", "type": "string", "format": "default" }, { "name": "Transactiesoort", "type": "string", "format": "default" }, { "name": "Bedrag", "type": "integer", "format": "default" }]
-      },
-      "path": "bom.csv",
-      "format": "CSV",
-      "mediatype": "text/csv"
-    }]
-  };
   return React.createElement(
     "section",
     { className: "preview" },
@@ -3107,9 +3095,9 @@ function EditorResource(_ref) {
         React.createElement(
           'label',
           null,
-          'Title'
+          'Name'
         ),
-        React.createElement('input', { className: 'form-control', autoComplete: 'off', type: 'text' })
+        React.createElement('input', { className: 'form-control', autoComplete: 'off', type: 'text', defaultValue: descriptor.name })
       ),
       React.createElement(
         'div',
@@ -3152,33 +3140,51 @@ function EditorResource(_ref) {
           React.createElement(
             'label',
             { className: 'control-label' },
-            'Name'
+            'Title'
           ),
-          React.createElement('input', { className: 'form-control', pattern: '^([a-z0-9._-])+$', name: 'root[resources][0][name]', autoComplete: 'off', type: 'text' }),
+          React.createElement('input', { className: 'form-control', pattern: '^([a-z0-9._-])+$', name: 'root[resources][0][name]', autoComplete: 'off', type: 'text', defaultValue: descriptor.title }),
+          React.createElement(
+            'label',
+            { className: 'control-label' },
+            'Profile'
+          ),
+          React.createElement(
+            'select',
+            { 'data-id': 'list-container', className: 'form-control list-container', autoComplete: 'off' },
+            React.createElement(
+              'option',
+              { value: 'base' },
+              'Data Resource'
+            ),
+            React.createElement(
+              'option',
+              { selected: descriptor.profile === 'tabular-data-resource', value: 'tabular' },
+              'Tabular Data Resource'
+            ),
+            React.createElement(
+              'option',
+              { selected: descriptor.profile === 'fiscal-data-resource', value: 'fiscal' },
+              'Fiscal Data Resource'
+            )
+          ),
           React.createElement(
             'label',
             { className: 'control-label' },
             'Path'
           ),
-          React.createElement('input', { className: 'form-control', name: 'root[resources][0][path]', autoComplete: 'off', type: 'text' }),
+          React.createElement('input', { className: 'form-control', name: 'root[resources][0][path]', autoComplete: 'off', type: 'text', defaultValue: descriptor.path }),
           React.createElement(
             'label',
             { className: 'control-label' },
             'Format'
           ),
-          React.createElement('input', { className: 'form-control', name: 'root[resources][0][format]', autoComplete: 'off', type: 'text' }),
-          React.createElement(
-            'label',
-            { className: 'control-label' },
-            'Media Type'
-          ),
-          React.createElement('input', { className: 'form-control', pattern: '^(.+)/(.+)$', name: 'root[resources][0][mediatype]', autoComplete: 'off', type: 'text' }),
+          React.createElement('input', { className: 'form-control', name: 'root[resources][0][format]', autoComplete: 'off', type: 'text', defaultValue: descriptor.format }),
           React.createElement(
             'label',
             { className: 'control-label' },
             'Encoding'
           ),
-          React.createElement('input', { className: 'form-control', name: 'root[resources][0][encoding]', autoComplete: 'off', type: 'text' })
+          React.createElement('input', { className: 'form-control', name: 'root[resources][0][encoding]', autoComplete: 'off', type: 'text', defaultValue: descriptor.encoding })
         ),
         React.createElement(
           'span',
@@ -3188,7 +3194,7 @@ function EditorResource(_ref) {
             { className: 'control-label' },
             'Description'
           ),
-          React.createElement('textarea', { className: 'form-control', 'data-schemaformat': 'textarea', name: 'root[resources][0][description]', defaultValue: "" })
+          React.createElement('textarea', { className: 'form-control', 'data-schemaformat': 'textarea', name: 'root[resources][0][description]', defaultValue: descriptor.description })
         )
       )
     ),

@@ -4,40 +4,6 @@ const React = require('react')
 // Module API
 
 function EditorPreview({descriptor, togglePreview}) {
-  // TODO: remove
-  descriptor = {
-    "name":"test",
-    "title":"Test",
-    "resources": [
-      {
-        "name":"bom",
-        "title":"Bom",
-        "schema":{
-          "fields":[
-            {"name":"Naam bestuur", "type":"string", "format":"default"},
-            {"name":"KBO-nummer", "type":"integer", "format":"default"},
-            {"name":"Boekjaar", "type":"integer", "format":"default"},
-            {"name":"Niveau 1", "type":"string", "format":"default"},
-            {"name":"Niveau 2", "type":"string", "format":"default"},
-            {"name":"Niveau 3", "type":"string", "format":"default"},
-            {"name":"Niveau 4", "type":"string", "format":"default"},
-            {"name":"AR met omschrijving", "type":"string", "format":"default"},
-            {"name":"BV Niveau A", "type":"string", "format":"default"},
-            {"name":"BV Niveau B", "type":"string", "format":"default"},
-            {"name":"BV met omschrijving", "type":"string", "format":"default"},
-            {"name":"ESC Niveau A", "type":"string", "format":"default"},
-            {"name":"ESC Niveau B", "type":"string", "format":"default"},
-            {"name":"ESC met omschrijving", "type":"string", "format":"default"},
-            {"name":"Transactiesoort", "type":"string", "format":"default"},
-            {"name":"Bedrag", "type":"integer", "format":"default"}
-          ]
-        },
-        "path":"bom.csv",
-        "format":"CSV",
-        "mediatype":"text/csv"
-      }
-    ]
-  }
   return (
     <section className="preview">
       <h2 className="section-heading" onClick={togglePreview}><svg className="icon"><use xlinkHref="#icon-braces" /></svg><span className="text">Preview</span></h2>

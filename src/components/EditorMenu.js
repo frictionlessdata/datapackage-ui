@@ -26,17 +26,21 @@ function EditorMenu({descriptor}) {
           <div className="panel">
             <div className="panel-heading" role="tab" id="required-metadata-heading">
               <h4 className="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#package-data" href="#required-metadata" aria-expanded="true" aria-controls="required-metadata">
+                <a className="collapsed" role="button" data-toggle="collapse" data-parent="#package-data" href="#required-metadata" aria-expanded="false" aria-controls="required-metadata">
                   <span className="text">Required metadata </span><span className="icon"><svg><use xlinkHref="#icon-expand" /></svg></span>
                 </a>
               </h4>
             </div>
-            <div id="required-metadata" className="panel-collapse collapse in" role="tabpanel" aria-labelledby="required-metadata-heading">
+            <div id="required-metadata" className="panel-collapse collapse" role="tabpanel" aria-labelledby="optional-metadata-heading">
               <div className="panel-body">
-                <label className="control-label">Profile</label>
-                <select data-id="list-container" className="form-control list-container" autoComplete="off"><option value="base">Data Package</option><option value="tabular">Tabular Data Package</option><option value="fiscal">Fiscal Data Package</option></select>
                 <label className="control-label">Title</label>
-                <input className="form-control" name="root[title]" type="text" />
+                <input className="form-control" name="root[title]" type="text" defaultValue={descriptor.title} />
+                <label className="control-label">Profile</label>
+                <select data-id="list-container" className="form-control list-container" autoComplete="off">
+                  <option value="base">Data Package</option>
+                  <option selected={descriptor.profile === 'tabular-data-package'} value="tabular">Tabular Data Package</option>
+                  <option selected={descriptor.profile === 'fiscal-data-package'} value="fiscal">Fiscal Data Package</option>
+                </select>
               </div>
             </div>
           </div>
@@ -51,17 +55,17 @@ function EditorMenu({descriptor}) {
             <div id="optional-metadata" className="panel-collapse collapse" role="tabpanel" aria-labelledby="optional-metadata-heading">
               <div className="panel-body">
                 <label className="control-label">Name</label>
-                <input className="form-control" pattern="^([a-z0-9._-])+$" name="root[name]" type="text" />
+                <input className="form-control" pattern="^([a-z0-9._-])+$" name="root[name]" type="text" defaultValue={descriptor.name} />
                 <label className="control-label">Description</label>
-                <textarea className="form-control" data-schemaformat="textarea" name="root[description]" defaultValue={""} />
+                <textarea className="form-control" data-schemaformat="textarea" name="root[description]" defaultValue={descriptor.description} />
                 <label className="control-label">Home Page</label>
-                <input className="form-control" name="root[homepage]" type="text" />
+                <input className="form-control" name="root[homepage]" type="text" defaultValue={descriptor.homepage} />
                 <label className="control-label">Version</label>
-                <input className="form-control" name="root[version]" type="text" />
+                <input className="form-control" name="root[version]" type="text" defaultValue={descriptor.version} />
                 <label className="control-label">License</label>
-                <input className="form-control" name="root[license]" type="text" />
+                <input className="form-control" name="root[license]" type="text" defaultValue={descriptor.license} />
                 <label className="control-label">Author</label>
-                <input className="form-control" name="root[author]" type="text" />
+                <input className="form-control" name="root[author]" type="text" defaultValue={descriptor.author} />
               </div>
             </div>
           </div>
@@ -75,6 +79,9 @@ function EditorMenu({descriptor}) {
             </div>
             <div id="keywords" className="panel-collapse collapse" role="tabpanel" aria-labelledby="keywords-heading">
               <div className="panel-body">
+                {descriptor.keywords.map(keyword => (
+                  <input className="form-control" type="text" defaultValue={keyword} />
+                ))}
                 <button type="button" className="btn btn-info btn-sm json-editor-btn-add " title="Add item"><svg><use xlinkHref="#icon-plus" /></svg> item</button>
               </div>
             </div>

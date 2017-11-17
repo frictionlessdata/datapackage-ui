@@ -21,9 +21,9 @@ function EditorPackage({
 }) {
   return (
     <div className={classNames('app', {'code-view': isPreviewActive})}>
-      <EditorMenu />
+      <EditorMenu descriptor={descriptor} />
       <EditorResources descriptors={descriptor.resources} columns={columns} />
-      <EditorPreview togglePreview={togglePreview} />
+      <EditorPreview descriptor={descriptor} togglePreview={togglePreview} />
     </div>
   )
 }

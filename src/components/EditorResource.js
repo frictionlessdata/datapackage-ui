@@ -24,8 +24,8 @@ function EditorResource({
       {/* Metadata */}
       <div className="panel-heading" role="tab" id="resource-one-heading">
         <div className="title">
-          <label>Title</label>
-          <input className="form-control" autoComplete="off" type="text" />
+          <label>Name</label>
+          <input className="form-control" autoComplete="off" type="text" defaultValue={descriptor.name}/>
         </div>
         <div className="actions">
           <a className={classNames('settings-button', 'action', {active: isSettingsActive})} onClick={toggleSettings}>
@@ -37,20 +37,24 @@ function EditorResource({
         </div>
         <div className={classNames('settings', {active: isSettingsActive})}>
           <span>
-            <label className="control-label">Name</label>
-            <input className="form-control" pattern="^([a-z0-9._-])+$" name="root[resources][0][name]" autoComplete="off" type="text" />
+            <label className="control-label">Title</label>
+            <input className="form-control" pattern="^([a-z0-9._-])+$" name="root[resources][0][name]" autoComplete="off" type="text" defaultValue={descriptor.title} />
+            <label className="control-label">Profile</label>
+            <select data-id="list-container" className="form-control list-container" autoComplete="off">
+              <option value="base">Data Resource</option>
+              <option selected={descriptor.profile === 'tabular-data-resource'} value="tabular">Tabular Data Resource</option>
+              <option selected={descriptor.profile === 'fiscal-data-resource'} value="fiscal">Fiscal Data Resource</option>
+            </select>
             <label className="control-label">Path</label>
-            <input className="form-control" name="root[resources][0][path]" autoComplete="off" type="text" />
+            <input className="form-control" name="root[resources][0][path]" autoComplete="off" type="text" defaultValue={descriptor.path} />
             <label className="control-label">Format</label>
-            <input className="form-control" name="root[resources][0][format]" autoComplete="off" type="text" />
-            <label className="control-label">Media Type</label>
-            <input className="form-control" pattern="^(.+)/(.+)$" name="root[resources][0][mediatype]" autoComplete="off" type="text" />
+            <input className="form-control" name="root[resources][0][format]" autoComplete="off" type="text" defaultValue={descriptor.format} />
             <label className="control-label">Encoding</label>
-            <input className="form-control" name="root[resources][0][encoding]" autoComplete="off" type="text" />
+            <input className="form-control" name="root[resources][0][encoding]" autoComplete="off" type="text" defaultValue={descriptor.encoding} />
           </span>
           <span>
             <label className="control-label">Description</label>
-            <textarea className="form-control" data-schemaformat="textarea" name="root[resources][0][description]" defaultValue={""} />
+            <textarea className="form-control" data-schemaformat="textarea" name="root[resources][0][description]" defaultValue={descriptor.description} />
           </span>
         </div>
       </div>
