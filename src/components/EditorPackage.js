@@ -1,4 +1,6 @@
 const React = require('react')
+const classNames = require('classnames')
+const {withStateHandlers} = require('recompose')
 const {EditorMenu} = require('./EditorMenu')
 const {EditorPreview} = require('./EditorPreview')
 const {EditorResources} = require('./EditorResources')
@@ -6,19 +8,40 @@ const {EditorResources} = require('./EditorResources')
 
 // Module API
 
-function EditorPackage({descriptor, columns}) {
+function EditorPackage({
+
+  // Props
+  descriptor,
+  columns,
+
+  // State
+  isPreviewActive,
+  togglePreview,
+
+}) {
   return (
-    <div className="app">
+    <div className={classNames('app', {'code-view': isPreviewActive})}>
       <EditorMenu />
       <EditorResources descriptors={descriptor.resources} columns={columns} />
-      <EditorPreview />
+      <EditorPreview togglePreview={togglePreview} />
     </div>
   )
+}
+
+
+// Internal
+
+const initialState = {
+  isPreviewActive: false,
+}
+
+const togglePreview = ({isPreviewActive}) => () => {
+  return {isPreviewActive: !isPreviewActive}
 }
 
 
 // System
 
 module.exports = {
-  EditorPackage,
+  EditorPackage: withStateHandlers(initialState, {togglePreview})(EditorPackage),
 }

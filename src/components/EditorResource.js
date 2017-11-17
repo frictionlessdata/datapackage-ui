@@ -1,10 +1,23 @@
 const React = require('react')
+const classNames = require('classnames')
+const {withStateHandlers} = require('recompose')
 const {EditorSchema} = require('./EditorSchema')
 
 
 // Module API
 
-function EditorResource({descriptor, columns}) {
+function EditorResource({
+
+  // Props
+  descriptor,
+  columns,
+  index,
+
+  // State
+  isSettingsActive,
+  toggleSettings,
+
+}) {
   return (
     <div className="panel">
 
@@ -15,14 +28,14 @@ function EditorResource({descriptor, columns}) {
           <input className="form-control" autoComplete="off" type="text" />
         </div>
         <div className="actions">
-          <a className="settings-button">
+          <a className={classNames('settings-button', 'action', {active: isSettingsActive})} onClick={toggleSettings}>
             <svg><use xlinkHref="#icon-settings" /></svg><span className="text">Settings</span>
           </a>
-          <a role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <a role="button" data-toggle="collapse" href={`#collapse${index}`} aria-expanded="true" aria-controls="collapseOne">
             <svg><use xlinkHref="#icon-expand" /></svg><span className="text">Expand / collapse</span>
           </a>
         </div>
-        <div className="settings">
+        <div className={classNames('settings', {active: isSettingsActive})}>
           <span>
             <label className="control-label">Name</label>
             <input className="form-control" pattern="^([a-z0-9._-])+$" name="root[resources][0][name]" autoComplete="off" type="text" />
@@ -43,7 +56,7 @@ function EditorResource({descriptor, columns}) {
       </div>
 
       {/* Schema */}
-      <div id="collapseOne" className="panel-collapse collapse in" role="tabpanel" aria-labelledby="resource-one-heading">
+      <div id={`collapse${index}`} className={classNames('panel-collapse', 'collapse', {in: index === 0})} role="tabpanel" aria-labelledby="resource-one-heading">
         <div className="panel-body">
           <EditorSchema descriptor={descriptor.schema} columns={columns} />
         </div>
@@ -54,8 +67,19 @@ function EditorResource({descriptor, columns}) {
 }
 
 
+// Internal
+
+const initialState = {
+  isSettingsActive: false,
+}
+
+const toggleSettings = ({isSettingsActive}) => () => {
+  return {isSettingsActive: !isSettingsActive}
+}
+
+
 // System
 
 module.exports = {
-  EditorResource,
+  EditorResource: withStateHandlers(initialState, {toggleSettings})(EditorResource),
 }

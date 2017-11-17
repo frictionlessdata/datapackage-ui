@@ -16,7 +16,7 @@ function EditorResources({descriptors, columns}) {
       {/* Resources */}
       <div className="panel-group" id="resources-data" role="tablist" aria-multiselectable="true">
         {descriptors.map((descriptor, index) => (
-          <EditorResource descriptor={descriptor} columns={columns} key={index} />
+          <EditorResource descriptor={descriptor} columns={columns} key={index} index={index} />
         ))}
       </div>
 

@@ -22,7 +22,7 @@
     "build:dist": "webpack --output-pathinfo --progress --hide-modules",
     "build:dist-min": "NODE_ENV=production webpack --progress --hide-modules",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "dev": "webpack-dev-server --open --inline --hot",
+    "dev": "webpack-dev-server --inline --hot",
     "e2e": "NODE_ENV=testing node rune2e.js",
     "lint": "eslint src test",
     "posttest": "npm run e2e",
@@ -34,9 +34,11 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "classnames": "^2.2.5",
     "lodash": "^4.17.4",
     "react": "^16.1.1",
-    "react-dom": "^16.1.1"
+    "react-dom": "^16.1.1",
+    "recompose": "^0.26.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
