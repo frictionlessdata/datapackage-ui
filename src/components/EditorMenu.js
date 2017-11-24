@@ -3,7 +3,7 @@ const React = require('react')
 
 // Module API
 
-function EditorMenu({descriptor}) {
+function EditorMenu({descriptor, updateDescriptor}) {
   return (
     <section className="package">
       <div className="inner">
@@ -21,8 +21,9 @@ function EditorMenu({descriptor}) {
           <button className="btn btn-lg btn-success">Load data package</button>
         </div>
 
-        {/* Metadata */}
         <div className="panel-group" id="package-data" role="tablist" aria-multiselectable="true">
+
+          {/* Required metadata */}
           <div className="panel">
             <div className="panel-heading" role="tab" id="required-metadata-heading">
               <h4 className="panel-title">
@@ -33,17 +34,40 @@ function EditorMenu({descriptor}) {
             </div>
             <div id="required-metadata" className="panel-collapse collapse" role="tabpanel" aria-labelledby="optional-metadata-heading">
               <div className="panel-body">
+
+                {/* Title */}
                 <label className="control-label">Title</label>
-                <input className="form-control" name="root[title]" type="text" defaultValue={descriptor.title} />
+                <input
+                  className="form-control"
+                  name="root[title]"
+                  type="text"
+                  value={descriptor.title}
+                  onChange={(event) => {
+                    updateDescriptor({title: event.target.value})
+                  }}
+                />
+
+                {/* Profile */}
                 <label className="control-label">Profile</label>
-                <select data-id="list-container" className="form-control list-container" autoComplete="off">
-                  <option value="base">Data Package</option>
-                  <option selected={descriptor.profile === 'tabular-data-package'} value="tabular">Tabular Data Package</option>
-                  <option selected={descriptor.profile === 'fiscal-data-package'} value="fiscal">Fiscal Data Package</option>
+                <select
+                  data-id="list-container"
+                  className="form-control list-container"
+                  autoComplete="off"
+                  value={descriptor.profile}
+                  onChange={(event) => {
+                    updateDescriptor({profile: event.target.value})
+                  }}
+                >
+                  <option value="data-package">Data Package</option>
+                  <option value="tabular-data-package">Tabular Data Package</option>
+                  <option value="fiscal-data-package">Fiscal Data Package</option>
                 </select>
+
               </div>
             </div>
           </div>
+
+          {/* Optional metadata */}
           <div className="panel">
             <div className="panel-heading" role="tab" id="optional-metadata-heading">
               <h4 className="panel-title">
@@ -54,21 +78,85 @@ function EditorMenu({descriptor}) {
             </div>
             <div id="optional-metadata" className="panel-collapse collapse" role="tabpanel" aria-labelledby="optional-metadata-heading">
               <div className="panel-body">
+
+                {/* Name */}
                 <label className="control-label">Name</label>
-                <input className="form-control" pattern="^([a-z0-9._-])+$" name="root[name]" type="text" defaultValue={descriptor.name} />
+                <input
+                  className="form-control"
+                  pattern="^([a-z0-9._-])+$"
+                  name="root[name]"
+                  type="text"
+                  value={descriptor.name}
+                  onChange={(event) => {
+                    updateDescriptor({name: event.target.value})
+                  }}
+                />
+
+                {/* Description */}
                 <label className="control-label">Description</label>
-                <textarea className="form-control" data-schemaformat="textarea" name="root[description]" defaultValue={descriptor.description} />
+                <textarea className="form-control"
+                  data-schemaformat="textarea"
+                  name="root[description]"
+                  value={descriptor.description}
+                  onChange={(event) => {
+                    updateDescriptor({description: event.target.value})
+                  }}
+                />
+
+                {/* Home Page */}
                 <label className="control-label">Home Page</label>
-                <input className="form-control" name="root[homepage]" type="text" defaultValue={descriptor.homepage} />
+                <input
+                  className="form-control"
+                  name="root[homepage]"
+                  type="text"
+                  value={descriptor.homepage}
+                  onChange={(event) => {
+                    updateDescriptor({homepage: event.target.value})
+                  }}
+                />
+
+                {/* Version */}
                 <label className="control-label">Version</label>
-                <input className="form-control" name="root[version]" type="text" defaultValue={descriptor.version} />
+                <input
+                  className="form-control"
+                  name="root[version]"
+                  type="text"
+                  value={descriptor.version}
+                  onChange={(event) => {
+                    updateDescriptor({version: event.target.value})
+                  }}
+                />
+
+                {/* License */}
                 <label className="control-label">License</label>
-                <input className="form-control" name="root[license]" type="text" defaultValue={descriptor.license} />
+                <input
+                  className="form-control"
+                  name="root[license]"
+                  type="text"
+                  value={descriptor.license}
+                  onChange={(event) => {
+                    updateDescriptor({license: event.target.value})
+                  }}
+                />
+
+                {/* Author */}
                 <label className="control-label">Author</label>
-                <input className="form-control" name="root[author]" type="text" defaultValue={descriptor.author} />
+                <input
+                  className="form-control"
+                  name="root[author]"
+                  type="text"
+                  value={descriptor.author}
+                  onChange={(event) => {
+                    updateDescriptor({author: event.target.value})
+                  }}
+                />
+
               </div>
             </div>
           </div>
+
+
+          {/* Keywords */}
           <div className="panel">
             <div className="panel-heading" role="tab" id="keywords-heading">
               <h4 className="panel-title">
@@ -80,12 +168,13 @@ function EditorMenu({descriptor}) {
             <div id="keywords" className="panel-collapse collapse" role="tabpanel" aria-labelledby="keywords-heading">
               <div className="panel-body">
                 {descriptor.keywords.map(keyword => (
-                  <input className="form-control" type="text" defaultValue={keyword} />
+                  <input className="form-control" type="text" key={keyword} defaultValue={keyword} />
                 ))}
                 <button type="button" className="btn btn-info btn-sm json-editor-btn-add " title="Add item"><svg><use xlinkHref="#icon-plus" /></svg> item</button>
               </div>
             </div>
           </div>
+
         </div>
 
         {/* Download/Validate */}

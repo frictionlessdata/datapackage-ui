@@ -4,7 +4,7 @@ const {EditorResource} = require('./EditorResource')
 
 // Module API
 
-function EditorResources({descriptors, columns}) {
+function EditorResources({descriptors, updateResourceDescriptor, columns}) {
   return (
     <section className="resources">
 
@@ -16,13 +16,19 @@ function EditorResources({descriptors, columns}) {
       {/* Resources */}
       <div className="panel-group" id="resources-data" role="tablist" aria-multiselectable="true">
         {descriptors.map((descriptor, index) => (
-          <EditorResource descriptor={descriptor} columns={columns} key={index} index={index} />
+          <EditorResource
+            index={index}
+            descriptor={descriptor}
+            updateResourceDescriptor={updateResourceDescriptor}
+            columns={columns}
+            key={index}
+          />
         ))}
       </div>
 
-      {/* Add Field */}
+      {/* Add resource */}
       <a className="add resource">
-        <svg><use xlinkHref="#icon-plus" /></svg> Add another data file
+        <svg><use xlinkHref="#icon-plus" /></svg> Add another resource
       </a>
 
     </section>

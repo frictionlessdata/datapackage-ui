@@ -1,5 +1,6 @@
 const React = require('react')
 const classNames = require('classnames')
+const cloneDeep = require('lodash/cloneDeep')
 const {withStateHandlers} = require('recompose')
 const {EditorMenu} = require('./EditorMenu')
 const {EditorPreview} = require('./EditorPreview')
@@ -16,14 +17,33 @@ function EditorPackage({
 
   // State
   isPreviewActive,
+  updateDescriptor,
+  updateResourceDescriptor,
   togglePreview,
 
 }) {
   return (
     <div className={classNames('app', {'code-view': isPreviewActive})}>
-      <EditorMenu descriptor={descriptor} />
-      <EditorResources descriptors={descriptor.resources} columns={columns} />
-      <EditorPreview descriptor={descriptor} togglePreview={togglePreview} />
+
+      {/* Menu */}
+      <EditorMenu
+        descriptor={descriptor}
+        updateDescriptor={updateDescriptor}
+      />
+
+      {/* Resources */}
+      <EditorResources
+        descriptors={descriptor.resources}
+        updateResourceDescriptor={updateResourceDescriptor}
+        columns={columns}
+      />
+
+      {/* Preview */}
+      <EditorPreview
+        descriptor={descriptor}
+        togglePreview={togglePreview}
+      />
+
     </div>
   )
 }
@@ -31,17 +51,37 @@ function EditorPackage({
 
 // Internal
 
-const initialState = {
+const initialState = ({descriptor}) => ({
+  descriptor: cloneDeep(descriptor),
   isPreviewActive: false,
+})
+
+
+const updateDescriptor = ({descriptor}) => (payload) => {
+  descriptor = {...descriptor, ...payload}
+  return {descriptor}
 }
 
+
+const updateResourceDescriptor = ({descriptor}) => (index, payload) => {
+  descriptor = {...descriptor}
+  descriptor.resources[index] = {...descriptor.resources[index], ...payload}
+  return {descriptor}
+}
+
+
 const togglePreview = ({isPreviewActive}) => () => {
-  return {isPreviewActive: !isPreviewActive}
+  isPreviewActive = !isPreviewActive
+  return {isPreviewActive}
 }
 
 
 // System
 
 module.exports = {
-  EditorPackage: withStateHandlers(initialState, {togglePreview})(EditorPackage),
+  EditorPackage: withStateHandlers(initialState, {
+    updateDescriptor,
+    updateResourceDescriptor,
+    togglePreview,
+  })(EditorPackage),
 }
