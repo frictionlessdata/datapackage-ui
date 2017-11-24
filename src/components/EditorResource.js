@@ -43,7 +43,6 @@ function EditorResource({
             <select data-id="list-container" className="form-control list-container" autoComplete="off">
               <option value="base">Data Resource</option>
               <option selected={descriptor.profile === 'tabular-data-resource'} value="tabular">Tabular Data Resource</option>
-              <option selected={descriptor.profile === 'fiscal-data-resource'} value="fiscal">Fiscal Data Resource</option>
             </select>
             <label className="control-label">Path</label>
             <input className="form-control" name="root[resources][0][path]" autoComplete="off" type="text" defaultValue={descriptor.path} />
