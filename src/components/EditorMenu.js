@@ -1,4 +1,5 @@
 const React = require('react')
+const {EditorKeywords} = require('./EditorKeywords')
 
 
 // Module API
@@ -155,25 +156,11 @@ function EditorMenu({descriptor, updateDescriptor}) {
             </div>
           </div>
 
-
           {/* Keywords */}
-          <div className="panel">
-            <div className="panel-heading" role="tab" id="keywords-heading">
-              <h4 className="panel-title">
-                <a className="collapsed" role="button" data-toggle="collapse" data-parent="#package-data" href="#keywords" aria-expanded="false" aria-controls="keywords">
-                  <span className="text">Keywords </span><span className="icon"><svg><use xlinkHref="#icon-expand" /></svg></span>
-                </a>
-              </h4>
-            </div>
-            <div id="keywords" className="panel-collapse collapse" role="tabpanel" aria-labelledby="keywords-heading">
-              <div className="panel-body">
-                {descriptor.keywords.map(keyword => (
-                  <input className="form-control" type="text" key={keyword} defaultValue={keyword} />
-                ))}
-                <button type="button" className="btn btn-info btn-sm json-editor-btn-add " title="Add item"><svg><use xlinkHref="#icon-plus" /></svg> item</button>
-              </div>
-            </div>
-          </div>
+          <EditorKeywords
+            keywords={descriptor.keywords}
+            updateDescriptor={updateDescriptor}
+          />
 
         </div>
 

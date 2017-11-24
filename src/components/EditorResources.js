@@ -28,7 +28,7 @@ function EditorResources({descriptors, updateResourceDescriptor, columns}) {
 
       {/* Add resource */}
       <a className="add resource">
-        <svg><use xlinkHref="#icon-plus" /></svg> Add another resource
+        <svg><use xlinkHref="#icon-plus" /></svg> Add resource
       </a>
 
     </section>
