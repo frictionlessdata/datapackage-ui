@@ -4,7 +4,16 @@ const {EditorResource} = require('./EditorResource')
 
 // Module API
 
-function EditorResources({descriptors, updateResourceDescriptor, columns}) {
+function EditorResources({
+
+  // Props
+  descriptors,
+  updateResource,
+  removeResource,
+  addResource,
+  columns
+
+}) {
   return (
     <section className="resources">
 
@@ -19,7 +28,8 @@ function EditorResources({descriptors, updateResourceDescriptor, columns}) {
           <EditorResource
             index={index}
             descriptor={descriptor}
-            updateResourceDescriptor={updateResourceDescriptor}
+            updateResource={updateResource}
+            removeResource={removeResource}
             columns={columns}
             key={index}
           />
@@ -27,7 +37,12 @@ function EditorResources({descriptors, updateResourceDescriptor, columns}) {
       </div>
 
       {/* Add resource */}
-      <a className="add resource">
+      <a
+        className="add resource"
+        onClick={(event) => {
+          addResource({name: 'resource4', schema: {fields: []}})
+        }}
+      >
         <svg><use xlinkHref="#icon-plus" /></svg> Add resource
       </a>
 

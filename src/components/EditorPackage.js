@@ -17,8 +17,10 @@ function EditorPackage({
 
   // State
   isPreviewActive,
-  updateDescriptor,
-  updateResourceDescriptor,
+  updatePackage,
+  updateResource,
+  removeResource,
+  addResource,
   togglePreview,
 
 }) {
@@ -28,13 +30,15 @@ function EditorPackage({
       {/* Menu */}
       <EditorMenu
         descriptor={descriptor}
-        updateDescriptor={updateDescriptor}
+        updatePackage={updatePackage}
       />
 
       {/* Resources */}
       <EditorResources
         descriptors={descriptor.resources}
-        updateResourceDescriptor={updateResourceDescriptor}
+        updateResource={updateResource}
+        removeResource={removeResource}
+        addResource={addResource}
         columns={columns}
       />
 
@@ -57,15 +61,29 @@ const initialState = ({descriptor}) => ({
 })
 
 
-const updateDescriptor = ({descriptor}) => (payload) => {
+const updatePackage = ({descriptor}) => (payload) => {
   descriptor = {...descriptor, ...payload}
   return {descriptor}
 }
 
 
-const updateResourceDescriptor = ({descriptor}) => (index, payload) => {
+const updateResource = ({descriptor}) => (index, payload) => {
   descriptor = {...descriptor}
   descriptor.resources[index] = {...descriptor.resources[index], ...payload}
+  return {descriptor}
+}
+
+
+const removeResource = ({descriptor}) => (index) => {
+  descriptor = {...descriptor}
+  descriptor.resources.splice(index, 1)
+  return {descriptor}
+}
+
+
+const addResource = ({descriptor}) => (payload) => {
+  descriptor = {...descriptor}
+  descriptor.resources.push(payload)
   return {descriptor}
 }
 
@@ -80,8 +98,10 @@ const togglePreview = ({isPreviewActive}) => () => {
 
 module.exports = {
   EditorPackage: withStateHandlers(initialState, {
-    updateDescriptor,
-    updateResourceDescriptor,
+    updatePackage,
+    updateResource,
+    removeResource,
+    addResource,
     togglePreview,
   })(EditorPackage),
 }

@@ -18,7 +18,7 @@ function EditorKeywords({
   return (
     <div className="panel">
 
-      {/* Header */}
+      {/* Heading */}
       <div className="panel-heading" role="tab" id="keywords-heading">
         <h4 className="panel-title">
           <a className="collapsed"

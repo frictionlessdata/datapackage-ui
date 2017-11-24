@@ -11,7 +11,8 @@ function EditorResource({
   // Props
   index,
   descriptor,
-  updateResourceDescriptor,
+  updateResource,
+  removeResource,
   columns,
 
   // State
@@ -32,15 +33,21 @@ function EditorResource({
             className="form-control"
             autoComplete="off"
             type="text"
-            defaultValue={descriptor.name}
+            value={descriptor.name}
             onChange={(event) => {
-              updateResourceDescriptor(index, {name: event.target.value})
+              updateResource(index, {name: event.target.value})
             }}
           />
         </div>
 
         {/* Actions */}
         <div className="actions">
+
+          {/* Remove */}
+          <a onClick={(event) => removeResource(index)}>
+            <svg><use xlinkHref="#icon-trashcan" /></svg>
+            <span className="text">Remove</span>
+          </a>
 
           {/* Settings */}
           <a
@@ -52,7 +59,8 @@ function EditorResource({
           </a>
 
           {/* Expand/collapse */}
-          <a role="button"
+          <a
+            role="button"
             data-toggle="collapse"
             href={`#collapse${index}`}
             aria-expanded="true"
@@ -77,7 +85,7 @@ function EditorResource({
               type="text"
               value={descriptor.title}
               onChange={(event) => {
-                updateResourceDescriptor(index, {title: event.target.value})
+                updateResource(index, {title: event.target.value})
               }}
             />
 
@@ -89,7 +97,7 @@ function EditorResource({
               autoComplete="off"
               value={descriptor.profile}
               onChange={(event) => {
-                updateResourceDescriptor(index, {profile: event.target.value})
+                updateResource(index, {profile: event.target.value})
               }}
             >
               <option value="data-resource">Data Resource</option>
@@ -105,7 +113,7 @@ function EditorResource({
               type="text"
               value={descriptor.path}
               onChange={(event) => {
-                updateResourceDescriptor(index, {path: event.target.value})
+                updateResource(index, {path: event.target.value})
               }}
             />
 
@@ -118,7 +126,7 @@ function EditorResource({
               type="text"
               value={descriptor.format}
               onChange={(event) => {
-                updateResourceDescriptor(index, {format: event.target.value})
+                updateResource(index, {format: event.target.value})
               }}
             />
 
@@ -131,7 +139,7 @@ function EditorResource({
               type="text"
               value={descriptor.encoding}
               onChange={(event) => {
-                updateResourceDescriptor(index, {encoding: event.target.value})
+                updateResource(index, {encoding: event.target.value})
               }}
             />
 
@@ -146,7 +154,7 @@ function EditorResource({
               name="root[resources][0][description]"
               value={descriptor.description}
               onChange={(event) => {
-                updateResourceDescriptor(index, {description: event.target.value})
+                updateResource(index, {description: event.target.value})
               }}
             />
 

@@ -4,7 +4,7 @@ const {EditorKeywords} = require('./EditorKeywords')
 
 // Module API
 
-function EditorMenu({descriptor, updateDescriptor}) {
+function EditorMenu({descriptor, updatePackage}) {
   return (
     <section className="package">
       <div className="inner">
@@ -44,7 +44,7 @@ function EditorMenu({descriptor, updateDescriptor}) {
                   type="text"
                   value={descriptor.title}
                   onChange={(event) => {
-                    updateDescriptor({title: event.target.value})
+                    updatePackage({title: event.target.value})
                   }}
                 />
 
@@ -56,7 +56,7 @@ function EditorMenu({descriptor, updateDescriptor}) {
                   autoComplete="off"
                   value={descriptor.profile}
                   onChange={(event) => {
-                    updateDescriptor({profile: event.target.value})
+                    updatePackage({profile: event.target.value})
                   }}
                 >
                   <option value="data-package">Data Package</option>
@@ -89,7 +89,7 @@ function EditorMenu({descriptor, updateDescriptor}) {
                   type="text"
                   value={descriptor.name}
                   onChange={(event) => {
-                    updateDescriptor({name: event.target.value})
+                    updatePackage({name: event.target.value})
                   }}
                 />
 
@@ -100,7 +100,7 @@ function EditorMenu({descriptor, updateDescriptor}) {
                   name="root[description]"
                   value={descriptor.description}
                   onChange={(event) => {
-                    updateDescriptor({description: event.target.value})
+                    updatePackage({description: event.target.value})
                   }}
                 />
 
@@ -112,7 +112,7 @@ function EditorMenu({descriptor, updateDescriptor}) {
                   type="text"
                   value={descriptor.homepage}
                   onChange={(event) => {
-                    updateDescriptor({homepage: event.target.value})
+                    updatePackage({homepage: event.target.value})
                   }}
                 />
 
@@ -124,7 +124,7 @@ function EditorMenu({descriptor, updateDescriptor}) {
                   type="text"
                   value={descriptor.version}
                   onChange={(event) => {
-                    updateDescriptor({version: event.target.value})
+                    updatePackage({version: event.target.value})
                   }}
                 />
 
@@ -136,7 +136,7 @@ function EditorMenu({descriptor, updateDescriptor}) {
                   type="text"
                   value={descriptor.license}
                   onChange={(event) => {
-                    updateDescriptor({license: event.target.value})
+                    updatePackage({license: event.target.value})
                   }}
                 />
 
@@ -148,7 +148,7 @@ function EditorMenu({descriptor, updateDescriptor}) {
                   type="text"
                   value={descriptor.author}
                   onChange={(event) => {
-                    updateDescriptor({author: event.target.value})
+                    updatePackage({author: event.target.value})
                   }}
                 />
 
@@ -159,7 +159,7 @@ function EditorMenu({descriptor, updateDescriptor}) {
           {/* Keywords */}
           <EditorKeywords
             keywords={descriptor.keywords}
-            updateDescriptor={updateDescriptor}
+            updatePackage={updatePackage}
           />
 
         </div>

@@ -6,6 +6,7 @@ const {EditorField} = require('./EditorField')
 // Module API
 
 function EditorFields({descriptors, columns}) {
+  if (!descriptors.length) return null
   return (
     <div className="data-cards sortable">
 
