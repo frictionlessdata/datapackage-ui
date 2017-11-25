@@ -35,10 +35,12 @@
   "dependencies": {
     "axios": "^0.16.2",
     "classnames": "^2.2.5",
+    "datapackage": "^1.0.5",
     "lodash": "^4.17.4",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "recompose": "^0.26.0"
+    "recompose": "^0.26.0",
+    "tableschema": "^1.4.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
