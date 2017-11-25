@@ -216,7 +216,7 @@ function EditorResource({
 }
 
 
-// Internal
+// State
 
 const initialState = {
   isSettingsActive: false,

@@ -115,7 +115,7 @@ function EditorKeywords({
 }
 
 
-// Internal
+// State
 
 const initialState = ''
 const stateName = 'newKeyword'

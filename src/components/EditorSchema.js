@@ -53,7 +53,7 @@ function EditorSchema({
 }
 
 
-// Internal
+// State
 
 const initialState = ({descriptor}) => ({
   descriptor: cloneDeep(descriptor),

@@ -199,16 +199,13 @@ function EditorMenu({
         <div className="validate-download">
 
           {/* Download */}
-          <button
+          <a
             className="btn btn-lg btn-success"
-            onClick={(event) => {
-              updatePackage({
-                type: 'DOWNLOAD',
-              })
-            }}
+            href={`data: ${encodeDescriptor(descriptor)}`}
+            download="descriptor.json"
           >
             Download
-          </button>
+          </a>
 
           {/* Validate */}
           <button
@@ -227,6 +224,15 @@ function EditorMenu({
       </div>
     </section>
   )
+}
+
+
+// Helpers
+
+const encodeDescriptor = (descriptor) => {
+  const text = encodeURIComponent(JSON.stringify(descriptor, null, 4))
+  const data = `text/json;charset=utf-8, ${text}`
+  return data
 }
 
 

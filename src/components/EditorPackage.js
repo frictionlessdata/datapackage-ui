@@ -90,7 +90,7 @@ function EditorPackage({
 }
 
 
-// Internal
+// State
 
 const DEFAULT_FEEDBACK = {
   type: 'warning',
