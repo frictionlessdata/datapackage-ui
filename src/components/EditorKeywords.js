@@ -44,7 +44,7 @@ function EditorKeywords({
         <div className="panel-body">
 
           {/* List keywords */}
-          {keywords.map((keyword, index) => (
+          {(keywords || []).map((keyword, index) => (
             <p key={index}>
 
               {/* Update keyword */}

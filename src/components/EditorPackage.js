@@ -53,7 +53,7 @@ function EditorPackage({
 
           {/* List resources */}
           <div className="panel-group" id="resources-data" role="tablist" aria-multiselectable="true">
-            {descriptor.resources.map((descriptor, index) => (
+            {(descriptor.resources || []).map((descriptor, index) => (
               <EditorResource
                 index={index}
                 descriptor={descriptor}
@@ -112,8 +112,8 @@ const updatePackage = ({descriptor}) => (action) => {
   switch (action.type) {
 
     case 'UPLOAD':
-      console.log(action)
-      break
+      descriptor = action.descriptor
+      return {descriptor, feedback: DEFAULT_FEEDBACK}
 
     case 'VALIDATE':
       // TODO: rebase on datapackage.validate
@@ -131,10 +131,6 @@ const updatePackage = ({descriptor}) => (action) => {
           messages: errors.map((error) => error.message),
         }}
       }
-
-    case 'DOWNLOAD':
-      console.log(action)
-      return
 
     case 'UPDATE_PACKAGE':
       descriptor = {...descriptor, ...action.descriptor}
