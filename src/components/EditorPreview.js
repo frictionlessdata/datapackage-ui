@@ -3,7 +3,13 @@ const React = require('react')
 
 // Module API
 
-function EditorPreview({descriptor, togglePreview}) {
+function EditorPreview({
+
+  // Props
+  descriptor,
+  togglePreview,
+
+}) {
   return (
     <section className="preview">
       <h2 className="section-heading" onClick={togglePreview}><svg className="icon"><use xlinkHref="#icon-braces" /></svg><span className="text">Preview</span></h2>

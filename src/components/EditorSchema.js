@@ -63,40 +63,44 @@ const initialState = ({descriptor}) => ({
 const updateSchema = ({descriptor}, {resourceIndex, updatePackage}) => (action) => {
   descriptor = {...descriptor}
 
+  // Update package
+  const updateSchemaInPackage = (schemaDescriptor) => {
+    if (updatePackage) {
+      updatePackage({
+        type: 'UPDATE_RESOURCE',
+        resourceIndex,
+        resourceDescriptor: {schema: schemaDescriptor}
+      })
+    }
+  }
+
   // Update schema
   switch (action.type) {
 
     case 'UPDATE_SCHEMA':
       descriptor = {...descriptor, ...action.descriptor}
-      break
+      updateSchemaInPackage(descriptor)
+      return {descriptor}
 
     case 'UPDATE_FIELD':
       descriptor.fields[action.fieldIndex] = {
         ...descriptor.fields[action.fieldIndex],
         ...action.fieldDescriptor
       }
-      break
+      updateSchemaInPackage(descriptor)
+      return {descriptor}
 
     case 'REMOVE_FIELD':
       descriptor.fields.splice(action.fieldIndex, 1)
-      break
+      updateSchemaInPackage(descriptor)
+      return {descriptor}
 
     case 'ADD_FIELD':
       descriptor.fields.push(action.fieldDescriptor)
-      break
+      updateSchemaInPackage(descriptor)
+      return {descriptor}
 
   }
-
-  // Update package
-  if (updatePackage) {
-    updatePackage({
-      type: 'UPDATE_RESOURCE',
-      resourceIndex,
-      resourceDescriptor: {schema: descriptor}
-    })
-  }
-
-  return {descriptor}
 }
 
 

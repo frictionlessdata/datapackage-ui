@@ -4,7 +4,15 @@ const {EditorKeywords} = require('./EditorKeywords')
 
 // Module API
 
-function EditorMenu({descriptor, updatePackage}) {
+function EditorMenu({
+
+  // Props
+  descriptor,
+  updatePackage,
+  validate,
+  download,
+
+}) {
   return (
     <section className="package">
       <div className="inner">
@@ -188,10 +196,32 @@ function EditorMenu({descriptor, updatePackage}) {
 
         </div>
 
-        {/* Download/Validate */}
         <div className="validate-download">
-          <button className="btn btn-lg btn-success">Download</button>
-          <button className="btn btn-lg btn-info">Validate</button>
+
+          {/* Download */}
+          <button
+            className="btn btn-lg btn-success"
+            onClick={(event) => {
+              updatePackage({
+                type: 'DOWNLOAD',
+              })
+            }}
+          >
+            Download
+          </button>
+
+          {/* Validate */}
+          <button
+            className="btn btn-lg btn-info"
+            onClick={(event) => {
+              updatePackage({
+                type: 'VALIDATE',
+              })
+            }}
+          >
+            Validate
+          </button>
+
         </div>
 
       </div>

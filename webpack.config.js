@@ -53,6 +53,11 @@ const webpackConfig = {
   performance: {
     hints: false
   },
+  node: {
+    fs: 'empty',
+    http: 'empty',
+    https: 'empty',
+  },
 }
 
 // Production
