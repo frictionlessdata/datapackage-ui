@@ -11,9 +11,7 @@ function EditorResource({
   // Props
   index,
   descriptor,
-  updateResource,
-  removeResource,
-  columns,
+  updatePackage,
 
   // State
   isSettingsActive,
@@ -35,7 +33,11 @@ function EditorResource({
             type="text"
             value={descriptor.name}
             onChange={(event) => {
-              updateResource(index, {name: event.target.value})
+              updatePackage({
+                type: 'UPDATE_RESOURCE',
+                resourceIndex: index,
+                resourceDescriptor: {name: event.target.value}
+              })
             }}
           />
         </div>
@@ -44,7 +46,14 @@ function EditorResource({
         <div className="actions">
 
           {/* Remove */}
-          <a onClick={(event) => removeResource(index)}>
+          <a
+            onClick={(event) => {
+              updatePackage({
+                type: 'REMOVE_RESOURCE',
+                resourceIndex: index,
+              })
+            }}
+          >
             <svg><use xlinkHref="#icon-trashcan" /></svg>
             <span className="text">Remove</span>
           </a>
@@ -85,7 +94,11 @@ function EditorResource({
               type="text"
               value={descriptor.title}
               onChange={(event) => {
-                updateResource(index, {title: event.target.value})
+                updatePackage({
+                  type: 'UPDATE_RESOURCE',
+                  resourceIndex: index,
+                  resourceDescriptor: {title: event.target.value}
+                })
               }}
             />
 
@@ -97,7 +110,11 @@ function EditorResource({
               autoComplete="off"
               value={descriptor.profile}
               onChange={(event) => {
-                updateResource(index, {profile: event.target.value})
+                updatePackage({
+                  type: 'UPDATE_RESOURCE',
+                  resourceIndex: index,
+                  resourceDescriptor: {profile: event.target.value}
+                })
               }}
             >
               <option value="data-resource">Data Resource</option>
@@ -113,7 +130,11 @@ function EditorResource({
               type="text"
               value={descriptor.path}
               onChange={(event) => {
-                updateResource(index, {path: event.target.value})
+                updatePackage({
+                  type: 'UPDATE_RESOURCE',
+                  resourceIndex: index,
+                  resourceDescriptor: {path: event.target.value}
+                })
               }}
             />
 
@@ -126,7 +147,11 @@ function EditorResource({
               type="text"
               value={descriptor.format}
               onChange={(event) => {
-                updateResource(index, {format: event.target.value})
+                updatePackage({
+                  type: 'UPDATE_RESOURCE',
+                  resourceIndex: index,
+                  resourceDescriptor: {format: event.target.value}
+                })
               }}
             />
 
@@ -139,7 +164,11 @@ function EditorResource({
               type="text"
               value={descriptor.encoding}
               onChange={(event) => {
-                updateResource(index, {encoding: event.target.value})
+                updatePackage({
+                  type: 'UPDATE_RESOURCE',
+                  resourceIndex: index,
+                  resourceDescriptor: {encoding: event.target.value}
+                })
               }}
             />
 
@@ -154,7 +183,11 @@ function EditorResource({
               name="root[resources][0][description]"
               value={descriptor.description}
               onChange={(event) => {
-                updateResource(index, {description: event.target.value})
+                updatePackage({
+                  type: 'UPDATE_RESOURCE',
+                  resourceIndex: index,
+                  resourceDescriptor: {description: event.target.value}
+                })
               }}
             />
 
@@ -170,7 +203,11 @@ function EditorResource({
         aria-labelledby="resource-one-heading"
       >
         <div className="panel-body">
-          <EditorSchema descriptor={descriptor.schema} columns={columns} />
+          <EditorSchema
+            descriptor={descriptor.schema || {}}
+            resourceIndex={index}
+            updatePackage={updatePackage}
+          />
         </div>
       </div>
 
@@ -193,5 +230,7 @@ const toggleSettings = ({isSettingsActive}) => () => {
 // System
 
 module.exports = {
-  EditorResource: withStateHandlers(initialState, {toggleSettings})(EditorResource),
+  EditorResource: withStateHandlers(initialState, {
+    toggleSettings,
+  })(EditorResource),
 }

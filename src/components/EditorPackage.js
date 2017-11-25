@@ -13,14 +13,10 @@ function EditorPackage({
 
   // Props
   descriptor,
-  columns,
 
   // State
-  isPreviewActive,
   updatePackage,
-  updateResource,
-  removeResource,
-  addResource,
+  isPreviewActive,
   togglePreview,
 
 }) {
@@ -47,9 +43,7 @@ function EditorPackage({
             <EditorResource
               index={index}
               descriptor={descriptor}
-              updateResource={updateResource}
-              removeResource={removeResource}
-              columns={columns}
+              updatePackage={updatePackage}
               key={index}
             />
           ))}
@@ -59,7 +53,10 @@ function EditorPackage({
         <a
           className="add resource"
           onClick={(event) => {
-            addResource({name: 'resource4', schema: {fields: []}})
+            updatePackage({
+              type: 'ADD_RESOURCE',
+              resourceDescriptor: {name: `resource${descriptor.resources.length + 1}`}
+            })
           }}
         >
           <svg><use xlinkHref="#icon-plus" /></svg> Add resource
@@ -86,29 +83,33 @@ const initialState = ({descriptor}) => ({
 })
 
 
-const updatePackage = ({descriptor}) => (payload) => {
-  descriptor = {...descriptor, ...payload}
-  return {descriptor}
-}
-
-
-const updateResource = ({descriptor}) => (index, payload) => {
+const updatePackage = ({descriptor}) => (action) => {
   descriptor = {...descriptor}
-  descriptor.resources[index] = {...descriptor.resources[index], ...payload}
-  return {descriptor}
-}
 
+  // Update package
+  switch (action.type) {
 
-const removeResource = ({descriptor}) => (index) => {
-  descriptor = {...descriptor}
-  descriptor.resources.splice(index, 1)
-  return {descriptor}
-}
+    case 'UPDATE_PACKAGE':
+      descriptor = {...descriptor, ...action.descriptor}
+      break
 
+    case 'UPDATE_RESOURCE':
+      descriptor.resources[action.resourceIndex] = {
+        ...descriptor.resources[action.resourceIndex],
+        ...action.resourceDescriptor,
+      }
+      break
 
-const addResource = ({descriptor}) => (payload) => {
-  descriptor = {...descriptor}
-  descriptor.resources.push(payload)
+    case 'REMOVE_RESOURCE':
+      descriptor.resources.splice(action.resourceIndex, 1)
+      break
+
+    case 'ADD_RESOURCE':
+      descriptor.resources.push(action.resourceDescriptor)
+      break
+
+  }
+
   return {descriptor}
 }
 
@@ -124,9 +125,6 @@ const togglePreview = ({isPreviewActive}) => () => {
 module.exports = {
   EditorPackage: withStateHandlers(initialState, {
     updatePackage,
-    updateResource,
-    removeResource,
-    addResource,
     togglePreview,
   })(EditorPackage),
 }

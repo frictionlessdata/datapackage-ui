@@ -8,7 +8,7 @@ function EditorKeywords({
 
   // Props
   keywords,
-  updateDescriptor,
+  updatePackage,
 
   // State
   newKeyword,
@@ -55,7 +55,10 @@ function EditorKeywords({
                 onChange={(event) => {
                   keywords = [...keywords]
                   keywords[index] = event.target.value
-                  updateDescriptor({keywords})
+                  updatePackage({
+                    type: 'UPDATE_PACKAGE',
+                    descriptor: {keywords}
+                  })
                 }}
               />
 
@@ -67,7 +70,10 @@ function EditorKeywords({
                 onClick={(event) => {
                   keywords = [...keywords]
                   keywords.splice(index, 1)
-                  updateDescriptor({keywords})
+                  updatePackage({
+                    type: 'UPDATE_PACKAGE',
+                    descriptor: {keywords}
+                  })
                 }}
               >
                Remove keyword
@@ -91,8 +97,11 @@ function EditorKeywords({
             title="Add item"
             onClick={(event) => {
               keywords = [...keywords, newKeyword]
-              updateDescriptor({keywords})
               updateNewKeyword('')
+              updatePackage({
+                type: 'UPDATE_PACKAGE',
+                descriptor: {keywords}
+              })
             }}
           >
             Add keyword

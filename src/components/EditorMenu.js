@@ -44,7 +44,10 @@ function EditorMenu({descriptor, updatePackage}) {
                   type="text"
                   value={descriptor.title}
                   onChange={(event) => {
-                    updatePackage({title: event.target.value})
+                    updatePackage({
+                      type: 'UPDATE_PACKAGE',
+                      descriptor: {title: event.target.value}
+                    })
                   }}
                 />
 
@@ -56,7 +59,10 @@ function EditorMenu({descriptor, updatePackage}) {
                   autoComplete="off"
                   value={descriptor.profile}
                   onChange={(event) => {
-                    updatePackage({profile: event.target.value})
+                    updatePackage({
+                      type: 'UPDATE_PACKAGE',
+                      descriptor: {profile: event.target.value}
+                    })
                   }}
                 >
                   <option value="data-package">Data Package</option>
@@ -89,7 +95,10 @@ function EditorMenu({descriptor, updatePackage}) {
                   type="text"
                   value={descriptor.name}
                   onChange={(event) => {
-                    updatePackage({name: event.target.value})
+                    updatePackage({
+                      type: 'UPDATE_PACKAGE',
+                      descriptor: {name: event.target.value}
+                    })
                   }}
                 />
 
@@ -100,7 +109,10 @@ function EditorMenu({descriptor, updatePackage}) {
                   name="root[description]"
                   value={descriptor.description}
                   onChange={(event) => {
-                    updatePackage({description: event.target.value})
+                    updatePackage({
+                      type: 'UPDATE_PACKAGE',
+                      descriptor: {description: event.target.value}
+                    })
                   }}
                 />
 
@@ -112,7 +124,10 @@ function EditorMenu({descriptor, updatePackage}) {
                   type="text"
                   value={descriptor.homepage}
                   onChange={(event) => {
-                    updatePackage({homepage: event.target.value})
+                    updatePackage({
+                      type: 'UPDATE_PACKAGE',
+                      descriptor: {homepage: event.target.value}
+                    })
                   }}
                 />
 
@@ -124,7 +139,10 @@ function EditorMenu({descriptor, updatePackage}) {
                   type="text"
                   value={descriptor.version}
                   onChange={(event) => {
-                    updatePackage({version: event.target.value})
+                    updatePackage({
+                      type: 'UPDATE_PACKAGE',
+                      descriptor: {version: event.target.value}
+                    })
                   }}
                 />
 
@@ -136,7 +154,10 @@ function EditorMenu({descriptor, updatePackage}) {
                   type="text"
                   value={descriptor.license}
                   onChange={(event) => {
-                    updatePackage({license: event.target.value})
+                    updatePackage({
+                      type: 'UPDATE_PACKAGE',
+                      descriptor: {license: event.target.value}
+                    })
                   }}
                 />
 
@@ -148,7 +169,10 @@ function EditorMenu({descriptor, updatePackage}) {
                   type="text"
                   value={descriptor.author}
                   onChange={(event) => {
-                    updatePackage({author: event.target.value})
+                    updatePackage({
+                      type: 'UPDATE_PACKAGE',
+                      descriptor: {author: event.target.value}
+                    })
                   }}
                 />
 
