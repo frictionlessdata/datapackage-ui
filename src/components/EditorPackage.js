@@ -4,7 +4,7 @@ const cloneDeep = require('lodash/cloneDeep')
 const {withStateHandlers} = require('recompose')
 const {EditorMenu} = require('./EditorMenu')
 const {EditorPreview} = require('./EditorPreview')
-const {EditorResources} = require('./EditorResources')
+const {EditorResource} = require('./EditorResource')
 
 
 // Module API
@@ -34,13 +34,38 @@ function EditorPackage({
       />
 
       {/* Resources */}
-      <EditorResources
-        descriptors={descriptor.resources}
-        updateResource={updateResource}
-        removeResource={removeResource}
-        addResource={addResource}
-        columns={columns}
-      />
+      <section className="resources">
+
+        {/* Header */}
+        <header className="section-heading">
+          <h2>Resources</h2>
+        </header>
+
+        {/* List resources */}
+        <div className="panel-group" id="resources-data" role="tablist" aria-multiselectable="true">
+          {descriptor.resources.map((descriptor, index) => (
+            <EditorResource
+              index={index}
+              descriptor={descriptor}
+              updateResource={updateResource}
+              removeResource={removeResource}
+              columns={columns}
+              key={index}
+            />
+          ))}
+        </div>
+
+        {/* Add resource */}
+        <a
+          className="add resource"
+          onClick={(event) => {
+            addResource({name: 'resource4', schema: {fields: []}})
+          }}
+        >
+          <svg><use xlinkHref="#icon-plus" /></svg> Add resource
+        </a>
+
+      </section>
 
       {/* Preview */}
       <EditorPreview
