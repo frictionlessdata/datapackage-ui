@@ -29,39 +29,46 @@ function EditorResource({
 
             {/* Name */}
             <div class="col-sm-3">
-              <label>Name</label>
-              <input
-                className="form-control"
-                autoComplete="off"
-                type="text"
-                value={descriptor.name}
-                onChange={(event) => {
-                  updatePackage({
-                    type: 'UPDATE_RESOURCE',
-                    resourceIndex: index,
-                    resourceDescriptor: {name: event.target.value}
-                  })
-                }}
-              />
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Name</span>
+                <input
+                  className="form-control"
+                  autoComplete="off"
+                  type="text"
+                  value={descriptor.name}
+                  onChange={(event) => {
+                    updatePackage({
+                      type: 'UPDATE_RESOURCE',
+                      resourceIndex: index,
+                      resourceDescriptor: {name: event.target.value}
+                    })
+                  }}
+                />
+              </div>
             </div>
 
             {/* Path */}
             <div class="col-sm-9">
-              <label>Path</label>
-              <input
-                className="form-control"
-                autoComplete="off"
-                type="text"
-                value={descriptor.path}
-                placeholder="Add resource path"
-                onChange={(event) => {
-                  updatePackage({
-                    type: 'UPDATE_RESOURCE',
-                    resourceIndex: index,
-                    resourceDescriptor: {path: event.target.value}
-                  })
-                }}
-              />
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Path</span>
+                <input
+                  className="form-control"
+                  autoComplete="off"
+                  type="text"
+                  value={descriptor.path}
+                  placeholder="Add resource path"
+                  onChange={(event) => {
+                    updatePackage({
+                      type: 'UPDATE_RESOURCE',
+                      resourceIndex: index,
+                      resourceDescriptor: {path: event.target.value}
+                    })
+                  }}
+                />
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">Upload</button>
+                </span>
+              </div>
             </div>
 
           </div>
