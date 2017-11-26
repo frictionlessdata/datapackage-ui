@@ -24,22 +24,47 @@ function EditorResource({
       {/* Metadata */}
       <div className="panel-heading" role="tab" id="resource-one-heading">
 
-        {/* Name */}
-        <div className="title">
-          <label>Name</label>
-          <input
-            className="form-control"
-            autoComplete="off"
-            type="text"
-            value={descriptor.name}
-            onChange={(event) => {
-              updatePackage({
-                type: 'UPDATE_RESOURCE',
-                resourceIndex: index,
-                resourceDescriptor: {name: event.target.value}
-              })
-            }}
-          />
+        <div className="title" style={{width: '90%'}}>
+          <div class="row">
+
+            {/* Name */}
+            <div class="col-sm-3">
+              <label>Name</label>
+              <input
+                className="form-control"
+                autoComplete="off"
+                type="text"
+                value={descriptor.name}
+                onChange={(event) => {
+                  updatePackage({
+                    type: 'UPDATE_RESOURCE',
+                    resourceIndex: index,
+                    resourceDescriptor: {name: event.target.value}
+                  })
+                }}
+              />
+            </div>
+
+            {/* Path */}
+            <div class="col-sm-9">
+              <label>Path</label>
+              <input
+                className="form-control"
+                autoComplete="off"
+                type="text"
+                value={descriptor.path}
+                placeholder="Add resource path"
+                onChange={(event) => {
+                  updatePackage({
+                    type: 'UPDATE_RESOURCE',
+                    resourceIndex: index,
+                    resourceDescriptor: {path: event.target.value}
+                  })
+                }}
+              />
+            </div>
+
+          </div>
         </div>
 
         {/* Actions */}
@@ -120,23 +145,6 @@ function EditorResource({
               <option value="data-resource">Data Resource</option>
               <option value="tabular-data-resource">Tabular Data Resource</option>
             </select>
-
-            {/* Path */}
-            <label className="control-label">Path</label>
-            <input
-              className="form-control"
-              name="root[resources][0][path]"
-              autoComplete="off"
-              type="text"
-              value={descriptor.path}
-              onChange={(event) => {
-                updatePackage({
-                  type: 'UPDATE_RESOURCE',
-                  resourceIndex: index,
-                  resourceDescriptor: {path: event.target.value}
-                })
-              }}
-            />
 
             {/* Format */}
             <label className="control-label">Format</label>
