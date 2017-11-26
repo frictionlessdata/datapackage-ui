@@ -92,10 +92,7 @@ function EditorPackage({
 
 // State
 
-const DEFAULT_FEEDBACK = {
-  type: 'warning',
-  text: 'Data package is not validated',
-}
+const DEFAULT_FEEDBACK = false
 
 
 const initialState = ({descriptor}) => ({
