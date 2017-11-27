@@ -1,4 +1,6 @@
 const React = require('react')
+const {Readable} = require('stream')
+const {Table} = require('tableschema')
 const {Profile} = require('datapackage')
 const classNames = require('classnames')
 const cloneDeep = require('lodash/cloneDeep')
@@ -23,7 +25,7 @@ function EditorPackage({
 
 }) {
   return (
-    <div className={classNames('app', {'code-view': isPreviewActive})}>
+    <div className={classNames('app', 'datapackage-ui', {'code-view': isPreviewActive})}>
 
       {/* Menu */}
       <EditorMenu
@@ -99,20 +101,22 @@ const initialState = ({descriptor}) => ({
   descriptor: cloneDeep(descriptor),
   isPreviewActive: false,
   feedback: DEFAULT_FEEDBACK,
+  tables: [],
 })
 
 
-const updatePackage = ({descriptor}) => (action) => {
+const updatePackage = ({descriptor, tables}) => (action) => {
   descriptor = {...descriptor}
+  tables = [...tables]
 
   // Update package
   switch (action.type) {
 
-    case 'UPLOAD':
+    case 'UPLOAD_PACKAGE':
       descriptor = action.descriptor
       return {descriptor, feedback: DEFAULT_FEEDBACK}
 
-    case 'VALIDATE':
+    case 'VALIDATE_PACKAGE':
       // TODO: rebase on datapackage.validate
       const profile = new Profile(descriptor.profile)
       const {valid, errors} = profile.validate(descriptor)
@@ -147,6 +151,14 @@ const updatePackage = ({descriptor}) => (action) => {
     case 'ADD_RESOURCE':
       descriptor.resources.push(action.resourceDescriptor)
       return {descriptor, feedback: DEFAULT_FEEDBACK}
+
+    case 'UPLOAD_TABLE':
+      const stream = new Readable()
+      stream.push(action.dataAsString)
+      stream.push(null)
+      const table = new Table(stream)
+      tables[action.resourceIndex] = table
+      return {tables}
 
   }
 }

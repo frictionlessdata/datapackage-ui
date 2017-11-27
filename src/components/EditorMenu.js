@@ -30,7 +30,7 @@ function EditorMenu({
             </svg>
           </a>
 
-          {/* Load */}
+          {/* Upload */}
           <label className="btn btn-lg btn-success" htmlFor="load-descriptor">
             <input
               type="file"
@@ -41,7 +41,7 @@ function EditorMenu({
                 reader.readAsText(event.target.files[0])
                 reader.onload = function(error) {
                   updatePackage({
-                    type: 'UPLOAD',
+                    type: 'UPLOAD_PACKAGE',
                     descriptor: JSON.parse(reader.result),
                   })
                 }
@@ -84,7 +84,7 @@ function EditorMenu({
             className="btn btn-lg btn-info"
             onClick={(event) => {
               updatePackage({
-                type: 'VALIDATE',
+                type: 'VALIDATE_PACKAGE',
               })
             }}
           >

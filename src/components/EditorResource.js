@@ -16,6 +16,7 @@ function EditorResource({
   // State
   isSettingsActive,
   toggleSettings,
+  references,
 
 }) {
   return (
@@ -25,12 +26,12 @@ function EditorResource({
       <div className="panel-heading" role="tab" id="resource-one-heading">
 
         <div className="title" style={{width: '90%'}}>
-          <div class="row">
+          <div className="row">
 
             {/* Name */}
-            <div class="col-sm-3">
-              <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1">Name</span>
+            <div className="col-sm-3">
+              <div className="input-group">
+                <span className="input-group-addon" id="basic-addon1">Name</span>
                 <input
                   className="form-control"
                   autoComplete="off"
@@ -47,10 +48,11 @@ function EditorResource({
               </div>
             </div>
 
-            {/* Path */}
-            <div class="col-sm-9">
-              <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1">Path</span>
+            <div className="col-sm-9">
+              <div className="input-group">
+
+                {/* Path */}
+                <span className="input-group-addon" id="basic-addon1">Path</span>
                 <input
                   className="form-control"
                   autoComplete="off"
@@ -65,9 +67,33 @@ function EditorResource({
                     })
                   }}
                 />
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">Upload</button>
+
+                {/* Upload */}
+                <span className="input-group-btn">
+                  <input
+                    ref={(ref) => references.upload = ref}
+                    type="file"
+                    style={{display: 'none'}}
+                    onChange={(event) => {
+                      const reader = new FileReader()
+                      reader.readAsText(event.target.files[0])
+                      reader.onload = function(error) {
+                        updatePackage({
+                          type: 'UPLOAD_TABLE',
+                          resourceIndex: index,
+                          dataAsString: reader.result,
+                        })
+                      }
+                    }}
+                  />
+                  <button
+                    className="btn btn-default"
+                    onClick={(event) => references.upload.click()}
+                  >
+                    Load
+                  </button>
                 </span>
+
               </div>
             </div>
 
@@ -235,6 +261,7 @@ function EditorResource({
 
 const initialState = {
   isSettingsActive: false,
+  references: {},
 }
 
 const toggleSettings = ({isSettingsActive}) => () => {
