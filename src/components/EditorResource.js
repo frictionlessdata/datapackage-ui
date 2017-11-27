@@ -10,13 +10,16 @@ function EditorResource({
 
   // Props
   index,
+  table,
   descriptor,
   updatePackage,
 
   // State
   isSettingsActive,
-  toggleSettings,
   references,
+
+  // Handlers
+  toggleSettings,
 
 }) {
   return (
@@ -58,7 +61,7 @@ function EditorResource({
                   autoComplete="off"
                   type="text"
                   value={descriptor.path}
-                  placeholder="Add resource path"
+                  placeholder="Type resource path"
                   onChange={(event) => {
                     updatePackage({
                       type: 'UPDATE_RESOURCE',
@@ -245,6 +248,7 @@ function EditorResource({
       >
         <div className="panel-body">
           <EditorSchema
+            table={table}
             descriptor={descriptor.schema || {}}
             resourceIndex={index}
             updatePackage={updatePackage}
@@ -259,10 +263,13 @@ function EditorResource({
 
 // State
 
-const initialState = {
+const initialState = () => ({
   isSettingsActive: false,
   references: {},
-}
+})
+
+
+// Handlers
 
 const toggleSettings = ({isSettingsActive}) => () => {
   return {isSettingsActive: !isSettingsActive}

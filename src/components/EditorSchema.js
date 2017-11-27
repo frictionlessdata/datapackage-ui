@@ -9,11 +9,15 @@ const {EditorField} = require('./EditorField')
 function EditorSchema({
 
   // Props
+  table,
   descriptor,
   resourceIndex,
   updatePackage,
 
   // State
+  // descriptor,
+
+  // Handlers
   updateSchema,
 
 }) {
@@ -26,6 +30,7 @@ function EditorSchema({
           <div className="inner">
             <EditorField
               index={index}
+              column={(table && !table.read) ? table.map((row) => row[index]).filter(Boolean) : []}
               descriptor={descriptor}
               updateSchema={updateSchema}
             />
@@ -44,7 +49,7 @@ function EditorSchema({
             })
           }}
         >
-          <svg><use xlinkHref="#icon-plus" /></svg> Add item
+          <svg><use xlinkHref="#icon-plus" /></svg> Add field
         </a>
       </div>
 

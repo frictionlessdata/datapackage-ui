@@ -12,6 +12,8 @@ function EditorKeywords({
 
   // State
   newKeyword,
+
+  // Handlers
   updateNewKeyword,
 
 }) {

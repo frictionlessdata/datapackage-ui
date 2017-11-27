@@ -4,7 +4,7 @@ const {Table} = require('tableschema')
 const {Profile} = require('datapackage')
 const classNames = require('classnames')
 const cloneDeep = require('lodash/cloneDeep')
-const {withStateHandlers} = require('recompose')
+const {compose, lifecycle, withStateHandlers} = require('recompose')
 const {EditorMenu} = require('./EditorMenu')
 const {EditorPreview} = require('./EditorPreview')
 const {EditorResource} = require('./EditorResource')
@@ -18,10 +18,14 @@ function EditorPackage({
   descriptor,
 
   // State
-  updatePackage,
+  // descriptor,
+  tables,
   isPreviewActive,
-  togglePreview,
   feedback,
+
+  //Handlers
+  updatePackage,
+  togglePreview,
 
 }) {
   return (
@@ -58,6 +62,7 @@ function EditorPackage({
             {(descriptor.resources || []).map((descriptor, index) => (
               <EditorResource
                 index={index}
+                table={tables[index]}
                 descriptor={descriptor}
                 updatePackage={updatePackage}
                 key={index}
@@ -96,7 +101,6 @@ function EditorPackage({
 
 const DEFAULT_FEEDBACK = false
 
-
 const initialState = ({descriptor}) => ({
   descriptor: cloneDeep(descriptor),
   isPreviewActive: false,
@@ -104,6 +108,8 @@ const initialState = ({descriptor}) => ({
   tables: [],
 })
 
+
+// Handlers
 
 const updatePackage = ({descriptor, tables}) => (action) => {
   descriptor = {...descriptor}
@@ -170,11 +176,28 @@ const togglePreview = ({isPreviewActive}) => () => {
 }
 
 
+// Lifecycle
+
+async function componentDidUpdate() {
+  for (const [index, table] of this.props.tables.entries()) {
+    if (!table) continue
+    if (table instanceof Table) {
+      this.props.tables[index] = await table.read()
+      this.forceUpdate()
+    }
+  }
+}
+
+
 // System
 
 module.exports = {
-  EditorPackage: withStateHandlers(initialState, {
-    updatePackage,
-    togglePreview,
-  })(EditorPackage),
+  EditorPackage: compose(
+    withStateHandlers(initialState, {
+      updatePackage,
+      togglePreview,
+    }),
+    lifecycle({
+      componentDidUpdate,
+    }))(EditorPackage),
 }

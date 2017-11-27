@@ -7,11 +7,11 @@ function EditorField({
 
   // Props
   index,
+  column,
   descriptor,
   updateSchema,
 
 }) {
-  const column = ['value1', 'value2', 'value3']
   return (
     <div>
 
