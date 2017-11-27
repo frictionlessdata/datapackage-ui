@@ -1,4 +1,5 @@
 const React = require('react')
+const {Schema} = require('tableschema')
 const cloneDeep = require('lodash/cloneDeep')
 const {withStateHandlers, lifecycle, compose} = require('recompose')
 const {EditorField} = require('./EditorField')
@@ -21,15 +22,7 @@ function EditorSchema({
   updateSchema,
 
 }) {
-  const columns = []
-  if (table && !table.read) {
-    for (const row of table) {
-      for (const [index, value] of row.entries()) {
-        columns[index] = columns[index] || []
-        columns[index].push(value)
-      }
-    }
-  }
+  const columns = getColumns(table)
   const extraColumns = columns.length - (descriptor.fields || []).length
   return (
     <div className="data-cards sortable">
@@ -78,7 +71,7 @@ const initialState = ({schemaDescriptor}) => ({
 })
 
 
-const updateSchema = ({/*descriptor*/}, {descriptor, resourceIndex, updatePackage}) => (action) => {
+const updateSchema = ({/*descriptor*/}, {table, descriptor, resourceIndex, updatePackage}) => (action) => {
   descriptor = {...descriptor}
 
   // Update package
@@ -91,9 +84,6 @@ const updateSchema = ({/*descriptor*/}, {descriptor, resourceIndex, updatePackag
       })
     }
   }
-
-  // TODO: remove
-  console.log(action)
 
   // Update schema
   switch (action.type) {
@@ -121,12 +111,39 @@ const updateSchema = ({/*descriptor*/}, {descriptor, resourceIndex, updatePackag
 
     case 'ADD_FIELD':
       descriptor.fields = descriptor.fields || []
+
+      // Infer
+      const columns = getColumns(table)
+      const column = columns[descriptor.fields.length]
+      if (column) {
+        const schema = new Schema()
+        schema.infer(column, {headers: [action.fieldDescriptor.name]})
+        action.fieldDescriptor.type = schema.descriptor.fields[0].type
+        action.fieldDescriptor.format = schema.descriptor.fields[0].format
+      }
+
+      // Add
       descriptor.fields.push(action.fieldDescriptor)
       updateSchemaInPackage(descriptor)
       // return {descriptor}
       break
 
   }
+}
+
+// Helpers
+
+function getColumns(table) {
+  const columns = []
+  if (table && !table.read) {
+    for (const row of table) {
+      for (const [index, value] of row.entries()) {
+        columns[index] = columns[index] || []
+        columns[index].push(value)
+      }
+    }
+  }
+  return columns
 }
 
 

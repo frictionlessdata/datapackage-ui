@@ -101,7 +101,7 @@ function EditorMenu({
 
 // Helpers
 
-const encodeDescriptor = (descriptor) => {
+function encodeDescriptor(descriptor) {
   const text = encodeURIComponent(JSON.stringify(descriptor, null, 4))
   const data = `text/json;charset=utf-8, ${text}`
   return data

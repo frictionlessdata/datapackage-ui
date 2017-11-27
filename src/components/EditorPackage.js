@@ -114,9 +114,6 @@ const updatePackage = ({descriptor, tables}) => (action) => {
   descriptor = {...descriptor}
   tables = [...tables]
 
-  // TODO: remove
-  console.log(action)
-
   // Update package
   switch (action.type) {
 
@@ -153,8 +150,9 @@ const updatePackage = ({descriptor, tables}) => (action) => {
       return {descriptor, feedback: DEFAULT_FEEDBACK}
 
     case 'REMOVE_RESOURCE':
+      tables[action.resourceIndex] = undefined
       descriptor.resources.splice(action.resourceIndex, 1)
-      return {descriptor, feedback: DEFAULT_FEEDBACK}
+      return {descriptor, tables, feedback: DEFAULT_FEEDBACK}
 
     case 'ADD_RESOURCE':
       descriptor.resources = descriptor.resources || []
