@@ -1,4 +1,5 @@
 const React = require('react')
+const {Readable} = require('stream')
 const classNames = require('classnames')
 const {withStateHandlers} = require('recompose')
 const {EditorSchema} = require('./EditorSchema')
@@ -60,7 +61,7 @@ function EditorResource({
                   className="form-control"
                   autoComplete="off"
                   type="text"
-                  value={descriptor.path}
+                  value={descriptor.path || ''}
                   placeholder="Type resource path"
                   onChange={(event) => {
                     updatePackage({
@@ -81,17 +82,30 @@ function EditorResource({
                       const reader = new FileReader()
                       reader.readAsText(event.target.files[0])
                       reader.onload = function(error) {
+                        const stream = new Readable()
+                        stream.push(reader.result)
+                        stream.push(null)
                         updatePackage({
                           type: 'UPLOAD_TABLE',
                           resourceIndex: index,
-                          dataAsString: reader.result,
+                          dataSource: stream,
                         })
                       }
                     }}
                   />
                   <button
                     className="btn btn-default"
-                    onClick={(event) => references.upload.click()}
+                    onClick={(event) => {
+                      if (descriptor.path.startsWith('http')) {
+                        updatePackage({
+                          type: 'UPLOAD_TABLE',
+                          resourceIndex: index,
+                          dataSource: descriptor.path,
+                        })
+                      } else {
+                        references.upload.click()
+                      }
+                    }}
                   >
                     Load
                   </button>

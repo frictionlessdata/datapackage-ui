@@ -1,5 +1,4 @@
 const React = require('react')
-const {Readable} = require('stream')
 const {Table} = require('tableschema')
 const {Profile} = require('datapackage')
 const classNames = require('classnames')
@@ -102,7 +101,7 @@ function EditorPackage({
 const DEFAULT_FEEDBACK = false
 
 const initialState = ({descriptor}) => ({
-  descriptor: cloneDeep(descriptor),
+  descriptor: cloneDeep(descriptor || {}),
   isPreviewActive: false,
   feedback: DEFAULT_FEEDBACK,
   tables: [],
@@ -159,11 +158,7 @@ const updatePackage = ({descriptor, tables}) => (action) => {
       return {descriptor, feedback: DEFAULT_FEEDBACK}
 
     case 'UPLOAD_TABLE':
-      const stream = new Readable()
-      stream.push(action.dataAsString)
-      stream.push(null)
-      const table = new Table(stream)
-      tables[action.resourceIndex] = table
+      tables[action.resourceIndex] = new Table(action.dataSource)
       return {tables}
 
   }

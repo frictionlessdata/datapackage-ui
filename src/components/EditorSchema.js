@@ -21,6 +21,16 @@ function EditorSchema({
   updateSchema,
 
 }) {
+  const columns = []
+  if (table && !table.read) {
+    for (const row of table) {
+      for (const [index, value] of row.entries()) {
+        columns[index] = columns[index] || []
+        columns[index].push(value)
+      }
+    }
+  }
+  const extraColumns = columns.length - descriptor.fields.length
   return (
     <div className="data-cards sortable">
 
@@ -30,7 +40,7 @@ function EditorSchema({
           <div className="inner">
             <EditorField
               index={index}
-              column={(table && !table.read) ? table.map((row) => row[index]).filter(Boolean) : []}
+              column={columns[index] || []}
               descriptor={descriptor}
               updateSchema={updateSchema}
             />
@@ -50,6 +60,9 @@ function EditorSchema({
           }}
         >
           <svg><use xlinkHref="#icon-plus" /></svg> Add field
+          {extraColumns > 0 &&
+            <p>{`(data has ${extraColumns} extra column(s)`}</p>
+          }
         </a>
       </div>
 
