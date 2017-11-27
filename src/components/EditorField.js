@@ -22,7 +22,7 @@ function EditorField({
         <span className="drag"><svg><use xlinkHref="#icon-drag" /></svg></span>
         <input
           type="text"
-          value={descriptor.name}
+          value={descriptor.name || ''}
           id="title_3"
           style={{
             color: 'white',
@@ -73,7 +73,7 @@ function EditorField({
         <label htmlFor="title_3">Title</label>
         <input
           type="text"
-          value={descriptor.title}
+          value={descriptor.title || ''}
           id="title_3"
           onChange={(event) => {
             updateSchema({
@@ -88,7 +88,7 @@ function EditorField({
         <label htmlFor="description_3">Description</label>
         <textarea
           id="description_3"
-          value={descriptor.description}
+          value={descriptor.description || ''}
           onChange={(event) => {
             updateSchema({
               type: 'UPDATE_FIELD',
@@ -103,7 +103,7 @@ function EditorField({
         <input
           type="text"
           id="type_3"
-          value={descriptor.type}
+          value={descriptor.type || ''}
           onChange={(event) => {
             updateSchema({
               type: 'UPDATE_FIELD',
@@ -118,7 +118,7 @@ function EditorField({
         <input
           type="text"
           id="type_3"
-          value={descriptor.format}
+          value={descriptor.format || ''}
           onChange={(event) => {
             updateSchema({
               type: 'UPDATE_FIELD',

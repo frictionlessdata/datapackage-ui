@@ -1,6 +1,6 @@
 const React = require('react')
 const cloneDeep = require('lodash/cloneDeep')
-const {withStateHandlers} = require('recompose')
+const {withStateHandlers, lifecycle, compose} = require('recompose')
 const {EditorField} = require('./EditorField')
 
 
@@ -30,7 +30,7 @@ function EditorSchema({
       }
     }
   }
-  const extraColumns = columns.length - descriptor.fields.length
+  const extraColumns = columns.length - (descriptor.fields || []).length
   return (
     <div className="data-cards sortable">
 
@@ -55,7 +55,7 @@ function EditorSchema({
           onClick={(event) => {
             updateSchema({
               type: 'ADD_FIELD',
-              fieldDescriptor: {name: `field${descriptor.fields.length + 1}`}
+              fieldDescriptor: {name: `field${(descriptor.fields || []).length + 1}`}
             })
           }}
         >
@@ -73,12 +73,12 @@ function EditorSchema({
 
 // State
 
-const initialState = ({descriptor}) => ({
-  descriptor: cloneDeep(descriptor),
+const initialState = ({schemaDescriptor}) => ({
+  // descriptor: cloneDeep(schemaDescriptor),
 })
 
 
-const updateSchema = ({descriptor}, {resourceIndex, updatePackage}) => (action) => {
+const updateSchema = ({/*descriptor*/}, {descriptor, resourceIndex, updatePackage}) => (action) => {
   descriptor = {...descriptor}
 
   // Update package
@@ -92,13 +92,17 @@ const updateSchema = ({descriptor}, {resourceIndex, updatePackage}) => (action) 
     }
   }
 
+  // TODO: remove
+  console.log(action)
+
   // Update schema
   switch (action.type) {
 
     case 'UPDATE_SCHEMA':
       descriptor = {...descriptor, ...action.descriptor}
       updateSchemaInPackage(descriptor)
-      return {descriptor}
+      // return {descriptor}
+      break
 
     case 'UPDATE_FIELD':
       descriptor.fields[action.fieldIndex] = {
@@ -106,17 +110,21 @@ const updateSchema = ({descriptor}, {resourceIndex, updatePackage}) => (action) 
         ...action.fieldDescriptor
       }
       updateSchemaInPackage(descriptor)
-      return {descriptor}
+      // return {descriptor}
+      break
 
     case 'REMOVE_FIELD':
       descriptor.fields.splice(action.fieldIndex, 1)
       updateSchemaInPackage(descriptor)
-      return {descriptor}
+      // return {descriptor}
+      break
 
     case 'ADD_FIELD':
+      descriptor.fields = descriptor.fields || []
       descriptor.fields.push(action.fieldDescriptor)
       updateSchemaInPackage(descriptor)
-      return {descriptor}
+      // return {descriptor}
+      break
 
   }
 }

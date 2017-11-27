@@ -74,7 +74,7 @@ function EditorMenu({
           <a
             className="btn btn-lg btn-success"
             href={`data: ${encodeDescriptor(descriptor)}`}
-            download="descriptor.json"
+            download="datapackage.json"
           >
             Download
           </a>

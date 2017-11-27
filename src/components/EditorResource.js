@@ -23,6 +23,7 @@ function EditorResource({
   toggleSettings,
 
 }) {
+  const path = descriptor.path instanceof Array ? descriptor.path[0] : descriptor.path
   return (
     <div className="panel">
 
@@ -40,7 +41,7 @@ function EditorResource({
                   className="form-control"
                   autoComplete="off"
                   type="text"
-                  value={descriptor.name}
+                  value={descriptor.name || ''}
                   onChange={(event) => {
                     updatePackage({
                       type: 'UPDATE_RESOURCE',
@@ -61,7 +62,7 @@ function EditorResource({
                   className="form-control"
                   autoComplete="off"
                   type="text"
-                  value={descriptor.path || ''}
+                  value={path || ''}
                   placeholder="Type resource path"
                   onChange={(event) => {
                     updatePackage({
@@ -79,6 +80,13 @@ function EditorResource({
                     type="file"
                     style={{display: 'none'}}
                     onChange={(event) => {
+                      if (!descriptor.path) {
+                        updatePackage({
+                          type: 'UPDATE_RESOURCE',
+                          resourceIndex: index,
+                          resourceDescriptor: {path: event.target.files[0].name},
+                        })
+                      }
                       const reader = new FileReader()
                       reader.readAsText(event.target.files[0])
                       reader.onload = function(error) {
@@ -96,7 +104,7 @@ function EditorResource({
                   <button
                     className="btn btn-default"
                     onClick={(event) => {
-                      if (descriptor.path.startsWith('http')) {
+                      if ((path || '').startsWith('http')) {
                         updatePackage({
                           type: 'UPLOAD_TABLE',
                           resourceIndex: index,
@@ -167,7 +175,7 @@ function EditorResource({
               name="root[resources][0][name]"
               autoComplete="off"
               type="text"
-              value={descriptor.title}
+              value={descriptor.title || ''}
               onChange={(event) => {
                 updatePackage({
                   type: 'UPDATE_RESOURCE',
@@ -183,7 +191,7 @@ function EditorResource({
               data-id="list-container"
               className="form-control list-container"
               autoComplete="off"
-              value={descriptor.profile}
+              value={descriptor.profile || ''}
               onChange={(event) => {
                 updatePackage({
                   type: 'UPDATE_RESOURCE',
@@ -203,7 +211,7 @@ function EditorResource({
               name="root[resources][0][format]"
               autoComplete="off"
               type="text"
-              value={descriptor.format}
+              value={descriptor.format || ''}
               onChange={(event) => {
                 updatePackage({
                   type: 'UPDATE_RESOURCE',
@@ -220,7 +228,7 @@ function EditorResource({
               name="root[resources][0][encoding]"
               autoComplete="off"
               type="text"
-              value={descriptor.encoding}
+              value={descriptor.encoding || ''}
               onChange={(event) => {
                 updatePackage({
                   type: 'UPDATE_RESOURCE',
@@ -239,7 +247,7 @@ function EditorResource({
               className="form-control"
               data-schemaformat="textarea"
               name="root[resources][0][description]"
-              value={descriptor.description}
+              value={descriptor.description || ''}
               onChange={(event) => {
                 updatePackage({
                   type: 'UPDATE_RESOURCE',

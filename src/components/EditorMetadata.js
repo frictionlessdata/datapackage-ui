@@ -40,7 +40,7 @@ function EditorMetadata({
             pattern="^([a-z0-9._-])+$"
             name="root[name]"
             type="text"
-            value={descriptor.name}
+            value={descriptor.name || ''}
             onChange={(event) => {
               updatePackage({
                 type: 'UPDATE_PACKAGE',
@@ -55,7 +55,7 @@ function EditorMetadata({
             className="form-control"
             name="root[title]"
             type="text"
-            value={descriptor.title}
+            value={descriptor.title || ''}
             onChange={(event) => {
               updatePackage({
                 type: 'UPDATE_PACKAGE',
@@ -70,7 +70,7 @@ function EditorMetadata({
             data-id="list-container"
             className="form-control list-container"
             autoComplete="off"
-            value={descriptor.profile}
+            value={descriptor.profile || ''}
             onChange={(event) => {
               updatePackage({
                 type: 'UPDATE_PACKAGE',
@@ -88,7 +88,7 @@ function EditorMetadata({
           <textarea className="form-control"
             data-schemaformat="textarea"
             name="root[description]"
-            value={descriptor.description}
+            value={descriptor.description || ''}
             onChange={(event) => {
               updatePackage({
                 type: 'UPDATE_PACKAGE',
@@ -103,7 +103,7 @@ function EditorMetadata({
             className="form-control"
             name="root[homepage]"
             type="text"
-            value={descriptor.homepage}
+            value={descriptor.homepage || ''}
             onChange={(event) => {
               updatePackage({
                 type: 'UPDATE_PACKAGE',
@@ -118,7 +118,7 @@ function EditorMetadata({
             className="form-control"
             name="root[version]"
             type="text"
-            value={descriptor.version}
+            value={descriptor.version || ''}
             onChange={(event) => {
               updatePackage({
                 type: 'UPDATE_PACKAGE',
@@ -133,7 +133,7 @@ function EditorMetadata({
             className="form-control"
             name="root[license]"
             type="text"
-            value={descriptor.license}
+            value={descriptor.license || ''}
             onChange={(event) => {
               updatePackage({
                 type: 'UPDATE_PACKAGE',
@@ -148,7 +148,7 @@ function EditorMetadata({
             className="form-control"
             name="root[author]"
             type="text"
-            value={descriptor.author}
+            value={descriptor.author || ''}
             onChange={(event) => {
               updatePackage({
                 type: 'UPDATE_PACKAGE',
