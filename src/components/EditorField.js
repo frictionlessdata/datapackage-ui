@@ -1,15 +1,21 @@
 const React = require('react')
+const {connect} = require('react-redux')
+const partial = require('lodash/partial')
 
 
-// Module API
+// Components
 
 function EditorField({
 
   // Props
-  index,
   column,
   descriptor,
-  updateSchema,
+  fieldIndex,
+  resourceIndex,
+
+  // Handlers
+  onRemoveClick,
+  onUpdateChange,
 
 }) {
   return (
@@ -31,13 +37,7 @@ function EditorField({
             paddingLeft: '0.5em',
             paddingRight: '0.5em',
           }}
-          onChange={(event) => {
-            updateSchema({
-              type: 'UPDATE_FIELD',
-              fieldIndex: index,
-              fieldDescriptor: {name: event.target.value}
-            })
-          }}
+          onChange={partial(onUpdateChange, 'name')}
         />
 
         {/* Remove */}
@@ -45,12 +45,7 @@ function EditorField({
           type="button"
           className="action"
           aria-label="Remove"
-          onClick={(event) => {
-            updateSchema({
-              type: 'REMOVE_FIELD',
-              fieldIndex: index,
-            })
-          }}
+          onClick={onRemoveClick}
         >
           <svg><use xlinkHref="#icon-trashcan" /></svg>
         </button>
@@ -60,7 +55,7 @@ function EditorField({
       {/* Preview */}
       <div className="preview">
         <ol>
-          {column.map((cell, index) => (
+          {(column.values || []).map((cell, index) => (
             <li key={index}><span>{cell}</span></li>
           ))}
         </ol>
@@ -75,13 +70,7 @@ function EditorField({
           type="text"
           value={descriptor.title || ''}
           id="title_3"
-          onChange={(event) => {
-            updateSchema({
-              type: 'UPDATE_FIELD',
-              fieldIndex: index,
-              fieldDescriptor: {title: event.target.value}
-            })
-          }}
+          onChange={partial(onUpdateChange, 'title')}
         />
 
         {/* Description */}
@@ -89,13 +78,7 @@ function EditorField({
         <textarea
           id="description_3"
           value={descriptor.description || ''}
-          onChange={(event) => {
-            updateSchema({
-              type: 'UPDATE_FIELD',
-              fieldIndex: index,
-              fieldDescriptor: {description: event.target.value}
-            })
-          }}
+          onChange={partial(onUpdateChange, 'description')}
         />
 
         {/* Type */}
@@ -104,13 +87,7 @@ function EditorField({
           type="text"
           id="type_3"
           value={descriptor.type || ''}
-          onChange={(event) => {
-            updateSchema({
-              type: 'UPDATE_FIELD',
-              fieldIndex: index,
-              fieldDescriptor: {type: event.target.value}
-            })
-          }}
+          onChange={partial(onUpdateChange, 'type')}
         />
 
         {/* Format */}
@@ -119,13 +96,7 @@ function EditorField({
           type="text"
           id="type_3"
           value={descriptor.format || ''}
-          onChange={(event) => {
-            updateSchema({
-              type: 'UPDATE_FIELD',
-              fieldIndex: index,
-              fieldDescriptor: {format: event.target.value}
-            })
-          }}
+          onChange={partial(onUpdateChange, 'format')}
         />
 
       </div>
@@ -133,6 +104,37 @@ function EditorField({
     </div>
   )
 }
+
+
+// Handlers
+
+const mapDispatchToProps = (dispatch, {resourceIndex, fieldIndex}) => ({
+
+  onRemoveClick:
+    (ev) => {
+      dispatch({
+        type: 'REMOVE_FIELD',
+        resourceIndex,
+        fieldIndex,
+      })
+    },
+
+  onUpdateChange:
+    (name, ev) => {
+      dispatch({
+        type: 'UPDATE_FIELD',
+        payload: {[name]: ev.target.value},
+        resourceIndex,
+        fieldIndex,
+      })
+    },
+
+})
+
+
+// Wrappers
+
+EditorField = connect(null, mapDispatchToProps)(EditorField)
 
 
 // System

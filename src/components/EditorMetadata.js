@@ -1,13 +1,17 @@
 const React = require('react')
+const partial = require('lodash/partial')
+const {connect} = require('react-redux')
 
 
-// Module API
+// Components
 
 function EditorMetadata({
 
   // Props
   descriptor,
-  updatePackage,
+
+  // Handlers
+  onUpdateChange,
 
 }) {
   return (
@@ -41,12 +45,7 @@ function EditorMetadata({
             name="root[name]"
             type="text"
             value={descriptor.name || ''}
-            onChange={(event) => {
-              updatePackage({
-                type: 'UPDATE_PACKAGE',
-                descriptor: {name: event.target.value}
-              })
-            }}
+            onChange={partial(onUpdateChange, 'name')}
           />
 
           {/* Title */}
@@ -56,12 +55,7 @@ function EditorMetadata({
             name="root[title]"
             type="text"
             value={descriptor.title || ''}
-            onChange={(event) => {
-              updatePackage({
-                type: 'UPDATE_PACKAGE',
-                descriptor: {title: event.target.value}
-              })
-            }}
+            onChange={partial(onUpdateChange, 'title')}
           />
 
           {/* Profile */}
@@ -71,12 +65,7 @@ function EditorMetadata({
             className="form-control list-container"
             autoComplete="off"
             value={descriptor.profile || ''}
-            onChange={(event) => {
-              updatePackage({
-                type: 'UPDATE_PACKAGE',
-                descriptor: {profile: event.target.value}
-              })
-            }}
+            onChange={partial(onUpdateChange, 'profile')}
           >
             <option value="data-package">Data Package</option>
             <option value="tabular-data-package">Tabular Data Package</option>
@@ -89,12 +78,7 @@ function EditorMetadata({
             data-schemaformat="textarea"
             name="root[description]"
             value={descriptor.description || ''}
-            onChange={(event) => {
-              updatePackage({
-                type: 'UPDATE_PACKAGE',
-                descriptor: {description: event.target.value}
-              })
-            }}
+            onChange={partial(onUpdateChange, 'description')}
           />
 
           {/* Home Page */}
@@ -104,12 +88,7 @@ function EditorMetadata({
             name="root[homepage]"
             type="text"
             value={descriptor.homepage || ''}
-            onChange={(event) => {
-              updatePackage({
-                type: 'UPDATE_PACKAGE',
-                descriptor: {homepage: event.target.value}
-              })
-            }}
+            onChange={partial(onUpdateChange, 'homepage')}
           />
 
           {/* Version */}
@@ -119,12 +98,7 @@ function EditorMetadata({
             name="root[version]"
             type="text"
             value={descriptor.version || ''}
-            onChange={(event) => {
-              updatePackage({
-                type: 'UPDATE_PACKAGE',
-                descriptor: {version: event.target.value}
-              })
-            }}
+            onChange={partial(onUpdateChange, 'version')}
           />
 
           {/* License */}
@@ -134,12 +108,7 @@ function EditorMetadata({
             name="root[license]"
             type="text"
             value={descriptor.license || ''}
-            onChange={(event) => {
-              updatePackage({
-                type: 'UPDATE_PACKAGE',
-                descriptor: {license: event.target.value}
-              })
-            }}
+            onChange={partial(onUpdateChange, 'license')}
           />
 
           {/* Author */}
@@ -149,12 +118,7 @@ function EditorMetadata({
             name="root[author]"
             type="text"
             value={descriptor.author || ''}
-            onChange={(event) => {
-              updatePackage({
-                type: 'UPDATE_PACKAGE',
-                descriptor: {author: event.target.value}
-              })
-            }}
+            onChange={partial(onUpdateChange, 'author')}
           />
 
         </div>
@@ -162,6 +126,26 @@ function EditorMetadata({
     </div>
   )
 }
+
+
+// Handlers
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+
+  onUpdateChange:
+    (name, ev) => {
+      dispatch({
+        type: 'UPDATE_PACKAGE',
+        payload: {[name]: ev.target.value},
+      })
+    },
+
+})
+
+
+// Wrappers
+
+EditorMetadata = connect(null, mapDispatchToProps)(EditorMetadata)
 
 
 // System

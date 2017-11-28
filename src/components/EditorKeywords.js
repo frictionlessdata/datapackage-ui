@@ -1,20 +1,24 @@
 const React = require('react')
+const {connect} = require('react-redux')
+const partial = require('lodash/partial')
 const {withState} = require('recompose')
 
 
-// Module API
+// Components
 
 function EditorKeywords({
 
   // Props
   keywords,
-  updatePackage,
+
+  // Handlers
+  onAddKeywordClick,
+  onRemoveKeywordClick,
+  onUpdateKeywordChange,
 
   // State
   newKeyword,
-
-  // Handlers
-  updateNewKeyword,
+  setNewKeyword,
 
 }) {
   return (
@@ -51,32 +55,18 @@ function EditorKeywords({
 
               {/* Update keyword */}
               <input
-                className="form-control"
                 type="text"
                 value={keyword}
-                onChange={(event) => {
-                  keywords = [...keywords]
-                  keywords[index] = event.target.value
-                  updatePackage({
-                    type: 'UPDATE_PACKAGE',
-                    descriptor: {keywords}
-                  })
-                }}
+                className="form-control"
+                onChange={partial(onUpdateKeywordChange, keyword)}
               />
 
               {/* Remove keyword */}
               <button
                 type="button"
-                className="btn btn-info btn-sm json-editor-btn-add "
                 title="Add item"
-                onClick={(event) => {
-                  keywords = [...keywords]
-                  keywords.splice(index, 1)
-                  updatePackage({
-                    type: 'UPDATE_PACKAGE',
-                    descriptor: {keywords}
-                  })
-                }}
+                className="btn btn-info btn-sm json-editor-btn-add "
+                onClick={partial(onRemoveKeywordClick, keyword)}
               >
                Remove keyword
               </button>
@@ -89,21 +79,17 @@ function EditorKeywords({
             className="form-control"
             type="text"
             value={newKeyword}
-            onChange={(event) => {
-              updateNewKeyword(event.target.value)
+            onChange={(ev) => {
+              setNewKeyword(ev.target.value)
             }}
           />
           <button
             type="button"
             className="btn btn-info btn-sm json-editor-btn-add "
             title="Add item"
-            onClick={(event) => {
-              keywords = [...keywords, newKeyword]
-              updateNewKeyword('')
-              updatePackage({
-                type: 'UPDATE_PACKAGE',
-                descriptor: {keywords}
-              })
+            onClick={(ev) => {
+              onAddKeywordClick(newKeyword, ev)
+              setNewKeyword('')
             }}
           >
             Add keyword
@@ -117,15 +103,46 @@ function EditorKeywords({
 }
 
 
-// State
+// Handlers
 
-const initialState = ''
-const stateName = 'newKeyword'
-const stateUpdaterName = 'updateNewKeyword'
+const mapDispatchToProps = (dispatch, ownProps) => ({
+
+  onAddKeywordClick:
+    (keyword, ev) => {
+      dispatch({
+        type: 'ADD_KEYWORD',
+        keyword,
+      })
+    },
+
+  onRemoveKeywordClick:
+    (keyword, ev) => {
+      dispatch({
+        type: 'REMOVE_KEYWORD',
+        keyword,
+      })
+    },
+
+  onUpdateKeywordChange:
+    (keyword, ev) => {
+      dispatch({
+        type: 'UPDATE_KEYWORD',
+        keyword,
+        newKeyword: ev.target.value,
+      })
+    },
+
+})
+
+
+// Wrappers
+
+EditorKeywords = withState('newKeyword', 'setNewKeyword', '')(EditorKeywords)
+EditorKeywords = connect(null, mapDispatchToProps)(EditorKeywords)
 
 
 // System
 
 module.exports = {
-  EditorKeywords: withState(stateName, stateUpdaterName, initialState)(EditorKeywords),
+  EditorKeywords,
 }

@@ -1,39 +1,33 @@
 const React = require('react')
 const {Table} = require('tableschema')
-const {Profile} = require('datapackage')
 const classNames = require('classnames')
+const {connect} = require('react-redux')
 const cloneDeep = require('lodash/cloneDeep')
-const {compose, lifecycle, withStateHandlers} = require('recompose')
-const {EditorMenu} = require('./EditorMenu')
+const {EditorSidebar} = require('./EditorSidebar')
 const {EditorPreview} = require('./EditorPreview')
 const {EditorResource} = require('./EditorResource')
+const {createReducer} = require('../reducers/editorPackage')
 
 
-// Module API
+// Components
 
 function EditorPackage({
 
-  // Props
-  descriptor,
-
-  // State
-  // descriptor,
-  tables,
-  isPreviewActive,
+  // Store
   feedback,
+  descriptor,
+  isPreviewActive,
 
-  //Handlers
-  updatePackage,
-  togglePreview,
+  // Handlers
+  onAddResourceClick,
 
 }) {
   return (
     <div className={classNames('app', 'datapackage-ui', {'code-view': isPreviewActive})}>
 
-      {/* Menu */}
-      <EditorMenu
+      {/* Sidebar */}
+      <EditorSidebar
         descriptor={descriptor}
-        updatePackage={updatePackage}
       />
 
       <section className="resources">
@@ -44,7 +38,7 @@ function EditorPackage({
             <p>{feedback.text}</p>
             <ul>
               {(feedback.messages || []).map((message) => (
-                <li>{message}</li>
+                <li key={message}>{message}</li>
               ))}
             </ul>
           </div>
@@ -58,28 +52,20 @@ function EditorPackage({
 
           {/* List resources */}
           <div className="panel-group" id="resources-data" role="tablist" aria-multiselectable="true">
-            {(descriptor.resources || []).map((descriptor, index) => (
+            {(descriptor.resources || []).map((descriptor, resourceIndex) => (
               <EditorResource
-                index={index}
-                table={tables[index]}
                 descriptor={descriptor}
-                updatePackage={updatePackage}
-                key={index}
+                isSettingsActive={false}
+                resourceIndex={resourceIndex}
+                key={resourceIndex}
               />
             ))}
           </div>
 
           {/* Add resource */}
-          <a
-            className="add resource"
-            onClick={(event) => {
-              updatePackage({
-                type: 'ADD_RESOURCE',
-                resourceDescriptor: {name: `resource${descriptor.resources.length + 1}`}
-              })
-            }}
-          >
-            <svg><use xlinkHref="#icon-plus" /></svg> Add resource
+          <a className="add resource" onClick={onAddResourceClick}>
+            <svg><use xlinkHref="#icon-plus" /></svg>
+            Add resource
           </a>
         </div>
 
@@ -88,7 +74,6 @@ function EditorPackage({
       {/* Preview */}
       <EditorPreview
         descriptor={descriptor}
-        togglePreview={togglePreview}
       />
 
     </div>
@@ -98,103 +83,43 @@ function EditorPackage({
 
 // State
 
-const DEFAULT_FEEDBACK = false
+const mapStateToProps = (state, ownProps) => ({
 
-const initialState = ({descriptor}) => ({
-  descriptor: cloneDeep(descriptor || {}),
-  isPreviewActive: false,
-  feedback: DEFAULT_FEEDBACK,
-  tables: [],
+  isPreviewActive:
+    state.isPreviewActive,
+
+  descriptor:
+    state.descriptor,
+
+  feedback:
+    state.feedback,
+
 })
 
 
 // Handlers
 
-const updatePackage = ({descriptor, tables}) => (action) => {
-  descriptor = {...descriptor}
-  tables = [...tables]
+const mapDispatchToProps = (dispatch, ownProps) => ({
 
-  // Update package
-  switch (action.type) {
+  onAddResourceClick:
+    (ev) => {
+      dispatch({
+        type: 'ADD_RESOURCE',
+      })
+    },
 
-    case 'UPLOAD_PACKAGE':
-      descriptor = action.descriptor
-      return {descriptor, feedback: DEFAULT_FEEDBACK}
-
-    case 'VALIDATE_PACKAGE':
-      // TODO: rebase on datapackage.validate
-      const profile = new Profile(descriptor.profile || 'data-package')
-      const {valid, errors} = profile.validate(descriptor)
-      if (valid) {
-        return {feedback: {
-          type: 'success',
-          text: 'Data package is valid!',
-        }}
-      } else {
-        return {feedback: {
-          type: 'danger',
-          text: 'Data package is invalid!',
-          messages: errors.map((error) => error.message),
-        }}
-      }
-
-    case 'UPDATE_PACKAGE':
-      descriptor = {...descriptor, ...action.descriptor}
-      return {descriptor, feedback: DEFAULT_FEEDBACK}
-
-    case 'UPDATE_RESOURCE':
-      descriptor.resources[action.resourceIndex] = {
-        ...descriptor.resources[action.resourceIndex],
-        ...action.resourceDescriptor,
-      }
-      return {descriptor, feedback: DEFAULT_FEEDBACK}
-
-    case 'REMOVE_RESOURCE':
-      tables[action.resourceIndex] = undefined
-      descriptor.resources.splice(action.resourceIndex, 1)
-      return {descriptor, tables, feedback: DEFAULT_FEEDBACK}
-
-    case 'ADD_RESOURCE':
-      descriptor.resources = descriptor.resources || []
-      descriptor.resources.push(action.resourceDescriptor)
-      return {descriptor, feedback: DEFAULT_FEEDBACK}
-
-    case 'UPLOAD_TABLE':
-      tables[action.resourceIndex] = new Table(action.dataSource)
-      return {tables}
-
-  }
-}
+})
 
 
-const togglePreview = ({isPreviewActive}) => () => {
-  isPreviewActive = !isPreviewActive
-  return {isPreviewActive}
-}
+// Wrappers
 
-
-// Lifecycle
-
-async function componentDidUpdate() {
-  for (const [index, table] of this.props.tables.entries()) {
-    if (!table) continue
-    if (table instanceof Table) {
-      this.props.tables[index] = await table.read()
-      this.forceUpdate()
-    }
-  }
-}
+EditorPackage = connect(mapStateToProps, mapDispatchToProps)(EditorPackage)
+EditorPackage.editorType = 'package'
+EditorPackage.createReducer = createReducer
 
 
 // System
 
 module.exports = {
-  EditorPackage: compose(
-    withStateHandlers(initialState, {
-      updatePackage,
-      togglePreview,
-    }),
-    lifecycle({
-      componentDidUpdate,
-    }))(EditorPackage),
+  EditorPackage,
 }

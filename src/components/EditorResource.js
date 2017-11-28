@@ -1,28 +1,33 @@
 const React = require('react')
 const {Readable} = require('stream')
+const {Table} = require('tableschema')
+const {connect} = require('react-redux')
 const classNames = require('classnames')
-const {withStateHandlers} = require('recompose')
+const partial = require('lodash/partial')
+const {withState} = require('recompose')
 const {EditorSchema} = require('./EditorSchema')
 
 
-// Module API
+// Components
 
 function EditorResource({
 
   // Props
-  index,
-  table,
   descriptor,
-  updatePackage,
+  resourceIndex,
+
+  // Handlers
+  onRemoveClick,
+  onUploadClick,
+  onUploadChange,
+  onUpdateChange,
 
   // State
   isSettingsActive,
-  references,
-
-  // Handlers
-  toggleSettings,
+  setIsSettingsActive,
 
 }) {
+  const references = {}
   const path = descriptor.path instanceof Array ? descriptor.path[0] : descriptor.path
   return (
     <div className="panel">
@@ -42,13 +47,7 @@ function EditorResource({
                   autoComplete="off"
                   type="text"
                   value={descriptor.name || ''}
-                  onChange={(event) => {
-                    updatePackage({
-                      type: 'UPDATE_RESOURCE',
-                      resourceIndex: index,
-                      resourceDescriptor: {name: event.target.value}
-                    })
-                  }}
+                  onChange={partial(onUpdateChange, 'name')}
                 />
               </div>
             </div>
@@ -64,56 +63,20 @@ function EditorResource({
                   type="text"
                   value={path || ''}
                   placeholder="Type resource path"
-                  onChange={(event) => {
-                    updatePackage({
-                      type: 'UPDATE_RESOURCE',
-                      resourceIndex: index,
-                      resourceDescriptor: {path: event.target.value}
-                    })
-                  }}
+                  onChange={partial(onUpdateChange, 'path')}
                 />
 
                 {/* Upload */}
                 <span className="input-group-btn">
                   <input
-                    ref={(ref) => references.upload = ref}
                     type="file"
                     style={{display: 'none'}}
-                    onChange={(event) => {
-                      if (!descriptor.path) {
-                        updatePackage({
-                          type: 'UPDATE_RESOURCE',
-                          resourceIndex: index,
-                          resourceDescriptor: {path: event.target.files[0].name},
-                        })
-                      }
-                      const reader = new FileReader()
-                      reader.readAsText(event.target.files[0])
-                      reader.onload = function(error) {
-                        const stream = new Readable()
-                        stream.push(reader.result)
-                        stream.push(null)
-                        updatePackage({
-                          type: 'UPLOAD_TABLE',
-                          resourceIndex: index,
-                          dataSource: stream,
-                        })
-                      }
-                    }}
+                    onChange={partial(onUploadChange, path)}
+                    ref={(ref) => references.upload = ref}
                   />
                   <button
                     className="btn btn-default"
-                    onClick={(event) => {
-                      if ((path || '').startsWith('http')) {
-                        updatePackage({
-                          type: 'UPLOAD_TABLE',
-                          resourceIndex: index,
-                          dataSource: descriptor.path,
-                        })
-                      } else {
-                        references.upload.click()
-                      }
-                    }}
+                    onClick={partial(onUploadClick, path, references)}
                   >
                     Load
                   </button>
@@ -129,14 +92,7 @@ function EditorResource({
         <div className="actions">
 
           {/* Remove */}
-          <a
-            onClick={(event) => {
-              updatePackage({
-                type: 'REMOVE_RESOURCE',
-                resourceIndex: index,
-              })
-            }}
-          >
+          <a onClick={onRemoveClick}>
             <svg><use xlinkHref="#icon-trashcan" /></svg>
             <span className="text">Remove</span>
           </a>
@@ -144,17 +100,18 @@ function EditorResource({
           {/* Settings */}
           <a
             className={classNames('settings-button', 'action', {active: isSettingsActive})}
-            onClick={toggleSettings}
+            onClick={(ev) => {
+              setIsSettingsActive(!isSettingsActive)
+            }}
           >
             <svg><use xlinkHref="#icon-settings" /></svg>
             <span className="text">Settings</span>
           </a>
 
           {/* Expand/collapse */}
-          <a
-            role="button"
+          <a role="button"
             data-toggle="collapse"
-            href={`#collapse${index}`}
+            href={`#collapse${resourceIndex}`}
             aria-expanded="true"
             aria-controls="collapseOne"
           >
@@ -176,13 +133,7 @@ function EditorResource({
               autoComplete="off"
               type="text"
               value={descriptor.title || ''}
-              onChange={(event) => {
-                updatePackage({
-                  type: 'UPDATE_RESOURCE',
-                  resourceIndex: index,
-                  resourceDescriptor: {title: event.target.value}
-                })
-              }}
+              onChange={partial(onUpdateChange, 'title')}
             />
 
             {/* Profile */}
@@ -192,13 +143,7 @@ function EditorResource({
               className="form-control list-container"
               autoComplete="off"
               value={descriptor.profile || ''}
-              onChange={(event) => {
-                updatePackage({
-                  type: 'UPDATE_RESOURCE',
-                  resourceIndex: index,
-                  resourceDescriptor: {profile: event.target.value}
-                })
-              }}
+              onChange={partial(onUpdateChange, 'profile')}
             >
               <option value="data-resource">Data Resource</option>
               <option value="tabular-data-resource">Tabular Data Resource</option>
@@ -212,13 +157,7 @@ function EditorResource({
               autoComplete="off"
               type="text"
               value={descriptor.format || ''}
-              onChange={(event) => {
-                updatePackage({
-                  type: 'UPDATE_RESOURCE',
-                  resourceIndex: index,
-                  resourceDescriptor: {format: event.target.value}
-                })
-              }}
+              onChange={partial(onUpdateChange, 'format')}
             />
 
             {/* Encoding */}
@@ -229,13 +168,7 @@ function EditorResource({
               autoComplete="off"
               type="text"
               value={descriptor.encoding || ''}
-              onChange={(event) => {
-                updatePackage({
-                  type: 'UPDATE_RESOURCE',
-                  resourceIndex: index,
-                  resourceDescriptor: {encoding: event.target.value}
-                })
-              }}
+              onChange={partial(onUpdateChange, 'encoding')}
             />
 
           </span>
@@ -248,13 +181,7 @@ function EditorResource({
               data-schemaformat="textarea"
               name="root[resources][0][description]"
               value={descriptor.description || ''}
-              onChange={(event) => {
-                updatePackage({
-                  type: 'UPDATE_RESOURCE',
-                  resourceIndex: index,
-                  resourceDescriptor: {description: event.target.value}
-                })
-              }}
+              onChange={partial(onUpdateChange, 'description')}
             />
 
           </span>
@@ -263,17 +190,15 @@ function EditorResource({
 
       {/* Schema */}
       <div
-        id={`collapse${index}`}
-        className={classNames('panel-collapse', 'collapse', {in: index === 0})}
+        id={`collapse${resourceIndex}`}
+        className={classNames('panel-collapse', 'collapse', {in: resourceIndex === 0})}
         role="tabpanel"
         aria-labelledby="resource-one-heading"
       >
         <div className="panel-body">
           <EditorSchema
-            table={table}
             descriptor={descriptor.schema || {}}
-            resourceIndex={index}
-            updatePackage={updatePackage}
+            resourceIndex={resourceIndex}
           />
         </div>
       </div>
@@ -283,25 +208,96 @@ function EditorResource({
 }
 
 
-// State
+// Handlers
 
-const initialState = () => ({
-  isSettingsActive: false,
-  references: {},
+const mapDispatchToProps = (dispatch, {resourceIndex, descriptor}) => ({
+
+  onRemoveClick:
+    (ev) => {
+      dispatch({
+        type: 'REMOVE_RESOURCE',
+        resourceIndex,
+      })
+    },
+
+  onUpdateChange:
+    (name, ev) => {
+      dispatch({
+        type: 'UPDATE_RESOURCE',
+        payload: {[name]: ev.target.value},
+        resourceIndex,
+      })
+    },
+
+  onUploadClick:
+    (path, references, ev) => {
+      if (path && path.startsWith('http')) {
+        dispatch(async () => {
+          const table = await Table.load(path)
+          const rows = await table.read()
+          const headers = table.headers
+          dispatch({
+            type: 'UPLOAD_DATA',
+            rows,
+            headers,
+            resourceIndex,
+          })
+        })
+      } else {
+        references.upload.click()
+      }
+    },
+
+  onUploadChange:
+    (path, ev) => {
+      if (!path) {
+        dispatch({
+          type: 'UPDATE_RESOURCE',
+          payload: {path: ev.target.files[0].name},
+          resourceIndex,
+        })
+      }
+      dispatch(async () => {
+        const text = await readFile(ev.target.files[0])
+        const stream = new Readable()
+        stream.push(text)
+        stream.push(null)
+        const table = await Table.load(stream)
+        const rows = await table.read()
+        const headers = table.headers
+        dispatch({
+          type: 'UPLOAD_DATA',
+          rows,
+          headers,
+          resourceIndex,
+        })
+      })
+    },
+
 })
 
 
-// Handlers
+// Helpers
 
-const toggleSettings = ({isSettingsActive}) => () => {
-  return {isSettingsActive: !isSettingsActive}
+function readFile(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.readAsText(file)
+    reader.onload = function() {
+      resolve(reader.result)
+    }
+  })
 }
+
+
+// Wrappers
+
+EditorResource = withState('isSettingsActive', 'setIsSettingsActive', '')(EditorResource)
+EditorResource = connect(null, mapDispatchToProps)(EditorResource)
 
 
 // System
 
 module.exports = {
-  EditorResource: withStateHandlers(initialState, {
-    toggleSettings,
-  })(EditorResource),
+  EditorResource,
 }
