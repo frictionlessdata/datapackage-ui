@@ -79,6 +79,7 @@ function EditorKeywords({
             className="form-control"
             type="text"
             value={newKeyword}
+            placeholder="Type keyword"
             onChange={(ev) => {
               setNewKeyword(ev.target.value)
             }}
@@ -87,6 +88,7 @@ function EditorKeywords({
             type="button"
             className="btn btn-info btn-sm json-editor-btn-add "
             title="Add item"
+            disabled={!newKeyword}
             onClick={(ev) => {
               onAddKeywordClick(newKeyword, ev)
               setNewKeyword('')
