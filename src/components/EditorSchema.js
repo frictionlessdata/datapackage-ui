@@ -27,7 +27,7 @@ function EditorSchema({
 
       {/* Fields */}
       {descriptor.fields.map((fieldDescriptor, fieldIndex) => (
-        <div className="draggable card" id="column_1" key={fieldIndex}>
+        <div className="draggable card" key={fieldDescriptor.name || `field${fieldIndex}`}>
           <div className="inner">
             <EditorField
               column={descriptor._columns[fieldIndex]}
@@ -68,7 +68,6 @@ function EditorSchema({
 function computeProps({descriptor}) {
 
   // Normalize descriptor
-  descriptor = descriptor || {}
   descriptor.fields = descriptor.fields || []
   descriptor._columns = descriptor._columns || []
 
@@ -115,8 +114,8 @@ const mapDispatchToProps = (dispatch, {descriptor, resourceIndex}) => ({
 
 // Wrappers
 
-EditorSchema = withProps(computeProps)(EditorSchema)
 EditorSchema = connect(null, mapDispatchToProps)(EditorSchema)
+EditorSchema = withProps(computeProps)(EditorSchema)
 
 
 // System

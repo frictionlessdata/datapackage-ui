@@ -44,8 +44,8 @@ function EditorMetadata({
             pattern="^([a-z0-9._-])+$"
             name="root[name]"
             type="text"
-            value={descriptor.name || ''}
-            onChange={partial(onUpdateChange, 'name')}
+            defaultValue={descriptor.name}
+            onBlur={partial(onUpdateChange, 'name')}
           />
 
           {/* Title */}
@@ -54,8 +54,8 @@ function EditorMetadata({
             className="form-control"
             name="root[title]"
             type="text"
-            value={descriptor.title || ''}
-            onChange={partial(onUpdateChange, 'title')}
+            defaultValue={descriptor.title}
+            onBlur={partial(onUpdateChange, 'title')}
           />
 
           {/* Profile */}
@@ -64,7 +64,7 @@ function EditorMetadata({
             data-id="list-container"
             className="form-control list-container"
             autoComplete="off"
-            value={descriptor.profile || ''}
+            defaultValue={descriptor.profile}
             onChange={partial(onUpdateChange, 'profile')}
           >
             <option value="data-package">Data Package</option>
@@ -77,8 +77,8 @@ function EditorMetadata({
           <textarea className="form-control"
             data-schemaformat="textarea"
             name="root[description]"
-            value={descriptor.description || ''}
-            onChange={partial(onUpdateChange, 'description')}
+            defaultValue={descriptor.description}
+            onBlur={partial(onUpdateChange, 'description')}
           />
 
           {/* Home Page */}
@@ -87,8 +87,8 @@ function EditorMetadata({
             className="form-control"
             name="root[homepage]"
             type="text"
-            value={descriptor.homepage || ''}
-            onChange={partial(onUpdateChange, 'homepage')}
+            defaultValue={descriptor.homepage}
+            onBlur={partial(onUpdateChange, 'homepage')}
           />
 
           {/* Version */}
@@ -97,8 +97,8 @@ function EditorMetadata({
             className="form-control"
             name="root[version]"
             type="text"
-            value={descriptor.version || ''}
-            onChange={partial(onUpdateChange, 'version')}
+            defaultValue={descriptor.version}
+            onBlur={partial(onUpdateChange, 'version')}
           />
 
           {/* License */}
@@ -107,8 +107,8 @@ function EditorMetadata({
             className="form-control"
             name="root[license]"
             type="text"
-            value={descriptor.license || ''}
-            onChange={partial(onUpdateChange, 'license')}
+            defaultValue={descriptor.license}
+            onBlur={partial(onUpdateChange, 'license')}
           />
 
           {/* Author */}
@@ -117,8 +117,8 @@ function EditorMetadata({
             className="form-control"
             name="root[author]"
             type="text"
-            value={descriptor.author || ''}
-            onChange={partial(onUpdateChange, 'author')}
+            defaultValue={descriptor.author}
+            onBlur={partial(onUpdateChange, 'author')}
           />
 
         </div>

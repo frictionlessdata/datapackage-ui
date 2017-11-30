@@ -56,9 +56,9 @@ function EditorKeywords({
               {/* Update keyword */}
               <input
                 type="text"
-                value={keyword}
+                defaultValue={keyword}
                 className="form-control"
-                onChange={partial(onUpdateKeywordChange, keyword)}
+                onBlur={partial(onUpdateKeywordChange, keyword)}
               />
 
               {/* Remove keyword */}

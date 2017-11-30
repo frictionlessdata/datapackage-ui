@@ -53,12 +53,12 @@ function EditorPackage({
 
           {/* List resources */}
           <div className="panel-group" id="resources-data" role="tablist" aria-multiselectable="true">
-            {descriptor.resources.map((descriptor, resourceIndex) => (
+            {descriptor.resources.map((resourceDescriptor, resourceIndex) => (
               <EditorResource
-                descriptor={descriptor}
+                descriptor={resourceDescriptor}
                 isSettingsActive={false}
                 resourceIndex={resourceIndex}
-                key={resourceIndex}
+                key={resourceDescriptor.name || `resource${resourceIndex}`}
               />
             ))}
           </div>

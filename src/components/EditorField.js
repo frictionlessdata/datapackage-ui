@@ -1,7 +1,8 @@
 const React = require('react')
 const {connect} = require('react-redux')
-const {withProps} = require('recompose')
 const partial = require('lodash/partial')
+const isEqual = require('lodash/isEqual')
+const {withProps} = require('recompose')
 
 
 // Components
@@ -29,7 +30,7 @@ function EditorField({
         <span className="drag"><svg><use xlinkHref="#icon-drag" /></svg></span>
         <input
           type="text"
-          value={descriptor.name || ''}
+          defaultValue={descriptor.name}
           id="title_3"
           style={{
             color: 'white',
@@ -38,7 +39,7 @@ function EditorField({
             paddingLeft: '0.5em',
             paddingRight: '0.5em',
           }}
-          onChange={partial(onUpdateChange, 'name')}
+          onBlur={partial(onUpdateChange, 'name')}
         />
 
         {/* Remove */}
@@ -69,17 +70,17 @@ function EditorField({
         <label htmlFor="title_3">Title</label>
         <input
           type="text"
-          value={descriptor.title || ''}
+          defaultValue={descriptor.title}
           id="title_3"
-          onChange={partial(onUpdateChange, 'title')}
+          onBlur={partial(onUpdateChange, 'title')}
         />
 
         {/* Description */}
         <label htmlFor="description_3">Description</label>
         <textarea
           id="description_3"
-          value={descriptor.description || ''}
-          onChange={partial(onUpdateChange, 'description')}
+          defaultValue={descriptor.description}
+          onBlur={partial(onUpdateChange, 'description')}
         />
 
         {/* Type */}
@@ -87,8 +88,8 @@ function EditorField({
         <input
           type="text"
           id="type_3"
-          value={descriptor.type || ''}
-          onChange={partial(onUpdateChange, 'type')}
+          defaultValue={descriptor.type}
+          onBlur={partial(onUpdateChange, 'type')}
         />
 
         {/* Format */}
@@ -96,8 +97,8 @@ function EditorField({
         <input
           type="text"
           id="type_3"
-          value={descriptor.format || ''}
-          onChange={partial(onUpdateChange, 'format')}
+          defaultValue={descriptor.format}
+          onBlur={partial(onUpdateChange, 'format')}
         />
 
       </div>
@@ -142,6 +143,16 @@ const mapDispatchToProps = (dispatch, {resourceIndex, fieldIndex}) => ({
     },
 
 })
+
+
+// Lifecycle
+
+function shouldComponentUpdate(props, newProps) {
+  return (
+    !isEqual(props.descriptor, newProps.descriptor) ||
+    props.column !== newProps.column
+  )
+}
 
 
 // Wrappers

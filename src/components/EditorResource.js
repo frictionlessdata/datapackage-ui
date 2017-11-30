@@ -45,8 +45,8 @@ function EditorResource({
                   className="form-control"
                   autoComplete="off"
                   type="text"
-                  value={descriptor.name || ''}
-                  onChange={partial(onUpdateChange, 'name')}
+                  defaultValue={descriptor.name}
+                  onBlur={partial(onUpdateChange, 'name')}
                 />
               </div>
             </div>
@@ -60,9 +60,9 @@ function EditorResource({
                   className="form-control"
                   autoComplete="off"
                   type="text"
-                  value={descriptor.path || ''}
+                  defaultValue={descriptor.path}
                   placeholder="Type resource path"
-                  onChange={partial(onUpdateChange, 'path')}
+                  onBlur={partial(onUpdateChange, 'path')}
                 />
 
                 {/* Upload */}
@@ -131,8 +131,8 @@ function EditorResource({
               name="root[resources][0][name]"
               autoComplete="off"
               type="text"
-              value={descriptor.title || ''}
-              onChange={partial(onUpdateChange, 'title')}
+              defaultValue={descriptor.title}
+              onBlur={partial(onUpdateChange, 'title')}
             />
 
             {/* Profile */}
@@ -141,7 +141,7 @@ function EditorResource({
               data-id="list-container"
               className="form-control list-container"
               autoComplete="off"
-              value={descriptor.profile || ''}
+              defaultValue={descriptor.profile}
               onChange={partial(onUpdateChange, 'profile')}
             >
               <option value="data-resource">Data Resource</option>
@@ -155,8 +155,8 @@ function EditorResource({
               name="root[resources][0][format]"
               autoComplete="off"
               type="text"
-              value={descriptor.format || ''}
-              onChange={partial(onUpdateChange, 'format')}
+              defaultValue={descriptor.format}
+              onBlur={partial(onUpdateChange, 'format')}
             />
 
             {/* Encoding */}
@@ -166,8 +166,8 @@ function EditorResource({
               name="root[resources][0][encoding]"
               autoComplete="off"
               type="text"
-              value={descriptor.encoding || ''}
-              onChange={partial(onUpdateChange, 'encoding')}
+              defaultValue={descriptor.encoding}
+              onBlur={partial(onUpdateChange, 'encoding')}
             />
 
           </span>
@@ -179,8 +179,8 @@ function EditorResource({
               className="form-control"
               data-schemaformat="textarea"
               name="root[resources][0][description]"
-              value={descriptor.description || ''}
-              onChange={partial(onUpdateChange, 'description')}
+              defaultValue={descriptor.description}
+              onBlur={partial(onUpdateChange, 'description')}
             />
 
           </span>
@@ -212,6 +212,7 @@ function EditorResource({
 function computeProps({descriptor}) {
 
   // Descriptor
+  descriptor.schema = descriptor.schema || {}
   descriptor.path = descriptor.path || ''
   if (descriptor.path instanceof Array) {
     descriptor.path = descriptor.path[0]
