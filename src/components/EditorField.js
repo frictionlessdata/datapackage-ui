@@ -3,6 +3,7 @@ const {connect} = require('react-redux')
 const partial = require('lodash/partial')
 const isEqual = require('lodash/isEqual')
 const {withProps} = require('recompose')
+const config = require('../config')
 
 
 // Components
@@ -20,6 +21,7 @@ function EditorField({
   onUpdateChange,
 
 }) {
+  console.log('field')
   return (
     <div>
 
@@ -57,8 +59,8 @@ function EditorField({
       {/* Preview */}
       <div className="preview">
         <ol>
-          {column.values.map((cell, index) => (
-            <li key={index}><span>{cell}</span></li>
+          {column.values.slice(0, 10).map((value, index) => (
+            <li key={index}><span>{value}</span></li>
           ))}
         </ol>
       </div>

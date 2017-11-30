@@ -6,6 +6,7 @@ const classNames = require('classnames')
 const partial = require('lodash/partial')
 const {withProps, withState} = require('recompose')
 const {EditorSchema} = require('./EditorSchema')
+const config = require('../config')
 
 
 // Components
@@ -255,7 +256,7 @@ const mapDispatchToProps = (dispatch, {resourceIndex, descriptor}) => ({
       if (descriptor.path.startsWith('http')) {
         dispatch(async () => {
           const table = await Table.load(descriptor.path)
-          const rows = await table.read()
+          const rows = await table.read({limit: config.EDITOR_UPLOAD_ROWS_LIMIT})
           const headers = table.headers
           dispatch({
             type: 'UPLOAD_DATA',
@@ -284,7 +285,7 @@ const mapDispatchToProps = (dispatch, {resourceIndex, descriptor}) => ({
         stream.push(text)
         stream.push(null)
         const table = await Table.load(stream)
-        const rows = await table.read()
+        const rows = await table.read({limit: config.EDITOR_UPLOAD_ROWS_LIMIT})
         const headers = table.headers
         dispatch({
           type: 'UPLOAD_DATA',
