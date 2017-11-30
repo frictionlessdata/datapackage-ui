@@ -147,16 +147,6 @@ const mapDispatchToProps = (dispatch, {resourceIndex, fieldIndex}) => ({
 })
 
 
-// Lifecycle
-
-function shouldComponentUpdate(props, newProps) {
-  return (
-    !isEqual(props.descriptor, newProps.descriptor) ||
-    props.column !== newProps.column
-  )
-}
-
-
 // Wrappers
 
 EditorField = withProps(computeProps)(EditorField)
