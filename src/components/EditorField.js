@@ -2,7 +2,6 @@ const React = require('react')
 const {connect} = require('react-redux')
 const partial = require('lodash/partial')
 const isEqual = require('lodash/isEqual')
-const {withProps} = require('recompose')
 const config = require('../config')
 
 
@@ -21,7 +20,6 @@ function EditorField({
   onUpdateChange,
 
 }) {
-  console.log('field')
   return (
     <div>
 
@@ -59,7 +57,7 @@ function EditorField({
       {/* Preview */}
       <div className="preview">
         <ol>
-          {column.values.slice(0, 10).map((value, index) => (
+          {!!column && column.values.slice(0, 10).map((value, index) => (
             <li key={index}><span>{value}</span></li>
           ))}
         </ol>
@@ -110,17 +108,6 @@ function EditorField({
 }
 
 
-// Computers
-
-function computeProps({column}) {
-
-  // Column
-  column = column || {headers: '', values: [], descriptor: {}}
-
-  return {column}
-}
-
-
 // Handlers
 
 const mapDispatchToProps = (dispatch, {resourceIndex, fieldIndex}) => ({
@@ -149,7 +136,6 @@ const mapDispatchToProps = (dispatch, {resourceIndex, fieldIndex}) => ({
 
 // Wrappers
 
-EditorField = withProps(computeProps)(EditorField)
 EditorField = connect(null, mapDispatchToProps)(EditorField)
 
 

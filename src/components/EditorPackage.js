@@ -16,6 +16,7 @@ function EditorPackage({
 
   // Subscribed
   isPreviewActive,
+  publicDescriptor,
   descriptor,
   feedback,
 
@@ -29,6 +30,7 @@ function EditorPackage({
       {/* Sidebar */}
       <EditorSidebar
         descriptor={descriptor}
+        publicDescriptor={publicDescriptor}
       />
 
       <section className="resources">
@@ -37,11 +39,13 @@ function EditorPackage({
         {feedback &&
           <div className={`alert alert-${feedback.type}`} role="alert">
             <p>{feedback.text}</p>
-            <ul>
-              {feedback.messages.map((message) => (
-                <li key={message}>{message}</li>
-              ))}
-            </ul>
+            {feedback.messages &&
+              <ul>
+                {feedback.messages.map((message) => (
+                  <li key={message}>{message}</li>
+                ))}
+              </ul>
+            }
           </div>
         }
 
@@ -58,7 +62,7 @@ function EditorPackage({
                 descriptor={resourceDescriptor}
                 isSettingsActive={false}
                 resourceIndex={resourceIndex}
-                key={resourceDescriptor.name || `resource${resourceIndex}`}
+                key={resourceDescriptor._key}
               />
             ))}
           </div>
@@ -74,7 +78,7 @@ function EditorPackage({
 
       {/* Preview */}
       <EditorPreview
-        descriptor={descriptor}
+        publicDescriptor={publicDescriptor}
       />
 
     </div>
@@ -89,6 +93,9 @@ const mapStateToProps = (state, ownProps) => ({
   isPreviewActive:
     state.isPreviewActive,
 
+  publicDescriptor:
+    state.publicDescriptor,
+
   descriptor:
     state.descriptor,
 
@@ -96,22 +103,6 @@ const mapStateToProps = (state, ownProps) => ({
     state.feedback,
 
 })
-
-
-// Computers
-
-function computeProps({descriptor, feedback}) {
-
-  // Descriptor
-  descriptor.resources = descriptor.resources || []
-
-  // Feedback
-  if (feedback) {
-    feedback.messages = feedback.messages || []
-  }
-
-  return {descriptor, feedback}
-}
 
 
 // Handlers
@@ -130,7 +121,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
 // Wrappers
 
-EditorPackage = withProps(computeProps)(EditorPackage)
 EditorPackage = connect(mapStateToProps, mapDispatchToProps)(EditorPackage)
 EditorPackage.editorType = 'package'
 EditorPackage.createReducer = createReducer

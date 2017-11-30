@@ -8,7 +8,7 @@ const helpers = require('../helpers')
 function EditorPreview({
 
   // Props
-  descriptor,
+  publicDescriptor,
 
   // Handlers
   onToggleClick,
@@ -26,7 +26,7 @@ function EditorPreview({
       {/* Code */}
       <pre>
         <code className="language-json">
-          {helpers.stringifyDescriptor(descriptor)}
+          {helpers.stringifyDescriptor(publicDescriptor)}
         </code>
       </pre>
 

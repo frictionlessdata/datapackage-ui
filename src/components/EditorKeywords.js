@@ -1,7 +1,7 @@
 const React = require('react')
 const {connect} = require('react-redux')
 const partial = require('lodash/partial')
-const {withProps, withState} = require('recompose')
+const {withState} = require('recompose')
 
 
 // Components
@@ -105,17 +105,6 @@ function EditorKeywords({
 }
 
 
-// Computers
-
-function computeProps({keywords}) {
-
-  // Keywords
-  keywords = keywords || []
-
-  return {keywords}
-}
-
-
 // State
 
 const stateName = 'newKeyword'
@@ -157,7 +146,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
 // Wrappers
 
-EditorKeywords = withProps(computeProps)(EditorKeywords)
 EditorKeywords = withState(stateName, stateUpdaterName, initialState)(EditorKeywords)
 EditorKeywords = connect(null, mapDispatchToProps)(EditorKeywords)
 

@@ -61,9 +61,9 @@ function EditorResource({
                   className="form-control"
                   autoComplete="off"
                   type="text"
-                  defaultValue={descriptor.path}
+                  value={descriptor.path}
                   placeholder="Type resource path"
-                  onBlur={partial(onUpdateChange, 'path')}
+                  onChange={partial(onUpdateChange, 'path')}
                 />
 
                 {/* Upload */}
@@ -208,21 +208,6 @@ function EditorResource({
 }
 
 
-// Computers
-
-function computeProps({descriptor}) {
-
-  // Descriptor
-  descriptor.schema = descriptor.schema || {}
-  descriptor.path = descriptor.path || ''
-  if (descriptor.path instanceof Array) {
-    descriptor.path = descriptor.path[0]
-  }
-
-  return {descriptor}
-}
-
-
 // State
 
 const stateName = 'isSettingsActive'
@@ -314,7 +299,6 @@ function readFile(file) {
 
 // Wrappers
 
-EditorResource = withProps(computeProps)(EditorResource)
 EditorResource = withState(stateName, stateUpdaterName, initialState)(EditorResource)
 EditorResource = connect(null, mapDispatchToProps)(EditorResource)
 

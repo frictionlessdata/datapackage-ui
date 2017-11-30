@@ -44,7 +44,8 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "regenerator-runtime": "^0.11.0",
-    "tableschema": "^1.4.2"
+    "tableschema": "^1.4.2",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",

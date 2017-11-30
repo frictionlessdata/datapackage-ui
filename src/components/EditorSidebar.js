@@ -11,6 +11,7 @@ function EditorSidebar({
 
   // Props
   descriptor,
+  publicDescriptor,
 
   // Handlers
   onUploadChange,
@@ -38,6 +39,7 @@ function EditorSidebar({
             <input
               type="file"
               id="load-descriptor"
+              value=""
               style={{display: 'none'}}
               onChange={onUploadChange}
             />
@@ -65,7 +67,7 @@ function EditorSidebar({
           {/* Download */}
           <a
             className="btn btn-lg btn-success"
-            href={`data: ${encodeDescriptor(descriptor)}`}
+            href={`data: ${encodeDescriptor(publicDescriptor)}`}
             download="datapackage.json"
           >
             Download
@@ -116,7 +118,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 // Helpers
 
 function encodeDescriptor(descriptor) {
-  return `text/json;charset=utf-8, ${helpers.stringifyDescriptor(descriptor)}`
+  const text = encodeURIComponent(helpers.stringifyDescriptor(descriptor))
+  return `text/json;charset=utf-8,${text}`
 }
 
 

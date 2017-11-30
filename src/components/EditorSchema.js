@@ -27,7 +27,7 @@ function EditorSchema({
 
       {/* Fields */}
       {descriptor.fields.map((fieldDescriptor, fieldIndex) => (
-        <div className="draggable card" key={fieldDescriptor.name || `field${fieldIndex}`}>
+        <div className="draggable card" key={fieldDescriptor._key}>
           <div className="inner">
             <EditorField
               column={descriptor._columns[fieldIndex]}
@@ -67,16 +67,12 @@ function EditorSchema({
 
 function computeProps({descriptor}) {
 
-  // Normalize descriptor
-  descriptor.fields = descriptor.fields || []
-  descriptor._columns = descriptor._columns || []
-
-  // Get extra columns count
+  // Extra columns count
   const fieldsCount = descriptor.fields.length
   const columnsCount = descriptor._columns.length
   const extraColumnsCount = Math.max(columnsCount - fieldsCount, 0)
 
-  return {descriptor, extraColumnsCount}
+  return {extraColumnsCount}
 }
 
 
@@ -86,10 +82,11 @@ const mapDispatchToProps = (dispatch, {descriptor, resourceIndex}) => ({
 
   onAddFieldClick:
     (ev) => {
-      const column = descriptor._columns[descriptor.fields.length] || {}
+      const column = descriptor._columns[descriptor.fields.length]
+      const payload = column ? column.descriptor : {}
       dispatch({
         type: 'ADD_FIELD',
-        payload: column.descriptor,
+        payload,
         resourceIndex,
       })
     },

@@ -1,7 +1,9 @@
+const uuidv4 = require('uuid/v4')
 const {Schema} = require('tableschema')
 const {Profile} = require('datapackage')
 const without = require('lodash/without')
 const cloneDeep = require('lodash/cloneDeep')
+const helpers = require('../helpers')
 
 
 // State
@@ -26,10 +28,10 @@ const UPDATERS = {
     },
 
   VALIDATE_PACKAGE:
-    ({descriptor}, {}) => {
+    ({publicDescriptor}, {}) => {
       // TODO: rebase on datapackage.validate
-      const profile = new Profile(descriptor.profile || 'data-package')
-      const {valid, errors} = profile.validate(descriptor)
+      const profile = new Profile(publicDescriptor.profile || 'data-package')
+      const {valid, errors} = profile.validate(publicDescriptor)
       if (valid) {
         return {feedback: {
           type: 'success',
@@ -54,10 +56,8 @@ const UPDATERS = {
   ADD_RESOURCE:
     ({descriptor}, {}) => {
       descriptor = cloneDeep(descriptor)
-      descriptor.resources = descriptor.resources || []
-      descriptor.resources.push({
-        name: `resource${descriptor.resources.length + 1}`,
-      })
+      descriptor.resources = descriptor.resources
+      descriptor.resources.push({})
       return {descriptor}
     },
 
@@ -122,11 +122,8 @@ const UPDATERS = {
     ({descriptor}, {resourceIndex, payload}) => {
       descriptor = cloneDeep(descriptor)
       const schemaDescriptor = descriptor.resources[resourceIndex].schema
-      schemaDescriptor.fields = schemaDescriptor.fields || []
-      schemaDescriptor.fields.push({
-        name: `field${schemaDescriptor.fields.length + 1}`,
-        ...payload,
-      })
+      schemaDescriptor.fields = schemaDescriptor.fields
+      schemaDescriptor.fields.push(payload)
       return {descriptor}
     },
 
@@ -157,10 +154,12 @@ const UPDATERS = {
 
   ADD_KEYWORD:
     ({descriptor}, {keyword}) => {
-      descriptor = cloneDeep(descriptor)
-      descriptor.keywords = descriptor.keywords || []
-      descriptor.keywords.push(keyword)
-      return {descriptor}
+      if (!descriptor.keywords.includes(keyword)) {
+        descriptor = cloneDeep(descriptor)
+        descriptor.keywords = descriptor.keywords
+        descriptor.keywords.push(keyword)
+        return {descriptor}
+      }
     },
 
   REMOVE_KEYWORD:
@@ -190,13 +189,51 @@ const UPDATERS = {
 
 }
 
+// Processor
+
+function processState(state) {
+
+  // Descriptor
+  state.descriptor.keywords = state.descriptor.keywords || []
+  state.descriptor.resources = state.descriptor.resources || []
+  for (const [index, resource] of state.descriptor.resources.entries()) {
+    resource._key = resource._key || resource.name || uuidv4()
+    resource.name = resource.name || `resource${index + 1}`
+    resource.path = resource.path || ''
+    if (resource.path instanceof Array) {
+      resource.path = resource.path[0]
+    }
+    resource.schema = resource.schema || {}
+    resource.schema.fields = resource.schema.fields || []
+    resource.schema._columns = resource.schema._columns || []
+    for (const [index, field] of resource.schema.fields.entries()) {
+      field._key = field._key || field.name || uuidv4()
+      field.name = field.name || `field${index + 1}`
+    }
+  }
+
+  // Public descriptor
+  state.publicDescriptor = cloneDeep(state.descriptor)
+  if (!state.publicDescriptor.keywords.length) delete state.publicDescriptor.keywords
+  for (const resource of state.publicDescriptor.resources) {
+    delete resource._key
+    delete resource.schema._columns
+    for (const field of resource.schema.fields) {
+      delete field._key
+    }
+  }
+
+  return state
+
+}
+
 
 // Reducers
 
 const createReducer = ({descriptor}) => (state, action) => {
-  if (!state) return {...INITIAL_STATE, descriptor}
+  if (!state) return processState({...INITIAL_STATE, descriptor})
   const updater =  UPDATERS[action.type] || SCHEMA_UPDATERS[action.type]
-  return updater ? {...state, ...(updater(state, action) || {})} : state
+  return updater ? processState({...state, ...(updater(state, action) || {})}) : state
 }
 
 
