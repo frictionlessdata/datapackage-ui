@@ -1,5 +1,6 @@
 const React = require('react')
 const {connect} = require('react-redux')
+const {withProps} = require('recompose')
 const partial = require('lodash/partial')
 
 
@@ -55,7 +56,7 @@ function EditorField({
       {/* Preview */}
       <div className="preview">
         <ol>
-          {(column.values || []).map((cell, index) => (
+          {column.values.map((cell, index) => (
             <li key={index}><span>{cell}</span></li>
           ))}
         </ol>
@@ -106,6 +107,17 @@ function EditorField({
 }
 
 
+// Computers
+
+function computeProps({column}) {
+
+  // Column
+  column = column || {headers: '', values: [], descriptor: {}}
+
+  return {column}
+}
+
+
 // Handlers
 
 const mapDispatchToProps = (dispatch, {resourceIndex, fieldIndex}) => ({
@@ -134,6 +146,7 @@ const mapDispatchToProps = (dispatch, {resourceIndex, fieldIndex}) => ({
 
 // Wrappers
 
+EditorField = withProps(computeProps)(EditorField)
 EditorField = connect(null, mapDispatchToProps)(EditorField)
 
 

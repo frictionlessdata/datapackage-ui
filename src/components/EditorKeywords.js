@@ -1,7 +1,7 @@
 const React = require('react')
 const {connect} = require('react-redux')
 const partial = require('lodash/partial')
-const {withState} = require('recompose')
+const {withProps, withState} = require('recompose')
 
 
 // Components
@@ -11,14 +11,14 @@ function EditorKeywords({
   // Props
   keywords,
 
+  // State
+  newKeyword,
+  setNewKeyword,
+
   // Handlers
   onAddKeywordClick,
   onRemoveKeywordClick,
   onUpdateKeywordChange,
-
-  // State
-  newKeyword,
-  setNewKeyword,
 
 }) {
   return (
@@ -50,7 +50,7 @@ function EditorKeywords({
         <div className="panel-body">
 
           {/* List keywords */}
-          {(keywords || []).map((keyword, index) => (
+          {keywords.map((keyword, index) => (
             <p key={index}>
 
               {/* Update keyword */}
@@ -103,6 +103,24 @@ function EditorKeywords({
 }
 
 
+// Computers
+
+function computeProps({keywords}) {
+
+  // Keywords
+  keywords = keywords || []
+
+  return {keywords}
+}
+
+
+// State
+
+const stateName = 'newKeyword'
+const stateUpdaterName = 'setNewKeyword'
+const initialState = ''
+
+
 // Handlers
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -137,7 +155,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
 // Wrappers
 
-EditorKeywords = withState('newKeyword', 'setNewKeyword', '')(EditorKeywords)
+EditorKeywords = withProps(computeProps)(EditorKeywords)
+EditorKeywords = withState(stateName, stateUpdaterName, initialState)(EditorKeywords)
 EditorKeywords = connect(null, mapDispatchToProps)(EditorKeywords)
 
 

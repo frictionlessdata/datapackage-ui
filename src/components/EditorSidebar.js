@@ -116,10 +116,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 // Helpers
 
 function encodeDescriptor(descriptor) {
-  descriptor = helpers.exportDescriptor(descriptor)
-  const text = encodeURIComponent(JSON.stringify(descriptor, null, 4))
-  const data = `text/json;charset=utf-8, ${text}`
-  return data
+  return `text/json;charset=utf-8, ${helpers.stringifyDescriptor(descriptor)}`
 }
 
 

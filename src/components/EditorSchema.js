@@ -1,8 +1,8 @@
 const React = require('react')
 const {Schema} = require('tableschema')
+const {withProps} = require('recompose')
 const cloneDeep = require('lodash/cloneDeep')
 const {Provider, connect} = require('react-redux')
-const {withStateHandlers, lifecycle, compose} = require('recompose')
 const {EditorField} = require('./EditorField')
 
 
@@ -14,21 +14,23 @@ function EditorSchema({
   descriptor,
   resourceIndex,
 
+  // Computed
+  extraColumnsCount,
+
   // Handlers
   onAddFieldClick,
   onAddAllFieldsClick,
 
 }) {
-  const extraColumnsCount = getExtraColumnsCount(descriptor)
   return (
     <div className="data-cards sortable">
 
       {/* Fields */}
-      {(descriptor.fields || []).map((fieldDescriptor, fieldIndex) => (
+      {descriptor.fields.map((fieldDescriptor, fieldIndex) => (
         <div className="draggable card" id="column_1" key={fieldIndex}>
           <div className="inner">
             <EditorField
-              column={((descriptor._columns || [])[fieldIndex]) || {}}
+              column={descriptor._columns[fieldIndex]}
               resourceIndex={resourceIndex}
               fieldIndex={fieldIndex}
               descriptor={fieldDescriptor}
@@ -61,13 +63,31 @@ function EditorSchema({
 }
 
 
+// Computers
+
+function computeProps({descriptor}) {
+
+  // Normalize descriptor
+  descriptor = descriptor || {}
+  descriptor.fields = descriptor.fields || []
+  descriptor._columns = descriptor._columns || []
+
+  // Get extra columns count
+  const fieldsCount = descriptor.fields.length
+  const columnsCount = descriptor._columns.length
+  const extraColumnsCount = Math.max(columnsCount - fieldsCount, 0)
+
+  return {descriptor, extraColumnsCount}
+}
+
+
 // Handlers
 
 const mapDispatchToProps = (dispatch, {descriptor, resourceIndex}) => ({
 
   onAddFieldClick:
     (ev) => {
-      const column = ((descriptor._columns || [])[resourceIndex]) || {}
+      const column = descriptor._columns[descriptor.fields.length] || {}
       dispatch({
         type: 'ADD_FIELD',
         payload: column.descriptor,
@@ -77,8 +97,8 @@ const mapDispatchToProps = (dispatch, {descriptor, resourceIndex}) => ({
 
   onAddAllFieldsClick:
     (ev) => {
-      const fields = descriptor.fields || []
-      const columns = descriptor._columns || []
+      const fields = descriptor.fields
+      const columns = descriptor._columns
       for (const [index, column] of (columns.entries())) {
         if (!fields[index]) {
           dispatch({
@@ -93,17 +113,9 @@ const mapDispatchToProps = (dispatch, {descriptor, resourceIndex}) => ({
 })
 
 
-// Helpers
-
-function getExtraColumnsCount(descriptor) {
-  const columnsCount = (descriptor._columns || []).length
-  const fieldsCount = (descriptor.fields || []).length
-  return Math.max(columnsCount - fieldsCount, 0)
-}
-
-
 // Wrappers
 
+EditorSchema = withProps(computeProps)(EditorSchema)
 EditorSchema = connect(null, mapDispatchToProps)(EditorSchema)
 
 

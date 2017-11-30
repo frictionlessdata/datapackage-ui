@@ -26,7 +26,7 @@ function EditorPreview({
       {/* Code */}
       <pre>
         <code className="language-json">
-          {stringifyDescriptor(descriptor)}
+          {helpers.stringifyDescriptor(descriptor)}
         </code>
       </pre>
 
@@ -56,14 +56,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     },
 
 })
-
-
-// Helpers
-
-function stringifyDescriptor(descriptor) {
-   descriptor = helpers.exportDescriptor(descriptor)
-   return JSON.stringify(descriptor, null, 2)
-}
 
 
 // Wrappers

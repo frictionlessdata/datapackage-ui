@@ -2,6 +2,7 @@ const React = require('react')
 const {Table} = require('tableschema')
 const classNames = require('classnames')
 const {connect} = require('react-redux')
+const {withProps} = require('recompose')
 const cloneDeep = require('lodash/cloneDeep')
 const {EditorSidebar} = require('./EditorSidebar')
 const {EditorPreview} = require('./EditorPreview')
@@ -13,10 +14,10 @@ const {createReducer} = require('../reducers/editorPackage')
 
 function EditorPackage({
 
-  // Store
-  feedback,
-  descriptor,
+  // Subscribed
   isPreviewActive,
+  descriptor,
+  feedback,
 
   // Handlers
   onAddResourceClick,
@@ -37,7 +38,7 @@ function EditorPackage({
           <div className={`alert alert-${feedback.type}`} role="alert">
             <p>{feedback.text}</p>
             <ul>
-              {(feedback.messages || []).map((message) => (
+              {feedback.messages.map((message) => (
                 <li key={message}>{message}</li>
               ))}
             </ul>
@@ -52,7 +53,7 @@ function EditorPackage({
 
           {/* List resources */}
           <div className="panel-group" id="resources-data" role="tablist" aria-multiselectable="true">
-            {(descriptor.resources || []).map((descriptor, resourceIndex) => (
+            {descriptor.resources.map((descriptor, resourceIndex) => (
               <EditorResource
                 descriptor={descriptor}
                 isSettingsActive={false}
@@ -81,7 +82,7 @@ function EditorPackage({
 }
 
 
-// State
+// Subscribers
 
 const mapStateToProps = (state, ownProps) => ({
 
@@ -95,6 +96,22 @@ const mapStateToProps = (state, ownProps) => ({
     state.feedback,
 
 })
+
+
+// Computers
+
+function computeProps({descriptor, feedback}) {
+
+  // Descriptor
+  descriptor.resources = descriptor.resources || []
+
+  // Feedback
+  if (feedback) {
+    feedback.messages = feedback.messages || []
+  }
+
+  return {descriptor, feedback}
+}
 
 
 // Handlers
@@ -113,6 +130,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
 // Wrappers
 
+EditorPackage = withProps(computeProps)(EditorPackage)
 EditorPackage = connect(mapStateToProps, mapDispatchToProps)(EditorPackage)
 EditorPackage.editorType = 'package'
 EditorPackage.createReducer = createReducer

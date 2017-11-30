@@ -4,7 +4,7 @@ const {Table} = require('tableschema')
 const {connect} = require('react-redux')
 const classNames = require('classnames')
 const partial = require('lodash/partial')
-const {withState} = require('recompose')
+const {withProps, withState} = require('recompose')
 const {EditorSchema} = require('./EditorSchema')
 
 
@@ -16,19 +16,18 @@ function EditorResource({
   descriptor,
   resourceIndex,
 
+  // State
+  isSettingsActive,
+  setIsSettingsActive,
+
   // Handlers
   onRemoveClick,
   onUploadClick,
   onUploadChange,
   onUpdateChange,
 
-  // State
-  isSettingsActive,
-  setIsSettingsActive,
-
 }) {
   const references = {}
-  const path = descriptor.path instanceof Array ? descriptor.path[0] : descriptor.path
   return (
     <div className="panel">
 
@@ -61,7 +60,7 @@ function EditorResource({
                   className="form-control"
                   autoComplete="off"
                   type="text"
-                  value={path || ''}
+                  value={descriptor.path || ''}
                   placeholder="Type resource path"
                   onChange={partial(onUpdateChange, 'path')}
                 />
@@ -71,12 +70,12 @@ function EditorResource({
                   <input
                     type="file"
                     style={{display: 'none'}}
-                    onChange={partial(onUploadChange, path)}
+                    onChange={partial(onUploadChange)}
                     ref={(ref) => references.upload = ref}
                   />
                   <button
                     className="btn btn-default"
-                    onClick={partial(onUploadClick, path, references)}
+                    onClick={partial(onUploadClick, references)}
                   >
                     Load
                   </button>
@@ -197,7 +196,7 @@ function EditorResource({
       >
         <div className="panel-body">
           <EditorSchema
-            descriptor={descriptor.schema || {}}
+            descriptor={descriptor.schema}
             resourceIndex={resourceIndex}
           />
         </div>
@@ -206,6 +205,27 @@ function EditorResource({
     </div>
   )
 }
+
+
+// Computers
+
+function computeProps({descriptor}) {
+
+  // Descriptor
+  descriptor.path = descriptor.path || ''
+  if (descriptor.path instanceof Array) {
+    descriptor.path = descriptor.path[0]
+  }
+
+  return {descriptor}
+}
+
+
+// State
+
+const stateName = 'isSettingsActive'
+const stateUpdaterName = 'setIsSettingsActive'
+const initialState = false
 
 
 // Handlers
@@ -230,10 +250,10 @@ const mapDispatchToProps = (dispatch, {resourceIndex, descriptor}) => ({
     },
 
   onUploadClick:
-    (path, references, ev) => {
-      if (path && path.startsWith('http')) {
+    (references, ev) => {
+      if (descriptor.path.startsWith('http')) {
         dispatch(async () => {
-          const table = await Table.load(path)
+          const table = await Table.load(descriptor.path)
           const rows = await table.read()
           const headers = table.headers
           dispatch({
@@ -249,8 +269,8 @@ const mapDispatchToProps = (dispatch, {resourceIndex, descriptor}) => ({
     },
 
   onUploadChange:
-    (path, ev) => {
-      if (!path) {
+    (ev) => {
+      if (!descriptor.path) {
         dispatch({
           type: 'UPDATE_RESOURCE',
           payload: {path: ev.target.files[0].name},
@@ -292,7 +312,8 @@ function readFile(file) {
 
 // Wrappers
 
-EditorResource = withState('isSettingsActive', 'setIsSettingsActive', '')(EditorResource)
+EditorResource = withProps(computeProps)(EditorResource)
+EditorResource = withState(stateName, stateUpdaterName, initialState)(EditorResource)
 EditorResource = connect(null, mapDispatchToProps)(EditorResource)
 
 
