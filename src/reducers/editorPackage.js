@@ -29,7 +29,6 @@ const UPDATERS = {
 
   VALIDATE_PACKAGE:
     ({publicDescriptor}, {}) => {
-      // TODO: rebase on datapackage.validate
       const profile = new Profile(publicDescriptor.profile || 'data-package')
       const {valid, errors} = profile.validate(publicDescriptor)
       if (valid) {
