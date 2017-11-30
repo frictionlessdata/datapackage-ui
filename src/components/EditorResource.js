@@ -61,9 +61,10 @@ function EditorResource({
                   className="form-control"
                   autoComplete="off"
                   type="text"
-                  value={descriptor.path}
+                  defaultValue={descriptor.path}
                   placeholder="Type resource path"
-                  onChange={partial(onUpdateChange, 'path')}
+                  onBlur={partial(onUpdateChange, 'path')}
+                  ref={(ref) => references.path = ref}
                 />
 
                 {/* Upload */}
@@ -71,7 +72,7 @@ function EditorResource({
                   <input
                     type="file"
                     style={{display: 'none'}}
-                    onChange={partial(onUploadChange)}
+                    onChange={partial(onUploadChange, references)}
                     ref={(ref) => references.upload = ref}
                   />
                   <button
@@ -256,11 +257,13 @@ const mapDispatchToProps = (dispatch, {resourceIndex, descriptor}) => ({
     },
 
   onUploadChange:
-    (ev) => {
+    (references, ev) => {
       if (!descriptor.path) {
+        const path = ev.target.files[0].name
+        references.path.value = path
         dispatch({
           type: 'UPDATE_RESOURCE',
-          payload: {path: ev.target.files[0].name},
+          payload: {path},
           resourceIndex,
         })
       }
