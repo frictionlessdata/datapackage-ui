@@ -1,19 +1,17 @@
 const React = require('react')
 const {connect} = require('react-redux')
 const partial = require('lodash/partial')
-const isEqual = require('lodash/isEqual')
-const config = require('../config')
 
 
-// Components
+// Pure components
 
-function EditorField({
+function EditorFieldPure({
 
   // Props
   column,
   descriptor,
-  fieldIndex,
-  resourceIndex,
+  // fieldIndex,
+  // resourceIndex,
 
   // Handlers
   onRemoveClick,
@@ -113,7 +111,7 @@ function EditorField({
 const mapDispatchToProps = (dispatch, {resourceIndex, fieldIndex}) => ({
 
   onRemoveClick:
-    (ev) => {
+    () => {
       dispatch({
         type: 'REMOVE_FIELD',
         resourceIndex,
@@ -134,13 +132,19 @@ const mapDispatchToProps = (dispatch, {resourceIndex, fieldIndex}) => ({
 })
 
 
-// Wrappers
+// Components
 
-EditorField = connect(null, mapDispatchToProps)(EditorField)
+const EditorField = connect(null, mapDispatchToProps)(EditorFieldPure)
 
 
 // System
 
 module.exports = {
+
+  // Public
   EditorField,
+
+  // Private
+  EditorFieldPure,
+
 }

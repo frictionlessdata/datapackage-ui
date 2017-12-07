@@ -1,7 +1,3 @@
-const cloneDeep = require('lodash/cloneDeep')
-const isPlainObject = require('lodash/isPlainObject')
-
-
 // Module API
 
 function stringifyDescriptor(descriptor) {

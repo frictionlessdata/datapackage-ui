@@ -1,14 +1,12 @@
 const React = require('react')
-const {Schema} = require('tableschema')
 const {withProps} = require('recompose')
-const cloneDeep = require('lodash/cloneDeep')
-const {Provider, connect} = require('react-redux')
+const {connect} = require('react-redux')
 const {EditorField} = require('./EditorField')
 
 
-// Components
+// Pure components
 
-function EditorSchema({
+function EditorSchemaPure({
 
   // Props
   descriptor,
@@ -40,11 +38,11 @@ function EditorSchema({
       ))}
 
       {/* Add all fields */}
-      {!!extraColumnsCount &&
+      {extraColumnsCount > 0 &&
         <div className="add card">
           <a className="inner" onClick={onAddAllFieldsClick}>
             <svg><use xlinkHref="#icon-plus" /></svg> Add all inferred fields
-            {!!extraColumnsCount > 0 &&
+            {extraColumnsCount > 0 &&
               <p>{`(data has ${extraColumnsCount} extra column(s))`}</p>
             }
           </a>
@@ -81,7 +79,7 @@ function computeProps({descriptor}) {
 const mapDispatchToProps = (dispatch, {descriptor, resourceIndex}) => ({
 
   onAddFieldClick:
-    (ev) => {
+    () => {
       const column = descriptor._columns[descriptor.fields.length]
       const payload = column ? column.descriptor : {}
       dispatch({
@@ -92,7 +90,7 @@ const mapDispatchToProps = (dispatch, {descriptor, resourceIndex}) => ({
     },
 
   onAddAllFieldsClick:
-    (ev) => {
+    () => {
       const fields = descriptor.fields
       const columns = descriptor._columns
       for (const [index, column] of (columns.entries())) {
@@ -109,14 +107,20 @@ const mapDispatchToProps = (dispatch, {descriptor, resourceIndex}) => ({
 })
 
 
-// Wrappers
+// Componenets
 
-EditorSchema = connect(null, mapDispatchToProps)(EditorSchema)
+let EditorSchema = connect(null, mapDispatchToProps)(EditorSchemaPure)
 EditorSchema = withProps(computeProps)(EditorSchema)
 
 
 // System
 
 module.exports = {
+
+  // Public
   EditorSchema,
+
+  // Private
+  EditorSchemaPure,
+
 }

@@ -4,9 +4,9 @@ const partial = require('lodash/partial')
 const {withState} = require('recompose')
 
 
-// Components
+// Pure components
 
-function EditorKeywords({
+function EditorKeywordsPure({
 
   // Props
   keywords,
@@ -27,7 +27,8 @@ function EditorKeywords({
       {/* Heading */}
       <div className="panel-heading" role="tab" id="keywords-heading">
         <h4 className="panel-title">
-          <a className="collapsed"
+          <a
+            className="collapsed"
             role="button"
             data-toggle="collapse"
             data-parent="#package-data"
@@ -35,7 +36,7 @@ function EditorKeywords({
             aria-expanded="false"
             aria-controls="keywords"
           >
-            <span className="text">Keywords </span>
+            <span className="text">Keywords</span>
             <span className="icon"><svg><use xlinkHref="#icon-expand" /></svg></span>
           </a>
         </h4>
@@ -114,10 +115,10 @@ const initialState = ''
 
 // Handlers
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
 
   onAddKeywordClick:
-    (keyword, ev) => {
+    (keyword) => {
       dispatch({
         type: 'ADD_KEYWORD',
         keyword,
@@ -125,7 +126,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     },
 
   onRemoveKeywordClick:
-    (keyword, ev) => {
+    (keyword) => {
       dispatch({
         type: 'REMOVE_KEYWORD',
         keyword,
@@ -144,14 +145,20 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 })
 
 
-// Wrappers
+// Components
 
-EditorKeywords = withState(stateName, stateUpdaterName, initialState)(EditorKeywords)
+let EditorKeywords = withState(stateName, stateUpdaterName, initialState)(EditorKeywordsPure)
 EditorKeywords = connect(null, mapDispatchToProps)(EditorKeywords)
 
 
 // System
 
 module.exports = {
+
+  // Public
   EditorKeywords,
+
+  // Private
+  EditorKeywordsPure,
+
 }

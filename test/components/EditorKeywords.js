@@ -1,19 +1,35 @@
+const sinon = require('sinon')
 const React = require('react')
 const Enzyme = require('enzyme')
 const {assert} = require('chai')
 const {shallow} = require('enzyme')
 const Adapter = require('enzyme-adapter-react-16')
-const {EditorKeywords} = require('../../src/components/EditorKeywords')
+const {EditorKeywordsPure} = require('../../src/components/EditorKeywords')
 Enzyme.configure({adapter: new Adapter()})
 
 
 // Tests
 
-describe('EditorKeywords', () => {
+describe('EditorKeywordsPure', () => {
 
   it('should render', () => {
-    const result = shallow(<EditorKeywords />)
-    assert(result.contains('Keywords'))
+    const keywords = ['keyword1', 'keyword2']
+    const newKeyword = 'keyword3'
+    const setNewKeyword = sinon.spy()
+    const onAddKeywordClick = sinon.spy()
+    const onRemoveKeywordClick = sinon.spy()
+    const onUpdateKeywordChange = sinon.spy()
+    const wrapper = shallow(
+      <EditorKeywordsPure
+        keywords={keywords}
+        newKeyword={newKeyword}
+        setNewKeyword={setNewKeyword}
+        onAddKeywordClick={onAddKeywordClick}
+        onRemoveKeywordClick={onRemoveKeywordClick}
+        onUpdateKeywordChange={onUpdateKeywordChange}
+      />
+    )
+    assert(wrapper.contains('Keywords'))
   })
 
 })

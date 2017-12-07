@@ -1,18 +1,26 @@
+const sinon = require('sinon')
 const React = require('react')
 const Enzyme = require('enzyme')
 const {assert} = require('chai')
 const {shallow} = require('enzyme')
 const Adapter = require('enzyme-adapter-react-16')
-const {EditorMetadata} = require('../../src/components/EditorMetadata')
+const {EditorMetadataPure} = require('../../src/components/EditorMetadata')
 Enzyme.configure({adapter: new Adapter()})
 
 
 // Tests
 
-describe('EditorMetadata', () => {
+describe('EditorMetadataPure', () => {
 
   it('should render', () => {
-    const result = shallow(<EditorMetadata />)
+    const descriptor = {}
+    const onUpdateChange = sinon.spy()
+    const result = shallow(
+      <EditorMetadataPure
+        descriptor={descriptor}
+        onUpdateChange={onUpdateChange}
+      />
+    )
     assert(result.contains('Metadata'))
   })
 

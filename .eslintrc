@@ -19,7 +19,8 @@ parserOptions:
 rules:
   max-len:
     - error
-    - 120
+    - code: 120
+      ignoreStrings: true
   quotes:
     - error
     - single
@@ -40,14 +41,17 @@ rules:
     - smart
   no-unused-vars:
     - warn
+  no-func-assign:
+    - off
   no-param-reassign:
-    - warn
+    - off
+  no-empty-pattern:
+    - off
   no-cond-assign:
     - error
     - except-parens
   arrow-parens:
-    - error
-    - as-needed
+    - off
   no-underscore-dangle:
     - off
   comma-dangle:

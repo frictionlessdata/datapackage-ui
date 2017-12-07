@@ -1,24 +1,33 @@
+const sinon = require('sinon')
 const React = require('react')
 const Enzyme = require('enzyme')
 const {assert} = require('chai')
 const {shallow} = require('enzyme')
 const Adapter = require('enzyme-adapter-react-16')
-const {EditorPackage} = require('../../src/components/EditorPackage')
-const {EditorMenu} = require('../../src/components/EditorMenu')
-const {EditorPreview} = require('../../src/components/EditorPreview')
+const {EditorPackagePure} = require('../../src/components/EditorPackage')
 Enzyme.configure({adapter: new Adapter()})
 
 
 // Tests
 
-describe('EditorPackage', () => {
+describe('EditorPackagePure', () => {
 
   it('should render', () => {
-    const descriptor = {resources: [{schema: {fields: [{title: 'Test1'}]}}]}
-    const columns = [['value1'], ['value2']]
-    const result = shallow(<EditorPackage descriptor={descriptor} />)
-    assert(result.contains(<EditorMenu />))
-    assert(result.contains(<EditorPreview />))
+    const isPreviewActive = false
+    const publicDescriptor = {}
+    const descriptor = {resources: []}
+    const feedback = {}
+    const onAddResourceClick = sinon.spy()
+    const result = shallow(
+      <EditorPackagePure
+        isPreviewActive={isPreviewActive}
+        publicDescriptor={publicDescriptor}
+        descriptor={descriptor}
+        feedback={feedback}
+        onAddResourceClick={onAddResourceClick}
+      />
+    )
+    assert(result.contains('Add resource'))
   })
 
 })

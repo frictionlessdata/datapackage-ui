@@ -4,14 +4,14 @@ const {Table} = require('tableschema')
 const {connect} = require('react-redux')
 const classNames = require('classnames')
 const partial = require('lodash/partial')
-const {withProps, withState} = require('recompose')
+const {withState} = require('recompose')
 const {EditorSchema} = require('./EditorSchema')
 const config = require('../config')
 
 
-// Components
+// Pure components
 
-function EditorResource({
+function EditorResourcePure({
 
   // Props
   descriptor,
@@ -64,7 +64,7 @@ function EditorResource({
                   defaultValue={descriptor.path}
                   placeholder="Type resource path"
                   onBlur={partial(onUpdateChange, 'path')}
-                  ref={(ref) => references.path = ref}
+                  ref={(ref) => {references.path = ref}}
                 />
 
                 {/* Upload */}
@@ -73,7 +73,7 @@ function EditorResource({
                     type="file"
                     style={{display: 'none'}}
                     onChange={partial(onUploadChange, references)}
-                    ref={(ref) => references.upload = ref}
+                    ref={(ref) => {references.upload = ref}}
                   />
                   <button
                     className="btn btn-default"
@@ -101,7 +101,7 @@ function EditorResource({
           {/* Settings */}
           <a
             className={classNames('settings-button', 'action', {active: isSettingsActive})}
-            onClick={(ev) => {
+            onClick={() => {
               setIsSettingsActive(!isSettingsActive)
             }}
           >
@@ -110,7 +110,8 @@ function EditorResource({
           </a>
 
           {/* Expand/collapse */}
-          <a role="button"
+          <a
+            role="button"
             data-toggle="collapse"
             href={`#collapse${resourceIndex}`}
             aria-expanded="true"
@@ -126,8 +127,11 @@ function EditorResource({
           <span>
 
             {/* Title */}
-            <label className="control-label">Title</label>
+            <label htmlFor={makeId(descriptor, 'title')} className="control-label">
+              Title
+            </label>
             <input
+              id={makeId(descriptor, 'title')}
               className="form-control"
               pattern="^([a-z0-9._-])+$"
               name="root[resources][0][name]"
@@ -138,8 +142,11 @@ function EditorResource({
             />
 
             {/* Profile */}
-            <label className="control-label">Profile</label>
+            <label htmlFor={makeId(descriptor, 'profile')} className="control-label">
+              Profile
+            </label>
             <select
+              id={makeId(descriptor, 'profile')}
               data-id="list-container"
               className="form-control list-container"
               autoComplete="off"
@@ -151,8 +158,11 @@ function EditorResource({
             </select>
 
             {/* Format */}
-            <label className="control-label">Format</label>
+            <label htmlFor={makeId(descriptor, 'format')} className="control-label">
+              Format
+            </label>
             <input
+              id={makeId(descriptor, 'format')}
               className="form-control"
               name="root[resources][0][format]"
               autoComplete="off"
@@ -162,8 +172,11 @@ function EditorResource({
             />
 
             {/* Encoding */}
-            <label className="control-label">Encoding</label>
+            <label htmlFor={makeId(descriptor, 'encoding')} className="control-label">
+              Encoding
+            </label>
             <input
+              id={makeId(descriptor, 'encoding')}
               className="form-control"
               name="root[resources][0][encoding]"
               autoComplete="off"
@@ -176,8 +189,11 @@ function EditorResource({
           <span>
 
             {/* Description */}
-            <label className="control-label">Description</label>
+            <label htmlFor={makeId(descriptor, 'description')} className="control-label">
+              Description
+            </label>
             <textarea
+              id={makeId(descriptor, 'description')}
               className="form-control"
               data-schemaformat="textarea"
               name="root[resources][0][description]"
@@ -221,7 +237,7 @@ const initialState = false
 const mapDispatchToProps = (dispatch, {resourceIndex, descriptor}) => ({
 
   onRemoveClick:
-    (ev) => {
+    () => {
       dispatch({
         type: 'REMOVE_RESOURCE',
         resourceIndex,
@@ -238,7 +254,7 @@ const mapDispatchToProps = (dispatch, {resourceIndex, descriptor}) => ({
     },
 
   onUploadClick:
-    (references, ev) => {
+    (references) => {
       if (descriptor.path.startsWith('http')) {
         dispatch(async () => {
           const table = await Table.load(descriptor.path)
@@ -289,11 +305,16 @@ const mapDispatchToProps = (dispatch, {resourceIndex, descriptor}) => ({
 
 // Helpers
 
+function makeId(descriptor, key) {
+  return `resource-${descriptor._key}-${key}`
+}
+
+
 function readFile(file) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const reader = new FileReader()
     reader.readAsText(file)
-    reader.onload = function() {
+    reader.onload = () => {
       resolve(reader.result)
     }
   })
@@ -302,12 +323,18 @@ function readFile(file) {
 
 // Wrappers
 
-EditorResource = withState(stateName, stateUpdaterName, initialState)(EditorResource)
+let EditorResource = withState(stateName, stateUpdaterName, initialState)(EditorResourcePure)
 EditorResource = connect(null, mapDispatchToProps)(EditorResource)
 
 
 // System
 
 module.exports = {
+
+  // Public
   EditorResource,
+
+  // Private
+  EditorResourcePure,
+
 }

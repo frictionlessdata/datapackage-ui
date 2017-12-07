@@ -5,9 +5,9 @@ const {EditorKeywords} = require('./EditorKeywords')
 const helpers = require('../helpers')
 
 
-// Components
+// Pure components
 
-function EditorSidebar({
+function EditorSidebarPure({
 
   // Props
   descriptor,
@@ -91,13 +91,13 @@ function EditorSidebar({
 
 // Handlers
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
 
   onUploadChange:
     (ev) => {
       const reader = new FileReader()
       reader.readAsText(ev.target.files[0])
-      reader.onload = function(error) {
+      reader.onload = () => {
         dispatch({
           type: 'UPLOAD_PACKAGE',
           payload: JSON.parse(reader.result),
@@ -106,7 +106,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     },
 
   onValidateClick:
-    (name, ev) => {
+    () => {
       dispatch({
         type: 'VALIDATE_PACKAGE',
       })
@@ -125,11 +125,17 @@ function encodeDescriptor(descriptor) {
 
 // Wrappers
 
-EditorSidebar = connect(null, mapDispatchToProps)(EditorSidebar)
+const EditorSidebar = connect(null, mapDispatchToProps)(EditorSidebarPure)
 
 
 // System
 
 module.exports = {
+
+  // Public
   EditorSidebar,
+
+  // Private
+  EditorSidebarPure,
+
 }

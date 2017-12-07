@@ -3,7 +3,6 @@ const {Schema} = require('tableschema')
 const {Profile} = require('datapackage')
 const without = require('lodash/without')
 const cloneDeep = require('lodash/cloneDeep')
-const helpers = require('../helpers')
 
 
 // State
@@ -111,8 +110,12 @@ const UPDATERS = {
   // Schema
 
   UPDATE_SCHEMA:
-    ({descriptor}, {resourceIndex}) => {
-      const schemaDescriptor = descriptor.resources[resourceIndex].schema
+    ({descriptor}, {resourceIndex, payload}) => {
+      descriptor = cloneDeep(descriptor)
+      descriptor.resources[resourceIndex].schema = {
+        ...descriptor.resources[resourceIndex].schema,
+        ...payload,
+      }
     },
 
   // Fields
@@ -195,9 +198,9 @@ function processState(state) {
   // Descriptor
   state.descriptor.keywords = state.descriptor.keywords || []
   state.descriptor.resources = state.descriptor.resources || []
-  for (const [index, resource] of state.descriptor.resources.entries()) {
+  for (const [resourceIndex, resource] of state.descriptor.resources.entries()) {
     resource._key = resource._key || resource.name || uuidv4()
-    resource.name = resource.name || `resource${index + 1}`
+    resource.name = resource.name || `resource${resourceIndex + 1}`
     resource.path = resource.path || ''
     if (resource.path instanceof Array) {
       resource.path = resource.path[0]
@@ -205,9 +208,9 @@ function processState(state) {
     resource.schema = resource.schema || {}
     resource.schema.fields = resource.schema.fields || []
     resource.schema._columns = resource.schema._columns || []
-    for (const [index, field] of resource.schema.fields.entries()) {
+    for (const [fieldIndex, field] of resource.schema.fields.entries()) {
       field._key = field._key || field.name || uuidv4()
-      field.name = field.name || `field${index + 1}`
+      field.name = field.name || `field${fieldIndex + 1}`
     }
   }
 
@@ -231,7 +234,7 @@ function processState(state) {
 
 const createReducer = ({descriptor}) => (state, action) => {
   if (!state) return processState({...INITIAL_STATE, descriptor})
-  const updater =  UPDATERS[action.type] || SCHEMA_UPDATERS[action.type]
+  const updater = UPDATERS[action.type]
   return updater ? processState({...state, ...(updater(state, action) || {})}) : state
 }
 

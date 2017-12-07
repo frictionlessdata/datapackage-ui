@@ -3,9 +3,9 @@ const partial = require('lodash/partial')
 const {connect} = require('react-redux')
 
 
-// Components
+// Pure components
 
-function EditorMetadata({
+function EditorMetadataPure({
 
   // Props
   descriptor,
@@ -20,7 +20,8 @@ function EditorMetadata({
       {/* Heading */}
       <div className="panel-heading" role="tab" id="optional-metadata-heading">
         <h4 className="panel-title">
-          <a className="collapsed"
+          <a
+            className="collapsed"
             role="button"
             data-toggle="collapse"
             data-parent="#package-data"
@@ -28,7 +29,7 @@ function EditorMetadata({
             aria-expanded="false"
             aria-controls="optional-metadata"
           >
-            <span className="text">Metadata </span>
+            <span className="text">Metadata</span>
             <span className="icon"><svg><use xlinkHref="#icon-expand" /></svg></span>
           </a>
         </h4>
@@ -38,8 +39,11 @@ function EditorMetadata({
         <div className="panel-body">
 
           {/* Name */}
-          <label className="control-label">Name</label>
+          <label htmlFor={makeId('name')} className="control-label">
+            Name
+          </label>
           <input
+            id={makeId('name')}
             className="form-control"
             pattern="^([a-z0-9._-])+$"
             name="root[name]"
@@ -49,8 +53,11 @@ function EditorMetadata({
           />
 
           {/* Title */}
-          <label className="control-label">Title</label>
+          <label htmlFor={makeId('title')} className="control-label">
+            Title
+          </label>
           <input
+            id={makeId('title')}
             className="form-control"
             name="root[title]"
             type="text"
@@ -59,8 +66,11 @@ function EditorMetadata({
           />
 
           {/* Profile */}
-          <label className="control-label">Profile</label>
+          <label htmlFor={makeId('profile')} className="control-label">
+            Profile
+          </label>
           <select
+            id={makeId('profile')}
             data-id="list-container"
             className="form-control list-container"
             autoComplete="off"
@@ -73,8 +83,12 @@ function EditorMetadata({
           </select>
 
           {/* Description */}
-          <label className="control-label">Description</label>
-          <textarea className="form-control"
+          <label htmlFor={makeId('description')} className="control-label">
+            Description
+          </label>
+          <textarea
+            id={makeId('description')}
+            className="form-control"
             data-schemaformat="textarea"
             name="root[description]"
             defaultValue={descriptor.description}
@@ -82,8 +96,11 @@ function EditorMetadata({
           />
 
           {/* Home Page */}
-          <label className="control-label">Home Page</label>
+          <label htmlFor={makeId('homepage')} className="control-label">
+            Home Page
+          </label>
           <input
+            id={makeId('homepage')}
             className="form-control"
             name="root[homepage]"
             type="text"
@@ -92,8 +109,11 @@ function EditorMetadata({
           />
 
           {/* Version */}
-          <label className="control-label">Version</label>
+          <label htmlFor={makeId('version')} className="control-label">
+            Version
+          </label>
           <input
+            id={makeId('version')}
             className="form-control"
             name="root[version]"
             type="text"
@@ -102,8 +122,11 @@ function EditorMetadata({
           />
 
           {/* License */}
-          <label className="control-label">License</label>
+          <label htmlFor={makeId('license')} className="control-label">
+            License
+          </label>
           <input
+            id={makeId('license')}
             className="form-control"
             name="root[license]"
             type="text"
@@ -112,8 +135,11 @@ function EditorMetadata({
           />
 
           {/* Author */}
-          <label className="control-label">Author</label>
+          <label htmlFor={makeId('author')} className="control-label">
+            Author
+          </label>
           <input
+            id={makeId('author')}
             className="form-control"
             name="root[author]"
             type="text"
@@ -130,7 +156,7 @@ function EditorMetadata({
 
 // Handlers
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
 
   onUpdateChange:
     (name, ev) => {
@@ -143,13 +169,26 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 })
 
 
-// Wrappers
+// Helpers
 
-EditorMetadata = connect(null, mapDispatchToProps)(EditorMetadata)
+function makeId(key) {
+  return `package-${key}`
+}
+
+
+// Components
+
+const EditorMetadata = connect(null, mapDispatchToProps)(EditorMetadataPure)
 
 
 // System
 
 module.exports = {
+
+  // Public
   EditorMetadata,
+
+  // Private
+  EditorMetadataPure,
+
 }

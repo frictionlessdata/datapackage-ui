@@ -1,20 +1,27 @@
+const sinon = require('sinon')
 const React = require('react')
 const Enzyme = require('enzyme')
 const {assert} = require('chai')
 const {shallow} = require('enzyme')
 const Adapter = require('enzyme-adapter-react-16')
-const {EditorPreview} = require('../../src/components/EditorPreview')
+const {EditorPreviewPure} = require('../../src/components/EditorPreview')
 Enzyme.configure({adapter: new Adapter()})
 
 
 // Tests
 
-describe('EditorPreview', () => {
+describe('EditorPreviewPure', () => {
 
   it('should render', () => {
-    const descriptor = {name: 'name', type: 'integer'}
-    const result = shallow(<EditorPreview descriptor={descriptor} />)
-    assert(result.contains('Preview'))
+    const publicDescriptor = {name: 'name', type: 'integer'}
+    const onToggleClick = sinon.spy()
+    const wrapper = shallow(
+      <EditorPreviewPure
+        publicDescriptor={publicDescriptor}
+        onToggleClick={onToggleClick}
+      />
+    )
+    assert(wrapper.contains('Preview'))
   })
 
 })
