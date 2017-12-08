@@ -1,6 +1,7 @@
 const React = require('react')
 const {connect} = require('react-redux')
 const partial = require('lodash/partial')
+const config = require('../config')
 
 
 // Pure components
@@ -65,39 +66,69 @@ function EditorFieldPure({
       <div className="field-info">
 
         {/* Title */}
-        <label htmlFor="title_3">Title</label>
+        <label htmlFor={makeId(descriptor, 'title')}>
+          Title
+        </label>
         <input
           type="text"
+          id={makeId(descriptor, 'title')}
           defaultValue={descriptor.title}
-          id="title_3"
           onBlur={partial(onUpdateChange, 'title')}
         />
 
         {/* Description */}
-        <label htmlFor="description_3">Description</label>
+        <label htmlFor={makeId(descriptor, 'description')}>
+          Description
+        </label>
         <textarea
-          id="description_3"
+          id={makeId(descriptor, 'description')}
           defaultValue={descriptor.description}
           onBlur={partial(onUpdateChange, 'description')}
         />
 
         {/* Type */}
-        <label htmlFor="type_3">Data Type</label>
-        <input
-          type="text"
-          id="type_3"
+        <label htmlFor={makeId(descriptor, 'type')}>
+          Data Type
+        </label>
+        <select
+          id={makeId(descriptor, 'type')}
+          data-id="list-container"
+          className="form-control list-container"
+          autoComplete="off"
           defaultValue={descriptor.type}
-          onBlur={partial(onUpdateChange, 'type')}
-        />
+          onChange={partial(onUpdateChange, 'type')}
+        >
+          {getTypes().map((type) => (
+            <option value={type}>{type}</option>
+          ))}
+        </select>
 
         {/* Format */}
-        <label htmlFor="format_3">Data Format</label>
-        <input
-          type="text"
-          id="type_3"
-          defaultValue={descriptor.format}
-          onBlur={partial(onUpdateChange, 'format')}
-        />
+        <label htmlFor={makeId(descriptor, 'format')}>
+          Data Format
+        </label>
+        { !getFormat(descriptor.type) &&
+          <input
+            type="text"
+            id={makeId(descriptor, 'format')}
+            defaultValue={descriptor.format}
+            onBlur={partial(onUpdateChange, 'format')}
+          />
+        }
+        { !!getFormat(descriptor.type) &&
+          <select
+            id={makeId(descriptor, 'format')}
+            data-id="list-container"
+            className="form-control list-container"
+            autoComplete="off"
+            defaultValue={descriptor.format}
+            onChange={partial(onUpdateChange, 'format')}
+          >
+            {getFormat(descriptor.type).map((format) => (
+              <option value={format}>{format}</option>
+            ))}
+          </select>
+        }
 
       </div>
 
@@ -130,6 +161,23 @@ const mapDispatchToProps = (dispatch, {resourceIndex, fieldIndex}) => ({
     },
 
 })
+
+
+// Helpers
+
+function getTypes() {
+  return Object.keys(config.FIELD_TYPES_AND_FORMATS)
+}
+
+
+function getFormat(type) {
+  return config.FIELD_TYPES_AND_FORMATS[type]
+}
+
+
+function makeId(descriptor, key) {
+  return `field-${descriptor._key}-${key}`
+}
 
 
 // Components
