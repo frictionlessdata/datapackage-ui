@@ -211,6 +211,8 @@ function processState(state) {
     for (const [fieldIndex, field] of resource.schema.fields.entries()) {
       field._key = field._key || field.name || uuidv4()
       field.name = field.name || `field${fieldIndex + 1}`
+      field.type = field.type || 'string'
+      field.format = field.format || 'default'
     }
   }
 
