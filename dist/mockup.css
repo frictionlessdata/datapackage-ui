@@ -1322,6 +1322,7 @@ select[multiple].input-lg {
 .panel {
   margin-bottom: 20px;
   background-color: transparent;
+  border-top: solid 1px rgba(0, 0, 0, 0.15);
   border-radius: 0; }
 
 .panel-body {
@@ -1334,7 +1335,7 @@ select[multiple].input-lg {
 
 .panel-heading {
   padding: 10px 20px;
-  border-top: solid 1px rgba(0, 0, 0, 0.15); }
+  }
   .panel-heading > .dropdown .dropdown-toggle {
     color: inherit; }
 
@@ -1355,6 +1356,8 @@ select[multiple].input-lg {
   .panel-group .panel {
     margin-bottom: 0;
     border-radius: 0; }
+  .panel-group .panel + .panel {
+    margin-top: 0; }
   .panel-group .panel-heading {
     border-bottom: 0; }
     .panel-group .panel-heading + .panel-collapse > .panel-body,
@@ -1376,6 +1379,8 @@ select[multiple].input-lg {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #008A47; }
+  .app section.package .panel {
+    padding: 15px 0; }
   .app section.package a {
     color: #fff; }
   .app section.package svg {
@@ -1407,8 +1412,7 @@ select[multiple].input-lg {
       width: 100%;
       margin-top: 10px; }
     .app section.package .inner .panel-title {
-      font-weight: 600;
-      font-size: 14px; }
+      font-weight: 600; }
       .app section.package .inner .panel-title a {
         text-decoration: none;
         display: flex;
@@ -1421,13 +1425,6 @@ select[multiple].input-lg {
           .app section.package .inner .panel-title a .icon svg {
             width: 100%;
             height: 100%; }
-        .app section.package .inner .panel-title a.collapsed {
-          opacity: 0.8; }
-          .app section.package .inner .panel-title a.collapsed .icon {
-            -webkit-transform: rotate(-90deg);
-            -ms-transform: rotate(-90deg);
-            -o-transform: rotate(-90deg);
-            transform: rotate(-90deg); }
     .app section.package .inner .panel-body {
       border-top: none;
       padding-top: 6px; }

@@ -20,22 +20,11 @@ function EditorMetadataPure({
       {/* Heading */}
       <div className="panel-heading" role="tab" id="optional-metadata-heading">
         <h4 className="panel-title">
-          <a
-            className="collapsed"
-            role="button"
-            data-toggle="collapse"
-            data-parent="#package-data"
-            href="#optional-metadata"
-            aria-expanded="false"
-            aria-controls="optional-metadata"
-          >
-            <span className="text">Metadata</span>
-            <span className="icon"><svg><use xlinkHref="#icon-expand" /></svg></span>
-          </a>
+          Metadata
         </h4>
       </div>
 
-      <div id="optional-metadata" className="panel-collapse collapse" role="tabpanel" aria-labelledby="optional-metadata-heading">
+      <div id="optional-metadata" aria-labelledby="optional-metadata-heading">
         <div className="panel-body">
 
           {/* Name */}
