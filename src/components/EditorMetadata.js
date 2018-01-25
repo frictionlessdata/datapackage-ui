@@ -40,7 +40,7 @@ function EditorMetadataPure({
 
           {/* Name */}
           <label htmlFor={makeId('name')} className="control-label">
-            Name
+            Name *
           </label>
           <input
             id={makeId('name')}
@@ -49,12 +49,14 @@ function EditorMetadataPure({
             name="root[name]"
             type="text"
             defaultValue={descriptor.name}
+            placeholder="my-data-package"
             onBlur={partial(onUpdateChange, 'name')}
+            required
           />
 
           {/* Title */}
           <label htmlFor={makeId('title')} className="control-label">
-            Title
+            Title *
           </label>
           <input
             id={makeId('title')}
@@ -62,7 +64,9 @@ function EditorMetadataPure({
             name="root[title]"
             type="text"
             defaultValue={descriptor.title}
+            placeholder="My Data Package"
             onBlur={partial(onUpdateChange, 'title')}
+            required
           />
 
           {/* Profile */}
@@ -92,6 +96,7 @@ function EditorMetadataPure({
             data-schemaformat="textarea"
             name="root[description]"
             defaultValue={descriptor.description}
+            placeholder="Describe your dataset"
             onBlur={partial(onUpdateChange, 'description')}
           />
 
@@ -105,6 +110,7 @@ function EditorMetadataPure({
             name="root[homepage]"
             type="text"
             defaultValue={descriptor.homepage}
+            placeholder="https://example.com"
             onBlur={partial(onUpdateChange, 'homepage')}
           />
 
@@ -118,6 +124,7 @@ function EditorMetadataPure({
             name="root[version]"
             type="text"
             defaultValue={descriptor.version}
+            placeholder="1.0.0"
             onBlur={partial(onUpdateChange, 'version')}
           />
 
@@ -131,6 +138,7 @@ function EditorMetadataPure({
             name="root[license]"
             type="text"
             defaultValue={descriptor.license}
+            placeholder="CC0-1.0"
             onBlur={partial(onUpdateChange, 'license')}
           />
 
@@ -144,6 +152,7 @@ function EditorMetadataPure({
             name="root[author]"
             type="text"
             defaultValue={descriptor.author}
+            placeholder="J Bloggs <jbloggs@example.com>"
             onBlur={partial(onUpdateChange, 'author')}
           />
 
