@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="./dist/datapackage-ui.css">
 <link rel="stylesheet" href="./dist/mockup.css">
-<title>Packagist</title>
+<title>Data Package Creator</title>
 <body>
 
   <!-- Application -->
@@ -18,41 +18,8 @@
   <script>
     datapackageUI.render(datapackageUI.EditorPackage, {
       descriptor: {
-        name: 'my-package',
         profile: 'tabular-data-package',
-        title: 'My Package',
-        description: 'My Package description',
-        homepage: 'http://example.com',
-        version: '1.0.0',
-        license: 'MIT',
-        author: 'OKI',
-        keywords: ['open', 'knowledge'],
-        resources: [
-          {
-            name: 'resource1',
-            title: 'Resource 1',
-            profile: 'tabular-data-resource',
-            path: 'data.csv',
-            format: 'csv',
-            mediaType: 'text/csv',
-            encoding: 'utf-8',
-            description: 'Resource 1 description',
-            schema: {
-              fields: [
-                {name: 'test1', type: 'string', format: 'default', title: 'Test1', description: 'Description'},
-              ]
-            }
-          },
-          {
-            name: 'resource2',
-            path: 'https://raw.githubusercontent.com/frictionlessdata/goodtables-py/master/data/valid.csv',
-            schema: {fields: [{title: 'Test2'}]}
-          },
-          {
-            name: 'resource3',
-            schema: {fields: [{title: 'Test3'}]}
-          },
-      ]},
+      },
     }, document.getElementById('editor-package'))
   </script>
 
