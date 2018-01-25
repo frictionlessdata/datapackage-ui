@@ -93,7 +93,7 @@ function EditorResourcePure({
         <div className="actions">
 
           {/* Remove */}
-          <a onClick={onRemoveClick}>
+          <a role="button" onClick={onRemoveClick}>
             <svg><use xlinkHref="#icon-trashcan" /></svg>
             <span className="text">Remove</span>
           </a>
