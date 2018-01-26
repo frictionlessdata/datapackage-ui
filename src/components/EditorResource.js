@@ -210,7 +210,7 @@ function EditorResourcePure({
       {/* Schema */}
       <div
         id={`collapse${resourceIndex}`}
-        className={classNames('panel-collapse', 'collapse', {in: resourceIndex === 0})}
+        className={classNames('panel-collapse', 'collapse', 'in')}
         role="tabpanel"
         aria-labelledby={panelHeadingId}
       >
