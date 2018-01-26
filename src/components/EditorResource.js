@@ -29,11 +29,13 @@ function EditorResourcePure({
 
 }) {
   const references = {}
+  const panelHeadingId = `resource-${resourceIndex}-heading`
+
   return (
     <div className="panel">
 
       {/* Metadata */}
-      <div className="panel-heading" role="tab" id="resource-one-heading">
+      <div className="panel-heading" role="tab" id={panelHeadingId}>
 
         <div className="title" style={{width: '90%'}}>
           <div className="row">
@@ -210,7 +212,7 @@ function EditorResourcePure({
         id={`collapse${resourceIndex}`}
         className={classNames('panel-collapse', 'collapse', {in: resourceIndex === 0})}
         role="tabpanel"
-        aria-labelledby="resource-one-heading"
+        aria-labelledby={panelHeadingId}
       >
         <div className="panel-body">
           <EditorSchema
