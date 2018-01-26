@@ -30,7 +30,6 @@ function EditorFieldPure({
         <input
           type="text"
           defaultValue={descriptor.name}
-          id="title_3"
           style={{
             color: 'white',
             backgroundColor: '#00994c',
@@ -99,7 +98,7 @@ function EditorFieldPure({
           onChange={partial(onUpdateChange, 'type')}
         >
           {getTypes().map((type) => (
-            <option value={type}>{type}</option>
+            <option key={type} value={type}>{type}</option>
           ))}
         </select>
 
@@ -125,7 +124,7 @@ function EditorFieldPure({
             onChange={partial(onUpdateChange, 'format')}
           >
             {getFormat(descriptor.type).map((format) => (
-              <option value={format}>{format}</option>
+              <option key={format} value={format}>{format}</option>
             ))}
           </select>
         }
