@@ -32,8 +32,8 @@ function EditorFieldPure({
           defaultValue={descriptor.name}
           style={{
             color: 'white',
-            backgroundColor: '#00994c',
-            border: 'solid 1px #00773b',
+            backgroundColor: '#3A3A3A',
+            border: 'solid 1px #3A3A3A',
             paddingLeft: '0.5em',
             paddingRight: '0.5em',
           }}
