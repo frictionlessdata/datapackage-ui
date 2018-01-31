@@ -26,7 +26,6 @@ function EditorFieldPure({
       <header>
 
         {/* Name */}
-        <span className="drag"><svg><use xlinkHref="#icon-drag" /></svg></span>
         <input
           type="text"
           defaultValue={descriptor.name}
