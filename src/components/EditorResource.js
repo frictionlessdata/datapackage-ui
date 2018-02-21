@@ -156,7 +156,7 @@ function EditorResourcePure({
               onChange={partial(onUpdateChange, 'profile')}
             >
               <option value="data-resource">Data Resource</option>
-              <option value="tabular-data-resource">Tabular Data Resource</option>
+              <option value="tabular-data-resource" selected>Tabular Data Resource</option>
             </select>
 
             {/* Format */}
