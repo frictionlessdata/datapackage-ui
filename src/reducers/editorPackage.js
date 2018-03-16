@@ -202,6 +202,7 @@ function processState(state) {
     resource._key = resource._key || resource.name || uuidv4()
     resource.name = resource.name || `resource${resourceIndex + 1}`
     resource.path = resource.path || ''
+    resource.profile = resource.profile || 'tabular-data-resource'
     if (resource.path instanceof Array) {
       resource.path = resource.path[0]
     }
