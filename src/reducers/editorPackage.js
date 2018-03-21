@@ -31,16 +31,20 @@ const UPDATERS = {
       const profile = new Profile(publicDescriptor.profile || 'data-package')
       const {valid, errors} = profile.validate(publicDescriptor)
       if (valid) {
-        return {feedback: {
-          type: 'success',
-          text: 'Data package is valid!',
-        }}
+        return {
+          feedback: {
+            type: 'success',
+            text: 'Data package is valid!',
+          }
+        }
       } else {
-        return {feedback: {
-          type: 'danger',
-          text: 'Data package is invalid!',
-          messages: errors.map((error) => error.message),
-        }}
+        return {
+          feedback: {
+            type: 'danger',
+            text: 'Data package is invalid!',
+            messages: errors.map((error) => error.message),
+          }
+        }
       }
     },
 
@@ -151,7 +155,36 @@ const UPDATERS = {
       return {descriptor}
     },
 
+  // License
 
+  UPDATE_LICENSE:
+    ({descriptor}, {license}) => {
+      descriptor = cloneDeep(descriptor)
+      descriptor.licenses = descriptor.licenses || []
+      if (license !== undefined) {
+        descriptor.licenses[0] = {
+          ...descriptor.licenses[0],
+          ...license
+        }
+      } else {
+        delete descriptor.licenses
+      }
+      return {descriptor}
+    },
+
+  // Contributors
+
+  UPDATE_CONTRIBUTORS:
+    ({descriptor}, {contributors}) => {
+      descriptor = cloneDeep(descriptor)
+      if (contributors !== undefined) {
+        descriptor.contributors = contributors
+      } else {
+        delete descriptor.contributors
+      }
+
+      return {descriptor}
+    },
   // Keywords
 
   ADD_KEYWORD:

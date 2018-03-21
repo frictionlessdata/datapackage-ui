@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 353);
+/******/ 	return __webpack_require__(__webpack_require__.s = 355);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1920,7 +1920,7 @@ function loadLocale(name) {
         try {
             oldLocale = globalLocale._abbr;
             var aliasedRequire = require;
-            __webpack_require__(/*! ./locale */ 621)("./" + name);
+            __webpack_require__(/*! ./locale */ 623)("./" + name);
             getSetGlobalLocale(oldLocale);
         } catch (e) {}
     }
@@ -4829,40 +4829,40 @@ process.umask = function() { return 0; };
 
 var jschardet = exports;
 
-__webpack_require__(/*! ./constants */ 394);
-__webpack_require__(/*! ./codingstatemachine */ 393);
-__webpack_require__(/*! ./escsm */ 396);
-__webpack_require__(/*! ./mbcssm */ 416);
-__webpack_require__(/*! ./charsetprober */ 392);
-__webpack_require__(/*! ./mbcharsetprober */ 414);
-__webpack_require__(/*! ./jisfreq */ 405);
-__webpack_require__(/*! ./gb2312freq */ 402);
-__webpack_require__(/*! ./euckrfreq */ 398);
-__webpack_require__(/*! ./big5freq */ 388);
-__webpack_require__(/*! ./euctwfreq */ 400);
-__webpack_require__(/*! ./chardistribution */ 390);
-__webpack_require__(/*! ./jpcntx */ 406);
-__webpack_require__(/*! ./sjisprober */ 419);
-__webpack_require__(/*! ./utf8prober */ 421);
-__webpack_require__(/*! ./charsetgroupprober */ 391);
-__webpack_require__(/*! ./eucjpprober */ 397);
-__webpack_require__(/*! ./gb2312prober */ 403);
-__webpack_require__(/*! ./euckrprober */ 399);
-__webpack_require__(/*! ./big5prober */ 389);
-__webpack_require__(/*! ./euctwprober */ 401);
-__webpack_require__(/*! ./mbcsgroupprober */ 415);
-__webpack_require__(/*! ./sbcharsetprober */ 417);
-__webpack_require__(/*! ./langgreekmodel */ 409);
-__webpack_require__(/*! ./langthaimodel */ 412);
-__webpack_require__(/*! ./langbulgarianmodel */ 407);
-__webpack_require__(/*! ./langcyrillicmodel */ 408);
-__webpack_require__(/*! ./hebrewprober */ 404);
-__webpack_require__(/*! ./langhebrewmodel */ 410);
-__webpack_require__(/*! ./langhungarianmodel */ 411);
-__webpack_require__(/*! ./sbcsgroupprober */ 418);
-__webpack_require__(/*! ./latin1prober */ 413);
-__webpack_require__(/*! ./escprober */ 395);
-__webpack_require__(/*! ./universaldetector */ 420);
+__webpack_require__(/*! ./constants */ 396);
+__webpack_require__(/*! ./codingstatemachine */ 395);
+__webpack_require__(/*! ./escsm */ 398);
+__webpack_require__(/*! ./mbcssm */ 418);
+__webpack_require__(/*! ./charsetprober */ 394);
+__webpack_require__(/*! ./mbcharsetprober */ 416);
+__webpack_require__(/*! ./jisfreq */ 407);
+__webpack_require__(/*! ./gb2312freq */ 404);
+__webpack_require__(/*! ./euckrfreq */ 400);
+__webpack_require__(/*! ./big5freq */ 390);
+__webpack_require__(/*! ./euctwfreq */ 402);
+__webpack_require__(/*! ./chardistribution */ 392);
+__webpack_require__(/*! ./jpcntx */ 408);
+__webpack_require__(/*! ./sjisprober */ 421);
+__webpack_require__(/*! ./utf8prober */ 423);
+__webpack_require__(/*! ./charsetgroupprober */ 393);
+__webpack_require__(/*! ./eucjpprober */ 399);
+__webpack_require__(/*! ./gb2312prober */ 405);
+__webpack_require__(/*! ./euckrprober */ 401);
+__webpack_require__(/*! ./big5prober */ 391);
+__webpack_require__(/*! ./euctwprober */ 403);
+__webpack_require__(/*! ./mbcsgroupprober */ 417);
+__webpack_require__(/*! ./sbcharsetprober */ 419);
+__webpack_require__(/*! ./langgreekmodel */ 411);
+__webpack_require__(/*! ./langthaimodel */ 414);
+__webpack_require__(/*! ./langbulgarianmodel */ 409);
+__webpack_require__(/*! ./langcyrillicmodel */ 410);
+__webpack_require__(/*! ./hebrewprober */ 406);
+__webpack_require__(/*! ./langhebrewmodel */ 412);
+__webpack_require__(/*! ./langhungarianmodel */ 413);
+__webpack_require__(/*! ./sbcsgroupprober */ 420);
+__webpack_require__(/*! ./latin1prober */ 415);
+__webpack_require__(/*! ./escprober */ 397);
+__webpack_require__(/*! ./universaldetector */ 422);
 
 jschardet.VERSION = "1.4.1";
 jschardet.detect = function(buffer) {
@@ -4891,8 +4891,8 @@ jschardet.log = function() {
   \******************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 13),
-    isArray = __webpack_require__(/*! ./isArray */ 5),
+var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 14),
+    isArray = __webpack_require__(/*! ./isArray */ 6),
     isObjectLike = __webpack_require__(/*! ./isObjectLike */ 9);
 
 /** `Object#toString` result references. */
@@ -4965,6 +4965,26 @@ module.exports = {
 /* 5 */
 /* no static exports found */
 /* all exports used */
+/*!**************************!*\
+  !*** ./~/react/index.js ***!
+  \**************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(/*! ./cjs/react.production.min.js */ 562);
+} else {
+  module.exports = __webpack_require__(/*! ./cjs/react.development.js */ 561);
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 1)))
+
+/***/ }),
+/* 6 */
+/* no static exports found */
+/* all exports used */
 /*!*****************************!*\
   !*** ./~/lodash/isArray.js ***!
   \*****************************/
@@ -4999,7 +5019,7 @@ module.exports = isArray;
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /* no static exports found */
 /* all exports used */
 /*!***************************!*\
@@ -5019,26 +5039,6 @@ module.exports = root;
 
 
 /***/ }),
-/* 7 */
-/* no static exports found */
-/* all exports used */
-/*!**************************!*\
-  !*** ./~/react/index.js ***!
-  \**************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(/*! ./cjs/react.production.min.js */ 560);
-} else {
-  module.exports = __webpack_require__(/*! ./cjs/react.development.js */ 559);
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 1)))
-
-/***/ }),
 /* 8 */
 /* no static exports found */
 /* all exports used */
@@ -5050,7 +5050,7 @@ if (process.env.NODE_ENV === 'production') {
 "use strict";
 
 
-var bind = __webpack_require__(/*! ./helpers/bind */ 108);
+var bind = __webpack_require__(/*! ./helpers/bind */ 109);
 var isBuffer = __webpack_require__(/*! is-buffer */ 123);
 
 /*global toString:true*/
@@ -5784,6 +5784,30 @@ module.exports = isObject;
 
 /***/ }),
 /* 13 */
+/* exports provided: Provider, createProvider, connectAdvanced, connect */
+/* all exports used */
+/*!***********************************!*\
+  !*** ./~/react-redux/es/index.js ***!
+  \***********************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Provider__ = __webpack_require__(/*! ./components/Provider */ 552);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__ = __webpack_require__(/*! ./components/connectAdvanced */ 178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connect_connect__ = __webpack_require__(/*! ./connect/connect */ 553);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Provider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createProvider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connectAdvanced", function() { return __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connect", function() { return __WEBPACK_IMPORTED_MODULE_2__connect_connect__["a"]; });
+
+
+
+
+
+
+/***/ }),
+/* 14 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************!*\
@@ -5792,8 +5816,8 @@ module.exports = isObject;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(/*! ./_Symbol */ 30),
-    getRawTag = __webpack_require__(/*! ./_getRawTag */ 485),
-    objectToString = __webpack_require__(/*! ./_objectToString */ 515);
+    getRawTag = __webpack_require__(/*! ./_getRawTag */ 487),
+    objectToString = __webpack_require__(/*! ./_objectToString */ 517);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -5822,37 +5846,13 @@ module.exports = baseGetTag;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************************!*\
   !*** ./~/node-libs-browser/mock/empty.js ***!
   \*******************************************/
 /***/ (function(module, exports) {
-
-
-
-/***/ }),
-/* 15 */
-/* exports provided: Provider, createProvider, connectAdvanced, connect */
-/* all exports used */
-/*!***********************************!*\
-  !*** ./~/react-redux/es/index.js ***!
-  \***********************************/
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Provider__ = __webpack_require__(/*! ./components/Provider */ 550);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__ = __webpack_require__(/*! ./components/connectAdvanced */ 178);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connect_connect__ = __webpack_require__(/*! ./connect/connect */ 551);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Provider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createProvider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["b"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connectAdvanced", function() { return __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connect", function() { return __WEBPACK_IMPORTED_MODULE_2__connect_connect__["a"]; });
-
-
-
 
 
 
@@ -5946,8 +5946,8 @@ if (typeof Object.create === 'function') {
   \********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsNative = __webpack_require__(/*! ./_baseIsNative */ 453),
-    getValue = __webpack_require__(/*! ./_getValue */ 486);
+var baseIsNative = __webpack_require__(/*! ./_baseIsNative */ 455),
+    getValue = __webpack_require__(/*! ./_getValue */ 488);
 
 /**
  * Gets the native function at `key` of `object`.
@@ -5974,7 +5974,7 @@ module.exports = getNative;
   \*******************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseClone = __webpack_require__(/*! ./_baseClone */ 443);
+var baseClone = __webpack_require__(/*! ./_baseClone */ 445);
 
 /** Used to compose bitmasks for cloning. */
 var CLONE_DEEP_FLAG = 1,
@@ -6301,7 +6301,7 @@ util.inherits = __webpack_require__(/*! inherits */ 17);
 /*</replacement>*/
 
 var Readable = __webpack_require__(/*! ./_stream_readable */ 182);
-var Writable = __webpack_require__(/*! ./_stream_writable */ 93);
+var Writable = __webpack_require__(/*! ./_stream_writable */ 94);
 
 util.inherits(Duplex, Readable);
 
@@ -6412,11 +6412,11 @@ var EE = __webpack_require__(/*! events */ 39).EventEmitter;
 var inherits = __webpack_require__(/*! inherits */ 17);
 
 inherits(Stream, EE);
-Stream.Readable = __webpack_require__(/*! readable-stream/readable.js */ 94);
-Stream.Writable = __webpack_require__(/*! readable-stream/writable.js */ 566);
-Stream.Duplex = __webpack_require__(/*! readable-stream/duplex.js */ 561);
-Stream.Transform = __webpack_require__(/*! readable-stream/transform.js */ 565);
-Stream.PassThrough = __webpack_require__(/*! readable-stream/passthrough.js */ 564);
+Stream.Readable = __webpack_require__(/*! readable-stream/readable.js */ 95);
+Stream.Writable = __webpack_require__(/*! readable-stream/writable.js */ 568);
+Stream.Duplex = __webpack_require__(/*! readable-stream/duplex.js */ 563);
+Stream.Transform = __webpack_require__(/*! readable-stream/transform.js */ 567);
+Stream.PassThrough = __webpack_require__(/*! readable-stream/passthrough.js */ 566);
 
 // Backwards-compat with node 0.4.x
 Stream.Stream = Stream;
@@ -7048,7 +7048,7 @@ function isPrimitive(arg) {
 }
 exports.isPrimitive = isPrimitive;
 
-exports.isBuffer = __webpack_require__(/*! ./support/isBuffer */ 626);
+exports.isBuffer = __webpack_require__(/*! ./support/isBuffer */ 628);
 
 function objectToString(o) {
   return Object.prototype.toString.call(o);
@@ -7092,7 +7092,7 @@ exports.log = function() {
  *     prototype.
  * @param {function} superCtor Constructor function to inherit prototype from.
  */
-exports.inherits = __webpack_require__(/*! inherits */ 625);
+exports.inherits = __webpack_require__(/*! inherits */ 627);
 
 exports._extend = function(origin, add) {
   // Don't do anything if add isn't an object
@@ -7246,8 +7246,8 @@ module.exports = {
 
 
 
-var base64 = __webpack_require__(/*! base64-js */ 356)
-var ieee754 = __webpack_require__(/*! ieee754 */ 385)
+var base64 = __webpack_require__(/*! base64-js */ 358)
+var ieee754 = __webpack_require__(/*! ieee754 */ 387)
 var isArray = __webpack_require__(/*! isarray */ 124)
 
 exports.Buffer = Buffer
@@ -9247,7 +9247,7 @@ module.exports = invariant;
   \*****************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(/*! ./_root */ 6);
+var root = __webpack_require__(/*! ./_root */ 7);
 
 /** Built-in value references. */
 var Symbol = root.Symbol;
@@ -9265,7 +9265,7 @@ module.exports = Symbol;
 /***/ (function(module, exports, __webpack_require__) {
 
 var identity = __webpack_require__(/*! ./identity */ 52),
-    overRest = __webpack_require__(/*! ./_overRest */ 516),
+    overRest = __webpack_require__(/*! ./_overRest */ 518),
     setToString = __webpack_require__(/*! ./_setToString */ 162);
 
 /**
@@ -9383,7 +9383,7 @@ module.exports = replaceHolders;
   \*********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var isFunction = __webpack_require__(/*! ./isFunction */ 84),
+var isFunction = __webpack_require__(/*! ./isFunction */ 85),
     isLength = __webpack_require__(/*! ./isLength */ 167);
 
 /**
@@ -9428,7 +9428,7 @@ module.exports = isArrayLike;
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayLikeKeys = __webpack_require__(/*! ./_arrayLikeKeys */ 134),
-    baseKeys = __webpack_require__(/*! ./_baseKeys */ 455),
+    baseKeys = __webpack_require__(/*! ./_baseKeys */ 457),
     isArrayLike = __webpack_require__(/*! ./isArrayLike */ 34);
 
 /**
@@ -9611,7 +9611,7 @@ module.exports = function(module) {
 /***/ (function(module, exports, __webpack_require__) {
 
 (function (global, factory) {
-   true ? factory(exports, __webpack_require__(/*! d3-time */ 365)) :
+   true ? factory(exports, __webpack_require__(/*! d3-time */ 367)) :
   typeof define === 'function' && define.amd ? define(['exports', 'd3-time'], factory) :
   (factory((global.d3_time_format = global.d3_time_format || {}),global.d3_time));
 }(this, function (exports,d3Time) { 'use strict';
@@ -10869,11 +10869,11 @@ module.exports = warning;
   \********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var listCacheClear = __webpack_require__(/*! ./_listCacheClear */ 502),
-    listCacheDelete = __webpack_require__(/*! ./_listCacheDelete */ 503),
-    listCacheGet = __webpack_require__(/*! ./_listCacheGet */ 504),
-    listCacheHas = __webpack_require__(/*! ./_listCacheHas */ 505),
-    listCacheSet = __webpack_require__(/*! ./_listCacheSet */ 506);
+var listCacheClear = __webpack_require__(/*! ./_listCacheClear */ 504),
+    listCacheDelete = __webpack_require__(/*! ./_listCacheDelete */ 505),
+    listCacheGet = __webpack_require__(/*! ./_listCacheGet */ 506),
+    listCacheHas = __webpack_require__(/*! ./_listCacheHas */ 507),
+    listCacheSet = __webpack_require__(/*! ./_listCacheSet */ 508);
 
 /**
  * Creates an list cache object.
@@ -11096,7 +11096,7 @@ module.exports = getHolder;
   \*********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var isKeyable = __webpack_require__(/*! ./_isKeyable */ 498);
+var isKeyable = __webpack_require__(/*! ./_isKeyable */ 500);
 
 /**
  * Gets the data for `map`.
@@ -11251,7 +11251,7 @@ module.exports = identity;
   \*******************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 13),
+var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 14),
     isObjectLike = __webpack_require__(/*! ./isObjectLike */ 9);
 
 /** `Object#toString` result references. */
@@ -11386,8 +11386,8 @@ module.exports = isNaN;
   \***********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 13),
-    getPrototype = __webpack_require__(/*! ./_getPrototype */ 79),
+var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 14),
+    getPrototype = __webpack_require__(/*! ./_getPrototype */ 80),
     isObjectLike = __webpack_require__(/*! ./isObjectLike */ 9);
 
 /** `Object#toString` result references. */
@@ -11657,16 +11657,16 @@ __webpack_require__(/*! regenerator-runtime/runtime */ 61);
 var _require = __webpack_require__(/*! ./table */ 195),
     Table = _require.Table;
 
-var _require2 = __webpack_require__(/*! ./schema */ 98),
+var _require2 = __webpack_require__(/*! ./schema */ 99),
     Schema = _require2.Schema;
 
 var _require3 = __webpack_require__(/*! ./field */ 192),
     Field = _require3.Field;
 
-var _require4 = __webpack_require__(/*! ./validate */ 603),
+var _require4 = __webpack_require__(/*! ./validate */ 605),
     validate = _require4.validate;
 
-var _require5 = __webpack_require__(/*! ./infer */ 584),
+var _require5 = __webpack_require__(/*! ./infer */ 586),
     infer = _require5.infer;
 
 var errors = __webpack_require__(/*! ./errors */ 25);
@@ -12460,10 +12460,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(/*! ./adapters/xhr */ 104);
+    adapter = __webpack_require__(/*! ./adapters/xhr */ 105);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(/*! ./adapters/http */ 104);
+    adapter = __webpack_require__(/*! ./adapters/http */ 105);
   }
   return adapter;
 }
@@ -12540,6 +12540,93 @@ module.exports = defaults;
 /* 64 */
 /* no static exports found */
 /* all exports used */
+/*!***********************!*\
+  !*** ./src/config.js ***!
+  \***********************/
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// Editor
+
+var EDITOR_UPLOAD_ROWS_LIMIT = 100;
+var FIELD_TYPES_AND_FORMATS = {
+  string: ['default', 'email', 'uri', 'binary', 'uuid'],
+  number: ['default'],
+  integer: ['default'],
+  boolean: ['default'],
+  object: ['default'],
+  array: ['default'],
+  date: false,
+  time: false,
+  datetime: false,
+  year: ['default'],
+  yearmonth: ['default'],
+  duration: ['default'],
+  geopoint: ['default', 'array', 'object'],
+  geojson: ['default', 'topojson'],
+  any: ['default']
+};
+var OPEN_DEFINITION_LICENSES = {
+  'CC0-1.0': {
+    name: 'CC0-1.0',
+    title: 'CC0 1.0',
+    path: 'https://creativecommons.org/publicdomain/zero/1.0/'
+  },
+  'CC-BY-4.0': {
+    name: 'CC-BY-4.0',
+    title: 'Creative Commons Attribution 4.0',
+    path: 'https://creativecommons.org/licenses/by/4.0/'
+  },
+  'CC-BY-SA-4.0': {
+    name: 'CC-BY-SA-4.0',
+    title: 'Creative Commons Attribution Share-Alike 4.0',
+    path: 'https://creativecommons.org/licenses/by-sa/4.0/'
+  },
+  'CC-BY-NC-4.0': {
+    name: 'CC-BY-NC-4.0',
+    title: 'Creative Commons Attribution-NonCommercial 4.0',
+    path: 'https://creativecommons.org/licenses/by-nc/4.0/'
+  },
+  'ODC-BY-1.0': {
+    name: 'ODC-BY-1.0',
+    title: 'Open Data Commons Attribution License 1.0',
+    path: 'http://www.opendefinition.org/licenses/odc-by'
+  },
+  'ODC-PDDL-1.0': {
+    name: 'ODC-PDDL-1.0',
+    title: 'Open Data Commons Public Domain Dedication and Licence 1.0',
+    path: 'http://www.opendefinition.org/licenses/odc-pddl'
+  },
+  'ODbL-1.0': {
+    name: 'ODbL-1.0',
+    title: 'Open Data Commons Open Database License 1.0',
+    path: 'http://www.opendefinition.org/licenses/odc-odbl'
+  },
+  'OGL-UK-2.0': {
+    name: 'OGL-UK-2.0',
+    title: 'Open Government Licence 2.0 (United Kingdom)',
+    path: 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/'
+  },
+  'OGL-UK-3.0': {
+    name: 'OGL-UK-3.0',
+    title: 'Open Government Licence 3.0 (United Kingdom)',
+    path: 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/'
+  }
+
+  // System
+
+};module.exports = {
+  EDITOR_UPLOAD_ROWS_LIMIT: EDITOR_UPLOAD_ROWS_LIMIT,
+  FIELD_TYPES_AND_FORMATS: FIELD_TYPES_AND_FORMATS,
+  OPEN_DEFINITION_LICENSES: OPEN_DEFINITION_LICENSES
+};
+
+/***/ }),
+/* 65 */
+/* no static exports found */
+/* all exports used */
 /*!*************************************!*\
   !*** ./~/datapackage/lib/config.js ***!
   \*************************************/
@@ -12583,7 +12670,7 @@ var DEFAULT_DIALECT = {
 };
 
 /***/ }),
-/* 65 */
+/* 66 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************!*\
@@ -12963,18 +13050,18 @@ function _objectEntries(obj) {
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-var fs = __webpack_require__(/*! fs */ 14);
+var fs = __webpack_require__(/*! fs */ 15);
 var axios = __webpack_require__(/*! axios */ 62);
 var pathModule = __webpack_require__(/*! path */ 20);
 var isString = __webpack_require__(/*! lodash/isString */ 3);
 var cloneDeep = __webpack_require__(/*! lodash/cloneDeep */ 19);
 var isPlainObject = __webpack_require__(/*! lodash/isPlainObject */ 56);
-var jsonpointer = __webpack_require__(/*! json-pointer */ 422);
+var jsonpointer = __webpack_require__(/*! json-pointer */ 424);
 
 var _require = __webpack_require__(/*! ./errors */ 28),
     DataPackageError = _require.DataPackageError;
 
-var config = __webpack_require__(/*! ./config */ 64);
+var config = __webpack_require__(/*! ./config */ 65);
 
 // Locate descriptor
 
@@ -13133,7 +13220,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 66 */
+/* 67 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************!*\
@@ -13152,13 +13239,13 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var fs = __webpack_require__(/*! fs */ 14);
+var fs = __webpack_require__(/*! fs */ 15);
 var isEqual = __webpack_require__(/*! lodash/isEqual */ 54);
 var isBoolean = __webpack_require__(/*! lodash/isBoolean */ 53);
 var cloneDeep = __webpack_require__(/*! lodash/cloneDeep */ 19);
 var isUndefined = __webpack_require__(/*! lodash/isUndefined */ 170);
 
-var _require = __webpack_require__(/*! ./profile */ 67),
+var _require = __webpack_require__(/*! ./profile */ 68),
     Profile = _require.Profile;
 
 var _require2 = __webpack_require__(/*! ./resource */ 112),
@@ -13167,8 +13254,8 @@ var _require2 = __webpack_require__(/*! ./resource */ 112),
 var _require3 = __webpack_require__(/*! ./errors */ 28),
     DataPackageError = _require3.DataPackageError;
 
-var helpers = __webpack_require__(/*! ./helpers */ 65);
-var config = __webpack_require__(/*! ./config */ 64);
+var helpers = __webpack_require__(/*! ./helpers */ 66);
+var config = __webpack_require__(/*! ./config */ 65);
 
 // Module API
 
@@ -13723,7 +13810,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 67 */
+/* 68 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************!*\
@@ -13740,14 +13827,14 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var tv4 = __webpack_require__(/*! tv4 */ 100);
+var tv4 = __webpack_require__(/*! tv4 */ 101);
 var axios = __webpack_require__(/*! axios */ 62);
 var isString = __webpack_require__(/*! lodash/isString */ 3);
 
 var _require = __webpack_require__(/*! ./errors */ 28),
     DataPackageError = _require.DataPackageError;
 
-var helpers = __webpack_require__(/*! ./helpers */ 65);
+var helpers = __webpack_require__(/*! ./helpers */ 66);
 
 // Module API
 
@@ -13891,7 +13978,7 @@ var Profile = function () {
     // Registry
     if (isString(profile)) {
       try {
-        profile = __webpack_require__(/*! ./profiles */ 368)("./" + profile + '.json');
+        profile = __webpack_require__(/*! ./profiles */ 370)("./" + profile + '.json');
       } catch (error) {
         throw new DataPackageError('Profiles registry hasn\'t profile "' + profile + '"');
       }
@@ -13914,7 +14001,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 68 */
+/* 69 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -13990,7 +14077,7 @@ function shallowEqual(objA, objB) {
 module.exports = shallowEqual;
 
 /***/ }),
-/* 69 */
+/* 70 */
 /* exports provided: default */
 /* exports used: default */
 /*!**************************************!*\
@@ -13999,9 +14086,9 @@ module.exports = shallowEqual;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGetTag_js__ = __webpack_require__(/*! ./_baseGetTag.js */ 423);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getPrototype_js__ = __webpack_require__(/*! ./_getPrototype.js */ 425);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isObjectLike_js__ = __webpack_require__(/*! ./isObjectLike.js */ 430);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGetTag_js__ = __webpack_require__(/*! ./_baseGetTag.js */ 425);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getPrototype_js__ = __webpack_require__(/*! ./_getPrototype.js */ 427);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isObjectLike_js__ = __webpack_require__(/*! ./isObjectLike.js */ 432);
 
 
 
@@ -14067,7 +14154,7 @@ function isPlainObject(value) {
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -14076,7 +14163,7 @@ function isPlainObject(value) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseCreate = __webpack_require__(/*! ./_baseCreate */ 45),
-    baseLodash = __webpack_require__(/*! ./_baseLodash */ 75);
+    baseLodash = __webpack_require__(/*! ./_baseLodash */ 76);
 
 /** Used as references for the maximum length and index of an array. */
 var MAX_ARRAY_LENGTH = 4294967295;
@@ -14106,7 +14193,7 @@ module.exports = LazyWrapper;
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /* no static exports found */
 /* all exports used */
 /*!**************************!*\
@@ -14115,7 +14202,7 @@ module.exports = LazyWrapper;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(/*! ./_getNative */ 18),
-    root = __webpack_require__(/*! ./_root */ 6);
+    root = __webpack_require__(/*! ./_root */ 7);
 
 /* Built-in method references that are verified to be native. */
 var Map = getNative(root, 'Map');
@@ -14124,7 +14211,7 @@ module.exports = Map;
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /* no static exports found */
 /* all exports used */
 /*!****************************!*\
@@ -14133,11 +14220,11 @@ module.exports = Map;
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(/*! ./_ListCache */ 42),
-    stackClear = __webpack_require__(/*! ./_stackClear */ 521),
-    stackDelete = __webpack_require__(/*! ./_stackDelete */ 522),
-    stackGet = __webpack_require__(/*! ./_stackGet */ 523),
-    stackHas = __webpack_require__(/*! ./_stackHas */ 524),
-    stackSet = __webpack_require__(/*! ./_stackSet */ 525);
+    stackClear = __webpack_require__(/*! ./_stackClear */ 523),
+    stackDelete = __webpack_require__(/*! ./_stackDelete */ 524),
+    stackGet = __webpack_require__(/*! ./_stackGet */ 525),
+    stackHas = __webpack_require__(/*! ./_stackHas */ 526),
+    stackSet = __webpack_require__(/*! ./_stackSet */ 527);
 
 /**
  * Creates a stack cache object to store key-value pairs.
@@ -14162,7 +14249,7 @@ module.exports = Stack;
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /* no static exports found */
 /* all exports used */
 /*!****************************!*\
@@ -14194,7 +14281,7 @@ module.exports = apply;
 
 
 /***/ }),
-/* 74 */
+/* 75 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************!*\
@@ -14226,7 +14313,7 @@ module.exports = arrayMap;
 
 
 /***/ }),
-/* 75 */
+/* 76 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************!*\
@@ -14247,7 +14334,7 @@ module.exports = baseLodash;
 
 
 /***/ }),
-/* 76 */
+/* 77 */
 /* no static exports found */
 /* all exports used */
 /*!********************************!*\
@@ -14272,7 +14359,7 @@ module.exports = baseUnary;
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /* no static exports found */
 /* all exports used */
 /*!***************************************!*\
@@ -14299,7 +14386,7 @@ module.exports = cloneArrayBuffer;
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /* no static exports found */
 /* all exports used */
 /*!********************************!*\
@@ -14330,7 +14417,7 @@ module.exports = copyArray;
 
 
 /***/ }),
-/* 79 */
+/* 80 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -14347,7 +14434,7 @@ module.exports = getPrototype;
 
 
 /***/ }),
-/* 80 */
+/* 81 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************!*\
@@ -14388,7 +14475,7 @@ module.exports = getSymbols;
 
 
 /***/ }),
-/* 81 */
+/* 82 */
 /* no static exports found */
 /* all exports used */
 /*!******************************!*\
@@ -14421,7 +14508,7 @@ module.exports = isIndex;
 
 
 /***/ }),
-/* 82 */
+/* 83 */
 /* no static exports found */
 /* all exports used */
 /*!******************************!*\
@@ -14429,8 +14516,8 @@ module.exports = isIndex;
   \******************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(/*! ./_root */ 6),
-    stubFalse = __webpack_require__(/*! ./stubFalse */ 538);
+/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(/*! ./_root */ 7),
+    stubFalse = __webpack_require__(/*! ./stubFalse */ 540);
 
 /** Detect free variable `exports`. */
 var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
@@ -14471,7 +14558,7 @@ module.exports = isBuffer;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../webpack/buildin/module.js */ 37)(module)))
 
 /***/ }),
-/* 83 */
+/* 84 */
 /* no static exports found */
 /* all exports used */
 /*!****************************!*\
@@ -14479,8 +14566,8 @@ module.exports = isBuffer;
   \****************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsDate = __webpack_require__(/*! ./_baseIsDate */ 449),
-    baseUnary = __webpack_require__(/*! ./_baseUnary */ 76),
+var baseIsDate = __webpack_require__(/*! ./_baseIsDate */ 451),
+    baseUnary = __webpack_require__(/*! ./_baseUnary */ 77),
     nodeUtil = __webpack_require__(/*! ./_nodeUtil */ 158);
 
 /* Node.js helper references. */
@@ -14509,7 +14596,7 @@ module.exports = isDate;
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /* no static exports found */
 /* all exports used */
 /*!********************************!*\
@@ -14517,7 +14604,7 @@ module.exports = isDate;
   \********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 13),
+var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 14),
     isObject = __webpack_require__(/*! ./isObject */ 12);
 
 /** `Object#toString` result references. */
@@ -14557,7 +14644,7 @@ module.exports = isFunction;
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************!*\
@@ -14601,7 +14688,7 @@ module.exports = isInteger;
 
 
 /***/ }),
-/* 86 */
+/* 87 */
 /* no static exports found */
 /* all exports used */
 /*!******************************!*\
@@ -14609,7 +14696,7 @@ module.exports = isInteger;
   \******************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 13),
+var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 14),
     isObjectLike = __webpack_require__(/*! ./isObjectLike */ 9);
 
 /** `Object#toString` result references. */
@@ -14641,7 +14728,7 @@ module.exports = isSymbol;
 
 
 /***/ }),
-/* 87 */
+/* 88 */
 /* no static exports found */
 /* all exports used */
 /*!******************************!*\
@@ -14650,7 +14737,7 @@ module.exports = isSymbol;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(/*! ./isObject */ 12),
-    isSymbol = __webpack_require__(/*! ./isSymbol */ 86);
+    isSymbol = __webpack_require__(/*! ./isSymbol */ 87);
 
 /** Used as references for various `Number` constants. */
 var NAN = 0 / 0;
@@ -14718,7 +14805,7 @@ module.exports = toNumber;
 
 
 /***/ }),
-/* 88 */
+/* 89 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -14735,7 +14822,7 @@ try {
 } catch (er) {}
 
 var GLOBSTAR = minimatch.GLOBSTAR = Minimatch.GLOBSTAR = {}
-var expand = __webpack_require__(/*! brace-expansion */ 357)
+var expand = __webpack_require__(/*! brace-expansion */ 359)
 
 var plTypes = {
   '!': { open: '(?:(?!(?:', close: '))[^/]*?)'},
@@ -15652,7 +15739,7 @@ function regExpEscape (s) {
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -15685,7 +15772,7 @@ module.exports.win32 = win32;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 1)))
 
 /***/ }),
-/* 90 */
+/* 91 */
 /* no static exports found */
 /* all exports used */
 /*!****************************************!*\
@@ -15706,7 +15793,7 @@ module.exports.win32 = win32;
 if (process.env.NODE_ENV !== 'production') {
   var invariant = __webpack_require__(/*! fbjs/lib/invariant */ 29);
   var warning = __webpack_require__(/*! fbjs/lib/warning */ 41);
-  var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ 91);
+  var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ 92);
   var loggedTypeFailures = {};
 }
 
@@ -15757,7 +15844,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 1)))
 
 /***/ }),
-/* 91 */
+/* 92 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************************!*\
@@ -15781,7 +15868,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 92 */
+/* 93 */
 /* exports provided: default */
 /* exports used: default */
 /*!*******************************************!*\
@@ -15814,7 +15901,7 @@ function warning(message) {
 }
 
 /***/ }),
-/* 93 */
+/* 94 */
 /* no static exports found */
 /* all exports used */
 /*!***************************************************!*\
@@ -15895,7 +15982,7 @@ util.inherits = __webpack_require__(/*! inherits */ 17);
 
 /*<replacement>*/
 var internalUtil = {
-  deprecate: __webpack_require__(/*! util-deprecate */ 624)
+  deprecate: __webpack_require__(/*! util-deprecate */ 626)
 };
 /*</replacement>*/
 
@@ -16487,10 +16574,10 @@ Writable.prototype._destroy = function (err, cb) {
   this.end();
   cb(err);
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../process/browser.js */ 1), __webpack_require__(/*! ./../../timers-browserify/main.js */ 622).setImmediate, __webpack_require__(/*! ./../../webpack/buildin/global.js */ 11)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../process/browser.js */ 1), __webpack_require__(/*! ./../../timers-browserify/main.js */ 624).setImmediate, __webpack_require__(/*! ./../../webpack/buildin/global.js */ 11)))
 
 /***/ }),
-/* 94 */
+/* 95 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************************!*\
@@ -16501,14 +16588,14 @@ Writable.prototype._destroy = function (err, cb) {
 exports = module.exports = __webpack_require__(/*! ./lib/_stream_readable.js */ 182);
 exports.Stream = exports;
 exports.Readable = exports;
-exports.Writable = __webpack_require__(/*! ./lib/_stream_writable.js */ 93);
+exports.Writable = __webpack_require__(/*! ./lib/_stream_writable.js */ 94);
 exports.Duplex = __webpack_require__(/*! ./lib/_stream_duplex.js */ 21);
 exports.Transform = __webpack_require__(/*! ./lib/_stream_transform.js */ 183);
-exports.PassThrough = __webpack_require__(/*! ./lib/_stream_passthrough.js */ 562);
+exports.PassThrough = __webpack_require__(/*! ./lib/_stream_passthrough.js */ 564);
 
 
 /***/ }),
-/* 95 */
+/* 96 */
 /* exports provided: mapProps, withProps, withPropsOnChange, withHandlers, defaultProps, renameProp, renameProps, flattenProp, withState, withStateHandlers, withReducer, branch, renderComponent, renderNothing, shouldUpdate, pure, onlyUpdateForKeys, onlyUpdateForPropTypes, withContext, getContext, lifecycle, toClass, setStatic, setPropTypes, setDisplayName, compose, getDisplayName, wrapDisplayName, shallowEqual, isClassComponent, createSink, componentFromProp, nest, hoistStatics, componentFromStream, componentFromStreamWithConfig, mapPropsStream, mapPropsStreamWithConfig, createEventHandler, createEventHandlerWithConfig, setObservableConfig */
 /* all exports used */
 /*!*************************************!*\
@@ -16558,13 +16645,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createEventHandler", function() { return createEventHandler; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createEventHandlerWithConfig", function() { return createEventHandlerWithConfig; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setObservableConfig", function() { return configureObservable; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(/*! react */ 7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(/*! react */ 5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_fbjs_lib_shallowEqual__ = __webpack_require__(/*! fbjs/lib/shallowEqual */ 68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_fbjs_lib_shallowEqual__ = __webpack_require__(/*! fbjs/lib/shallowEqual */ 69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_fbjs_lib_shallowEqual___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_fbjs_lib_shallowEqual__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__ = __webpack_require__(/*! hoist-non-react-statics */ 122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_change_emitter__ = __webpack_require__(/*! change-emitter */ 358);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_change_emitter__ = __webpack_require__(/*! change-emitter */ 360);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_change_emitter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_change_emitter__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_symbol_observable__ = __webpack_require__(/*! symbol-observable */ 191);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_symbol_observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_symbol_observable__);
@@ -17594,7 +17681,7 @@ var createEventHandler = createEventHandlerWithConfig(config);
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(/*! ./../../process/browser.js */ 1)))
 
 /***/ }),
-/* 96 */
+/* 97 */
 /* no static exports found */
 /* all exports used */
 /*!************************************************!*\
@@ -17877,7 +17964,7 @@ function simpleEnd(buf) {
 }
 
 /***/ }),
-/* 97 */
+/* 98 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************!*\
@@ -17987,7 +18074,7 @@ var retrieveDescriptor = function () {
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-var fs = __webpack_require__(/*! fs */ 14);
+var fs = __webpack_require__(/*! fs */ 15);
 var axios = __webpack_require__(/*! axios */ 197);
 var cloneDeep = __webpack_require__(/*! lodash/cloneDeep */ 19);
 var isPlainObject = __webpack_require__(/*! lodash/isPlainObject */ 56);
@@ -18050,7 +18137,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 98 */
+/* 99 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -18069,10 +18156,10 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var fs = __webpack_require__(/*! fs */ 14);
-var min = __webpack_require__(/*! lodash/min */ 536);
+var fs = __webpack_require__(/*! fs */ 15);
+var min = __webpack_require__(/*! lodash/min */ 538);
 var zip = __webpack_require__(/*! lodash/zip */ 175);
-var isArray = __webpack_require__(/*! lodash/isArray */ 5);
+var isArray = __webpack_require__(/*! lodash/isArray */ 6);
 var isEqual = __webpack_require__(/*! lodash/isEqual */ 54);
 var isString = __webpack_require__(/*! lodash/isString */ 3);
 var cloneDeep = __webpack_require__(/*! lodash/cloneDeep */ 19);
@@ -18085,10 +18172,10 @@ var _require = __webpack_require__(/*! d3-time-format */ 38),
 var _require2 = __webpack_require__(/*! ./errors */ 25),
     TableSchemaError = _require2.TableSchemaError;
 
-var _require3 = __webpack_require__(/*! ./profile */ 585),
+var _require3 = __webpack_require__(/*! ./profile */ 587),
     Profile = _require3.Profile;
 
-var helpers = __webpack_require__(/*! ./helpers */ 97);
+var helpers = __webpack_require__(/*! ./helpers */ 98);
 var config = __webpack_require__(/*! ./config */ 4);
 
 var _require4 = __webpack_require__(/*! ./field */ 192),
@@ -18704,7 +18791,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 99 */
+/* 100 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************************!*\
@@ -18716,7 +18803,7 @@ module.exports = {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(/*! ./utils */ 10);
-var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ 618);
+var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ 620);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -18809,7 +18896,7 @@ module.exports = defaults;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../process/browser.js */ 1)))
 
 /***/ }),
-/* 100 */
+/* 101 */
 /* no static exports found */
 /* all exports used */
 /*!**********************!*\
@@ -20503,7 +20590,7 @@ return tv4; // used by _header.js to globalise.
 }));
 
 /***/ }),
-/* 101 */
+/* 102 */
 /* no static exports found */
 /* all exports used */
 /*!***************************************!*\
@@ -20532,7 +20619,7 @@ function merge() {
 module.exports = exports['default'];
 
 /***/ }),
-/* 102 */
+/* 103 */
 /* no static exports found */
 /* all exports used */
 /*!****************************************!*\
@@ -20545,15 +20632,15 @@ module.exports = exports['default'];
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var React = __webpack_require__(/*! react */ 7);
+var React = __webpack_require__(/*! react */ 5);
 
-var _require = __webpack_require__(/*! recompose */ 95),
+var _require = __webpack_require__(/*! recompose */ 96),
     withProps = _require.withProps;
 
-var _require2 = __webpack_require__(/*! react-redux */ 15),
+var _require2 = __webpack_require__(/*! react-redux */ 13),
     connect = _require2.connect;
 
-var _require3 = __webpack_require__(/*! ./EditorField */ 347),
+var _require3 = __webpack_require__(/*! ./EditorField */ 348),
     EditorField = _require3.EditorField;
 
 // Pure components
@@ -20588,7 +20675,7 @@ function EditorSchemaPure(_ref) {
       'div',
       { className: 'add card' },
       React.createElement(
-        'a',
+        'button',
         { className: 'inner', onClick: onAddAllFieldsClick },
         React.createElement(
           'svg',
@@ -20607,7 +20694,7 @@ function EditorSchemaPure(_ref) {
       'div',
       { className: 'add card' },
       React.createElement(
-        'a',
+        'button',
         { className: 'inner', onClick: onAddFieldClick },
         React.createElement(
           'svg',
@@ -20709,7 +20796,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 103 */
+/* 104 */
 /* no static exports found */
 /* all exports used */
 /*!****************************!*\
@@ -21212,7 +21299,7 @@ var objectKeys = Object.keys || function (obj) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../webpack/buildin/global.js */ 11)))
 
 /***/ }),
-/* 104 */
+/* 105 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -21228,7 +21315,7 @@ var settle = __webpack_require__(/*! ./../core/settle */ 336);
 var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ 339);
 var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ 345);
 var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ 343);
-var createError = __webpack_require__(/*! ../core/createError */ 107);
+var createError = __webpack_require__(/*! ../core/createError */ 108);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(/*! ./../helpers/btoa */ 338);
 
 module.exports = function xhrAdapter(config) {
@@ -21405,7 +21492,7 @@ module.exports = function xhrAdapter(config) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../process/browser.js */ 1)))
 
 /***/ }),
-/* 105 */
+/* 106 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************!*\
@@ -21436,7 +21523,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 106 */
+/* 107 */
 /* no static exports found */
 /* all exports used */
 /*!****************************************!*\
@@ -21453,7 +21540,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 107 */
+/* 108 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************************!*\
@@ -21483,7 +21570,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 108 */
+/* 109 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -21504,45 +21591,6 @@ module.exports = function bind(fn, thisArg) {
   };
 };
 
-
-/***/ }),
-/* 109 */
-/* no static exports found */
-/* all exports used */
-/*!***********************!*\
-  !*** ./src/config.js ***!
-  \***********************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// Editor
-
-var EDITOR_UPLOAD_ROWS_LIMIT = 100;
-var FIELD_TYPES_AND_FORMATS = {
-  string: ['default', 'email', 'uri', 'binary', 'uuid'],
-  number: ['default'],
-  integer: ['default'],
-  boolean: ['default'],
-  object: ['default'],
-  array: ['default'],
-  date: false,
-  time: false,
-  datetime: false,
-  year: ['default'],
-  yearmonth: ['default'],
-  duration: ['default'],
-  geopoint: ['default', 'array', 'object'],
-  geojson: ['default', 'topojson'],
-  any: ['default']
-
-  // System
-
-};module.exports = {
-  EDITOR_UPLOAD_ROWS_LIMIT: EDITOR_UPLOAD_ROWS_LIMIT,
-  FIELD_TYPES_AND_FORMATS: FIELD_TYPES_AND_FORMATS
-};
 
 /***/ }),
 /* 110 */
@@ -21737,21 +21785,21 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var fs = __webpack_require__(/*! fs */ 14);
+var fs = __webpack_require__(/*! fs */ 15);
 var axios = __webpack_require__(/*! axios */ 62);
 
 var _require = __webpack_require__(/*! buffer */ 26),
     Buffer = _require.Buffer;
 
 var pathModule = __webpack_require__(/*! path */ 20);
-var urljoin = __webpack_require__(/*! url-join */ 623);
+var urljoin = __webpack_require__(/*! url-join */ 625);
 
 var _require2 = __webpack_require__(/*! stream */ 22),
     Readable = _require2.Readable;
 
-var assign = __webpack_require__(/*! lodash/assign */ 531);
+var assign = __webpack_require__(/*! lodash/assign */ 533);
 var isEqual = __webpack_require__(/*! lodash/isEqual */ 54);
-var isArray = __webpack_require__(/*! lodash/isArray */ 5);
+var isArray = __webpack_require__(/*! lodash/isArray */ 6);
 var isObject = __webpack_require__(/*! lodash/isObject */ 12);
 var isBoolean = __webpack_require__(/*! lodash/isBoolean */ 53);
 var cloneDeep = __webpack_require__(/*! lodash/cloneDeep */ 19);
@@ -21765,11 +21813,11 @@ var _require3 = __webpack_require__(/*! tableschema */ 60),
 var _require4 = __webpack_require__(/*! ./errors */ 28),
     DataPackageError = _require4.DataPackageError;
 
-var _require5 = __webpack_require__(/*! ./profile */ 67),
+var _require5 = __webpack_require__(/*! ./profile */ 68),
     Profile = _require5.Profile;
 
-var helpers = __webpack_require__(/*! ./helpers */ 65);
-var config = __webpack_require__(/*! ./config */ 64);
+var helpers = __webpack_require__(/*! ./helpers */ 66);
+var config = __webpack_require__(/*! ./config */ 65);
 
 // Module API
 
@@ -22968,7 +23016,7 @@ module.exports = ExecutionEnvironment;
  * 
  */
 
-var isTextNode = __webpack_require__(/*! ./isTextNode */ 381);
+var isTextNode = __webpack_require__(/*! ./isTextNode */ 383);
 
 /*eslint-disable no-bitwise */
 
@@ -23093,13 +23141,13 @@ realpath.realpathSync = realpathSync
 realpath.monkeypatch = monkeypatch
 realpath.unmonkeypatch = unmonkeypatch
 
-var fs = __webpack_require__(/*! fs */ 14)
+var fs = __webpack_require__(/*! fs */ 15)
 var origRealpath = fs.realpath
 var origRealpathSync = fs.realpathSync
 
 var version = process.version
 var ok = /^v[0-5]\./.test(version)
-var old = __webpack_require__(/*! ./old.js */ 383)
+var old = __webpack_require__(/*! ./old.js */ 385)
 
 function newError (er) {
   return er && er.syscall === 'realpath' && (
@@ -23179,8 +23227,8 @@ function ownProp (obj, field) {
 }
 
 var path = __webpack_require__(/*! path */ 20)
-var minimatch = __webpack_require__(/*! minimatch */ 88)
-var isAbsolute = __webpack_require__(/*! path-is-absolute */ 89)
+var minimatch = __webpack_require__(/*! minimatch */ 89)
+var isAbsolute = __webpack_require__(/*! path-is-absolute */ 90)
 var Minimatch = minimatch.Minimatch
 
 function alphasorti (a, b) {
@@ -23458,22 +23506,22 @@ function childrenIgnored (self, path) {
 
 module.exports = glob
 
-var fs = __webpack_require__(/*! fs */ 14)
+var fs = __webpack_require__(/*! fs */ 15)
 var rp = __webpack_require__(/*! fs.realpath */ 119)
-var minimatch = __webpack_require__(/*! minimatch */ 88)
+var minimatch = __webpack_require__(/*! minimatch */ 89)
 var Minimatch = minimatch.Minimatch
 var inherits = __webpack_require__(/*! inherits */ 17)
 var EE = __webpack_require__(/*! events */ 39).EventEmitter
 var path = __webpack_require__(/*! path */ 20)
-var assert = __webpack_require__(/*! assert */ 103)
-var isAbsolute = __webpack_require__(/*! path-is-absolute */ 89)
-var globSync = __webpack_require__(/*! ./sync.js */ 384)
+var assert = __webpack_require__(/*! assert */ 104)
+var isAbsolute = __webpack_require__(/*! path-is-absolute */ 90)
+var globSync = __webpack_require__(/*! ./sync.js */ 386)
 var common = __webpack_require__(/*! ./common.js */ 120)
 var alphasort = common.alphasort
 var alphasorti = common.alphasorti
 var setopts = common.setopts
 var ownProp = common.ownProp
-var inflight = __webpack_require__(/*! inflight */ 386)
+var inflight = __webpack_require__(/*! inflight */ 388)
 var util = __webpack_require__(/*! util */ 23)
 var childrenIgnored = common.childrenIgnored
 var isIgnored = common.isIgnored
@@ -24344,7 +24392,7 @@ module.exports = Array.isArray || function (arr) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_js__ = __webpack_require__(/*! ./_root.js */ 429);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_js__ = __webpack_require__(/*! ./_root.js */ 431);
 
 
 /** Built-in value references. */
@@ -24363,7 +24411,7 @@ var Symbol = __WEBPACK_IMPORTED_MODULE_0__root_js__["a" /* default */].Symbol;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseCreate = __webpack_require__(/*! ./_baseCreate */ 45),
-    baseLodash = __webpack_require__(/*! ./_baseLodash */ 75);
+    baseLodash = __webpack_require__(/*! ./_baseLodash */ 76);
 
 /**
  * The base constructor for creating `lodash` wrapper objects.
@@ -24395,11 +24443,11 @@ module.exports = LodashWrapper;
   \*******************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var mapCacheClear = __webpack_require__(/*! ./_mapCacheClear */ 507),
-    mapCacheDelete = __webpack_require__(/*! ./_mapCacheDelete */ 508),
-    mapCacheGet = __webpack_require__(/*! ./_mapCacheGet */ 509),
-    mapCacheHas = __webpack_require__(/*! ./_mapCacheHas */ 510),
-    mapCacheSet = __webpack_require__(/*! ./_mapCacheSet */ 511);
+var mapCacheClear = __webpack_require__(/*! ./_mapCacheClear */ 509),
+    mapCacheDelete = __webpack_require__(/*! ./_mapCacheDelete */ 510),
+    mapCacheGet = __webpack_require__(/*! ./_mapCacheGet */ 511),
+    mapCacheHas = __webpack_require__(/*! ./_mapCacheHas */ 512),
+    mapCacheSet = __webpack_require__(/*! ./_mapCacheSet */ 513);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -24439,8 +24487,8 @@ module.exports = MapCache;
 /***/ (function(module, exports, __webpack_require__) {
 
 var MapCache = __webpack_require__(/*! ./_MapCache */ 127),
-    setCacheAdd = __webpack_require__(/*! ./_setCacheAdd */ 519),
-    setCacheHas = __webpack_require__(/*! ./_setCacheHas */ 520);
+    setCacheAdd = __webpack_require__(/*! ./_setCacheAdd */ 521),
+    setCacheHas = __webpack_require__(/*! ./_setCacheHas */ 522);
 
 /**
  *
@@ -24476,7 +24524,7 @@ module.exports = SetCache;
   \*********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(/*! ./_root */ 6);
+var root = __webpack_require__(/*! ./_root */ 7);
 
 /** Built-in value references. */
 var Uint8Array = root.Uint8Array;
@@ -24494,7 +24542,7 @@ module.exports = Uint8Array;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(/*! ./_getNative */ 18),
-    root = __webpack_require__(/*! ./_root */ 6);
+    root = __webpack_require__(/*! ./_root */ 7);
 
 /* Built-in method references that are verified to be native. */
 var WeakMap = getNative(root, 'WeakMap');
@@ -24580,7 +24628,7 @@ module.exports = arrayFilter;
   \************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIndexOf = __webpack_require__(/*! ./_baseIndexOf */ 447);
+var baseIndexOf = __webpack_require__(/*! ./_baseIndexOf */ 449);
 
 /**
  * A specialized version of `_.includes` for arrays without support for
@@ -24609,10 +24657,10 @@ module.exports = arrayIncludes;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseTimes = __webpack_require__(/*! ./_baseTimes */ 141),
-    isArguments = __webpack_require__(/*! ./isArguments */ 534),
-    isArray = __webpack_require__(/*! ./isArray */ 5),
-    isBuffer = __webpack_require__(/*! ./isBuffer */ 82),
-    isIndex = __webpack_require__(/*! ./_isIndex */ 81),
+    isArguments = __webpack_require__(/*! ./isArguments */ 536),
+    isArray = __webpack_require__(/*! ./isArray */ 6),
+    isBuffer = __webpack_require__(/*! ./isBuffer */ 83),
+    isIndex = __webpack_require__(/*! ./_isIndex */ 82),
     isTypedArray = __webpack_require__(/*! ./isTypedArray */ 169);
 
 /** Used for built-in method references. */
@@ -24773,7 +24821,7 @@ module.exports = baseAssignValue;
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayPush = __webpack_require__(/*! ./_arrayPush */ 135),
-    isArray = __webpack_require__(/*! ./isArray */ 5);
+    isArray = __webpack_require__(/*! ./isArray */ 6);
 
 /**
  * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
@@ -24803,7 +24851,7 @@ module.exports = baseGetAllKeys;
   \**********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsEqualDeep = __webpack_require__(/*! ./_baseIsEqualDeep */ 450),
+var baseIsEqualDeep = __webpack_require__(/*! ./_baseIsEqualDeep */ 452),
     isObjectLike = __webpack_require__(/*! ./isObjectLike */ 9);
 
 /**
@@ -25029,13 +25077,13 @@ module.exports = composeArgsRight;
 
 var composeArgs = __webpack_require__(/*! ./_composeArgs */ 143),
     composeArgsRight = __webpack_require__(/*! ./_composeArgsRight */ 144),
-    countHolders = __webpack_require__(/*! ./_countHolders */ 474),
+    countHolders = __webpack_require__(/*! ./_countHolders */ 476),
     createCtor = __webpack_require__(/*! ./_createCtor */ 46),
     createRecurry = __webpack_require__(/*! ./_createRecurry */ 146),
     getHolder = __webpack_require__(/*! ./_getHolder */ 47),
-    reorder = __webpack_require__(/*! ./_reorder */ 518),
+    reorder = __webpack_require__(/*! ./_reorder */ 520),
     replaceHolders = __webpack_require__(/*! ./_replaceHolders */ 33),
-    root = __webpack_require__(/*! ./_root */ 6);
+    root = __webpack_require__(/*! ./_root */ 7);
 
 /** Used to compose bitmasks for function metadata. */
 var WRAP_BIND_FLAG = 1,
@@ -25130,7 +25178,7 @@ module.exports = createHybrid;
   \************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var isLaziable = __webpack_require__(/*! ./_isLaziable */ 499),
+var isLaziable = __webpack_require__(/*! ./_isLaziable */ 501),
     setData = __webpack_require__(/*! ./_setData */ 160),
     setWrapToString = __webpack_require__(/*! ./_setWrapToString */ 163);
 
@@ -25198,12 +25246,12 @@ module.exports = createRecurry;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseSetData = __webpack_require__(/*! ./_baseSetData */ 140),
-    createBind = __webpack_require__(/*! ./_createBind */ 476),
-    createCurry = __webpack_require__(/*! ./_createCurry */ 478),
+    createBind = __webpack_require__(/*! ./_createBind */ 478),
+    createCurry = __webpack_require__(/*! ./_createCurry */ 480),
     createHybrid = __webpack_require__(/*! ./_createHybrid */ 145),
-    createPartial = __webpack_require__(/*! ./_createPartial */ 479),
+    createPartial = __webpack_require__(/*! ./_createPartial */ 481),
     getData = __webpack_require__(/*! ./_getData */ 152),
-    mergeData = __webpack_require__(/*! ./_mergeData */ 512),
+    mergeData = __webpack_require__(/*! ./_mergeData */ 514),
     setData = __webpack_require__(/*! ./_setData */ 160),
     setWrapToString = __webpack_require__(/*! ./_setWrapToString */ 163),
     toInteger = __webpack_require__(/*! ./toInteger */ 173);
@@ -25337,7 +25385,7 @@ module.exports = defineProperty;
 /***/ (function(module, exports, __webpack_require__) {
 
 var SetCache = __webpack_require__(/*! ./_SetCache */ 128),
-    arraySome = __webpack_require__(/*! ./_arraySome */ 439),
+    arraySome = __webpack_require__(/*! ./_arraySome */ 441),
     cacheHas = __webpack_require__(/*! ./_cacheHas */ 142);
 
 /** Used to compose bitmasks for value comparisons. */
@@ -25447,7 +25495,7 @@ module.exports = freeGlobal;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetAllKeys = __webpack_require__(/*! ./_baseGetAllKeys */ 138),
-    getSymbols = __webpack_require__(/*! ./_getSymbols */ 80),
+    getSymbols = __webpack_require__(/*! ./_getSymbols */ 81),
     keys = __webpack_require__(/*! ./keys */ 35);
 
 /**
@@ -25474,7 +25522,7 @@ module.exports = getAllKeys;
 /***/ (function(module, exports, __webpack_require__) {
 
 var metaMap = __webpack_require__(/*! ./_metaMap */ 157),
-    noop = __webpack_require__(/*! ./noop */ 537);
+    noop = __webpack_require__(/*! ./noop */ 539);
 
 /**
  * Gets metadata for `func`.
@@ -25500,8 +25548,8 @@ module.exports = getData;
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayPush = __webpack_require__(/*! ./_arrayPush */ 135),
-    getPrototype = __webpack_require__(/*! ./_getPrototype */ 79),
-    getSymbols = __webpack_require__(/*! ./_getSymbols */ 80),
+    getPrototype = __webpack_require__(/*! ./_getPrototype */ 80),
+    getSymbols = __webpack_require__(/*! ./_getSymbols */ 81),
     stubArray = __webpack_require__(/*! ./stubArray */ 172);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
@@ -25535,12 +25583,12 @@ module.exports = getSymbolsIn;
   \*****************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var DataView = __webpack_require__(/*! ./_DataView */ 432),
-    Map = __webpack_require__(/*! ./_Map */ 71),
-    Promise = __webpack_require__(/*! ./_Promise */ 434),
-    Set = __webpack_require__(/*! ./_Set */ 435),
+var DataView = __webpack_require__(/*! ./_DataView */ 434),
+    Map = __webpack_require__(/*! ./_Map */ 72),
+    Promise = __webpack_require__(/*! ./_Promise */ 436),
+    Set = __webpack_require__(/*! ./_Set */ 437),
     WeakMap = __webpack_require__(/*! ./_WeakMap */ 130),
-    baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 13),
+    baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 14),
     toSource = __webpack_require__(/*! ./_toSource */ 165);
 
 /** `Object#toString` result references. */
@@ -25807,7 +25855,7 @@ module.exports = setToArray;
   \**********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseSetToString = __webpack_require__(/*! ./_baseSetToString */ 459),
+var baseSetToString = __webpack_require__(/*! ./_baseSetToString */ 461),
     shortOut = __webpack_require__(/*! ./_shortOut */ 164);
 
 /**
@@ -25832,10 +25880,10 @@ module.exports = setToString;
   \**************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var getWrapDetails = __webpack_require__(/*! ./_getWrapDetails */ 487),
-    insertWrapDetails = __webpack_require__(/*! ./_insertWrapDetails */ 496),
+var getWrapDetails = __webpack_require__(/*! ./_getWrapDetails */ 489),
+    insertWrapDetails = __webpack_require__(/*! ./_insertWrapDetails */ 498),
     setToString = __webpack_require__(/*! ./_setToString */ 162),
-    updateWrapDetails = __webpack_require__(/*! ./_updateWrapDetails */ 529);
+    updateWrapDetails = __webpack_require__(/*! ./_updateWrapDetails */ 531);
 
 /**
  * Sets the `toString` method of `wrapper` to mimic the source of `reference`
@@ -26039,7 +26087,7 @@ module.exports = isLength;
   \******************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 13),
+var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 14),
     isObjectLike = __webpack_require__(/*! ./isObjectLike */ 9);
 
 /** `Object#toString` result references. */
@@ -26088,8 +26136,8 @@ module.exports = isNumber;
   \**********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsTypedArray = __webpack_require__(/*! ./_baseIsTypedArray */ 454),
-    baseUnary = __webpack_require__(/*! ./_baseUnary */ 76),
+var baseIsTypedArray = __webpack_require__(/*! ./_baseIsTypedArray */ 456),
+    baseUnary = __webpack_require__(/*! ./_baseUnary */ 77),
     nodeUtil = __webpack_require__(/*! ./_nodeUtil */ 158);
 
 /* Node.js helper references. */
@@ -26160,7 +26208,7 @@ module.exports = isUndefined;
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayLikeKeys = __webpack_require__(/*! ./_arrayLikeKeys */ 134),
-    baseKeysIn = __webpack_require__(/*! ./_baseKeysIn */ 456),
+    baseKeysIn = __webpack_require__(/*! ./_baseKeysIn */ 458),
     isArrayLike = __webpack_require__(/*! ./isArrayLike */ 34);
 
 /**
@@ -26236,7 +26284,7 @@ module.exports = stubArray;
   \*******************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var toFinite = __webpack_require__(/*! ./toFinite */ 539);
+var toFinite = __webpack_require__(/*! ./toFinite */ 541);
 
 /**
  * Converts `value` to an integer.
@@ -26283,7 +26331,7 @@ module.exports = toInteger;
   \********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var createCaseFirst = __webpack_require__(/*! ./_createCaseFirst */ 477);
+var createCaseFirst = __webpack_require__(/*! ./_createCaseFirst */ 479);
 
 /**
  * Converts the first character of `string` to upper case.
@@ -26317,7 +26365,7 @@ module.exports = upperFirst;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseRest = __webpack_require__(/*! ./_baseRest */ 31),
-    unzip = __webpack_require__(/*! ./unzip */ 541);
+    unzip = __webpack_require__(/*! ./unzip */ 543);
 
 /**
  * Creates an array of grouped elements, the first of which contains the
@@ -26424,11 +26472,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(/*! ./factoryWithTypeCheckers */ 546)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(/*! ./factoryWithTypeCheckers */ 548)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(/*! ./factoryWithThrowingShims */ 545)();
+  module.exports = __webpack_require__(/*! ./factoryWithThrowingShims */ 547)();
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 1)))
@@ -26446,11 +26494,11 @@ if (process.env.NODE_ENV !== 'production') {
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["a"] = connectAdvanced;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics__ = __webpack_require__(/*! hoist-non-react-statics */ 122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(/*! invariant */ 387);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(/*! invariant */ 389);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(/*! react */ 7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(/*! react */ 5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_Subscription__ = __webpack_require__(/*! ../utils/Subscription */ 557);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_Subscription__ = __webpack_require__(/*! ../utils/Subscription */ 559);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_PropTypes__ = __webpack_require__(/*! ../utils/PropTypes */ 180);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -26866,8 +26914,8 @@ var storeShape = __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.shape({
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = verifyPlainObject;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(/*! lodash-es/isPlainObject */ 69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__warning__ = __webpack_require__(/*! ./warning */ 92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(/*! lodash-es/isPlainObject */ 70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__warning__ = __webpack_require__(/*! ./warning */ 93);
 
 
 
@@ -26958,7 +27006,7 @@ util.inherits = __webpack_require__(/*! inherits */ 17);
 /*</replacement>*/
 
 /*<replacement>*/
-var debugUtil = __webpack_require__(/*! util */ 636);
+var debugUtil = __webpack_require__(/*! util */ 638);
 var debug = void 0;
 if (debugUtil && debugUtil.debuglog) {
   debug = debugUtil.debuglog('stream');
@@ -26967,7 +27015,7 @@ if (debugUtil && debugUtil.debuglog) {
 }
 /*</replacement>*/
 
-var BufferList = __webpack_require__(/*! ./internal/streams/BufferList */ 563);
+var BufferList = __webpack_require__(/*! ./internal/streams/BufferList */ 565);
 var destroyImpl = __webpack_require__(/*! ./internal/streams/destroy */ 184);
 var StringDecoder;
 
@@ -27051,7 +27099,7 @@ function ReadableState(options, stream) {
   this.decoder = null;
   this.encoding = null;
   if (options.encoding) {
-    if (!StringDecoder) StringDecoder = __webpack_require__(/*! string_decoder/ */ 96).StringDecoder;
+    if (!StringDecoder) StringDecoder = __webpack_require__(/*! string_decoder/ */ 97).StringDecoder;
     this.decoder = new StringDecoder(options.encoding);
     this.encoding = options.encoding;
   }
@@ -27207,7 +27255,7 @@ Readable.prototype.isPaused = function () {
 
 // backwards compatibility.
 Readable.prototype.setEncoding = function (enc) {
-  if (!StringDecoder) StringDecoder = __webpack_require__(/*! string_decoder/ */ 96).StringDecoder;
+  if (!StringDecoder) StringDecoder = __webpack_require__(/*! string_decoder/ */ 97).StringDecoder;
   this._readableState.decoder = new StringDecoder(enc);
   this._readableState.encoding = enc;
   return this;
@@ -28272,7 +28320,7 @@ function compose() {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ActionTypes; });
 /* harmony export (immutable) */ __webpack_exports__["b"] = createStore;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(/*! lodash-es/isPlainObject */ 69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_es_isPlainObject__ = __webpack_require__(/*! lodash-es/isPlainObject */ 70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable__ = __webpack_require__(/*! symbol-observable */ 191);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_symbol_observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_symbol_observable__);
 
@@ -28536,9 +28584,9 @@ var ActionTypes = {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(/*! ./createStore */ 187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__combineReducers__ = __webpack_require__(/*! ./combineReducers */ 570);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__ = __webpack_require__(/*! ./bindActionCreators */ 569);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(/*! ./applyMiddleware */ 568);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__combineReducers__ = __webpack_require__(/*! ./combineReducers */ 572);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__ = __webpack_require__(/*! ./bindActionCreators */ 571);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(/*! ./applyMiddleware */ 570);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compose__ = __webpack_require__(/*! ./compose */ 186);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_warning__ = __webpack_require__(/*! ./utils/warning */ 189);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createStore", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["b"]; });
@@ -28877,7 +28925,7 @@ Object.defineProperty(StreamAsyncToIterator.prototype, Symbol.asyncIterator, {
   \**************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! ./lib/index */ 573);
+module.exports = __webpack_require__(/*! ./lib/index */ 575);
 
 
 /***/ }),
@@ -28898,16 +28946,16 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var bind = __webpack_require__(/*! lodash/bind */ 532);
-var isArray = __webpack_require__(/*! lodash/isArray */ 5);
+var bind = __webpack_require__(/*! lodash/bind */ 534);
+var isArray = __webpack_require__(/*! lodash/isArray */ 6);
 var cloneDeep = __webpack_require__(/*! lodash/cloneDeep */ 19);
 var upperFirst = __webpack_require__(/*! lodash/upperFirst */ 174);
 
 var _require = __webpack_require__(/*! ./errors */ 25),
     TableSchemaError = _require.TableSchemaError;
 
-var constraints = __webpack_require__(/*! ./constraints */ 576);
-var helpers = __webpack_require__(/*! ./helpers */ 97);
+var constraints = __webpack_require__(/*! ./constraints */ 578);
+var helpers = __webpack_require__(/*! ./helpers */ 98);
 var config = __webpack_require__(/*! ./config */ 4);
 var types = __webpack_require__(/*! ./types */ 196);
 
@@ -29403,8 +29451,8 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var fs = __webpack_require__(/*! fs */ 14);
-var csv = __webpack_require__(/*! csv */ 364);
+var fs = __webpack_require__(/*! fs */ 15);
+var csv = __webpack_require__(/*! csv */ 366);
 var axios = __webpack_require__(/*! axios */ 197);
 
 var _require = __webpack_require__(/*! stream */ 22),
@@ -29413,21 +29461,21 @@ var _require = __webpack_require__(/*! stream */ 22),
 
 var zip = __webpack_require__(/*! lodash/zip */ 175);
 var isEqual = __webpack_require__(/*! lodash/isEqual */ 54);
-var isArray = __webpack_require__(/*! lodash/isArray */ 5);
-var isMatch = __webpack_require__(/*! lodash/isMatch */ 535);
-var isInteger = __webpack_require__(/*! lodash/isInteger */ 85);
-var isFunction = __webpack_require__(/*! lodash/isFunction */ 84);
-var zipObject = __webpack_require__(/*! lodash/zipObject */ 544);
+var isArray = __webpack_require__(/*! lodash/isArray */ 6);
+var isMatch = __webpack_require__(/*! lodash/isMatch */ 537);
+var isInteger = __webpack_require__(/*! lodash/isInteger */ 86);
+var isFunction = __webpack_require__(/*! lodash/isFunction */ 85);
+var zipObject = __webpack_require__(/*! lodash/zipObject */ 546);
 var S2A = __webpack_require__(/*! stream-to-async-iterator */ 190).default;
-var CSVSniffer = __webpack_require__(/*! csv-sniffer */ 362)();
+var CSVSniffer = __webpack_require__(/*! csv-sniffer */ 364)();
 
 var _require2 = __webpack_require__(/*! ./errors */ 25),
     TableSchemaError = _require2.TableSchemaError;
 
-var _require3 = __webpack_require__(/*! ./schema */ 98),
+var _require3 = __webpack_require__(/*! ./schema */ 99),
     Schema = _require3.Schema;
 
-var helpers = __webpack_require__(/*! ./helpers */ 97);
+var helpers = __webpack_require__(/*! ./helpers */ 98);
 var config = __webpack_require__(/*! ./config */ 4);
 
 // Module API
@@ -30129,49 +30177,49 @@ module.exports = {
 "use strict";
 
 
-var _require = __webpack_require__(/*! ./any */ 588),
+var _require = __webpack_require__(/*! ./any */ 590),
     castAny = _require.castAny;
 
-var _require2 = __webpack_require__(/*! ./array */ 589),
+var _require2 = __webpack_require__(/*! ./array */ 591),
     castArray = _require2.castArray;
 
-var _require3 = __webpack_require__(/*! ./boolean */ 590),
+var _require3 = __webpack_require__(/*! ./boolean */ 592),
     castBoolean = _require3.castBoolean;
 
-var _require4 = __webpack_require__(/*! ./date */ 591),
+var _require4 = __webpack_require__(/*! ./date */ 593),
     castDate = _require4.castDate;
 
-var _require5 = __webpack_require__(/*! ./datetime */ 592),
+var _require5 = __webpack_require__(/*! ./datetime */ 594),
     castDatetime = _require5.castDatetime;
 
-var _require6 = __webpack_require__(/*! ./duration */ 593),
+var _require6 = __webpack_require__(/*! ./duration */ 595),
     castDuration = _require6.castDuration;
 
-var _require7 = __webpack_require__(/*! ./geojson */ 594),
+var _require7 = __webpack_require__(/*! ./geojson */ 596),
     castGeojson = _require7.castGeojson;
 
-var _require8 = __webpack_require__(/*! ./geopoint */ 595),
+var _require8 = __webpack_require__(/*! ./geopoint */ 597),
     castGeopoint = _require8.castGeopoint;
 
-var _require9 = __webpack_require__(/*! ./integer */ 596),
+var _require9 = __webpack_require__(/*! ./integer */ 598),
     castInteger = _require9.castInteger;
 
-var _require10 = __webpack_require__(/*! ./number */ 597),
+var _require10 = __webpack_require__(/*! ./number */ 599),
     castNumber = _require10.castNumber;
 
-var _require11 = __webpack_require__(/*! ./object */ 598),
+var _require11 = __webpack_require__(/*! ./object */ 600),
     castObject = _require11.castObject;
 
-var _require12 = __webpack_require__(/*! ./string */ 599),
+var _require12 = __webpack_require__(/*! ./string */ 601),
     castString = _require12.castString;
 
-var _require13 = __webpack_require__(/*! ./time */ 600),
+var _require13 = __webpack_require__(/*! ./time */ 602),
     castTime = _require13.castTime;
 
-var _require14 = __webpack_require__(/*! ./year */ 601),
+var _require14 = __webpack_require__(/*! ./year */ 603),
     castYear = _require14.castYear;
 
-var _require15 = __webpack_require__(/*! ./yearmonth */ 602),
+var _require15 = __webpack_require__(/*! ./yearmonth */ 604),
     castYearmonth = _require15.castYearmonth;
 
 // Module API
@@ -30203,7 +30251,7 @@ module.exports = {
   \****************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! ./lib/axios */ 604);
+module.exports = __webpack_require__(/*! ./lib/axios */ 606);
 
 /***/ }),
 /* 198 */
@@ -30218,12 +30266,12 @@ module.exports = __webpack_require__(/*! ./lib/axios */ 604);
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(/*! ./../utils */ 10);
-var settle = __webpack_require__(/*! ./../core/settle */ 610);
-var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ 613);
-var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ 619);
-var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ 617);
+var settle = __webpack_require__(/*! ./../core/settle */ 612);
+var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ 615);
+var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ 621);
+var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ 619);
 var createError = __webpack_require__(/*! ../core/createError */ 201);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(/*! ./../helpers/btoa */ 612);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(/*! ./../helpers/btoa */ 614);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -30320,7 +30368,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(/*! ./../helpers/cookies */ 615);
+      var cookies = __webpack_require__(/*! ./../helpers/cookies */ 617);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -30458,7 +30506,7 @@ module.exports = function isCancel(value) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(/*! ./enhanceError */ 609);
+var enhanceError = __webpack_require__(/*! ./enhanceError */ 611);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -42803,7 +42851,7 @@ var _assertString = __webpack_require__(/*! ./util/assertString */ 24);
 
 var _assertString2 = _interopRequireDefault(_assertString);
 
-var _merge = __webpack_require__(/*! ./util/merge */ 101);
+var _merge = __webpack_require__(/*! ./util/merge */ 102);
 
 var _merge2 = _interopRequireDefault(_merge);
 
@@ -42910,22 +42958,22 @@ function wrappy (fn, cb) {
 "use strict";
 
 
-var React = __webpack_require__(/*! react */ 7);
+var React = __webpack_require__(/*! react */ 5);
 var classNames = __webpack_require__(/*! classnames */ 111);
 
-var _require = __webpack_require__(/*! react-redux */ 15),
+var _require = __webpack_require__(/*! react-redux */ 13),
     connect = _require.connect;
 
-var _require2 = __webpack_require__(/*! ./EditorSidebar */ 352),
+var _require2 = __webpack_require__(/*! ./EditorSidebar */ 353),
     EditorSidebar = _require2.EditorSidebar;
 
-var _require3 = __webpack_require__(/*! ./EditorPreview */ 350),
+var _require3 = __webpack_require__(/*! ./EditorPreview */ 351),
     EditorPreview = _require3.EditorPreview;
 
-var _require4 = __webpack_require__(/*! ./EditorResource */ 351),
+var _require4 = __webpack_require__(/*! ./EditorResource */ 352),
     EditorResource = _require4.EditorResource;
 
-var _require5 = __webpack_require__(/*! ../reducers/editorPackage */ 354),
+var _require5 = __webpack_require__(/*! ../reducers/editorPackage */ 356),
     createReducer = _require5.createReducer;
 
 // Pure components
@@ -43157,15 +43205,15 @@ module.exports = {
 "use strict";
 
 
-var React = __webpack_require__(/*! react */ 7);
-var ReactDOM = __webpack_require__(/*! react-dom */ 549);
-var thunk = __webpack_require__(/*! redux-thunk */ 567).default;
+var React = __webpack_require__(/*! react */ 5);
+var ReactDOM = __webpack_require__(/*! react-dom */ 551);
+var thunk = __webpack_require__(/*! redux-thunk */ 569).default;
 
 var _require = __webpack_require__(/*! redux */ 188),
     createStore = _require.createStore,
     applyMiddleware = _require.applyMiddleware;
 
-var _require2 = __webpack_require__(/*! react-redux */ 15),
+var _require2 = __webpack_require__(/*! react-redux */ 13),
     Provider = _require2.Provider;
 
 // Module API
@@ -43219,7 +43267,7 @@ module.exports = {
 
 
 var utils = __webpack_require__(/*! ./utils */ 8);
-var bind = __webpack_require__(/*! ./helpers/bind */ 108);
+var bind = __webpack_require__(/*! ./helpers/bind */ 109);
 var Axios = __webpack_require__(/*! ./core/Axios */ 332);
 var defaults = __webpack_require__(/*! ./defaults */ 63);
 
@@ -43254,9 +43302,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ 105);
+axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ 106);
 axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ 331);
-axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ 106);
+axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ 107);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -43282,7 +43330,7 @@ module.exports.default = axios;
 "use strict";
 
 
-var Cancel = __webpack_require__(/*! ./Cancel */ 105);
+var Cancel = __webpack_require__(/*! ./Cancel */ 106);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -43515,7 +43563,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(/*! ./../utils */ 8);
 var transformData = __webpack_require__(/*! ./transformData */ 337);
-var isCancel = __webpack_require__(/*! ../cancel/isCancel */ 106);
+var isCancel = __webpack_require__(/*! ../cancel/isCancel */ 107);
 var defaults = __webpack_require__(/*! ../defaults */ 63);
 
 /**
@@ -43637,7 +43685,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 "use strict";
 
 
-var createError = __webpack_require__(/*! ./createError */ 107);
+var createError = __webpack_require__(/*! ./createError */ 108);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -44136,6 +44184,80 @@ module.exports = function spread(callback) {
 /* 347 */
 /* no static exports found */
 /* all exports used */
+/*!********************************************!*\
+  !*** ./src/components/ContributorField.js ***!
+  \********************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var React = __webpack_require__(/*! react */ 5);
+
+var _require = __webpack_require__(/*! react-redux */ 13),
+    connect = _require.connect;
+
+function ContributorFieldPure(_ref) {
+  var contributors = _ref.contributors,
+      onInputChange = _ref.onInputChange;
+
+  var authors = (contributors || []).filter(function (contributor) {
+    return contributor.role === 'author';
+  });
+  var emptyAuthor = {
+    role: 'author'
+  };
+  var author = authors[0] || emptyAuthor;
+
+  return React.createElement(
+    'label',
+    { className: 'control-label' },
+    'Author',
+    React.createElement('input', {
+      className: 'form-control',
+      name: 'contributors[title]',
+      type: 'text',
+      defaultValue: author.title,
+      placeholder: 'J Bloggs',
+      onBlur: onInputChange
+    })
+  );
+}
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    onInputChange: function onInputChange(ev) {
+      var author = {
+        title: ev.target.value,
+        role: 'author'
+      };
+      var contributors = void 0;
+
+      if (author.title !== '') {
+        contributors = [author];
+      }
+
+      dispatch({
+        type: 'UPDATE_CONTRIBUTORS',
+        contributors: contributors
+      });
+    }
+  };
+};
+
+var ContributorField = connect(null, mapDispatchToProps)(ContributorFieldPure);
+
+module.exports = {
+
+  // Public
+  ContributorField: ContributorField
+
+};
+
+/***/ }),
+/* 348 */
+/* no static exports found */
+/* all exports used */
 /*!***************************************!*\
   !*** ./src/components/EditorField.js ***!
   \***************************************/
@@ -44146,13 +44268,13 @@ module.exports = function spread(callback) {
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var React = __webpack_require__(/*! react */ 7);
+var React = __webpack_require__(/*! react */ 5);
 
-var _require = __webpack_require__(/*! react-redux */ 15),
+var _require = __webpack_require__(/*! react-redux */ 13),
     connect = _require.connect;
 
 var partial = __webpack_require__(/*! lodash/partial */ 57);
-var config = __webpack_require__(/*! ../config */ 109);
+var config = __webpack_require__(/*! ../config */ 64);
 
 // Pure components
 
@@ -44210,7 +44332,8 @@ function EditorFieldPure(_ref) {
               null,
               value
             )
-          );
+          ) // eslint-disable-line react/no-array-index-key
+          ;
         })
       )
     ),
@@ -44352,7 +44475,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 348 */
+/* 349 */
 /* no static exports found */
 /* all exports used */
 /*!******************************************!*\
@@ -44363,14 +44486,14 @@ module.exports = {
 "use strict";
 
 
-var React = __webpack_require__(/*! react */ 7);
+var React = __webpack_require__(/*! react */ 5);
 
-var _require = __webpack_require__(/*! react-redux */ 15),
+var _require = __webpack_require__(/*! react-redux */ 13),
     connect = _require.connect;
 
 var partial = __webpack_require__(/*! lodash/partial */ 57);
 
-var _require2 = __webpack_require__(/*! recompose */ 95),
+var _require2 = __webpack_require__(/*! recompose */ 96),
     withState = _require2.withState;
 
 // Pure components
@@ -44404,10 +44527,10 @@ function EditorKeywordsPure(_ref) {
       React.createElement(
         'div',
         { className: 'panel-body' },
-        keywords.map(function (keyword, index) {
+        keywords.map(function (keyword) {
           return React.createElement(
             'p',
-            { key: index },
+            { key: keyword },
             React.createElement('input', {
               type: 'text',
               defaultValue: keyword,
@@ -44508,7 +44631,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 349 */
+/* 350 */
 /* no static exports found */
 /* all exports used */
 /*!******************************************!*\
@@ -44521,11 +44644,17 @@ module.exports = {
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var React = __webpack_require__(/*! react */ 7);
+var React = __webpack_require__(/*! react */ 5);
 var partial = __webpack_require__(/*! lodash/partial */ 57);
 
-var _require = __webpack_require__(/*! react-redux */ 15),
+var _require = __webpack_require__(/*! react-redux */ 13),
     connect = _require.connect;
+
+var _require2 = __webpack_require__(/*! ./LicenseField */ 354),
+    LicenseField = _require2.LicenseField;
+
+var _require3 = __webpack_require__(/*! ./ContributorField */ 347),
+    ContributorField = _require3.ContributorField;
 
 // Pure components
 
@@ -44655,34 +44784,8 @@ function EditorMetadataPure(_ref) {
           placeholder: '1.0.0',
           onBlur: partial(onUpdateChange, 'version')
         }),
-        React.createElement(
-          'label',
-          { htmlFor: makeId('license'), className: 'control-label' },
-          'License'
-        ),
-        React.createElement('input', {
-          id: makeId('license'),
-          className: 'form-control',
-          name: 'root[license]',
-          type: 'text',
-          defaultValue: descriptor.license,
-          placeholder: 'CC0-1.0',
-          onBlur: partial(onUpdateChange, 'license')
-        }),
-        React.createElement(
-          'label',
-          { htmlFor: makeId('author'), className: 'control-label' },
-          'Author'
-        ),
-        React.createElement('input', {
-          id: makeId('author'),
-          className: 'form-control',
-          name: 'root[author]',
-          type: 'text',
-          defaultValue: descriptor.author,
-          placeholder: 'J Bloggs <jbloggs@example.com>',
-          onBlur: partial(onUpdateChange, 'author')
-        })
+        React.createElement(ContributorField, { contributors: descriptor.contributors }),
+        React.createElement(LicenseField, { licenses: descriptor.licenses })
       )
     )
   );
@@ -44726,7 +44829,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 350 */
+/* 351 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************************!*\
@@ -44737,11 +44840,9 @@ module.exports = {
 "use strict";
 
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var React = __webpack_require__(/*! react */ 5);
 
-var React = __webpack_require__(/*! react */ 7);
-
-var _require = __webpack_require__(/*! react-redux */ 15),
+var _require = __webpack_require__(/*! react-redux */ 13),
     connect = _require.connect;
 
 var helpers = __webpack_require__(/*! ../helpers */ 110);
@@ -44786,10 +44887,9 @@ function EditorPreviewPure(_ref) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
 
-    onToggleClick: function onToggleClick(ev) {
+    onToggleClick: function onToggleClick() {
       dispatch({
-        type: 'TOGGLE_PREVIEW',
-        payload: _defineProperty({}, name, ev.target.value)
+        type: 'TOGGLE_PREVIEW'
       });
     }
 
@@ -44813,7 +44913,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 351 */
+/* 352 */
 /* no static exports found */
 /* all exports used */
 /*!******************************************!*\
@@ -44828,7 +44928,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var React = __webpack_require__(/*! react */ 7);
+var React = __webpack_require__(/*! react */ 5);
 
 var _require = __webpack_require__(/*! stream */ 22),
     Readable = _require.Readable;
@@ -44836,19 +44936,19 @@ var _require = __webpack_require__(/*! stream */ 22),
 var _require2 = __webpack_require__(/*! tableschema */ 60),
     Table = _require2.Table;
 
-var _require3 = __webpack_require__(/*! react-redux */ 15),
+var _require3 = __webpack_require__(/*! react-redux */ 13),
     connect = _require3.connect;
 
 var classNames = __webpack_require__(/*! classnames */ 111);
 var partial = __webpack_require__(/*! lodash/partial */ 57);
 
-var _require4 = __webpack_require__(/*! recompose */ 95),
+var _require4 = __webpack_require__(/*! recompose */ 96),
     withState = _require4.withState;
 
-var _require5 = __webpack_require__(/*! ./EditorSchema */ 102),
+var _require5 = __webpack_require__(/*! ./EditorSchema */ 103),
     EditorSchema = _require5.EditorSchema;
 
-var config = __webpack_require__(/*! ../config */ 109);
+var config = __webpack_require__(/*! ../config */ 64);
 
 // Pure components
 
@@ -45043,7 +45143,7 @@ function EditorResourcePure(_ref) {
             ),
             React.createElement(
               'option',
-              { value: 'tabular-data-resource', selected: true },
+              { value: 'tabular-data-resource' },
               'Tabular Data Resource'
             )
           ),
@@ -45272,7 +45372,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 352 */
+/* 353 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************************!*\
@@ -45283,15 +45383,15 @@ module.exports = {
 "use strict";
 
 
-var React = __webpack_require__(/*! react */ 7);
+var React = __webpack_require__(/*! react */ 5);
 
-var _require = __webpack_require__(/*! react-redux */ 15),
+var _require = __webpack_require__(/*! react-redux */ 13),
     connect = _require.connect;
 
-var _require2 = __webpack_require__(/*! ./EditorMetadata */ 349),
+var _require2 = __webpack_require__(/*! ./EditorMetadata */ 350),
     EditorMetadata = _require2.EditorMetadata;
 
-var _require3 = __webpack_require__(/*! ./EditorKeywords */ 348),
+var _require3 = __webpack_require__(/*! ./EditorKeywords */ 349),
     EditorKeywords = _require3.EditorKeywords;
 
 var helpers = __webpack_require__(/*! ../helpers */ 110);
@@ -45328,9 +45428,16 @@ function EditorSidebarPure(_ref) {
           React.createElement(
             'svg',
             {
-              width: '100%', height: '100%', viewBox: '0 0 264 69', version: '1.1',
-              xmlns: 'http://www.w3.org/2000/svg', xmlnsXlink: 'http://www.w3.org/1999/xlink', xmlSpace: 'preserve',
-              style: { fillRule: 'evenodd', clipRule: 'evenodd', strokeLinejoin: 'round', strokeMiterlimit: '1.41421' }
+              width: '100%',
+              height: '100%',
+              viewBox: '0 0 264 69',
+              version: '1.1',
+              xmlns: 'http://www.w3.org/2000/svg',
+              xmlnsXlink: 'http://www.w3.org/1999/xlink',
+              xmlSpace: 'preserve',
+              style: {
+                fillRule: 'evenodd', clipRule: 'evenodd', strokeLinejoin: 'round', strokeMiterlimit: '1.41421'
+              }
             },
             React.createElement('path', { style: { fill: 'white' }, d: 'M0,47.776C0,45.32 0.457,42.892 1.372,40.493C2.286,38.094 3.619,35.949 5.371,34.06C7.122,32.171 9.263,30.641 11.792,29.469C14.322,28.298 17.202,27.712 20.432,27.712C24.246,27.712 27.545,28.525 30.328,30.149C33.11,31.774 35.183,33.89 36.545,36.497L30.357,40.635C29.812,39.501 29.15,38.547 28.372,37.772C27.593,36.998 26.757,36.384 25.862,35.93C24.966,35.477 24.032,35.146 23.059,34.939C22.086,34.731 21.133,34.627 20.199,34.627C18.175,34.627 16.414,35.024 14.916,35.817C13.417,36.611 12.172,37.64 11.179,38.906C10.187,40.172 9.438,41.608 8.932,43.214C8.426,44.819 8.173,46.416 8.173,48.003C8.173,49.779 8.465,51.489 9.049,53.132C9.632,54.776 10.459,56.221 11.53,57.468C12.6,58.715 13.884,59.716 15.383,60.472C16.881,61.228 18.525,61.606 20.316,61.606C21.25,61.606 22.223,61.492 23.235,61.266C24.246,61.039 25.21,60.68 26.124,60.189C27.039,59.697 27.885,59.065 28.664,58.29C29.442,57.515 30.065,56.58 30.532,55.484L37.129,59.168C36.467,60.68 35.523,62.012 34.297,63.164C33.071,64.317 31.69,65.29 30.152,66.083C28.615,66.877 26.971,67.481 25.219,67.897C23.468,68.312 21.756,68.52 20.082,68.52C17.124,68.52 14.419,67.916 11.968,66.707C9.516,65.497 7.404,63.92 5.634,61.974C3.863,60.028 2.481,57.818 1.489,55.343C0.496,52.868 0,50.346 0,47.776ZM203.682,68.464C200.646,68.464 197.893,67.887 195.421,66.735C192.95,65.582 190.829,64.052 189.058,62.144C187.287,60.236 185.915,58.054 184.943,55.598C183.97,53.142 183.483,50.629 183.483,48.06C183.483,45.377 183.999,42.807 185.03,40.351C186.061,37.895 187.482,35.723 189.292,33.833C191.101,31.944 193.252,30.442 195.743,29.327C198.233,28.213 200.938,27.655 203.857,27.655C206.854,27.655 209.588,28.251 212.059,29.441C214.531,30.631 216.642,32.19 218.393,34.117C220.145,36.044 221.507,38.235 222.48,40.691C223.453,43.147 223.939,45.641 223.939,48.173C223.939,50.856 223.433,53.416 222.421,55.853C221.41,58.29 220.008,60.444 218.218,62.314C216.428,64.184 214.287,65.677 211.797,66.792C209.306,67.906 206.601,68.464 203.682,68.464ZM110.16,68.18L81.379,68.18L81.379,27.939L109.634,27.939L109.634,34.797L89.436,34.797L89.436,44.489L106.891,44.489L106.891,50.837L89.436,50.837L89.436,61.322L110.16,61.322L110.16,68.18ZM50.614,68.18L42.558,68.18L42.558,27.939L60.889,27.939C62.796,27.939 64.557,28.326 66.172,29.101C67.787,29.875 69.178,30.896 70.346,32.161C71.513,33.427 72.428,34.863 73.09,36.469C73.751,38.075 74.082,39.69 74.082,41.315C74.082,43.922 73.411,46.293 72.068,48.428C70.725,50.563 68.906,52.103 66.61,53.047L76.067,68.18L67.018,68.18L58.553,54.691L50.614,54.691L50.614,68.18ZM238.184,68.18L230.127,68.18L230.127,27.939L248.458,27.939C250.365,27.939 252.126,28.326 253.741,29.101C255.357,29.875 256.748,30.896 257.915,32.161C259.083,33.427 259.998,34.863 260.659,36.469C261.321,38.075 261.652,39.69 261.652,41.315C261.652,43.922 260.98,46.293 259.638,48.428C258.295,50.563 256.475,52.103 254.179,53.047L263.637,68.18L254.588,68.18L246.123,54.691L238.184,54.691L238.184,68.18ZM169.475,68.18L161.477,68.18L161.477,34.797L148.225,34.797L148.225,27.939L182.726,27.939L182.726,34.797L169.475,34.797L169.475,68.18ZM151.141,68.18L142.852,68.18L138.999,58.148L124.521,58.148L120.726,68.18L112.437,68.18L128.257,27.939L135.379,27.939L151.141,68.18ZM191.656,48.06C191.656,49.798 191.928,51.479 192.473,53.104C193.018,54.729 193.806,56.165 194.838,57.411C195.869,58.658 197.134,59.66 198.632,60.415C200.131,61.171 201.833,61.549 203.74,61.549C205.686,61.549 207.408,61.162 208.907,60.387C210.405,59.612 211.67,58.583 212.701,57.298C213.733,56.013 214.511,54.568 215.037,52.962C215.562,51.356 215.825,49.722 215.825,48.06C215.825,46.321 215.542,44.64 214.978,43.015C214.414,41.39 213.616,39.955 212.585,38.708C211.553,37.461 210.288,36.469 208.79,35.732C207.292,34.995 205.608,34.627 203.74,34.627C201.794,34.627 200.063,35.014 198.545,35.789C197.027,36.563 195.762,37.584 194.75,38.849C193.738,40.115 192.97,41.551 192.444,43.157C191.919,44.763 191.656,46.397 191.656,48.06ZM137.539,52.65L131.818,36.837L125.864,52.65L137.539,52.65ZM50.614,47.833L60.713,47.833C61.453,47.833 62.144,47.663 62.786,47.323C63.428,46.983 63.983,46.52 64.45,45.934C64.917,45.348 65.286,44.659 65.559,43.865C65.831,43.072 65.968,42.222 65.968,41.315C65.968,40.37 65.812,39.501 65.5,38.708C65.189,37.914 64.771,37.225 64.245,36.639C63.72,36.053 63.117,35.6 62.436,35.279C61.755,34.957 61.064,34.797 60.363,34.797L50.614,34.797L50.614,47.833ZM238.184,47.833L248.283,47.833C249.022,47.833 249.713,47.663 250.355,47.323C250.998,46.983 251.552,46.52 252.019,45.934C252.486,45.348 252.856,44.659 253.128,43.865C253.401,43.072 253.537,42.222 253.537,41.315C253.537,40.37 253.381,39.501 253.07,38.708C252.759,37.914 252.34,37.225 251.815,36.639C251.289,36.053 250.686,35.6 250.005,35.279C249.324,34.957 248.633,34.797 247.933,34.797L238.184,34.797L238.184,47.833Z' }),
             React.createElement('path', { style: { fill: 'white' }, d: 'M110.609,9.432C110.609,8.298 110.819,7.169 111.238,6.044C111.658,4.919 112.274,3.91 113.085,3.015C113.897,2.121 114.887,1.399 116.055,0.85C117.222,0.301 118.545,0.027 120.022,0.027C121.792,0.027 123.306,0.407 124.565,1.169C125.824,1.931 126.772,2.922 127.411,4.145L125.003,5.712C124.729,5.145 124.401,4.667 124.018,4.277C123.635,3.888 123.215,3.578 122.759,3.348C122.303,3.117 121.829,2.953 121.336,2.856C120.843,2.759 120.369,2.71 119.913,2.71C118.891,2.71 117.997,2.909 117.231,3.308C116.465,3.706 115.822,4.233 115.302,4.888C114.782,5.544 114.39,6.279 114.125,7.094C113.861,7.908 113.729,8.723 113.729,9.538C113.729,10.459 113.884,11.336 114.194,12.168C114.504,13.001 114.937,13.736 115.494,14.373C116.05,15.011 116.711,15.52 117.478,15.901C118.244,16.282 119.083,16.472 119.995,16.472C120.469,16.472 120.957,16.414 121.459,16.299C121.961,16.184 122.444,15.998 122.909,15.741C123.375,15.485 123.803,15.161 124.196,14.772C124.588,14.382 124.912,13.913 125.167,13.364L127.712,14.772C127.402,15.48 126.964,16.105 126.398,16.645C125.833,17.185 125.194,17.641 124.483,18.013C123.771,18.385 123.019,18.668 122.225,18.863C121.432,19.058 120.652,19.155 119.886,19.155C118.517,19.155 117.268,18.872 116.137,18.305C115.006,17.738 114.03,16.999 113.209,16.087C112.388,15.175 111.749,14.138 111.293,12.978C110.837,11.818 110.609,10.636 110.609,9.432ZM182.572,18.996L180,18.996L180,16.658C178.358,18.305 176.47,19.129 174.335,19.129C173.04,19.129 171.836,18.868 170.723,18.345C169.61,17.823 168.643,17.119 167.822,16.233C167.001,15.347 166.358,14.32 165.893,13.151C165.428,11.982 165.195,10.76 165.195,9.485C165.195,8.209 165.428,6.996 165.893,5.845C166.358,4.694 167.001,3.684 167.822,2.816C168.643,1.948 169.619,1.262 170.75,0.757C171.881,0.252 173.113,0 174.445,0C176.305,0 177.865,0.376 179.124,1.129C180.383,1.882 181.331,2.878 181.97,4.118L179.616,5.765C179.087,4.738 178.358,3.967 177.427,3.454C176.497,2.94 175.475,2.683 174.362,2.683C173.45,2.683 172.62,2.874 171.872,3.255C171.124,3.635 170.486,4.14 169.957,4.769C169.428,5.398 169.022,6.128 168.739,6.961C168.456,7.793 168.315,8.661 168.315,9.564C168.315,10.521 168.474,11.415 168.794,12.248C169.113,13.08 169.551,13.806 170.107,14.426C170.664,15.046 171.325,15.538 172.091,15.901C172.857,16.264 173.687,16.445 174.581,16.445C175.566,16.445 176.511,16.224 177.414,15.781C178.317,15.338 179.179,14.639 180,13.682L180,11.663L175.922,11.663L175.922,9.458L182.572,9.458L182.572,18.996ZM10.159,18.996L3.263,18.996L3.263,0.133L10.159,0.133C11.728,0.133 13.1,0.381 14.277,0.877C15.454,1.373 16.439,2.046 17.233,2.896C18.026,3.746 18.624,4.742 19.025,5.885C19.426,7.027 19.627,8.245 19.627,9.538C19.627,10.973 19.404,12.27 18.957,13.43C18.51,14.59 17.876,15.582 17.055,16.406C16.234,17.229 15.24,17.867 14.072,18.319C12.904,18.77 11.6,18.996 10.159,18.996ZM199.401,18.996L186.075,18.996L186.075,0.133L199.155,0.133L199.155,2.763L189.139,2.763L189.139,8.13L197.814,8.13L197.814,10.601L189.139,10.601L189.139,16.366L199.401,16.366L199.401,18.996ZM81.272,18.996L78.207,18.996L78.207,0.133L86.362,0.133C87.238,0.133 88.045,0.31 88.784,0.664C89.523,1.018 90.156,1.483 90.686,2.059C91.215,2.635 91.63,3.29 91.931,4.025C92.232,4.76 92.382,5.508 92.382,6.27C92.382,7.067 92.241,7.833 91.958,8.568C91.675,9.303 91.278,9.958 90.768,10.534C90.257,11.11 89.641,11.57 88.92,11.916C88.2,12.261 87.402,12.434 86.526,12.434L81.272,12.434L81.272,18.996ZM46.602,18.996L43.51,18.996L43.51,2.763L37.025,2.763L37.025,0.133L53.06,0.133L53.06,2.763L46.602,2.763L46.602,18.996ZM133.623,18.996L130.558,18.996L130.558,0.159L133.623,0.159L133.623,9.857L142.763,0.133L146.156,0.133L138.494,8.475L146.594,18.996L143.173,18.996L136.606,10.308L133.623,13.31L133.623,18.996ZM164.682,18.996L161.453,18.996L159.4,13.868L151.903,13.868L149.878,18.996L146.621,18.996L154.338,0.133L157.02,0.133L164.682,18.996ZM69.864,18.996L66.634,18.996L64.582,13.868L57.084,13.868L55.059,18.996L51.803,18.996L59.52,0.133L62.201,0.133L69.864,18.996ZM38.255,18.996L35.026,18.996L32.974,13.868L25.476,13.868L23.451,18.996L20.194,18.996L27.911,0.133L30.593,0.133L38.255,18.996ZM110.123,18.996L106.894,18.996L104.842,13.868L97.344,13.868L95.319,18.996L92.062,18.996L99.779,0.133L102.461,0.133L110.123,18.996ZM16.507,9.538C16.507,8.546 16.366,7.634 16.083,6.801C15.8,5.969 15.385,5.256 14.838,4.663C14.291,4.069 13.625,3.604 12.841,3.268C12.056,2.931 11.162,2.763 10.159,2.763L6.328,2.763L6.328,16.366L10.159,16.366C11.18,16.366 12.088,16.193 12.882,15.848C13.675,15.502 14.341,15.024 14.879,14.413C15.417,13.802 15.823,13.08 16.097,12.248C16.371,11.415 16.507,10.512 16.507,9.538ZM158.798,11.663L155.679,3.56L152.45,11.663L158.798,11.663ZM63.98,11.663L60.86,3.56L57.631,11.663L63.98,11.663ZM32.372,11.663L29.252,3.56L26.023,11.663L32.372,11.663ZM104.24,11.663L101.12,3.56L97.891,11.663L104.24,11.663ZM81.272,9.804L86.335,9.804C86.772,9.804 87.169,9.715 87.525,9.538C87.881,9.361 88.186,9.113 88.442,8.794C88.697,8.475 88.898,8.103 89.044,7.678C89.19,7.253 89.263,6.784 89.263,6.27C89.263,5.739 89.18,5.26 89.016,4.835C88.852,4.41 88.624,4.043 88.332,3.733C88.04,3.423 87.707,3.184 87.333,3.015C86.959,2.847 86.572,2.763 86.17,2.763L81.272,2.763L81.272,9.804Z' })
@@ -45433,7 +45540,141 @@ module.exports = {
 };
 
 /***/ }),
-/* 353 */
+/* 354 */
+/* no static exports found */
+/* all exports used */
+/*!****************************************!*\
+  !*** ./src/components/LicenseField.js ***!
+  \****************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var React = __webpack_require__(/*! react */ 5);
+
+var _require = __webpack_require__(/*! react-redux */ 13),
+    connect = _require.connect;
+
+var _require2 = __webpack_require__(/*! ../config */ 64),
+    OPEN_DEFINITION_LICENSES = _require2.OPEN_DEFINITION_LICENSES;
+
+function LicenseFieldPure(_ref) {
+  var licenses = _ref.licenses,
+      onLicenseChange = _ref.onLicenseChange,
+      onInputChange = _ref.onInputChange;
+
+  var license = (licenses || [])[0] || {};
+  var isODLicense = OPEN_DEFINITION_LICENSES[license.name] !== undefined;
+
+  return React.createElement(
+    'fieldset',
+    null,
+    React.createElement(
+      'legend',
+      { className: 'panel-title' },
+      'License'
+    ),
+    React.createElement(
+      'label',
+      null,
+      'Name',
+      React.createElement(
+        'select',
+        {
+          name: 'license-name',
+          className: 'form-control list-container',
+          autoComplete: 'off',
+          value: license.name,
+          onChange: onLicenseChange
+        },
+        React.createElement(
+          'option',
+          { value: '' },
+          'Choose a license'
+        ),
+        Object.keys(OPEN_DEFINITION_LICENSES).map(function (name) {
+          return React.createElement(
+            'option',
+            { key: name, value: name },
+            name
+          );
+        }),
+        React.createElement(
+          'option',
+          { value: 'other' },
+          'Other'
+        )
+      )
+    ),
+    React.createElement(
+      'label',
+      null,
+      'Title',
+      React.createElement('input', {
+        name: 'license[title]',
+        className: 'form-control',
+        value: license.title || '',
+        placeholder: 'License title',
+        onChange: onInputChange,
+        disabled: isODLicense
+      })
+    ),
+    React.createElement(
+      'label',
+      null,
+      'Path',
+      React.createElement('input', {
+        name: 'license[path]',
+        className: 'form-control',
+        value: license.path || '',
+        placeholder: 'URL to the license\'s text',
+        onChange: onInputChange,
+        disabled: isODLicense
+      })
+    )
+  );
+}
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    onLicenseChange: function onLicenseChange(ev) {
+      dispatch({
+        type: 'UPDATE_LICENSE',
+        license: OPEN_DEFINITION_LICENSES[ev.target.value]
+      });
+    },
+
+    onInputChange: function onInputChange(ev) {
+      var license = {};
+      var name = ev.target.name;
+      var value = ev.target.value;
+
+      if (name === 'license[path]') {
+        license.path = value;
+      } else if (name === 'license[title]') {
+        license.title = value;
+      }
+
+      dispatch({
+        type: 'UPDATE_LICENSE',
+        license: license
+      });
+    }
+  };
+};
+
+var LicenseField = connect(null, mapDispatchToProps)(LicenseFieldPure);
+
+module.exports = {
+
+  // Public
+  LicenseField: LicenseField
+
+};
+
+/***/ }),
+/* 355 */
 /* no static exports found */
 /* all exports used */
 /*!**********************!*\
@@ -45450,7 +45691,7 @@ __webpack_require__(/*! regenerator-runtime/runtime */ 61);
 var _require = __webpack_require__(/*! ./render */ 328),
     render = _require.render;
 
-var _require2 = __webpack_require__(/*! ./components/EditorSchema */ 102),
+var _require2 = __webpack_require__(/*! ./components/EditorSchema */ 103),
     EditorSchema = _require2.EditorSchema;
 
 var _require3 = __webpack_require__(/*! ./components/EditorPackage */ 327),
@@ -45465,7 +45706,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 354 */
+/* 356 */
 /* no static exports found */
 /* all exports used */
 /*!***************************************!*\
@@ -45482,15 +45723,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
 
-var uuidv4 = __webpack_require__(/*! uuid/v4 */ 629);
+var uuidv4 = __webpack_require__(/*! uuid/v4 */ 631);
 
 var _require = __webpack_require__(/*! tableschema */ 60),
     Schema = _require.Schema;
 
-var _require2 = __webpack_require__(/*! datapackage */ 366),
+var _require2 = __webpack_require__(/*! datapackage */ 368),
     Profile = _require2.Profile;
 
-var without = __webpack_require__(/*! lodash/without */ 542);
+var without = __webpack_require__(/*! lodash/without */ 544);
 var cloneDeep = __webpack_require__(/*! lodash/cloneDeep */ 19);
 
 // State
@@ -45527,18 +45768,22 @@ var INITIAL_STATE = {
         errors = _profile$validate.errors;
 
     if (valid) {
-      return { feedback: {
+      return {
+        feedback: {
           type: 'success',
           text: 'Data package is valid!'
-        } };
+        }
+      };
     } else {
-      return { feedback: {
+      return {
+        feedback: {
           type: 'danger',
           text: 'Data package is invalid!',
           messages: errors.map(function (error) {
             return error.message;
           })
-        } };
+        }
+      };
     }
   },
 
@@ -45758,11 +46003,42 @@ var INITIAL_STATE = {
     return { descriptor: descriptor };
   },
 
+  // License
+
+  UPDATE_LICENSE: function UPDATE_LICENSE(_ref23, _ref24) {
+    var descriptor = _ref23.descriptor;
+    var license = _ref24.license;
+
+    descriptor = cloneDeep(descriptor);
+    descriptor.licenses = descriptor.licenses || [];
+    if (license !== undefined) {
+      descriptor.licenses[0] = _extends({}, descriptor.licenses[0], license);
+    } else {
+      delete descriptor.licenses;
+    }
+    return { descriptor: descriptor };
+  },
+
+  // Contributors
+
+  UPDATE_CONTRIBUTORS: function UPDATE_CONTRIBUTORS(_ref25, _ref26) {
+    var descriptor = _ref25.descriptor;
+    var contributors = _ref26.contributors;
+
+    descriptor = cloneDeep(descriptor);
+    if (contributors !== undefined) {
+      descriptor.contributors = contributors;
+    } else {
+      delete descriptor.contributors;
+    }
+
+    return { descriptor: descriptor };
+  },
   // Keywords
 
-  ADD_KEYWORD: function ADD_KEYWORD(_ref23, _ref24) {
-    var descriptor = _ref23.descriptor;
-    var keyword = _ref24.keyword;
+  ADD_KEYWORD: function ADD_KEYWORD(_ref27, _ref28) {
+    var descriptor = _ref27.descriptor;
+    var keyword = _ref28.keyword;
 
     if (!descriptor.keywords.includes(keyword)) {
       descriptor = cloneDeep(descriptor);
@@ -45772,9 +46048,9 @@ var INITIAL_STATE = {
     }
   },
 
-  REMOVE_KEYWORD: function REMOVE_KEYWORD(_ref25, _ref26) {
-    var descriptor = _ref25.descriptor;
-    var keyword = _ref26.keyword;
+  REMOVE_KEYWORD: function REMOVE_KEYWORD(_ref29, _ref30) {
+    var descriptor = _ref29.descriptor;
+    var keyword = _ref30.keyword;
 
     if (descriptor.keywords) {
       descriptor = cloneDeep(descriptor);
@@ -45783,10 +46059,10 @@ var INITIAL_STATE = {
     }
   },
 
-  UPDATE_KEYWORD: function UPDATE_KEYWORD(_ref27, _ref28) {
-    var descriptor = _ref27.descriptor;
-    var keyword = _ref28.keyword,
-        newKeyword = _ref28.newKeyword;
+  UPDATE_KEYWORD: function UPDATE_KEYWORD(_ref31, _ref32) {
+    var descriptor = _ref31.descriptor;
+    var keyword = _ref32.keyword,
+        newKeyword = _ref32.newKeyword;
 
     if (descriptor.keywords) {
       descriptor = cloneDeep(descriptor);
@@ -45797,10 +46073,10 @@ var INITIAL_STATE = {
 
   // Interface
 
-  TOGGLE_PREVIEW: function TOGGLE_PREVIEW(_ref29, _ref30) {
-    var isPreviewActive = _ref29.isPreviewActive;
+  TOGGLE_PREVIEW: function TOGGLE_PREVIEW(_ref33, _ref34) {
+    var isPreviewActive = _ref33.isPreviewActive;
 
-    _objectDestructuringEmpty(_ref30);
+    _objectDestructuringEmpty(_ref34);
 
     return { isPreviewActive: !isPreviewActive };
   }
@@ -45825,6 +46101,7 @@ var INITIAL_STATE = {
       resource._key = resource._key || resource.name || uuidv4();
       resource.name = resource.name || 'resource' + (resourceIndex + 1);
       resource.path = resource.path || '';
+      resource.profile = resource.profile || 'tabular-data-resource';
       if (resource.path instanceof Array) {
         resource.path = resource.path[0];
       }
@@ -45935,8 +46212,8 @@ var INITIAL_STATE = {
 
 // Reducers
 
-var createReducer = function createReducer(_ref31) {
-  var descriptor = _ref31.descriptor;
+var createReducer = function createReducer(_ref35) {
+  var descriptor = _ref35.descriptor;
   return function (state, action) {
     if (!state) return processState(_extends({}, INITIAL_STATE, { descriptor: descriptor }));
     var updater = UPDATERS[action.type];
@@ -45951,7 +46228,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 355 */
+/* 357 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -46022,7 +46299,7 @@ function range(a, b, str) {
 
 
 /***/ }),
-/* 356 */
+/* 358 */
 /* no static exports found */
 /* all exports used */
 /*!******************************!*\
@@ -46148,7 +46425,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 357 */
+/* 359 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -46156,8 +46433,8 @@ function fromByteArray (uint8) {
   \************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var concatMap = __webpack_require__(/*! concat-map */ 359);
-var balanced = __webpack_require__(/*! balanced-match */ 355);
+var concatMap = __webpack_require__(/*! concat-map */ 361);
+var balanced = __webpack_require__(/*! balanced-match */ 357);
 
 module.exports = expandTop;
 
@@ -46360,7 +46637,7 @@ function expand(str, isTop) {
 
 
 /***/ }),
-/* 358 */
+/* 360 */
 /* no static exports found */
 /* exports used: createChangeEmitter */
 /*!***************************************!*\
@@ -46422,7 +46699,7 @@ var createChangeEmitter = exports.createChangeEmitter = function createChangeEmi
 };
 
 /***/ }),
-/* 359 */
+/* 361 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************!*\
@@ -46446,7 +46723,7 @@ var isArray = Array.isArray || function (xs) {
 
 
 /***/ }),
-/* 360 */
+/* 362 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -46649,7 +46926,7 @@ Generator.bool = function(gen) {
 
 
 /***/ }),
-/* 361 */
+/* 363 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -46664,7 +46941,7 @@ stream = __webpack_require__(/*! stream */ 22);
 
 util = __webpack_require__(/*! util */ 23);
 
-StringDecoder = __webpack_require__(/*! string_decoder */ 96).StringDecoder;
+StringDecoder = __webpack_require__(/*! string_decoder */ 97).StringDecoder;
 
 module.exports = function() {
   var callback, called, chunks, data, err, options, parser;
@@ -47229,7 +47506,7 @@ isObjLiteral = function(_obj) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../buffer/index.js */ 26).Buffer, __webpack_require__(/*! ./../../process/browser.js */ 1)))
 
 /***/ }),
-/* 362 */
+/* 364 */
 /* no static exports found */
 /* all exports used */
 /*!********************************!*\
@@ -47909,7 +48186,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 363 */
+/* 365 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************!*\
@@ -47924,7 +48201,7 @@ stream = __webpack_require__(/*! stream */ 22);
 
 util = __webpack_require__(/*! util */ 23);
 
-get = __webpack_require__(/*! lodash.get */ 431);
+get = __webpack_require__(/*! lodash.get */ 433);
 
 module.exports = function() {
   var callback, chunks, data, options, stringifier;
@@ -48233,7 +48510,7 @@ Stringifier.prototype.stringify = function(line) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../process/browser.js */ 1)))
 
 /***/ }),
-/* 364 */
+/* 366 */
 /* no static exports found */
 /* all exports used */
 /*!****************************!*\
@@ -48244,13 +48521,13 @@ Stringifier.prototype.stringify = function(line) {
 // Generated by CoffeeScript 1.12.3
 var generate, parse, stringify, transform;
 
-generate = __webpack_require__(/*! csv-generate */ 360);
+generate = __webpack_require__(/*! csv-generate */ 362);
 
-parse = __webpack_require__(/*! csv-parse */ 361);
+parse = __webpack_require__(/*! csv-parse */ 363);
 
-transform = __webpack_require__(/*! stream-transform */ 572);
+transform = __webpack_require__(/*! stream-transform */ 574);
 
-stringify = __webpack_require__(/*! csv-stringify */ 363);
+stringify = __webpack_require__(/*! csv-stringify */ 365);
 
 module.exports.generate = generate;
 
@@ -48262,7 +48539,7 @@ module.exports.stringify = stringify;
 
 
 /***/ }),
-/* 365 */
+/* 367 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -48621,7 +48898,7 @@ module.exports.stringify = stringify;
 }));
 
 /***/ }),
-/* 366 */
+/* 368 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -48634,19 +48911,19 @@ module.exports.stringify = stringify;
 
 __webpack_require__(/*! regenerator-runtime/runtime */ 61);
 
-var _require = __webpack_require__(/*! ./package */ 66),
+var _require = __webpack_require__(/*! ./package */ 67),
     Package = _require.Package;
 
 var _require2 = __webpack_require__(/*! ./resource */ 112),
     Resource = _require2.Resource;
 
-var _require3 = __webpack_require__(/*! ./profile */ 67),
+var _require3 = __webpack_require__(/*! ./profile */ 68),
     Profile = _require3.Profile;
 
-var _require4 = __webpack_require__(/*! ./validate */ 375),
+var _require4 = __webpack_require__(/*! ./validate */ 377),
     validate = _require4.validate;
 
-var _require5 = __webpack_require__(/*! ./infer */ 367),
+var _require5 = __webpack_require__(/*! ./infer */ 369),
     infer = _require5.infer;
 
 var errors = __webpack_require__(/*! ./errors */ 28);
@@ -48663,7 +48940,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 367 */
+/* 369 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -48718,7 +48995,7 @@ var infer = function () {
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-var _require = __webpack_require__(/*! ./package */ 66),
+var _require = __webpack_require__(/*! ./package */ 67),
     Package = _require.Package;
 
 module.exports = {
@@ -48726,7 +49003,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 368 */
+/* 370 */
 /* no static exports found */
 /* all exports used */
 /*!***************************************************!*\
@@ -48735,12 +49012,12 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./data-package.json": 369,
-	"./data-resource.json": 370,
-	"./fiscal-data-package.json": 371,
-	"./registry.json": 372,
-	"./tabular-data-package.json": 373,
-	"./tabular-data-resource.json": 374
+	"./data-package.json": 371,
+	"./data-resource.json": 372,
+	"./fiscal-data-package.json": 373,
+	"./registry.json": 374,
+	"./tabular-data-package.json": 375,
+	"./tabular-data-resource.json": 376
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -48756,10 +49033,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 368;
+webpackContext.id = 370;
 
 /***/ }),
-/* 369 */
+/* 371 */
 /* no static exports found */
 /* all exports used */
 /*!******************************************************!*\
@@ -48770,7 +49047,7 @@ webpackContext.id = 368;
 module.exports = {"$schema":"http://json-schema.org/draft-04/schema#","title":"Data Package","description":"Data Package is a simple specification for data access and delivery.","type":"object","required":["resources"],"properties":{"profile":{"default":"data-package","propertyOrder":10,"title":"Profile","description":"The profile of this descriptor.","context":"Every Package and Resource descriptor has a profile. The default profile, if none is declared, is `data-package` for Package and `data-resource` for Resource.","type":"string","examples":["{\n  \"profile\": \"tabular-data-package\"\n}\n","{\n  \"profile\": \"http://example.com/my-profiles-json-schema.json\"\n}\n"]},"name":{"propertyOrder":20,"title":"Name","description":"An identifier string. Lower case characters with `.`, `_`, `-` and `/` are allowed.","type":"string","pattern":"^([-a-z0-9._/])+$","context":"This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent descriptor is updated.","examples":["{\n  \"name\": \"my-nice-name\"\n}\n"]},"id":{"propertyOrder":30,"title":"ID","description":"A property reserved for globally unique identifiers. Examples of identifiers that are unique include UUIDs and DOIs.","context":"A common usage pattern for Data Packages is as a packaging format within the bounds of a system or platform. In these cases, a unique identifier for a package is desired for common data handling workflows, such as updating an existing package. While at the level of the specification, global uniqueness cannot be validated, consumers using the `id` property `MUST` ensure identifiers are globally unique.","type":"string","examples":["{\n  \"id\": \"b03ec84-77fd-4270-813b-0c698943f7ce\"\n}\n","{\n  \"id\": \"http://dx.doi.org/10.1594/PANGAEA.726855\"\n}\n"]},"title":{"propertyOrder":40,"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"propertyOrder":50,"format":"textarea","title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"homepage":{"propertyOrder":60,"title":"Home Page","description":"The home on the web that is related to this data package.","type":"string","format":"uri","examples":["{\n  \"homepage\": \"http://example.com/\"\n}\n"]},"created":{"propertyOrder":70,"title":"Created","description":"The datetime on which this descriptor was created.","context":"The datetime must conform to the string formats for datetime as described in [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6)","type":"string","format":"date-time","examples":["{\n  \"created\": \"1985-04-12T23:20:50.52Z\"\n}\n"]},"contributors":{"propertyOrder":80,"title":"Contributors","description":"The contributors to this descriptor.","type":"array","minItems":1,"items":{"title":"Contributor","description":"A contributor to this descriptor.","properties":{"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"email":{"title":"Email","description":"An email address.","type":"string","format":"email","examples":["{\n  \"email\": \"example@example.com\"\n}\n"]},"organisation":{"title":"Organization","description":"An organizational affiliation for this contributor.","type":"string"},"role":{"type":"string","enum":["publisher","author","maintainer","wrangler","contributor"],"default":"contributor"}},"required":["title"],"context":"Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."},"examples":["{\n  \"contributors\": [\n    {\n      \"title\": \"Joe Bloggs\"\n    }\n  ]\n}\n","{\n  \"contributors\": [\n    {\n      \"title\": \"Joe Bloggs\",\n      \"email\": \"joe@example.com\",\n      \"role\": \"author\"\n    }\n  ]\n}\n"]},"keywords":{"propertyOrder":90,"title":"Keywords","description":"A list of keywords that describe this package.","type":"array","minItems":1,"items":{"type":"string"},"examples":["{\n  \"keywords\": [\n    \"data\",\n    \"fiscal\",\n    \"transparency\"\n  ]\n}\n"]},"image":{"propertyOrder":100,"title":"Image","description":"A image to represent this package.","type":"string","examples":["{\n  \"image\": \"http://example.com/image.jpg\"\n}\n","{\n  \"image\": \"relative/to/image.jpg\"\n}\n"]},"licenses":{"propertyOrder":110,"title":"Licenses","description":"The license(s) under which this package is published.","type":"array","minItems":1,"items":{"title":"License","description":"A license for this descriptor.","type":"object","properties":{"name":{"title":"Open Definition license identifier","description":"MUST be an Open Definition license identifier, see http://licenses.opendefinition.org/","type":"string","pattern":"^([-a-zA-Z0-9._])+$"},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]}},"context":"Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."},"context":"This property is not legally binding and does not guarantee that the package is licensed under the terms defined herein.","examples":["{\n  \"licenses\": [\n    {\n      \"name\": \"odc-pddl-1.0\",\n      \"uri\": \"http://opendatacommons.org/licenses/pddl/\"\n    }\n  ]\n}\n"]},"resources":{"propertyOrder":120,"title":"Data Resources","description":"An `array` of Data Resource objects, each compliant with the [Data Resource](/data-resource/) specification.","type":"array","minItems":1,"items":{"title":"Data Resource","description":"Data Resource.","type":"object","oneOf":[{"required":["name","data"]},{"required":["name","path"]}],"properties":{"profile":{"propertyOrder":10,"default":"data-resource","title":"Profile","description":"The profile of this descriptor.","context":"Every Package and Resource descriptor has a profile. The default profile, if none is declared, is `data-package` for Package and `data-resource` for Resource.","type":"string","examples":["{\n  \"profile\": \"tabular-data-package\"\n}\n","{\n  \"profile\": \"http://example.com/my-profiles-json-schema.json\"\n}\n"]},"name":{"propertyOrder":20,"title":"Name","description":"An identifier string. Lower case characters with `.`, `_`, `-` and `/` are allowed.","type":"string","pattern":"^([-a-z0-9._/])+$","context":"This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent descriptor is updated.","examples":["{\n  \"name\": \"my-nice-name\"\n}\n"]},"path":{"propertyOrder":30,"title":"Path","description":"A reference to the data for this resource, as either a path as a string, or an array of paths as strings. of valid URIs.","oneOf":[{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},{"type":"array","minItems":1,"items":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"examples":["[ \"file.csv\" ]\n","[ \"http://example.com/file.csv\" ]\n"]}],"context":"The dereferenced value of each referenced data source in `path` `MUST` be commensurate with a native, dereferenced representation of the data the resource describes. For example, in a *Tabular* Data Resource, this means that the dereferenced value of `path` `MUST` be an array.","examples":["{\n  \"path\": [\n    \"file.csv\",\n    \"file2.csv\"\n  ]\n}\n","{\n  \"path\": [\n    \"http://example.com/file.csv\",\n    \"http://example.com/file2.csv\"\n  ]\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"]},"data":{"propertyOrder":230,"title":"Data","description":"Inline data for this resource."},"schema":{"propertyOrder":40,"title":"Schema","description":"A schema for this resource.","type":"object"},"title":{"propertyOrder":50,"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"propertyOrder":60,"format":"textarea","title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"homepage":{"propertyOrder":70,"title":"Home Page","description":"The home on the web that is related to this data package.","type":"string","format":"uri","examples":["{\n  \"homepage\": \"http://example.com/\"\n}\n"]},"sources":{"propertyOrder":140,"options":{"hidden":true},"title":"Sources","description":"The raw sources for this resource.","type":"array","minItems":1,"items":{"title":"Source","description":"A source file.","type":"object","required":["title"],"properties":{"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"email":{"title":"Email","description":"An email address.","type":"string","format":"email","examples":["{\n  \"email\": \"example@example.com\"\n}\n"]}}},"examples":["{\n  \"sources\": [\n    {\n      \"name\": \"World Bank and OECD\",\n      \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\"\n    }\n  ]\n}\n"]},"licenses":{"description":"The license(s) under which the resource is published.","propertyOrder":150,"options":{"hidden":true},"title":"Licenses","type":"array","minItems":1,"items":{"title":"License","description":"A license for this descriptor.","type":"object","properties":{"name":{"title":"Open Definition license identifier","description":"MUST be an Open Definition license identifier, see http://licenses.opendefinition.org/","type":"string","pattern":"^([-a-zA-Z0-9._])+$"},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]}},"context":"Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."},"context":"This property is not legally binding and does not guarantee that the package is licensed under the terms defined herein.","examples":["{\n  \"licenses\": [\n    {\n      \"name\": \"odc-pddl-1.0\",\n      \"uri\": \"http://opendatacommons.org/licenses/pddl/\"\n    }\n  ]\n}\n"]},"format":{"propertyOrder":80,"title":"Format","description":"The file format of this resource.","context":"`csv`, `xls`, `json` are examples of common formats.","type":"string","examples":["{\n  \"format\": \"xls\"\n}\n"]},"mediatype":{"propertyOrder":90,"title":"Media Type","description":"The media type of this resource. Can be any valid media type listed with [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml).","type":"string","pattern":"^(.+)/(.+)$","examples":["{\n  \"mediatype\": \"text/csv\"\n}\n"]},"encoding":{"propertyOrder":100,"title":"Encoding","description":"The file encoding of this resource.","type":"string","default":"utf-8","examples":["{\n  \"encoding\": \"utf-8\"\n}\n"]},"bytes":{"propertyOrder":110,"options":{"hidden":true},"title":"Bytes","description":"The size of this resource in bytes.","type":"integer","examples":["{\n  \"bytes\": 2082\n}\n"]},"hash":{"propertyOrder":120,"options":{"hidden":true},"title":"Hash","type":"string","description":"The MD5 hash of this resource. Indicate other hashing algorithms with the {algorithm}:{hash} format.","pattern":"^([^:]+:[a-fA-F0-9]+|[a-fA-F0-9]{32}|)$","examples":["{\n  \"hash\": \"d25c9c77f588f5dc32059d2da1136c02\"\n}\n","{\n  \"hash\": \"SHA256:5262f12512590031bbcc9a430452bfd75c2791ad6771320bb4b5728bfb78c4d0\"\n}\n"]}}},"examples":["{\n  \"resources\": [\n    {\n      \"name\": \"my-data\",\n      \"data\": [\n        \"data.csv\"\n      ],\n      \"mediatype\": \"text/csv\"\n    }\n  ]\n}\n"]},"sources":{"propertyOrder":200,"options":{"hidden":true},"title":"Sources","description":"The raw sources for this resource.","type":"array","minItems":1,"items":{"title":"Source","description":"A source file.","type":"object","required":["title"],"properties":{"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"email":{"title":"Email","description":"An email address.","type":"string","format":"email","examples":["{\n  \"email\": \"example@example.com\"\n}\n"]}}},"examples":["{\n  \"sources\": [\n    {\n      \"name\": \"World Bank and OECD\",\n      \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\"\n    }\n  ]\n}\n"]}}}
 
 /***/ }),
-/* 370 */
+/* 372 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************************************!*\
@@ -48781,7 +49058,7 @@ module.exports = {"$schema":"http://json-schema.org/draft-04/schema#","title":"D
 module.exports = {"$schema":"http://json-schema.org/draft-04/schema#","title":"Data Resource","description":"Data Resource.","type":"object","oneOf":[{"required":["name","data"]},{"required":["name","path"]}],"properties":{"profile":{"propertyOrder":10,"default":"data-resource","title":"Profile","description":"The profile of this descriptor.","context":"Every Package and Resource descriptor has a profile. The default profile, if none is declared, is `data-package` for Package and `data-resource` for Resource.","type":"string","examples":["{\n  \"profile\": \"tabular-data-package\"\n}\n","{\n  \"profile\": \"http://example.com/my-profiles-json-schema.json\"\n}\n"]},"name":{"propertyOrder":20,"title":"Name","description":"An identifier string. Lower case characters with `.`, `_`, `-` and `/` are allowed.","type":"string","pattern":"^([-a-z0-9._/])+$","context":"This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent descriptor is updated.","examples":["{\n  \"name\": \"my-nice-name\"\n}\n"]},"path":{"propertyOrder":30,"title":"Path","description":"A reference to the data for this resource, as either a path as a string, or an array of paths as strings. of valid URIs.","oneOf":[{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},{"type":"array","minItems":1,"items":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"examples":["[ \"file.csv\" ]\n","[ \"http://example.com/file.csv\" ]\n"]}],"context":"The dereferenced value of each referenced data source in `path` `MUST` be commensurate with a native, dereferenced representation of the data the resource describes. For example, in a *Tabular* Data Resource, this means that the dereferenced value of `path` `MUST` be an array.","examples":["{\n  \"path\": [\n    \"file.csv\",\n    \"file2.csv\"\n  ]\n}\n","{\n  \"path\": [\n    \"http://example.com/file.csv\",\n    \"http://example.com/file2.csv\"\n  ]\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"]},"data":{"propertyOrder":230,"title":"Data","description":"Inline data for this resource."},"schema":{"propertyOrder":40,"title":"Schema","description":"A schema for this resource.","type":"object"},"title":{"propertyOrder":50,"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"propertyOrder":60,"format":"textarea","title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"homepage":{"propertyOrder":70,"title":"Home Page","description":"The home on the web that is related to this data package.","type":"string","format":"uri","examples":["{\n  \"homepage\": \"http://example.com/\"\n}\n"]},"sources":{"propertyOrder":140,"options":{"hidden":true},"title":"Sources","description":"The raw sources for this resource.","type":"array","minItems":1,"items":{"title":"Source","description":"A source file.","type":"object","required":["title"],"properties":{"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"email":{"title":"Email","description":"An email address.","type":"string","format":"email","examples":["{\n  \"email\": \"example@example.com\"\n}\n"]}}},"examples":["{\n  \"sources\": [\n    {\n      \"name\": \"World Bank and OECD\",\n      \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\"\n    }\n  ]\n}\n"]},"licenses":{"description":"The license(s) under which the resource is published.","propertyOrder":150,"options":{"hidden":true},"title":"Licenses","type":"array","minItems":1,"items":{"title":"License","description":"A license for this descriptor.","type":"object","properties":{"name":{"title":"Open Definition license identifier","description":"MUST be an Open Definition license identifier, see http://licenses.opendefinition.org/","type":"string","pattern":"^([-a-zA-Z0-9._])+$"},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]}},"context":"Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."},"context":"This property is not legally binding and does not guarantee that the package is licensed under the terms defined herein.","examples":["{\n  \"licenses\": [\n    {\n      \"name\": \"odc-pddl-1.0\",\n      \"uri\": \"http://opendatacommons.org/licenses/pddl/\"\n    }\n  ]\n}\n"]},"format":{"propertyOrder":80,"title":"Format","description":"The file format of this resource.","context":"`csv`, `xls`, `json` are examples of common formats.","type":"string","examples":["{\n  \"format\": \"xls\"\n}\n"]},"mediatype":{"propertyOrder":90,"title":"Media Type","description":"The media type of this resource. Can be any valid media type listed with [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml).","type":"string","pattern":"^(.+)/(.+)$","examples":["{\n  \"mediatype\": \"text/csv\"\n}\n"]},"encoding":{"propertyOrder":100,"title":"Encoding","description":"The file encoding of this resource.","type":"string","default":"utf-8","examples":["{\n  \"encoding\": \"utf-8\"\n}\n"]},"bytes":{"propertyOrder":110,"options":{"hidden":true},"title":"Bytes","description":"The size of this resource in bytes.","type":"integer","examples":["{\n  \"bytes\": 2082\n}\n"]},"hash":{"propertyOrder":120,"options":{"hidden":true},"title":"Hash","type":"string","description":"The MD5 hash of this resource. Indicate other hashing algorithms with the {algorithm}:{hash} format.","pattern":"^([^:]+:[a-fA-F0-9]+|[a-fA-F0-9]{32}|)$","examples":["{\n  \"hash\": \"d25c9c77f588f5dc32059d2da1136c02\"\n}\n","{\n  \"hash\": \"SHA256:5262f12512590031bbcc9a430452bfd75c2791ad6771320bb4b5728bfb78c4d0\"\n}\n"]}}}
 
 /***/ }),
-/* 371 */
+/* 373 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************************************!*\
@@ -48792,7 +49069,7 @@ module.exports = {"$schema":"http://json-schema.org/draft-04/schema#","title":"D
 module.exports = {"$schema":"http://json-schema.org/draft-04/schema#","title":"Fiscal Data Package","description":"Fiscal Data Package is a simple specification for data access and delivery of fiscal data.","type":"object","allOf":[{"title":"Tabular Data Package","description":"Tabular Data Package","type":"object","required":["resources","profile"],"properties":{"profile":{"enum":["tabular-data-package"],"propertyOrder":10,"title":"Profile","description":"The profile of this descriptor.","context":"Every Package and Resource descriptor has a profile. The default profile, if none is declared, is `data-package` for Package and `data-resource` for Resource.","type":"string","examples":["{\n  \"profile\": \"tabular-data-package\"\n}\n","{\n  \"profile\": \"http://example.com/my-profiles-json-schema.json\"\n}\n"]},"name":{"propertyOrder":20,"title":"Name","description":"An identifier string. Lower case characters with `.`, `_`, `-` and `/` are allowed.","type":"string","pattern":"^([-a-z0-9._/])+$","context":"This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent descriptor is updated.","examples":["{\n  \"name\": \"my-nice-name\"\n}\n"]},"id":{"propertyOrder":30,"title":"ID","description":"A property reserved for globally unique identifiers. Examples of identifiers that are unique include UUIDs and DOIs.","context":"A common usage pattern for Data Packages is as a packaging format within the bounds of a system or platform. In these cases, a unique identifier for a package is desired for common data handling workflows, such as updating an existing package. While at the level of the specification, global uniqueness cannot be validated, consumers using the `id` property `MUST` ensure identifiers are globally unique.","type":"string","examples":["{\n  \"id\": \"b03ec84-77fd-4270-813b-0c698943f7ce\"\n}\n","{\n  \"id\": \"http://dx.doi.org/10.1594/PANGAEA.726855\"\n}\n"]},"title":{"propertyOrder":40,"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"propertyOrder":50,"format":"textarea","title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"homepage":{"propertyOrder":60,"title":"Home Page","description":"The home on the web that is related to this data package.","type":"string","format":"uri","examples":["{\n  \"homepage\": \"http://example.com/\"\n}\n"]},"created":{"propertyOrder":70,"title":"Created","description":"The datetime on which this descriptor was created.","context":"The datetime must conform to the string formats for datetime as described in [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6)","type":"string","format":"date-time","examples":["{\n  \"created\": \"1985-04-12T23:20:50.52Z\"\n}\n"]},"contributors":{"propertyOrder":80,"title":"Contributors","description":"The contributors to this descriptor.","type":"array","minItems":1,"items":{"title":"Contributor","description":"A contributor to this descriptor.","properties":{"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"email":{"title":"Email","description":"An email address.","type":"string","format":"email","examples":["{\n  \"email\": \"example@example.com\"\n}\n"]},"organisation":{"title":"Organization","description":"An organizational affiliation for this contributor.","type":"string"},"role":{"type":"string","enum":["publisher","author","maintainer","wrangler","contributor"],"default":"contributor"}},"required":["title"],"context":"Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."},"examples":["{\n  \"contributors\": [\n    {\n      \"title\": \"Joe Bloggs\"\n    }\n  ]\n}\n","{\n  \"contributors\": [\n    {\n      \"title\": \"Joe Bloggs\",\n      \"email\": \"joe@example.com\",\n      \"role\": \"author\"\n    }\n  ]\n}\n"]},"keywords":{"propertyOrder":90,"title":"Keywords","description":"A list of keywords that describe this package.","type":"array","minItems":1,"items":{"type":"string"},"examples":["{\n  \"keywords\": [\n    \"data\",\n    \"fiscal\",\n    \"transparency\"\n  ]\n}\n"]},"image":{"propertyOrder":100,"title":"Image","description":"A image to represent this package.","type":"string","examples":["{\n  \"image\": \"http://example.com/image.jpg\"\n}\n","{\n  \"image\": \"relative/to/image.jpg\"\n}\n"]},"licenses":{"propertyOrder":110,"title":"Licenses","description":"The license(s) under which this package is published.","type":"array","minItems":1,"items":{"title":"License","description":"A license for this descriptor.","type":"object","properties":{"name":{"title":"Open Definition license identifier","description":"MUST be an Open Definition license identifier, see http://licenses.opendefinition.org/","type":"string","pattern":"^([-a-zA-Z0-9._])+$"},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]}},"context":"Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."},"context":"This property is not legally binding and does not guarantee that the package is licensed under the terms defined herein.","examples":["{\n  \"licenses\": [\n    {\n      \"name\": \"odc-pddl-1.0\",\n      \"uri\": \"http://opendatacommons.org/licenses/pddl/\"\n    }\n  ]\n}\n"]},"resources":{"propertyOrder":120,"title":"Tabular Data Resources","description":"An `array` of Tabular Data Resource objects, each compliant with the [Tabular Data Resource](/tabular-data-resource/) specification.","type":"array","minItems":1,"items":{"title":"Tabular Data Resource","description":"A Tabular Data Resource.","type":"object","oneOf":[{"required":["name","data","schema","profile"]},{"required":["name","path","schema","profile"]}],"properties":{"profile":{"enum":["tabular-data-resource"],"propertyOrder":10,"title":"Profile","description":"The profile of this descriptor.","context":"Every Package and Resource descriptor has a profile. The default profile, if none is declared, is `data-package` for Package and `data-resource` for Resource.","type":"string","examples":["{\n  \"profile\": \"tabular-data-package\"\n}\n","{\n  \"profile\": \"http://example.com/my-profiles-json-schema.json\"\n}\n"]},"name":{"propertyOrder":20,"title":"Name","description":"An identifier string. Lower case characters with `.`, `_`, `-` and `/` are allowed.","type":"string","pattern":"^([-a-z0-9._/])+$","context":"This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent descriptor is updated.","examples":["{\n  \"name\": \"my-nice-name\"\n}\n"]},"path":{"propertyOrder":30,"title":"Path","description":"A reference to the data for this resource, as either a path as a string, or an array of paths as strings. of valid URIs.","oneOf":[{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},{"type":"array","minItems":1,"items":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"examples":["[ \"file.csv\" ]\n","[ \"http://example.com/file.csv\" ]\n"]}],"context":"The dereferenced value of each referenced data source in `path` `MUST` be commensurate with a native, dereferenced representation of the data the resource describes. For example, in a *Tabular* Data Resource, this means that the dereferenced value of `path` `MUST` be an array.","examples":["{\n  \"path\": [\n    \"file.csv\",\n    \"file2.csv\"\n  ]\n}\n","{\n  \"path\": [\n    \"http://example.com/file.csv\",\n    \"http://example.com/file2.csv\"\n  ]\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"]},"data":{"propertyOrder":230,"title":"Data","description":"Inline data for this resource."},"schema":{"propertyOrder":40,"title":"Table Schema","description":"A Table Schema for this resource, compliant with the [Table Schema](/tableschema/) specification.","type":"object","required":["fields"],"properties":{"fields":{"type":"array","minItems":1,"items":{"title":"Table Schema Field","type":"object","anyOf":[{"type":"object","title":"String Field","description":"The field contains strings, that is, sequences of characters.","required":["name"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `string`.","enum":["string"]},"format":{"description":"The format keyword options for `string` are `default`, `email`, `uri`, `binary`, and `uuid`.","context":"The following `format` options are supported:\n  * **default**: any valid string.\n  * **email**: A valid email address.\n  * **uri**: A valid URI.\n  * **binary**: A base64 encoded string representing binary data.\n  * **uuid**: A string that is a uuid.","enum":["default","email","uri","binary","uuid"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `string` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"name\",\n  \"type\": \"string\"\n}\n","{\n  \"name\": \"name\",\n  \"type\": \"string\",\n  \"format\": \"email\"\n}\n","{\n  \"name\": \"name\",\n  \"type\": \"string\",\n  \"constraints\": {\n    \"minLength\": 3,\n    \"maxLength\": 35\n  }\n}\n"]},{"type":"object","title":"Number Field","description":"The field contains numbers of any kind including decimals.","context":"The lexical formatting follows that of decimal in [XMLSchema](https://www.w3.org/TR/xmlschema-2/#decimal): a non-empty finite-length sequence of decimal digits separated by a period as a decimal indicator. An optional leading sign is allowed. If the sign is omitted, '+' is assumed. Leading and trailing zeroes are optional. If the fractional part is zero, the period and following zero(es) can be omitted. For example: '-1.23', '12678967.543233', '+100000.00', '210'.\n\nThe following special string values are permitted (case does not need to be respected):\n  - NaN: not a number\n  - INF: positive infinity\n  - -INF: negative infinity\n\nA number `MAY` also have a trailing:\n  - exponent: this `MUST` consist of an E followed by an optional + or - sign followed by one or more decimal digits (0-9)\n  - percentage: the percentage sign: `%`. In conversion percentages should be divided by 100.\n\nIf both exponent and percentages are present the percentage `MUST` follow the exponent e.g. '53E10%' (equals 5.3).","required":["name"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `number`.","enum":["number"]},"format":{"description":"There are no format keyword options for `number`: only `default` is allowed.","enum":["default"],"default":"default"},"bareNumber":{"type":"boolean","title":"bareNumber","description":"a boolean field with a default of `true`. If `true` the physical contents of this field must follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors MUST therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.","default":true},"decimalChar":{"type":"string","description":"A string whose value is used to represent a decimal point within the number. The default value is `.`."},"groupChar":{"type":"string","description":"A string whose value is used to group digits within the number. The default value is `null`. A common value is `,` e.g. '100,000'."},"constraints":{"title":"Constraints","description":"The following constraints are supported for `number` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"number"}}]},"minimum":{"oneOf":[{"type":"string"},{"type":"number"}]},"maximum":{"oneOf":[{"type":"string"},{"type":"number"}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"field-name\",\n  \"type\": \"number\"\n}\n","{\n  \"name\": \"field-name\",\n  \"type\": \"number\",\n  \"constraints\": {\n    \"enum\": [ \"1.00\", \"1.50\", \"2.00\" ]\n  }\n}\n"]},{"type":"object","title":"Integer Field","description":"The field contains integers - that is whole numbers.","context":"Integer values are indicated in the standard way for any valid integer.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `integer`.","enum":["integer"]},"format":{"description":"There are no format keyword options for `integer`: only `default` is allowed.","enum":["default"],"default":"default"},"bareNumber":{"type":"boolean","title":"bareNumber","description":"a boolean field with a default of `true`. If `true` the physical contents of this field must follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors MUST therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.","default":true},"constraints":{"title":"Constraints","description":"The following constraints are supported for `integer` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"integer"}}]},"minimum":{"oneOf":[{"type":"string"},{"type":"integer"}]},"maximum":{"oneOf":[{"type":"string"},{"type":"integer"}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"age\",\n  \"type\": \"integer\",\n  \"constraints\": {\n    \"unique\": true,\n    \"minimum\": 100,\n    \"maximum\": 9999\n  }\n}\n"]},{"type":"object","title":"Date Field","description":"The field contains temporal date values.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `date`.","enum":["date"]},"format":{"description":"The format keyword options for `date` are `default`, `any`, and `{PATTERN}`.","context":"The following `format` options are supported:\n  * **default**: An ISO8601 format string of YYYY-MM-DD.\n  * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.\n  * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).","default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `date` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"date_of_birth\",\n  \"type\": \"date\"\n}\n","{\n  \"name\": \"date_of_birth\",\n  \"type\": \"date\",\n  \"constraints\": {\n    \"minimum\": \"01-01-1900\"\n  }\n}\n","{\n  \"name\": \"date_of_birth\",\n  \"type\": \"date\",\n  \"format\": \"MM-DD-YYYY\"\n}\n"]},{"type":"object","title":"Time Field","description":"The field contains temporal time values.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `time`.","enum":["time"]},"format":{"description":"The format keyword options for `time` are `default`, `any`, and `{PATTERN}`.","context":"The following `format` options are supported:\n  * **default**: An ISO8601 format string for time.\n  * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.\n  * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).","default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `time` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"appointment_start\",\n  \"type\": \"time\"\n}\n","{\n  \"name\": \"appointment_start\",\n  \"type\": \"time\",\n  \"format\": \"any\"\n}\n"]},{"type":"object","title":"Date Time Field","description":"The field contains temporal datetime values.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `datetime`.","enum":["datetime"]},"format":{"description":"The format keyword options for `datetime` are `default`, `any`, and `{PATTERN}`.","context":"The following `format` options are supported:\n  * **default**: An ISO8601 format string for datetime.\n  * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.\n  * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).","default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `datetime` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"timestamp\",\n  \"type\": \"datetime\"\n}\n","{\n  \"name\": \"timestamp\",\n  \"type\": \"datetime\",\n  \"format\": \"default\"\n}\n"]},{"type":"object","title":"Year Field","description":"A calendar year, being an integer with 4 digits. Equivalent to [gYear in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYear)","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `year`.","enum":["year"]},"format":{"description":"There are no format keyword options for `year`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `year` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"integer"}}]},"minimum":{"oneOf":[{"type":"string"},{"type":"integer"}]},"maximum":{"oneOf":[{"type":"string"},{"type":"integer"}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"year\",\n  \"type\": \"year\"\n}\n","{\n  \"name\": \"year\",\n  \"type\": \"year\",\n  \"constraints\": {\n    \"minimum\": 1970,\n    \"maximum\": 2003\n  }\n}\n"]},{"type":"object","title":"Year Month Field","description":"A calendar year month, being an integer with 1 or 2 digits. Equivalent to [gYearMonth in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYearMonth)","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `yearmonth`.","enum":["yearmonth"]},"format":{"description":"There are no format keyword options for `yearmonth`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `yearmonth` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"month\",\n  \"type\": \"yearmonth\"\n}\n","{\n  \"name\": \"month\",\n  \"type\": \"yearmonth\",\n  \"constraints\": {\n    \"minimum\": 1,\n    \"maximum\": 6\n  }\n}\n"]},{"type":"object","title":"Boolean Field","description":"The field contains boolean (true/false) data.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `boolean`.","enum":["boolean"]},"trueValues":{"type":"array","minItems":1,"items":{"type":"string"},"default":["true","True","TRUE","1"]},"falseValues":{"type":"array","minItems":1,"items":{"type":"string"},"default":["false","False","FALSE","0"]},"constraints":{"title":"Constraints","description":"The following constraints are supported for `boolean` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"boolean"}}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"registered\",\n  \"type\": \"boolean\"\n}\n"]},{"type":"object","title":"Object Field","description":"The field contains data which can be parsed as a valid JSON object.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `object`.","enum":["object"]},"format":{"description":"There are no format keyword options for `object`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints apply for `object` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"object"}}]},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"extra\"\n  \"type\": \"object\"\n}\n"]},{"type":"object","title":"GeoPoint Field","description":"The field contains data describing a geographic point.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `geopoint`.","enum":["geopoint"]},"format":{"description":"The format keyword options for `geopoint` are `default`,`array`, and `object`.","context":"The following `format` options are supported:\n  * **default**: A string of the pattern 'lon, lat', where `lon` is the longitude and `lat` is the latitude.\n  * **array**: An array of exactly two items, where each item is either a number, or a string parsable as a number, and the first item is `lon` and the second item is `lat`.\n  * **object**: A JSON object with exactly two keys, `lat` and `lon`","notes":["Implementations `MUST` strip all white space in the default format of `lon, lat`."],"enum":["default","array","object"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `geopoint` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"array"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"object"}}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"post_office\",\n  \"type\": \"geopoint\"\n}\n","{\n  \"name\": \"post_office\",\n  \"type\": \"geopoint\",\n  \"format\": \"array\"\n}\n"]},{"type":"object","title":"GeoJSON Field","description":"The field contains a JSON object according to GeoJSON or TopoJSON","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `geojson`.","enum":["geojson"]},"format":{"description":"The format keyword options for `geojson` are `default` and `topojson`.","context":"The following `format` options are supported:\n  * **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).\n  * **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)","enum":["default","topojson"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `geojson` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"object"}}]},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"city_limits\",\n  \"type\": \"geojson\"\n}\n","{\n  \"name\": \"city_limits\",\n  \"type\": \"geojson\",\n  \"format\": \"topojson\"\n}\n"]},{"type":"object","title":"Array Field","description":"The field contains data which can be parsed as a valid JSON array.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `array`.","enum":["array"]},"format":{"description":"There are no format keyword options for `array`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints apply for `array` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"array"}}]},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"options\"\n  \"type\": \"array\"\n}\n"]},{"type":"object","title":"Duration Field","description":"The field contains a duration of time.","context":"The lexical representation for duration is the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) extended format `PnYnMnDTnHnMnS`, where `nY` represents the number of years, `nM` the number of months, `nD` the number of days, 'T' is the date/time separator, `nH` the number of hours, `nM` the number of minutes and `nS` the number of seconds. The number of seconds can include decimal digits to arbitrary precision. Date and time elements including their designator may be omitted if their value is zero, and lower order elements may also be omitted for reduced precision. Here we follow the definition of [XML Schema duration datatype](http://www.w3.org/TR/xmlschema-2/#duration) directly and that definition is implicitly inlined here.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `duration`.","enum":["duration"]},"format":{"description":"There are no format keyword options for `duration`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `duration` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"period\"\n  \"type\": \"duration\"\n}\n"]},{"type":"object","title":"Any Field","description":"Any value is accepted, including values that are not captured by the type/format/constraint requirements of the specification.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `any`.","enum":["any"]},"constraints":{"title":"Constraints","description":"The following constraints apply to `any` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"notes\",\n  \"type\": \"any\"\n"]}]},"description":"An `array` of Table Schema Field objects.","examples":["{\n  \"fields\": [\n    {\n      \"name\": \"my-field-name\"\n    }\n  ]\n}\n","{\n  \"fields\": [\n    {\n      \"name\": \"my-field-name\",\n      \"type\": \"number\"\n    },\n    {\n      \"name\": \"my-field-name-2\",\n      \"type\": \"string\",\n      \"format\": \"email\"\n    }\n  ]\n}\n"]},"primaryKey":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"string"}],"description":"A primary key is a field name or an array of field names, whose values `MUST` uniquely identify each row in the table.","context":"Field name in the `primaryKey` `MUST` be unique, and `MUST` match a field name in the associated table. It is acceptable to have an array with a single value, indicating that the value of a single field is the primary key.","examples":["{\n  \"primaryKey\": [\n    \"name\"\n  ]\n}\n","{\n  \"primaryKey\": [\n    \"first_name\",\n    \"last_name\"\n  ]\n}\n"]},"foreignKeys":{"type":"array","minItems":1,"items":{"title":"Table Schema Foreign Key","description":"Table Schema Foreign Key","type":"object","required":["fields","reference"],"oneOf":[{"properties":{"fields":{"type":"array","items":{"type":"string","minItems":1,"uniqueItems":true,"description":"Fields that make up the primary key."}},"reference":{"type":"object","required":["resource","fields"],"properties":{"resource":{"type":"string","default":""},"fields":{"type":"array","items":{"type":"string"},"minItems":1,"uniqueItems":true}}}}},{"properties":{"fields":{"type":"string","description":"Fields that make up the primary key."},"reference":{"type":"object","required":["resource","fields"],"properties":{"resource":{"type":"string","default":""},"fields":{"type":"string"}}}}}]},"examples":["{\n  \"foreignKeys\": [\n    {\n      \"fields\": \"state\",\n      \"reference\": {\n        \"resource\": \"the-resource\",\n        \"fields\": \"state_id\"\n      }\n    }\n  ]\n}\n","{\n  \"foreignKeys\": [\n    {\n      \"fields\": \"state\",\n      \"reference\": {\n        \"resource\": \"\",\n        \"fields\": \"id\"\n      }\n    }\n  ]\n}\n"]},"missingValues":{"type":"array","minItems":1,"items":{"type":"string"},"default":[""],"description":"Values that when encountered in the source, should be considered as `null`, 'not present', or 'blank' values.","context":"Many datasets arrive with missing data values, either because a value was not collected or it never existed.\nMissing values may be indicated simply by the value being empty in other cases a special value may have been used e.g. `-`, `NaN`, `0`, `-9999` etc.\nThe `missingValues` property provides a way to indicate that these values should be interpreted as equivalent to null.\n\n`missingValues` are strings rather than being the data type of the particular field. This allows for comparison prior to casting and for fields to have missing value which are not of their type, for example a `number` field to have missing values indicated by `-`.\n\nThe default value of `missingValue` for a non-string type field is the empty string `''`. For string type fields there is no default for `missingValue` (for string fields the empty string `''` is a valid value and need not indicate null).","examples":["{\n  \"missingValues\": [\n    \"-\",\n    \"NaN\",\n    \"\"\n  ]\n}\n"]}},"examples":["{\n  \"schema\": {\n    \"fields\": [\n      {\n        \"name\": \"first_name\",\n        \"type\": \"string\"\n        \"constraints\": {\n          \"required\": true\n        }\n      },\n      {\n        \"name\": \"age\",\n        \"type\": \"integer\"\n      },\n    ],\n    \"primaryKey\": [\n      \"name\"\n    ]\n  }\n}\n"]},"title":{"propertyOrder":50,"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"propertyOrder":60,"format":"textarea","title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"homepage":{"propertyOrder":70,"title":"Home Page","description":"The home on the web that is related to this data package.","type":"string","format":"uri","examples":["{\n  \"homepage\": \"http://example.com/\"\n}\n"]},"sources":{"propertyOrder":140,"options":{"hidden":true},"title":"Sources","description":"The raw sources for this resource.","type":"array","minItems":1,"items":{"title":"Source","description":"A source file.","type":"object","required":["title"],"properties":{"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"email":{"title":"Email","description":"An email address.","type":"string","format":"email","examples":["{\n  \"email\": \"example@example.com\"\n}\n"]}}},"examples":["{\n  \"sources\": [\n    {\n      \"name\": \"World Bank and OECD\",\n      \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\"\n    }\n  ]\n}\n"]},"licenses":{"description":"The license(s) under which the resource is published.","propertyOrder":150,"options":{"hidden":true},"title":"Licenses","type":"array","minItems":1,"items":{"title":"License","description":"A license for this descriptor.","type":"object","properties":{"name":{"title":"Open Definition license identifier","description":"MUST be an Open Definition license identifier, see http://licenses.opendefinition.org/","type":"string","pattern":"^([-a-zA-Z0-9._])+$"},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]}},"context":"Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."},"context":"This property is not legally binding and does not guarantee that the package is licensed under the terms defined herein.","examples":["{\n  \"licenses\": [\n    {\n      \"name\": \"odc-pddl-1.0\",\n      \"uri\": \"http://opendatacommons.org/licenses/pddl/\"\n    }\n  ]\n}\n"]},"dialect":{"propertyOrder":50,"title":"CSV Dialect","description":"The CSV dialect descriptor.","type":"object","required":["delimiter","doubleQuote"],"properties":{"delimiter":{"title":"Delimiter","description":"A character sequence to use as the field separator.","type":"string","default":",","examples":["{\n  \"delimiter\": \",\"\n}\n","{\n  \"delimiter\": \";\"\n}\n"]},"doubleQuote":{"title":"Double Quote","description":"Specifies the handling of quotes inside fields.","context":"If Double Quote is set to true, two consecutive quotes must be interpreted as one.","type":"boolean","default":true,"examples":["{\n  \"doubleQuote\": true\n}\n"]},"lineTerminator":{"title":"Line Terminator","description":"Specifies the character sequence that must be used to terminate rows.","type":"string","default":"\r\n","examples":["{\n  \"lineTerminator\": \"\\r\\n\"\n}\n","{\n  \"lineTerminator\": \"\\n\"\n}\n"]},"nullSequence":{"title":"Null Sequence","description":"Specifies the null sequence, for example, `\\N`.","type":"string","examples":["{\n  \"nullSequence\": \"\\N\"\n}\n"]},"quoteChar":{"title":"Quote Character","description":"Specifies a one-character string to use as the quoting character.","type":"string","default":"\"","examples":["{\n  \"quoteChar\": \"\"\n}\n","{\n  \"quoteChar\": \"''\"\n}\n"]},"escapeChar":{"title":"Escape Character","description":"Specifies a one-character string to use as the escape character.","type":"string","default":"\\","examples":["{\n  \"escapeChar\": \"\\\\\"\n}\n"]},"skipInitialSpace":{"title":"Skip Initial Space","description":"Specifies the interpretation of whitespace immediately following a delimiter. If false, whitespace immediately after a delimiter should be treated as part of the subsequent field.","type":"boolean","default":true,"examples":["{\n  \"skipInitialSpace\": true\n}\n"]},"header":{"title":"Header","description":"Specifies if the file includes a header row, always as the first row in the file.","type":"boolean","default":true,"examples":["{\n  \"header\": true\n}\n"]},"caseSensitiveHeader":{"title":"Case Sensitive Header","description":"Specifies if the case of headers is meaningful.","context":"Use of case in source CSV files is not always an intentional decision. For example, should \"CAT\" and \"Cat\" be considered to have the same meaning.","type":"boolean","default":false,"examples":["{\n  \"caseSensitiveHeader\": true\n}\n"]}},"examples":["{\n  \"dialect\": {\n    \"delimiter\": \";\"\n  }\n}\n","{\n  \"dialect\": {\n    \"delimiter\": \"\\t\",\n    \"quoteChar\": \"''\"\n  }\n}\n"]},"format":{"propertyOrder":80,"title":"Format","description":"The file format of this resource.","context":"`csv`, `xls`, `json` are examples of common formats.","type":"string","examples":["{\n  \"format\": \"xls\"\n}\n"]},"mediatype":{"propertyOrder":90,"title":"Media Type","description":"The media type of this resource. Can be any valid media type listed with [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml).","type":"string","pattern":"^(.+)/(.+)$","examples":["{\n  \"mediatype\": \"text/csv\"\n}\n"]},"encoding":{"propertyOrder":100,"title":"Encoding","description":"The file encoding of this resource.","type":"string","default":"utf-8","examples":["{\n  \"encoding\": \"utf-8\"\n}\n"]},"bytes":{"propertyOrder":110,"options":{"hidden":true},"title":"Bytes","description":"The size of this resource in bytes.","type":"integer","examples":["{\n  \"bytes\": 2082\n}\n"]},"hash":{"propertyOrder":120,"options":{"hidden":true},"title":"Hash","type":"string","description":"The MD5 hash of this resource. Indicate other hashing algorithms with the {algorithm}:{hash} format.","pattern":"^([^:]+:[a-fA-F0-9]+|[a-fA-F0-9]{32}|)$","examples":["{\n  \"hash\": \"d25c9c77f588f5dc32059d2da1136c02\"\n}\n","{\n  \"hash\": \"SHA256:5262f12512590031bbcc9a430452bfd75c2791ad6771320bb4b5728bfb78c4d0\"\n}\n"]}}},"examples":["{\n  \"resources\": [\n    {\n      \"name\": \"my-data\",\n      \"data\": [\n        \"data.csv\"\n      ],\n      \"schema\": \"tableschema.json\",\n      \"mediatype\": \"text/csv\"\n    }\n  ]\n}\n"]},"sources":{"propertyOrder":200,"options":{"hidden":true},"title":"Sources","description":"The raw sources for this resource.","type":"array","minItems":1,"items":{"title":"Source","description":"A source file.","type":"object","required":["title"],"properties":{"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"email":{"title":"Email","description":"An email address.","type":"string","format":"email","examples":["{\n  \"email\": \"example@example.com\"\n}\n"]}}},"examples":["{\n  \"sources\": [\n    {\n      \"name\": \"World Bank and OECD\",\n      \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\"\n    }\n  ]\n}\n"]}}},{"required":["resources","model","profile"],"properties":{"resources":{"title":"Tabular Data Resources","description":"An `array` of Tabular Data Resource objects, each compliant with the [Tabular Data Resource](/tabular-data-resource/) specification.","type":"array","minItems":1,"items":{"title":"Tabular Data Resource","description":"A Tabular Data Resource.","type":"object","oneOf":[{"required":["name","data","schema","profile"]},{"required":["name","path","schema","profile"]}],"properties":{"profile":{"enum":["tabular-data-resource"],"propertyOrder":10,"title":"Profile","description":"The profile of this descriptor.","context":"Every Package and Resource descriptor has a profile. The default profile, if none is declared, is `data-package` for Package and `data-resource` for Resource.","type":"string","examples":["{\n  \"profile\": \"tabular-data-package\"\n}\n","{\n  \"profile\": \"http://example.com/my-profiles-json-schema.json\"\n}\n"]},"name":{"propertyOrder":20,"title":"Name","description":"An identifier string. Lower case characters with `.`, `_`, `-` and `/` are allowed.","type":"string","pattern":"^([-a-z0-9._/])+$","context":"This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent descriptor is updated.","examples":["{\n  \"name\": \"my-nice-name\"\n}\n"]},"path":{"propertyOrder":30,"title":"Path","description":"A reference to the data for this resource, as either a path as a string, or an array of paths as strings. of valid URIs.","oneOf":[{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},{"type":"array","minItems":1,"items":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"examples":["[ \"file.csv\" ]\n","[ \"http://example.com/file.csv\" ]\n"]}],"context":"The dereferenced value of each referenced data source in `path` `MUST` be commensurate with a native, dereferenced representation of the data the resource describes. For example, in a *Tabular* Data Resource, this means that the dereferenced value of `path` `MUST` be an array.","examples":["{\n  \"path\": [\n    \"file.csv\",\n    \"file2.csv\"\n  ]\n}\n","{\n  \"path\": [\n    \"http://example.com/file.csv\",\n    \"http://example.com/file2.csv\"\n  ]\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"]},"data":{"propertyOrder":230,"title":"Data","description":"Inline data for this resource."},"schema":{"propertyOrder":40,"title":"Table Schema","description":"A Table Schema for this resource, compliant with the [Table Schema](/tableschema/) specification.","type":"object","required":["fields"],"properties":{"fields":{"type":"array","minItems":1,"items":{"title":"Table Schema Field","type":"object","anyOf":[{"type":"object","title":"String Field","description":"The field contains strings, that is, sequences of characters.","required":["name"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `string`.","enum":["string"]},"format":{"description":"The format keyword options for `string` are `default`, `email`, `uri`, `binary`, and `uuid`.","context":"The following `format` options are supported:\n  * **default**: any valid string.\n  * **email**: A valid email address.\n  * **uri**: A valid URI.\n  * **binary**: A base64 encoded string representing binary data.\n  * **uuid**: A string that is a uuid.","enum":["default","email","uri","binary","uuid"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `string` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"name\",\n  \"type\": \"string\"\n}\n","{\n  \"name\": \"name\",\n  \"type\": \"string\",\n  \"format\": \"email\"\n}\n","{\n  \"name\": \"name\",\n  \"type\": \"string\",\n  \"constraints\": {\n    \"minLength\": 3,\n    \"maxLength\": 35\n  }\n}\n"]},{"type":"object","title":"Number Field","description":"The field contains numbers of any kind including decimals.","context":"The lexical formatting follows that of decimal in [XMLSchema](https://www.w3.org/TR/xmlschema-2/#decimal): a non-empty finite-length sequence of decimal digits separated by a period as a decimal indicator. An optional leading sign is allowed. If the sign is omitted, '+' is assumed. Leading and trailing zeroes are optional. If the fractional part is zero, the period and following zero(es) can be omitted. For example: '-1.23', '12678967.543233', '+100000.00', '210'.\n\nThe following special string values are permitted (case does not need to be respected):\n  - NaN: not a number\n  - INF: positive infinity\n  - -INF: negative infinity\n\nA number `MAY` also have a trailing:\n  - exponent: this `MUST` consist of an E followed by an optional + or - sign followed by one or more decimal digits (0-9)\n  - percentage: the percentage sign: `%`. In conversion percentages should be divided by 100.\n\nIf both exponent and percentages are present the percentage `MUST` follow the exponent e.g. '53E10%' (equals 5.3).","required":["name"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `number`.","enum":["number"]},"format":{"description":"There are no format keyword options for `number`: only `default` is allowed.","enum":["default"],"default":"default"},"bareNumber":{"type":"boolean","title":"bareNumber","description":"a boolean field with a default of `true`. If `true` the physical contents of this field must follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors MUST therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.","default":true},"decimalChar":{"type":"string","description":"A string whose value is used to represent a decimal point within the number. The default value is `.`."},"groupChar":{"type":"string","description":"A string whose value is used to group digits within the number. The default value is `null`. A common value is `,` e.g. '100,000'."},"constraints":{"title":"Constraints","description":"The following constraints are supported for `number` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"number"}}]},"minimum":{"oneOf":[{"type":"string"},{"type":"number"}]},"maximum":{"oneOf":[{"type":"string"},{"type":"number"}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"field-name\",\n  \"type\": \"number\"\n}\n","{\n  \"name\": \"field-name\",\n  \"type\": \"number\",\n  \"constraints\": {\n    \"enum\": [ \"1.00\", \"1.50\", \"2.00\" ]\n  }\n}\n"]},{"type":"object","title":"Integer Field","description":"The field contains integers - that is whole numbers.","context":"Integer values are indicated in the standard way for any valid integer.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `integer`.","enum":["integer"]},"format":{"description":"There are no format keyword options for `integer`: only `default` is allowed.","enum":["default"],"default":"default"},"bareNumber":{"type":"boolean","title":"bareNumber","description":"a boolean field with a default of `true`. If `true` the physical contents of this field must follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors MUST therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.","default":true},"constraints":{"title":"Constraints","description":"The following constraints are supported for `integer` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"integer"}}]},"minimum":{"oneOf":[{"type":"string"},{"type":"integer"}]},"maximum":{"oneOf":[{"type":"string"},{"type":"integer"}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"age\",\n  \"type\": \"integer\",\n  \"constraints\": {\n    \"unique\": true,\n    \"minimum\": 100,\n    \"maximum\": 9999\n  }\n}\n"]},{"type":"object","title":"Date Field","description":"The field contains temporal date values.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `date`.","enum":["date"]},"format":{"description":"The format keyword options for `date` are `default`, `any`, and `{PATTERN}`.","context":"The following `format` options are supported:\n  * **default**: An ISO8601 format string of YYYY-MM-DD.\n  * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.\n  * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).","default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `date` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"date_of_birth\",\n  \"type\": \"date\"\n}\n","{\n  \"name\": \"date_of_birth\",\n  \"type\": \"date\",\n  \"constraints\": {\n    \"minimum\": \"01-01-1900\"\n  }\n}\n","{\n  \"name\": \"date_of_birth\",\n  \"type\": \"date\",\n  \"format\": \"MM-DD-YYYY\"\n}\n"]},{"type":"object","title":"Time Field","description":"The field contains temporal time values.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `time`.","enum":["time"]},"format":{"description":"The format keyword options for `time` are `default`, `any`, and `{PATTERN}`.","context":"The following `format` options are supported:\n  * **default**: An ISO8601 format string for time.\n  * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.\n  * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).","default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `time` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"appointment_start\",\n  \"type\": \"time\"\n}\n","{\n  \"name\": \"appointment_start\",\n  \"type\": \"time\",\n  \"format\": \"any\"\n}\n"]},{"type":"object","title":"Date Time Field","description":"The field contains temporal datetime values.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `datetime`.","enum":["datetime"]},"format":{"description":"The format keyword options for `datetime` are `default`, `any`, and `{PATTERN}`.","context":"The following `format` options are supported:\n  * **default**: An ISO8601 format string for datetime.\n  * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.\n  * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).","default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `datetime` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"timestamp\",\n  \"type\": \"datetime\"\n}\n","{\n  \"name\": \"timestamp\",\n  \"type\": \"datetime\",\n  \"format\": \"default\"\n}\n"]},{"type":"object","title":"Year Field","description":"A calendar year, being an integer with 4 digits. Equivalent to [gYear in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYear)","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `year`.","enum":["year"]},"format":{"description":"There are no format keyword options for `year`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `year` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"integer"}}]},"minimum":{"oneOf":[{"type":"string"},{"type":"integer"}]},"maximum":{"oneOf":[{"type":"string"},{"type":"integer"}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"year\",\n  \"type\": \"year\"\n}\n","{\n  \"name\": \"year\",\n  \"type\": \"year\",\n  \"constraints\": {\n    \"minimum\": 1970,\n    \"maximum\": 2003\n  }\n}\n"]},{"type":"object","title":"Year Month Field","description":"A calendar year month, being an integer with 1 or 2 digits. Equivalent to [gYearMonth in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYearMonth)","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `yearmonth`.","enum":["yearmonth"]},"format":{"description":"There are no format keyword options for `yearmonth`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `yearmonth` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"month\",\n  \"type\": \"yearmonth\"\n}\n","{\n  \"name\": \"month\",\n  \"type\": \"yearmonth\",\n  \"constraints\": {\n    \"minimum\": 1,\n    \"maximum\": 6\n  }\n}\n"]},{"type":"object","title":"Boolean Field","description":"The field contains boolean (true/false) data.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `boolean`.","enum":["boolean"]},"trueValues":{"type":"array","minItems":1,"items":{"type":"string"},"default":["true","True","TRUE","1"]},"falseValues":{"type":"array","minItems":1,"items":{"type":"string"},"default":["false","False","FALSE","0"]},"constraints":{"title":"Constraints","description":"The following constraints are supported for `boolean` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"boolean"}}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"registered\",\n  \"type\": \"boolean\"\n}\n"]},{"type":"object","title":"Object Field","description":"The field contains data which can be parsed as a valid JSON object.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `object`.","enum":["object"]},"format":{"description":"There are no format keyword options for `object`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints apply for `object` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"object"}}]},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"extra\"\n  \"type\": \"object\"\n}\n"]},{"type":"object","title":"GeoPoint Field","description":"The field contains data describing a geographic point.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `geopoint`.","enum":["geopoint"]},"format":{"description":"The format keyword options for `geopoint` are `default`,`array`, and `object`.","context":"The following `format` options are supported:\n  * **default**: A string of the pattern 'lon, lat', where `lon` is the longitude and `lat` is the latitude.\n  * **array**: An array of exactly two items, where each item is either a number, or a string parsable as a number, and the first item is `lon` and the second item is `lat`.\n  * **object**: A JSON object with exactly two keys, `lat` and `lon`","notes":["Implementations `MUST` strip all white space in the default format of `lon, lat`."],"enum":["default","array","object"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `geopoint` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"array"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"object"}}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"post_office\",\n  \"type\": \"geopoint\"\n}\n","{\n  \"name\": \"post_office\",\n  \"type\": \"geopoint\",\n  \"format\": \"array\"\n}\n"]},{"type":"object","title":"GeoJSON Field","description":"The field contains a JSON object according to GeoJSON or TopoJSON","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `geojson`.","enum":["geojson"]},"format":{"description":"The format keyword options for `geojson` are `default` and `topojson`.","context":"The following `format` options are supported:\n  * **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).\n  * **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)","enum":["default","topojson"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `geojson` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"object"}}]},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"city_limits\",\n  \"type\": \"geojson\"\n}\n","{\n  \"name\": \"city_limits\",\n  \"type\": \"geojson\",\n  \"format\": \"topojson\"\n}\n"]},{"type":"object","title":"Array Field","description":"The field contains data which can be parsed as a valid JSON array.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `array`.","enum":["array"]},"format":{"description":"There are no format keyword options for `array`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints apply for `array` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"array"}}]},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"options\"\n  \"type\": \"array\"\n}\n"]},{"type":"object","title":"Duration Field","description":"The field contains a duration of time.","context":"The lexical representation for duration is the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) extended format `PnYnMnDTnHnMnS`, where `nY` represents the number of years, `nM` the number of months, `nD` the number of days, 'T' is the date/time separator, `nH` the number of hours, `nM` the number of minutes and `nS` the number of seconds. The number of seconds can include decimal digits to arbitrary precision. Date and time elements including their designator may be omitted if their value is zero, and lower order elements may also be omitted for reduced precision. Here we follow the definition of [XML Schema duration datatype](http://www.w3.org/TR/xmlschema-2/#duration) directly and that definition is implicitly inlined here.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `duration`.","enum":["duration"]},"format":{"description":"There are no format keyword options for `duration`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `duration` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"period\"\n  \"type\": \"duration\"\n}\n"]},{"type":"object","title":"Any Field","description":"Any value is accepted, including values that are not captured by the type/format/constraint requirements of the specification.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `any`.","enum":["any"]},"constraints":{"title":"Constraints","description":"The following constraints apply to `any` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"notes\",\n  \"type\": \"any\"\n"]}]},"description":"An `array` of Table Schema Field objects.","examples":["{\n  \"fields\": [\n    {\n      \"name\": \"my-field-name\"\n    }\n  ]\n}\n","{\n  \"fields\": [\n    {\n      \"name\": \"my-field-name\",\n      \"type\": \"number\"\n    },\n    {\n      \"name\": \"my-field-name-2\",\n      \"type\": \"string\",\n      \"format\": \"email\"\n    }\n  ]\n}\n"]},"primaryKey":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"string"}],"description":"A primary key is a field name or an array of field names, whose values `MUST` uniquely identify each row in the table.","context":"Field name in the `primaryKey` `MUST` be unique, and `MUST` match a field name in the associated table. It is acceptable to have an array with a single value, indicating that the value of a single field is the primary key.","examples":["{\n  \"primaryKey\": [\n    \"name\"\n  ]\n}\n","{\n  \"primaryKey\": [\n    \"first_name\",\n    \"last_name\"\n  ]\n}\n"]},"foreignKeys":{"type":"array","minItems":1,"items":{"title":"Table Schema Foreign Key","description":"Table Schema Foreign Key","type":"object","required":["fields","reference"],"oneOf":[{"properties":{"fields":{"type":"array","items":{"type":"string","minItems":1,"uniqueItems":true,"description":"Fields that make up the primary key."}},"reference":{"type":"object","required":["resource","fields"],"properties":{"resource":{"type":"string","default":""},"fields":{"type":"array","items":{"type":"string"},"minItems":1,"uniqueItems":true}}}}},{"properties":{"fields":{"type":"string","description":"Fields that make up the primary key."},"reference":{"type":"object","required":["resource","fields"],"properties":{"resource":{"type":"string","default":""},"fields":{"type":"string"}}}}}]},"examples":["{\n  \"foreignKeys\": [\n    {\n      \"fields\": \"state\",\n      \"reference\": {\n        \"resource\": \"the-resource\",\n        \"fields\": \"state_id\"\n      }\n    }\n  ]\n}\n","{\n  \"foreignKeys\": [\n    {\n      \"fields\": \"state\",\n      \"reference\": {\n        \"resource\": \"\",\n        \"fields\": \"id\"\n      }\n    }\n  ]\n}\n"]},"missingValues":{"type":"array","minItems":1,"items":{"type":"string"},"default":[""],"description":"Values that when encountered in the source, should be considered as `null`, 'not present', or 'blank' values.","context":"Many datasets arrive with missing data values, either because a value was not collected or it never existed.\nMissing values may be indicated simply by the value being empty in other cases a special value may have been used e.g. `-`, `NaN`, `0`, `-9999` etc.\nThe `missingValues` property provides a way to indicate that these values should be interpreted as equivalent to null.\n\n`missingValues` are strings rather than being the data type of the particular field. This allows for comparison prior to casting and for fields to have missing value which are not of their type, for example a `number` field to have missing values indicated by `-`.\n\nThe default value of `missingValue` for a non-string type field is the empty string `''`. For string type fields there is no default for `missingValue` (for string fields the empty string `''` is a valid value and need not indicate null).","examples":["{\n  \"missingValues\": [\n    \"-\",\n    \"NaN\",\n    \"\"\n  ]\n}\n"]}},"examples":["{\n  \"schema\": {\n    \"fields\": [\n      {\n        \"name\": \"first_name\",\n        \"type\": \"string\"\n        \"constraints\": {\n          \"required\": true\n        }\n      },\n      {\n        \"name\": \"age\",\n        \"type\": \"integer\"\n      },\n    ],\n    \"primaryKey\": [\n      \"name\"\n    ]\n  }\n}\n"]},"title":{"propertyOrder":50,"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"propertyOrder":60,"format":"textarea","title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"homepage":{"propertyOrder":70,"title":"Home Page","description":"The home on the web that is related to this data package.","type":"string","format":"uri","examples":["{\n  \"homepage\": \"http://example.com/\"\n}\n"]},"sources":{"propertyOrder":140,"options":{"hidden":true},"title":"Sources","description":"The raw sources for this resource.","type":"array","minItems":1,"items":{"title":"Source","description":"A source file.","type":"object","required":["title"],"properties":{"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"email":{"title":"Email","description":"An email address.","type":"string","format":"email","examples":["{\n  \"email\": \"example@example.com\"\n}\n"]}}},"examples":["{\n  \"sources\": [\n    {\n      \"name\": \"World Bank and OECD\",\n      \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\"\n    }\n  ]\n}\n"]},"licenses":{"description":"The license(s) under which the resource is published.","propertyOrder":150,"options":{"hidden":true},"title":"Licenses","type":"array","minItems":1,"items":{"title":"License","description":"A license for this descriptor.","type":"object","properties":{"name":{"title":"Open Definition license identifier","description":"MUST be an Open Definition license identifier, see http://licenses.opendefinition.org/","type":"string","pattern":"^([-a-zA-Z0-9._])+$"},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]}},"context":"Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."},"context":"This property is not legally binding and does not guarantee that the package is licensed under the terms defined herein.","examples":["{\n  \"licenses\": [\n    {\n      \"name\": \"odc-pddl-1.0\",\n      \"uri\": \"http://opendatacommons.org/licenses/pddl/\"\n    }\n  ]\n}\n"]},"dialect":{"propertyOrder":50,"title":"CSV Dialect","description":"The CSV dialect descriptor.","type":"object","required":["delimiter","doubleQuote"],"properties":{"delimiter":{"title":"Delimiter","description":"A character sequence to use as the field separator.","type":"string","default":",","examples":["{\n  \"delimiter\": \",\"\n}\n","{\n  \"delimiter\": \";\"\n}\n"]},"doubleQuote":{"title":"Double Quote","description":"Specifies the handling of quotes inside fields.","context":"If Double Quote is set to true, two consecutive quotes must be interpreted as one.","type":"boolean","default":true,"examples":["{\n  \"doubleQuote\": true\n}\n"]},"lineTerminator":{"title":"Line Terminator","description":"Specifies the character sequence that must be used to terminate rows.","type":"string","default":"\r\n","examples":["{\n  \"lineTerminator\": \"\\r\\n\"\n}\n","{\n  \"lineTerminator\": \"\\n\"\n}\n"]},"nullSequence":{"title":"Null Sequence","description":"Specifies the null sequence, for example, `\\N`.","type":"string","examples":["{\n  \"nullSequence\": \"\\N\"\n}\n"]},"quoteChar":{"title":"Quote Character","description":"Specifies a one-character string to use as the quoting character.","type":"string","default":"\"","examples":["{\n  \"quoteChar\": \"\"\n}\n","{\n  \"quoteChar\": \"''\"\n}\n"]},"escapeChar":{"title":"Escape Character","description":"Specifies a one-character string to use as the escape character.","type":"string","default":"\\","examples":["{\n  \"escapeChar\": \"\\\\\"\n}\n"]},"skipInitialSpace":{"title":"Skip Initial Space","description":"Specifies the interpretation of whitespace immediately following a delimiter. If false, whitespace immediately after a delimiter should be treated as part of the subsequent field.","type":"boolean","default":true,"examples":["{\n  \"skipInitialSpace\": true\n}\n"]},"header":{"title":"Header","description":"Specifies if the file includes a header row, always as the first row in the file.","type":"boolean","default":true,"examples":["{\n  \"header\": true\n}\n"]},"caseSensitiveHeader":{"title":"Case Sensitive Header","description":"Specifies if the case of headers is meaningful.","context":"Use of case in source CSV files is not always an intentional decision. For example, should \"CAT\" and \"Cat\" be considered to have the same meaning.","type":"boolean","default":false,"examples":["{\n  \"caseSensitiveHeader\": true\n}\n"]}},"examples":["{\n  \"dialect\": {\n    \"delimiter\": \";\"\n  }\n}\n","{\n  \"dialect\": {\n    \"delimiter\": \"\\t\",\n    \"quoteChar\": \"''\"\n  }\n}\n"]},"format":{"propertyOrder":80,"title":"Format","description":"The file format of this resource.","context":"`csv`, `xls`, `json` are examples of common formats.","type":"string","examples":["{\n  \"format\": \"xls\"\n}\n"]},"mediatype":{"propertyOrder":90,"title":"Media Type","description":"The media type of this resource. Can be any valid media type listed with [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml).","type":"string","pattern":"^(.+)/(.+)$","examples":["{\n  \"mediatype\": \"text/csv\"\n}\n"]},"encoding":{"propertyOrder":100,"title":"Encoding","description":"The file encoding of this resource.","type":"string","default":"utf-8","examples":["{\n  \"encoding\": \"utf-8\"\n}\n"]},"bytes":{"propertyOrder":110,"options":{"hidden":true},"title":"Bytes","description":"The size of this resource in bytes.","type":"integer","examples":["{\n  \"bytes\": 2082\n}\n"]},"hash":{"propertyOrder":120,"options":{"hidden":true},"title":"Hash","type":"string","description":"The MD5 hash of this resource. Indicate other hashing algorithms with the {algorithm}:{hash} format.","pattern":"^([^:]+:[a-fA-F0-9]+|[a-fA-F0-9]{32}|)$","examples":["{\n  \"hash\": \"d25c9c77f588f5dc32059d2da1136c02\"\n}\n","{\n  \"hash\": \"SHA256:5262f12512590031bbcc9a430452bfd75c2791ad6771320bb4b5728bfb78c4d0\"\n}\n"]}}},"examples":["{\n  \"resources\": [\n    {\n      \"name\": \"my-data\",\n      \"data\": [\n        \"data.csv\"\n      ],\n      \"schema\": \"tableschema.json\",\n      \"mediatype\": \"text/csv\"\n    }\n  ]\n}\n"]},"model":{"title":"","description":"","type":"object","required":["measures","dimensions"],"properties":{"measures":{"title":"Measures","description":"Measures are numerical and correspond to financial amounts in the source data.","type":"object","patternProperties":{"^\\w+":{"title":"Measure","description":"Measure.","type":"object","required":["source","currency"],"properties":{"source":{"type":"string"},"resource":{"type":"string"},"currency":{"type":"string","pattern":"^[A-Z]{3}$"},"factor":{"type":"number"},"direction":{"title":"Direction of the spending","description":"A keyword that represents the direction of the spend, either expenditure or revenue.","type":"string","enum":["expenditure","revenue"]},"phase":{"title":"Budget phase","description":"A keyword that represents the phase of the data, can be proposed for a budget proposal, approved for an approved budget, adjusted for modified budget or executed for the enacted budget","type":"string","enum":["proposed","approved","adjusted","executed"]}}}}},"dimensions":{"title":"Dimensions","description":"Dimensions are groups of related fields. Dimensions cover all items other than the measure.","type":"object","patternProperties":{"^\\w+":{"title":"Dimension","description":"Dimension.","type":"object","required":["attributes","primaryKey"],"properties":{"attributes":{"title":"Attributes","description":"Attribute objects that make up the dimension","type":"object","minItems":1,"patternProperties":{"^\\w+":{"type":"object","properties":{"source":{"type":"string"},"resource":{"type":"string"},"constant":{"oneOf":[{"type":"string"},{"type":"number"}]},"parent":{"type":"string"},"labelfor":{"type":"string"}},"required":["source"]}}},"primaryKey":{"title":"Primary Key","description":"Either an array of strings corresponding to the name attributes in a set of field objects in the fields array or a single string corresponding to one of these names. The value of primaryKey indicates the primary key or primary keys for the dimension.","oneOf":[{"type":"string"},{"type":"array","minItems":1,"items":{"type":"string"}}]},"dimensionType":{"title":"Dimension Type","description":"Describes what kind of a dimension it is.","type":"string","enum":["datetime","entity","classification","activity","fact","location","other"]},"classificationType":{"title":"Classification Type","description":"The type of the classification.","enum":["functional","administrative","economic"]}}}}}}},"countryCode":{"title":"ISO 3166-1 Alpha-2 Country code","description":"A valid 2-digit ISO country code (ISO 3166-1 alpha-2), or, an array of valid ISO codes.","oneOf":[{"type":"string","pattern":"^[A-Z]{2}$"},{"type":"array","minItems":1,"items":{"type":"string","pattern":"^[A-Z]{2}$"}}]},"granularity":{"title":"Granularity of resources","description":"A keyword that represents the type of spend data, eiter aggregated or transactional","type":"string","enum":["aggregated","transactional"]},"fiscalPeriod":{"title":"Fiscal period for the budget","description":"The fiscal period of the dataset","type":"object","properties":{"start":{"type":"string","pattern":"^\\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12]\\d|3[01])"},"end":{"type":"string","pattern":"^\\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12]\\d|3[01])"}},"required":["start"]}}}]}
 
 /***/ }),
-/* 372 */
+/* 374 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************************!*\
@@ -48803,7 +49080,7 @@ module.exports = {"$schema":"http://json-schema.org/draft-04/schema#","title":"F
 module.exports = [{"id":"data-package","title":"Data Package","schema":"https://specs.frictionlessdata.io/schemas/data-package.json","schema_path":"data-package.json","specification":"https://specs.frictionlessdata.io/data-package/"},{"id":"tabular-data-package","title":"Tabular Data Package","schema":"https://specs.frictionlessdata.io/schemas/tabular-data-package.json","schema_path":"tabular-data-package.json","specification":"http://specs.frictionlessdata.io/tabular-data-package/"},{"id":"fiscal-data-package","title":"Fiscal Data Package","schema":"https://specs.frictionlessdata.io/schemas/fiscal-data-package.json","schema_path":"fiscal-data-package.json","specification":"https://specs.frictionlessdata.io/fiscal-data-package/"},{"id":"data-resource","title":"Data Resource","schema":"https://specs.frictionlessdata.io/schemas/data-resource.json","schema_path":"data-resource.json","specification":"https://specs.frictionlessdata.io/data-resource"},{"id":"tabular-data-resource","title":"Tabular Data Resource","schema":"https://specs.frictionlessdata.io/schemas/tabular-data-resource.json","schema_path":"tabular-data-resource.json","specification":"https://specs.frictionlessdata.io/tabular-data-resource"},{"id":"table-schema","title":"Table Schema","schema":"https://specs.frictionlessdata.io/schemas/table-schema.json","schema_path":"table-schema.json","specification":"https://specs.frictionlessdata.io/table-schema/"}]
 
 /***/ }),
-/* 373 */
+/* 375 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************************************!*\
@@ -48814,7 +49091,7 @@ module.exports = [{"id":"data-package","title":"Data Package","schema":"https://
 module.exports = {"$schema":"http://json-schema.org/draft-04/schema#","title":"Tabular Data Package","description":"Tabular Data Package is a simple specification for data access and delivery of tabular data.","type":"object","required":["resources","profile"],"properties":{"profile":{"enum":["tabular-data-package"],"propertyOrder":10,"title":"Profile","description":"The profile of this descriptor.","context":"Every Package and Resource descriptor has a profile. The default profile, if none is declared, is `data-package` for Package and `data-resource` for Resource.","type":"string","examples":["{\n  \"profile\": \"tabular-data-package\"\n}\n","{\n  \"profile\": \"http://example.com/my-profiles-json-schema.json\"\n}\n"]},"name":{"propertyOrder":20,"title":"Name","description":"An identifier string. Lower case characters with `.`, `_`, `-` and `/` are allowed.","type":"string","pattern":"^([-a-z0-9._/])+$","context":"This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent descriptor is updated.","examples":["{\n  \"name\": \"my-nice-name\"\n}\n"]},"id":{"propertyOrder":30,"title":"ID","description":"A property reserved for globally unique identifiers. Examples of identifiers that are unique include UUIDs and DOIs.","context":"A common usage pattern for Data Packages is as a packaging format within the bounds of a system or platform. In these cases, a unique identifier for a package is desired for common data handling workflows, such as updating an existing package. While at the level of the specification, global uniqueness cannot be validated, consumers using the `id` property `MUST` ensure identifiers are globally unique.","type":"string","examples":["{\n  \"id\": \"b03ec84-77fd-4270-813b-0c698943f7ce\"\n}\n","{\n  \"id\": \"http://dx.doi.org/10.1594/PANGAEA.726855\"\n}\n"]},"title":{"propertyOrder":40,"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"propertyOrder":50,"format":"textarea","title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"homepage":{"propertyOrder":60,"title":"Home Page","description":"The home on the web that is related to this data package.","type":"string","format":"uri","examples":["{\n  \"homepage\": \"http://example.com/\"\n}\n"]},"created":{"propertyOrder":70,"title":"Created","description":"The datetime on which this descriptor was created.","context":"The datetime must conform to the string formats for datetime as described in [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6)","type":"string","format":"date-time","examples":["{\n  \"created\": \"1985-04-12T23:20:50.52Z\"\n}\n"]},"contributors":{"propertyOrder":80,"title":"Contributors","description":"The contributors to this descriptor.","type":"array","minItems":1,"items":{"title":"Contributor","description":"A contributor to this descriptor.","properties":{"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"email":{"title":"Email","description":"An email address.","type":"string","format":"email","examples":["{\n  \"email\": \"example@example.com\"\n}\n"]},"organisation":{"title":"Organization","description":"An organizational affiliation for this contributor.","type":"string"},"role":{"type":"string","enum":["publisher","author","maintainer","wrangler","contributor"],"default":"contributor"}},"required":["title"],"context":"Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."},"examples":["{\n  \"contributors\": [\n    {\n      \"title\": \"Joe Bloggs\"\n    }\n  ]\n}\n","{\n  \"contributors\": [\n    {\n      \"title\": \"Joe Bloggs\",\n      \"email\": \"joe@example.com\",\n      \"role\": \"author\"\n    }\n  ]\n}\n"]},"keywords":{"propertyOrder":90,"title":"Keywords","description":"A list of keywords that describe this package.","type":"array","minItems":1,"items":{"type":"string"},"examples":["{\n  \"keywords\": [\n    \"data\",\n    \"fiscal\",\n    \"transparency\"\n  ]\n}\n"]},"image":{"propertyOrder":100,"title":"Image","description":"A image to represent this package.","type":"string","examples":["{\n  \"image\": \"http://example.com/image.jpg\"\n}\n","{\n  \"image\": \"relative/to/image.jpg\"\n}\n"]},"licenses":{"propertyOrder":110,"title":"Licenses","description":"The license(s) under which this package is published.","type":"array","minItems":1,"items":{"title":"License","description":"A license for this descriptor.","type":"object","properties":{"name":{"title":"Open Definition license identifier","description":"MUST be an Open Definition license identifier, see http://licenses.opendefinition.org/","type":"string","pattern":"^([-a-zA-Z0-9._])+$"},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]}},"context":"Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."},"context":"This property is not legally binding and does not guarantee that the package is licensed under the terms defined herein.","examples":["{\n  \"licenses\": [\n    {\n      \"name\": \"odc-pddl-1.0\",\n      \"uri\": \"http://opendatacommons.org/licenses/pddl/\"\n    }\n  ]\n}\n"]},"resources":{"propertyOrder":120,"title":"Tabular Data Resources","description":"An `array` of Tabular Data Resource objects, each compliant with the [Tabular Data Resource](/tabular-data-resource/) specification.","type":"array","minItems":1,"items":{"title":"Tabular Data Resource","description":"A Tabular Data Resource.","type":"object","oneOf":[{"required":["name","data","schema","profile"]},{"required":["name","path","schema","profile"]}],"properties":{"profile":{"enum":["tabular-data-resource"],"propertyOrder":10,"title":"Profile","description":"The profile of this descriptor.","context":"Every Package and Resource descriptor has a profile. The default profile, if none is declared, is `data-package` for Package and `data-resource` for Resource.","type":"string","examples":["{\n  \"profile\": \"tabular-data-package\"\n}\n","{\n  \"profile\": \"http://example.com/my-profiles-json-schema.json\"\n}\n"]},"name":{"propertyOrder":20,"title":"Name","description":"An identifier string. Lower case characters with `.`, `_`, `-` and `/` are allowed.","type":"string","pattern":"^([-a-z0-9._/])+$","context":"This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent descriptor is updated.","examples":["{\n  \"name\": \"my-nice-name\"\n}\n"]},"path":{"propertyOrder":30,"title":"Path","description":"A reference to the data for this resource, as either a path as a string, or an array of paths as strings. of valid URIs.","oneOf":[{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},{"type":"array","minItems":1,"items":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"examples":["[ \"file.csv\" ]\n","[ \"http://example.com/file.csv\" ]\n"]}],"context":"The dereferenced value of each referenced data source in `path` `MUST` be commensurate with a native, dereferenced representation of the data the resource describes. For example, in a *Tabular* Data Resource, this means that the dereferenced value of `path` `MUST` be an array.","examples":["{\n  \"path\": [\n    \"file.csv\",\n    \"file2.csv\"\n  ]\n}\n","{\n  \"path\": [\n    \"http://example.com/file.csv\",\n    \"http://example.com/file2.csv\"\n  ]\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"]},"data":{"propertyOrder":230,"title":"Data","description":"Inline data for this resource."},"schema":{"propertyOrder":40,"title":"Table Schema","description":"A Table Schema for this resource, compliant with the [Table Schema](/tableschema/) specification.","type":"object","required":["fields"],"properties":{"fields":{"type":"array","minItems":1,"items":{"title":"Table Schema Field","type":"object","anyOf":[{"type":"object","title":"String Field","description":"The field contains strings, that is, sequences of characters.","required":["name"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `string`.","enum":["string"]},"format":{"description":"The format keyword options for `string` are `default`, `email`, `uri`, `binary`, and `uuid`.","context":"The following `format` options are supported:\n  * **default**: any valid string.\n  * **email**: A valid email address.\n  * **uri**: A valid URI.\n  * **binary**: A base64 encoded string representing binary data.\n  * **uuid**: A string that is a uuid.","enum":["default","email","uri","binary","uuid"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `string` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"name\",\n  \"type\": \"string\"\n}\n","{\n  \"name\": \"name\",\n  \"type\": \"string\",\n  \"format\": \"email\"\n}\n","{\n  \"name\": \"name\",\n  \"type\": \"string\",\n  \"constraints\": {\n    \"minLength\": 3,\n    \"maxLength\": 35\n  }\n}\n"]},{"type":"object","title":"Number Field","description":"The field contains numbers of any kind including decimals.","context":"The lexical formatting follows that of decimal in [XMLSchema](https://www.w3.org/TR/xmlschema-2/#decimal): a non-empty finite-length sequence of decimal digits separated by a period as a decimal indicator. An optional leading sign is allowed. If the sign is omitted, '+' is assumed. Leading and trailing zeroes are optional. If the fractional part is zero, the period and following zero(es) can be omitted. For example: '-1.23', '12678967.543233', '+100000.00', '210'.\n\nThe following special string values are permitted (case does not need to be respected):\n  - NaN: not a number\n  - INF: positive infinity\n  - -INF: negative infinity\n\nA number `MAY` also have a trailing:\n  - exponent: this `MUST` consist of an E followed by an optional + or - sign followed by one or more decimal digits (0-9)\n  - percentage: the percentage sign: `%`. In conversion percentages should be divided by 100.\n\nIf both exponent and percentages are present the percentage `MUST` follow the exponent e.g. '53E10%' (equals 5.3).","required":["name"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `number`.","enum":["number"]},"format":{"description":"There are no format keyword options for `number`: only `default` is allowed.","enum":["default"],"default":"default"},"bareNumber":{"type":"boolean","title":"bareNumber","description":"a boolean field with a default of `true`. If `true` the physical contents of this field must follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors MUST therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.","default":true},"decimalChar":{"type":"string","description":"A string whose value is used to represent a decimal point within the number. The default value is `.`."},"groupChar":{"type":"string","description":"A string whose value is used to group digits within the number. The default value is `null`. A common value is `,` e.g. '100,000'."},"constraints":{"title":"Constraints","description":"The following constraints are supported for `number` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"number"}}]},"minimum":{"oneOf":[{"type":"string"},{"type":"number"}]},"maximum":{"oneOf":[{"type":"string"},{"type":"number"}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"field-name\",\n  \"type\": \"number\"\n}\n","{\n  \"name\": \"field-name\",\n  \"type\": \"number\",\n  \"constraints\": {\n    \"enum\": [ \"1.00\", \"1.50\", \"2.00\" ]\n  }\n}\n"]},{"type":"object","title":"Integer Field","description":"The field contains integers - that is whole numbers.","context":"Integer values are indicated in the standard way for any valid integer.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `integer`.","enum":["integer"]},"format":{"description":"There are no format keyword options for `integer`: only `default` is allowed.","enum":["default"],"default":"default"},"bareNumber":{"type":"boolean","title":"bareNumber","description":"a boolean field with a default of `true`. If `true` the physical contents of this field must follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors MUST therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.","default":true},"constraints":{"title":"Constraints","description":"The following constraints are supported for `integer` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"integer"}}]},"minimum":{"oneOf":[{"type":"string"},{"type":"integer"}]},"maximum":{"oneOf":[{"type":"string"},{"type":"integer"}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"age\",\n  \"type\": \"integer\",\n  \"constraints\": {\n    \"unique\": true,\n    \"minimum\": 100,\n    \"maximum\": 9999\n  }\n}\n"]},{"type":"object","title":"Date Field","description":"The field contains temporal date values.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `date`.","enum":["date"]},"format":{"description":"The format keyword options for `date` are `default`, `any`, and `{PATTERN}`.","context":"The following `format` options are supported:\n  * **default**: An ISO8601 format string of YYYY-MM-DD.\n  * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.\n  * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).","default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `date` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"date_of_birth\",\n  \"type\": \"date\"\n}\n","{\n  \"name\": \"date_of_birth\",\n  \"type\": \"date\",\n  \"constraints\": {\n    \"minimum\": \"01-01-1900\"\n  }\n}\n","{\n  \"name\": \"date_of_birth\",\n  \"type\": \"date\",\n  \"format\": \"MM-DD-YYYY\"\n}\n"]},{"type":"object","title":"Time Field","description":"The field contains temporal time values.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `time`.","enum":["time"]},"format":{"description":"The format keyword options for `time` are `default`, `any`, and `{PATTERN}`.","context":"The following `format` options are supported:\n  * **default**: An ISO8601 format string for time.\n  * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.\n  * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).","default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `time` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"appointment_start\",\n  \"type\": \"time\"\n}\n","{\n  \"name\": \"appointment_start\",\n  \"type\": \"time\",\n  \"format\": \"any\"\n}\n"]},{"type":"object","title":"Date Time Field","description":"The field contains temporal datetime values.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `datetime`.","enum":["datetime"]},"format":{"description":"The format keyword options for `datetime` are `default`, `any`, and `{PATTERN}`.","context":"The following `format` options are supported:\n  * **default**: An ISO8601 format string for datetime.\n  * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.\n  * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).","default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `datetime` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"timestamp\",\n  \"type\": \"datetime\"\n}\n","{\n  \"name\": \"timestamp\",\n  \"type\": \"datetime\",\n  \"format\": \"default\"\n}\n"]},{"type":"object","title":"Year Field","description":"A calendar year, being an integer with 4 digits. Equivalent to [gYear in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYear)","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `year`.","enum":["year"]},"format":{"description":"There are no format keyword options for `year`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `year` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"integer"}}]},"minimum":{"oneOf":[{"type":"string"},{"type":"integer"}]},"maximum":{"oneOf":[{"type":"string"},{"type":"integer"}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"year\",\n  \"type\": \"year\"\n}\n","{\n  \"name\": \"year\",\n  \"type\": \"year\",\n  \"constraints\": {\n    \"minimum\": 1970,\n    \"maximum\": 2003\n  }\n}\n"]},{"type":"object","title":"Year Month Field","description":"A calendar year month, being an integer with 1 or 2 digits. Equivalent to [gYearMonth in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYearMonth)","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `yearmonth`.","enum":["yearmonth"]},"format":{"description":"There are no format keyword options for `yearmonth`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `yearmonth` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"month\",\n  \"type\": \"yearmonth\"\n}\n","{\n  \"name\": \"month\",\n  \"type\": \"yearmonth\",\n  \"constraints\": {\n    \"minimum\": 1,\n    \"maximum\": 6\n  }\n}\n"]},{"type":"object","title":"Boolean Field","description":"The field contains boolean (true/false) data.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `boolean`.","enum":["boolean"]},"trueValues":{"type":"array","minItems":1,"items":{"type":"string"},"default":["true","True","TRUE","1"]},"falseValues":{"type":"array","minItems":1,"items":{"type":"string"},"default":["false","False","FALSE","0"]},"constraints":{"title":"Constraints","description":"The following constraints are supported for `boolean` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"boolean"}}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"registered\",\n  \"type\": \"boolean\"\n}\n"]},{"type":"object","title":"Object Field","description":"The field contains data which can be parsed as a valid JSON object.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `object`.","enum":["object"]},"format":{"description":"There are no format keyword options for `object`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints apply for `object` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"object"}}]},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"extra\"\n  \"type\": \"object\"\n}\n"]},{"type":"object","title":"GeoPoint Field","description":"The field contains data describing a geographic point.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `geopoint`.","enum":["geopoint"]},"format":{"description":"The format keyword options for `geopoint` are `default`,`array`, and `object`.","context":"The following `format` options are supported:\n  * **default**: A string of the pattern 'lon, lat', where `lon` is the longitude and `lat` is the latitude.\n  * **array**: An array of exactly two items, where each item is either a number, or a string parsable as a number, and the first item is `lon` and the second item is `lat`.\n  * **object**: A JSON object with exactly two keys, `lat` and `lon`","notes":["Implementations `MUST` strip all white space in the default format of `lon, lat`."],"enum":["default","array","object"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `geopoint` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"array"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"object"}}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"post_office\",\n  \"type\": \"geopoint\"\n}\n","{\n  \"name\": \"post_office\",\n  \"type\": \"geopoint\",\n  \"format\": \"array\"\n}\n"]},{"type":"object","title":"GeoJSON Field","description":"The field contains a JSON object according to GeoJSON or TopoJSON","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `geojson`.","enum":["geojson"]},"format":{"description":"The format keyword options for `geojson` are `default` and `topojson`.","context":"The following `format` options are supported:\n  * **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).\n  * **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)","enum":["default","topojson"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `geojson` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"object"}}]},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"city_limits\",\n  \"type\": \"geojson\"\n}\n","{\n  \"name\": \"city_limits\",\n  \"type\": \"geojson\",\n  \"format\": \"topojson\"\n}\n"]},{"type":"object","title":"Array Field","description":"The field contains data which can be parsed as a valid JSON array.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `array`.","enum":["array"]},"format":{"description":"There are no format keyword options for `array`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints apply for `array` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"array"}}]},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"options\"\n  \"type\": \"array\"\n}\n"]},{"type":"object","title":"Duration Field","description":"The field contains a duration of time.","context":"The lexical representation for duration is the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) extended format `PnYnMnDTnHnMnS`, where `nY` represents the number of years, `nM` the number of months, `nD` the number of days, 'T' is the date/time separator, `nH` the number of hours, `nM` the number of minutes and `nS` the number of seconds. The number of seconds can include decimal digits to arbitrary precision. Date and time elements including their designator may be omitted if their value is zero, and lower order elements may also be omitted for reduced precision. Here we follow the definition of [XML Schema duration datatype](http://www.w3.org/TR/xmlschema-2/#duration) directly and that definition is implicitly inlined here.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `duration`.","enum":["duration"]},"format":{"description":"There are no format keyword options for `duration`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `duration` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"period\"\n  \"type\": \"duration\"\n}\n"]},{"type":"object","title":"Any Field","description":"Any value is accepted, including values that are not captured by the type/format/constraint requirements of the specification.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `any`.","enum":["any"]},"constraints":{"title":"Constraints","description":"The following constraints apply to `any` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"notes\",\n  \"type\": \"any\"\n"]}]},"description":"An `array` of Table Schema Field objects.","examples":["{\n  \"fields\": [\n    {\n      \"name\": \"my-field-name\"\n    }\n  ]\n}\n","{\n  \"fields\": [\n    {\n      \"name\": \"my-field-name\",\n      \"type\": \"number\"\n    },\n    {\n      \"name\": \"my-field-name-2\",\n      \"type\": \"string\",\n      \"format\": \"email\"\n    }\n  ]\n}\n"]},"primaryKey":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"string"}],"description":"A primary key is a field name or an array of field names, whose values `MUST` uniquely identify each row in the table.","context":"Field name in the `primaryKey` `MUST` be unique, and `MUST` match a field name in the associated table. It is acceptable to have an array with a single value, indicating that the value of a single field is the primary key.","examples":["{\n  \"primaryKey\": [\n    \"name\"\n  ]\n}\n","{\n  \"primaryKey\": [\n    \"first_name\",\n    \"last_name\"\n  ]\n}\n"]},"foreignKeys":{"type":"array","minItems":1,"items":{"title":"Table Schema Foreign Key","description":"Table Schema Foreign Key","type":"object","required":["fields","reference"],"oneOf":[{"properties":{"fields":{"type":"array","items":{"type":"string","minItems":1,"uniqueItems":true,"description":"Fields that make up the primary key."}},"reference":{"type":"object","required":["resource","fields"],"properties":{"resource":{"type":"string","default":""},"fields":{"type":"array","items":{"type":"string"},"minItems":1,"uniqueItems":true}}}}},{"properties":{"fields":{"type":"string","description":"Fields that make up the primary key."},"reference":{"type":"object","required":["resource","fields"],"properties":{"resource":{"type":"string","default":""},"fields":{"type":"string"}}}}}]},"examples":["{\n  \"foreignKeys\": [\n    {\n      \"fields\": \"state\",\n      \"reference\": {\n        \"resource\": \"the-resource\",\n        \"fields\": \"state_id\"\n      }\n    }\n  ]\n}\n","{\n  \"foreignKeys\": [\n    {\n      \"fields\": \"state\",\n      \"reference\": {\n        \"resource\": \"\",\n        \"fields\": \"id\"\n      }\n    }\n  ]\n}\n"]},"missingValues":{"type":"array","minItems":1,"items":{"type":"string"},"default":[""],"description":"Values that when encountered in the source, should be considered as `null`, 'not present', or 'blank' values.","context":"Many datasets arrive with missing data values, either because a value was not collected or it never existed.\nMissing values may be indicated simply by the value being empty in other cases a special value may have been used e.g. `-`, `NaN`, `0`, `-9999` etc.\nThe `missingValues` property provides a way to indicate that these values should be interpreted as equivalent to null.\n\n`missingValues` are strings rather than being the data type of the particular field. This allows for comparison prior to casting and for fields to have missing value which are not of their type, for example a `number` field to have missing values indicated by `-`.\n\nThe default value of `missingValue` for a non-string type field is the empty string `''`. For string type fields there is no default for `missingValue` (for string fields the empty string `''` is a valid value and need not indicate null).","examples":["{\n  \"missingValues\": [\n    \"-\",\n    \"NaN\",\n    \"\"\n  ]\n}\n"]}},"examples":["{\n  \"schema\": {\n    \"fields\": [\n      {\n        \"name\": \"first_name\",\n        \"type\": \"string\"\n        \"constraints\": {\n          \"required\": true\n        }\n      },\n      {\n        \"name\": \"age\",\n        \"type\": \"integer\"\n      },\n    ],\n    \"primaryKey\": [\n      \"name\"\n    ]\n  }\n}\n"]},"title":{"propertyOrder":50,"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"propertyOrder":60,"format":"textarea","title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"homepage":{"propertyOrder":70,"title":"Home Page","description":"The home on the web that is related to this data package.","type":"string","format":"uri","examples":["{\n  \"homepage\": \"http://example.com/\"\n}\n"]},"sources":{"propertyOrder":140,"options":{"hidden":true},"title":"Sources","description":"The raw sources for this resource.","type":"array","minItems":1,"items":{"title":"Source","description":"A source file.","type":"object","required":["title"],"properties":{"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"email":{"title":"Email","description":"An email address.","type":"string","format":"email","examples":["{\n  \"email\": \"example@example.com\"\n}\n"]}}},"examples":["{\n  \"sources\": [\n    {\n      \"name\": \"World Bank and OECD\",\n      \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\"\n    }\n  ]\n}\n"]},"licenses":{"description":"The license(s) under which the resource is published.","propertyOrder":150,"options":{"hidden":true},"title":"Licenses","type":"array","minItems":1,"items":{"title":"License","description":"A license for this descriptor.","type":"object","properties":{"name":{"title":"Open Definition license identifier","description":"MUST be an Open Definition license identifier, see http://licenses.opendefinition.org/","type":"string","pattern":"^([-a-zA-Z0-9._])+$"},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]}},"context":"Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."},"context":"This property is not legally binding and does not guarantee that the package is licensed under the terms defined herein.","examples":["{\n  \"licenses\": [\n    {\n      \"name\": \"odc-pddl-1.0\",\n      \"uri\": \"http://opendatacommons.org/licenses/pddl/\"\n    }\n  ]\n}\n"]},"dialect":{"propertyOrder":50,"title":"CSV Dialect","description":"The CSV dialect descriptor.","type":"object","required":["delimiter","doubleQuote"],"properties":{"delimiter":{"title":"Delimiter","description":"A character sequence to use as the field separator.","type":"string","default":",","examples":["{\n  \"delimiter\": \",\"\n}\n","{\n  \"delimiter\": \";\"\n}\n"]},"doubleQuote":{"title":"Double Quote","description":"Specifies the handling of quotes inside fields.","context":"If Double Quote is set to true, two consecutive quotes must be interpreted as one.","type":"boolean","default":true,"examples":["{\n  \"doubleQuote\": true\n}\n"]},"lineTerminator":{"title":"Line Terminator","description":"Specifies the character sequence that must be used to terminate rows.","type":"string","default":"\r\n","examples":["{\n  \"lineTerminator\": \"\\r\\n\"\n}\n","{\n  \"lineTerminator\": \"\\n\"\n}\n"]},"nullSequence":{"title":"Null Sequence","description":"Specifies the null sequence, for example, `\\N`.","type":"string","examples":["{\n  \"nullSequence\": \"\\N\"\n}\n"]},"quoteChar":{"title":"Quote Character","description":"Specifies a one-character string to use as the quoting character.","type":"string","default":"\"","examples":["{\n  \"quoteChar\": \"\"\n}\n","{\n  \"quoteChar\": \"''\"\n}\n"]},"escapeChar":{"title":"Escape Character","description":"Specifies a one-character string to use as the escape character.","type":"string","default":"\\","examples":["{\n  \"escapeChar\": \"\\\\\"\n}\n"]},"skipInitialSpace":{"title":"Skip Initial Space","description":"Specifies the interpretation of whitespace immediately following a delimiter. If false, whitespace immediately after a delimiter should be treated as part of the subsequent field.","type":"boolean","default":true,"examples":["{\n  \"skipInitialSpace\": true\n}\n"]},"header":{"title":"Header","description":"Specifies if the file includes a header row, always as the first row in the file.","type":"boolean","default":true,"examples":["{\n  \"header\": true\n}\n"]},"caseSensitiveHeader":{"title":"Case Sensitive Header","description":"Specifies if the case of headers is meaningful.","context":"Use of case in source CSV files is not always an intentional decision. For example, should \"CAT\" and \"Cat\" be considered to have the same meaning.","type":"boolean","default":false,"examples":["{\n  \"caseSensitiveHeader\": true\n}\n"]}},"examples":["{\n  \"dialect\": {\n    \"delimiter\": \";\"\n  }\n}\n","{\n  \"dialect\": {\n    \"delimiter\": \"\\t\",\n    \"quoteChar\": \"''\"\n  }\n}\n"]},"format":{"propertyOrder":80,"title":"Format","description":"The file format of this resource.","context":"`csv`, `xls`, `json` are examples of common formats.","type":"string","examples":["{\n  \"format\": \"xls\"\n}\n"]},"mediatype":{"propertyOrder":90,"title":"Media Type","description":"The media type of this resource. Can be any valid media type listed with [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml).","type":"string","pattern":"^(.+)/(.+)$","examples":["{\n  \"mediatype\": \"text/csv\"\n}\n"]},"encoding":{"propertyOrder":100,"title":"Encoding","description":"The file encoding of this resource.","type":"string","default":"utf-8","examples":["{\n  \"encoding\": \"utf-8\"\n}\n"]},"bytes":{"propertyOrder":110,"options":{"hidden":true},"title":"Bytes","description":"The size of this resource in bytes.","type":"integer","examples":["{\n  \"bytes\": 2082\n}\n"]},"hash":{"propertyOrder":120,"options":{"hidden":true},"title":"Hash","type":"string","description":"The MD5 hash of this resource. Indicate other hashing algorithms with the {algorithm}:{hash} format.","pattern":"^([^:]+:[a-fA-F0-9]+|[a-fA-F0-9]{32}|)$","examples":["{\n  \"hash\": \"d25c9c77f588f5dc32059d2da1136c02\"\n}\n","{\n  \"hash\": \"SHA256:5262f12512590031bbcc9a430452bfd75c2791ad6771320bb4b5728bfb78c4d0\"\n}\n"]}}},"examples":["{\n  \"resources\": [\n    {\n      \"name\": \"my-data\",\n      \"data\": [\n        \"data.csv\"\n      ],\n      \"schema\": \"tableschema.json\",\n      \"mediatype\": \"text/csv\"\n    }\n  ]\n}\n"]},"sources":{"propertyOrder":200,"options":{"hidden":true},"title":"Sources","description":"The raw sources for this resource.","type":"array","minItems":1,"items":{"title":"Source","description":"A source file.","type":"object","required":["title"],"properties":{"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"email":{"title":"Email","description":"An email address.","type":"string","format":"email","examples":["{\n  \"email\": \"example@example.com\"\n}\n"]}}},"examples":["{\n  \"sources\": [\n    {\n      \"name\": \"World Bank and OECD\",\n      \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\"\n    }\n  ]\n}\n"]}}}
 
 /***/ }),
-/* 374 */
+/* 376 */
 /* no static exports found */
 /* all exports used */
 /*!***************************************************************!*\
@@ -48825,7 +49102,7 @@ module.exports = {"$schema":"http://json-schema.org/draft-04/schema#","title":"T
 module.exports = {"$schema":"http://json-schema.org/draft-04/schema#","title":"Tabular Data Resource","description":"A Tabular Data Resource.","type":"object","oneOf":[{"required":["name","data","schema","profile"]},{"required":["name","path","schema","profile"]}],"properties":{"profile":{"enum":["tabular-data-resource"],"propertyOrder":10,"title":"Profile","description":"The profile of this descriptor.","context":"Every Package and Resource descriptor has a profile. The default profile, if none is declared, is `data-package` for Package and `data-resource` for Resource.","type":"string","examples":["{\n  \"profile\": \"tabular-data-package\"\n}\n","{\n  \"profile\": \"http://example.com/my-profiles-json-schema.json\"\n}\n"]},"name":{"propertyOrder":20,"title":"Name","description":"An identifier string. Lower case characters with `.`, `_`, `-` and `/` are allowed.","type":"string","pattern":"^([-a-z0-9._/])+$","context":"This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent descriptor is updated.","examples":["{\n  \"name\": \"my-nice-name\"\n}\n"]},"path":{"propertyOrder":30,"title":"Path","description":"A reference to the data for this resource, as either a path as a string, or an array of paths as strings. of valid URIs.","oneOf":[{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},{"type":"array","minItems":1,"items":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"examples":["[ \"file.csv\" ]\n","[ \"http://example.com/file.csv\" ]\n"]}],"context":"The dereferenced value of each referenced data source in `path` `MUST` be commensurate with a native, dereferenced representation of the data the resource describes. For example, in a *Tabular* Data Resource, this means that the dereferenced value of `path` `MUST` be an array.","examples":["{\n  \"path\": [\n    \"file.csv\",\n    \"file2.csv\"\n  ]\n}\n","{\n  \"path\": [\n    \"http://example.com/file.csv\",\n    \"http://example.com/file2.csv\"\n  ]\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"]},"data":{"propertyOrder":230,"title":"Data","description":"Inline data for this resource."},"schema":{"propertyOrder":40,"title":"Table Schema","description":"A Table Schema for this resource, compliant with the [Table Schema](/tableschema/) specification.","type":"object","required":["fields"],"properties":{"fields":{"type":"array","minItems":1,"items":{"title":"Table Schema Field","type":"object","anyOf":[{"type":"object","title":"String Field","description":"The field contains strings, that is, sequences of characters.","required":["name"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `string`.","enum":["string"]},"format":{"description":"The format keyword options for `string` are `default`, `email`, `uri`, `binary`, and `uuid`.","context":"The following `format` options are supported:\n  * **default**: any valid string.\n  * **email**: A valid email address.\n  * **uri**: A valid URI.\n  * **binary**: A base64 encoded string representing binary data.\n  * **uuid**: A string that is a uuid.","enum":["default","email","uri","binary","uuid"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `string` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"name\",\n  \"type\": \"string\"\n}\n","{\n  \"name\": \"name\",\n  \"type\": \"string\",\n  \"format\": \"email\"\n}\n","{\n  \"name\": \"name\",\n  \"type\": \"string\",\n  \"constraints\": {\n    \"minLength\": 3,\n    \"maxLength\": 35\n  }\n}\n"]},{"type":"object","title":"Number Field","description":"The field contains numbers of any kind including decimals.","context":"The lexical formatting follows that of decimal in [XMLSchema](https://www.w3.org/TR/xmlschema-2/#decimal): a non-empty finite-length sequence of decimal digits separated by a period as a decimal indicator. An optional leading sign is allowed. If the sign is omitted, '+' is assumed. Leading and trailing zeroes are optional. If the fractional part is zero, the period and following zero(es) can be omitted. For example: '-1.23', '12678967.543233', '+100000.00', '210'.\n\nThe following special string values are permitted (case does not need to be respected):\n  - NaN: not a number\n  - INF: positive infinity\n  - -INF: negative infinity\n\nA number `MAY` also have a trailing:\n  - exponent: this `MUST` consist of an E followed by an optional + or - sign followed by one or more decimal digits (0-9)\n  - percentage: the percentage sign: `%`. In conversion percentages should be divided by 100.\n\nIf both exponent and percentages are present the percentage `MUST` follow the exponent e.g. '53E10%' (equals 5.3).","required":["name"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `number`.","enum":["number"]},"format":{"description":"There are no format keyword options for `number`: only `default` is allowed.","enum":["default"],"default":"default"},"bareNumber":{"type":"boolean","title":"bareNumber","description":"a boolean field with a default of `true`. If `true` the physical contents of this field must follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors MUST therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.","default":true},"decimalChar":{"type":"string","description":"A string whose value is used to represent a decimal point within the number. The default value is `.`."},"groupChar":{"type":"string","description":"A string whose value is used to group digits within the number. The default value is `null`. A common value is `,` e.g. '100,000'."},"constraints":{"title":"Constraints","description":"The following constraints are supported for `number` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"number"}}]},"minimum":{"oneOf":[{"type":"string"},{"type":"number"}]},"maximum":{"oneOf":[{"type":"string"},{"type":"number"}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"field-name\",\n  \"type\": \"number\"\n}\n","{\n  \"name\": \"field-name\",\n  \"type\": \"number\",\n  \"constraints\": {\n    \"enum\": [ \"1.00\", \"1.50\", \"2.00\" ]\n  }\n}\n"]},{"type":"object","title":"Integer Field","description":"The field contains integers - that is whole numbers.","context":"Integer values are indicated in the standard way for any valid integer.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `integer`.","enum":["integer"]},"format":{"description":"There are no format keyword options for `integer`: only `default` is allowed.","enum":["default"],"default":"default"},"bareNumber":{"type":"boolean","title":"bareNumber","description":"a boolean field with a default of `true`. If `true` the physical contents of this field must follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors MUST therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.","default":true},"constraints":{"title":"Constraints","description":"The following constraints are supported for `integer` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"integer"}}]},"minimum":{"oneOf":[{"type":"string"},{"type":"integer"}]},"maximum":{"oneOf":[{"type":"string"},{"type":"integer"}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"age\",\n  \"type\": \"integer\",\n  \"constraints\": {\n    \"unique\": true,\n    \"minimum\": 100,\n    \"maximum\": 9999\n  }\n}\n"]},{"type":"object","title":"Date Field","description":"The field contains temporal date values.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `date`.","enum":["date"]},"format":{"description":"The format keyword options for `date` are `default`, `any`, and `{PATTERN}`.","context":"The following `format` options are supported:\n  * **default**: An ISO8601 format string of YYYY-MM-DD.\n  * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.\n  * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).","default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `date` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"date_of_birth\",\n  \"type\": \"date\"\n}\n","{\n  \"name\": \"date_of_birth\",\n  \"type\": \"date\",\n  \"constraints\": {\n    \"minimum\": \"01-01-1900\"\n  }\n}\n","{\n  \"name\": \"date_of_birth\",\n  \"type\": \"date\",\n  \"format\": \"MM-DD-YYYY\"\n}\n"]},{"type":"object","title":"Time Field","description":"The field contains temporal time values.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `time`.","enum":["time"]},"format":{"description":"The format keyword options for `time` are `default`, `any`, and `{PATTERN}`.","context":"The following `format` options are supported:\n  * **default**: An ISO8601 format string for time.\n  * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.\n  * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).","default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `time` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"appointment_start\",\n  \"type\": \"time\"\n}\n","{\n  \"name\": \"appointment_start\",\n  \"type\": \"time\",\n  \"format\": \"any\"\n}\n"]},{"type":"object","title":"Date Time Field","description":"The field contains temporal datetime values.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `datetime`.","enum":["datetime"]},"format":{"description":"The format keyword options for `datetime` are `default`, `any`, and `{PATTERN}`.","context":"The following `format` options are supported:\n  * **default**: An ISO8601 format string for datetime.\n  * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.\n  * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).","default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `datetime` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"timestamp\",\n  \"type\": \"datetime\"\n}\n","{\n  \"name\": \"timestamp\",\n  \"type\": \"datetime\",\n  \"format\": \"default\"\n}\n"]},{"type":"object","title":"Year Field","description":"A calendar year, being an integer with 4 digits. Equivalent to [gYear in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYear)","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `year`.","enum":["year"]},"format":{"description":"There are no format keyword options for `year`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `year` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"integer"}}]},"minimum":{"oneOf":[{"type":"string"},{"type":"integer"}]},"maximum":{"oneOf":[{"type":"string"},{"type":"integer"}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"year\",\n  \"type\": \"year\"\n}\n","{\n  \"name\": \"year\",\n  \"type\": \"year\",\n  \"constraints\": {\n    \"minimum\": 1970,\n    \"maximum\": 2003\n  }\n}\n"]},{"type":"object","title":"Year Month Field","description":"A calendar year month, being an integer with 1 or 2 digits. Equivalent to [gYearMonth in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYearMonth)","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `yearmonth`.","enum":["yearmonth"]},"format":{"description":"There are no format keyword options for `yearmonth`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `yearmonth` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"month\",\n  \"type\": \"yearmonth\"\n}\n","{\n  \"name\": \"month\",\n  \"type\": \"yearmonth\",\n  \"constraints\": {\n    \"minimum\": 1,\n    \"maximum\": 6\n  }\n}\n"]},{"type":"object","title":"Boolean Field","description":"The field contains boolean (true/false) data.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `boolean`.","enum":["boolean"]},"trueValues":{"type":"array","minItems":1,"items":{"type":"string"},"default":["true","True","TRUE","1"]},"falseValues":{"type":"array","minItems":1,"items":{"type":"string"},"default":["false","False","FALSE","0"]},"constraints":{"title":"Constraints","description":"The following constraints are supported for `boolean` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"boolean"}}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"registered\",\n  \"type\": \"boolean\"\n}\n"]},{"type":"object","title":"Object Field","description":"The field contains data which can be parsed as a valid JSON object.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `object`.","enum":["object"]},"format":{"description":"There are no format keyword options for `object`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints apply for `object` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"object"}}]},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"extra\"\n  \"type\": \"object\"\n}\n"]},{"type":"object","title":"GeoPoint Field","description":"The field contains data describing a geographic point.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `geopoint`.","enum":["geopoint"]},"format":{"description":"The format keyword options for `geopoint` are `default`,`array`, and `object`.","context":"The following `format` options are supported:\n  * **default**: A string of the pattern 'lon, lat', where `lon` is the longitude and `lat` is the latitude.\n  * **array**: An array of exactly two items, where each item is either a number, or a string parsable as a number, and the first item is `lon` and the second item is `lat`.\n  * **object**: A JSON object with exactly two keys, `lat` and `lon`","notes":["Implementations `MUST` strip all white space in the default format of `lon, lat`."],"enum":["default","array","object"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `geopoint` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"array"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"object"}}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"post_office\",\n  \"type\": \"geopoint\"\n}\n","{\n  \"name\": \"post_office\",\n  \"type\": \"geopoint\",\n  \"format\": \"array\"\n}\n"]},{"type":"object","title":"GeoJSON Field","description":"The field contains a JSON object according to GeoJSON or TopoJSON","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `geojson`.","enum":["geojson"]},"format":{"description":"The format keyword options for `geojson` are `default` and `topojson`.","context":"The following `format` options are supported:\n  * **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).\n  * **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)","enum":["default","topojson"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `geojson` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"object"}}]},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"city_limits\",\n  \"type\": \"geojson\"\n}\n","{\n  \"name\": \"city_limits\",\n  \"type\": \"geojson\",\n  \"format\": \"topojson\"\n}\n"]},{"type":"object","title":"Array Field","description":"The field contains data which can be parsed as a valid JSON array.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `array`.","enum":["array"]},"format":{"description":"There are no format keyword options for `array`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints apply for `array` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"array"}}]},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"options\"\n  \"type\": \"array\"\n}\n"]},{"type":"object","title":"Duration Field","description":"The field contains a duration of time.","context":"The lexical representation for duration is the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) extended format `PnYnMnDTnHnMnS`, where `nY` represents the number of years, `nM` the number of months, `nD` the number of days, 'T' is the date/time separator, `nH` the number of hours, `nM` the number of minutes and `nS` the number of seconds. The number of seconds can include decimal digits to arbitrary precision. Date and time elements including their designator may be omitted if their value is zero, and lower order elements may also be omitted for reduced precision. Here we follow the definition of [XML Schema duration datatype](http://www.w3.org/TR/xmlschema-2/#duration) directly and that definition is implicitly inlined here.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `duration`.","enum":["duration"]},"format":{"description":"There are no format keyword options for `duration`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `duration` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"period\"\n  \"type\": \"duration\"\n}\n"]},{"type":"object","title":"Any Field","description":"Any value is accepted, including values that are not captured by the type/format/constraint requirements of the specification.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `any`.","enum":["any"]},"constraints":{"title":"Constraints","description":"The following constraints apply to `any` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"notes\",\n  \"type\": \"any\"\n"]}]},"description":"An `array` of Table Schema Field objects.","examples":["{\n  \"fields\": [\n    {\n      \"name\": \"my-field-name\"\n    }\n  ]\n}\n","{\n  \"fields\": [\n    {\n      \"name\": \"my-field-name\",\n      \"type\": \"number\"\n    },\n    {\n      \"name\": \"my-field-name-2\",\n      \"type\": \"string\",\n      \"format\": \"email\"\n    }\n  ]\n}\n"]},"primaryKey":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"string"}],"description":"A primary key is a field name or an array of field names, whose values `MUST` uniquely identify each row in the table.","context":"Field name in the `primaryKey` `MUST` be unique, and `MUST` match a field name in the associated table. It is acceptable to have an array with a single value, indicating that the value of a single field is the primary key.","examples":["{\n  \"primaryKey\": [\n    \"name\"\n  ]\n}\n","{\n  \"primaryKey\": [\n    \"first_name\",\n    \"last_name\"\n  ]\n}\n"]},"foreignKeys":{"type":"array","minItems":1,"items":{"title":"Table Schema Foreign Key","description":"Table Schema Foreign Key","type":"object","required":["fields","reference"],"oneOf":[{"properties":{"fields":{"type":"array","items":{"type":"string","minItems":1,"uniqueItems":true,"description":"Fields that make up the primary key."}},"reference":{"type":"object","required":["resource","fields"],"properties":{"resource":{"type":"string","default":""},"fields":{"type":"array","items":{"type":"string"},"minItems":1,"uniqueItems":true}}}}},{"properties":{"fields":{"type":"string","description":"Fields that make up the primary key."},"reference":{"type":"object","required":["resource","fields"],"properties":{"resource":{"type":"string","default":""},"fields":{"type":"string"}}}}}]},"examples":["{\n  \"foreignKeys\": [\n    {\n      \"fields\": \"state\",\n      \"reference\": {\n        \"resource\": \"the-resource\",\n        \"fields\": \"state_id\"\n      }\n    }\n  ]\n}\n","{\n  \"foreignKeys\": [\n    {\n      \"fields\": \"state\",\n      \"reference\": {\n        \"resource\": \"\",\n        \"fields\": \"id\"\n      }\n    }\n  ]\n}\n"]},"missingValues":{"type":"array","minItems":1,"items":{"type":"string"},"default":[""],"description":"Values that when encountered in the source, should be considered as `null`, 'not present', or 'blank' values.","context":"Many datasets arrive with missing data values, either because a value was not collected or it never existed.\nMissing values may be indicated simply by the value being empty in other cases a special value may have been used e.g. `-`, `NaN`, `0`, `-9999` etc.\nThe `missingValues` property provides a way to indicate that these values should be interpreted as equivalent to null.\n\n`missingValues` are strings rather than being the data type of the particular field. This allows for comparison prior to casting and for fields to have missing value which are not of their type, for example a `number` field to have missing values indicated by `-`.\n\nThe default value of `missingValue` for a non-string type field is the empty string `''`. For string type fields there is no default for `missingValue` (for string fields the empty string `''` is a valid value and need not indicate null).","examples":["{\n  \"missingValues\": [\n    \"-\",\n    \"NaN\",\n    \"\"\n  ]\n}\n"]}},"examples":["{\n  \"schema\": {\n    \"fields\": [\n      {\n        \"name\": \"first_name\",\n        \"type\": \"string\"\n        \"constraints\": {\n          \"required\": true\n        }\n      },\n      {\n        \"name\": \"age\",\n        \"type\": \"integer\"\n      },\n    ],\n    \"primaryKey\": [\n      \"name\"\n    ]\n  }\n}\n"]},"title":{"propertyOrder":50,"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"propertyOrder":60,"format":"textarea","title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"homepage":{"propertyOrder":70,"title":"Home Page","description":"The home on the web that is related to this data package.","type":"string","format":"uri","examples":["{\n  \"homepage\": \"http://example.com/\"\n}\n"]},"sources":{"propertyOrder":140,"options":{"hidden":true},"title":"Sources","description":"The raw sources for this resource.","type":"array","minItems":1,"items":{"title":"Source","description":"A source file.","type":"object","required":["title"],"properties":{"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"email":{"title":"Email","description":"An email address.","type":"string","format":"email","examples":["{\n  \"email\": \"example@example.com\"\n}\n"]}}},"examples":["{\n  \"sources\": [\n    {\n      \"name\": \"World Bank and OECD\",\n      \"uri\": \"http://data.worldbank.org/indicator/NY.GDP.MKTP.CD\"\n    }\n  ]\n}\n"]},"licenses":{"description":"The license(s) under which the resource is published.","propertyOrder":150,"options":{"hidden":true},"title":"Licenses","type":"array","minItems":1,"items":{"title":"License","description":"A license for this descriptor.","type":"object","properties":{"name":{"title":"Open Definition license identifier","description":"MUST be an Open Definition license identifier, see http://licenses.opendefinition.org/","type":"string","pattern":"^([-a-zA-Z0-9._])+$"},"path":{"title":"Path","description":"A fully qualified URL, or a POSIX file path..","type":"string","examples":["{\n  \"path\": \"file.csv\"\n}\n","{\n  \"path\": \"http://example.com/file.csv\"\n}\n"],"context":"Implementations need to negotiate the type of path provided, and dereference the data accordingly."},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]}},"context":"Use of this property does not imply that the person was the original creator of, or a contributor to, the data in the descriptor, but refers to the composition of the descriptor itself."},"context":"This property is not legally binding and does not guarantee that the package is licensed under the terms defined herein.","examples":["{\n  \"licenses\": [\n    {\n      \"name\": \"odc-pddl-1.0\",\n      \"uri\": \"http://opendatacommons.org/licenses/pddl/\"\n    }\n  ]\n}\n"]},"dialect":{"propertyOrder":50,"title":"CSV Dialect","description":"The CSV dialect descriptor.","type":"object","required":["delimiter","doubleQuote"],"properties":{"delimiter":{"title":"Delimiter","description":"A character sequence to use as the field separator.","type":"string","default":",","examples":["{\n  \"delimiter\": \",\"\n}\n","{\n  \"delimiter\": \";\"\n}\n"]},"doubleQuote":{"title":"Double Quote","description":"Specifies the handling of quotes inside fields.","context":"If Double Quote is set to true, two consecutive quotes must be interpreted as one.","type":"boolean","default":true,"examples":["{\n  \"doubleQuote\": true\n}\n"]},"lineTerminator":{"title":"Line Terminator","description":"Specifies the character sequence that must be used to terminate rows.","type":"string","default":"\r\n","examples":["{\n  \"lineTerminator\": \"\\r\\n\"\n}\n","{\n  \"lineTerminator\": \"\\n\"\n}\n"]},"nullSequence":{"title":"Null Sequence","description":"Specifies the null sequence, for example, `\\N`.","type":"string","examples":["{\n  \"nullSequence\": \"\\N\"\n}\n"]},"quoteChar":{"title":"Quote Character","description":"Specifies a one-character string to use as the quoting character.","type":"string","default":"\"","examples":["{\n  \"quoteChar\": \"\"\n}\n","{\n  \"quoteChar\": \"''\"\n}\n"]},"escapeChar":{"title":"Escape Character","description":"Specifies a one-character string to use as the escape character.","type":"string","default":"\\","examples":["{\n  \"escapeChar\": \"\\\\\"\n}\n"]},"skipInitialSpace":{"title":"Skip Initial Space","description":"Specifies the interpretation of whitespace immediately following a delimiter. If false, whitespace immediately after a delimiter should be treated as part of the subsequent field.","type":"boolean","default":true,"examples":["{\n  \"skipInitialSpace\": true\n}\n"]},"header":{"title":"Header","description":"Specifies if the file includes a header row, always as the first row in the file.","type":"boolean","default":true,"examples":["{\n  \"header\": true\n}\n"]},"caseSensitiveHeader":{"title":"Case Sensitive Header","description":"Specifies if the case of headers is meaningful.","context":"Use of case in source CSV files is not always an intentional decision. For example, should \"CAT\" and \"Cat\" be considered to have the same meaning.","type":"boolean","default":false,"examples":["{\n  \"caseSensitiveHeader\": true\n}\n"]}},"examples":["{\n  \"dialect\": {\n    \"delimiter\": \";\"\n  }\n}\n","{\n  \"dialect\": {\n    \"delimiter\": \"\\t\",\n    \"quoteChar\": \"''\"\n  }\n}\n"]},"format":{"propertyOrder":80,"title":"Format","description":"The file format of this resource.","context":"`csv`, `xls`, `json` are examples of common formats.","type":"string","examples":["{\n  \"format\": \"xls\"\n}\n"]},"mediatype":{"propertyOrder":90,"title":"Media Type","description":"The media type of this resource. Can be any valid media type listed with [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml).","type":"string","pattern":"^(.+)/(.+)$","examples":["{\n  \"mediatype\": \"text/csv\"\n}\n"]},"encoding":{"propertyOrder":100,"title":"Encoding","description":"The file encoding of this resource.","type":"string","default":"utf-8","examples":["{\n  \"encoding\": \"utf-8\"\n}\n"]},"bytes":{"propertyOrder":110,"options":{"hidden":true},"title":"Bytes","description":"The size of this resource in bytes.","type":"integer","examples":["{\n  \"bytes\": 2082\n}\n"]},"hash":{"propertyOrder":120,"options":{"hidden":true},"title":"Hash","type":"string","description":"The MD5 hash of this resource. Indicate other hashing algorithms with the {algorithm}:{hash} format.","pattern":"^([^:]+:[a-fA-F0-9]+|[a-fA-F0-9]{32}|)$","examples":["{\n  \"hash\": \"d25c9c77f588f5dc32059d2da1136c02\"\n}\n","{\n  \"hash\": \"SHA256:5262f12512590031bbcc9a430452bfd75c2791ad6771320bb4b5728bfb78c4d0\"\n}\n"]}}}
 
 /***/ }),
-/* 375 */
+/* 377 */
 /* no static exports found */
 /* all exports used */
 /*!***************************************!*\
@@ -48875,7 +49152,7 @@ var validate = function () {
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-var _require = __webpack_require__(/*! ./package */ 66),
+var _require = __webpack_require__(/*! ./package */ 67),
     Package = _require.Package;
 
 module.exports = {
@@ -48883,7 +49160,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 376 */
+/* 378 */
 /* no static exports found */
 /* all exports used */
 /*!********************************!*\
@@ -48923,7 +49200,7 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 377 */
+/* 379 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************************!*\
@@ -48943,7 +49220,7 @@ module.exports = camelize;
 
 
 
-var camelize = __webpack_require__(/*! ./camelize */ 376);
+var camelize = __webpack_require__(/*! ./camelize */ 378);
 
 var msPattern = /^-ms-/;
 
@@ -48971,7 +49248,7 @@ function camelizeStyleName(string) {
 module.exports = camelizeStyleName;
 
 /***/ }),
-/* 378 */
+/* 380 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************!*\
@@ -49012,7 +49289,7 @@ function hyphenate(string) {
 module.exports = hyphenate;
 
 /***/ }),
-/* 379 */
+/* 381 */
 /* no static exports found */
 /* all exports used */
 /*!******************************************!*\
@@ -49032,7 +49309,7 @@ module.exports = hyphenate;
 
 
 
-var hyphenate = __webpack_require__(/*! ./hyphenate */ 378);
+var hyphenate = __webpack_require__(/*! ./hyphenate */ 380);
 
 var msPattern = /^ms-/;
 
@@ -49059,7 +49336,7 @@ function hyphenateStyleName(string) {
 module.exports = hyphenateStyleName;
 
 /***/ }),
-/* 380 */
+/* 382 */
 /* no static exports found */
 /* all exports used */
 /*!******************************!*\
@@ -49092,7 +49369,7 @@ function isNode(object) {
 module.exports = isNode;
 
 /***/ }),
-/* 381 */
+/* 383 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -49112,7 +49389,7 @@ module.exports = isNode;
  * @typechecks
  */
 
-var isNode = __webpack_require__(/*! ./isNode */ 380);
+var isNode = __webpack_require__(/*! ./isNode */ 382);
 
 /**
  * @param {*} object The object to check.
@@ -49125,7 +49402,7 @@ function isTextNode(object) {
 module.exports = isTextNode;
 
 /***/ }),
-/* 382 */
+/* 384 */
 /* no static exports found */
 /* all exports used */
 /*!****************************!*\
@@ -49158,7 +49435,7 @@ module.exports = function forEach (obj, fn, ctx) {
 
 
 /***/ }),
-/* 383 */
+/* 385 */
 /* no static exports found */
 /* all exports used */
 /*!******************************!*\
@@ -49189,7 +49466,7 @@ module.exports = function forEach (obj, fn, ctx) {
 
 var pathModule = __webpack_require__(/*! path */ 20);
 var isWindows = process.platform === 'win32';
-var fs = __webpack_require__(/*! fs */ 14);
+var fs = __webpack_require__(/*! fs */ 15);
 
 // JavaScript implementation of realpath, ported from node pre-v6
 
@@ -49473,7 +49750,7 @@ exports.realpath = function realpath(p, cache, cb) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 1)))
 
 /***/ }),
-/* 384 */
+/* 386 */
 /* no static exports found */
 /* all exports used */
 /*!************************!*\
@@ -49484,15 +49761,15 @@ exports.realpath = function realpath(p, cache, cb) {
 /* WEBPACK VAR INJECTION */(function(process) {module.exports = globSync
 globSync.GlobSync = GlobSync
 
-var fs = __webpack_require__(/*! fs */ 14)
+var fs = __webpack_require__(/*! fs */ 15)
 var rp = __webpack_require__(/*! fs.realpath */ 119)
-var minimatch = __webpack_require__(/*! minimatch */ 88)
+var minimatch = __webpack_require__(/*! minimatch */ 89)
 var Minimatch = minimatch.Minimatch
 var Glob = __webpack_require__(/*! ./glob.js */ 121).Glob
 var util = __webpack_require__(/*! util */ 23)
 var path = __webpack_require__(/*! path */ 20)
-var assert = __webpack_require__(/*! assert */ 103)
-var isAbsolute = __webpack_require__(/*! path-is-absolute */ 89)
+var assert = __webpack_require__(/*! assert */ 104)
+var isAbsolute = __webpack_require__(/*! path-is-absolute */ 90)
 var common = __webpack_require__(/*! ./common.js */ 120)
 var alphasort = common.alphasort
 var alphasorti = common.alphasorti
@@ -49971,7 +50248,7 @@ GlobSync.prototype._makeAbs = function (f) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 1)))
 
 /***/ }),
-/* 385 */
+/* 387 */
 /* no static exports found */
 /* all exports used */
 /*!****************************!*\
@@ -50066,7 +50343,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 386 */
+/* 388 */
 /* no static exports found */
 /* all exports used */
 /*!********************************!*\
@@ -50132,7 +50409,7 @@ function slice (args) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 1)))
 
 /***/ }),
-/* 387 */
+/* 389 */
 /* no static exports found */
 /* exports used: default */
 /*!********************************!*\
@@ -50196,7 +50473,7 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 1)))
 
 /***/ }),
-/* 388 */
+/* 390 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -51136,7 +51413,7 @@ jschardet.Big5CharToFreqOrder = [
 
 
 /***/ }),
-/* 389 */
+/* 391 */
 /* no static exports found */
 /* all exports used */
 /*!***************************************!*\
@@ -51198,7 +51475,7 @@ jschardet.Big5Prober.prototype = new jschardet.MultiByteCharSetProber();
 
 
 /***/ }),
-/* 390 */
+/* 392 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************************!*\
@@ -51494,7 +51771,7 @@ jschardet.EUCJPDistributionAnalysis.prototype = new jschardet.CharDistributionAn
 
 
 /***/ }),
-/* 391 */
+/* 393 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************************!*\
@@ -51623,7 +51900,7 @@ jschardet.CharSetGroupProber.prototype = new jschardet.CharSetProber();
 
 
 /***/ }),
-/* 392 */
+/* 394 */
 /* no static exports found */
 /* all exports used */
 /*!******************************************!*\
@@ -51734,7 +52011,7 @@ jschardet.CharSetProber = function() {
 
 
 /***/ }),
-/* 393 */
+/* 395 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************************!*\
@@ -51816,7 +52093,7 @@ jschardet.CodingStateMachine = function(sm) {
 
 
 /***/ }),
-/* 394 */
+/* 396 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************!*\
@@ -51874,7 +52151,7 @@ jschardet.Constants = {
 
 
 /***/ }),
-/* 395 */
+/* 397 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************!*\
@@ -51983,7 +52260,7 @@ jschardet.EscCharSetProber.prototype = new jschardet.CharSetProber();
 
 
 /***/ }),
-/* 396 */
+/* 398 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -52248,7 +52525,7 @@ jschardet.ISO2022KRSMModel = {
 
 
 /***/ }),
-/* 397 */
+/* 399 */
 /* no static exports found */
 /* all exports used */
 /*!****************************************!*\
@@ -52361,7 +52638,7 @@ jschardet.EUCJPProber.prototype = new jschardet.MultiByteCharSetProber();
 
 
 /***/ }),
-/* 398 */
+/* 400 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************!*\
@@ -52973,7 +53250,7 @@ jschardet.EUCKRCharToFreqOrder = [
 
 
 /***/ }),
-/* 399 */
+/* 401 */
 /* no static exports found */
 /* all exports used */
 /*!****************************************!*\
@@ -53035,7 +53312,7 @@ jschardet.EUCKRProber.prototype = new jschardet.MultiByteCharSetProber();
 
 
 /***/ }),
-/* 400 */
+/* 402 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************!*\
@@ -53479,7 +53756,7 @@ jschardet.EUCTWCharToFreqOrder = [
 
 
 /***/ }),
-/* 401 */
+/* 403 */
 /* no static exports found */
 /* all exports used */
 /*!****************************************!*\
@@ -53541,7 +53818,7 @@ jschardet.EUCTWProber.prototype = new jschardet.MultiByteCharSetProber();
 
 
 /***/ }),
-/* 402 */
+/* 404 */
 /* no static exports found */
 /* all exports used */
 /*!***************************************!*\
@@ -54029,7 +54306,7 @@ jschardet.GB2312CharToFreqOrder = [
 
 
 /***/ }),
-/* 403 */
+/* 405 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************************!*\
@@ -54091,7 +54368,7 @@ jschardet.GB2312Prober.prototype = new jschardet.MultiByteCharSetProber();
 
 
 /***/ }),
-/* 404 */
+/* 406 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************************!*\
@@ -54424,7 +54701,7 @@ if (!Array.prototype.indexOf)
 
 
 /***/ }),
-/* 405 */
+/* 407 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -55008,7 +55285,7 @@ jschardet.JISCharToFreqOrder = [
 
 
 /***/ }),
-/* 406 */
+/* 408 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -55261,7 +55538,7 @@ jschardet.EUCJPContextAnalysis.prototype = new jschardet.JapaneseContextAnalysis
 
 
 /***/ }),
-/* 407 */
+/* 409 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************************!*\
@@ -55504,7 +55781,7 @@ jschardet.Win1251BulgarianModel = {
 
 
 /***/ }),
-/* 408 */
+/* 410 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************************!*\
@@ -55848,7 +56125,7 @@ jschardet.Ibm855Model = {
 
 
 /***/ }),
-/* 409 */
+/* 411 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************************!*\
@@ -56088,7 +56365,7 @@ jschardet.Win1253GreekModel = {
 
 
 /***/ }),
-/* 410 */
+/* 412 */
 /* no static exports found */
 /* all exports used */
 /*!********************************************!*\
@@ -56302,7 +56579,7 @@ jschardet.Win1255HebrewModel = {
 
 
 /***/ }),
-/* 411 */
+/* 413 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************************!*\
@@ -56542,7 +56819,7 @@ jschardet.Win1250HungarianModel = {
 
 
 /***/ }),
-/* 412 */
+/* 414 */
 /* no static exports found */
 /* all exports used */
 /*!******************************************!*\
@@ -56757,7 +57034,7 @@ jschardet.TIS620ThaiModel = {
 
 
 /***/ }),
-/* 413 */
+/* 415 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************************!*\
@@ -56934,7 +57211,7 @@ jschardet.Latin1Prober.prototype = new jschardet.CharSetProber();
 
 
 /***/ }),
-/* 414 */
+/* 416 */
 /* no static exports found */
 /* all exports used */
 /*!********************************************!*\
@@ -57046,7 +57323,7 @@ jschardet.MultiByteCharSetProber.prototype = new jschardet.CharSetProber();
 
 
 /***/ }),
-/* 415 */
+/* 417 */
 /* no static exports found */
 /* all exports used */
 /*!********************************************!*\
@@ -57104,7 +57381,7 @@ jschardet.MBCSGroupProber.prototype = new jschardet.CharSetGroupProber();
 
 
 /***/ }),
-/* 416 */
+/* 418 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -57671,7 +57948,7 @@ jschardet.UTF8SMModel = {
 
 
 /***/ }),
-/* 417 */
+/* 419 */
 /* no static exports found */
 /* all exports used */
 /*!********************************************!*\
@@ -57821,7 +58098,7 @@ jschardet.SingleByteCharSetProber.prototype = new jschardet.CharSetProber();
 
 
 /***/ }),
-/* 418 */
+/* 420 */
 /* no static exports found */
 /* all exports used */
 /*!********************************************!*\
@@ -57898,7 +58175,7 @@ jschardet.SBCSGroupProber.prototype = new jschardet.CharSetGroupProber();
 
 
 /***/ }),
-/* 419 */
+/* 421 */
 /* no static exports found */
 /* all exports used */
 /*!***************************************!*\
@@ -58010,7 +58287,7 @@ jschardet.SJISProber.prototype = new jschardet.MultiByteCharSetProber();
 
 
 /***/ }),
-/* 420 */
+/* 422 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************************!*\
@@ -58231,7 +58508,7 @@ jschardet.UniversalDetector = function() {
 
 
 /***/ }),
-/* 421 */
+/* 423 */
 /* no static exports found */
 /* all exports used */
 /*!***************************************!*\
@@ -58337,7 +58614,7 @@ jschardet.UTF8Prober.prototype = new jschardet.CharSetProber();
 
 
 /***/ }),
-/* 422 */
+/* 424 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************!*\
@@ -58348,7 +58625,7 @@ jschardet.UTF8Prober.prototype = new jschardet.CharSetProber();
 "use strict";
 
 
-var each = __webpack_require__(/*! foreach */ 382);
+var each = __webpack_require__(/*! foreach */ 384);
 module.exports = api;
 
 
@@ -58571,7 +58848,7 @@ api.compile = function compile (refTokens) {
 
 
 /***/ }),
-/* 423 */
+/* 425 */
 /* exports provided: default */
 /* exports used: default */
 /*!************************************!*\
@@ -58581,8 +58858,8 @@ api.compile = function compile (refTokens) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(/*! ./_Symbol.js */ 125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getRawTag_js__ = __webpack_require__(/*! ./_getRawTag.js */ 426);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objectToString_js__ = __webpack_require__(/*! ./_objectToString.js */ 427);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getRawTag_js__ = __webpack_require__(/*! ./_getRawTag.js */ 428);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objectToString_js__ = __webpack_require__(/*! ./_objectToString.js */ 429);
 
 
 
@@ -58614,7 +58891,7 @@ function baseGetTag(value) {
 
 
 /***/ }),
-/* 424 */
+/* 426 */
 /* exports provided: default */
 /* exports used: default */
 /*!************************************!*\
@@ -58631,7 +58908,7 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(/*! ./../webpack/buildin/global.js */ 11)))
 
 /***/ }),
-/* 425 */
+/* 427 */
 /* exports provided: default */
 /* exports used: default */
 /*!**************************************!*\
@@ -58640,7 +58917,7 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__overArg_js__ = __webpack_require__(/*! ./_overArg.js */ 428);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__overArg_js__ = __webpack_require__(/*! ./_overArg.js */ 430);
 
 
 /** Built-in value references. */
@@ -58650,7 +58927,7 @@ var getPrototype = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__overArg_js
 
 
 /***/ }),
-/* 426 */
+/* 428 */
 /* exports provided: default */
 /* exports used: default */
 /*!***********************************!*\
@@ -58709,7 +58986,7 @@ function getRawTag(value) {
 
 
 /***/ }),
-/* 427 */
+/* 429 */
 /* exports provided: default */
 /* exports used: default */
 /*!****************************************!*\
@@ -58743,7 +59020,7 @@ function objectToString(value) {
 
 
 /***/ }),
-/* 428 */
+/* 430 */
 /* exports provided: default */
 /* exports used: default */
 /*!*********************************!*\
@@ -58770,7 +59047,7 @@ function overArg(func, transform) {
 
 
 /***/ }),
-/* 429 */
+/* 431 */
 /* exports provided: default */
 /* exports used: default */
 /*!******************************!*\
@@ -58779,7 +59056,7 @@ function overArg(func, transform) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__ = __webpack_require__(/*! ./_freeGlobal.js */ 424);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__ = __webpack_require__(/*! ./_freeGlobal.js */ 426);
 
 
 /** Detect free variable `self`. */
@@ -58792,7 +59069,7 @@ var root = __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__["a" /* default */] || fr
 
 
 /***/ }),
-/* 430 */
+/* 432 */
 /* exports provided: default */
 /* exports used: default */
 /*!*************************************!*\
@@ -58833,7 +59110,7 @@ function isObjectLike(value) {
 
 
 /***/ }),
-/* 431 */
+/* 433 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************!*\
@@ -59776,7 +60053,7 @@ module.exports = get;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../webpack/buildin/global.js */ 11)))
 
 /***/ }),
-/* 432 */
+/* 434 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************!*\
@@ -59785,7 +60062,7 @@ module.exports = get;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(/*! ./_getNative */ 18),
-    root = __webpack_require__(/*! ./_root */ 6);
+    root = __webpack_require__(/*! ./_root */ 7);
 
 /* Built-in method references that are verified to be native. */
 var DataView = getNative(root, 'DataView');
@@ -59794,7 +60071,7 @@ module.exports = DataView;
 
 
 /***/ }),
-/* 433 */
+/* 435 */
 /* no static exports found */
 /* all exports used */
 /*!***************************!*\
@@ -59802,11 +60079,11 @@ module.exports = DataView;
   \***************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var hashClear = __webpack_require__(/*! ./_hashClear */ 488),
-    hashDelete = __webpack_require__(/*! ./_hashDelete */ 489),
-    hashGet = __webpack_require__(/*! ./_hashGet */ 490),
-    hashHas = __webpack_require__(/*! ./_hashHas */ 491),
-    hashSet = __webpack_require__(/*! ./_hashSet */ 492);
+var hashClear = __webpack_require__(/*! ./_hashClear */ 490),
+    hashDelete = __webpack_require__(/*! ./_hashDelete */ 491),
+    hashGet = __webpack_require__(/*! ./_hashGet */ 492),
+    hashHas = __webpack_require__(/*! ./_hashHas */ 493),
+    hashSet = __webpack_require__(/*! ./_hashSet */ 494);
 
 /**
  * Creates a hash object.
@@ -59837,7 +60114,7 @@ module.exports = Hash;
 
 
 /***/ }),
-/* 434 */
+/* 436 */
 /* no static exports found */
 /* all exports used */
 /*!******************************!*\
@@ -59846,7 +60123,7 @@ module.exports = Hash;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(/*! ./_getNative */ 18),
-    root = __webpack_require__(/*! ./_root */ 6);
+    root = __webpack_require__(/*! ./_root */ 7);
 
 /* Built-in method references that are verified to be native. */
 var Promise = getNative(root, 'Promise');
@@ -59855,7 +60132,7 @@ module.exports = Promise;
 
 
 /***/ }),
-/* 435 */
+/* 437 */
 /* no static exports found */
 /* all exports used */
 /*!**************************!*\
@@ -59864,7 +60141,7 @@ module.exports = Promise;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(/*! ./_getNative */ 18),
-    root = __webpack_require__(/*! ./_root */ 6);
+    root = __webpack_require__(/*! ./_root */ 7);
 
 /* Built-in method references that are verified to be native. */
 var Set = getNative(root, 'Set');
@@ -59873,7 +60150,7 @@ module.exports = Set;
 
 
 /***/ }),
-/* 436 */
+/* 438 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -59899,7 +60176,7 @@ module.exports = addMapEntry;
 
 
 /***/ }),
-/* 437 */
+/* 439 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -59925,7 +60202,7 @@ module.exports = addSetEntry;
 
 
 /***/ }),
-/* 438 */
+/* 440 */
 /* no static exports found */
 /* all exports used */
 /*!****************************************!*\
@@ -59958,7 +60235,7 @@ module.exports = arrayIncludesWith;
 
 
 /***/ }),
-/* 439 */
+/* 441 */
 /* no static exports found */
 /* all exports used */
 /*!********************************!*\
@@ -59992,7 +60269,7 @@ module.exports = arraySome;
 
 
 /***/ }),
-/* 440 */
+/* 442 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -60015,7 +60292,7 @@ module.exports = asciiToArray;
 
 
 /***/ }),
-/* 441 */
+/* 443 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************!*\
@@ -60043,7 +60320,7 @@ module.exports = baseAssign;
 
 
 /***/ }),
-/* 442 */
+/* 444 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -60071,7 +60348,7 @@ module.exports = baseAssignIn;
 
 
 /***/ }),
-/* 443 */
+/* 445 */
 /* no static exports found */
 /* all exports used */
 /*!********************************!*\
@@ -60079,23 +60356,23 @@ module.exports = baseAssignIn;
   \********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(/*! ./_Stack */ 72),
+var Stack = __webpack_require__(/*! ./_Stack */ 73),
     arrayEach = __webpack_require__(/*! ./_arrayEach */ 131),
     assignValue = __webpack_require__(/*! ./_assignValue */ 43),
-    baseAssign = __webpack_require__(/*! ./_baseAssign */ 441),
-    baseAssignIn = __webpack_require__(/*! ./_baseAssignIn */ 442),
-    cloneBuffer = __webpack_require__(/*! ./_cloneBuffer */ 464),
-    copyArray = __webpack_require__(/*! ./_copyArray */ 78),
-    copySymbols = __webpack_require__(/*! ./_copySymbols */ 471),
-    copySymbolsIn = __webpack_require__(/*! ./_copySymbolsIn */ 472),
+    baseAssign = __webpack_require__(/*! ./_baseAssign */ 443),
+    baseAssignIn = __webpack_require__(/*! ./_baseAssignIn */ 444),
+    cloneBuffer = __webpack_require__(/*! ./_cloneBuffer */ 466),
+    copyArray = __webpack_require__(/*! ./_copyArray */ 79),
+    copySymbols = __webpack_require__(/*! ./_copySymbols */ 473),
+    copySymbolsIn = __webpack_require__(/*! ./_copySymbolsIn */ 474),
     getAllKeys = __webpack_require__(/*! ./_getAllKeys */ 151),
-    getAllKeysIn = __webpack_require__(/*! ./_getAllKeysIn */ 482),
+    getAllKeysIn = __webpack_require__(/*! ./_getAllKeysIn */ 484),
     getTag = __webpack_require__(/*! ./_getTag */ 154),
-    initCloneArray = __webpack_require__(/*! ./_initCloneArray */ 493),
-    initCloneByTag = __webpack_require__(/*! ./_initCloneByTag */ 494),
-    initCloneObject = __webpack_require__(/*! ./_initCloneObject */ 495),
-    isArray = __webpack_require__(/*! ./isArray */ 5),
-    isBuffer = __webpack_require__(/*! ./isBuffer */ 82),
+    initCloneArray = __webpack_require__(/*! ./_initCloneArray */ 495),
+    initCloneByTag = __webpack_require__(/*! ./_initCloneByTag */ 496),
+    initCloneObject = __webpack_require__(/*! ./_initCloneObject */ 497),
+    isArray = __webpack_require__(/*! ./isArray */ 6),
+    isBuffer = __webpack_require__(/*! ./isBuffer */ 83),
     isObject = __webpack_require__(/*! ./isObject */ 12),
     keys = __webpack_require__(/*! ./keys */ 35);
 
@@ -60235,7 +60512,7 @@ module.exports = baseClone;
 
 
 /***/ }),
-/* 444 */
+/* 446 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -60245,9 +60522,9 @@ module.exports = baseClone;
 
 var SetCache = __webpack_require__(/*! ./_SetCache */ 128),
     arrayIncludes = __webpack_require__(/*! ./_arrayIncludes */ 133),
-    arrayIncludesWith = __webpack_require__(/*! ./_arrayIncludesWith */ 438),
-    arrayMap = __webpack_require__(/*! ./_arrayMap */ 74),
-    baseUnary = __webpack_require__(/*! ./_baseUnary */ 76),
+    arrayIncludesWith = __webpack_require__(/*! ./_arrayIncludesWith */ 440),
+    arrayMap = __webpack_require__(/*! ./_arrayMap */ 75),
+    baseUnary = __webpack_require__(/*! ./_baseUnary */ 77),
     cacheHas = __webpack_require__(/*! ./_cacheHas */ 142);
 
 /** Used as the size to enable large array optimizations. */
@@ -60313,7 +60590,7 @@ module.exports = baseDifference;
 
 
 /***/ }),
-/* 445 */
+/* 447 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -60321,7 +60598,7 @@ module.exports = baseDifference;
   \***********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var isSymbol = __webpack_require__(/*! ./isSymbol */ 86);
+var isSymbol = __webpack_require__(/*! ./isSymbol */ 87);
 
 /**
  * The base implementation of methods like `_.max` and `_.min` which accepts a
@@ -60356,7 +60633,7 @@ module.exports = baseExtremum;
 
 
 /***/ }),
-/* 446 */
+/* 448 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -60391,7 +60668,7 @@ module.exports = baseFindIndex;
 
 
 /***/ }),
-/* 447 */
+/* 449 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -60399,9 +60676,9 @@ module.exports = baseFindIndex;
   \**********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseFindIndex = __webpack_require__(/*! ./_baseFindIndex */ 446),
-    baseIsNaN = __webpack_require__(/*! ./_baseIsNaN */ 452),
-    strictIndexOf = __webpack_require__(/*! ./_strictIndexOf */ 526);
+var baseFindIndex = __webpack_require__(/*! ./_baseFindIndex */ 448),
+    baseIsNaN = __webpack_require__(/*! ./_baseIsNaN */ 454),
+    strictIndexOf = __webpack_require__(/*! ./_strictIndexOf */ 528);
 
 /**
  * The base implementation of `_.indexOf` without `fromIndex` bounds checks.
@@ -60422,7 +60699,7 @@ module.exports = baseIndexOf;
 
 
 /***/ }),
-/* 448 */
+/* 450 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************!*\
@@ -60430,7 +60707,7 @@ module.exports = baseIndexOf;
   \**************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 13),
+var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 14),
     isObjectLike = __webpack_require__(/*! ./isObjectLike */ 9);
 
 /** `Object#toString` result references. */
@@ -60451,7 +60728,7 @@ module.exports = baseIsArguments;
 
 
 /***/ }),
-/* 449 */
+/* 451 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************!*\
@@ -60459,7 +60736,7 @@ module.exports = baseIsArguments;
   \*********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 13),
+var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 14),
     isObjectLike = __webpack_require__(/*! ./isObjectLike */ 9);
 
 /** `Object#toString` result references. */
@@ -60480,7 +60757,7 @@ module.exports = baseIsDate;
 
 
 /***/ }),
-/* 450 */
+/* 452 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************!*\
@@ -60488,13 +60765,13 @@ module.exports = baseIsDate;
   \**************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(/*! ./_Stack */ 72),
+var Stack = __webpack_require__(/*! ./_Stack */ 73),
     equalArrays = __webpack_require__(/*! ./_equalArrays */ 149),
-    equalByTag = __webpack_require__(/*! ./_equalByTag */ 480),
-    equalObjects = __webpack_require__(/*! ./_equalObjects */ 481),
+    equalByTag = __webpack_require__(/*! ./_equalByTag */ 482),
+    equalObjects = __webpack_require__(/*! ./_equalObjects */ 483),
     getTag = __webpack_require__(/*! ./_getTag */ 154),
-    isArray = __webpack_require__(/*! ./isArray */ 5),
-    isBuffer = __webpack_require__(/*! ./isBuffer */ 82),
+    isArray = __webpack_require__(/*! ./isArray */ 6),
+    isBuffer = __webpack_require__(/*! ./isBuffer */ 83),
     isTypedArray = __webpack_require__(/*! ./isTypedArray */ 169);
 
 /** Used to compose bitmasks for value comparisons. */
@@ -60574,7 +60851,7 @@ module.exports = baseIsEqualDeep;
 
 
 /***/ }),
-/* 451 */
+/* 453 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -60582,7 +60859,7 @@ module.exports = baseIsEqualDeep;
   \**********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(/*! ./_Stack */ 72),
+var Stack = __webpack_require__(/*! ./_Stack */ 73),
     baseIsEqual = __webpack_require__(/*! ./_baseIsEqual */ 139);
 
 /** Used to compose bitmasks for value comparisons. */
@@ -60647,7 +60924,7 @@ module.exports = baseIsMatch;
 
 
 /***/ }),
-/* 452 */
+/* 454 */
 /* no static exports found */
 /* all exports used */
 /*!********************************!*\
@@ -60670,7 +60947,7 @@ module.exports = baseIsNaN;
 
 
 /***/ }),
-/* 453 */
+/* 455 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -60678,8 +60955,8 @@ module.exports = baseIsNaN;
   \***********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var isFunction = __webpack_require__(/*! ./isFunction */ 84),
-    isMasked = __webpack_require__(/*! ./_isMasked */ 500),
+var isFunction = __webpack_require__(/*! ./isFunction */ 85),
+    isMasked = __webpack_require__(/*! ./_isMasked */ 502),
     isObject = __webpack_require__(/*! ./isObject */ 12),
     toSource = __webpack_require__(/*! ./_toSource */ 165);
 
@@ -60728,7 +61005,7 @@ module.exports = baseIsNative;
 
 
 /***/ }),
-/* 454 */
+/* 456 */
 /* no static exports found */
 /* all exports used */
 /*!***************************************!*\
@@ -60736,7 +61013,7 @@ module.exports = baseIsNative;
   \***************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 13),
+var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ 14),
     isLength = __webpack_require__(/*! ./isLength */ 167),
     isObjectLike = __webpack_require__(/*! ./isObjectLike */ 9);
 
@@ -60799,7 +61076,7 @@ module.exports = baseIsTypedArray;
 
 
 /***/ }),
-/* 455 */
+/* 457 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************!*\
@@ -60808,7 +61085,7 @@ module.exports = baseIsTypedArray;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isPrototype = __webpack_require__(/*! ./_isPrototype */ 49),
-    nativeKeys = __webpack_require__(/*! ./_nativeKeys */ 513);
+    nativeKeys = __webpack_require__(/*! ./_nativeKeys */ 515);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -60840,7 +61117,7 @@ module.exports = baseKeys;
 
 
 /***/ }),
-/* 456 */
+/* 458 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************!*\
@@ -60850,7 +61127,7 @@ module.exports = baseKeys;
 
 var isObject = __webpack_require__(/*! ./isObject */ 12),
     isPrototype = __webpack_require__(/*! ./_isPrototype */ 49),
-    nativeKeysIn = __webpack_require__(/*! ./_nativeKeysIn */ 514);
+    nativeKeysIn = __webpack_require__(/*! ./_nativeKeysIn */ 516);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -60884,7 +61161,7 @@ module.exports = baseKeysIn;
 
 
 /***/ }),
-/* 457 */
+/* 459 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************!*\
@@ -60909,7 +61186,7 @@ module.exports = baseLt;
 
 
 /***/ }),
-/* 458 */
+/* 460 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -60934,7 +61211,7 @@ module.exports = baseProperty;
 
 
 /***/ }),
-/* 459 */
+/* 461 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************!*\
@@ -60942,7 +61219,7 @@ module.exports = baseProperty;
   \**************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var constant = __webpack_require__(/*! ./constant */ 533),
+var constant = __webpack_require__(/*! ./constant */ 535),
     defineProperty = __webpack_require__(/*! ./_defineProperty */ 148),
     identity = __webpack_require__(/*! ./identity */ 52);
 
@@ -60967,7 +61244,7 @@ module.exports = baseSetToString;
 
 
 /***/ }),
-/* 460 */
+/* 462 */
 /* no static exports found */
 /* all exports used */
 /*!********************************!*\
@@ -61009,7 +61286,7 @@ module.exports = baseSlice;
 
 
 /***/ }),
-/* 461 */
+/* 463 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -61018,9 +61295,9 @@ module.exports = baseSlice;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(/*! ./_Symbol */ 30),
-    arrayMap = __webpack_require__(/*! ./_arrayMap */ 74),
-    isArray = __webpack_require__(/*! ./isArray */ 5),
-    isSymbol = __webpack_require__(/*! ./isSymbol */ 86);
+    arrayMap = __webpack_require__(/*! ./_arrayMap */ 75),
+    isArray = __webpack_require__(/*! ./isArray */ 6),
+    isSymbol = __webpack_require__(/*! ./isSymbol */ 87);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -61057,7 +61334,7 @@ module.exports = baseToString;
 
 
 /***/ }),
-/* 462 */
+/* 464 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -61091,7 +61368,7 @@ module.exports = baseZipObject;
 
 
 /***/ }),
-/* 463 */
+/* 465 */
 /* no static exports found */
 /* all exports used */
 /*!********************************!*\
@@ -61099,7 +61376,7 @@ module.exports = baseZipObject;
   \********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseSlice = __webpack_require__(/*! ./_baseSlice */ 460);
+var baseSlice = __webpack_require__(/*! ./_baseSlice */ 462);
 
 /**
  * Casts `array` to a slice if it's needed.
@@ -61120,7 +61397,7 @@ module.exports = castSlice;
 
 
 /***/ }),
-/* 464 */
+/* 466 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -61128,7 +61405,7 @@ module.exports = castSlice;
   \**********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(/*! ./_root */ 6);
+/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(/*! ./_root */ 7);
 
 /** Detect free variable `exports`. */
 var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
@@ -61167,7 +61444,7 @@ module.exports = cloneBuffer;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../webpack/buildin/module.js */ 37)(module)))
 
 /***/ }),
-/* 465 */
+/* 467 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -61175,7 +61452,7 @@ module.exports = cloneBuffer;
   \************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var cloneArrayBuffer = __webpack_require__(/*! ./_cloneArrayBuffer */ 77);
+var cloneArrayBuffer = __webpack_require__(/*! ./_cloneArrayBuffer */ 78);
 
 /**
  * Creates a clone of `dataView`.
@@ -61194,7 +61471,7 @@ module.exports = cloneDataView;
 
 
 /***/ }),
-/* 466 */
+/* 468 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************!*\
@@ -61202,7 +61479,7 @@ module.exports = cloneDataView;
   \*******************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var addMapEntry = __webpack_require__(/*! ./_addMapEntry */ 436),
+var addMapEntry = __webpack_require__(/*! ./_addMapEntry */ 438),
     arrayReduce = __webpack_require__(/*! ./_arrayReduce */ 136),
     mapToArray = __webpack_require__(/*! ./_mapToArray */ 156);
 
@@ -61227,7 +61504,7 @@ module.exports = cloneMap;
 
 
 /***/ }),
-/* 467 */
+/* 469 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -61255,7 +61532,7 @@ module.exports = cloneRegExp;
 
 
 /***/ }),
-/* 468 */
+/* 470 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************!*\
@@ -61263,7 +61540,7 @@ module.exports = cloneRegExp;
   \*******************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var addSetEntry = __webpack_require__(/*! ./_addSetEntry */ 437),
+var addSetEntry = __webpack_require__(/*! ./_addSetEntry */ 439),
     arrayReduce = __webpack_require__(/*! ./_arrayReduce */ 136),
     setToArray = __webpack_require__(/*! ./_setToArray */ 161);
 
@@ -61288,7 +61565,7 @@ module.exports = cloneSet;
 
 
 /***/ }),
-/* 469 */
+/* 471 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -61317,7 +61594,7 @@ module.exports = cloneSymbol;
 
 
 /***/ }),
-/* 470 */
+/* 472 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************!*\
@@ -61325,7 +61602,7 @@ module.exports = cloneSymbol;
   \**************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var cloneArrayBuffer = __webpack_require__(/*! ./_cloneArrayBuffer */ 77);
+var cloneArrayBuffer = __webpack_require__(/*! ./_cloneArrayBuffer */ 78);
 
 /**
  * Creates a clone of `typedArray`.
@@ -61344,7 +61621,7 @@ module.exports = cloneTypedArray;
 
 
 /***/ }),
-/* 471 */
+/* 473 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -61353,7 +61630,7 @@ module.exports = cloneTypedArray;
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(/*! ./_copyObject */ 32),
-    getSymbols = __webpack_require__(/*! ./_getSymbols */ 80);
+    getSymbols = __webpack_require__(/*! ./_getSymbols */ 81);
 
 /**
  * Copies own symbols of `source` to `object`.
@@ -61371,7 +61648,7 @@ module.exports = copySymbols;
 
 
 /***/ }),
-/* 472 */
+/* 474 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -61398,7 +61675,7 @@ module.exports = copySymbolsIn;
 
 
 /***/ }),
-/* 473 */
+/* 475 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************!*\
@@ -61406,7 +61683,7 @@ module.exports = copySymbolsIn;
   \*********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(/*! ./_root */ 6);
+var root = __webpack_require__(/*! ./_root */ 7);
 
 /** Used to detect overreaching core-js shims. */
 var coreJsData = root['__core-js_shared__'];
@@ -61415,7 +61692,7 @@ module.exports = coreJsData;
 
 
 /***/ }),
-/* 474 */
+/* 476 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -61447,7 +61724,7 @@ module.exports = countHolders;
 
 
 /***/ }),
-/* 475 */
+/* 477 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -61456,7 +61733,7 @@ module.exports = countHolders;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseRest = __webpack_require__(/*! ./_baseRest */ 31),
-    isIterateeCall = __webpack_require__(/*! ./_isIterateeCall */ 497);
+    isIterateeCall = __webpack_require__(/*! ./_isIterateeCall */ 499);
 
 /**
  * Creates a function like `_.assign`.
@@ -61495,7 +61772,7 @@ module.exports = createAssigner;
 
 
 /***/ }),
-/* 476 */
+/* 478 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************!*\
@@ -61504,7 +61781,7 @@ module.exports = createAssigner;
 /***/ (function(module, exports, __webpack_require__) {
 
 var createCtor = __webpack_require__(/*! ./_createCtor */ 46),
-    root = __webpack_require__(/*! ./_root */ 6);
+    root = __webpack_require__(/*! ./_root */ 7);
 
 /** Used to compose bitmasks for function metadata. */
 var WRAP_BIND_FLAG = 1;
@@ -61534,7 +61811,7 @@ module.exports = createBind;
 
 
 /***/ }),
-/* 477 */
+/* 479 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************!*\
@@ -61542,10 +61819,10 @@ module.exports = createBind;
   \**************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var castSlice = __webpack_require__(/*! ./_castSlice */ 463),
+var castSlice = __webpack_require__(/*! ./_castSlice */ 465),
     hasUnicode = __webpack_require__(/*! ./_hasUnicode */ 155),
-    stringToArray = __webpack_require__(/*! ./_stringToArray */ 527),
-    toString = __webpack_require__(/*! ./toString */ 540);
+    stringToArray = __webpack_require__(/*! ./_stringToArray */ 529),
+    toString = __webpack_require__(/*! ./toString */ 542);
 
 /**
  * Creates a function like `_.lowerFirst`.
@@ -61578,7 +61855,7 @@ module.exports = createCaseFirst;
 
 
 /***/ }),
-/* 478 */
+/* 480 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -61586,13 +61863,13 @@ module.exports = createCaseFirst;
   \**********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var apply = __webpack_require__(/*! ./_apply */ 73),
+var apply = __webpack_require__(/*! ./_apply */ 74),
     createCtor = __webpack_require__(/*! ./_createCtor */ 46),
     createHybrid = __webpack_require__(/*! ./_createHybrid */ 145),
     createRecurry = __webpack_require__(/*! ./_createRecurry */ 146),
     getHolder = __webpack_require__(/*! ./_getHolder */ 47),
     replaceHolders = __webpack_require__(/*! ./_replaceHolders */ 33),
-    root = __webpack_require__(/*! ./_root */ 6);
+    root = __webpack_require__(/*! ./_root */ 7);
 
 /**
  * Creates a function that wraps `func` to enable currying.
@@ -61635,7 +61912,7 @@ module.exports = createCurry;
 
 
 /***/ }),
-/* 479 */
+/* 481 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -61643,9 +61920,9 @@ module.exports = createCurry;
   \************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var apply = __webpack_require__(/*! ./_apply */ 73),
+var apply = __webpack_require__(/*! ./_apply */ 74),
     createCtor = __webpack_require__(/*! ./_createCtor */ 46),
-    root = __webpack_require__(/*! ./_root */ 6);
+    root = __webpack_require__(/*! ./_root */ 7);
 
 /** Used to compose bitmasks for function metadata. */
 var WRAP_BIND_FLAG = 1;
@@ -61689,7 +61966,7 @@ module.exports = createPartial;
 
 
 /***/ }),
-/* 480 */
+/* 482 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************!*\
@@ -61812,7 +62089,7 @@ module.exports = equalByTag;
 
 
 /***/ }),
-/* 481 */
+/* 483 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -61912,7 +62189,7 @@ module.exports = equalObjects;
 
 
 /***/ }),
-/* 482 */
+/* 484 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -61940,7 +62217,7 @@ module.exports = getAllKeysIn;
 
 
 /***/ }),
-/* 483 */
+/* 485 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -61948,7 +62225,7 @@ module.exports = getAllKeysIn;
   \**********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var realNames = __webpack_require__(/*! ./_realNames */ 517);
+var realNames = __webpack_require__(/*! ./_realNames */ 519);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -61982,7 +62259,7 @@ module.exports = getFuncName;
 
 
 /***/ }),
-/* 484 */
+/* 486 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -61990,7 +62267,7 @@ module.exports = getFuncName;
   \***********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var isStrictComparable = __webpack_require__(/*! ./_isStrictComparable */ 501),
+var isStrictComparable = __webpack_require__(/*! ./_isStrictComparable */ 503),
     keys = __webpack_require__(/*! ./keys */ 35);
 
 /**
@@ -62017,7 +62294,7 @@ module.exports = getMatchData;
 
 
 /***/ }),
-/* 485 */
+/* 487 */
 /* no static exports found */
 /* all exports used */
 /*!********************************!*\
@@ -62074,7 +62351,7 @@ module.exports = getRawTag;
 
 
 /***/ }),
-/* 486 */
+/* 488 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************!*\
@@ -62098,7 +62375,7 @@ module.exports = getValue;
 
 
 /***/ }),
-/* 487 */
+/* 489 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -62126,7 +62403,7 @@ module.exports = getWrapDetails;
 
 
 /***/ }),
-/* 488 */
+/* 490 */
 /* no static exports found */
 /* all exports used */
 /*!********************************!*\
@@ -62152,7 +62429,7 @@ module.exports = hashClear;
 
 
 /***/ }),
-/* 489 */
+/* 491 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************!*\
@@ -62180,7 +62457,7 @@ module.exports = hashDelete;
 
 
 /***/ }),
-/* 490 */
+/* 492 */
 /* no static exports found */
 /* all exports used */
 /*!******************************!*\
@@ -62221,7 +62498,7 @@ module.exports = hashGet;
 
 
 /***/ }),
-/* 491 */
+/* 493 */
 /* no static exports found */
 /* all exports used */
 /*!******************************!*\
@@ -62255,7 +62532,7 @@ module.exports = hashHas;
 
 
 /***/ }),
-/* 492 */
+/* 494 */
 /* no static exports found */
 /* all exports used */
 /*!******************************!*\
@@ -62289,7 +62566,7 @@ module.exports = hashSet;
 
 
 /***/ }),
-/* 493 */
+/* 495 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -62326,7 +62603,7 @@ module.exports = initCloneArray;
 
 
 /***/ }),
-/* 494 */
+/* 496 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -62334,13 +62611,13 @@ module.exports = initCloneArray;
   \*************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var cloneArrayBuffer = __webpack_require__(/*! ./_cloneArrayBuffer */ 77),
-    cloneDataView = __webpack_require__(/*! ./_cloneDataView */ 465),
-    cloneMap = __webpack_require__(/*! ./_cloneMap */ 466),
-    cloneRegExp = __webpack_require__(/*! ./_cloneRegExp */ 467),
-    cloneSet = __webpack_require__(/*! ./_cloneSet */ 468),
-    cloneSymbol = __webpack_require__(/*! ./_cloneSymbol */ 469),
-    cloneTypedArray = __webpack_require__(/*! ./_cloneTypedArray */ 470);
+var cloneArrayBuffer = __webpack_require__(/*! ./_cloneArrayBuffer */ 78),
+    cloneDataView = __webpack_require__(/*! ./_cloneDataView */ 467),
+    cloneMap = __webpack_require__(/*! ./_cloneMap */ 468),
+    cloneRegExp = __webpack_require__(/*! ./_cloneRegExp */ 469),
+    cloneSet = __webpack_require__(/*! ./_cloneSet */ 470),
+    cloneSymbol = __webpack_require__(/*! ./_cloneSymbol */ 471),
+    cloneTypedArray = __webpack_require__(/*! ./_cloneTypedArray */ 472);
 
 /** `Object#toString` result references. */
 var boolTag = '[object Boolean]',
@@ -62417,7 +62694,7 @@ module.exports = initCloneByTag;
 
 
 /***/ }),
-/* 495 */
+/* 497 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************!*\
@@ -62426,7 +62703,7 @@ module.exports = initCloneByTag;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseCreate = __webpack_require__(/*! ./_baseCreate */ 45),
-    getPrototype = __webpack_require__(/*! ./_getPrototype */ 79),
+    getPrototype = __webpack_require__(/*! ./_getPrototype */ 80),
     isPrototype = __webpack_require__(/*! ./_isPrototype */ 49);
 
 /**
@@ -62446,7 +62723,7 @@ module.exports = initCloneObject;
 
 
 /***/ }),
-/* 496 */
+/* 498 */
 /* no static exports found */
 /* all exports used */
 /*!****************************************!*\
@@ -62480,7 +62757,7 @@ module.exports = insertWrapDetails;
 
 
 /***/ }),
-/* 497 */
+/* 499 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -62490,7 +62767,7 @@ module.exports = insertWrapDetails;
 
 var eq = __webpack_require__(/*! ./eq */ 51),
     isArrayLike = __webpack_require__(/*! ./isArrayLike */ 34),
-    isIndex = __webpack_require__(/*! ./_isIndex */ 81),
+    isIndex = __webpack_require__(/*! ./_isIndex */ 82),
     isObject = __webpack_require__(/*! ./isObject */ 12);
 
 /**
@@ -62521,7 +62798,7 @@ module.exports = isIterateeCall;
 
 
 /***/ }),
-/* 498 */
+/* 500 */
 /* no static exports found */
 /* all exports used */
 /*!********************************!*\
@@ -62547,7 +62824,7 @@ module.exports = isKeyable;
 
 
 /***/ }),
-/* 499 */
+/* 501 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************!*\
@@ -62555,10 +62832,10 @@ module.exports = isKeyable;
   \*********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var LazyWrapper = __webpack_require__(/*! ./_LazyWrapper */ 70),
+var LazyWrapper = __webpack_require__(/*! ./_LazyWrapper */ 71),
     getData = __webpack_require__(/*! ./_getData */ 152),
-    getFuncName = __webpack_require__(/*! ./_getFuncName */ 483),
-    lodash = __webpack_require__(/*! ./wrapperLodash */ 543);
+    getFuncName = __webpack_require__(/*! ./_getFuncName */ 485),
+    lodash = __webpack_require__(/*! ./wrapperLodash */ 545);
 
 /**
  * Checks if `func` has a lazy counterpart.
@@ -62586,7 +62863,7 @@ module.exports = isLaziable;
 
 
 /***/ }),
-/* 500 */
+/* 502 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************!*\
@@ -62594,7 +62871,7 @@ module.exports = isLaziable;
   \*******************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var coreJsData = __webpack_require__(/*! ./_coreJsData */ 473);
+var coreJsData = __webpack_require__(/*! ./_coreJsData */ 475);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = (function() {
@@ -62617,7 +62894,7 @@ module.exports = isMasked;
 
 
 /***/ }),
-/* 501 */
+/* 503 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************************!*\
@@ -62643,7 +62920,7 @@ module.exports = isStrictComparable;
 
 
 /***/ }),
-/* 502 */
+/* 504 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -62667,7 +62944,7 @@ module.exports = listCacheClear;
 
 
 /***/ }),
-/* 503 */
+/* 505 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************!*\
@@ -62713,7 +62990,7 @@ module.exports = listCacheDelete;
 
 
 /***/ }),
-/* 504 */
+/* 506 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -62743,7 +63020,7 @@ module.exports = listCacheGet;
 
 
 /***/ }),
-/* 505 */
+/* 507 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -62770,7 +63047,7 @@ module.exports = listCacheHas;
 
 
 /***/ }),
-/* 506 */
+/* 508 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -62807,7 +63084,7 @@ module.exports = listCacheSet;
 
 
 /***/ }),
-/* 507 */
+/* 509 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -62815,9 +63092,9 @@ module.exports = listCacheSet;
   \************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var Hash = __webpack_require__(/*! ./_Hash */ 433),
+var Hash = __webpack_require__(/*! ./_Hash */ 435),
     ListCache = __webpack_require__(/*! ./_ListCache */ 42),
-    Map = __webpack_require__(/*! ./_Map */ 71);
+    Map = __webpack_require__(/*! ./_Map */ 72);
 
 /**
  * Removes all key-value entries from the map.
@@ -62839,7 +63116,7 @@ module.exports = mapCacheClear;
 
 
 /***/ }),
-/* 508 */
+/* 510 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -62868,7 +63145,7 @@ module.exports = mapCacheDelete;
 
 
 /***/ }),
-/* 509 */
+/* 511 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -62895,7 +63172,7 @@ module.exports = mapCacheGet;
 
 
 /***/ }),
-/* 510 */
+/* 512 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -62922,7 +63199,7 @@ module.exports = mapCacheHas;
 
 
 /***/ }),
-/* 511 */
+/* 513 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -62955,7 +63232,7 @@ module.exports = mapCacheSet;
 
 
 /***/ }),
-/* 512 */
+/* 514 */
 /* no static exports found */
 /* all exports used */
 /*!********************************!*\
@@ -63056,7 +63333,7 @@ module.exports = mergeData;
 
 
 /***/ }),
-/* 513 */
+/* 515 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************!*\
@@ -63073,7 +63350,7 @@ module.exports = nativeKeys;
 
 
 /***/ }),
-/* 514 */
+/* 516 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -63104,7 +63381,7 @@ module.exports = nativeKeysIn;
 
 
 /***/ }),
-/* 515 */
+/* 517 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -63137,7 +63414,7 @@ module.exports = objectToString;
 
 
 /***/ }),
-/* 516 */
+/* 518 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************!*\
@@ -63145,7 +63422,7 @@ module.exports = objectToString;
   \*******************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var apply = __webpack_require__(/*! ./_apply */ 73);
+var apply = __webpack_require__(/*! ./_apply */ 74);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMax = Math.max;
@@ -63184,7 +63461,7 @@ module.exports = overRest;
 
 
 /***/ }),
-/* 517 */
+/* 519 */
 /* no static exports found */
 /* all exports used */
 /*!********************************!*\
@@ -63199,7 +63476,7 @@ module.exports = realNames;
 
 
 /***/ }),
-/* 518 */
+/* 520 */
 /* no static exports found */
 /* all exports used */
 /*!******************************!*\
@@ -63207,8 +63484,8 @@ module.exports = realNames;
   \******************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var copyArray = __webpack_require__(/*! ./_copyArray */ 78),
-    isIndex = __webpack_require__(/*! ./_isIndex */ 81);
+var copyArray = __webpack_require__(/*! ./_copyArray */ 79),
+    isIndex = __webpack_require__(/*! ./_isIndex */ 82);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMin = Math.min;
@@ -63239,7 +63516,7 @@ module.exports = reorder;
 
 
 /***/ }),
-/* 519 */
+/* 521 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -63269,7 +63546,7 @@ module.exports = setCacheAdd;
 
 
 /***/ }),
-/* 520 */
+/* 522 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -63294,7 +63571,7 @@ module.exports = setCacheHas;
 
 
 /***/ }),
-/* 521 */
+/* 523 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************!*\
@@ -63320,7 +63597,7 @@ module.exports = stackClear;
 
 
 /***/ }),
-/* 522 */
+/* 524 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -63349,7 +63626,7 @@ module.exports = stackDelete;
 
 
 /***/ }),
-/* 523 */
+/* 525 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************!*\
@@ -63374,7 +63651,7 @@ module.exports = stackGet;
 
 
 /***/ }),
-/* 524 */
+/* 526 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************!*\
@@ -63399,7 +63676,7 @@ module.exports = stackHas;
 
 
 /***/ }),
-/* 525 */
+/* 527 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************!*\
@@ -63408,7 +63685,7 @@ module.exports = stackHas;
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(/*! ./_ListCache */ 42),
-    Map = __webpack_require__(/*! ./_Map */ 71),
+    Map = __webpack_require__(/*! ./_Map */ 72),
     MapCache = __webpack_require__(/*! ./_MapCache */ 127);
 
 /** Used as the size to enable large array optimizations. */
@@ -63444,7 +63721,7 @@ module.exports = stackSet;
 
 
 /***/ }),
-/* 526 */
+/* 528 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -63478,7 +63755,7 @@ module.exports = strictIndexOf;
 
 
 /***/ }),
-/* 527 */
+/* 529 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -63486,9 +63763,9 @@ module.exports = strictIndexOf;
   \************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var asciiToArray = __webpack_require__(/*! ./_asciiToArray */ 440),
+var asciiToArray = __webpack_require__(/*! ./_asciiToArray */ 442),
     hasUnicode = __webpack_require__(/*! ./_hasUnicode */ 155),
-    unicodeToArray = __webpack_require__(/*! ./_unicodeToArray */ 528);
+    unicodeToArray = __webpack_require__(/*! ./_unicodeToArray */ 530);
 
 /**
  * Converts `string` to an array.
@@ -63507,7 +63784,7 @@ module.exports = stringToArray;
 
 
 /***/ }),
-/* 528 */
+/* 530 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -63558,7 +63835,7 @@ module.exports = unicodeToArray;
 
 
 /***/ }),
-/* 529 */
+/* 531 */
 /* no static exports found */
 /* all exports used */
 /*!****************************************!*\
@@ -63615,7 +63892,7 @@ module.exports = updateWrapDetails;
 
 
 /***/ }),
-/* 530 */
+/* 532 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -63623,9 +63900,9 @@ module.exports = updateWrapDetails;
   \***********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var LazyWrapper = __webpack_require__(/*! ./_LazyWrapper */ 70),
+var LazyWrapper = __webpack_require__(/*! ./_LazyWrapper */ 71),
     LodashWrapper = __webpack_require__(/*! ./_LodashWrapper */ 126),
-    copyArray = __webpack_require__(/*! ./_copyArray */ 78);
+    copyArray = __webpack_require__(/*! ./_copyArray */ 79);
 
 /**
  * Creates a clone of `wrapper`.
@@ -63649,7 +63926,7 @@ module.exports = wrapperClone;
 
 
 /***/ }),
-/* 531 */
+/* 533 */
 /* no static exports found */
 /* all exports used */
 /*!****************************!*\
@@ -63659,7 +63936,7 @@ module.exports = wrapperClone;
 
 var assignValue = __webpack_require__(/*! ./_assignValue */ 43),
     copyObject = __webpack_require__(/*! ./_copyObject */ 32),
-    createAssigner = __webpack_require__(/*! ./_createAssigner */ 475),
+    createAssigner = __webpack_require__(/*! ./_createAssigner */ 477),
     isArrayLike = __webpack_require__(/*! ./isArrayLike */ 34),
     isPrototype = __webpack_require__(/*! ./_isPrototype */ 49),
     keys = __webpack_require__(/*! ./keys */ 35);
@@ -63718,7 +63995,7 @@ module.exports = assign;
 
 
 /***/ }),
-/* 532 */
+/* 534 */
 /* no static exports found */
 /* all exports used */
 /*!**************************!*\
@@ -63786,7 +64063,7 @@ module.exports = bind;
 
 
 /***/ }),
-/* 533 */
+/* 535 */
 /* no static exports found */
 /* all exports used */
 /*!******************************!*\
@@ -63823,7 +64100,7 @@ module.exports = constant;
 
 
 /***/ }),
-/* 534 */
+/* 536 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************!*\
@@ -63831,7 +64108,7 @@ module.exports = constant;
   \*********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsArguments = __webpack_require__(/*! ./_baseIsArguments */ 448),
+var baseIsArguments = __webpack_require__(/*! ./_baseIsArguments */ 450),
     isObjectLike = __webpack_require__(/*! ./isObjectLike */ 9);
 
 /** Used for built-in method references. */
@@ -63870,7 +64147,7 @@ module.exports = isArguments;
 
 
 /***/ }),
-/* 535 */
+/* 537 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************!*\
@@ -63878,8 +64155,8 @@ module.exports = isArguments;
   \*****************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsMatch = __webpack_require__(/*! ./_baseIsMatch */ 451),
-    getMatchData = __webpack_require__(/*! ./_getMatchData */ 484);
+var baseIsMatch = __webpack_require__(/*! ./_baseIsMatch */ 453),
+    getMatchData = __webpack_require__(/*! ./_getMatchData */ 486);
 
 /**
  * Performs a partial deep comparison between `object` and `source` to
@@ -63917,7 +64194,7 @@ module.exports = isMatch;
 
 
 /***/ }),
-/* 536 */
+/* 538 */
 /* no static exports found */
 /* all exports used */
 /*!*************************!*\
@@ -63925,8 +64202,8 @@ module.exports = isMatch;
   \*************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseExtremum = __webpack_require__(/*! ./_baseExtremum */ 445),
-    baseLt = __webpack_require__(/*! ./_baseLt */ 457),
+var baseExtremum = __webpack_require__(/*! ./_baseExtremum */ 447),
+    baseLt = __webpack_require__(/*! ./_baseLt */ 459),
     identity = __webpack_require__(/*! ./identity */ 52);
 
 /**
@@ -63957,7 +64234,7 @@ module.exports = min;
 
 
 /***/ }),
-/* 537 */
+/* 539 */
 /* no static exports found */
 /* all exports used */
 /*!**************************!*\
@@ -63985,7 +64262,7 @@ module.exports = noop;
 
 
 /***/ }),
-/* 538 */
+/* 540 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************!*\
@@ -64014,7 +64291,7 @@ module.exports = stubFalse;
 
 
 /***/ }),
-/* 539 */
+/* 541 */
 /* no static exports found */
 /* all exports used */
 /*!******************************!*\
@@ -64022,7 +64299,7 @@ module.exports = stubFalse;
   \******************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var toNumber = __webpack_require__(/*! ./toNumber */ 87);
+var toNumber = __webpack_require__(/*! ./toNumber */ 88);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0,
@@ -64067,7 +64344,7 @@ module.exports = toFinite;
 
 
 /***/ }),
-/* 540 */
+/* 542 */
 /* no static exports found */
 /* all exports used */
 /*!******************************!*\
@@ -64075,7 +64352,7 @@ module.exports = toFinite;
   \******************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseToString = __webpack_require__(/*! ./_baseToString */ 461);
+var baseToString = __webpack_require__(/*! ./_baseToString */ 463);
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -64106,7 +64383,7 @@ module.exports = toString;
 
 
 /***/ }),
-/* 541 */
+/* 543 */
 /* no static exports found */
 /* all exports used */
 /*!***************************!*\
@@ -64115,8 +64392,8 @@ module.exports = toString;
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayFilter = __webpack_require__(/*! ./_arrayFilter */ 132),
-    arrayMap = __webpack_require__(/*! ./_arrayMap */ 74),
-    baseProperty = __webpack_require__(/*! ./_baseProperty */ 458),
+    arrayMap = __webpack_require__(/*! ./_arrayMap */ 75),
+    baseProperty = __webpack_require__(/*! ./_baseProperty */ 460),
     baseTimes = __webpack_require__(/*! ./_baseTimes */ 141),
     isArrayLikeObject = __webpack_require__(/*! ./isArrayLikeObject */ 166);
 
@@ -64162,7 +64439,7 @@ module.exports = unzip;
 
 
 /***/ }),
-/* 542 */
+/* 544 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************!*\
@@ -64170,7 +64447,7 @@ module.exports = unzip;
   \*****************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseDifference = __webpack_require__(/*! ./_baseDifference */ 444),
+var baseDifference = __webpack_require__(/*! ./_baseDifference */ 446),
     baseRest = __webpack_require__(/*! ./_baseRest */ 31),
     isArrayLikeObject = __webpack_require__(/*! ./isArrayLikeObject */ 166);
 
@@ -64204,7 +64481,7 @@ module.exports = without;
 
 
 /***/ }),
-/* 543 */
+/* 545 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -64212,12 +64489,12 @@ module.exports = without;
   \***********************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var LazyWrapper = __webpack_require__(/*! ./_LazyWrapper */ 70),
+var LazyWrapper = __webpack_require__(/*! ./_LazyWrapper */ 71),
     LodashWrapper = __webpack_require__(/*! ./_LodashWrapper */ 126),
-    baseLodash = __webpack_require__(/*! ./_baseLodash */ 75),
-    isArray = __webpack_require__(/*! ./isArray */ 5),
+    baseLodash = __webpack_require__(/*! ./_baseLodash */ 76),
+    isArray = __webpack_require__(/*! ./isArray */ 6),
     isObjectLike = __webpack_require__(/*! ./isObjectLike */ 9),
-    wrapperClone = __webpack_require__(/*! ./_wrapperClone */ 530);
+    wrapperClone = __webpack_require__(/*! ./_wrapperClone */ 532);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -64362,7 +64639,7 @@ module.exports = lodash;
 
 
 /***/ }),
-/* 544 */
+/* 546 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************!*\
@@ -64371,7 +64648,7 @@ module.exports = lodash;
 /***/ (function(module, exports, __webpack_require__) {
 
 var assignValue = __webpack_require__(/*! ./_assignValue */ 43),
-    baseZipObject = __webpack_require__(/*! ./_baseZipObject */ 462);
+    baseZipObject = __webpack_require__(/*! ./_baseZipObject */ 464);
 
 /**
  * This method is like `_.fromPairs` except that it accepts two arrays,
@@ -64397,7 +64674,7 @@ module.exports = zipObject;
 
 
 /***/ }),
-/* 545 */
+/* 547 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************************!*\
@@ -64417,7 +64694,7 @@ module.exports = zipObject;
 
 var emptyFunction = __webpack_require__(/*! fbjs/lib/emptyFunction */ 16);
 var invariant = __webpack_require__(/*! fbjs/lib/invariant */ 29);
-var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ 91);
+var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ 92);
 
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -64467,7 +64744,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 546 */
+/* 548 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************************!*\
@@ -64490,8 +64767,8 @@ var invariant = __webpack_require__(/*! fbjs/lib/invariant */ 29);
 var warning = __webpack_require__(/*! fbjs/lib/warning */ 41);
 var assign = __webpack_require__(/*! object-assign */ 36);
 
-var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ 91);
-var checkPropTypes = __webpack_require__(/*! ./checkPropTypes */ 90);
+var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ 92);
+var checkPropTypes = __webpack_require__(/*! ./checkPropTypes */ 91);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -65022,7 +65299,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 1)))
 
 /***/ }),
-/* 547 */
+/* 549 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************************!*\
@@ -65048,7 +65325,7 @@ if (process.env.NODE_ENV !== "production") {
   (function() {
 'use strict';
 
-var React = __webpack_require__(/*! react */ 7);
+var React = __webpack_require__(/*! react */ 5);
 var invariant = __webpack_require__(/*! fbjs/lib/invariant */ 29);
 var warning = __webpack_require__(/*! fbjs/lib/warning */ 41);
 var ExecutionEnvironment = __webpack_require__(/*! fbjs/lib/ExecutionEnvironment */ 115);
@@ -65056,13 +65333,13 @@ var _assign = __webpack_require__(/*! object-assign */ 36);
 var emptyFunction = __webpack_require__(/*! fbjs/lib/emptyFunction */ 16);
 var EventListener = __webpack_require__(/*! fbjs/lib/EventListener */ 114);
 var getActiveElement = __webpack_require__(/*! fbjs/lib/getActiveElement */ 118);
-var shallowEqual = __webpack_require__(/*! fbjs/lib/shallowEqual */ 68);
+var shallowEqual = __webpack_require__(/*! fbjs/lib/shallowEqual */ 69);
 var containsNode = __webpack_require__(/*! fbjs/lib/containsNode */ 116);
 var focusNode = __webpack_require__(/*! fbjs/lib/focusNode */ 117);
 var emptyObject = __webpack_require__(/*! fbjs/lib/emptyObject */ 40);
-var checkPropTypes = __webpack_require__(/*! prop-types/checkPropTypes */ 90);
-var hyphenateStyleName = __webpack_require__(/*! fbjs/lib/hyphenateStyleName */ 379);
-var camelizeStyleName = __webpack_require__(/*! fbjs/lib/camelizeStyleName */ 377);
+var checkPropTypes = __webpack_require__(/*! prop-types/checkPropTypes */ 91);
+var hyphenateStyleName = __webpack_require__(/*! fbjs/lib/hyphenateStyleName */ 381);
+var camelizeStyleName = __webpack_require__(/*! fbjs/lib/camelizeStyleName */ 379);
 
 /**
  * WARNING: DO NOT manually require this module.
@@ -80429,7 +80706,7 @@ module.exports = reactDom;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../process/browser.js */ 1)))
 
 /***/ }),
-/* 548 */
+/* 550 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************************************!*\
@@ -80450,7 +80727,7 @@ module.exports = reactDom;
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(/*! react */ 7),l=__webpack_require__(/*! fbjs/lib/ExecutionEnvironment */ 115),B=__webpack_require__(/*! object-assign */ 36),C=__webpack_require__(/*! fbjs/lib/emptyFunction */ 16),ba=__webpack_require__(/*! fbjs/lib/EventListener */ 114),da=__webpack_require__(/*! fbjs/lib/getActiveElement */ 118),ea=__webpack_require__(/*! fbjs/lib/shallowEqual */ 68),fa=__webpack_require__(/*! fbjs/lib/containsNode */ 116),ia=__webpack_require__(/*! fbjs/lib/focusNode */ 117),D=__webpack_require__(/*! fbjs/lib/emptyObject */ 40);
+var aa=__webpack_require__(/*! react */ 5),l=__webpack_require__(/*! fbjs/lib/ExecutionEnvironment */ 115),B=__webpack_require__(/*! object-assign */ 36),C=__webpack_require__(/*! fbjs/lib/emptyFunction */ 16),ba=__webpack_require__(/*! fbjs/lib/EventListener */ 114),da=__webpack_require__(/*! fbjs/lib/getActiveElement */ 118),ea=__webpack_require__(/*! fbjs/lib/shallowEqual */ 69),fa=__webpack_require__(/*! fbjs/lib/containsNode */ 116),ia=__webpack_require__(/*! fbjs/lib/focusNode */ 117),D=__webpack_require__(/*! fbjs/lib/emptyObject */ 40);
 function E(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:E("227");
 var oa={children:!0,dangerouslySetInnerHTML:!0,defaultValue:!0,defaultChecked:!0,innerHTML:!0,suppressContentEditableWarning:!0,suppressHydrationWarning:!0,style:!0};function pa(a,b){return(a&b)===b}
 var ta={MUST_USE_PROPERTY:1,HAS_BOOLEAN_VALUE:4,HAS_NUMERIC_VALUE:8,HAS_POSITIVE_NUMERIC_VALUE:24,HAS_OVERLOADED_BOOLEAN_VALUE:32,HAS_STRING_BOOLEAN_VALUE:64,injectDOMPropertyConfig:function(a){var b=ta,c=a.Properties||{},d=a.DOMAttributeNamespaces||{},e=a.DOMAttributeNames||{};a=a.DOMMutationMethods||{};for(var f in c){ua.hasOwnProperty(f)?E("48",f):void 0;var g=f.toLowerCase(),h=c[f];g={attributeName:g,attributeNamespace:null,propertyName:f,mutationMethod:null,mustUseProperty:pa(h,b.MUST_USE_PROPERTY),
@@ -80670,7 +80947,7 @@ Z.injectIntoDevTools({findFiberByHostInstance:pb,bundleType:0,version:"16.2.0",r
 
 
 /***/ }),
-/* 549 */
+/* 551 */
 /* no static exports found */
 /* all exports used */
 /*!******************************!*\
@@ -80713,15 +80990,15 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(/*! ./cjs/react-dom.production.min.js */ 548);
+  module.exports = __webpack_require__(/*! ./cjs/react-dom.production.min.js */ 550);
 } else {
-  module.exports = __webpack_require__(/*! ./cjs/react-dom.development.js */ 547);
+  module.exports = __webpack_require__(/*! ./cjs/react-dom.development.js */ 549);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../process/browser.js */ 1)))
 
 /***/ }),
-/* 550 */
+/* 552 */
 /* exports provided: createProvider, default */
 /* exports used: default, createProvider */
 /*!*************************************************!*\
@@ -80731,12 +81008,12 @@ if (process.env.NODE_ENV === 'production') {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["b"] = createProvider;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(/*! react */ 7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(/*! react */ 5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(/*! prop-types */ 177);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_PropTypes__ = __webpack_require__(/*! ../utils/PropTypes */ 180);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_warning__ = __webpack_require__(/*! ../utils/warning */ 92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_warning__ = __webpack_require__(/*! ../utils/warning */ 93);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -80812,7 +81089,7 @@ function createProvider() {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(/*! ./../../../process/browser.js */ 1)))
 
 /***/ }),
-/* 551 */
+/* 553 */
 /* exports provided: createConnect, default */
 /* exports used: default */
 /*!*********************************************!*\
@@ -80823,11 +81100,11 @@ function createProvider() {
 "use strict";
 /* unused harmony export createConnect */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_connectAdvanced__ = __webpack_require__(/*! ../components/connectAdvanced */ 178);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_shallowEqual__ = __webpack_require__(/*! ../utils/shallowEqual */ 558);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mapDispatchToProps__ = __webpack_require__(/*! ./mapDispatchToProps */ 552);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mapStateToProps__ = __webpack_require__(/*! ./mapStateToProps */ 553);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mergeProps__ = __webpack_require__(/*! ./mergeProps */ 554);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__selectorFactory__ = __webpack_require__(/*! ./selectorFactory */ 555);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_shallowEqual__ = __webpack_require__(/*! ../utils/shallowEqual */ 560);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mapDispatchToProps__ = __webpack_require__(/*! ./mapDispatchToProps */ 554);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mapStateToProps__ = __webpack_require__(/*! ./mapStateToProps */ 555);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mergeProps__ = __webpack_require__(/*! ./mergeProps */ 556);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__selectorFactory__ = __webpack_require__(/*! ./selectorFactory */ 557);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -80933,7 +81210,7 @@ function createConnect() {
 /* harmony default export */ __webpack_exports__["a"] = (createConnect());
 
 /***/ }),
-/* 552 */
+/* 554 */
 /* exports provided: whenMapDispatchToPropsIsFunction, whenMapDispatchToPropsIsMissing, whenMapDispatchToPropsIsObject, default */
 /* exports used: default */
 /*!********************************************************!*\
@@ -80969,7 +81246,7 @@ function whenMapDispatchToPropsIsObject(mapDispatchToProps) {
 /* harmony default export */ __webpack_exports__["a"] = ([whenMapDispatchToPropsIsFunction, whenMapDispatchToPropsIsMissing, whenMapDispatchToPropsIsObject]);
 
 /***/ }),
-/* 553 */
+/* 555 */
 /* exports provided: whenMapStateToPropsIsFunction, whenMapStateToPropsIsMissing, default */
 /* exports used: default */
 /*!*****************************************************!*\
@@ -80996,7 +81273,7 @@ function whenMapStateToPropsIsMissing(mapStateToProps) {
 /* harmony default export */ __webpack_exports__["a"] = ([whenMapStateToPropsIsFunction, whenMapStateToPropsIsMissing]);
 
 /***/ }),
-/* 554 */
+/* 556 */
 /* exports provided: defaultMergeProps, wrapMergePropsFunc, whenMergePropsIsFunction, whenMergePropsIsOmitted, default */
 /* exports used: default */
 /*!************************************************!*\
@@ -81058,7 +81335,7 @@ function whenMergePropsIsOmitted(mergeProps) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(/*! ./../../../process/browser.js */ 1)))
 
 /***/ }),
-/* 555 */
+/* 557 */
 /* exports provided: impureFinalPropsSelectorFactory, pureFinalPropsSelectorFactory, default */
 /* exports used: default */
 /*!*****************************************************!*\
@@ -81070,7 +81347,7 @@ function whenMergePropsIsOmitted(mergeProps) {
 /* WEBPACK VAR INJECTION */(function(process) {/* unused harmony export impureFinalPropsSelectorFactory */
 /* unused harmony export pureFinalPropsSelectorFactory */
 /* harmony export (immutable) */ __webpack_exports__["a"] = finalPropsSelectorFactory;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__verifySubselectors__ = __webpack_require__(/*! ./verifySubselectors */ 556);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__verifySubselectors__ = __webpack_require__(/*! ./verifySubselectors */ 558);
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 
@@ -81176,7 +81453,7 @@ function finalPropsSelectorFactory(dispatch, _ref2) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(/*! ./../../../process/browser.js */ 1)))
 
 /***/ }),
-/* 556 */
+/* 558 */
 /* exports provided: default */
 /* exports used: default */
 /*!********************************************************!*\
@@ -81186,7 +81463,7 @@ function finalPropsSelectorFactory(dispatch, _ref2) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = verifySubselectors;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_warning__ = __webpack_require__(/*! ../utils/warning */ 92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_warning__ = __webpack_require__(/*! ../utils/warning */ 93);
 
 
 function verify(selector, methodName, displayName) {
@@ -81206,7 +81483,7 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
 }
 
 /***/ }),
-/* 557 */
+/* 559 */
 /* exports provided: default */
 /* exports used: default */
 /*!************************************************!*\
@@ -81310,7 +81587,7 @@ var Subscription = function () {
 
 
 /***/ }),
-/* 558 */
+/* 560 */
 /* exports provided: default */
 /* exports used: default */
 /*!************************************************!*\
@@ -81352,7 +81629,7 @@ function shallowEqual(objA, objB) {
 }
 
 /***/ }),
-/* 559 */
+/* 561 */
 /* no static exports found */
 /* all exports used */
 /*!******************************************!*\
@@ -81383,7 +81660,7 @@ var emptyObject = __webpack_require__(/*! fbjs/lib/emptyObject */ 40);
 var invariant = __webpack_require__(/*! fbjs/lib/invariant */ 29);
 var warning = __webpack_require__(/*! fbjs/lib/warning */ 41);
 var emptyFunction = __webpack_require__(/*! fbjs/lib/emptyFunction */ 16);
-var checkPropTypes = __webpack_require__(/*! prop-types/checkPropTypes */ 90);
+var checkPropTypes = __webpack_require__(/*! prop-types/checkPropTypes */ 91);
 
 // TODO: this is special because it gets imported during build.
 
@@ -82722,7 +82999,7 @@ module.exports = react;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../process/browser.js */ 1)))
 
 /***/ }),
-/* 560 */
+/* 562 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************************!*\
@@ -82755,7 +83032,7 @@ isValidElement:K,version:"16.2.0",__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_F
 
 
 /***/ }),
-/* 561 */
+/* 563 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************************!*\
@@ -82767,7 +83044,7 @@ module.exports = __webpack_require__(/*! ./lib/_stream_duplex.js */ 21);
 
 
 /***/ }),
-/* 562 */
+/* 564 */
 /* no static exports found */
 /* all exports used */
 /*!******************************************************!*\
@@ -82825,7 +83102,7 @@ PassThrough.prototype._transform = function (chunk, encoding, cb) {
 };
 
 /***/ }),
-/* 563 */
+/* 565 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************************************!*\
@@ -82910,7 +83187,7 @@ module.exports = function () {
 }();
 
 /***/ }),
-/* 564 */
+/* 566 */
 /* no static exports found */
 /* all exports used */
 /*!******************************************!*\
@@ -82918,11 +83195,11 @@ module.exports = function () {
   \******************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! ./readable */ 94).PassThrough
+module.exports = __webpack_require__(/*! ./readable */ 95).PassThrough
 
 
 /***/ }),
-/* 565 */
+/* 567 */
 /* no static exports found */
 /* all exports used */
 /*!****************************************!*\
@@ -82930,11 +83207,11 @@ module.exports = __webpack_require__(/*! ./readable */ 94).PassThrough
   \****************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! ./readable */ 94).Transform
+module.exports = __webpack_require__(/*! ./readable */ 95).Transform
 
 
 /***/ }),
-/* 566 */
+/* 568 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************************!*\
@@ -82942,11 +83219,11 @@ module.exports = __webpack_require__(/*! ./readable */ 94).Transform
   \***********************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! ./lib/_stream_writable.js */ 93);
+module.exports = __webpack_require__(/*! ./lib/_stream_writable.js */ 94);
 
 
 /***/ }),
-/* 567 */
+/* 569 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -82980,7 +83257,7 @@ thunk.withExtraArgument = createThunkMiddleware;
 exports['default'] = thunk;
 
 /***/ }),
-/* 568 */
+/* 570 */
 /* exports provided: default */
 /* exports used: default */
 /*!***************************************!*\
@@ -83041,7 +83318,7 @@ function applyMiddleware() {
 }
 
 /***/ }),
-/* 569 */
+/* 571 */
 /* exports provided: default */
 /* exports used: default */
 /*!******************************************!*\
@@ -83100,7 +83377,7 @@ function bindActionCreators(actionCreators, dispatch) {
 }
 
 /***/ }),
-/* 570 */
+/* 572 */
 /* exports provided: default */
 /* exports used: default */
 /*!***************************************!*\
@@ -83111,7 +83388,7 @@ function bindActionCreators(actionCreators, dispatch) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["a"] = combineReducers;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(/*! ./createStore */ 187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_es_isPlainObject__ = __webpack_require__(/*! lodash-es/isPlainObject */ 69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_es_isPlainObject__ = __webpack_require__(/*! lodash-es/isPlainObject */ 70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_warning__ = __webpack_require__(/*! ./utils/warning */ 189);
 
 
@@ -83246,7 +83523,7 @@ function combineReducers(reducers) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(/*! ./../../process/browser.js */ 1)))
 
 /***/ }),
-/* 571 */
+/* 573 */
 /* no static exports found */
 /* all exports used */
 /*!****************************************!*\
@@ -83444,7 +83721,7 @@ function combineReducers(reducers) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../webpack/buildin/global.js */ 11), __webpack_require__(/*! ./../process/browser.js */ 1)))
 
 /***/ }),
-/* 572 */
+/* 574 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************************!*\
@@ -83627,7 +83904,7 @@ Transformer.prototype._done = function(err, chunks, cb) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../process/browser.js */ 1)))
 
 /***/ }),
-/* 573 */
+/* 575 */
 /* no static exports found */
 /* all exports used */
 /*!******************************************!*\
@@ -83642,7 +83919,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ponyfill = __webpack_require__(/*! ./ponyfill.js */ 574);
+var _ponyfill = __webpack_require__(/*! ./ponyfill.js */ 576);
 
 var _ponyfill2 = _interopRequireDefault(_ponyfill);
 
@@ -83668,7 +83945,7 @@ exports['default'] = result;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../webpack/buildin/global.js */ 11), __webpack_require__(/*! ./../../webpack/buildin/module.js */ 37)(module)))
 
 /***/ }),
-/* 574 */
+/* 576 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************************!*\
@@ -83702,7 +83979,7 @@ function symbolObservablePonyfill(root) {
 };
 
 /***/ }),
-/* 575 */
+/* 577 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************************!*\
@@ -83730,7 +84007,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 576 */
+/* 578 */
 /* no static exports found */
 /* all exports used */
 /*!************************************************!*\
@@ -83741,28 +84018,28 @@ module.exports = {
 "use strict";
 
 
-var _require = __webpack_require__(/*! ./enum */ 575),
+var _require = __webpack_require__(/*! ./enum */ 577),
     checkEnum = _require.checkEnum;
 
-var _require2 = __webpack_require__(/*! ./maximum */ 578),
+var _require2 = __webpack_require__(/*! ./maximum */ 580),
     checkMaximum = _require2.checkMaximum;
 
-var _require3 = __webpack_require__(/*! ./maxLength */ 577),
+var _require3 = __webpack_require__(/*! ./maxLength */ 579),
     checkMaxLength = _require3.checkMaxLength;
 
-var _require4 = __webpack_require__(/*! ./minimum */ 580),
+var _require4 = __webpack_require__(/*! ./minimum */ 582),
     checkMinimum = _require4.checkMinimum;
 
-var _require5 = __webpack_require__(/*! ./minLength */ 579),
+var _require5 = __webpack_require__(/*! ./minLength */ 581),
     checkMinLength = _require5.checkMinLength;
 
-var _require6 = __webpack_require__(/*! ./pattern */ 581),
+var _require6 = __webpack_require__(/*! ./pattern */ 583),
     checkPattern = _require6.checkPattern;
 
-var _require7 = __webpack_require__(/*! ./required */ 582),
+var _require7 = __webpack_require__(/*! ./required */ 584),
     checkRequired = _require7.checkRequired;
 
-var _require8 = __webpack_require__(/*! ./unique */ 583),
+var _require8 = __webpack_require__(/*! ./unique */ 585),
     checkUnique = _require8.checkUnique;
 
 // Module API
@@ -83779,7 +84056,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 577 */
+/* 579 */
 /* no static exports found */
 /* all exports used */
 /*!****************************************************!*\
@@ -83807,7 +84084,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 578 */
+/* 580 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************************!*\
@@ -83835,7 +84112,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 579 */
+/* 581 */
 /* no static exports found */
 /* all exports used */
 /*!****************************************************!*\
@@ -83863,7 +84140,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 580 */
+/* 582 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************************!*\
@@ -83891,7 +84168,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 581 */
+/* 583 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************************!*\
@@ -83921,7 +84198,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 582 */
+/* 584 */
 /* no static exports found */
 /* all exports used */
 /*!***************************************************!*\
@@ -83946,7 +84223,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 583 */
+/* 585 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************************!*\
@@ -83968,7 +84245,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 584 */
+/* 586 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -84029,7 +84306,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 585 */
+/* 587 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************!*\
@@ -84046,8 +84323,8 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var tv4 = __webpack_require__(/*! tv4 */ 100);
-var isArray = __webpack_require__(/*! lodash/isArray */ 5);
+var tv4 = __webpack_require__(/*! tv4 */ 101);
+var isArray = __webpack_require__(/*! lodash/isArray */ 6);
 var isString = __webpack_require__(/*! lodash/isString */ 3);
 
 var _require = __webpack_require__(/*! ./errors */ 25),
@@ -84200,7 +84477,7 @@ var Profile = function () {
 
     this._profile = profile;
     try {
-      this._jsonschema = __webpack_require__(/*! ./profiles */ 586)("./" + profile + '.json'); // eslint-disable-line
+      this._jsonschema = __webpack_require__(/*! ./profiles */ 588)("./" + profile + '.json'); // eslint-disable-line
     } catch (error) {
       throw new TableSchemaError('Can\'t load profile "' + profile + '"');
     }
@@ -84371,7 +84648,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 586 */
+/* 588 */
 /* no static exports found */
 /* all exports used */
 /*!***************************************************!*\
@@ -84381,7 +84658,7 @@ module.exports = {
 
 var map = {
 	"./geojson.json": 193,
-	"./table-schema.json": 587,
+	"./table-schema.json": 589,
 	"./topojson.json": 194
 };
 function webpackContext(req) {
@@ -84398,10 +84675,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 586;
+webpackContext.id = 588;
 
 /***/ }),
-/* 587 */
+/* 589 */
 /* no static exports found */
 /* all exports used */
 /*!******************************************************!*\
@@ -84412,7 +84689,7 @@ webpackContext.id = 586;
 module.exports = {"$schema":"http://json-schema.org/draft-04/schema#","title":"Table Schema","description":"A Table Schema for this resource, compliant with the [Table Schema](/tableschema/) specification.","type":"object","required":["fields"],"properties":{"fields":{"type":"array","minItems":1,"items":{"title":"Table Schema Field","type":"object","anyOf":[{"type":"object","title":"String Field","description":"The field contains strings, that is, sequences of characters.","required":["name"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `string`.","enum":["string"]},"format":{"description":"The format keyword options for `string` are `default`, `email`, `uri`, `binary`, and `uuid`.","context":"The following `format` options are supported:\n  * **default**: any valid string.\n  * **email**: A valid email address.\n  * **uri**: A valid URI.\n  * **binary**: A base64 encoded string representing binary data.\n  * **uuid**: A string that is a uuid.","enum":["default","email","uri","binary","uuid"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `string` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"name\",\n  \"type\": \"string\"\n}\n","{\n  \"name\": \"name\",\n  \"type\": \"string\",\n  \"format\": \"email\"\n}\n","{\n  \"name\": \"name\",\n  \"type\": \"string\",\n  \"constraints\": {\n    \"minLength\": 3,\n    \"maxLength\": 35\n  }\n}\n"]},{"type":"object","title":"Number Field","description":"The field contains numbers of any kind including decimals.","context":"The lexical formatting follows that of decimal in [XMLSchema](https://www.w3.org/TR/xmlschema-2/#decimal): a non-empty finite-length sequence of decimal digits separated by a period as a decimal indicator. An optional leading sign is allowed. If the sign is omitted, '+' is assumed. Leading and trailing zeroes are optional. If the fractional part is zero, the period and following zero(es) can be omitted. For example: '-1.23', '12678967.543233', '+100000.00', '210'.\n\nThe following special string values are permitted (case does not need to be respected):\n  - NaN: not a number\n  - INF: positive infinity\n  - -INF: negative infinity\n\nA number `MAY` also have a trailing:\n  - exponent: this `MUST` consist of an E followed by an optional + or - sign followed by one or more decimal digits (0-9)\n  - percentage: the percentage sign: `%`. In conversion percentages should be divided by 100.\n\nIf both exponent and percentages are present the percentage `MUST` follow the exponent e.g. '53E10%' (equals 5.3).","required":["name"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `number`.","enum":["number"]},"format":{"description":"There are no format keyword options for `number`: only `default` is allowed.","enum":["default"],"default":"default"},"bareNumber":{"type":"boolean","title":"bareNumber","description":"a boolean field with a default of `true`. If `true` the physical contents of this field must follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors MUST therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.","default":true},"decimalChar":{"type":"string","description":"A string whose value is used to represent a decimal point within the number. The default value is `.`."},"groupChar":{"type":"string","description":"A string whose value is used to group digits within the number. The default value is `null`. A common value is `,` e.g. '100,000'."},"constraints":{"title":"Constraints","description":"The following constraints are supported for `number` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"number"}}]},"minimum":{"oneOf":[{"type":"string"},{"type":"number"}]},"maximum":{"oneOf":[{"type":"string"},{"type":"number"}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"field-name\",\n  \"type\": \"number\"\n}\n","{\n  \"name\": \"field-name\",\n  \"type\": \"number\",\n  \"constraints\": {\n    \"enum\": [ \"1.00\", \"1.50\", \"2.00\" ]\n  }\n}\n"]},{"type":"object","title":"Integer Field","description":"The field contains integers - that is whole numbers.","context":"Integer values are indicated in the standard way for any valid integer.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `integer`.","enum":["integer"]},"format":{"description":"There are no format keyword options for `integer`: only `default` is allowed.","enum":["default"],"default":"default"},"bareNumber":{"type":"boolean","title":"bareNumber","description":"a boolean field with a default of `true`. If `true` the physical contents of this field must follow the formatting constraints already set out. If `false` the contents of this field may contain leading and/or trailing non-numeric characters (which implementors MUST therefore strip). The purpose of `bareNumber` is to allow publishers to publish numeric data that contains trailing characters such as percentages e.g. `95%` or leading characters such as currencies e.g. `€95` or `EUR 95`. Note that it is entirely up to implementors what, if anything, they do with stripped text.","default":true},"constraints":{"title":"Constraints","description":"The following constraints are supported for `integer` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"integer"}}]},"minimum":{"oneOf":[{"type":"string"},{"type":"integer"}]},"maximum":{"oneOf":[{"type":"string"},{"type":"integer"}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"age\",\n  \"type\": \"integer\",\n  \"constraints\": {\n    \"unique\": true,\n    \"minimum\": 100,\n    \"maximum\": 9999\n  }\n}\n"]},{"type":"object","title":"Date Field","description":"The field contains temporal date values.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `date`.","enum":["date"]},"format":{"description":"The format keyword options for `date` are `default`, `any`, and `{PATTERN}`.","context":"The following `format` options are supported:\n  * **default**: An ISO8601 format string of YYYY-MM-DD.\n  * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.\n  * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).","default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `date` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"date_of_birth\",\n  \"type\": \"date\"\n}\n","{\n  \"name\": \"date_of_birth\",\n  \"type\": \"date\",\n  \"constraints\": {\n    \"minimum\": \"01-01-1900\"\n  }\n}\n","{\n  \"name\": \"date_of_birth\",\n  \"type\": \"date\",\n  \"format\": \"MM-DD-YYYY\"\n}\n"]},{"type":"object","title":"Time Field","description":"The field contains temporal time values.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `time`.","enum":["time"]},"format":{"description":"The format keyword options for `time` are `default`, `any`, and `{PATTERN}`.","context":"The following `format` options are supported:\n  * **default**: An ISO8601 format string for time.\n  * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.\n  * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).","default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `time` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"appointment_start\",\n  \"type\": \"time\"\n}\n","{\n  \"name\": \"appointment_start\",\n  \"type\": \"time\",\n  \"format\": \"any\"\n}\n"]},{"type":"object","title":"Date Time Field","description":"The field contains temporal datetime values.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `datetime`.","enum":["datetime"]},"format":{"description":"The format keyword options for `datetime` are `default`, `any`, and `{PATTERN}`.","context":"The following `format` options are supported:\n  * **default**: An ISO8601 format string for datetime.\n  * **any**: Any parsable representation of a date. The implementing library can attempt to parse the datetime via a range of strategies.\n  * **{PATTERN}**: The value can be parsed according to `{PATTERN}`, which `MUST` follow the date formatting syntax of C / Python [strftime](http://strftime.org/).","default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `datetime` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"timestamp\",\n  \"type\": \"datetime\"\n}\n","{\n  \"name\": \"timestamp\",\n  \"type\": \"datetime\",\n  \"format\": \"default\"\n}\n"]},{"type":"object","title":"Year Field","description":"A calendar year, being an integer with 4 digits. Equivalent to [gYear in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYear)","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `year`.","enum":["year"]},"format":{"description":"There are no format keyword options for `year`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `year` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"integer"}}]},"minimum":{"oneOf":[{"type":"string"},{"type":"integer"}]},"maximum":{"oneOf":[{"type":"string"},{"type":"integer"}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"year\",\n  \"type\": \"year\"\n}\n","{\n  \"name\": \"year\",\n  \"type\": \"year\",\n  \"constraints\": {\n    \"minimum\": 1970,\n    \"maximum\": 2003\n  }\n}\n"]},{"type":"object","title":"Year Month Field","description":"A calendar year month, being an integer with 1 or 2 digits. Equivalent to [gYearMonth in XML Schema](https://www.w3.org/TR/xmlschema-2/#gYearMonth)","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `yearmonth`.","enum":["yearmonth"]},"format":{"description":"There are no format keyword options for `yearmonth`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `yearmonth` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"pattern":{"type":"string","description":"A regular expression pattern to test each value of the property against, where a truthy response indicates validity.","context":"Regular expressions `SHOULD` conform to the [XML Schema regular expression syntax](http://www.w3.org/TR/xmlschema-2/#regexs)."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"month\",\n  \"type\": \"yearmonth\"\n}\n","{\n  \"name\": \"month\",\n  \"type\": \"yearmonth\",\n  \"constraints\": {\n    \"minimum\": 1,\n    \"maximum\": 6\n  }\n}\n"]},{"type":"object","title":"Boolean Field","description":"The field contains boolean (true/false) data.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `boolean`.","enum":["boolean"]},"trueValues":{"type":"array","minItems":1,"items":{"type":"string"},"default":["true","True","TRUE","1"]},"falseValues":{"type":"array","minItems":1,"items":{"type":"string"},"default":["false","False","FALSE","0"]},"constraints":{"title":"Constraints","description":"The following constraints are supported for `boolean` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"boolean"}}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"registered\",\n  \"type\": \"boolean\"\n}\n"]},{"type":"object","title":"Object Field","description":"The field contains data which can be parsed as a valid JSON object.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `object`.","enum":["object"]},"format":{"description":"There are no format keyword options for `object`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints apply for `object` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"object"}}]},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"extra\"\n  \"type\": \"object\"\n}\n"]},{"type":"object","title":"GeoPoint Field","description":"The field contains data describing a geographic point.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `geopoint`.","enum":["geopoint"]},"format":{"description":"The format keyword options for `geopoint` are `default`,`array`, and `object`.","context":"The following `format` options are supported:\n  * **default**: A string of the pattern 'lon, lat', where `lon` is the longitude and `lat` is the latitude.\n  * **array**: An array of exactly two items, where each item is either a number, or a string parsable as a number, and the first item is `lon` and the second item is `lat`.\n  * **object**: A JSON object with exactly two keys, `lat` and `lon`","notes":["Implementations `MUST` strip all white space in the default format of `lon, lat`."],"enum":["default","array","object"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `geopoint` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"array"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"object"}}]}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"post_office\",\n  \"type\": \"geopoint\"\n}\n","{\n  \"name\": \"post_office\",\n  \"type\": \"geopoint\",\n  \"format\": \"array\"\n}\n"]},{"type":"object","title":"GeoJSON Field","description":"The field contains a JSON object according to GeoJSON or TopoJSON","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `geojson`.","enum":["geojson"]},"format":{"description":"The format keyword options for `geojson` are `default` and `topojson`.","context":"The following `format` options are supported:\n  * **default**: A geojson object as per the [GeoJSON spec](http://geojson.org/).\n  * **topojson**: A topojson object as per the [TopoJSON spec](https://github.com/topojson/topojson-specification/blob/master/README.md)","enum":["default","topojson"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `geojson` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"object"}}]},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"city_limits\",\n  \"type\": \"geojson\"\n}\n","{\n  \"name\": \"city_limits\",\n  \"type\": \"geojson\",\n  \"format\": \"topojson\"\n}\n"]},{"type":"object","title":"Array Field","description":"The field contains data which can be parsed as a valid JSON array.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `array`.","enum":["array"]},"format":{"description":"There are no format keyword options for `array`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints apply for `array` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"array"}}]},"minLength":{"type":"integer","description":"An integer that specifies the minimum length of a value."},"maxLength":{"type":"integer","description":"An integer that specifies the maximum length of a value."}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"options\"\n  \"type\": \"array\"\n}\n"]},{"type":"object","title":"Duration Field","description":"The field contains a duration of time.","context":"The lexical representation for duration is the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) extended format `PnYnMnDTnHnMnS`, where `nY` represents the number of years, `nM` the number of months, `nD` the number of days, 'T' is the date/time separator, `nH` the number of hours, `nM` the number of minutes and `nS` the number of seconds. The number of seconds can include decimal digits to arbitrary precision. Date and time elements including their designator may be omitted if their value is zero, and lower order elements may also be omitted for reduced precision. Here we follow the definition of [XML Schema duration datatype](http://www.w3.org/TR/xmlschema-2/#duration) directly and that definition is implicitly inlined here.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `duration`.","enum":["duration"]},"format":{"description":"There are no format keyword options for `duration`: only `default` is allowed.","enum":["default"],"default":"default"},"constraints":{"title":"Constraints","description":"The following constraints are supported for `duration` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},"minimum":{"type":"string"},"maximum":{"type":"string"}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"period\"\n  \"type\": \"duration\"\n}\n"]},{"type":"object","title":"Any Field","description":"Any value is accepted, including values that are not captured by the type/format/constraint requirements of the specification.","required":["name","type"],"properties":{"name":{"title":"Name","description":"A name for this field.","type":"string"},"title":{"title":"Title","description":"A human-readable title.","type":"string","examples":["{\n  \"title\": \"My Package Title\"\n}\n"]},"description":{"title":"Description","description":"A text description. Markdown is encouraged.","type":"string","examples":["{\n  \"description\": \"# My Package description\\nAll about my package.\"\n}\n"]},"type":{"description":"The type keyword, which `MUST` be a value of `any`.","enum":["any"]},"constraints":{"title":"Constraints","description":"The following constraints apply to `any` fields.","type":"object","properties":{"required":{"type":"boolean","description":"Indicates whether a property must have a value for each instance.","context":"An empty string is considered to be a missing value."},"unique":{"type":"boolean","description":"When `true`, each value for the property `MUST` be unique."},"enum":{"type":"array","minItems":1,"uniqueItems":true}}},"rdfType":{"type":"string","description":"The RDF type for this field."}},"examples":["{\n  \"name\": \"notes\",\n  \"type\": \"any\"\n"]}]},"description":"An `array` of Table Schema Field objects.","examples":["{\n  \"fields\": [\n    {\n      \"name\": \"my-field-name\"\n    }\n  ]\n}\n","{\n  \"fields\": [\n    {\n      \"name\": \"my-field-name\",\n      \"type\": \"number\"\n    },\n    {\n      \"name\": \"my-field-name-2\",\n      \"type\": \"string\",\n      \"format\": \"email\"\n    }\n  ]\n}\n"]},"primaryKey":{"oneOf":[{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},{"type":"string"}],"description":"A primary key is a field name or an array of field names, whose values `MUST` uniquely identify each row in the table.","context":"Field name in the `primaryKey` `MUST` be unique, and `MUST` match a field name in the associated table. It is acceptable to have an array with a single value, indicating that the value of a single field is the primary key.","examples":["{\n  \"primaryKey\": [\n    \"name\"\n  ]\n}\n","{\n  \"primaryKey\": [\n    \"first_name\",\n    \"last_name\"\n  ]\n}\n"]},"foreignKeys":{"type":"array","minItems":1,"items":{"title":"Table Schema Foreign Key","description":"Table Schema Foreign Key","type":"object","required":["fields","reference"],"oneOf":[{"properties":{"fields":{"type":"array","items":{"type":"string","minItems":1,"uniqueItems":true,"description":"Fields that make up the primary key."}},"reference":{"type":"object","required":["resource","fields"],"properties":{"resource":{"type":"string","default":""},"fields":{"type":"array","items":{"type":"string"},"minItems":1,"uniqueItems":true}}}}},{"properties":{"fields":{"type":"string","description":"Fields that make up the primary key."},"reference":{"type":"object","required":["resource","fields"],"properties":{"resource":{"type":"string","default":""},"fields":{"type":"string"}}}}}]},"examples":["{\n  \"foreignKeys\": [\n    {\n      \"fields\": \"state\",\n      \"reference\": {\n        \"resource\": \"the-resource\",\n        \"fields\": \"state_id\"\n      }\n    }\n  ]\n}\n","{\n  \"foreignKeys\": [\n    {\n      \"fields\": \"state\",\n      \"reference\": {\n        \"resource\": \"\",\n        \"fields\": \"id\"\n      }\n    }\n  ]\n}\n"]},"missingValues":{"type":"array","minItems":1,"items":{"type":"string"},"default":[""],"description":"Values that when encountered in the source, should be considered as `null`, 'not present', or 'blank' values.","context":"Many datasets arrive with missing data values, either because a value was not collected or it never existed.\nMissing values may be indicated simply by the value being empty in other cases a special value may have been used e.g. `-`, `NaN`, `0`, `-9999` etc.\nThe `missingValues` property provides a way to indicate that these values should be interpreted as equivalent to null.\n\n`missingValues` are strings rather than being the data type of the particular field. This allows for comparison prior to casting and for fields to have missing value which are not of their type, for example a `number` field to have missing values indicated by `-`.\n\nThe default value of `missingValue` for a non-string type field is the empty string `''`. For string type fields there is no default for `missingValue` (for string fields the empty string `''` is a valid value and need not indicate null).","examples":["{\n  \"missingValues\": [\n    \"-\",\n    \"NaN\",\n    \"\"\n  ]\n}\n"]}},"examples":["{\n  \"schema\": {\n    \"fields\": [\n      {\n        \"name\": \"first_name\",\n        \"type\": \"string\"\n        \"constraints\": {\n          \"required\": true\n        }\n      },\n      {\n        \"name\": \"age\",\n        \"type\": \"integer\"\n      },\n    ],\n    \"primaryKey\": [\n      \"name\"\n    ]\n  }\n}\n"]}
 
 /***/ }),
-/* 588 */
+/* 590 */
 /* no static exports found */
 /* all exports used */
 /*!****************************************!*\
@@ -84434,7 +84711,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 589 */
+/* 591 */
 /* no static exports found */
 /* all exports used */
 /*!******************************************!*\
@@ -84445,7 +84722,7 @@ module.exports = {
 "use strict";
 
 
-var isArray = __webpack_require__(/*! lodash/isArray */ 5);
+var isArray = __webpack_require__(/*! lodash/isArray */ 6);
 var isString = __webpack_require__(/*! lodash/isString */ 3);
 
 var _require = __webpack_require__(/*! ../config */ 4),
@@ -84475,7 +84752,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 590 */
+/* 592 */
 /* no static exports found */
 /* all exports used */
 /*!********************************************!*\
@@ -84522,7 +84799,7 @@ module.exports = {
 var _FALSE_VALUES = ['false', 'False', 'FALSE', '0'];
 
 /***/ }),
-/* 591 */
+/* 593 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************************!*\
@@ -84534,7 +84811,7 @@ var _FALSE_VALUES = ['false', 'False', 'FALSE', '0'];
 
 
 var moment = __webpack_require__(/*! moment */ 0);
-var isDate = __webpack_require__(/*! lodash/isDate */ 83);
+var isDate = __webpack_require__(/*! lodash/isDate */ 84);
 var isString = __webpack_require__(/*! lodash/isString */ 3);
 
 var _require = __webpack_require__(/*! d3-time-format */ 38),
@@ -84581,7 +84858,7 @@ module.exports = {
 };var _DEFAULT_PATTERN = '%Y-%m-%d';
 
 /***/ }),
-/* 592 */
+/* 594 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************************!*\
@@ -84593,7 +84870,7 @@ module.exports = {
 
 
 var moment = __webpack_require__(/*! moment */ 0);
-var isDate = __webpack_require__(/*! lodash/isDate */ 83);
+var isDate = __webpack_require__(/*! lodash/isDate */ 84);
 var isString = __webpack_require__(/*! lodash/isString */ 3);
 
 var _require = __webpack_require__(/*! d3-time-format */ 38),
@@ -84640,7 +84917,7 @@ module.exports = {
 };var _DEFAULT_PATTERN = '%Y-%m-%dT%H:%M:%SZ';
 
 /***/ }),
-/* 593 */
+/* 595 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************************!*\
@@ -84684,7 +84961,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 594 */
+/* 596 */
 /* no static exports found */
 /* all exports used */
 /*!********************************************!*\
@@ -84695,7 +84972,7 @@ module.exports = {
 "use strict";
 
 
-var tv4 = __webpack_require__(/*! tv4 */ 100);
+var tv4 = __webpack_require__(/*! tv4 */ 101);
 var isObject = __webpack_require__(/*! lodash/isObject */ 12);
 var isString = __webpack_require__(/*! lodash/isString */ 3);
 var isPlainObject = __webpack_require__(/*! lodash/isPlainObject */ 56);
@@ -84748,7 +85025,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 595 */
+/* 597 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************************!*\
@@ -84762,9 +85039,9 @@ module.exports = {
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 var isNaN = __webpack_require__(/*! lodash/isNaN */ 55);
-var isArray = __webpack_require__(/*! lodash/isArray */ 5);
+var isArray = __webpack_require__(/*! lodash/isArray */ 6);
 var isString = __webpack_require__(/*! lodash/isString */ 3);
-var toNumber = __webpack_require__(/*! lodash/toNumber */ 87);
+var toNumber = __webpack_require__(/*! lodash/toNumber */ 88);
 
 var _require = __webpack_require__(/*! ../config */ 4),
     ERROR = _require.ERROR;
@@ -84830,7 +85107,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 596 */
+/* 598 */
 /* no static exports found */
 /* all exports used */
 /*!********************************************!*\
@@ -84843,7 +85120,7 @@ module.exports = {
 
 var isNaN = __webpack_require__(/*! lodash/isNaN */ 55);
 var isString = __webpack_require__(/*! lodash/isString */ 3);
-var isInteger = __webpack_require__(/*! lodash/isInteger */ 85);
+var isInteger = __webpack_require__(/*! lodash/isInteger */ 86);
 
 var _require = __webpack_require__(/*! ../config */ 4),
     ERROR = _require.ERROR;
@@ -84874,7 +85151,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 597 */
+/* 599 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************************!*\
@@ -84888,7 +85165,7 @@ module.exports = {
 var isNaN = __webpack_require__(/*! lodash/isNaN */ 55);
 var isString = __webpack_require__(/*! lodash/isString */ 3);
 var isNumber = __webpack_require__(/*! lodash/isNumber */ 168);
-var toNumber = __webpack_require__(/*! lodash/toNumber */ 87);
+var toNumber = __webpack_require__(/*! lodash/toNumber */ 88);
 
 var _require = __webpack_require__(/*! ../config */ 4),
     ERROR = _require.ERROR;
@@ -84930,7 +85207,7 @@ module.exports = {
 var _DEFAULT_GROUP_CHAR = '';
 
 /***/ }),
-/* 598 */
+/* 600 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************************!*\
@@ -84971,7 +85248,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 599 */
+/* 601 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************************!*\
@@ -84982,10 +85259,10 @@ module.exports = {
 "use strict";
 
 
-var isBase64 = __webpack_require__(/*! validator/lib/isBase64 */ 630);
-var isEmail = __webpack_require__(/*! validator/lib/isEmail */ 632);
-var isUUID = __webpack_require__(/*! validator/lib/isUUID */ 635);
-var isURL = __webpack_require__(/*! validator/lib/isURL */ 634);
+var isBase64 = __webpack_require__(/*! validator/lib/isBase64 */ 632);
+var isEmail = __webpack_require__(/*! validator/lib/isEmail */ 634);
+var isUUID = __webpack_require__(/*! validator/lib/isUUID */ 637);
+var isURL = __webpack_require__(/*! validator/lib/isURL */ 636);
 var isString = __webpack_require__(/*! lodash/isString */ 3);
 
 var _require = __webpack_require__(/*! ../config */ 4),
@@ -85022,7 +85299,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 600 */
+/* 602 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************************!*\
@@ -85034,7 +85311,7 @@ module.exports = {
 
 
 var moment = __webpack_require__(/*! moment */ 0);
-var isDate = __webpack_require__(/*! lodash/isDate */ 83);
+var isDate = __webpack_require__(/*! lodash/isDate */ 84);
 var isString = __webpack_require__(/*! lodash/isString */ 3);
 
 var _require = __webpack_require__(/*! d3-time-format */ 38),
@@ -85081,7 +85358,7 @@ module.exports = {
 };var _DEFAULT_PATTERN = '%H:%M:%S';
 
 /***/ }),
-/* 601 */
+/* 603 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************************!*\
@@ -85094,7 +85371,7 @@ module.exports = {
 
 var isNaN = __webpack_require__(/*! lodash/isNaN */ 55);
 var isString = __webpack_require__(/*! lodash/isString */ 3);
-var isInteger = __webpack_require__(/*! lodash/isInteger */ 85);
+var isInteger = __webpack_require__(/*! lodash/isInteger */ 86);
 
 var _require = __webpack_require__(/*! ../config */ 4),
     ERROR = _require.ERROR;
@@ -85130,7 +85407,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 602 */
+/* 604 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************************!*\
@@ -85141,7 +85418,7 @@ module.exports = {
 "use strict";
 
 
-var isArray = __webpack_require__(/*! lodash/isArray */ 5);
+var isArray = __webpack_require__(/*! lodash/isArray */ 6);
 var isString = __webpack_require__(/*! lodash/isString */ 3);
 
 var _require = __webpack_require__(/*! ../config */ 4),
@@ -85183,7 +85460,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 603 */
+/* 605 */
 /* no static exports found */
 /* all exports used */
 /*!***************************************!*\
@@ -85233,7 +85510,7 @@ var validate = function () {
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-var _require = __webpack_require__(/*! ./schema */ 98),
+var _require = __webpack_require__(/*! ./schema */ 99),
     Schema = _require.Schema;
 
 module.exports = {
@@ -85241,7 +85518,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 604 */
+/* 606 */
 /* no static exports found */
 /* all exports used */
 /*!********************************************!*\
@@ -85254,8 +85531,8 @@ module.exports = {
 
 var utils = __webpack_require__(/*! ./utils */ 10);
 var bind = __webpack_require__(/*! ./helpers/bind */ 202);
-var Axios = __webpack_require__(/*! ./core/Axios */ 606);
-var defaults = __webpack_require__(/*! ./defaults */ 99);
+var Axios = __webpack_require__(/*! ./core/Axios */ 608);
+var defaults = __webpack_require__(/*! ./defaults */ 100);
 
 /**
  * Create an instance of Axios
@@ -85289,14 +85566,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ 199);
-axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ 605);
+axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ 607);
 axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ 200);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(/*! ./helpers/spread */ 620);
+axios.spread = __webpack_require__(/*! ./helpers/spread */ 622);
 
 module.exports = axios;
 
@@ -85305,7 +85582,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 605 */
+/* 607 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************************************!*\
@@ -85374,7 +85651,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 606 */
+/* 608 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************************!*\
@@ -85385,10 +85662,10 @@ module.exports = CancelToken;
 "use strict";
 
 
-var defaults = __webpack_require__(/*! ./../defaults */ 99);
+var defaults = __webpack_require__(/*! ./../defaults */ 100);
 var utils = __webpack_require__(/*! ./../utils */ 10);
-var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ 607);
-var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ 608);
+var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ 609);
+var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ 610);
 
 /**
  * Create a new instance of Axios
@@ -85465,7 +85742,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 607 */
+/* 609 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************************************!*\
@@ -85529,7 +85806,7 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 608 */
+/* 610 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************************************!*\
@@ -85541,11 +85818,11 @@ module.exports = InterceptorManager;
 
 
 var utils = __webpack_require__(/*! ./../utils */ 10);
-var transformData = __webpack_require__(/*! ./transformData */ 611);
+var transformData = __webpack_require__(/*! ./transformData */ 613);
 var isCancel = __webpack_require__(/*! ../cancel/isCancel */ 200);
-var defaults = __webpack_require__(/*! ../defaults */ 99);
-var isAbsoluteURL = __webpack_require__(/*! ./../helpers/isAbsoluteURL */ 616);
-var combineURLs = __webpack_require__(/*! ./../helpers/combineURLs */ 614);
+var defaults = __webpack_require__(/*! ../defaults */ 100);
+var isAbsoluteURL = __webpack_require__(/*! ./../helpers/isAbsoluteURL */ 618);
+var combineURLs = __webpack_require__(/*! ./../helpers/combineURLs */ 616);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -85627,7 +85904,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 609 */
+/* 611 */
 /* no static exports found */
 /* all exports used */
 /*!********************************************************!*\
@@ -85660,7 +85937,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 610 */
+/* 612 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************************!*\
@@ -85698,7 +85975,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 611 */
+/* 613 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************************************!*\
@@ -85730,7 +86007,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 612 */
+/* 614 */
 /* no static exports found */
 /* all exports used */
 /*!***************************************************!*\
@@ -85778,7 +86055,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 613 */
+/* 615 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************************************!*\
@@ -85858,7 +86135,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 614 */
+/* 616 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************************************!*\
@@ -85884,7 +86161,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 615 */
+/* 617 */
 /* no static exports found */
 /* all exports used */
 /*!******************************************************!*\
@@ -85949,7 +86226,7 @@ module.exports = (
 
 
 /***/ }),
-/* 616 */
+/* 618 */
 /* no static exports found */
 /* all exports used */
 /*!************************************************************!*\
@@ -85975,7 +86252,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 617 */
+/* 619 */
 /* no static exports found */
 /* all exports used */
 /*!**************************************************************!*\
@@ -86055,7 +86332,7 @@ module.exports = (
 
 
 /***/ }),
-/* 618 */
+/* 620 */
 /* no static exports found */
 /* all exports used */
 /*!******************************************************************!*\
@@ -86079,7 +86356,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 619 */
+/* 621 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************************************!*\
@@ -86144,7 +86421,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 620 */
+/* 622 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************************************!*\
@@ -86183,7 +86460,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 621 */
+/* 623 */
 /* no static exports found */
 /* all exports used */
 /*!************************************************!*\
@@ -86451,10 +86728,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 621;
+webpackContext.id = 623;
 
 /***/ }),
-/* 622 */
+/* 624 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -86512,7 +86789,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(/*! setimmediate */ 571);
+__webpack_require__(/*! setimmediate */ 573);
 // On some exotic environments, it's not clear which object `setimmeidate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -86526,7 +86803,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../webpack/buildin/global.js */ 11)))
 
 /***/ }),
-/* 623 */
+/* 625 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -86590,7 +86867,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (nam
 
 
 /***/ }),
-/* 624 */
+/* 626 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -86669,7 +86946,7 @@ function config (name) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../webpack/buildin/global.js */ 11)))
 
 /***/ }),
-/* 625 */
+/* 627 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************************!*\
@@ -86703,7 +86980,7 @@ if (typeof Object.create === 'function') {
 
 
 /***/ }),
-/* 626 */
+/* 628 */
 /* no static exports found */
 /* all exports used */
 /*!*******************************************!*\
@@ -86719,7 +86996,7 @@ module.exports = function isBuffer(arg) {
 }
 
 /***/ }),
-/* 627 */
+/* 629 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -86753,7 +87030,7 @@ module.exports = bytesToUuid;
 
 
 /***/ }),
-/* 628 */
+/* 630 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -86796,7 +87073,7 @@ if (getRandomValues) {
 
 
 /***/ }),
-/* 629 */
+/* 631 */
 /* no static exports found */
 /* all exports used */
 /*!**********************!*\
@@ -86804,8 +87081,8 @@ if (getRandomValues) {
   \**********************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var rng = __webpack_require__(/*! ./lib/rng */ 628);
-var bytesToUuid = __webpack_require__(/*! ./lib/bytesToUuid */ 627);
+var rng = __webpack_require__(/*! ./lib/rng */ 630);
+var bytesToUuid = __webpack_require__(/*! ./lib/bytesToUuid */ 629);
 
 function v4(options, buf, offset) {
   var i = buf && offset || 0;
@@ -86836,7 +87113,7 @@ module.exports = v4;
 
 
 /***/ }),
-/* 630 */
+/* 632 */
 /* no static exports found */
 /* all exports used */
 /*!*************************************!*\
@@ -86872,7 +87149,7 @@ function isBase64(str) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 631 */
+/* 633 */
 /* no static exports found */
 /* all exports used */
 /*!*****************************************!*\
@@ -86916,7 +87193,7 @@ function isByteLength(str, options) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 632 */
+/* 634 */
 /* no static exports found */
 /* all exports used */
 /*!************************************!*\
@@ -86936,11 +87213,11 @@ var _assertString = __webpack_require__(/*! ./util/assertString */ 24);
 
 var _assertString2 = _interopRequireDefault(_assertString);
 
-var _merge = __webpack_require__(/*! ./util/merge */ 101);
+var _merge = __webpack_require__(/*! ./util/merge */ 102);
 
 var _merge2 = _interopRequireDefault(_merge);
 
-var _isByteLength = __webpack_require__(/*! ./isByteLength */ 631);
+var _isByteLength = __webpack_require__(/*! ./isByteLength */ 633);
 
 var _isByteLength2 = _interopRequireDefault(_isByteLength);
 
@@ -87016,7 +87293,7 @@ function isEmail(str, options) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 633 */
+/* 635 */
 /* no static exports found */
 /* all exports used */
 /*!*********************************!*\
@@ -87108,7 +87385,7 @@ function isIP(str) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 634 */
+/* 636 */
 /* no static exports found */
 /* all exports used */
 /*!**********************************!*\
@@ -87132,11 +87409,11 @@ var _isFQDN = __webpack_require__(/*! ./isFQDN */ 325);
 
 var _isFQDN2 = _interopRequireDefault(_isFQDN);
 
-var _isIP = __webpack_require__(/*! ./isIP */ 633);
+var _isIP = __webpack_require__(/*! ./isIP */ 635);
 
 var _isIP2 = _interopRequireDefault(_isIP);
 
-var _merge = __webpack_require__(/*! ./util/merge */ 101);
+var _merge = __webpack_require__(/*! ./util/merge */ 102);
 
 var _merge2 = _interopRequireDefault(_merge);
 
@@ -87266,7 +87543,7 @@ function isURL(url, options) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 635 */
+/* 637 */
 /* no static exports found */
 /* all exports used */
 /*!***********************************!*\
@@ -87305,7 +87582,7 @@ function isUUID(str) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 636 */
+/* 638 */
 /* no static exports found */
 /* all exports used */
 /*!**********************!*\

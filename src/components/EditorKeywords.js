@@ -38,8 +38,8 @@ function EditorKeywordsPure({
         <div className="panel-body">
 
           {/* List keywords */}
-          {keywords.map((keyword, index) => (
-            <p key={index}>
+          {keywords.map((keyword) => (
+            <p key={keyword}>
 
               {/* Update keyword */}
               <input

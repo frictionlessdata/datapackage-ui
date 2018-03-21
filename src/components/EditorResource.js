@@ -95,6 +95,7 @@ function EditorResourcePure({
         <div className="actions">
 
           {/* Remove */}
+          {/* eslint-disable-next-line jsx-a11y/interactive-supports-focus */}
           <a role="button" onClick={onRemoveClick}>
             <svg><use xlinkHref="#icon-trashcan" /></svg>
             <span className="text">Remove</span>

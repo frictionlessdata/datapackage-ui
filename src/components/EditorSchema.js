@@ -40,20 +40,20 @@ function EditorSchemaPure({
       {/* Add all fields */}
       {extraColumnsCount > 0 &&
         <div className="add card">
-          <a className="inner" onClick={onAddAllFieldsClick}>
+          <button className="inner" onClick={onAddAllFieldsClick}>
             <svg><use xlinkHref="#icon-plus" /></svg> Add all inferred fields
             {extraColumnsCount > 0 &&
               <p>{`(data has ${extraColumnsCount} extra column(s))`}</p>
             }
-          </a>
+          </button>
         </div>
       }
 
       {/* Add field */}
       <div className="add card">
-        <a className="inner" onClick={onAddFieldClick}>
+        <button className="inner" onClick={onAddFieldClick}>
           <svg><use xlinkHref="#icon-plus" /></svg> Add field
-        </a>
+        </button>
       </div>
 
     </div>

@@ -14,22 +14,22 @@ describe('EditorSchemaPure', () => {
 
   it('should render', () => {
     const descriptor = {
-      fields: [{name: 'name', type: 'integer', title: 'Title', _key: 'field1'}],
+      fields: [{
+        name: 'name', type: 'integer', title: 'Title', _key: 'field1'
+      }],
       _columns: [{values: ['value1']}],
     }
     const resourceIndex = 2
     const extraColumnsCount = 0
     const onAddFieldClick = sinon.spy()
     const onAddAllFieldsClick = sinon.spy()
-    const wrapper = shallow(
-      <EditorSchemaPure
-        descriptor={descriptor}
-        resourceIndex={resourceIndex}
-        extraColumnsCount={extraColumnsCount}
-        onAddFieldClick={onAddFieldClick}
-        onAddAllFieldsClick={onAddAllFieldsClick}
-      />
-    )
+    const wrapper = shallow(<EditorSchemaPure
+      descriptor={descriptor}
+      resourceIndex={resourceIndex}
+      extraColumnsCount={extraColumnsCount}
+      onAddFieldClick={onAddFieldClick}
+      onAddAllFieldsClick={onAddAllFieldsClick}
+    />)
     assert(wrapper.contains(' Add field'))
   })
 

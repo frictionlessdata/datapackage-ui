@@ -4,3 +4,26 @@
 
 }
 
+.package label {
+  width: 100%;
+}
+
+.package legend {
+  padding: 15px 0;
+}
+
+.package legend {
+  border-bottom: 0;
+}
+
+.package input {
+  font-weight: 400;
+}
+
+.package label > input {
+  margin-top: 5px;
+}
+
+#resources-data .card header input {
+  width: 95%;
+}
