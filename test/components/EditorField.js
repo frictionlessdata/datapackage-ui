@@ -17,14 +17,12 @@ describe('EditorFieldPure', () => {
     const descriptor = {name: 'name', type: 'integer', title: 'Title'}
     const onRemoveClick = sinon.spy()
     const onUpdateChange = sinon.spy()
-    const wrapper = shallow(
-      <EditorFieldPure
-        column={column}
-        descriptor={descriptor}
-        onRemoveClick={onRemoveClick}
-        onUpdateChange={onUpdateChange}
-      />
-    )
+    const wrapper = shallow(<EditorFieldPure
+      column={column}
+      descriptor={descriptor}
+      onRemoveClick={onRemoveClick}
+      onUpdateChange={onUpdateChange}
+    />)
     assert(wrapper.contains('value1'))
     assert(wrapper.contains('value2'))
     assert(wrapper.contains('value3'))

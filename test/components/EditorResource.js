@@ -21,18 +21,16 @@ describe('EditorResourcePure', () => {
     const onUploadClick = sinon.spy()
     const onUploadChange = sinon.spy()
     const onUpdateChange = sinon.spy()
-    const wrapper = shallow(
-      <EditorResourcePure
-        descriptor={descriptor}
-        resourceIndex={resourceIndex}
-        isSettingsActive={isSettingsActive}
-        setIsSettingsActive={setIsSettingsActive}
-        onRemoveClick={onRemoveClick}
-        onUploadClick={onUploadClick}
-        onUploadChange={onUploadChange}
-        onUpdateChange={onUpdateChange}
-      />
-    )
+    const wrapper = shallow(<EditorResourcePure
+      descriptor={descriptor}
+      resourceIndex={resourceIndex}
+      isSettingsActive={isSettingsActive}
+      setIsSettingsActive={setIsSettingsActive}
+      onRemoveClick={onRemoveClick}
+      onUploadClick={onUploadClick}
+      onUploadChange={onUploadChange}
+      onUpdateChange={onUpdateChange}
+    />)
     assert(wrapper.contains('Load'))
   })
 

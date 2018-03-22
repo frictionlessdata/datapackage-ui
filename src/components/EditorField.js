@@ -55,7 +55,7 @@ function EditorFieldPure({
       <div className="preview">
         <ol>
           {!!column && column.values.slice(0, 10).map((value, index) => (
-            <li key={index}><span>{value}</span></li>
+            <li key={index}><span>{value}</span></li> // eslint-disable-line react/no-array-index-key
           ))}
         </ol>
       </div>

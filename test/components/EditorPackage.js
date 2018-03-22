@@ -18,15 +18,13 @@ describe('EditorPackagePure', () => {
     const descriptor = {resources: []}
     const feedback = {}
     const onAddResourceClick = sinon.spy()
-    const result = shallow(
-      <EditorPackagePure
-        isPreviewActive={isPreviewActive}
-        publicDescriptor={publicDescriptor}
-        descriptor={descriptor}
-        feedback={feedback}
-        onAddResourceClick={onAddResourceClick}
-      />
-    )
+    const result = shallow(<EditorPackagePure
+      isPreviewActive={isPreviewActive}
+      publicDescriptor={publicDescriptor}
+      descriptor={descriptor}
+      feedback={feedback}
+      onAddResourceClick={onAddResourceClick}
+    />)
     assert(result.contains('Add resource'))
   })
 

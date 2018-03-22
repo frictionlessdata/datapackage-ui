@@ -17,14 +17,12 @@ describe('EditorSidebarPure', () => {
     const publicDescriptor = {}
     const onUploadChange = sinon.spy()
     const onValidateClick = sinon.spy()
-    const wrapper = shallow(
-      <EditorSidebarPure
-        descriptor={descriptor}
-        publicDescriptor={publicDescriptor}
-        onUploadChange={onUploadChange}
-        onValidateClick={onValidateClick}
-      />
-    )
+    const wrapper = shallow(<EditorSidebarPure
+      descriptor={descriptor}
+      publicDescriptor={publicDescriptor}
+      onUploadChange={onUploadChange}
+      onValidateClick={onValidateClick}
+    />)
     assert(wrapper.contains('Load data package'))
   })
 

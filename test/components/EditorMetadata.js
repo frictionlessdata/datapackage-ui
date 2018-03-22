@@ -15,12 +15,10 @@ describe('EditorMetadataPure', () => {
   it('should render', () => {
     const descriptor = {}
     const onUpdateChange = sinon.spy()
-    const result = shallow(
-      <EditorMetadataPure
-        descriptor={descriptor}
-        onUpdateChange={onUpdateChange}
-      />
-    )
+    const result = shallow(<EditorMetadataPure
+      descriptor={descriptor}
+      onUpdateChange={onUpdateChange}
+    />)
     assert(result.contains('Metadata'))
   })
 

@@ -18,6 +18,7 @@ function EditorPreviewPure({
     <section className="preview">
 
       {/* Heading */}
+      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
       <h2 className="section-heading" onClick={onToggleClick}>
         <svg className="icon"><use xlinkHref="#icon-braces" /></svg>
         <span className="text">Preview</span>
@@ -40,10 +41,9 @@ function EditorPreviewPure({
 const mapDispatchToProps = (dispatch) => ({
 
   onToggleClick:
-    (ev) => {
+    () => {
       dispatch({
         type: 'TOGGLE_PREVIEW',
-        payload: {[name]: ev.target.value},
       })
     },
 

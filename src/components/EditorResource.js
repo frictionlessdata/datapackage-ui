@@ -95,6 +95,7 @@ function EditorResourcePure({
         <div className="actions">
 
           {/* Remove */}
+          {/* eslint-disable-next-line jsx-a11y/interactive-supports-focus */}
           <a role="button" onClick={onRemoveClick}>
             <svg><use xlinkHref="#icon-trashcan" /></svg>
             <span className="text">Remove</span>
@@ -156,7 +157,7 @@ function EditorResourcePure({
               onChange={partial(onUpdateChange, 'profile')}
             >
               <option value="data-resource">Data Resource</option>
-              <option value="tabular-data-resource" selected>Tabular Data Resource</option>
+              <option value="tabular-data-resource">Tabular Data Resource</option>
             </select>
 
             {/* Format */}

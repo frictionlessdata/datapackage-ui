@@ -6,6 +6,7 @@ parser:
 
 plugins:
   - html
+  - jsx-a11y
 
 env:
   es6: true
@@ -31,6 +32,8 @@ rules:
   no-empty:
     - error
     - allowEmptyCatch: true
+  prefer-destructuring:
+    - off
   no-use-before-define:
     - error
     - nofunc
@@ -104,4 +107,15 @@ rules:
   react/no-danger:
     - off
   react/jsx-no-bind:
+    - off
+  jsx-a11y/label-has-for:
+    - error
+    - required:
+        some:
+          - nesting
+          - id
+  jsx-a11y/click-events-have-key-events:
+    - off
+  # TODO: Remove this when we have some time
+  jsx-a11y/anchor-is-valid:
     - off

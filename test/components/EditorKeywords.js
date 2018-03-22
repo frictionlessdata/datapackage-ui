@@ -19,16 +19,14 @@ describe('EditorKeywordsPure', () => {
     const onAddKeywordClick = sinon.spy()
     const onRemoveKeywordClick = sinon.spy()
     const onUpdateKeywordChange = sinon.spy()
-    const wrapper = shallow(
-      <EditorKeywordsPure
-        keywords={keywords}
-        newKeyword={newKeyword}
-        setNewKeyword={setNewKeyword}
-        onAddKeywordClick={onAddKeywordClick}
-        onRemoveKeywordClick={onRemoveKeywordClick}
-        onUpdateKeywordChange={onUpdateKeywordChange}
-      />
-    )
+    const wrapper = shallow(<EditorKeywordsPure
+      keywords={keywords}
+      newKeyword={newKeyword}
+      setNewKeyword={setNewKeyword}
+      onAddKeywordClick={onAddKeywordClick}
+      onRemoveKeywordClick={onRemoveKeywordClick}
+      onUpdateKeywordChange={onUpdateKeywordChange}
+    />)
     assert(wrapper.contains('Keywords'))
   })
 

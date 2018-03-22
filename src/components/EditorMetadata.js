@@ -1,6 +1,8 @@
 const React = require('react')
 const partial = require('lodash/partial')
 const {connect} = require('react-redux')
+const {LicenseField} = require('./LicenseField')
+const {ContributorField} = require('./ContributorField')
 
 
 // Pure components
@@ -117,33 +119,11 @@ function EditorMetadataPure({
             onBlur={partial(onUpdateChange, 'version')}
           />
 
-          {/* License */}
-          <label htmlFor={makeId('license')} className="control-label">
-            License
-          </label>
-          <input
-            id={makeId('license')}
-            className="form-control"
-            name="root[license]"
-            type="text"
-            defaultValue={descriptor.license}
-            placeholder="CC0-1.0"
-            onBlur={partial(onUpdateChange, 'license')}
-          />
-
           {/* Author */}
-          <label htmlFor={makeId('author')} className="control-label">
-            Author
-          </label>
-          <input
-            id={makeId('author')}
-            className="form-control"
-            name="root[author]"
-            type="text"
-            defaultValue={descriptor.author}
-            placeholder="J Bloggs <jbloggs@example.com>"
-            onBlur={partial(onUpdateChange, 'author')}
-          />
+          <ContributorField contributors={descriptor.contributors} />
+
+          {/* License */}
+          <LicenseField licenses={descriptor.licenses} />
 
         </div>
       </div>

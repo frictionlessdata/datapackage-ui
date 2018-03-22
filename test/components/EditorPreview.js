@@ -15,12 +15,10 @@ describe('EditorPreviewPure', () => {
   it('should render', () => {
     const publicDescriptor = {name: 'name', type: 'integer'}
     const onToggleClick = sinon.spy()
-    const wrapper = shallow(
-      <EditorPreviewPure
-        publicDescriptor={publicDescriptor}
-        onToggleClick={onToggleClick}
-      />
-    )
+    const wrapper = shallow(<EditorPreviewPure
+      publicDescriptor={publicDescriptor}
+      onToggleClick={onToggleClick}
+    />)
     assert(wrapper.contains('Preview'))
   })
 
