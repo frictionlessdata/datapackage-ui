@@ -45717,6 +45717,8 @@ module.exports = {
 "use strict";
 
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -46026,12 +46028,7 @@ var INITIAL_STATE = {
     var contributors = _ref26.contributors;
 
     descriptor = cloneDeep(descriptor);
-    if (contributors !== undefined) {
-      descriptor.contributors = contributors;
-    } else {
-      delete descriptor.contributors;
-    }
-
+    descriptor.contributors = contributors;
     return { descriptor: descriptor };
   },
   // Keywords
@@ -46156,13 +46153,13 @@ var INITIAL_STATE = {
   }
 
   state.publicDescriptor = cloneDeep(state.descriptor);
-  if (!state.publicDescriptor.keywords.length) delete state.publicDescriptor.keywords;
+  deleteEmptyProperties(state.publicDescriptor);
   var _iteratorNormalCompletion6 = true;
   var _didIteratorError6 = false;
   var _iteratorError6 = undefined;
 
   try {
-    for (var _iterator6 = state.publicDescriptor.resources[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+    for (var _iterator6 = (state.publicDescriptor.resources || [])[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
       var resource = _step6.value;
 
       delete resource._key;
@@ -46208,6 +46205,17 @@ var INITIAL_STATE = {
   }
 
   return state;
+}
+
+function deleteEmptyProperties(obj) {
+  // Recursively removes undefined, empty strings, and empty arrays from `obj`
+  for (var i in obj) {
+    if (obj[i] === undefined || obj[i] === '' || obj[i].length === 0) {
+      delete obj[i];
+    } else if (_typeof(obj[i]) === 'object') {
+      deleteEmptyProperties(obj[i]);
+    }
+  }
 }
 
 // Reducers
