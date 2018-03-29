@@ -177,12 +177,7 @@ const UPDATERS = {
   UPDATE_CONTRIBUTORS:
     ({descriptor}, {contributors}) => {
       descriptor = cloneDeep(descriptor)
-      if (contributors !== undefined) {
-        descriptor.contributors = contributors
-      } else {
-        delete descriptor.contributors
-      }
-
+      descriptor.contributors = contributors
       return {descriptor}
     },
   // Keywords
@@ -252,8 +247,8 @@ function processState(state) {
 
   // Public descriptor
   state.publicDescriptor = cloneDeep(state.descriptor)
-  if (!state.publicDescriptor.keywords.length) delete state.publicDescriptor.keywords
-  for (const resource of state.publicDescriptor.resources) {
+  deleteEmptyProperties(state.publicDescriptor)
+  for (const resource of state.publicDescriptor.resources || []) {
     delete resource._key
     delete resource.schema._columns
     for (const field of resource.schema.fields) {
@@ -265,6 +260,17 @@ function processState(state) {
 
 }
 
+
+function deleteEmptyProperties(obj) {
+  // Recursively removes undefined, empty strings, and empty arrays from `obj`
+  for (const i in obj) {
+    if (obj[i] === undefined || obj[i] === '' || obj[i].length === 0) {
+      delete obj[i]
+    } else if (typeof obj[i] === 'object') {
+      deleteEmptyProperties(obj[i])
+    }
+  }
+}
 
 // Reducers
 
