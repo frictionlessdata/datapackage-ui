@@ -25,9 +25,8 @@
     "dev": "webpack-dev-server --inline --hot",
     "e2e": "NODE_ENV=testing node rune2e.js",
     "lint": "eslint src test",
-    "posttest": "npm run e2e",
+    "posttest": "npm run e2e && npm run lint",
     "prepush": "npm run test",
-    "pretest": "npm run lint",
     "test": "npm run test:node && npm run test:browser",
     "test:node": "NODE_ENV=testing nyc mocha",
     "test:browser": "NODE_ENV=testing karma start"
