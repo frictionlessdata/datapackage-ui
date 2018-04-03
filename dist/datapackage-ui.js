@@ -46164,27 +46164,29 @@ var INITIAL_STATE = {
 
       delete resource._key;
       delete resource.schema._columns;
-      var _iteratorNormalCompletion8 = true;
-      var _didIteratorError8 = false;
-      var _iteratorError8 = undefined;
+      if (resource.schema && resource.schema.field) {
+        var _iteratorNormalCompletion8 = true;
+        var _didIteratorError8 = false;
+        var _iteratorError8 = undefined;
 
-      try {
-        for (var _iterator8 = resource.schema.fields[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
-          var field = _step8.value;
-
-          delete field._key;
-        }
-      } catch (err) {
-        _didIteratorError8 = true;
-        _iteratorError8 = err;
-      } finally {
         try {
-          if (!_iteratorNormalCompletion8 && _iterator8.return) {
-            _iterator8.return();
+          for (var _iterator8 = resource.schema.fields[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+            var field = _step8.value;
+
+            delete field._key;
           }
+        } catch (err) {
+          _didIteratorError8 = true;
+          _iteratorError8 = err;
         } finally {
-          if (_didIteratorError8) {
-            throw _iteratorError8;
+          try {
+            if (!_iteratorNormalCompletion8 && _iterator8.return) {
+              _iterator8.return();
+            }
+          } finally {
+            if (_didIteratorError8) {
+              throw _iteratorError8;
+            }
           }
         }
       }
@@ -46232,7 +46234,8 @@ var createReducer = function createReducer(_ref35) {
 // System
 
 module.exports = {
-  createReducer: createReducer
+  createReducer: createReducer,
+  _processState: processState
 };
 
 /***/ }),

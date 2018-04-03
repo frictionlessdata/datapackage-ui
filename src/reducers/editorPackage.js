@@ -251,8 +251,10 @@ function processState(state) {
   for (const resource of state.publicDescriptor.resources || []) {
     delete resource._key
     delete resource.schema._columns
-    for (const field of resource.schema.fields) {
-      delete field._key
+    if (resource.schema && resource.schema.field) {
+      for (const field of resource.schema.fields) {
+        delete field._key
+      }
     }
   }
 
@@ -285,4 +287,5 @@ const createReducer = ({descriptor}) => (state, action) => {
 
 module.exports = {
   createReducer,
+  _processState: processState,
 }

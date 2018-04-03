@@ -1,9 +1,27 @@
 const {assert} = require('chai')
 const {partial} = require('lodash')
-const {createReducer} = require('../../src/reducers/editorPackage')
+const {createReducer, _processState} = require('../../src/reducers/editorPackage')
 
 
 describe('editorPackage', () => {
+  describe('_processState', () => {
+    it('adds empty lists of keywords and resources', () => {
+      const state = {descriptor: {}}
+
+      const newState = _processState(state)
+
+      assert.deepEqual(newState.descriptor, {keywords: [], resources: []})
+    })
+
+    it('does not raises if resource has no schema', () => {
+      const state = {descriptor: {resources: [{name: 'foo'}]}}
+
+      const newState = _processState(state)
+
+      assert.include(newState.descriptor.resources[0], state.descriptor.resources[0])
+    })
+  })
+
   describe('UPDATE_PACKAGE', () => {
     const reducer = partial(_dispatch, 'UPDATE_PACKAGE')
 
