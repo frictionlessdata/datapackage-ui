@@ -20,6 +20,32 @@ describe('editorPackage', () => {
 
       assert.include(newState.descriptor.resources[0], state.descriptor.resources[0])
     })
+
+    it('removes auxiliar resources attributes', () => {
+      const state = {
+        descriptor: {
+          resources: [
+            {
+              name: 'foo',
+              _key: 'foo',
+              schema: {
+                _columns: 'foo',
+                fields: [
+                  {_key: 'foo'}
+                ]
+              }
+            },
+          ]
+        }
+      }
+
+      const newState = _processState(state)
+
+      const resource = newState.publicDescriptor.resources[0]
+      assert.doesNotHaveAnyKeys(resource, ['_key'])
+      assert.doesNotHaveAnyKeys(resource.schema, ['_columns'])
+      assert.doesNotHaveAnyKeys(resource.schema.fields[0], ['_key'])
+    })
   })
 
   describe('UPDATE_PACKAGE', () => {

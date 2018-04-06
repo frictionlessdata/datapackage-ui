@@ -46164,7 +46164,7 @@ var INITIAL_STATE = {
 
       delete resource._key;
       delete resource.schema._columns;
-      if (resource.schema && resource.schema.field) {
+      if (resource.schema && resource.schema.fields) {
         var _iteratorNormalCompletion8 = true;
         var _didIteratorError8 = false;
         var _iteratorError8 = undefined;

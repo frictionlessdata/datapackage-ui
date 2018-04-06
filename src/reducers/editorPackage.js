@@ -251,7 +251,7 @@ function processState(state) {
   for (const resource of state.publicDescriptor.resources || []) {
     delete resource._key
     delete resource.schema._columns
-    if (resource.schema && resource.schema.field) {
+    if (resource.schema && resource.schema.fields) {
       for (const field of resource.schema.fields) {
         delete field._key
       }
