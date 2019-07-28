@@ -27,6 +27,7 @@
     "lint": "eslint src test",
     "posttest": "npm run e2e && npm run lint",
     "prepush": "npm run test",
+    "readme": "doctoc --maxlevel 3 README.md",
     "test": "npm run test:node && npm run test:browser",
     "test:node": "NODE_ENV=testing nyc mocha",
     "test:browser": "NODE_ENV=testing karma start"
@@ -70,6 +71,7 @@
     "compression-webpack-plugin": "^0.3.2",
     "coveralls": "^2.13.1",
     "css-loader": "^0.25.0",
+    "doctoc": "^1.4.0",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.0.5",
     "eslint": "^4.19.0",

@@ -12,6 +12,22 @@ UI for `datapackage` as a framework-agnostic browser components ([DEMO](https://
 - `render` - framework-agnostic component render
 - List of components: TBD
 
+## Contents
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Examples](#examples)
+- [Documentation](#documentation)
+  - [Render](#render)
+- [Contributing](#contributing)
+- [Changelog](#changelog)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Getting Started
 
 You could use this components in plain JavaScript code or mixing with any modern framework (with native support for React). To render `report` you have use `datapackageUI.render(datapackageUI.<Component>, props, element)` function.
@@ -143,6 +159,6 @@ $ npm run test
 
 Here described only breaking and the most important changes. The full changelog and documentation for all released versions could be found in nicely formatted [commit history](https://github.com/frictionlessdata/datapackage-ui/commits/master).
 
-### v0.1
+#### v0.1
 
 Initial version.
