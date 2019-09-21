@@ -3,6 +3,7 @@
 [![Travis](https://img.shields.io/travis/frictionlessdata/datapackage-ui/master.svg)](https://travis-ci.org/frictionlessdata/datapackage-ui)
 [![Coveralls](https://coveralls.io/repos/github/frictionlessdata/datapackage-ui/badge.svg?branch=master)](https://coveralls.io/github/frictionlessdata/datapackage-ui?branch=master)
 [![NPM](https://img.shields.io/npm/v/datapackage-ui.svg)](https://www.npmjs.com/package/datapackage-ui)
+[![Github](https://img.shields.io/badge/github-master-brightgreen)](https://github.com/frictionlessdata/datapackage-ui)
 [![Gitter](https://img.shields.io/gitter/room/frictionlessdata/chat.svg)](https://gitter.im/frictionlessdata/chat)
 
 [![Saucelabs](https://saucelabs.com/browser-matrix/datapackageui.svg)](https://saucelabs.com/u/datapackageui)
