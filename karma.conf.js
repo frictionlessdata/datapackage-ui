@@ -13,7 +13,7 @@ webpackConfig.externals = {
 const karmaConfig = (config) => {
   config.set({
     singleRun: true,
-    browsers: ['PhantomJS'],
+    browsers: ['jsdom'],
     frameworks: ['mocha', 'sinon-chai'],
     files: ['test/karma.opts'],
     reporters: ['spec'],
