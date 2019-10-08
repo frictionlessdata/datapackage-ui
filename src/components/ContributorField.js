@@ -56,4 +56,7 @@ module.exports = {
   // Public
   ContributorField,
 
+  // Private
+  ContributorFieldPure,
+
 }

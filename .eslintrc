@@ -74,6 +74,8 @@ rules:
     - WithStatement
   object-curly-spacing:
     - off
+  function-paren-newline:
+    - off
   no-else-return:
     - off
   import/no-extraneous-dependencies:
