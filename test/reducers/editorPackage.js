@@ -124,6 +124,54 @@ describe('editorPackage', () => {
 
   })
 
+  describe('UPLOAD_DATA', () => {
+    const reducer = partial(_dispatch, 'UPLOAD_DATA')
+
+    // TODO: review this test
+    it('uploads data', () => {
+      const descriptor = {resources: [{name: 'name1', schema: {fields: [], _columns: []}}]}
+      const headers = ['id', 'name']
+      const rows = [[1, 'name1'], [2, 'name2'], [3, 'name3']]
+      const newState = reducer({descriptor}, {resourceIndex: 0, headers, rows})
+      assert.deepEqual(newState.publicDescriptor,
+        {
+          resources: [
+            {
+              name: 'name1',
+              profile: 'tabular-data-resource',
+              schema: {},
+            }
+          ]
+        }
+      )
+    })
+
+  })
+
+  describe('UPDATE_SCHEMA', () => {
+    const reducer = partial(_dispatch, 'UPDATE_SCHEMA')
+
+    // TODO: review this test
+    it('updates schema', () => {
+      const descriptor = {resources: [{ name: 'resource1', schema: {}}]}
+      const payload = {missingValues: ['']}
+      const newState = reducer({descriptor}, {resourceIndex: 0, payload})
+      assert.deepEqual(newState.publicDescriptor.resources[0].schema, {})
+    })
+
+  })
+
+  describe('ADD_FIELD', () => {
+    const reducer = partial(_dispatch, 'ADD_FIELD')
+
+    it('adds field', () => {
+      const descriptor = {resources: [{ name: 'resource1', schema: {fields: []}}]}
+      const newState = reducer({descriptor}, {resourceIndex: 0, payload: {name: 'field1'}})
+      assert.deepEqual(newState.publicDescriptor.resources[0].schema.fields[0].name, 'field1')
+    })
+
+  })
+
   describe('REMOVE_FIELD', () => {
     const reducer = partial(_dispatch, 'REMOVE_FIELD')
 
