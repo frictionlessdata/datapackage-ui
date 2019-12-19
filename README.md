@@ -23,9 +23,12 @@ UI for `datapackage` as a framework-agnostic browser components ([DEMO](https://
 
 - [Getting Started](#getting-started)
   - [Installation](#installation)
-  - [Examples](#examples)
 - [Documentation](#documentation)
-  - [Render](#render)
+  - [React](#react)
+  - [Angular](#angular)
+  - [Vue](#vue)
+- [API Reference](#api-reference)
+  - [render(component, props, element)](#rendercomponent-props-element)
 - [Contributing](#contributing)
 - [Changelog](#changelog)
 
@@ -74,9 +77,9 @@ The package could be used as pluggable script from CDN:
 </script>
 ```
 
-### Examples
+## Documentation
 
-#### React
+### React
 
 > In this case your application should provide `react` and `react-dom`.
 
@@ -92,7 +95,7 @@ const element = document.getElementById('component')
 ReactDOM.render(<datapackageUI.Component ...props />, element)
 ```
 
-#### Angular
+### Angular
 
 > This example is for Angular2+. Use similliar approach for Angular1.
 
@@ -115,7 +118,7 @@ class Report {
 }
 ```
 
-#### Vue
+### Vue
 
 > This example is for Vue2+. Use similar approach for Vue1.
 
@@ -134,23 +137,22 @@ const Report = {
 }
 ```
 
-## Documentation
+## API Reference
 
-The whole public API of this package is described here and follows semantic versioning rules. Everything outside of this readme are private API and could be changed without any notification on any new version.
+### render(component, props, element)
+Render component
 
-### Render
 
-To render one of the provided component `render` function should be used.
+| Param | Type | Description |
+| --- | --- | --- |
+| component | <code>Component</code> | it could be one of provided by the library component |
+| props | <code>Object</code> | object containing props |
+| element | <code>Element</code> | DOM element to render into |
 
-#### `render(component, props, element)`
-
-- `component (Component)` - it could be one of provided by the library component
-- `props (Object)` - object containing props
-- `element (Element)` - DOM element to render into
 
 ## Contributing
 
-The project follows the [Open Knowledge International coding standards](https://github.com/okfn/coding-standards). There are common commands to work with the project:
+> The project follows the [Open Knowledge International coding standards](https://github.com/okfn/coding-standards). There are common commands to work with the project:
 
 ```bash
 $ npm run dev

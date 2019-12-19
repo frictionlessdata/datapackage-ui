@@ -7,6 +7,13 @@ const {Provider} = require('react-redux')
 
 // Module API
 
+/**
+ * Render component
+ *
+ * @param {Component} component - it could be one of provided by the library component
+ * @param {Object} props - object containing props
+ * @param {Element} element - DOM element to render into
+ */
 function render(Component, props, element) {
 
   // Prepare component
