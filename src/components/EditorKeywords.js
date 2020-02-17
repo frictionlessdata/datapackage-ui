@@ -55,7 +55,7 @@ function EditorKeywordsPure({
                 title="Add item"
                 className="btn btn-info btn-sm json-editor-btn-add "
                 onClick={partial(onRemoveKeywordClick, keyword)}
-              >
+               >
                Remove keyword
               </button>
 
