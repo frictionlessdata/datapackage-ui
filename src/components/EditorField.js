@@ -1,13 +1,11 @@
 const React = require('react')
-const {connect} = require('react-redux')
+const { connect } = require('react-redux')
 const partial = require('lodash/partial')
 const config = require('../config')
-
 
 // Pure components
 
 function EditorFieldPure({
-
   // Props
   column,
   descriptor,
@@ -17,14 +15,11 @@ function EditorFieldPure({
   // Handlers
   onRemoveClick,
   onUpdateChange,
-
 }) {
   return (
     <div>
-
       {/* Heading */}
       <header>
-
         {/* Name */}
         <input
           type="text"
@@ -40,33 +35,29 @@ function EditorFieldPure({
         />
 
         {/* Remove */}
-        <button
-          type="button"
-          className="action"
-          aria-label="Remove"
-          onClick={onRemoveClick}
-        >
-          <svg><use xlinkHref="#icon-trashcan" /></svg>
+        <button type="button" className="action" aria-label="Remove" onClick={onRemoveClick}>
+          <svg>
+            <use xlinkHref="#icon-trashcan" />
+          </svg>
         </button>
-
       </header>
 
       {/* Preview */}
       <div className="preview">
         <ol>
-          {!!column && column.values.slice(0, 10).map((value, index) => (
-            <li key={index}><span>{value}</span></li> // eslint-disable-line react/no-array-index-key
-          ))}
+          {!!column &&
+            column.values.slice(0, 10).map((value, index) => (
+              <li key={index}>
+                <span>{value}</span>
+              </li> // eslint-disable-line react/no-array-index-key
+            ))}
         </ol>
       </div>
 
       {/* Metadata */}
       <div className="field-info">
-
         {/* Title */}
-        <label htmlFor={makeId(descriptor, 'title')}>
-          Title
-        </label>
+        <label htmlFor={makeId(descriptor, 'title')}>Title</label>
         <input
           type="text"
           id={makeId(descriptor, 'title')}
@@ -75,9 +66,7 @@ function EditorFieldPure({
         />
 
         {/* Description */}
-        <label htmlFor={makeId(descriptor, 'description')}>
-          Description
-        </label>
+        <label htmlFor={makeId(descriptor, 'description')}>Description</label>
         <textarea
           id={makeId(descriptor, 'description')}
           defaultValue={descriptor.description}
@@ -85,9 +74,7 @@ function EditorFieldPure({
         />
 
         {/* Type */}
-        <label htmlFor={makeId(descriptor, 'type')}>
-          Data Type
-        </label>
+        <label htmlFor={makeId(descriptor, 'type')}>Data Type</label>
         <select
           id={makeId(descriptor, 'type')}
           data-id="list-container"
@@ -97,23 +84,23 @@ function EditorFieldPure({
           onChange={partial(onUpdateChange, 'type')}
         >
           {getTypes().map((type) => (
-            <option key={type} value={type}>{type}</option>
+            <option key={type} value={type}>
+              {type}
+            </option>
           ))}
         </select>
 
         {/* Format */}
-        <label htmlFor={makeId(descriptor, 'format')}>
-          Data Format
-        </label>
-        { !getFormat(descriptor.type) &&
+        <label htmlFor={makeId(descriptor, 'format')}>Data Format</label>
+        {!getFormat(descriptor.type) && (
           <input
             type="text"
             id={makeId(descriptor, 'format')}
             defaultValue={descriptor.format}
             onBlur={partial(onUpdateChange, 'format')}
           />
-        }
-        { !!getFormat(descriptor.type) &&
+        )}
+        {!!getFormat(descriptor.type) && (
           <select
             id={makeId(descriptor, 'format')}
             data-id="list-container"
@@ -123,43 +110,37 @@ function EditorFieldPure({
             onChange={partial(onUpdateChange, 'format')}
           >
             {getFormat(descriptor.type).map((format) => (
-              <option key={format} value={format}>{format}</option>
+              <option key={format} value={format}>
+                {format}
+              </option>
             ))}
           </select>
-        }
-
+        )}
       </div>
-
     </div>
   )
 }
 
-
 // Handlers
 
-const mapDispatchToProps = (dispatch, {resourceIndex, fieldIndex}) => ({
+const mapDispatchToProps = (dispatch, { resourceIndex, fieldIndex }) => ({
+  onRemoveClick: () => {
+    dispatch({
+      type: 'REMOVE_FIELD',
+      resourceIndex,
+      fieldIndex,
+    })
+  },
 
-  onRemoveClick:
-    () => {
-      dispatch({
-        type: 'REMOVE_FIELD',
-        resourceIndex,
-        fieldIndex,
-      })
-    },
-
-  onUpdateChange:
-    (name, ev) => {
-      dispatch({
-        type: 'UPDATE_FIELD',
-        payload: {[name]: ev.target.value},
-        resourceIndex,
-        fieldIndex,
-      })
-    },
-
+  onUpdateChange: (name, ev) => {
+    dispatch({
+      type: 'UPDATE_FIELD',
+      payload: { [name]: ev.target.value },
+      resourceIndex,
+      fieldIndex,
+    })
+  },
 })
-
 
 // Helpers
 
@@ -167,30 +148,24 @@ function getTypes() {
   return Object.keys(config.FIELD_TYPES_AND_FORMATS)
 }
 
-
 function getFormat(type) {
   return config.FIELD_TYPES_AND_FORMATS[type]
 }
-
 
 function makeId(descriptor, key) {
   return `field-${descriptor._key}-${key}`
 }
 
-
 // Components
 
 const EditorField = connect(null, mapDispatchToProps)(EditorFieldPure)
 
-
 // System
 
 module.exports = {
-
   // Public
   EditorField,
 
   // Private
   EditorFieldPure,
-
 }

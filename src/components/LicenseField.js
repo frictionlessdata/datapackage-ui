@@ -1,7 +1,6 @@
 const React = require('react')
-const {connect} = require('react-redux')
-const {OPEN_DEFINITION_LICENSES} = require('../config')
-
+const { connect } = require('react-redux')
+const { OPEN_DEFINITION_LICENSES } = require('../config')
 
 function LicenseFieldPure({
   licenses,
@@ -10,7 +9,7 @@ function LicenseFieldPure({
   onInputChange,
 }) {
   const license = (licenses || [])[0] || {}
-  const isODLicense = (OPEN_DEFINITION_LICENSES[license.name] !== undefined)
+  const isODLicense = OPEN_DEFINITION_LICENSES[license.name] !== undefined
 
   return (
     <fieldset>
@@ -26,7 +25,9 @@ function LicenseFieldPure({
         >
           <option value="">Choose a license</option>
           {Object.keys(OPEN_DEFINITION_LICENSES).map((name) => (
-            <option key={name} value={name}>{name}</option>
+            <option key={name} value={name}>
+              {name}
+            </option>
           ))}
           <option value="other">Other</option>
         </select>
@@ -57,43 +58,38 @@ function LicenseFieldPure({
   )
 }
 
-
 const mapDispatchToProps = (dispatch) => ({
-  onLicenseChange:
-    (ev) => {
-      dispatch({
-        type: 'UPDATE_LICENSE',
-        license: OPEN_DEFINITION_LICENSES[ev.target.value],
-      })
-    },
+  onLicenseChange: (ev) => {
+    dispatch({
+      type: 'UPDATE_LICENSE',
+      license: OPEN_DEFINITION_LICENSES[ev.target.value],
+    })
+  },
 
-  onInputChange:
-    (ev) => {
-      const license = {}
-      const name = ev.target.name
-      const value = ev.target.value
+  onInputChange: (ev) => {
+    const license = {}
+    const name = ev.target.name
+    const value = ev.target.value
 
-      if (name === 'license[path]') {
-        license.path = value
-      } else if (name === 'license[title]') {
-        license.title = value
-      }
-
-      dispatch({
-        type: 'UPDATE_LICENSE',
-        license,
-      })
+    if (name === 'license[path]') {
+      license.path = value
+    } else if (name === 'license[title]') {
+      license.title = value
     }
+
+    dispatch({
+      type: 'UPDATE_LICENSE',
+      license,
+    })
+  },
 })
 
 const LicenseField = connect(null, mapDispatchToProps)(LicenseFieldPure)
 
 module.exports = {
-
   // Public
   LicenseField,
 
   // Private
   LicenseFieldPure,
-
 }

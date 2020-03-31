@@ -1,13 +1,11 @@
 const React = require('react')
-const {connect} = require('react-redux')
+const { connect } = require('react-redux')
 const partial = require('lodash/partial')
-const {withState} = require('recompose')
-
+const { withState } = require('recompose')
 
 // Pure components
 
 function EditorKeywordsPure({
-
   // Props
   keywords,
 
@@ -19,28 +17,19 @@ function EditorKeywordsPure({
   onAddKeywordClick,
   onRemoveKeywordClick,
   onUpdateKeywordChange,
-
 }) {
   return (
     <div className="panel">
-
       {/* Heading */}
       <div className="panel-heading" role="tab" id="keywords-heading">
-        <h4 className="panel-title">
-          Keywords
-        </h4>
+        <h4 className="panel-title">Keywords</h4>
       </div>
 
-      <div
-        id="keywords"
-        aria-labelledby="keywords-heading"
-      >
+      <div id="keywords" aria-labelledby="keywords-heading">
         <div className="panel-body">
-
           {/* List keywords */}
           {keywords.map((keyword) => (
             <p key={keyword}>
-
               {/* Update keyword */}
               <input
                 type="text"
@@ -58,7 +47,6 @@ function EditorKeywordsPure({
               >
                 Remove keyword
               </button>
-
             </p>
           ))}
 
@@ -84,14 +72,11 @@ function EditorKeywordsPure({
           >
             Add keyword
           </button>
-
         </div>
       </div>
-
     </div>
   )
 }
-
 
 // State
 
@@ -99,53 +84,43 @@ const stateName = 'newKeyword'
 const stateUpdaterName = 'setNewKeyword'
 const initialState = ''
 
-
 // Handlers
 
 const mapDispatchToProps = (dispatch) => ({
+  onAddKeywordClick: (keyword) => {
+    dispatch({
+      type: 'ADD_KEYWORD',
+      keyword,
+    })
+  },
 
-  onAddKeywordClick:
-    (keyword) => {
-      dispatch({
-        type: 'ADD_KEYWORD',
-        keyword,
-      })
-    },
+  onRemoveKeywordClick: (keyword) => {
+    dispatch({
+      type: 'REMOVE_KEYWORD',
+      keyword,
+    })
+  },
 
-  onRemoveKeywordClick:
-    (keyword) => {
-      dispatch({
-        type: 'REMOVE_KEYWORD',
-        keyword,
-      })
-    },
-
-  onUpdateKeywordChange:
-    (keyword, ev) => {
-      dispatch({
-        type: 'UPDATE_KEYWORD',
-        keyword,
-        newKeyword: ev.target.value,
-      })
-    },
-
+  onUpdateKeywordChange: (keyword, ev) => {
+    dispatch({
+      type: 'UPDATE_KEYWORD',
+      keyword,
+      newKeyword: ev.target.value,
+    })
+  },
 })
-
 
 // Components
 
 let EditorKeywords = withState(stateName, stateUpdaterName, initialState)(EditorKeywordsPure)
 EditorKeywords = connect(null, mapDispatchToProps)(EditorKeywords)
 
-
 // System
 
 module.exports = {
-
   // Public
   EditorKeywords,
 
   // Private
   EditorKeywordsPure,
-
 }

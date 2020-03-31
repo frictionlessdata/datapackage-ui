@@ -1,68 +1,54 @@
 const React = require('react')
-const {connect} = require('react-redux')
+const { connect } = require('react-redux')
 const helpers = require('../helpers')
-
 
 // Pure components
 
 function EditorPreviewPure({
-
   // Props
   publicDescriptor,
 
   // Handlers
   onToggleClick,
-
 }) {
   return (
     <section className="preview">
-
       {/* Heading */}
-      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
       <h2 className="section-heading" onClick={onToggleClick}>
-        <svg className="icon"><use xlinkHref="#icon-braces" /></svg>
+        <svg className="icon">
+          <use xlinkHref="#icon-braces" />
+        </svg>
         <span className="text">Preview</span>
       </h2>
 
       {/* Code */}
       <pre>
-        <code className="language-json">
-          {helpers.stringifyDescriptor(publicDescriptor)}
-        </code>
+        <code className="language-json">{helpers.stringifyDescriptor(publicDescriptor)}</code>
       </pre>
-
     </section>
   )
 }
 
-
 // Handlers
 
 const mapDispatchToProps = (dispatch) => ({
-
-  onToggleClick:
-    () => {
-      dispatch({
-        type: 'TOGGLE_PREVIEW',
-      })
-    },
-
+  onToggleClick: () => {
+    dispatch({
+      type: 'TOGGLE_PREVIEW',
+    })
+  },
 })
-
 
 // Components
 
 const EditorPreview = connect(null, mapDispatchToProps)(EditorPreviewPure)
 
-
 // System
 
 module.exports = {
-
   // Public
   EditorPreview,
 
   // Private
   EditorPreviewPure,
-
 }

@@ -1,123 +1,24 @@
-extends:
-  airbnb
-
-parser:
-  babel-eslint
-
-plugins:
-  - html
-  - jsx-a11y
-
-env:
-  es6: true
-  node: true
-  mocha: true
-  browser: true
-
-parserOptions:
-  sourceType: module
-
-rules:
-  max-len:
-    - error
-    - code: 120
-      ignoreStrings: true
-  quotes:
-    - error
-    - single
-    - avoid-escape
-  semi:
-    - error
-    - never
-  no-empty:
-    - error
-    - allowEmptyCatch: true
-  prefer-destructuring:
-    - off
-  no-use-before-define:
-    - error
-    - nofunc
-  one-var:
-    - off
-  eqeqeq:
-    - warn
-    - smart
-  no-unused-vars:
-    - warn
-  no-func-assign:
-    - off
-  no-param-reassign:
-    - off
-  no-empty-pattern:
-    - off
-  no-cond-assign:
-    - error
-    - except-parens
-  arrow-parens:
-    - off
-  no-underscore-dangle:
-    - off
-  comma-dangle:
-    - off
-  class-methods-use-this:
-    - off
-  arrow-body-style:
-    - off
-  consistent-return:
-    - off
-  padded-blocks:
-    - off
-  global-require:
-    - off
-  no-restricted-syntax:
-    - error
-    - WithStatement
-  object-curly-spacing:
-    - off
-  function-paren-newline:
-    - off
-  no-else-return:
-    - off
-  import/no-extraneous-dependencies:
-    - off
-  import/prefer-default-export:
-    - off
-  import/newline-after-import:
-    - off
-  import/extensions:
-    - off
-  block-spacing:
-    - off
-  no-lonely-if:
-    - off
-  curly:
-    - off
-  react/prop-types:
-    - off
-  react/sort-comp:
-    - off
-  react/forbid-prop-types:
-    - off
-  react/prefer-stateless-function:
-    - off
-  jsx-a11y/no-static-element-interactions:
-    - off
-  jsx-a11y/href-no-hash:
-    - off
-  react/jsx-filename-extension:
-    - off
-  react/no-danger:
-    - off
-  react/jsx-no-bind:
-    - off
-  jsx-a11y/label-has-for:
-    - error
-    - required:
-        some:
-          - nesting
-          - id
-  jsx-a11y/click-events-have-key-events:
-    - off
-  # TODO: Remove this when we have some time
-  jsx-a11y/anchor-is-valid:
-    - off
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "standard",
+    "plugin:react/recommended"
+  ],
+  "settings": {
+    "react": { "version": "detect" }
+  },
+  "env": {
+    "mocha": true
+  },
+  "rules": {
+    "no-self-assign": "off",
+    "no-empty-pattern": "off",
+    "react/prop-types": "off",
+    "react/display-name": "off",
+    "space-before-function-paren": "off",
+    "comma-dangle": ["error", {
+      "arrays": "always-multiline",
+      "objects": "always-multiline"
+    }]
+  }
+}

@@ -1,34 +1,27 @@
 const React = require('react')
 const partial = require('lodash/partial')
-const {connect} = require('react-redux')
-const {LicenseField} = require('./LicenseField')
-const {ContributorField} = require('./ContributorField')
-
+const { connect } = require('react-redux')
+const { LicenseField } = require('./LicenseField')
+const { ContributorField } = require('./ContributorField')
 
 // Pure components
 
 function EditorMetadataPure({
-
   // Props
   descriptor,
 
   // Handlers
   onUpdateChange,
-
 }) {
   return (
     <div className="panel">
-
       {/* Heading */}
       <div className="panel-heading" role="tab" id="optional-metadata-heading">
-        <h4 className="panel-title">
-          Metadata
-        </h4>
+        <h4 className="panel-title">Metadata</h4>
       </div>
 
       <div id="optional-metadata" aria-labelledby="optional-metadata-heading">
         <div className="panel-body">
-
           {/* Name */}
           <label htmlFor={makeId('name')} className="control-label">
             Name *
@@ -124,28 +117,22 @@ function EditorMetadataPure({
 
           {/* License */}
           <LicenseField licenses={descriptor.licenses} />
-
         </div>
       </div>
     </div>
   )
 }
 
-
 // Handlers
 
 const mapDispatchToProps = (dispatch) => ({
-
-  onUpdateChange:
-    (name, ev) => {
-      dispatch({
-        type: 'UPDATE_PACKAGE',
-        payload: {[name]: ev.target.value},
-      })
-    },
-
+  onUpdateChange: (name, ev) => {
+    dispatch({
+      type: 'UPDATE_PACKAGE',
+      payload: { [name]: ev.target.value },
+    })
+  },
 })
-
 
 // Helpers
 
@@ -153,20 +140,16 @@ function makeId(key) {
   return `package-${key}`
 }
 
-
 // Components
 
 const EditorMetadata = connect(null, mapDispatchToProps)(EditorMetadataPure)
 
-
 // System
 
 module.exports = {
-
   // Public
   EditorMetadata,
 
   // Private
   EditorMetadataPure,
-
 }

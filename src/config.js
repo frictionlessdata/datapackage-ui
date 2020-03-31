@@ -66,7 +66,6 @@ const OPEN_DEFINITION_LICENSES = {
   },
 }
 
-
 // System
 
 module.exports = {

@@ -1,9 +1,8 @@
 const uuidv4 = require('uuid/v4')
-const {Schema} = require('tableschema')
-const {Profile} = require('datapackage')
+const { Schema } = require('tableschema')
+const { Profile } = require('datapackage')
 const without = require('lodash/without')
 const cloneDeep = require('lodash/cloneDeep')
-
 
 // State
 
@@ -14,215 +13,194 @@ const INITIAL_STATE = {
   feedback: false,
 }
 
-
 // Updaters
 
 const UPDATERS = {
-
   // Package
 
-  UPLOAD_PACKAGE:
-    ({}, {payload}) => {
-      return {descriptor: payload}
-    },
+  UPLOAD_PACKAGE: ({}, { payload }) => {
+    return { descriptor: payload }
+  },
 
-  VALIDATE_PACKAGE:
-    ({publicDescriptor}, {}) => {
-      const profile = new Profile(publicDescriptor.profile || 'data-package')
-      const {valid, errors} = profile.validate(publicDescriptor)
-      if (valid) {
-        return {
-          feedback: {
-            type: 'success',
-            text: 'Data package is valid!',
-          }
-        }
-      } else {
-        return {
-          feedback: {
-            type: 'danger',
-            text: 'Data package is invalid!',
-            messages: errors.map((error) => error.message),
-          }
-        }
+  VALIDATE_PACKAGE: ({ publicDescriptor }, {}) => {
+    const profile = new Profile(publicDescriptor.profile || 'data-package')
+    const { valid, errors } = profile.validate(publicDescriptor)
+    if (valid) {
+      return {
+        feedback: {
+          type: 'success',
+          text: 'Data package is valid!',
+        },
       }
-    },
+    } else {
+      return {
+        feedback: {
+          type: 'danger',
+          text: 'Data package is invalid!',
+          messages: errors.map((error) => error.message),
+        },
+      }
+    }
+  },
 
-  UPDATE_PACKAGE:
-    ({descriptor}, {payload}) => {
-      return {descriptor: {...descriptor, ...payload}}
-    },
+  UPDATE_PACKAGE: ({ descriptor }, { payload }) => {
+    return { descriptor: { ...descriptor, ...payload } }
+  },
 
   // Resources
 
-  ADD_RESOURCE:
-    ({descriptor}, {}) => {
-      descriptor = cloneDeep(descriptor)
-      descriptor.resources = descriptor.resources
-      descriptor.resources.push({})
-      return {descriptor}
-    },
+  ADD_RESOURCE: ({ descriptor }, {}) => {
+    descriptor = cloneDeep(descriptor)
+    descriptor.resources = descriptor.resources
+    descriptor.resources.push({})
+    return { descriptor }
+  },
 
-  REMOVE_RESOURCE:
-    ({descriptor, tables}, {resourceIndex}) => {
-      descriptor = cloneDeep(descriptor)
-      descriptor.resources.splice(resourceIndex, 1)
-      return {descriptor, tables}
-    },
+  REMOVE_RESOURCE: ({ descriptor, tables }, { resourceIndex }) => {
+    descriptor = cloneDeep(descriptor)
+    descriptor.resources.splice(resourceIndex, 1)
+    return { descriptor, tables }
+  },
 
-  UPDATE_RESOURCE:
-    ({descriptor}, {resourceIndex, payload}) => {
-      descriptor = cloneDeep(descriptor)
-      descriptor.resources[resourceIndex] = {
-        ...descriptor.resources[resourceIndex],
-        ...payload,
+  UPDATE_RESOURCE: ({ descriptor }, { resourceIndex, payload }) => {
+    descriptor = cloneDeep(descriptor)
+    descriptor.resources[resourceIndex] = {
+      ...descriptor.resources[resourceIndex],
+      ...payload,
+    }
+    return { descriptor }
+  },
+
+  UPLOAD_DATA: ({ descriptor }, { resourceIndex, headers, rows }) => {
+    descriptor = cloneDeep(descriptor)
+    const schemaDescriptor = descriptor.resources[resourceIndex].schema
+
+    // Get columns
+    const columns = []
+    for (const [index, header] of headers.entries()) {
+      columns[index] = columns[index] || { header, values: [] }
+      for (const row of rows) {
+        columns[index].values.push(row[index])
       }
-      return {descriptor}
-    },
+    }
 
-  UPLOAD_DATA:
-    ({descriptor}, {resourceIndex, headers, rows}) => {
-      descriptor = cloneDeep(descriptor)
-      const schemaDescriptor = descriptor.resources[resourceIndex].schema
+    // Infer columns
+    for (const column of columns) {
+      const schema = new Schema()
+      schema.infer(column.values, { headers: [column.header] })
+      column.descriptor = schema.descriptor.fields[0]
+    }
 
-      // Get columns
-      const columns = []
-      for (const [index, header] of headers.entries()) {
-        columns[index] = columns[index] || {header, values: []}
-        for (const row of rows) {
-          columns[index].values.push(row[index])
-        }
-      }
+    // Update descriptor
+    schemaDescriptor._columns = columns
+    for (const [index, column] of columns.entries()) {
+      const field = schemaDescriptor.fields[index]
+      if (field) schemaDescriptor.fields[index] = { ...field, ...column.descriptor }
+    }
 
-      // Infer columns
-      for (const column of columns) {
-        const schema = new Schema()
-        schema.infer(column.values, {headers: [column.header]})
-        column.descriptor = schema.descriptor.fields[0]
-      }
-
-      // Update descriptor
-      schemaDescriptor._columns = columns
-      for (const [index, column] of columns.entries()) {
-        const field = schemaDescriptor.fields[index]
-        if (field) schemaDescriptor.fields[index] = {...field, ...column.descriptor}
-      }
-
-      return {descriptor}
-    },
+    return { descriptor }
+  },
 
   // Schema
 
-  UPDATE_SCHEMA:
-    ({descriptor}, {resourceIndex, payload}) => {
-      descriptor = cloneDeep(descriptor)
-      descriptor.resources[resourceIndex].schema = {
-        ...descriptor.resources[resourceIndex].schema,
-        ...payload,
-      }
-    },
+  UPDATE_SCHEMA: ({ descriptor }, { resourceIndex, payload }) => {
+    descriptor = cloneDeep(descriptor)
+    descriptor.resources[resourceIndex].schema = {
+      ...descriptor.resources[resourceIndex].schema,
+      ...payload,
+    }
+  },
 
   // Fields
 
-  ADD_FIELD:
-    ({descriptor}, {resourceIndex, payload}) => {
-      descriptor = cloneDeep(descriptor)
-      const schemaDescriptor = descriptor.resources[resourceIndex].schema
-      schemaDescriptor.fields = schemaDescriptor.fields
-      schemaDescriptor.fields.push(payload)
-      return {descriptor}
-    },
+  ADD_FIELD: ({ descriptor }, { resourceIndex, payload }) => {
+    descriptor = cloneDeep(descriptor)
+    const schemaDescriptor = descriptor.resources[resourceIndex].schema
+    schemaDescriptor.fields = schemaDescriptor.fields
+    schemaDescriptor.fields.push(payload)
+    return { descriptor }
+  },
 
-  REMOVE_FIELD:
-    ({descriptor}, {resourceIndex, fieldIndex}) => {
-      descriptor = cloneDeep(descriptor)
-      const schemaDescriptor = descriptor.resources[resourceIndex].schema
-      schemaDescriptor.fields.splice(fieldIndex, 1)
-      if (schemaDescriptor._columns && schemaDescriptor._columns.length > fieldIndex) {
-        schemaDescriptor._columns.splice(fieldIndex, 1)
-      }
-      return {descriptor}
-    },
+  REMOVE_FIELD: ({ descriptor }, { resourceIndex, fieldIndex }) => {
+    descriptor = cloneDeep(descriptor)
+    const schemaDescriptor = descriptor.resources[resourceIndex].schema
+    schemaDescriptor.fields.splice(fieldIndex, 1)
+    if (schemaDescriptor._columns && schemaDescriptor._columns.length > fieldIndex) {
+      schemaDescriptor._columns.splice(fieldIndex, 1)
+    }
+    return { descriptor }
+  },
 
-  UPDATE_FIELD:
-    ({descriptor}, {resourceIndex, fieldIndex, payload}) => {
-      descriptor = cloneDeep(descriptor)
-      const schemaDescriptor = descriptor.resources[resourceIndex].schema
-      schemaDescriptor.fields[fieldIndex] = {
-        ...schemaDescriptor.fields[fieldIndex],
-        ...payload,
-      }
-      return {descriptor}
-    },
+  UPDATE_FIELD: ({ descriptor }, { resourceIndex, fieldIndex, payload }) => {
+    descriptor = cloneDeep(descriptor)
+    const schemaDescriptor = descriptor.resources[resourceIndex].schema
+    schemaDescriptor.fields[fieldIndex] = {
+      ...schemaDescriptor.fields[fieldIndex],
+      ...payload,
+    }
+    return { descriptor }
+  },
 
   // License
 
-  UPDATE_LICENSE:
-    ({descriptor}, {license}) => {
-      descriptor = cloneDeep(descriptor)
-      descriptor.licenses = descriptor.licenses || []
-      if (license !== undefined) {
-        descriptor.licenses[0] = {
-          ...descriptor.licenses[0],
-          ...license
-        }
-      } else {
-        delete descriptor.licenses
+  UPDATE_LICENSE: ({ descriptor }, { license }) => {
+    descriptor = cloneDeep(descriptor)
+    descriptor.licenses = descriptor.licenses || []
+    if (license !== undefined) {
+      descriptor.licenses[0] = {
+        ...descriptor.licenses[0],
+        ...license,
       }
-      return {descriptor}
-    },
+    } else {
+      delete descriptor.licenses
+    }
+    return { descriptor }
+  },
 
   // Contributors
 
-  UPDATE_CONTRIBUTORS:
-    ({descriptor}, {contributors}) => {
-      descriptor = cloneDeep(descriptor)
-      descriptor.contributors = contributors
-      return {descriptor}
-    },
+  UPDATE_CONTRIBUTORS: ({ descriptor }, { contributors }) => {
+    descriptor = cloneDeep(descriptor)
+    descriptor.contributors = contributors
+    return { descriptor }
+  },
   // Keywords
 
-  ADD_KEYWORD:
-    ({descriptor}, {keyword}) => {
-      if (!descriptor.keywords.includes(keyword)) {
-        descriptor = cloneDeep(descriptor)
-        descriptor.keywords = descriptor.keywords
-        descriptor.keywords.push(keyword)
-        return {descriptor}
-      }
-    },
+  ADD_KEYWORD: ({ descriptor }, { keyword }) => {
+    if (!descriptor.keywords.includes(keyword)) {
+      descriptor = cloneDeep(descriptor)
+      descriptor.keywords = descriptor.keywords
+      descriptor.keywords.push(keyword)
+      return { descriptor }
+    }
+  },
 
-  REMOVE_KEYWORD:
-    ({descriptor}, {keyword}) => {
-      if (descriptor.keywords) {
-        descriptor = cloneDeep(descriptor)
-        descriptor.keywords = without(descriptor.keywords, keyword)
-        return {descriptor}
-      }
-    },
+  REMOVE_KEYWORD: ({ descriptor }, { keyword }) => {
+    if (descriptor.keywords) {
+      descriptor = cloneDeep(descriptor)
+      descriptor.keywords = without(descriptor.keywords, keyword)
+      return { descriptor }
+    }
+  },
 
-  UPDATE_KEYWORD:
-    ({descriptor}, {keyword, newKeyword}) => {
-      if (descriptor.keywords) {
-        descriptor = cloneDeep(descriptor)
-        descriptor.keywords[descriptor.keywords.indexOf(keyword)] = newKeyword
-        return {descriptor}
-      }
-    },
+  UPDATE_KEYWORD: ({ descriptor }, { keyword, newKeyword }) => {
+    if (descriptor.keywords) {
+      descriptor = cloneDeep(descriptor)
+      descriptor.keywords[descriptor.keywords.indexOf(keyword)] = newKeyword
+      return { descriptor }
+    }
+  },
 
   // Interface
 
-  TOGGLE_PREVIEW:
-    ({isPreviewActive}, {}) => {
-      return {isPreviewActive: !isPreviewActive}
-    },
-
+  TOGGLE_PREVIEW: ({ isPreviewActive }, {}) => {
+    return { isPreviewActive: !isPreviewActive }
+  },
 }
 
 // Processor
 
 function processState(state) {
-
   // Descriptor
   state.descriptor.keywords = state.descriptor.keywords || []
   state.descriptor.resources = state.descriptor.resources || []
@@ -259,9 +237,7 @@ function processState(state) {
   }
 
   return state
-
 }
-
 
 function deleteEmptyProperties(obj) {
   // Recursively removes undefined, empty strings, and empty arrays from `obj`
@@ -276,12 +252,11 @@ function deleteEmptyProperties(obj) {
 
 // Reducers
 
-const createReducer = ({descriptor}) => (state, action) => {
-  if (!state) return processState({...INITIAL_STATE, descriptor})
+const createReducer = ({ descriptor }) => (state, action) => {
+  if (!state) return processState({ ...INITIAL_STATE, descriptor })
   const updater = UPDATERS[action.type]
-  return updater ? processState({...state, ...(updater(state, action) || {})}) : state
+  return updater ? processState({ ...state, ...(updater(state, action) || {}) }) : state
 }
-
 
 // System
 

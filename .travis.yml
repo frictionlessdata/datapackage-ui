@@ -1,13 +1,11 @@
 sudo:
   false
 
-addons:
-  sauce_connect: true
-
 language:
   node_js
 
 node_js:
+  - 8
   - 10
   - 12
 

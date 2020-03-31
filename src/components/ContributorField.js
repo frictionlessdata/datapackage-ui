@@ -1,6 +1,5 @@
 const React = require('react')
-const {connect} = require('react-redux')
-
+const { connect } = require('react-redux')
 
 function ContributorFieldPure({
   contributors,
@@ -28,35 +27,31 @@ function ContributorFieldPure({
   )
 }
 
-
 const mapDispatchToProps = (dispatch) => ({
-  onInputChange:
-    (ev) => {
-      const author = {
-        title: ev.target.value,
-        role: 'author',
-      }
-      let contributors
-
-      if (author.title !== '') {
-        contributors = [author]
-      }
-
-      dispatch({
-        type: 'UPDATE_CONTRIBUTORS',
-        contributors,
-      })
+  onInputChange: (ev) => {
+    const author = {
+      title: ev.target.value,
+      role: 'author',
     }
+    let contributors
+
+    if (author.title !== '') {
+      contributors = [author]
+    }
+
+    dispatch({
+      type: 'UPDATE_CONTRIBUTORS',
+      contributors,
+    })
+  },
 })
 
 const ContributorField = connect(null, mapDispatchToProps)(ContributorFieldPure)
 
 module.exports = {
-
   // Public
   ContributorField,
 
   // Private
   ContributorFieldPure,
-
 }
