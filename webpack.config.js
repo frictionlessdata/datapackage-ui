@@ -83,7 +83,7 @@ if (NODE_ENV === 'production') {
     ...webpackConfig.plugins,
     new ExtractCssPlugin({ filename: 'datapackage-ui.min.css' }),
     new CompressionPlugin({
-      asset: '[path].gz[query]',
+      filename: '[path].gz[query]',
       algorithm: 'gzip',
       test: /\.(js|html)$/,
       threshold: 10240,
