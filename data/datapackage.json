@@ -1,0 +1,22 @@
+{
+  "name": "name",
+  "title": "title",
+  "description": "description",
+  "homepage": "http://google.com",
+  "version": "1.0.0",
+  "licenses": [{
+    "name": "ODC-PDDL-1.0",
+    "path": "http://opendatacommons.org/licenses/pddl/",
+    "title": "Open Data Commons Public Domain Dedication and License v1.0"
+  }],
+  "contributors": [{
+    "title": "Joe Bloggs",
+    "email": "joe@bloggs.com",
+    "path": "http://www.bloggs.com",
+    "role": "author"
+  }],
+  "keywords": ["tag1", "tag2"],
+  "resources": [
+    {"name": "table", "path": "table.csv"}
+  ]
+}
