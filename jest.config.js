@@ -1,6 +1,7 @@
 const jestConfig = {
   projects: ['node', 'jsdom'].map((env) => {
     return {
+      roots: ['src'],
       displayName: env,
       testEnvironment: env,
       collectCoverage: false,
