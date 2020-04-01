@@ -1,8 +1,9 @@
 const path = require('path')
 const webpack = require('webpack')
-const CompressionPlugin = require("compression-webpack-plugin");
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const ENV = process.env.NODE_ENV;
+const CompressionPlugin = require('compression-webpack-plugin')
+const ExtractCssPlugin = require('mini-css-extract-plugin')
+const NODE_ENV = process.env.NODE_ENV || 'development'
+const DEBUG = process.env.DEBUG || false
 
 // Base
 
@@ -19,39 +20,29 @@ const webpackConfig = {
     rules: [
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader'
-        })
+        use: [ExtractCssPlugin.loader, 'css-loader'],
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]'
-        }
+          name: '[name].[ext]?[hash]',
+        },
       },
-    ]
+    ],
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.USER_ENV': JSON.stringify('browser')
-    }),
-    new ExtractTextPlugin(
-      'datapackage-ui.css'
-    ),
-  ],
+  plugins: [new webpack.EnvironmentPlugin({ NODE_ENV, DEBUG })],
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: true,
   },
   performance: {
-    hints: false
+    hints: false,
   },
   node: {
     fs: 'empty',
@@ -60,34 +51,43 @@ const webpackConfig = {
   },
 }
 
+// Development
+
+if (NODE_ENV === 'development') {
+  webpackConfig.mode = 'development'
+  webpackConfig.devServer = { hot: true }
+  webpackConfig.plugins = [
+    new webpack.HotModuleReplacementPlugin(),
+    new ExtractCssPlugin({ filename: 'datapackage-ui.css' }),
+    ...webpackConfig.plugins,
+  ]
+}
+
+// Testing
+
+if (NODE_ENV === 'testing') {
+  webpackConfig.mode = 'development'
+  webpackConfig.plugins = [
+    new ExtractCssPlugin({ filename: 'datapackage-ui.css' }),
+    ...webpackConfig.plugins,
+  ]
+}
+
 // Production
 
-if (ENV === 'production') {
-  webpackConfig.output.filename = 'datapackage-ui.min.js',
+if (NODE_ENV === 'production') {
+  webpackConfig.mode = 'production'
+  webpackConfig.output.filename = 'datapackage-ui.min.js'
   webpackConfig.devtool = '#source-map'
   webpackConfig.plugins = [
-    new webpack.DefinePlugin({
-      'process.env.USER_ENV': JSON.stringify('browser'),
-      'process.env.NODE_ENV': JSON.stringify('production'),
-    }),
-    new ExtractTextPlugin(
-      'datapackage-ui.min.css'
-    ),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
-    }),
+    ...webpackConfig.plugins,
+    new ExtractCssPlugin({ filename: 'datapackage-ui.min.css' }),
     new CompressionPlugin({
-      asset: "[path].gz[query]",
-      algorithm: "gzip",
+      filename: '[path].gz[query]',
+      algorithm: 'gzip',
       test: /\.(js|html)$/,
       threshold: 10240,
-      minRatio: 0.8
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
+      minRatio: 0.8,
     }),
   ]
 }

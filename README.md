@@ -6,8 +6,6 @@
 [![Github](https://img.shields.io/badge/github-master-brightgreen)](https://github.com/frictionlessdata/datapackage-ui)
 [![Gitter](https://img.shields.io/gitter/room/frictionlessdata/chat.svg)](https://gitter.im/frictionlessdata/chat)
 
-[![Saucelabs](https://saucelabs.com/browser-matrix/datapackageui.svg)](https://saucelabs.com/u/datapackageui)
-
 UI for `datapackage` as a framework-agnostic browser components ([DEMO](https://frictionlessdata.github.io/datapackage-ui/)).
 
 ## Features
