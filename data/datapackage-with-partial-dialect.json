@@ -1,0 +1,59 @@
+{
+  "profile": "tabular-data-package",
+  "name": "australian-open-data-portals",
+  "resources": [{
+    "profile": "tabular-data-resource",
+    "name": "open-data-portals",
+    "path": "data/australian-open-data-portals.tsv",
+    "encoding": "utf-8",
+    "format": "tsv",
+    "mediatype": "text/tsv",
+    "licenses": [{
+      "id": "CC-BY-4.0",
+      "title": "Creative Commons Attribution 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }],
+    "schema": {
+      "fields": [{
+        "name": "URL",
+        "type": "string",
+        "format": "uri",
+        "constraints": {
+          "required": true
+        }
+      }, {
+        "name": "Organisation",
+        "type": "string",
+        "format": "default"
+      }, {
+        "name": "Organisation type",
+        "type": "string",
+        "format": "default"
+      }, {
+        "name": "Portal",
+        "type": "string",
+        "format": "default"
+      }, {
+        "name": "Region",
+        "type": "string",
+        "format": "default"
+      }, {
+        "name": "Lat",
+        "type": "number",
+        "format": "default",
+        "decimalChar": ","
+      }, {
+        "name": "Lon",
+        "type": "number",
+        "format": "default",
+        "decimalChar": ","
+      }],
+      "missingValues": [""]
+    },
+    "primaryKeys": ["URL"],
+    "dialect": {
+      "delimiter": "\t",
+      "header": true
+    }
+  }]
+}
