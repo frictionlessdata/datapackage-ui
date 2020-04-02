@@ -26,7 +26,7 @@
     "lint": "prettier --check '{src,test}/**/*.js' && eslint '{src,test}/**/*.js'",
     "pretest": "npm run compile && npm run lint",
     "readme": "doctoc --maxlevel 3 README.md",
-    "test": "jest --coverage"
+    "test": "jest --coverage && JEST_ENV=jsdom jest"
   },
   "dependencies": {
     "axios": "^0.19.2",

@@ -109,6 +109,7 @@ const UPDATERS = {
       ...descriptor.resources[resourceIndex].schema,
       ...payload,
     }
+    return { descriptor }
   },
 
   // Fields
@@ -239,9 +240,13 @@ function processState(state) {
   return state
 }
 
+// TODO: review/rewrite this approach
+// It uses a temporary fix to preserve missing values:
+// https://github.com/frictionlessdata/datapackage-ui/issues/260
+// Recursively removes undefined, empty strings, and empty arrays from `obj`
 function deleteEmptyProperties(obj) {
-  // Recursively removes undefined, empty strings, and empty arrays from `obj`
   for (const i in obj) {
+    if (i === 'missingValues') continue
     if (obj[i] === undefined || obj[i] === '' || obj[i].length === 0) {
       delete obj[i]
     } else if (typeof obj[i] === 'object') {
