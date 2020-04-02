@@ -1,6 +1,8 @@
 const uuidv4 = require('uuid/v4')
 const { Schema } = require('tableschema')
 const { Profile } = require('datapackage')
+// TODO: it's not public on the datapackage level
+const { DEFAULT_DIALECT } = require('datapackage/src/config')
 const without = require('lodash/without')
 const cloneDeep = require('lodash/cloneDeep')
 
@@ -201,6 +203,7 @@ const UPDATERS = {
 
 // Processor
 
+// TODO: why don't we use new Package() for normalization?
 function processState(state) {
   // Descriptor
   state.descriptor.keywords = state.descriptor.keywords || []
@@ -212,6 +215,9 @@ function processState(state) {
     resource.profile = resource.profile || 'tabular-data-resource'
     if (resource.path instanceof Array) {
       resource.path = resource.path[0]
+    }
+    if (resource.dialect) {
+      resource.dialect = { ...DEFAULT_DIALECT, ...resource.dialect }
     }
     resource.schema = resource.schema || {}
     resource.schema.fields = resource.schema.fields || []
