@@ -54,7 +54,11 @@ function EditorSidebarPure({
           </a>
 
           {/* Upload */}
-          <label className="btn btn-lg btn-success" htmlFor="load-descriptor">
+          <label
+            className="btn btn-lg btn-success"
+            title="Upload a data package from your local drive"
+            htmlFor="load-descriptor"
+          >
             <input
               type="file"
               id="load-descriptor"
@@ -62,8 +66,27 @@ function EditorSidebarPure({
               style={{ display: 'none' }}
               onChange={onUploadChange}
             />
-            Load data package
+            Upload
           </label>
+
+          {/* Validate */}
+          <button
+            className="btn btn-lg btn-info"
+            title="Validate the data package verifying its metadata"
+            onClick={onValidateClick}
+          >
+            Validate
+          </button>
+
+          {/* Download */}
+          <a
+            className="btn btn-lg btn-success"
+            href={`data: ${encodeDescriptor(publicDescriptor)}`}
+            download="datapackage.json"
+            title="Download the data package to your local drive"
+          >
+            Download
+          </a>
         </div>
 
         <div className="panel-group" id="package-data" role="tablist" aria-multiselectable="true">
@@ -72,22 +95,6 @@ function EditorSidebarPure({
 
           {/* Keywords */}
           <EditorKeywords keywords={descriptor.keywords} />
-        </div>
-
-        <div className="validate-download">
-          {/* Download */}
-          <a
-            className="btn btn-lg btn-success"
-            href={`data: ${encodeDescriptor(publicDescriptor)}`}
-            download="datapackage.json"
-          >
-            Download
-          </a>
-
-          {/* Validate */}
-          <button className="btn btn-lg btn-info" onClick={onValidateClick}>
-            Validate
-          </button>
         </div>
       </div>
     </section>

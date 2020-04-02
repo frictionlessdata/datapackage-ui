@@ -20,5 +20,5 @@ test('should render', () => {
       onValidateClick={onValidateClick}
     />
   )
-  expect(wrapper.contains('Load data package')).toBeTruthy()
+  expect(wrapper.contains('Upload')).toBeTruthy()
 })
