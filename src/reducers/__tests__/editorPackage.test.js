@@ -111,12 +111,14 @@ test('uploads data', () => {
 })
 
 // TODO: review this test
-test('updates schema', () => {
+test('updates schema (#260)', () => {
   const reducer = partial(_dispatch, 'UPDATE_SCHEMA')
   const descriptor = { resources: [{ name: 'resource1', schema: {} }] }
   const payload = { missingValues: [''] }
   const newState = reducer({ descriptor }, { resourceIndex: 0, payload })
-  expect(newState.publicDescriptor.resources[0].schema).toEqual({})
+  expect(newState.publicDescriptor.resources[0].schema).toEqual({
+    missingValues: [''],
+  })
 })
 
 test('adds field', () => {
