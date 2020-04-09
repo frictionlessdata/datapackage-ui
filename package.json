@@ -21,7 +21,7 @@
     "bundle": "webpack --output-pathinfo --progress --hide-modules && NODE_ENV=production webpack --progress --hide-modules",
     "compile": "babel src --out-dir lib",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "dev": "webpack-dev-server --inline --hot",
+    "dev": "webpack-dev-server --inline --hot --open",
     "format": "prettier --write '{src,test}/**/*.js' && eslint --fix '{src,test}/**/*.js'",
     "lint": "prettier --check '{src,test}/**/*.js' && eslint '{src,test}/**/*.js'",
     "pretest": "npm run lint",
