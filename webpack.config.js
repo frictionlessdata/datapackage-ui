@@ -36,7 +36,10 @@ const webpackConfig = {
       },
     ],
   },
-  plugins: [new webpack.EnvironmentPlugin({ NODE_ENV, DEBUG })],
+  plugins: [
+    new webpack.EnvironmentPlugin({ NODE_ENV, DEBUG }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+  ],
   devServer: {
     historyApiFallback: true,
     noInfo: true,
