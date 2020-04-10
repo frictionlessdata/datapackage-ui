@@ -1,4 +1,6 @@
 require('./styles/base.css')
+require('./styles/mockup.css')
+require('./mockup.js')
 require('regenerator-runtime/runtime')
 const { render } = require('./render')
 const { EditorSchema } = require('./components/EditorSchema')
