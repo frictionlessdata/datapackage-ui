@@ -1,6 +1,6 @@
 {
   "name": "datapackage-ui",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "license": "MIT",
   "author": "roll <eskarev@gmail.com>",
   "description": "UI components for datapackage",
