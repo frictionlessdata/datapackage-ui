@@ -43,7 +43,7 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "regenerator-runtime": "^0.13.5",
-    "tableschema": "^1.11.2",
+    "tableschema": "^1.12.3",
     "uuid": "^3.4.0"
   },
   "devDependencies": {
