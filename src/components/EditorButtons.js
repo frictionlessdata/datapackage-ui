@@ -1,6 +1,5 @@
 const React = require('react')
 const { connect } = require('react-redux')
-const helpers = require('../helpers')
 
 // Pure components
 
@@ -77,7 +76,7 @@ const mapDispatchToProps = (dispatch) => ({
 // Helpers
 
 function encodeDescriptor(descriptor) {
-  const text = encodeURIComponent(helpers.stringifyDescriptor(descriptor))
+  const text = encodeURIComponent(JSON.stringify(descriptor, null, 2))
   return `text/json;charset=utf-8,${text}`
 }
 
