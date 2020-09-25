@@ -9,6 +9,8 @@ const { createReducer } = require('../reducers/editorPackage')
 // Pure components
 
 function EditorPackagePure({
+  Buttons,
+
   // Subscribed
   isPreviewActive,
   publicDescriptor,
@@ -21,7 +23,11 @@ function EditorPackagePure({
   return (
     <div className={classNames('app', 'datapackage-ui', { 'code-view': isPreviewActive })}>
       {/* Sidebar */}
-      <EditorSidebar descriptor={descriptor} publicDescriptor={publicDescriptor} />
+      <EditorSidebar
+        descriptor={descriptor}
+        publicDescriptor={publicDescriptor}
+        Buttons={Buttons}
+      />
 
       <section className="resources">
         {/* Feedback */}
@@ -136,15 +142,14 @@ function EditorPackagePure({
 
 // Subscribers
 
-const mapStateToProps = (state) => ({
-  isPreviewActive: state.isPreviewActive,
-
-  publicDescriptor: state.publicDescriptor,
-
-  descriptor: state.descriptor,
-
-  feedback: state.feedback,
-})
+const mapStateToProps = (state) => {
+  return {
+    isPreviewActive: state.isPreviewActive,
+    publicDescriptor: state.publicDescriptor,
+    descriptor: state.descriptor,
+    feedback: state.feedback,
+  }
+}
 
 // Handlers
 

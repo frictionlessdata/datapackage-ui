@@ -3,7 +3,8 @@ const { EditorButtons } = require('./EditorButtons')
 const { EditorMetadata } = require('./EditorMetadata')
 const { EditorKeywords } = require('./EditorKeywords')
 
-export function EditorSidebar({ descriptor, publicDescriptor }) {
+export function EditorSidebar({ descriptor, publicDescriptor, Buttons }) {
+  Buttons = Buttons || EditorButtons
   return (
     <section className="package">
       <div className="inner">
@@ -42,7 +43,7 @@ export function EditorSidebar({ descriptor, publicDescriptor }) {
             </svg>
           </a>
 
-          <EditorButtons descriptor={descriptor} publicDescriptor={publicDescriptor} />
+          <Buttons encodedDescriptor={encodeDescriptor(publicDescriptor)} />
         </div>
 
         <div className="panel-group" id="package-data" role="tablist" aria-multiselectable="true">
@@ -55,4 +56,11 @@ export function EditorSidebar({ descriptor, publicDescriptor }) {
       </div>
     </section>
   )
+}
+
+// Helpers
+
+function encodeDescriptor(descriptor) {
+  const text = encodeURIComponent(JSON.stringify(descriptor, null, 2))
+  return `text/json;charset=utf-8,${text}`
 }

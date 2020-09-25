@@ -4,9 +4,7 @@ const { connect } = require('react-redux')
 // Pure components
 
 function EditorButtonsPure({
-  // Props
-  descriptor,
-  publicDescriptor,
+  encodedDescriptor,
 
   // Handlers
   onUploadChange,
@@ -42,7 +40,7 @@ function EditorButtonsPure({
       {/* Download */}
       <a
         className="btn btn-lg btn-success"
-        href={`data: ${encodeDescriptor(publicDescriptor)}`}
+        href={`data: ${encodedDescriptor}`}
         download="datapackage.json"
         title="Download the data package to your local drive"
       >
@@ -72,13 +70,6 @@ const mapDispatchToProps = (dispatch) => ({
     })
   },
 })
-
-// Helpers
-
-function encodeDescriptor(descriptor) {
-  const text = encodeURIComponent(JSON.stringify(descriptor, null, 2))
-  return `text/json;charset=utf-8,${text}`
-}
 
 // Wrappers
 
