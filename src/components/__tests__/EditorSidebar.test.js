@@ -7,7 +7,7 @@ Enzyme.configure({ adapter: new Adapter() })
 
 // Tests
 
-test('should render', () => {
+test.skip('should render', () => {
   const descriptor = {}
   const publicDescriptor = {}
   const onUploadChange = jest.fn()
