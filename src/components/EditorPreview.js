@@ -1,6 +1,5 @@
 const React = require('react')
 const { connect } = require('react-redux')
-const helpers = require('../helpers')
 
 // Pure components
 
@@ -23,7 +22,7 @@ function EditorPreviewPure({
 
       {/* Code */}
       <pre>
-        <code className="language-json">{helpers.stringifyDescriptor(publicDescriptor)}</code>
+        <code className="language-json">{JSON.stringify(publicDescriptor, null, 2)}</code>
       </pre>
     </section>
   )

@@ -1,20 +1,10 @@
 const React = require('react')
-const { connect } = require('react-redux')
+const { EditorButtons } = require('./EditorButtons')
 const { EditorMetadata } = require('./EditorMetadata')
 const { EditorKeywords } = require('./EditorKeywords')
-const helpers = require('../helpers')
 
-// Pure components
-
-function EditorSidebarPure({
-  // Props
-  descriptor,
-  publicDescriptor,
-
-  // Handlers
-  onUploadChange,
-  onValidateClick,
-}) {
+export function EditorSidebar({ descriptor, publicDescriptor, Buttons }) {
+  Buttons = Buttons || EditorButtons
   return (
     <section className="package">
       <div className="inner">
@@ -53,40 +43,7 @@ function EditorSidebarPure({
             </svg>
           </a>
 
-          {/* Upload */}
-          <label
-            className="btn btn-lg btn-success"
-            title="Upload a data package from your local drive"
-            htmlFor="load-descriptor"
-          >
-            <input
-              type="file"
-              id="load-descriptor"
-              value=""
-              style={{ display: 'none' }}
-              onChange={onUploadChange}
-            />
-            Upload
-          </label>
-
-          {/* Validate */}
-          <button
-            className="btn btn-lg btn-info"
-            title="Validate the data package verifying its metadata"
-            onClick={onValidateClick}
-          >
-            Validate
-          </button>
-
-          {/* Download */}
-          <a
-            className="btn btn-lg btn-success"
-            href={`data: ${encodeDescriptor(publicDescriptor)}`}
-            download="datapackage.json"
-            title="Download the data package to your local drive"
-          >
-            Download
-          </a>
+          <Buttons encodedDescriptor={encodeDescriptor(publicDescriptor)} />
         </div>
 
         <div className="panel-group" id="package-data" role="tablist" aria-multiselectable="true">
@@ -101,44 +58,9 @@ function EditorSidebarPure({
   )
 }
 
-// Handlers
-
-const mapDispatchToProps = (dispatch) => ({
-  onUploadChange: (ev) => {
-    const reader = new window.FileReader()
-    reader.readAsText(ev.target.files[0])
-    reader.onload = () => {
-      dispatch({
-        type: 'UPLOAD_PACKAGE',
-        payload: JSON.parse(reader.result),
-      })
-    }
-  },
-
-  onValidateClick: () => {
-    dispatch({
-      type: 'VALIDATE_PACKAGE',
-    })
-  },
-})
-
 // Helpers
 
 function encodeDescriptor(descriptor) {
-  const text = encodeURIComponent(helpers.stringifyDescriptor(descriptor))
+  const text = encodeURIComponent(JSON.stringify(descriptor, null, 2))
   return `text/json;charset=utf-8,${text}`
-}
-
-// Wrappers
-
-const EditorSidebar = connect(null, mapDispatchToProps)(EditorSidebarPure)
-
-// System
-
-module.exports = {
-  // Public
-  EditorSidebar,
-
-  // Private
-  EditorSidebarPure,
 }

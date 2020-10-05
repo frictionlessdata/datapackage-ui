@@ -17,6 +17,7 @@ function render(Component, props, element) {
   // Prepare component
   let component = Component
   if (component.editorType === 'package') {
+    const Buttons = props.Buttons
     const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
     const store = createStore(
       component.createReducer(props),
@@ -24,7 +25,7 @@ function render(Component, props, element) {
     )
     component = () => (
       <Provider store={store}>
-        <Component />
+        <Component Buttons={Buttons} />
       </Provider>
     )
   }

@@ -1,7 +1,6 @@
 const React = require('react')
 const { connect } = require('react-redux')
 const partial = require('lodash/partial')
-const config = require('../config')
 
 // Pure components
 
@@ -145,15 +144,35 @@ const mapDispatchToProps = (dispatch, { resourceIndex, fieldIndex }) => ({
 // Helpers
 
 function getTypes() {
-  return Object.keys(config.FIELD_TYPES_AND_FORMATS)
+  return Object.keys(FIELD_TYPES_AND_FORMATS)
 }
 
 function getFormat(type) {
-  return config.FIELD_TYPES_AND_FORMATS[type]
+  return FIELD_TYPES_AND_FORMATS[type]
 }
 
 function makeId(descriptor, key) {
   return `field-${descriptor._key}-${key}`
+}
+
+// Settings
+
+const FIELD_TYPES_AND_FORMATS = {
+  string: ['default', 'email', 'uri', 'binary', 'uuid'],
+  number: ['default'],
+  integer: ['default'],
+  boolean: ['default'],
+  object: ['default'],
+  array: ['default'],
+  date: false,
+  time: false,
+  datetime: false,
+  year: ['default'],
+  yearmonth: ['default'],
+  duration: ['default'],
+  geopoint: ['default', 'array', 'object'],
+  geojson: ['default', 'topojson'],
+  any: ['default'],
 }
 
 // Components
