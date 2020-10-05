@@ -20,7 +20,7 @@
     "analyze": "NODE_ENV=production webpack --profile --json | webpack-bundle-size-analyzer",
     "build": "npm run compile && npm run bundle",
     "bundle": "webpack --output-pathinfo --progress --hide-modules && NODE_ENV=production webpack --progress --hide-modules",
-    "compile": "babel src --out-dir lib",
+    "compile": "babel src --out-dir lib && cp -r src/styles lib",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "dev": "webpack-dev-server --inline --hot --open",
     "format": "prettier --write '{src,test}/**/*.js' && eslint --fix '{src,test}/**/*.js'",
