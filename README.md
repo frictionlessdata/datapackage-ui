@@ -162,6 +162,10 @@ $ npm run test
 
 Here described only breaking and the most important changes. The full changelog and documentation for all released versions could be found in nicely formatted [commit history](https://github.com/frictionlessdata/datapackage-ui/commits/master).
 
+#### v1.1
+
+- An ability to extend the package editor (#272)
+
 #### v1.0
 
 - Initial release of the library
