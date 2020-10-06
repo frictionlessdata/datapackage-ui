@@ -162,6 +162,10 @@ $ npm run test
 
 Here described only breaking and the most important changes. The full changelog and documentation for all released versions could be found in nicely formatted [commit history](https://github.com/frictionlessdata/datapackage-ui/commits/master).
 
+#### v1.2
+
+- Moved `react` to peer dependencies
+
 #### v1.1
 
 - An ability to extend the package editor (#272)
