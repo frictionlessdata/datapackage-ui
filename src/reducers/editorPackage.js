@@ -219,6 +219,9 @@ function processState(state) {
     if (resource.dialect) {
       resource.dialect = { ...DEFAULT_DIALECT, ...resource.dialect }
     }
+    // NOTE: We cannot dereference schema as a path
+    // https://github.com/frictionlessdata/datapackage-ui/issues/274
+    if (typeof resource.schema === 'string') resource.schema = {}
     resource.schema = resource.schema || {}
     resource.schema.fields = resource.schema.fields || []
     resource.schema._columns = resource.schema._columns || []
