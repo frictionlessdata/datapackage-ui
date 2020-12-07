@@ -24,7 +24,7 @@ function EditorMetadataPure({
         <div className="panel-body">
           {/* Name */}
           <label htmlFor={makeId('name')} className="control-label">
-            Name *
+            Name
           </label>
           <input
             id={makeId('name')}
@@ -40,7 +40,7 @@ function EditorMetadataPure({
 
           {/* Title */}
           <label htmlFor={makeId('title')} className="control-label">
-            Title *
+            Title
           </label>
           <input
             id={makeId('title')}
